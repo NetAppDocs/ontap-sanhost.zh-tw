@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head class="at-element-marker">
+  <title>（PowerVM vSCSI）探索及設定LUN</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="（PowerVM vSCSI）探索及設定LUN" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_aix_72_sanbooting_powervm_vscsi.html" />
+	<meta property="og:description" content="說明如何使用PowerVM vSCSI來探索及設定LUN" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-tw/ontap-sanhost/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="說明如何使用PowerVM vSCSI來探索及設定LUN">
+  <meta name="keywords" content=" host utilities, aix, powervm, 7.2 netapp, ontap, luns, configure, discover, configuring, discovering"><!-- Icons -->
+  <link rel="icon" href="/zh-tw/ontap-sanhost/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-sanhost/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/zh-tw/ontap-sanhost/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-sanhost/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-sanhost/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-sanhost/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/zh-tw/ontap-sanhost/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/zh-tw/ontap-sanhost/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/zh-tw/ontap-sanhost/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/zh-tw/ontap-sanhost/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/zh-tw/ontap-sanhost/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-sanhost/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-sanhost/css/custom-dropdown.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-sanhost/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/zh-tw/ontap-sanhost/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-tw/ontap-sanhost/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/zh-tw/ontap-sanhost/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    if (document.location.hostname === "docs.netapp.com") {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = "72570c5c-fe30-465f-b0e0-b77f7fb4ae34";
+      head.appendChild(onetrustScript);
+    }
+
+    function OptanonWrapper() { }
+
+    if (document.location.hostname === "docs.netapp.com") {
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+      head.appendChild(adobe);
+
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id=UA-81697994-3";
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-81697994-3');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/zh-tw/ontap-sanhost/js/na-search.js'></script><script src='/zh-tw/ontap-sanhost/js/na-pagenav.js'></script><link rel='stylesheet' href='/zh-tw/ontap-sanhost/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-sanhost/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/zh-tw/ontap-sanhost/js/na-utility.js'></script>
+  <script src='/zh-tw/ontap-sanhost/js/clouddocs.js'></script>
+  <script src='/zh-tw/ontap-sanhost/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/zh-tw/ontap-sanhost/js/toc.js'></script>
+  <script src='/zh-tw/ontap-sanhost/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/zh-tw/ontap-sanhost/js/custom-dropdown.js'></script>
+  <script src='/zh-tw/ontap-sanhost/js/FileSaver.min.js'></script>
+  <script src='/zh-tw/ontap-sanhost/js/jszip-utils.min.js'></script>
+  <script src='/zh-tw/ontap-sanhost/js/jszip.min.js'></script>
+  <script src='/zh-tw/ontap-sanhost/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/issues/new?body=Page%3A%20[（PowerVM vSCSI）探索及設定LUN](https://docs.netapp.com/zh-tw/ontap-sanhost/hu_aix_72_sanbooting_powervm_vscsi.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/discuss-sm.svg" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_aix_72_sanbooting_powervm_vscsi.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/edit-sm.svg" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-sanhost/images/article-sm.svg" class="github-icon" />瞭解如何作出貢獻</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">在此頁面上</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">產品與解決方案</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">支援與訓練</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">社群</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">部落格</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">客戶成功案例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">聯絡人</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">聯絡人</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/zh-tw/ontap-sanhost/search.html"
+          data-type="widget" 
+          data-placeholder="搜尋文件" 
+          data-no-results-found="找不到符合 {query} 的相關結果。" 
+          data-did-you-mean="搜尋 {suggestion}。" 
+          data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？" 
+          data-results-found="找到 {hitCount} 筆結果"  
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">繁體中文</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_aix_72_sanbooting_powervm_vscsi.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_aix_72_sanbooting_powervm_vscsi.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_aix_72_sanbooting_powervm_vscsi.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_aix_72_sanbooting_powervm_vscsi.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_aix_72_sanbooting_powervm_vscsi.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>可用的 PDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/zh-tw/ontap-sanhost/pdfs/fullsite-sidebar/SAN主機組態ONTAP.pdf" >
+          <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>此文件網站（PDF 格式）</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/SAN主機公用程式.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            SAN主機公用程式
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/NVMe主機組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            NVMe主機組態
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/NVMeoF_ESXi.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            ESXi
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Oracle_Linux.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Oracle Linux
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/NVMeF_RHEL.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            RHEL
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/NVMeoF_SLES.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            SLES
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Windows.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Windows
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/FCP與iSCSI主機組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            FCP與iSCSI主機組態
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/AIX與PowerVM_VIOS.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            AIX與PowerVM/VIOS
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/CentOS.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            CentOS
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/CentOS_8_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            CentOS 8.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/CentOS_7_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            CentOS 7.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/CentOS_6_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            CentOS 6.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Citrix.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Citrix
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/ESXi.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            ESXi
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/HP_UX.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            HP-UX
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Oracle_Linux.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Oracle Linux
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/ol_8_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            ol 8.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/ol_7_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            ol 7.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/ol_6_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            ol 6.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            RHEL
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL_8.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            RHEL 8
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL_7.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            RHEL 7
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL_6.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            RHEL 6
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Solaris.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Solaris
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/SLES.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            SLES
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/SLES_15.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            SLES 15
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/SLES_12.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            SLES 12
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Veritas.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Veritas
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Windows.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+            Windows
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/zh-tw/ontap-sanhost/images/pdf-zip.png" width="16" height="16"/>
+      <pre>個別 PDF 文件的集合<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/index.html">
+        主頁
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SAN主機公用程式</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_aix_61.html">
+        AIX主機公用程式
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_hpux_60.html">
+        HPUX主機公用程式
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_luhu_71.html">
+        Linux統一化主機公用程式
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_solaris_62.html">
+        Solaris主機公用程式
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_wuhu_71.html">
+        Windows統一化主機公用程式
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NVMe主機組態</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ESXi</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_esxi_7.html">
+        7.x
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Oracle Linux</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_ol_82.html">
+        8.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_ol_81.html">
+        8.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_ol_79.html">
+        7.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_ol_78.html">
+        7.8%
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_ol_77.html">
+        7.7.7.
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> RHEL</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_rhel_84.html">
+        8.4.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_rhel_83.html">
+        8.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_rhel_82.html">
+        8.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_rhel_81.html">
+        8.1
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SLES</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_sles15_sp3.html">
+        15 SP3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_sles15_sp2.html">
+        15 SP2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_sles15_sp1.html">
+        15 SP1
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Windows</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_windows_2019.html">
+        2019年
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_windows_2016.html">
+        2016年
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_windows_2012r2.html">
+        2012 R2
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> FCP與iSCSI主機組態</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> AIX與PowerVM/VIOS</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_aix_72.html">
+        7.2/3.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_aix_71.html">
+        7.1.
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CentOS</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CentOS 8.</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_83.html">
+        8.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_82.html">
+        8.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_81.html">
+        8.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_80.html">
+        8.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CentOS 7.</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_79.html">
+        7.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_78.html">
+        7.8%
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_77.html">
+        7.7.7.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_76.html">
+        7.6.7.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_75.html">
+        7.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_74.html">
+        7.4.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_73.html">
+        7.3.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_72.html">
+        7.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_71.html">
+        7.1.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_70.html">
+        7.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> CentOS 6.</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_610.html">
+        6.10.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_69.html">
+        6.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_68.html">
+        6.8%
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_67.html">
+        6.7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_66.html">
+        6.6.6.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_65.html">
+        6.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_64.html">
+        6.4.
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Citrix</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_citrix_8x.html">
+        Hypervisor 8.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_citrix_7x.html">
+        XenServer 7
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ESXi</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_vsphere_7.html">
+        VMware vSphere 7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_vsphere_6.html">
+        VMware vSphere 6.5與6.7
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> HP-UX</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_hpux_11iv3.html">
+        11i v3
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Oracle Linux</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ol 8.</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_84.html">
+        8.4.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_83.html">
+        8.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_82.html">
+        8.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_81.html">
+        8.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_80.html">
+        8.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ol 7.</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_79.html">
+        7.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_78.html">
+        7.8%
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_77.html">
+        7.7.7.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_76.html">
+        7.6.7.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_75.html">
+        7.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_74.html">
+        7.4.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_73.html">
+        7.3.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_72.html">
+        7.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_71.html">
+        7.1.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_70.html">
+        7.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ol 6.</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_610.html">
+        6.10.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_69.html">
+        6.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_68.html">
+        6.8%
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_67.html">
+        6.7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_66.html">
+        6.6.6.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_65.html">
+        6.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_64.html">
+        6.4.
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> RHEL</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> RHEL 8</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_85.html">
+        8.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_84.html">
+        8.4.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_83.html">
+        8.3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_82.html">
+        8.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_81.html">
+        8.1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_80.html">
+        8.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> RHEL 7</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_79.html">
+        7.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_78.html">
+        7.8%
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_77.html">
+        7.7.7.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_76.html">
+        7.6.7.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_75.html">
+        7.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_74.html">
+        7.4.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_73.html">
+        7.3.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_72.html">
+        7.2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_71.html">
+        7.1.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_70.html">
+        7.0
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> RHEL 6</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_610.html">
+        6.10.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_69.html">
+        6.9
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_68.html">
+        6.8%
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_67.html">
+        6.7
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_66.html">
+        6.6.6.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_65.html">
+        6.5
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_rhel_64.html">
+        6.4.
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Solaris</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_solaris_114.html">
+        11.4
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_solaris_113.html">
+        11.3
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SLES</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SLES 15</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_15SP3.html">
+        15 SP3
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_15SP2.html">
+        15 SP2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_15SP1.html">
+        15 SP1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_15.html">
+        15
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> SLES 12</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_12SP5.html">
+        12 SP 5.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_12SP4.html">
+        12 SP 4.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_12SP3.html">
+        12 SP 3.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_12SP2.html">
+        12 SP 2.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_12SP1.html">
+        12 SP 1
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_12.html">
+        12.
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Veritas</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_veritas_7x.html">
+        Infoscale 7.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_veritas_6x.html">
+        儲存基礎6.
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Windows</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_windows_2019.html">
+        2019年
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_windows_2016.html">
+        2016年
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_windows_2012r2.html">
+        2012 R2
+      </a></li></ul></li></ul></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/zh-tw/ontap-sanhost/">SAN&nbsp;Host</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 本繁體中文版使用機器翻譯，譯文僅供參考，若與英文版本牴觸，應以英文版本為準。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">（PowerVM vSCSI）探索及設定LUN</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-05-03 10:41:41 +0000">05/03/2022</time>
+    
+  
+
+
+</p>
+
+<div class="paragraph lead">
+<p>當您使用PowerVM vSCSI和VIO伺服器時、必須使用padmin登入和適當的命令來設定和探索LUN。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步驟</div>
+<ol class="arabic">
+<li>
+<p>以padmin身分登入主機。</p>
+</li>
+<li>
+<p>在AIX主機上、輸入下列命令以探索新建立的LUN：</p>
+<div class="paragraph">
+<p>《cfgdev'》</p>
+</div>
+<div class="paragraph">
+<p>cfgdeve命令會導致：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>用於登入Fabric的啟動器。</p>
+</li>
+<li>
+<p>用於檢查新裝置的系統。</p>
+</li>
+<li>
+<p>系統會建立新的裝置項目、並使用預設PCM將新LUN對應為MPIO裝置。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>若要驗證hdisk MPIO裝置是否已建立、請輸入下列命令：</p>
+<div class="paragraph">
+<p>"lsdev-type disk"</p>
+</div>
+<div class="paragraph">
+<p>LUN在主機上顯示為磁碟。您可以使用這些磁碟、就像使用主機上的本機磁碟一樣。</p>
+</div>
+<div class="paragraph">
+<p>記下hdisk執行個體編號。您可以在執行路徑組態時使用它們。</p>
+</div>
+<div class="paragraph">
+<p>「lsdev-type disk」命令會產生下列類型的輸出。此範例中的輸出已被刪減。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vioserver$ lsdev -type disk NetApp
+name     status      description
+hdisk0   Available   16 Bit LVD SCSI Disk Drive
+hdisk1   Available   16 Bit LVD SCSI Disk Drive
+hdisk2   Available   MPIO NetApp FCP Default PCM Disk
+hdisk3   Available   MPIO NetApp FCP Default PCM Disk
+hdisk4   Available   MPIO NetApp FCP Default PCM Disk
+hdisk5   Available   MPIO NetApp FCP Default PCM Disk
+hdisk6   Available   MPIO NetApp FCP Default PCM Disk</pre>
+</div>
+</div>
+</li>
+<li>
+<p>若要取得設定的相關資訊、請輸入下列命令：</p>
+<div class="paragraph">
+<p>"lsdev-devhdisk_name -attr"</p>
+</div>
+<div class="paragraph">
+<p>lsdev-devhdisk_name -attr&#8217;命令會產生下列輸出：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vioserver$ lsdev -dev hdisk2 -attr
+attribute value                   description                user-settable
+PCM   PCM/friend/NetApp   PCM Path Control Module          False
+PR_key_value    none                             Persistent Reserve Key Value            True
+algorithm       round_robin                      Algorithm                               True
+clr_q           no                               Device CLEARS its Queue on error        True
+dist_err_pcnt   0                                Distributed Error Sample Time           True
+dist_tw_width   50                               Distributed Error Sample Time           True
+hcheck_cmd      inquiry                          Health Check Command                    True
+hcheck_interval 30                               Health Check Interval                   True
+hcheck_mode     nonactive                        Health Check Mode                       True
+location                                         Location Label                          True
+lun_id          0x2000000000000                  Logical Unit Number ID                  False
+lun_reset_spt   yes                              LUN Level Reset                         True
+max_transfer    0x100000                         Maximum TRANSFER Size                   True
+node_name       0x500a0980894ae0e0               FC Node Name                            False
+pvid            00067fbad453a1da0000000000000000 Physical volume identifier              False
+q_err           yes                              Use QERR bit                            True
+q_type          simple                           Queuing TYPE                            True
+qfull_dly       2                                Delay in seconds for SCSI TASK SET FULL True
+queue_depth     64                               Queue DEPTH                             True
+reassign_to     120                              REASSIGN time out value                 True
+reserve_policy  no_reserve                       Reserve Policy                          True
+rw_timeout      30                               READ/WRITE time out value               True
+scsi_id         0xd10001                         SCSI ID                                 False
+start_timeout   60                               START unit time out value               True
+ww_name         0x500a0984994ae0e0               FC World Wide Name                      False</pre>
+</div>
+</div>
+</li>
+<li>
+<p>如果您的組態不支援ALUA、則必須執行DotPaths公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用ALUA、請勿使用dotPaths公用程式。輸入下列命令、切換至「OEM_setup_env」模式以執行dotPaths：</p>
+<div class="paragraph">
+<p>「OEM_setup_env」</p>
+</div>
+<div class="paragraph">
+<p>當您進入「OEM_setup_env」模式時、命令列提示字元會從美元符號變更為英鎊符號、並維持在「OEM_setup_env」模式、直到您輸入結束等命令停止為止。</p>
+</div>
+<div class="paragraph">
+<p>「# vioserver$ OEM_setup_env」</p>
+</div>
+</li>
+<li>
+<p>如果您的組態支援ALUA、您可以使用它來設定路徑優先順序。確認已啟用ALUA：</p>
+<div class="paragraph">
+<p>「LUN igroup show -instance igroup_name」</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>如果未啟用ALUA、請啟用它：</p>
+<div class="paragraph">
+<p>「igroup set igroup_name alua yes」</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>如果您的組態不支援ALUA、則必須執行DotPaths公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用ALUA、請勿使用dotPaths公用程式。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>若要設定所有Data ONTAP 的LUN優先順序、請輸入：</p>
+<div class="paragraph">
+<p>"DotPaths（路徑）"</p>
+</div>
+</li>
+<li>
+<p>若要設定特定磁碟集的優先順序、請輸入：</p>
+<div class="paragraph">
+<p>「DotPaths（-HQV）[hdiskN &#8230;&#8203;（hdiskN &#8230;&#8203;）」</p>
+</div>
+<div class="paragraph">
+<p>使用「-v」選項可啟用詳細模式並顯示所有優先順序。使用「-q'」選項可查詢所有或個別的磁碟優先順序。</p>
+</div>
+<div class="paragraph">
+<p>以下是使用DotPaths公用程式的範例：</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vioserver# dotpaths -v
+hdisk2 (path 0): Optimized path - Setting priority to 255
+hdisk2 (path 1): Optimized path - Setting priority to 255
+hdisk2 (path 2): Unoptimized path - Current priority of 1 is correct
+hdisk2 (path 3): Unoptimized path - Current priority of 1 is correct
+...
+Path priority set and/or verified for 22 disks, 86 total paths.
+vioserver#</pre>
+</div>
+</div>
+</li>
+<li>
+<p>若要驗證主機是否已找到LUN、請輸入下列命令：</p>
+<div class="paragraph">
+<p>sanlun LUN show -p'</p>
+</div>
+<div class="paragraph">
+<p>此範例顯示直接附加組態的「lanlun LUN show -p」命令典型輸出。它還包含「sanlun LUN show -d hdisk9 -v」命令、可顯示有關hdisk9的資訊。此命令的輸出已被截短。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sanlun lun show -p
+
+                    ONTAP Path: fas3170-aix03:/vol/ibmbc_aix01b14_fcp_vol8/ibmbc-aix01b14_fcp_lun0
+                           LUN: 8
+                      LUN Size: 3g
+           Controller CF State: Cluster Enabled
+            Controller Partner: fas3170-aix04
+                   Host Device: hdisk9
+                          Mode: 7
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+--------- ----------- ------ ------- ------------- ----------
+host      controller  AIX            controller    AIX MPIO
+path      path        MPIO   host    target        path
+state     type        path   adapter port          priority
+--------- ----------- ------ ------- ------------- ----------
+up        secondary   path0  fcs0    3b              1
+up        primary     path1  fcs0    3a              1
+up        secondary   path2  fcs0    3a              1
+up        primary     path3  fcs0    3b              1
+up        secondary   path4  fcs0    4b              1
+up        secondary   path5  fcs0    4a              1
+up        primary     path6  fcs0    4b              1
+up        primary     path7  fcs0    4a              1
+up        secondary   path8  fcs1    3b              1
+up        primary     path9  fcs1    3a              1
+up        secondary   path10 fcs1    3a              1
+up        primary     path11 fcs1    3b              1
+up        secondary   path12 fcs1    4b              1
+up        secondary   path13 fcs1    4a              1
+up        primary     path14 fcs1    4b              1
+up        primary     path15 fcs1    4a              1</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sanlun lun show -vd hdisk10
+                                                                      device          host                  lun
+vserver              lun-pathname                                     filename        adapter    protocol   size    mode
+------------------------------------------------------------------------------------------------------------------------
+GPFS_p520_FC         /vol/GPFS_p520_FC_FlexVol_2/GPFS_p520_FC_LUN_2_4 hdisk10         fcs3       FCP        100g    C
+             LUN Serial number: 1k/yM$-ia5HC
+         Controller Model Name: N5600
+          Vserver FCP nodename: 200200a0980c892f
+          Vserver FCP portname: 200a00a0980c892f
+              Vserver LIF name: GPFS_p520_FC_2
+            Vserver IP address: 10.225.121.100
+           Vserver volume name: GPFS_p520_FC_FlexVol_2  MSID::0x00000000000000000000000080000420
+         Vserver snapshot name:</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">legal-terms</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">legal-privacy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">legal-cookies</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">cookie-settings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <span class="n-footer__fine-print">對我們的網站有任何意見或要求？</span>
+              <a target="_self" href="javascript:netapp_mailto()">請與我們聯絡</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://docs.netapp.com/zh-tw/announcements/">公告</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-tw/ontap-sanhost/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-tw/ontap-sanhost/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-tw/ontap-sanhost/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-tw/ontap-sanhost/js/www-ntap.js'></script>
+    <script src='/zh-tw/ontap-sanhost/js/tabbed-blocks.js'></script>
+  </body></html>
