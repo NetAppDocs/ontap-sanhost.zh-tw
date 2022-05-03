@@ -1,0 +1,32 @@
+= 
+:allow-uri-read: 
+
+
+在使用FC的系統上、選取MPIO時、必須提供Emulex和QLogic FC HBA的下列逾時值。
+
+對於Emulex Fibre Channel HBA：
+
+[cols="2*"]
+|===
+| 內容類型 | 屬性值 
+
+
+| LinkTimeDOut | 1. 
+
+
+| 節點時間輸出 | 10. 
+|===
+若為QLogic Fibre Channel HBA：
+
+[cols="2*"]
+|===
+| 內容類型 | 屬性值 
+
+
+| LinkDownTimeDOut | 1. 
+
+
+| PortDownRetryCount | 10. 
+|===
+
+NOTE: Windows Unified Host Utility會設定這些值。如需詳細的建議設定、請參閱 link:https://library.netapp.com/ecmdocs/ECMLP2789202/html/index.html["Windows 7.1主機公用程式安裝指南"^]。

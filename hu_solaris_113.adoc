@@ -1,0 +1,223 @@
+---
+sidebar: sidebar 
+permalink: hu_solaris_113.html 
+keywords: host utilities, solaris, 113, netapp, ontap 
+summary: 說明如何安裝Solaris主機公用程式 
+---
+= 使用Solaris 11.3搭配NetApp ONTAP 功能
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 安裝Solaris主機公用程式
+
+您可以從NetApp支援網站下載包含主機公用程式軟體套件的壓縮檔案。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。
+
+.步驟
+. 從下載內含主機公用程式的壓縮檔案複本 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 到主機上的目錄。
+. 前往內含下載內容的目錄。
+. 擷取檔案。
++
+以下範例解壓縮SPARC系統的檔案。對於x86至64平台、請使用x86/x64套件。
+
++
+「gunzip NetApp_solaris主機公用程式_6_2N20170913_0304_SPARC.Tar.gz」
+
+. 使用「tar xvf」命令將檔案解壓縮。
++
+「tar xvf netapp_solaris主機公用程式_6_2N20170913_0301_SPARC.tar」
+
+. 將您從tar檔案擷取的套件新增至主機。
++
+「pkadd -d NTAPSANTool.pkg」
+
++
+這些套件會新增至「/opt/NTAP/SANToolkit / bin」目錄。
+
++
+若要完成安裝、您必須使用「host_config」命令來設定環境的主機參數（本例為MPxIO）。
+
++
+「host_config」命令的格式如下：
+
++
+/`opt/NTAP/SANToolkit / bin / host_config \<-setup>\<-protocol FCP | iscsi| mixed>\<-multipathmpxio| dmp | non（非）[-mc60 | 90| 120]
+
++
+「host_config」命令會執行下列動作：
+
++
+** 針對x86和SPARC系統的光纖通道和SCSI驅動程式進行設定變更
+** 提供兩種MPxIO組態的SCSI逾時設定
+** 設定VID/PID資訊
+** 啟用或停用ALUA
+** 設定MPxIO所使用的ALUA設定、以及x86和SPARC系統的SCSI驅動程式。
+
+
+. 重新啟動主機。
+
+
+
+
+== SAN工具套件
+
+當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
+
+在以下範例中、「左LUN show」命令會傳回LUN資訊。
+
+[listing]
+----
+#sanlun lun show
+
+controller(7mode)/                 device                                            host             lun
+vserver(Cmode)     lun-pathname    filename                                         adapter protocol  size  mode
+------------------------------------------------------------------------------------------------------
+data_vserver       /vol/vol1/lun1  /dev/rdsk/c0t600A098038314362692451465A2F4F39d0s2  qlc1  FCP       60g   C
+data_vserver       /vol/vol2/lun2  /dev/rdsk/c0t600A098038314362705D51465A626475d0s2  qlc1  FCP       20g   C
+----
+
+
+== SAN開機
+
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+
+SAN開機是將SAN附加磁碟（LUN）設定為Solaris主機的開機裝置的程序。
+
+您可以使用FC傳輸協定設定SAN開機LUN、以便在Solaris MPxIO環境中運作、並執行Solaris Host Utilities。您用來設定SAN開機LUN的方法可能會因Volume Manager和檔案系統而異。請參閱 link:https://library.netapp.com/ecmdocs/ECMLP2748974/html/frameset.html["《Solaris主機公用程式安裝與設定指南》"^] 以取得有關在Solaris MPIO環境中啟動SAN LUN的詳細資訊。
+
+
+
+== 多重路徑
+
+多重路徑可讓您在主機與儲存系統之間設定多個網路路徑。如果其中一條路徑故障、則其餘路徑上的流量會繼續傳輸。
+
+
+
+=== 非ASA組態
+
+對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+
+路徑優先順序會顯示在OS原生的「mpathadm show Lu <LUN>」命令中、每個LUN的「*存取狀態*」區段。
+
+
+
+=== 所有SAN陣列組態
+
+在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。
+
+下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
+
+「sanlun」命令的輸出與ASA 不適用於ASA組態的輸出相同。
+
+路徑優先順序會顯示在OS原生的「mpathadm show Lu <LUN>」命令中、每個LUN的「*存取狀態*」區段。
+
+[listing]
+----
+#sanlun lun show -pv sparc-s7-16-49:/vol/solaris_vol_1_0/solaris_lun
+
+                    ONTAP Path: sparc-s7-16-49:/vol/solaris_vol_1_0/solaris_lun
+                           LUN: 0
+                      LUN Size: 30g
+                   Host Device: /dev/rdsk/c0t600A098038314362692451465A2F4F39d0s2
+                          Mode: C
+            Multipath Provider: Sun Microsystems
+              Multipath Policy: Native
+----
+
+NOTE: 從適用於Solaris主機的《支援所有SAN陣列ASA （EJUSTE）組態ONTAP 》（英文）的《支援所有SAN陣列（英文）》
+
+
+
+== 建議設定
+
+以下是建議使用NetApp ONTAP 支援LUN的Solaris 11.3 SPARC和x86_64參數設定。這些參數值由Host Utilities設定。
+
+[cols="2*"]
+|===
+| 參數 | 價值 
+
+
+| 節流最大值 | 8. 
+
+
+| Not Ready重試次數 | 300 
+
+
+| Busy_retries | 30 
+
+
+| 重設重試次數 | 30 
+
+
+| 節流最小值 | 2. 
+
+
+| timeout_retries | 10. 
+
+
+| 實體區塊大小 | 4096 
+|===
+
+
+=== 推薦MetroCluster 的功能設定
+
+根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由「FCP離線延遲」參數所控制。「FCP離線延遲」的預設值適用於標準ONTAP 版的叢集。不過MetroCluster 、在不必要的組態中、「FCP離線延遲」的值必須增加至* 120 *、以確保I/O不會在作業期間（包括非計畫性容錯移轉）提早逾時。如需新增資訊及建議的預設設定變更、請參閱NetApp https://kb.netapp.com/app/answers/answer_view/a_id/1001373/loc/en_US["KB1001373"^]。
+
+
+
+== Oracle Solaris虛擬化
+
+* Solaris虛擬化選項包括Solaris邏輯網域（也稱為LDom或Oracle VM Server for SPARC）、Solaris動態網域、Solaris區域及Solaris Container。儘管這些技術是以非常不同的架構為基礎、但這些技術通常被重新標記為「Oracle虛擬機器」。
+* 在某些情況下、可同時使用多個選項、例如特定Solaris邏輯網域內的Solaris Container。
+* NetApp通常支援使用這些虛擬化技術、其中Oracle支援整體組態、且任何直接存取LUN的分割區均列於上 https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp 互通性對照表"^] 支援的組態。這包括根容器、LDOM IO網域、以及使用NPIV存取LUN的LDOM。
+* 僅使用虛擬化儲存資源（例如「vdsk」）的分割區和（或）虛擬機器不需要特定資格、因為它們無法直接存取NetApp LUN。只有直接存取基礎LUN的分割區/虛擬機器（例如LDOM IO網域）才能在中找到 https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp 互通性對照表"^]。
+
+
+
+
+=== 虛擬化的建議設定
+
+當LUN在LDOM內作為虛擬磁碟裝置使用時、LUN的來源會被虛擬化遮罩、而LDOM將無法正確偵測區塊大小。為避免此問題、必須針對Oracle錯誤15824910修補LDOM作業系統、並建立「VDC-.conf」檔案、將虛擬磁碟的區塊大小設為4096。如需詳細資訊、請參閱Oracle Doc 2157669.1。
+
+若要驗證修補程式、請執行下列步驟：
+
+. 建立zPool。
+. 對zpool執行「zdb -C」、確認* ashift*的值為12。
++
+如果* ashift*的值不是12、請確認已安裝正確的修補程式、然後重新檢查VDC-.conf的內容
+
++
+在* ashift*顯示值12之前、請勿繼續。
+
+
+
+
+NOTE: 可在各種版本的Solaris上取得Oracle錯誤15824910的修補程式。如果需要協助來判斷最佳核心修補程式、請聯絡Oracle。
+
+
+
+== 已知問題與限制
+
+[cols="4*"]
+|===
+| NetApp錯誤ID | 標題 | 說明 | Oracle ID 
+
+
+| 1366780 | x86架構上的Emulex 32G HBA在GB期間發生Solaris LIF問題 | 適用於x86_64平台上的Emulex韌體12.6.x版及更新版本 | SR 3-24746803021 
+
+
+| 1368957 | "Solaris 11.x 'cfgadm -c configure導致端點對端點Emulex組態發生I/O錯誤" | 在Emulex端點對端點組態上執行「cfgadm -c configure」會導致I/O錯誤。此問題已在9.5P17、9.6P14、9.7P13和9.8P2中修正 | 不適用 
+|===

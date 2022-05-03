@@ -1,0 +1,229 @@
+---
+sidebar: sidebar 
+permalink: hu_aix_72.html 
+keywords: host utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
+summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用 
+---
+= 將IBM AIX 7.2和/或PowerVM（VIOS 3.1）搭配NetApp ONTAP 功能使用
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 安裝AIS/VIOS主機公用程式
+
+您必須安裝AIX主機公用程式套件、才能將AIX MPIO與NetApp ONTAP 之間的儲存設備搭配使用。
+
+您可以從NetApp支援網站下載包含主機公用程式軟體套件的壓縮檔案。取得檔案後、您必須解壓縮檔案、才能取得安裝Host Utilities所需的兩個軟體套件。
+
+NetApp AIX Host Utilities 6.1是最新版本。此版本可解決先前版本中報告的記憶體洩漏問題。如需其他資訊、請參閱版本說明一節。
+
+.步驟
+. 登入您的主機。
++
+** 在AIX主機上、以* root*登入。
+** 在PowerVM主機上、以* padmin*登入、然後輸入「OEM_setup_env」命令成為root。
+
+
+. 從NetApp支援網站下載包含主機公用程式的壓縮檔案複本至主機上的目錄。
+. 前往內含下載內容的目錄。
+. 解壓縮檔案並解壓縮SAN Toolkit軟體套件。
++
+「tar -xvf ntit_AIX_host_utilitis_6.1.tar .gz」
+
++
+解壓縮檔案時會建立下列目錄：「ntap_AIX_host_utilities _6.1」。此目錄將有下列子目錄之一：MPIO、non-MPIO或SAN_Tool_Kit。
+
+. 安裝AIX MPIO：
++
+「installp -aXYd /var/tmp_ntit_aix_host_utilities_6.1/MPIO netapp.MPIO主機公用程式套件」
+
+. 安裝SAN工具套件：「install p -aXYd /var/tmp/ntip_AIX_host_utilites_6.1/SAN_Tool_Kit NetApp.SAN_toolkit'
+. 重新啟動主機。
+
+
+
+
+== SAN工具套件
+
+當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
+
+在以下範例中、「左LUN show」命令會傳回LUN資訊。
+
+[listing]
+----
+#sanlun lun show
+
+controller(7mode)/                  device      host       lun
+vserver(Cmode)    lun-pathname     filename    adapter   protocol   size   mode
+--------------------------------------------------------------------------------
+data_vserver      /vol/vol1/lun1    hdisk0      fcs0       FCP       60g    C
+data_vserver      /vol/vol2/lun2    hdisk0      fcs0       FCP       20g    C
+data_vserver      /vol/vol3/lun3    hdisk11     fcs0       FCP       20g    C
+data_vserver      /vol/vol4/lun4    hdisk14     fcs0       FCP       20g    C
+
+----
+
+
+== SAN開機
+
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+
+SAN開機是將SAN附加磁碟（LUN）設定為AIX/PowerVM主機的開機裝置的程序。您可以設定SAN開機LUN、以便在以FC或FCoE傳輸協定執行AIX主機公用程式的AIX MPIO環境中運作。您在AIX MPIO環境中建立SAN開機LUN及在其上安裝新的OS映像的方法可能有所不同、視您使用的傳輸協定而定。
+
+
+
+== 多重路徑
+
+多重路徑可讓您在主機與儲存系統之間設定多個網路路徑。如果其中一條路徑故障、則其餘路徑上的流量會繼續傳輸。Host Utilities的AIX和PowerVM環境使用AIX的原生多重路徑解決方案（MPIO）。
+
+對於AIX、路徑控制模組（PCM）負責控制多個路徑。PCM是儲存設備廠商提供的程式碼、可處理路徑管理。這項功能會在主機公用程式安裝過程中安裝及啟用。
+
+
+
+=== 非ASA組態
+
+對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------- ---------- ------ ------- ---------- ----------
+host    vserver    AIX                        AIX MPIO
+path    path       MPIO   host    vserver         path
+state   type       path   adapter LIF         priority
+------- ---------- ------ ------- ---------- ----------
+up      secondary  path0  fcs0    fc_aix_1        1
+up      primary    path1  fcs0    fc_aix_2        1
+up      primary    path2  fcs1    fc_aix_3        1
+up      secondary  path3  fcs1    fc_aix_4        1
+
+----
+
+
+=== 所有SAN陣列組態
+
+在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。
+
+下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
+
+
+NOTE: 從適用於AIX主機的《支援所有SAN陣列ASA （EJRIBE）組態ONTAP 》（英文）9.8開始、即可開始支援所有SAN陣列（
+
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------ ------- ------ ------- --------- ----------
+host   vserver  AIX                      AIX MPIO
+path   path     MPIO   host    vserver     path
+state  type     path   adapter LIF       priority
+------ ------- ------ ------- --------- ----------
+up     primary  path0  fcs0    fc_aix_1     1
+up     primary  path1  fcs0    fc_aix_2     1
+up     primary  path2  fcs1    fc_aix_3     1
+up     primary  path3  fcs1    fc_aix_4     1
+----
+
+
+== 建議設定
+
+以下是NetApp ONTAP 解決方案LUN的一些建議參數設定。安裝NetApp主機公用程式套件後、會自動設定適用於LUN的關鍵參數ONTAP 。
+
+[cols="4*"]
+|===
+| 參數 | 環境 | AIX的價值 | 附註 
+
+
+| 演算法 | MPIO | 循環配置資源 | 由主機公用程式設定 
+
+
+| h檢查_cmd | MPIO | 查詢 | 由主機公用程式設定 
+
+
+| h檢查 間隔 | MPIO | 30 | 由主機公用程式設定 
+
+
+| h檢查 模式 | MPIO | 非作用中 | 由主機公用程式設定 
+
+
+| LUN_RESET_spt | MPIO /非MPIO | 是的 | 由主機公用程式設定 
+
+
+| MAX_transfer | MPIO /非MPIO | FC LUN：0x100000位元組 | 由主機公用程式設定 
+
+
+| QFUl_dly | MPIO /非MPIO | 延遲2秒 | 由主機公用程式設定 
+
+
+| 佇列深度 | MPIO /非MPIO | 64 | 由主機公用程式設定 
+
+
+| RESID_policy | MPIO /非MPIO | no_Reserve | 由主機公用程式設定 
+
+
+| Re_timeout（磁碟） | MPIO /非MPIO | 30秒 | 使用OS預設值 
+
+
+| Dyntrk | MPIO /非MPIO | 是的 | 使用OS預設值 
+
+
+| FC_err_recov | MPIO /非MPIO | 快速失敗 | 使用OS預設值 
+
+
+| Q_type | MPIO /非MPIO | 簡單易用 | 使用OS預設值 
+
+
+| 數字_cmd | MPIO /非MPIO | 適用於AIX 3072 for VIOS的1024 | FC EN1B、FC EN1C 
+
+
+| 數字_cmd | MPIO /非MPIO | 適用於AIX的1024 | FC EN0G 
+|===
+
+
+== 推薦MetroCluster 的功能設定
+
+根據預設、如果沒有LUN路徑可用、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 link:https://kb.netapp.com/app/answers/answer_view/a_id/1001318["NetApp KB1001318"^]
+
+
+
+== 已知問題與限制
+
+[cols="4*"]
+|===
+| NetApp錯誤ID | 標題 | 說明 | 合作夥伴ID 
+
+
+| 1416221. | 在儲存容錯移轉期間、AIX 7200-05-01在虛擬iSCSI磁碟（VIOS 3.1.1.x）上發生I/O中斷 | 在透過VIOS 3.1.1.x對應的虛擬iSCSI磁碟上、在AIX 7.2 TL5主機上執行儲存容錯移轉作業時、可能會發生I/O中斷根據預設、VIOC上虛擬iSCSI磁碟（hdisk）的「rw_timeout」值將為45秒。如果在儲存容錯移轉期間發生超過45秒的I/O延遲、可能會發生I/O故障。若要避免這種情況、請參閱Burt中提及的因應措施。根據IBM、在套用APAR - IJ34739（即將推出的版本）之後、我們可以使用「chdev'命令來動態變更rw_timeout值。 | 不適用 
+
+
+| 1414700 | 在儲存容錯移轉期間、AIX 7.2 TL04在虛擬iSCSI磁碟（VIOS 3.1.1.x）上發生I/O中斷 | 在透過VIOS 3.1.1.x對應的虛擬iSCSI磁碟上、在AIX 7.2 TL4主機上執行儲存容錯移轉作業時、可能會發生I/O中斷根據預設、VOC上vSCSI介面卡的「rw_timeout」值為45秒。如果在儲存容錯移轉期間發生超過45秒的I/O延遲、可能會發生I/O故障。若要避免這種情況、請參閱Burt中提及的因應措施。 | 不適用 
+
+
+| 1307653. | 在SFO故障和直接I/O期間、查看VIOS 3.1.1.10的I/O問題 | 在VIOS 3.1.1 IO故障時、NPIV用戶端磁碟可能會出現故障、而NPIV用戶端磁碟則以16/32GB FC介面卡為後盾。此外、「vfchost」驅動程式可能會進入停止處理用戶端I/O要求的狀態。套用IBM APAR J22290 IBM APAR J23222即可修正此問題。 | 不適用 
+|===

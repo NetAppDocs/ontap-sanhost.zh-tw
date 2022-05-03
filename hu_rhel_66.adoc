@@ -1,0 +1,299 @@
+---
+sidebar: sidebar 
+permalink: hu_rhel_66.html 
+keywords: host utilities, red hat, rhel, linux, 6.6, netapp, ontap 
+summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 6.6搭配使用功能 
+---
+= 使用Red Hat Enterprise Linux 6.6搭配NetApp ONTAP 功能
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 安裝Linux Unified Host Utilities
+
+NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp 支援網站"^] 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 互通性對照表工具"^] 驗證您需要哪一個。
+
+強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+
+如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。
+
+. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp 支援網站"^] 站台到主機。
+. 使用下列命令安裝軟體套件：
++
+「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
+
+
+
+
+
+== SAN工具套件
+
+當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
+
+在以下範例中、「左LUN show command」會傳回LUN資訊。
+
+[listing]
+----
+# sanlun lun show all
+controller(7mode/E-Series)/            device     host               lun
+vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
+-------------------------------------------------------------------------
+data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
+----
+
+
+== SAN開機
+
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=68653;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+
+.步驟
+. 將SAN開機LUN對應至主機。
+. 確認有多個可用路徑。
++
+請記住、只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。
+
+. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
++
+如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
+
+. 重新啟動主機、確認開機成功。
+
+
+
+
+== 多重路徑
+
+對於Red Hat Enterprise Linux（RHEL）6.6、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 6.6是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：
+
+. 建立initrd-image的備份。
+. 將下列參數值附加至核心、以便ALUA和非ALUA正常運作：「rdaloaddriver=scsi_d_alua」
++
+....
+kernel /vmlinuz-2.6.32-358.6.1.el6.x86_64 ro root=/dev/mapper/ vg_ibmx355021082-lv_root rd_NO_LUKS rd_LVM_LV=vg_ibmx355021082/ lv_root LANG=en_US.UTF-8 rd_LVM_LV=vg_ibmx355021082/lv_swap rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet rdloaddriver=scsi_dh_alua
+....
+. 使用「mkitrd」命令重新建立initrd-image。RHEL 6x及更新版本可使用以下命令：命令：「mkitrd -f /boot/ initrd-"uname -r"。imguname -r"或命令：「Dracut -f」
+. 重新啟動主機。
+. 驗證「cat /proc/cmdline」命令的輸出、以確保設定完成。
+
+
+您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
+
+
+
+=== 所有SAN陣列組態
+
+在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。
+
+下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
+
+[listing]
+----
+# multipath -ll
+3600a0980383034466b2b4a3775474859 dm-3 NETAPP,LUN C-Mode
+size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='round-robin 0' prio=50 status=active
+|- 1:0:8:1  sdb 8:16 active ready running
+|- 2:0:8:1  sdd 8:48 active ready running
+|- 1:0:9:1  sdc 8:32 active ready running
+|- 2:0:9:1  sde 8:64 active ready running
+----
+
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+
+
+
+=== 非ASA組態
+
+對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+
+[listing]
+----
+# multipath -ll
+3600a0980383034466b2b4a3775474859 dm-3 NETAPP,LUN C-Mode
+size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='round-robin 0' prio=50 status=active
+| |- 1:0:8:1  sdb 8:16 active ready running
+| `- 2:0:8:1  sdd 8:48 active ready running
+`-+- policy='round-robin 0' prio=10 status=enabled
+  |- 1:0:9:1  sdc 8:32 active ready running
+  `- 2:0:9:1  sde 8:64 active ready running
+----
+
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+
+
+
+== 建議設定
+
+RHEL 6.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。
+
+要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案
+
+第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。
+
+[listing]
+----
+# systemctl enable multipathd
+# systemctl start multipathd
+----
+不需要直接將任何內容新增至「多重路徑.conf」檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。
+
+您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。
+
+將「<DevID>」取代為您要排除的裝置WWID字串。使用下列命令來判斷WWID：
+
+....
+blacklist {
+        wwid <DevId>
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}
+....
+在此範例中、「sda」是我們需要列入黑名單的本機SCSI磁碟。
+
+.步驟
+. 執行下列命令來判斷WWID：
++
+....
+# /lib/udev/scsi_id -gud /dev/sda
+360030057024d0730239134810c0cb833
+....
+. 將此WWID新增至「/etc/multipath.conf」中的黑名單節：
++
+....
+blacklist {
+     wwid   360030057024d0730239134810c0cb833
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+....
+
+
+您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。
+
+[cols="2*"]
+|===
+| 參數 | 設定 
+
+
+| DETECT（偵測）_prio | 是的 
+
+
+| 開發損失_tmo | "無限遠" 
+
+
+| 容錯回復 | 立即 
+
+
+| fast_io_f故障_tmo | 5. 
+
+
+| 功能 | "3 queue_if_no_path pg_init_retries 50" 
+
+
+| Flip_on_last刪除 | "是" 
+
+
+| 硬體處理常式 | 「0」 
+
+
+| no_path_retry | 佇列 
+
+
+| path_checker_ | "周" 
+
+
+| path_grouping_policy | "群組by_prio" 
+
+
+| path_selector | "循環資源0" 
+
+
+| Polling_時間 間隔 | 5. 
+
+
+| 優先 | 「NetApp」ONTAP 
+
+
+| 產品 | LUN.* 
+
+
+| Retain附加的硬體處理常式 | 是的 
+
+
+| RR_weight | "統一" 
+
+
+| 使用者易記名稱 | 否 
+
+
+| 廠商 | NetApp 
+|===
+下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
+
+[listing]
+----
+defaults {
+   path_checker      readsector0
+   no_path_retry      fail
+}
+
+devices {
+   device {
+      vendor         "NETAPP  "
+      product         "LUN.*"
+      no_path_retry     queue
+      path_checker      tur
+   }
+}
+----
+
+
+=== KVM設定
+
+您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
+
+
+
+== 已知問題與限制
+
+[cols="4*"]
+|===
+| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=863878["863878"^] | 儲存設備故障時、RHEL 6U6主機發生核心當機 | 您可能會在儲存設備/架構期間看到RHEL 6U6主機上的核心當機。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1158363["1158363"^] 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=852674["1076584"^] | 在RHEL 6U4儲存設備故障期間、QLogic 16G FC（QLE2672）主機的IO停滯時間可達300秒 | 在儲存設備/光纖故障期間、您可能會發現QLogic 16G FC（QLE2672）主機上的IO停滯達300秒。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1135962["113562."^] 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=795684["795684"^] | RHEL6 U5 Multpathd在執行模式和儲存容錯移轉故障作業時、錯誤地將多重路徑對應群組在一起 | 在LUN隨需移動作業期間、您可能會發現LUN上的路徑分組不正確、以及儲存設備故障。在LUN移動作業期間、多重路徑優先順序將會變更、而且多重路徑因為儲存故障而導致裝置故障、無法重新載入裝置表格。這會導致不正確的路徑群組。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1151020["1151020"^] 
+|===
+
+
+== 版本資訊
+
+
+
+=== ASM鏡射
+
+ASM鏡射可能需要變更Linux多重路徑設定、以允許ASM辨識問題並切換至其他故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle資料庫ONTAP"^] 以取得更多資訊。

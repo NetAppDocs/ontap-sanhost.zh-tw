@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。我們建議下載並安裝最新的公用程式套件。如需Wuhu組態資訊與說明、請參閱 link:https://mysupport.netapp.com/documentation/docweb/index.html?productID=62322&platformID=30462&language=en-US["Wuhu 7.1文件"^]。

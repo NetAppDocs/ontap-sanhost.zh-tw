@@ -1,0 +1,45 @@
+= 
+:allow-uri-read: 
+
+
+多重路徑精靈必須存在multipath.conf檔案、才能啟動、但您可以使用命令「Touch /etc/multipath.conf」建立空白的零位元組檔案、這是您第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。
+
+[listing]
+----
+# chkconfig multipathd on
+# /etc/init.d/multipathd start
+----
+除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要直接將任何內容新增至multipath.conf。您可以將下列語法新增至多重路徑.conf檔案、以排除不需要的裝置。
+
+
+NOTE: 將<DevID>取代為您要排除的裝置WWID字串。使用下列命令來判斷WWID：
+
+....
+blacklist {
+        wwid <DevId>
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}
+....
+在此範例中、sda是我們需要列入黑名單的本機SCSI磁碟。
+
+. 執行下列命令來判斷WWID：
++
+....
+# /lib/udev/scsi_id -gud /dev/sda
+360030057024d0730239134810c0cb833
+....
+. 將此WWID新增至/etc/multipath.conf中的黑名單stanza：
++
+....
+blacklist {
+     wwid   360030057024d0730239134810c0cb833
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+....
+
+
+您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。

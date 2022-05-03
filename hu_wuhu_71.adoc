@@ -1,0 +1,515 @@
+---
+sidebar: sidebar 
+permalink: hu_wuhu_71.html 
+keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
+summary: Windows Unified Host Utilities包含一個安裝程式、可設定所需的Windows登錄和HBA參數、讓Windows主機正確處理適用於NetApp ONTAP ®及E系列平台的儲存系統行為。 
+---
+= Windows Unified Host Utilities 7.1
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 什麼是Windows主機公用程式
+
+Windows Unified Host Utilities內含安裝程式、可設定所需的Windows登錄和主機匯流排介面卡（HBA）參數、讓Windows主機正確處理NetApp ONTAP 的儲存系統行為、以利NetApp的更新和E系列平台。
+
+安裝Host Utilities軟體時、安裝程式會設定所需的Windows登錄和主機匯流排介面卡（HBA）參數。
+
+下列程式和檔案會安裝在Windows主機電腦上。預設目錄為「C:\Program Files\NetApp\Windows Host Utilities」。
+
+|===
+| 方案 | 目的 
+
+
+| 《emulexhba.reg》 | 疑難排解程式；只有在技術支援人員的指示下才執行此程式。 
+
+
+| 「\NetAppQCLi\fcconfig.exe」 | 由安裝程式用來設定HBA參數。 
+
+
+| 「\NetAppQCLI/fcconfig.ini`」 | 由安裝程式用來設定HBA參數。 
+
+
+| 「\NetAppQCLI/*。*」 | 由安裝程式用來設定QLogic Fibre Channel HBA參數。 
+
+
+| 「an版本」 | 顯示主機公用程式和光纖通道HBA的版本。 
+|===
+
+
+== 主機公用程式支援的組態
+
+主機公用程式支援不同的Windows主機組態、傳輸協定和多路徑選項。如需詳細資訊、請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+
+
+
+== 驗證您的主機和儲存系統組態
+
+安裝主機公用程式之前、您必須先確認主機公用程式版本是否支援主機和儲存系統組態、以便正確安裝軟體。
+
+.步驟
+. 檢查中支援的組態 http://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]。
+. 在SAN主機說明文件中、檢查各主機所需的修補程式。
+. 新增iSCSI或FCP授權、然後啟動目標服務。
++
+光纖通道和iSCSI傳輸協定不需要使用SANtricity ENetApp Storage Manager的E系列儲存系統授權。
+
+. 驗證纜線
++
+請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN組態指南"^] 適用於ONTAP 您的版本的 https://mysupport.netapp.com/ecm/ecm_get_file/ECMLP2773533["E系列硬體佈線指南"^] 以取得詳細的纜線和組態資訊。
+
+
+
+
+
+== 設定FC HBA和交換器
+
+安裝並設定一或多個支援的光纖通道主機匯流排介面卡（HBA）、以供光纖通道連線至儲存系統。
+
+Windows主機公用程式安裝程式會設定所需的Fibre Channel HBA設定。
+
+
+NOTE: 請勿手動變更HBA設定。
+
+.步驟
+. 根據HBA廠商提供的指示、安裝一或多個支援的光纖通道主機匯流排介面卡（HBA）。
+. 取得支援的HBA驅動程式和管理公用程式、並依照HBA廠商提供的指示進行安裝。
+. 將HBA連接至光纖通道交換器或直接連接至儲存系統。
+. 根據您的Fibre Channel交換器說明文件、在Fibre Channel交換器上建立區域。
+. 如需使用此功能、請將交換器分區為WWPN。ONTAP請務必使用LIF的WWPN、而非儲存控制器上的實體連接埠。如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN組態指南"^]。
+
+
+
+
+== 安裝主機公用程式
+
+安裝程式會安裝Host Utilities套件、並設定Windows登錄和HBA設定。
+
+您必須指定在安裝Windows Unified Host Utilities軟體套件時、是否要納入多重路徑支援。安裝程式會提示您選擇下列選項。您也可以從Windows命令提示字元執行無訊息（無人值守）安裝。
+
+.多重路徑支援
+* 如果從Windows主機或虛擬機器到儲存系統有多個路徑、請選擇MPIO。
+* 如果您使用單一路徑來通往儲存系統、請選擇「不」MPIO。
+* MPIO選項不適用於Windows XP和Windows Vista系統；這些來賓作業系統不支援多重路徑I/O。
+* 對於Hyper-V來賓作業系統、如果您選擇多重路徑支援、則原始（傳遞）磁碟不會出現在來賓作業系統中。您可以使用原始磁碟、也可以使用MPIO、但不能在客體作業系統中同時使用這兩種磁碟。
+
+
+
+
+=== 以互動方式安裝主機公用程式
+
+若要以互動方式安裝主機公用程式軟體套件、您必須執行主機公用程式安裝程式、然後依照提示進行。
+
+.步驟
+. 從下載執行檔 https://mysupport.netapp.com/site/["NetApp 支援網站"^]。
+. 切換到您下載執行檔的目錄。
+. 執行「NetApp_windows_host_utilities」7.1_x64檔案、然後依照畫面上的指示操作。
+. 出現提示時、重新啟動Windows主機。
+
+
+
+
+=== 從命令列安裝主機公用程式
+
+* 您可以在Windows命令提示字元中輸入適當的命令、以執行Host Utilities的無訊息（無人值守）安裝。
+* 主機公用程式安裝套件必須位於Windows主機可存取的路徑中。
+* 請依照以互動方式安裝Host Utilities的指示、以取得安裝套件。
+* 安裝完成後、系統會自動重新開機。
+
+
+.步驟
+. 在Windows命令提示字元中輸入下列命令：
++
+「Msiexec /i installer.msi /quiet多重路徑=｛0 | 1｝[InstallalDIR=inst_path]」
+
++
+** 其中安裝程式是CPU架構的「.msis」檔案名稱；
+** 多重路徑會指定是否安裝MPIO支援。允許的值為0表示否、1表示是
+** 「inst_path」是安裝主機公用程式檔案的路徑。預設路徑為「C:\Program Files\NetApp\Windows Host Utilities」。
+
+
+
+
+
+NOTE: 若要查看標準的Microsoft Installer（MSI）記錄和其他功能選項、請在Windows命令提示字元中輸入「msiexec /help」。例如：「Msiexec /i install.msi /quiet /l* v <install.log> LOVGERBOSE=1」
+
+
+
+== 升級主機公用程式
+
+新的主機公用程式安裝套件必須位於Windows主機可存取的路徑中。請依照以互動方式安裝Host Utilities的指示、以取得安裝套件。
+
+
+
+=== 以互動方式升級主機公用程式
+
+若要以互動方式安裝主機公用程式軟體套件、您必須執行主機公用程式安裝程式、然後依照提示進行。
+
+.步驟
+. 切換到您下載執行檔的目錄。
+. 執行執行檔、並依照畫面上的指示進行。
+. 出現提示時、重新啟動Windows主機。
+. 重新開機後檢查主機公用程式版本：
++
+.. 開啟*控制台*。
+.. 前往*程式與功能*、並查看主機公用程式版本。
+
+
+
+
+
+
+=== 從命令列升級主機公用程式
+
+您可以在Windows命令提示字元中輸入適當的命令、以執行新主機公用程式的無訊息（無人值守）安裝。新主機公用程式安裝套件必須位於Windows主機可存取的路徑中。請依照以互動方式安裝Host Utilities的指示、以取得安裝套件。
+
+.步驟
+. 在Windows命令提示字元中輸入下列命令：
++
+「Msiexec /i installer.msi /quiet多重路徑=｛0 | 1｝[InstallalDIR=inst_path]」
+
++
+** 其中「installer」是CPU架構的「. msi」檔案名稱。
+** 多重路徑會指定是否安裝MPIO支援。允許的值為0表示否、1表示是
+** 「inst_path」是安裝主機公用程式檔案的路徑。預設路徑為「C:\Program Files\NetApp\Windows Host Utilities」。
+
+
+
+
+
+NOTE: 若要查看標準的Microsoft Installer（MSI）記錄和其他功能選項、請在Windows命令提示字元中輸入「msiexec /help」。例如：「Msiexec /i install.msi /quiet /l* v <install.log> LOVGERBOSE=1」
+
+安裝完成後、系統會自動重新開機。
+
+
+
+== 修復及移除Windows主機公用程式
+
+您可以使用Host Utilities安裝程式的「修復」選項來更新HBA和Windows登錄設定。您可以以互動方式或從Windows命令列中、完全移除主機公用程式。
+
+
+
+=== 以互動方式修復或移除Windows主機公用程式
+
+「修復」選項會以所需的設定更新Windows登錄和Fibre Channel HBA。您也可以完全移除主機公用程式。
+
+.步驟
+. 開啟Windows *程式與功能*（Windows Server 2012 R2、Windows Server 2016、Windows Server 2019）。
+. 選擇* NetApp Windows Unified Host Utilities *。
+. 按一下 * 變更 * 。
+. 視需要按一下「*修復*」或「*移除*」。
+. 請依照畫面上的指示操作。
+
+
+
+
+=== 從命令列修復或移除Windows主機公用程式
+
+「修復」選項會以所需的設定更新Windows登錄和Fibre Channel HBA。您也可以從Windows命令列中完全移除主機公用程式。
+
+.步驟
+. 在Windows命令列上輸入下列命令、以修復Windows主機公用程式：
++
+「Msiexec｛/uninstall |/f] installer.msi（/qualid]）」
+
++
+** 「/uninstall」完全移除主機公用程式。
+** /f'修復安裝。
+** 「installer.msi」是系統上Windows主機公用程式安裝程式的名稱。
+** 「/Quiet」會隱藏所有意見反應、並在命令完成時自動重新啟動系統、而不會出現提示。
+
+
+
+
+
+
+== 主機公用程式使用的設定總覽
+
+Host Utilities需要特定的登錄和參數設定、以確保Windows主機正確處理儲存系統行為。
+
+Windows主機公用程式會設定影響Windows主機回應延遲或遺失資料的參數。已選取特定值、以確保Windows主機正確處理儲存系統中某個控制器容錯移轉至其合作夥伴控制器等事件。
+
+並非所有的值都適用於DSM for SANtricity 現象儲存管理程式、不過、主機公用程式設定的值與DSM for SANtricity the DHCP Storage Manager設定的值若有任何重疊、都不會造成衝突。光纖通道和iSCSI主機匯流排介面卡（HBA）也必須設定參數、以確保最佳效能並成功處理儲存系統事件。
+
+Windows Unified Host Utilities隨附的安裝程式會將Windows和Fibre Channel HBA參數設定為支援的值。
+
+
+NOTE: 您必須手動設定iSCSI HBA參數。
+
+安裝程式會根據您在執行安裝程式時是否指定多重路徑I/O（MPIO）支援、設定不同的值。
+
+除非技術支援人員指示您變更這些值、否則請勿變更這些值。
+
+
+
+== 由Windows Unified Host Utilities設定的登錄值
+
+Windows Unified Host Utilities安裝程式會根據您在安裝期間所做的選擇、自動設定登錄值。您應該注意這些登錄值、作業系統版本。下列值由Windows Unified Host Utilities安裝程式設定。除非另有說明、否則所有值均為十進位。HKLM是HKEY_LOCAL_MACHINE的縮寫。
+
+[cols="~, 10, ~"]
+|===
+| 登錄機碼 | 價值 | 設定時 
+
+
+| HKLM\system\System\CurrentControlSet\Services \msdsm\參\Parameters \DsmMaximumRetryTimeDingStateTransition | 120 | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+
+
+| HKLM\system\System\CurrentControlSet\Services \msdsm\Parameters \DsmMaximumStateTransitionTime | 120 | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+
+
+.2+| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\DsmSupportedDevice清單 | " NETAPPLUN" | 指定MPIO支援時 
+
+
+| 「NetApp LUN」、「NetApp LUN C-Mode」 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+| HKLM\system\System\CurrentControlSet\control\Class \{iSCSI_driver_GUID}\ instance_ID\參 數字\IPSecConfigtimeout | 60 | 一律、除非Data ONTAP 偵測到不含資訊的DSM 
+
+
+| HKLM\system\System\CurrentControlSet\Control \Class \｛iSCSI_driver_Guid｝\ instance_ID\Parameters\LinkDownTime | 10. | 永遠 
+
+
+| HKLM\system\System\CurrentControlSet\Services\ClusDisk \Parameters\ManagereDisksOnSystemBits | 1. | 一律、除非Data ONTAP 偵測到不含資訊的DSM 
+
+
+.2+| HKLM\system\System\CurrentControlSet\Control \Class \｛iSCSI_driver_Guid｝\ instance_ID\Parameters\MaxRequestHoldTime | 120 | 未選取MPIO支援時 
+
+
+| 30 | 一律、除非Data ONTAP 偵測到不含資訊的DSM 
+
+
+.2+| HKLM\system\CurrentControlSet \control\MPDEV\MPIOSupportedDevice清單 | 「NetApp LUN」 | 指定MPIO支援時 
+
+
+| 「NetApp LUN」、「NetApp LUN C-Mode」 | 若支援指定MPIO、則不包括Data ONTAP 偵測到不支援的DSM 
+
+
+| HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\PathRecoveryInterval | 40 | 當您的伺服器是Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時 
+
+
+| 已啟用HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\PathVerifyEnabled | 0 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+| 已啟用HKLM \system\CurrentControlSet\Services\msdsm \Parameters\PathVerifyEnabled | 0 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+| 已啟用HKLM \system\System\CurrentControlSet\Services \msdsm\Parameters\PathVerifyEnabled | 0 | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+
+
+| HKLM\system\System\CurrentControlSet\Services \msiscdsm\Parameters\PathVerifyEnabled | 0 | 當指定MPIO支援且您的伺服器為Windows Server 2003時、除非Data ONTAP 偵測到使用支援功能的DSM 
+
+
+| 已啟用HKLM \system\System\CurrentControlSet\Services\vnetapp \Parameters\PathVerifyEnabled | 0 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+| HKLM\system\System\CurrentControlSet\Services\MPIO \Parameters\PDORemovePeriod | 130 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\PDORemovePeriod | 130 | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+
+
+| HKLM\system\System\CurrentControlSet\Services\msiscdsm \Parameters\PDORemovePeriod | 130 | 當指定MPIO支援且您的伺服器為Windows Server 2003時、除非Data ONTAP 偵測到使用支援功能的DSM 
+
+
+| HKLM\system\System\CurrentControlSet\Services \vnetapp \Parameters\PDORemovePeriod | 130 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+| HKLM \system\System\CurrentControlSet\Services \MPIO \Parameters\RetryCount | 6. | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\RetryCount | 6. | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+
+
+| HKLM\system\System\CurrentControlSet\Services \msiscdsm\Parameters\RetryCount | 6. | 當指定MPIO支援且您的伺服器為Windows Server 2003時、除非Data ONTAP 偵測到使用支援功能的DSM 
+
+
+| HKLM\system\System\CurrentControlSet\Services \vnetapp\Parameters\RetryCount | 6. | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+| HKLM \system\System\CurrentControlSet\Services \MPIO \Parameters\RetryInterval | 1. | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+| HKLM\system\System\CurrentControlSet\Services \msdsm\Parameters\RetryInterval | 1. | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+
+
+| HKLM\system\System\CurrentControlSet\Services \vnetapp\Parameters\RetryInterval | 1. | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+.2+| HKLM\system\CurrentControlSet \Services\disk\TimeOutValue | 120 | 如果未選取MPIO支援、除非Data ONTAP 偵測到不支援的情形 
+
+
+| 60 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+
+
+| HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval | 1. | 當您的伺服器僅適用於Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時 
+|===
+請參閱 https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users["Microsoft文件"^] 以取得登錄參數詳細資料。
+
+
+
+== 由Windows主機公用程式設定的FC HBA值
+
+在使用Fibre Channel的系統上、Host Utilities安裝程式會設定Emulex和QLogic FC HBA所需的逾時值。對於Emulex Fibre Channel HBA、安裝程式會在選取MPIO時設定下列參數：
+
+|===
+| 內容類型 | 屬性值 
+
+
+| LinkTimeDOut | 1. 
+
+
+| 節點時間輸出 | 10. 
+|===
+對於Emulex Fibre Channel HBA、安裝程式會在未選取MPIO時設定下列參數：
+
+|===
+| 內容類型 | 屬性值 
+
+
+| LinkTimeDOut | 30 
+
+
+| 節點時間輸出 | 120 
+|===
+若為QLogic Fibre Channel HBA、安裝程式會在選取MPIO時設定下列參數：
+
+|===
+| 內容類型 | 屬性值 
+
+
+| LinkDownTimeDOut | 1. 
+
+
+| PortDownRetryCount | 10. 
+|===
+若為QLogic Fibre Channel HBA、安裝程式會在未選取MPIO時設定下列參數：
+
+|===
+| 內容類型 | 屬性值 
+
+
+| LinkDownTimeDOut | 30 
+
+
+| PortDownRetryCount | 120 
+|===
+
+NOTE: 參數名稱可能會因程式而稍有不同。例如、在QLogic QConvertgeConsole程式中、此參數會顯示為「Link down timeout（連結中斷逾時）」。主機公用程式「fcconfig.ini`檔案」會根據是否指定MPIO、將此參數顯示為「LinkDownTimeOut」或「PioLinkDownTimeOut」。但是、所有這些名稱都是指相同的HBA參數。
+
+請參閱 https://www.broadcom.com/support/download-search["Emulex"^] 或 https://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/Netapp_search.aspx["QLogic"^] 網站以深入瞭解逾時參數。
+
+
+
+== 疑難排解
+
+本節說明Windows主機公用程式的一般疑難排解技巧。請務必查看最新版本說明、以瞭解已知問題與解決方案。
+
+.找出可能的互通性問題的不同領域
+* 若要識別潛在的互通性問題、您必須確認Host Utilities是否支援主機作業系統軟體、主機硬體、ONTAP 整套軟體和儲存系統硬體的組合。
+* 您必須查看互通性對照表。
+* 您必須驗證iSCSI組態是否正確。
+* 如果iSCSI LUN在重新開機後無法使用、您必須確認目標在Microsoft iSCSI啟動器GUI的「持續目標」索引標籤上列為持續性目標。
+* 如果使用LUN的應用程式在啟動時顯示錯誤、您必須確認應用程式已設定為依賴iSCSI服務。
+* 對於連接至執行ONTAP 效能不全的儲存控制器的Fibre Channel路徑、您必須確認FC交換器已使用目標生命體的WWPN進行分區、而非使用節點上實體連接埠的WWPN。
+* 您必須檢閱 https://library.netapp.com/ecm/ecm_download_file/ECMLP2789205["Windows主機公用程式版本資訊"^] 檢查已知問題。版本資訊中包含已知問題與限制的清單。
+* 您必須檢閱中的疑難排解資訊 https://docs.netapp.com/ontap-9/index.jsp["SAN管理指南"^] 適用於ONTAP 您的版本的
+* 您必須搜尋 https://mysupport.netapp.com/site/bugs-online/["線上錯誤"^] 針對最近發現的問題。
+* 在「進階搜尋」下的「錯誤類型」欄位中、您應該選取「iSCSI - Windows」、然後按一下「執行」。您應該重複搜尋錯誤類型FCP -Windows。
+* 您必須收集系統的相關資訊。
+* 記錄顯示在主機或儲存系統主控台上的任何錯誤訊息。
+* 收集主機與儲存系統記錄檔。
+* 請在問題出現之前、記錄問題的症狀、以及對主機或儲存系統所做的任何變更。
+* 如果您無法解決問題、請聯絡NetApp技術支援部門。
+
+
+http://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+https://mysupport.netapp.com/portal/documentation["NetApp文件"^]
+https://mysupport.netapp.com/NOW/cgi-bin/bol["NetApp線上錯誤"^]
+
+
+
+=== 瞭解主機公用程式對FC HBA驅動程式設定所做的變更
+
+在FC系統上安裝所需的Emulex或QLogic HBA驅動程式時、會檢查並在某些情況下修改數個參數。
+
+如果偵測到MS DSM for Windows MPIO、Host Utilities會設定下列參數的值：
+
+* LinkTimezone–定義主機連接埠在實體連結中斷後恢復I/O之前所等待的時間長度（以秒為單位）。
+* NodeTimeOut–定義主機連接埠辨識到目標裝置連線中斷之前的時間長度（以秒為單位）。
+
+
+疑難排解HBA問題時、請檢查以確定這些設定的值正確無誤。正確的值取決於兩個因素：
+
+* HBA廠商
+* 是否使用多重路徑軟體（MPIO）
+
+
+您可以執行Windows主機公用程式安裝程式的「修復」選項來修正HBA設定。
+
+
+
+==== 驗證FC系統上的Emulex HBA驅動程式設定
+
+如果您使用的是Fibre Channel系統、則必須驗證Emulex HBA驅動程式設定。HBA上的每個連接埠都必須有這些設定。
+
+.步驟
+. 開放OnCommand 式軟件開發經理。
+. 從清單中選取適當的HBA、然後按一下「*驅動程式參數*」索引標籤。
++
+隨即顯示驅動程式參數。
+
+. 如果您使用的是MPIO軟體、請確定您擁有下列驅動程式設定：
++
+** LinkTimeDOut - 1.
+** 節點時間去話- 10.
+
+
+. 如果您不使用MPIO軟體、請確定您擁有下列驅動程式設定：
++
+** LinkTimeDOut - 30
+** NodeTimeOut - 120
+
+
+
+
+
+
+==== 驗證FC系統上的QLogic HBA驅動程式設定
+
+在FC系統上、您需要驗證QLogic HBA驅動程式設定。HBA上的每個連接埠都必須有這些設定。
+
+.步驟
+. 開啟「QConvertgeConsole」、然後按一下工具列上的「* Connect *」。
++
+「連線到主機」對話方塊隨即出現。
+
+. 從清單中選取適當的主機、然後按一下「*連線*」。
++
+HBA清單會出現在FC HBA窗格中。
+
+. 從清單中選取適當的HBA連接埠、然後按一下*設定*索引標籤。
+. 從「*選取設定*」區段中選取「*進階HBA連接埠設定*」。
+. 如果您使用的是MPIO軟體、請確定您擁有下列驅動程式設定：
++
+** 連結中斷逾時（連結至）- 1.
+** 連接埠停機重試計數（portnrrc）- 10
+
+
+. 如果您不使用MPIO軟體、請確定您擁有下列驅動程式設定：
++
+** 連結中斷逾時（連結至）- 30
+** 連接埠停機重試計數（portnrrc）- 120
+
+
+

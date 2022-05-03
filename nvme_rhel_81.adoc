@@ -1,0 +1,305 @@
+---
+sidebar: sidebar 
+permalink: nvme_rhel_81.html 
+keywords: nvme, linux, rhel, red hat, enterprise 
+summary: 說明如何使用ONTAP 支援功能為RHEL 8.1設定NVMe/FC 
+---
+= 適用於RHEL 8.1的NVMe / FC主機組態、ONTAP 含功能更新
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 支援能力
+
+下列版本的RHEL支援在支援下列NVMe 9.6或更新版本的NVMe/FC ONTAP ：
+
+* RHEL 8.1
+
+
+RHEL 8.1主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行NVMe與SCSI流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+
+
+
+== 已知限制
+
+* NVMe - CLI套件中不提供原生NVMe / FC自動連線指令碼。您可以使用HBA廠商提供的外部自動連線指令碼。
+* 預設會停用NVMe多重路徑。必須手動啟用。在RHEL 8.1上啟用NVMe/FC一節中提供步驟。
+* 預設不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。在RHEL 8.1上啟用NVMe/FC一節中提供步驟。
+
+
+
+
+== 在RHEL 8.1上啟用NVMe/FC
+
+. 在伺服器上安裝Red Hat Enterprise Linux 8.1。
+. 安裝完成後、請確認您執行的是指定的Red Hat Enterprise Linux核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
++
+[listing]
+----
+# uname -r
+4.18.0-147.el8.x86_64
+----
+. 安裝NVMe-CLI/1.8.1-3.el8套件。
++
+[listing]
+----
+# rpm -qa|grep nvme-cli
+nvme-cli-1.8.1-3.el8.x86_64
+----
+. 啟用核心內建NVMe多重路徑。
++
+[listing]
+----
+# grubby –args=nvme_core.multipath=Y –update-kernel /boot/vmlinuz-4.18.0-147.el8.x86_64
+----
+. 將下列字串新增為/lib/udev/racts.d/71-nvme-iopolicy-netapp-ONTAP.rules的獨立udevy規則。這可為NVMe多重路徑啟用循環配置資源負載平衡。
++
+[listing]
+----
+# Enable round-robin for NetApp ONTAP
+ACTION==”add”, SUBSYSTEM==”nvme-subsystem”, ATTR{model}==”NetApp ONTAP Controller”, ATTR{iopolicy}=”round-robin
+----
+. 在RHEL 8.1主機上、檢查/etc/np/hostnqn上的主機NQN字串、並確認其符合ONTAP 位於該等子系統上對應子系統的主機NQN字串。
++
+[listing]
+----
+# cat /etc/nvme/hostnqn
+nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
+----
++
+[listing]
+----
+*> vserver nvme subsystem host show -vserver vs_nvme_10
+Vserver Subsystem Host NQN
+------- --------- -------------------------------------- -----------
+rhel_141_nvme_ss_10_0
+nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
+----
++
+
+NOTE: 如果主機NQN字串不相符、您應該使用vserver modify命令來更新對應ONTAP 的BIOS陣列子系統上的主機NQN字串、以符合主機上/etc/nvme/hostnqn的主機NQN字串。
+
+. 重新啟動主機。
+
+
+
+
+== 設定適用於NVMe / FC的Broadcom FC介面卡
+
+. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱《NetApp互通性對照表》。
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/modelname
+LPe32002-M2
+LPe32002-M2
+----
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/modeldesc
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+----
+. 複製並安裝Broadcom lfit outbox驅動程式和自動連線指令碼。
++
+[listing]
+----
+# tar -xvzf elx-lpfc-dd-rhel8-12.4.243.20-ds-1.tar.gz
+# cd elx-lpfc-dd-rhel8-12.4.2453.20-ds-1
+# ./elx_lpfc_install-sh -i -n
+----
++
+
+NOTE: 作業系統隨附的原生驅動程式稱為內建驅動程式。如果您下載外包驅動程式（作業系統版本未隨附的驅動程式）、下載內容中會包含自動連線指令碼、並應在驅動程式安裝程序中安裝。
+
+. 重新啟動主機。
+. 請確認您使用的是建議的Broadcom lfit韌體、outbox驅動程式和自動連線套件版本。
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/fwrev
+12.4.243.20, sil-4.2.c
+12.4.243.20, sil-4.2.c
+----
++
+[listing]
+----
+# cat /sys/module/lpfc/version
+0:12.4.243.20
+----
++
+[listing]
+----
+# rpm -qa | grep nvmefc
+nvmefc-connect-12.6.61.0-1.noarch
+----
+. 確認lfc_enable _FC4_type已設定為3。
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+3
+----
+. 驗證啟動器連接埠是否已啟動並正在執行。
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_name
+0x10000090fae0ec61
+0x10000090fae0ec62
+----
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_state
+Online
+Online
+----
+. 確認NVMe / FC啟動器連接埠已啟用、正在執行、而且能夠查看目標LIF。
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/nvme_info
+NVME Initiator Enabled
+XRI Dist lpfc0 Total 6144 NVME 2947 SCSI 2977 ELS 250
+NVME LPORT lpfc0 WWPN x10000090fae0ec61 WWNN x20000090fae0ec61 DID x012000 ONLINE
+NVME RPORT WWPN x202d00a098c80f09 WWNN x202c00a098c80f09 DID x010201 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203100a098c80f09 WWNN x202c00a098c80f09 DID x010601 TARGET DISCSRVC ONLINE
+NVME Statistics
+…
+----
+
+
+
+
+== 驗證NVMe/FC
+
+. 驗證下列NVMe / FC設定。
++
+[listing]
+----
+# cat /sys/module/nvme_core/parameters/multipath
+Y
+----
++
+[listing]
+----
+# cat /sys/class/nvme-subsystem/nvme-subsys*/model
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+----
++
+[listing]
+----
+# cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+round-robin
+round-robin
+----
+. 確認已建立命名空間。
++
+[listing]
+----
+# nvme list
+Node SN Model Namespace Usage Format FW Rev
+---------------- -------------------- -----------------------
+/dev/nvme0n1 80BADBKnB/JvAAAAAAAC NetApp ONTAP Controller 1 53.69 GB / 53.69 GB 4 KiB + 0 B FFFFFFFF
+----
+. 驗證全日空路徑的狀態。
++
+[listing]
+----
+# nvme list-subsys/dev/nvme0n1
+Nvme-subsysf0 – NQN=nqn.1992-08.com.netapp:sn.341541339b9511e8a9b500a098c80f09:subsystem.rhel_141_nvme_ss_10_0
+\
++- nvme0 fc traddr=nn-0x202c00a098c80f09:pn-0x202d00a098c80f09 host_traddr=nn-0x20000090fae0ec61:pn-0x10000090fae0ec61 live optimized
++- nvme1 fc traddr=nn-0x207300a098dfdd91:pn-0x207600a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
++- nvme2 fc traddr=nn-0x207300a098dfdd91:pn-0x207500a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
++- nvme3 fc traddr=nn-0x207300a098dfdd91:pn-0x207700a098dfdd91 host traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live inaccessible
+----
+. 驗證NetApp外掛ONTAP 程式是否適用於各種不實裝置。
++
+[listing]
+----
+
+# nvme netapp ontapdevices -o column
+Device   Vserver  Namespace Path             NSID   UUID   Size
+-------  -------- -------------------------  ------ ----- -----
+/dev/nvme0n1   vs_nvme_10       /vol/rhel_141_vol_10_0/rhel_141_ns_10_0    1        55baf453-f629-4a18-9364-b6aee3f50dad   53.69GB
+
+# nvme netapp ontapdevices -o json
+{
+   "ONTAPdevices" : [
+   {
+        Device" : "/dev/nvme0n1",
+        "Vserver" : "vs_nvme_10",
+        "Namespace_Path" : "/vol/rhel_141_vol_10_0/rhel_141_ns_10_0",
+         "NSID" : 1,
+         "UUID" : "55baf453-f629-4a18-9364-b6aee3f50dad",
+         "Size" : "53.69GB",
+         "LBA_Data_Size" : 4096,
+         "Namespace_Size" : 13107200
+    }
+]
+----
+
+
+
+
+== 啟用Broadcom NVMe / FC的1MB I/O大小
+
+必須將lfc_sg_seg_cnt參數 設定為256、主機才會發出1MB大小的I/O
+
+. 將「lfc_sg_seg_cnt"參數設為256。
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. 執行「dracut -f」命令、然後重新啟動主機。
+. 驗證「lfc_sg_seg_cnt"是否為256。
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+
+== lffc詳細記錄
+
+. 您可以將lffc_log_verbose驅動程式設定設為下列任一值、以記錄nvm/FC事件。
++
+[listing]
+----
+#define LOG_NVME 0x00100000 /* NVME general events. */
+#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
+#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
+#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
+----
+. 設定上述任何值後、請執行「dracut-f」並重新開機主機。
+. 重新開機後、請確認設定。
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_log_verbose=0xf00083
+
+# cat /sys/module/lpfc/parameters/lpfc_log_verbose
+15728771
+----
+

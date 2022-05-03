@@ -1,0 +1,225 @@
+---
+sidebar: sidebar 
+permalink: hu_citrix_7x.html 
+keywords: host utilities, citrix, XenServer, 7 series, netapp, ontap, san, boot 
+summary: 說明如何搭配ONTAP 使用Citrix XenServer 7.x與VMware 
+---
+= 使用Citrix XenServer搭配NetApp ONTAP 解決方案
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 簡介
+
+本文件針對ONTAP Citrix XenServer 7系列OS版本搭配FC、FCoE和iSCSI傳輸協定、提供有關VMware SAN主機組態設定的指引。
+
+
+
+== SAN開機
+
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+
+.步驟
+. 將SAN開機LUN對應至主機。
+. 確認有多個可用路徑。
++
+請記住、只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。
+
+. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
++
+如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
+
+. 重新啟動主機、確認開機成功。
+
+
+
+
+== 多重路徑
+
+Citrix XenServer中的多重路徑支援是以Device對應器Multibathd元件為基礎。不會自動為所有顯示給XenServer的LUN建立裝置對應器節點、而且只有當儲存管理層（API）主動使用LUN時、才會進行資源配置。Citrix XenServer Storage Manager API外掛程式可自動啟動及停用多重路徑節點。
+
+由於與整合式多重路徑管理架構不相容、Citrix建議您使用Citrix XenCenter應用程式來管理儲存組態。如果需要手動查詢Device Mapper表的狀態、或在系統上列出作用中的裝置對應器多重路徑節點、您可以使用「/sbin/mpathutils STATUS」命令來驗證ONTAP 您的還原LUN設定。如需詳細資訊、請參閱Citrix XenServer的標準廠商文件。
+
+
+
+=== 非ASA組態
+
+對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+
+[listing]
+----
+# mpathutil status
+show topology
+3600a098038303458772450714535317a dm-0 NETAPP  , LUN C-Mode
+size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 2:0:2:0   sdc   8:32    active ready running
+| |- 12:0:5:0  sdn   8:208   active ready running
+| |- 2:0:6:0   sdg   8:96    active ready running
+| `- 12:0:0:0  sdi   8:128   active ready running
+`-+-`policy='service-time 0' prio=10 status=enabled
+  |- 2:0:0:0   sda   8:0     active ready running
+  |- 2:0:1:0   sdb   8:16    active ready running
+  |- 12:0:3:0  sd1   8:176   active ready running
+  `-12:0:6:0   sdo   8:224   active ready running
+[root@sanhost ~]#
+----
+
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+
+
+
+=== 建議設定
+
+Citrix XenServer 7.x OS是以辨識及正確管理ONTAP VMware LUN所需的所有設定所編譯。對於Citrix XenServer 7.x、必須存在空白的零位元組「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。
+
+從* XenCenter Management Portal/*啟用主機多重路徑服務、並確認多重路徑服務已啟用並正在執行。
+
+[listing]
+----
+# systemct1 status multipathd
+multipathd.service - Device-Mapper Multipath Device Controller
+  Loaded:  load (/usr/lib/systemd/system/multipathd.service; enabled; vendor preset: enabled)
+ Drop-In:  /etc/systemd/system/multipathd.service.d
+             slice.config
+  Active:  active (running) since Fri YYYY-MM-DD 00:00:26 IST; 1 month 9 days ago
+Main PID:  3789 (multipathd)
+  CGroup:  /control.slice/multipathd.service
+            3789  /sbin/multipathd
+----
+除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要將內容附加到/etc/multipath.conf檔案。您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。
+
+[listing]
+----
+# cat /etc/multipath.conf
+blacklist {
+     wwid    <DevId>
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+----
+
+NOTE: 將*取代為您要排除之裝置的WWID字串。
+
+在此Citrix XenServer 7.x範例中、「sda」是黑名單所需的本機SCSI磁碟。
+
+. 執行下列命令來判斷WWID：
++
+[listing]
+----
+# lib/udev/scsi_id -gud /dev/sda
+3600a098038303458772450714535317a
+----
+. 將此WWID新增至「/etc/multipath.conf」中的黑名單節：
++
+[listing]
+----
+#cat /etc/multipath.conf
+blacklist {
+  wwid    3600a098038303458772450714535317a
+  devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9*]"
+  devnode "^hd[a-z]"
+  devnode "^cciss.*"
+}
+----
+
+
+請使用「$multipathd show config」命令來參考多重路徑參數執行時間組態。您應該一律檢查執行中的組態、查看可能會覆寫預設設定的舊版設定、尤其是在預設值區段。
+
+下表顯示ONTAP 適用於整個過程的關鍵*多路徑d*參數、以及所需的值。如果主機連接至其他廠商的LUN、且任一參數被覆寫、則需要在*多重路徑.conf *中的稍後儲存區加以修正、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。下列預設值僅應在諮詢NetApp和/或作業系統廠商、且必須完全瞭解其影響時予以覆寫。
+
+[cols="2*"]
+|===
+| 參數 | 設定 
+
+
+| "Detect_prio" | 是的 
+
+
+| 「DEEV_Loss」TMO | "無限遠" 
+
+
+| 故障恢復 | 立即 
+
+
+| 「fast_io_fail _tmo」 | 5. 
+
+
+| 功能 | "3 queue_if_no_path pg_init_retries 50" 
+
+
+| 「Flush」 | "是" 
+
+
+| 硬體處理常式 | 「0」 
+
+
+| "path_checker_" | "周" 
+
+
+| "path_grouping_policy_" | "群組by_prio" 
+
+
+| "path_selector" | "服務時間0" 
+
+
+| "Polling_時間 間隔" | 5. 
+
+
+| 《prio》 | 「NetApp」ONTAP 
+
+
+| 《產品》 | LUN.* 
+
+
+| "REATH_ATHOND_HW_Handler" | 是的 
+
+
+| "rr_weight（rrr_weight）" | "統一" 
+
+
+| 《user_fuse_names》 | 否 
+
+
+| 「第一」 | NetApp 
+|===
+以下範例說明如何修正被覆寫的預設值。在此情況下、* multipath.conf *檔案會定義* path_checker*和* detect_prio*的值、這些值與ONTAP 不相容於哪些LUN。如果因為主機連接的其他SAN陣列而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
+
+[listing]
+----
+# cat /etc/multipath.conf
+defaults {
+  path_checker readsector0
+  detect_prio no
+}
+devices{
+        device{
+                vendor "NETAPP "
+                product "LUN.*"
+                path_checker tur
+                detect_prio yes
+        }
+}
+----
+
+NOTE: Citrix XenServer建議針對所有Linux和Windows型客體VM使用Citrix VM工具、以進行支援的組態。
+
+
+
+== 已知問題與限制
+
+沒有已知的問題和限制。

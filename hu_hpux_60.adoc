@@ -1,0 +1,261 @@
+---
+sidebar: sidebar 
+permalink: hu_hpux_60.html 
+keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用 
+---
+= HPUX主機公用程式6.0
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+.您需要的是 #8217 ；需要的是什麼
+* 為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。
+
+
+您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 以驗證組態。
+
+
+
+== SAN工具套件
+
+HPUX主機公用程式是NetApp主機軟體、可在HPUX主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
+
+在以下範例中、「左LUN show」命令會傳回LUN資訊。
+
+[listing]
+----
+# sanlun lun show all
+
+controller(7mode)/ device host lun
+vserver(Cmode)           lun-pathname                   filename          adapter    protocol   size   mode
+------------------------------------------------------------------------------------------------------------
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c34t0d0  fclp1      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c23t0d0  fclp1      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c12t0d0  fclp0      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0      FCP        150g    C
+
+----
+
+NOTE: 此工具套件適用於Host Utilities的所有組態和傳輸協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。
+
+
+
+== 安裝HPUX主機公用程式
+
+NetApp HPUX主機公用程式軟體套件可在上取得 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 在壓縮檔案中。
+
+您可以從下載包含主機公用程式軟體套件的壓縮檔案 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^]。下載檔案之後、您必須先解壓縮檔案、才能安裝。
+
+.步驟
+. 登入您的主機。
+. 從下載HP-UX主機公用程式檔案「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 到HP-UX主機。
+. 輸入下列命令、解壓縮「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」檔案：
++
+gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`
+
++
+系統會將擷取的軟體放在您解壓縮儲存庫檔案的目錄中。
+
+. 輸入下列命令來安裝軟體：
++
+swinstall /s /depot_path'
+
++
+「Depot_path」提供進廠檔案的路徑和名稱。
+
++
+「shwinstall」命令會執行安裝指令碼、以驗證HP-UX設定的狀態。如果您的系統符合要求、此指令碼會在「/opt/NetApp/santools/bin」目錄中安裝「sanlun」公用程式和診斷指令碼。
+
+. 驗證安裝：
++
+《Anlun版本》
+
+
+
+
+
+== 命令參考範例
+
+
+
+=== 列出所有對應至主機的主機啟動器
+
+[listing]
+----
+# sanlun fcp show adapter -v
+adapter name:      fclp2
+WWPN:              10000000c985ef92
+WWNN:              20000000c985ef92
+driver name:       fclp
+model:             AJ763-63001
+model description: HP 8Gb Dual Channel PCI-e 2.0 FC HBA
+serial number:     MY19034N9U
+hardware version:  3
+driver version:    @(#) FCLP: PCIe Fibre Channel driver (FibrChanl-02), B.11.31.1805, Feb  5 2018, FCLP_IFC (3,2)
+firmware version:  2.02X2 SLI-3 (U3D2.02X2)
+Number of ports:   1 of 2
+port type:         Unknown
+port state:        Link Down
+supported speed:   8 GBit/sec
+negotiated speed:  Speed not established
+OS device name:    /dev/fclp2
+
+adapter name:      fclp3
+WWPN:              10000000c985ef93
+WWNN:              20000000c985ef93
+driver name:       fclp
+model:             AJ763-63001
+model description: HP 8Gb Dual Channel PCI-e 2.0 FC HBA
+serial number:     MY19034N9U
+hardware version:  3
+driver version:    @(#) FCLP: PCIe Fibre Channel driver (FibrChanl-02), B.11.31.1805, Feb  5 2018, FCLP_IFC (3,2)
+firmware version:  2.02X2 SLI-3 (U3D2.02X2)
+Number of ports:   2 of 2
+port type:         Unknown
+port state:        Link Down
+supported speed:   8 GBit/sec
+negotiated speed:  Speed not established
+OS device name:    /dev/fclp3
+----
+
+
+=== 列出所有對應至主機的LUN
+
+[listing]
+----
+# sanlun lun show -p -v all
+\
+                    ONTAP Path: vs_hp_cluster:/vol/chathpux_217_vol_en_1_10/hp_en_217_lun
+                           LUN: 55
+                      LUN Size: 15g
+                   Host Device: /dev/rdisk/disk718
+                          Mode: C
+                            VG: /dev/vg_data
+              Multipath Policy: A/A
+            Multipath Provider: Native
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+host     vserver    /dev/dsk                                                                    HP A/A
+path     path       filename             host    vserver                                        path failover
+state    type       or hardware path     adapter LIF                                            priority
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+up       primary    /dev/dsk/c37t6d7     fclp0   hpux_7                                         0
+up       primary    /dev/dsk/c22t6d7     fclp1   hpux_8                                         0
+up       secondary  /dev/dsk/c36t6d7     fclp0   hpux_5                                         1
+up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                                         1
+
+----
+
+
+=== 列出從特定SVM對應至主機的所有LUN
+
+[listing]
+----
+# sanlun lun show -p -v vs_hp_cluster
+                    ONTAP Path: vs_hp_cluster:/vol/chathpux_217_vol_en_1_10/hp_en_217_lun
+                           LUN: 55
+                      LUN Size: 15g
+                   Host Device: /dev/rdisk/disk718
+                          Mode: C
+                            VG: /dev/vg_data
+              Multipath Policy: A/A
+            Multipath Provider: Native
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+host     vserver    /dev/dsk                                                                    HP A/A
+path     path       filename             host    vserver                                        path failover
+state    type       or hardware path     adapter LIF                                            priority
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+up       primary    /dev/dsk/c37t6d7     fclp0   hpux_7                                         0
+up       primary    /dev/dsk/c22t6d7     fclp1   hpux_8                                         0
+up       secondary  /dev/dsk/c36t6d7     fclp0   hpux_5                                         1
+up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                                         1
+
+----
+
+
+=== 列出對應至主機之特定LUN的所有屬性
+
+[listing]
+----
+
+# sanlun lun show -p -v vs_hp_cluster:/vol/chathpux_217_vol_en_1_5/hp_en_217_lun
+
+                    ONTAP Path: vs_hp_cluster:/vol/chathpux_217_vol_en_1_5/hp_en_217_lun
+                           LUN: 49
+                      LUN Size: 15g
+                   Host Device: /dev/rdisk/disk712
+                          Mode: C
+                            VG: /dev/vg_data
+              Multipath Policy: A/A
+            Multipath Provider: Native
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+host     vserver    /dev/dsk                                                                    HP A/A
+path     path       filename             host    vserver                                        path failover
+state    type       or hardware path     adapter LIF                                            priority
+-------- ---------- -------------------- ------- ---------------------------------------------- -------------
+up       primary    /dev/dsk/c37t6d1     fclp0   hpux_7                                         0
+up       primary    /dev/dsk/c22t6d1     fclp1   hpux_8                                         0
+up       secondary  /dev/dsk/c36t6d1     fclp0   hpux_5                                         1
+up       secondary  /dev/dsk/c44t6d1     fclp1   hpux_6                                         1
+
+----
+
+
+=== 依ONTAP 主機裝置檔案名稱列出LUN屬性
+
+[listing]
+----
+#sanlun lun show -dv /dev/rdisk/disk716
+                                                                 device             host                  lun
+vserver              lun-pathname                                filename           adapter    protocol   size    mode
+----------------------------------------------------------------------------------------------------------------------
+vs_hp_cluster        /vol/chathpux_217_vol_en_1_14/hp_en_217_lun /dev/rdisk/disk716 0          FCP        15g     C
+             LUN Serial number: 80D7l?NiNP5U
+         Controller Model Name: AFF-A800
+          Vserver FCP nodename: 208400a098ba7afe
+          Vserver FCP portname: 207e00a098ba7afe
+              Vserver LIF name: hpux_5
+            Vserver IP address: 10.141.54.30
+                                10.141.54.35
+                                10.141.54.37
+                                10.141.54.33
+                                10.141.54.31
+           Vserver volume name: chathpux_217_vol_en_1_14        MSID::0x00000000000000000000000080915935
+         Vserver snapshot name:
+----
+
+
+=== 列出附加至主機的所有SVM目標LIF WWPN
+
+[listing]
+----
+# sanlun lun show -wwpn
+
+controller(7mode)/
+vserver(Cmode)       target wwpn        lun-pathname                                  device filename
+--------------------------------------------------------------------------------------------------------
+vs_hp_cluster        208300a098ba7afe   /vol/chathpux_217_vol_en_1_10/hp_en_217_lun   /dev/rdsk/c22t6d7
+vs_hp_cluster        208100a098ba7afe   /vol/chathpux_217_vol_en_1_10/hp_en_217_lun   /dev/rdsk/c44t6d7
+vs_hp_cluster        208200a098ba7afe   /vol/chathpux_217_vol_en_1_10/hp_en_217_lun   /dev/rdsk/c37t6d7
+vs_hp_cluster        207e00a098ba7afe   /vol/chathpux_217_vol_en_1_10/hp_en_217_lun   /dev/rdsk/c36t6d7
+vs_hp_cluster        207d00a098ba7afe   /vol/chathpux_217_os/hp_217_os                /dev/rdsk/c18t7d4
+vs_hp_cluster        207f00a098ba7afe   /vol/chathpux_217_os/hp_217_os                /dev/rdsk/c42t7d4
+
+host adapter    lun size    mode
+---------------------------------
+fclp1           15g         C
+fclp1           15g         C
+fclp0           15g         C
+fclp0           15g         C
+fclp1           30g         C
+fclp0           30g         C
+----

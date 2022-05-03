@@ -1,0 +1,16 @@
+= 
+:allow-uri-read: 
+
+
+請遵循下列步驟、在Windows啟動器主機上啟用FC/NVMe：
+
+. 在Windows主機上安裝OneCommand Manager公用程式。
+. 在每個HBA啟動器連接埠上、設定下列HBA驅動程式參數：
++
+** 啟用NVMe = 1
+** NVMEMode = 0
+** LemTransferSize=1
+
+
+. 重新啟動主機。
+

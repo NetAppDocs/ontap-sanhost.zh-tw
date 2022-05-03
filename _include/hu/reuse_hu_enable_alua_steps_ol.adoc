@@ -1,0 +1,16 @@
+= 
+:allow-uri-read: 
+
+
+若要啟用ALUA處理常式、請執行下列步驟：
+
+. 建立initrd-image的備份。
+. 將下列參數值附加至核心、以便ALUA和非ALUA正常運作：「rdaloaddriver=scsi_d_alua」
++
+....
+kernel /vmlinuz-3.8.13-68.1.2.el6uek.x86_64 ro root=/dev/mapper/vg_ibmx3550m421096-lv_root rd_NO_LUKSrd_LVM_LV=vg_ibmx3550m421096/lv_root LANG=en_US.UTF-8 rd_NO_MDSYSFONT=latarcyrheb-sun16 crashkernel=256M KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=vg_ibmx3550m421096/lv_swap rd_NO_DM rhgb quiet rdloaddriver=scsi_dh_alua
+....
+. 使用「mkitrd」命令重新建立initrd-image。Oracle 6x及更新版本可使用以下命令：命令：「mkitrd -f /boot/ initrd-"uname -r"。imguname -r"或命令：「Dracut -f」
+. 重新啟動主機。
+. 驗證「cat /proc/cmdline」命令的輸出、以確保設定完成。
+

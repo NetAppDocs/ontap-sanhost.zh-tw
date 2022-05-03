@@ -1,0 +1,340 @@
+---
+sidebar: sidebar 
+permalink: hu_vsphere_7.html 
+keywords: host utilities, veritas, infoscale, 7.3. 7.3.1, netapp, ontap 
+summary: 說明如何使用Veritas Infoscale 7.3 for Linux搭配ONTAP 使用功能 
+---
+= 將VMware vSphere 7.x與NetApp ONTAP 功能搭配使用
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 簡介
+
+本文件針對ONTAP vSphere 7.x版本搭配FC、FCoE和iSCSI傳輸協定、提供有關VMware SAN主機組態設定的指引。
+
+
+
+== Hypervisor SAN開機
+
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+
+.步驟
+. 將SAN開機LUN對應至主機。
+. 確認有多個可用路徑。
++
+請記住、只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。
+
+. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
++
+如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
+
+. 重新啟動主機、確認開機成功。
+
+
+
+
+== 多重路徑
+
+ESXi提供名為原生多路徑外掛程式（NMP）的可延伸多重路徑模組、可管理子外掛程式儲存陣列類型外掛程式（SATA）和路徑選擇外掛程式（ASP）。ESXi預設提供這些SATP規則。
+
+對於NetApp ONTAP RealsStorage、VMW_SATP_ALUA外掛程式預設會搭配VMW_PSP_RR作為路徑選擇原則（PSP）使用。您可以使用下列命令來確認。
+
+*「esxcli儲存設備NMP Satp規則清單- s VMW_SATP_ALUA*」
+
+[listing]
+----
+Name           Device  Vendor    Model         Driver  Transport  Options
+-------------  ------  --------  ------------  ------  ---------  --------------------------
+VMW_SATP_ALUA          NETAPP                                     reset_on_attempted_reserve
+
+
+Rule Group  Claim Options  Default PSP  PSP Options     Description
+ ----------  -------------  -----------  --------------  -----------
+system      tpgs_on        VMW_PSP_RR                   NetApp arrays with ALUA support
+----
+
+
+=== 非ASA組態
+
+對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+
+*「esxcli儲存設備NMP裝置清單- d naa.600a0980383135330772b4d673979372f*」
+
+[listing]
+----
+naa.600a098038313530772b4d673979372f
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038313530772b4d673979372f)
+   Storage Array Type: VMW_SATP_ALUA
+   Storage Array Type Device Config: {implicit_support=on; explicit_support=off; explicit_allow=on; alua_followover=on; action_OnRetryErrors=off; {TPG_id=1000,TPG_state=AO}{TPG_id=1001,TPG_state=ANO}}
+   Path Selection Policy: VMW_PSP_RR
+   Path Selection Policy Device Config: {policy=rr,iops=1,bytes=10485760,useANO=0; lastPathIndex=1: NumIOsPending=0,numBytesPending=0}
+   Path Selection Policy Device Custom Config:
+   Working Paths: vmhba3:C0:T3:L21, vmhba4:C0:T2:L21
+   Is USB: false
+----
+*「esxcli儲存設備NMP路徑清單- d naa.600a0980383135330772b4d673979372f*」
+
+[listing]
+----
+fc.20000090fae0ec8e:10000090fae0ec8e-fc.201000a098dfe3d1:200b00a098dfe3d1-naa.600a098038313530772b4d673979372f
+   Runtime Name: vmhba3:C0:T2:L21
+   Device: naa.600a098038313530772b4d673979372f
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038313530772b4d673979372f)
+   Group State: active unoptimized
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1001,TPG_state=ANO,RTP_id=29,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000090fae0ec8e:10000090fae0ec8e-fc.201000a098dfe3d1:200700a098dfe3d1-naa.600a098038313530772b4d673979372f
+   Runtime Name: vmhba3:C0:T3:L21
+   Device: naa.600a098038313530772b4d673979372f
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038313530772b4d673979372f)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1000,TPG_state=AO,RTP_id=25,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000090fae0ec8f:10000090fae0ec8f-fc.201000a098dfe3d1:200800a098dfe3d1-naa.600a098038313530772b4d673979372f
+   Runtime Name: vmhba4:C0:T2:L21
+   Device: naa.600a098038313530772b4d673979372f
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038313530772b4d673979372f)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1000,TPG_state=AO,RTP_id=26,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000090fae0ec8f:10000090fae0ec8f-fc.201000a098dfe3d1:200c00a098dfe3d1-naa.600a098038313530772b4d673979372f
+   Runtime Name: vmhba4:C0:T3:L21
+   Device: naa.600a098038313530772b4d673979372f
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038313530772b4d673979372f)
+   Group State: active unoptimized
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1001,TPG_state=ANO,RTP_id=30,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+----
+
+
+=== 所有SAN陣列組態
+
+在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。
+
+下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
+
+*「esxcli儲存設備NMP裝置清單- d naa.600a098038304759563f4e783757443*」
+
+[listing]
+----
+naa.600a098038304759563f4e7837574453
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304759563f4e7837574453)
+   Storage Array Type: VMW_SATP_ALUA
+   Storage Array Type Device Config: {implicit_support=on; explicit_support=off; explicit_allow=on; alua_followover=on; action_OnRetryErrors=off; {TPG_id=1001,TPG_state=AO}{TPG_id=1000,TPG_state=AO}}
+   Path Selection Policy: VMW_PSP_RR
+   Path Selection Policy Device Config: {policy=rr,iops=1,bytes=10485760,useANO=0; lastPathIndex=2: NumIOsPending=0,numBytesPending=0}
+   Path Selection Policy Device Custom Config:
+   Working Paths: vmhba4:C0:T0:L9, vmhba3:C0:T1:L9, vmhba3:C0:T0:L9, vmhba4:C0:T1:L9
+   Is USB: false
+----
+*「esxcli儲存設備NMP裝置清單- d naa.600a098038304759563f4e783757443*」
+
+[listing]
+----
+fc.20000024ff171d37:21000024ff171d37-fc.202300a098ea5e27:204a00a098ea5e27-naa.600a098038304759563f4e7837574453
+   Runtime Name: vmhba4:C0:T0:L9
+   Device: naa.600a098038304759563f4e7837574453
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304759563f4e7837574453)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1000,TPG_state=AO,RTP_id=6,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000024ff171d36:21000024ff171d36-fc.202300a098ea5e27:201d00a098ea5e27-naa.600a098038304759563f4e7837574453
+   Runtime Name: vmhba3:C0:T1:L9
+   Device: naa.600a098038304759563f4e7837574453
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304759563f4e7837574453)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1001,TPG_state=AO,RTP_id=3,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000024ff171d36:21000024ff171d36-fc.202300a098ea5e27:201b00a098ea5e27-naa.600a098038304759563f4e7837574453
+   Runtime Name: vmhba3:C0:T0:L9
+   Device: naa.600a098038304759563f4e7837574453
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304759563f4e7837574453)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1000,TPG_state=AO,RTP_id=1,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+
+fc.20000024ff171d37:21000024ff171d37-fc.202300a098ea5e27:201e00a098ea5e27-naa.600a098038304759563f4e7837574453
+   Runtime Name: vmhba4:C0:T1:L9
+   Device: naa.600a098038304759563f4e7837574453
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304759563f4e7837574453)
+   Group State: active
+   Array Priority: 0
+   Storage Array Type Path Config: {TPG_id=1001,TPG_state=AO,RTP_id=4,RTP_health=UP}
+   Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
+----
+
+
+== VVOL
+
+虛擬磁碟區（vVols）是VMware物件類型、對應於虛擬機器（VM）磁碟及其快照和快速複製。
+
+VMware vSphere的VMware vSphere支援VASA Provider for VMware、提供整合點、讓VMware vCenter能夠運用vVols型儲存設備。ONTAP ONTAP當您部署ONTAP VMware vCenter工具時、它會自動登錄vCenter伺服器並啟用VASA Provider。
+
+使用vCenter使用者介面建立vVols資料存放區時、會引導您建立FlexVols作為資料存放區的備份儲存設備。vVols資料存放區內的vVols可由ESXi主機使用傳輸協定端點（PE）進行存取。在SAN環境FlexVol 中、資料存放區中的每個功能區都會建立一個4 MB LUN、作為PE使用。SAN PE是管理邏輯單元（ALU）。vVols是輔助邏輯單元（SLU）。
+
+使用vVols時、適用SAN環境的標準要求與最佳實務做法、包括（但不限於）下列各項：
+
+. 在每個您要使用的SVM上、每個節點至少建立一個SAN LIF。最佳實務做法是每個節點至少建立兩個節點、但不超過必要。
+. 消除任何單點故障。使用多個虛擬交換器時、請在不同的網路子網路上使用多個VMkernel網路介面、這些介面使用NIC群組。或是使用多個實體NIC連線至多個實體交換器、以提供HA並提高處理量。
+. 視主機連線需求設定分區和（或）VLAN。
+. 確保所有必要的啟動器都已登入所需SVM上的目標LIF。
+
+
+
+NOTE: 您必須部署ONTAP VMware vSphere的支援功能、才能啟用VASA Provider。VASA Provider會為您管理所有的igroup設定、因此不需要在vVols環境中建立或管理igroup。
+
+NetApp目前不建議變更任何vVols設定。
+
+請參閱 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 適用於ONTAP 特定版本的支援工具、或適用於特定版本vSphere和ONTAP VMware的舊版VASA供應商。
+
+如需資源配置與管理vVols的詳細資訊、請參閱ONTAP VMware vSphere的VMware工具文件及 link:https://docs.netapp.com/us-en/netapp-solutions/hybrid-cloud/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] 和 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400."^]
+
+
+
+== 建議設定
+
+
+
+=== ATS鎖定
+
+ATS鎖定是VAAI相容儲存設備和升級VMFS5的*強制性*、而且需要搭配ONTAP 使用VMware LUN、才能達到適當的互通性和最佳的VMFS共享儲存I/O效能。如需啟用ATS鎖定的詳細資訊、請參閱VMware文件。
+
+[cols="4*"]
+|===
+| 設定 | 預設 | 推薦ONTAP | 說明 
+
+
+| 硬體加速鎖定 | 1. | 1. | 有助於啟用「原子測試與設定（ATS）鎖定」 
+
+
+| 磁碟IOPs | 1000 | 1. | IOPS限制：循環配置資源（循環配置）PSP預設為IOPS上限1000。在此預設情況下、會在發出1000個I/O作業之後使用新路徑。 
+
+
+| 磁碟/QFullSampleSize | 0 | 32 | ESXi開始節流之前所需的佇列已滿或忙碌條件數。 
+|===
+
+NOTE: 針對所有對應至VMware vSphere的LUN啟用空間分配設定、以便取消對應以正常運作。如需詳細資訊、請參閱ONTAP 《VMware文件》。
+
+
+
+=== 客體作業系統逾時
+
+您可以使用建議的客體作業系統調整來手動設定虛擬機器。調整更新之後、您必須重新開機客體、更新才會生效。
+
+* GOS逾時值：*
+
+[cols="2*"]
+|===
+| 客體作業系統類型 | 逾時 
+
+
+| Linux變體 | 磁碟逾時= 60 
+
+
+| Windows | 磁碟逾時= 60 
+
+
+| Solaris | 磁碟逾時= 60次重試= 300次未就緒重試= 300次重試= 30次最大節流= 32次最小節流= 8 
+|===
+
+
+=== 驗證vSphere可調性
+
+使用下列命令來驗證硬體加速器鎖定設定。
+
+*「esxcli系統設定進階清單」-選項/vmas3/HardwareAcceleratedLocked*
+
+[listing]
+----
+   Path: /VMFS3/HardwareAcceleratedLocking
+   Type: integer
+   Int Value: 1
+   Default Int Value: 1
+   Min Value: 0
+   Max Value: 1
+   String Value:
+   Default String Value:
+   Valid Characters:
+   Description: Enable hardware accelerated VMFS locking (requires compliant hardware). Please see http://kb.vmware.com/kb/2094604 before disabling this option.
+----
+
+
+=== 正在驗證磁碟IOPs設定
+
+使用下列命令來驗證IOPs設定。
+
+*「esxcli儲存設備NMP裝置清單- d naa.600a098038304731783f506670553355*」
+
+[listing]
+----
+naa.600a098038304731783f506670553355
+   Device Display Name: NETAPP Fibre Channel Disk (naa.600a098038304731783f506670553355)
+   Storage Array Type: VMW_SATP_ALUA
+   Storage Array Type Device Config: {implicit_support=on; explicit_support=off; explicit_allow=on; alua_followover=on; action_OnRetryErrors=off; {TPG_id=1000,TPG_state=ANO}{TPG_id=1001,TPG_state=AO}}
+   Path Selection Policy: VMW_PSP_RR
+   Path Selection Policy Device Config: {policy=rr,iops=1,bytes=10485760,useANO=0; lastPathIndex=0: NumIOsPending=0,numBytesPending=0}
+   Path Selection Policy Device Custom Config:
+   Working Paths: vmhba4:C0:T0:L82, vmhba3:C0:T0:L82
+   Is USB: false
+----
+
+
+=== 正在驗證QFullSampleSize
+
+使用下列命令來驗證QFullSampleSize
+
+*「esxcli系統設定進階清單」-選項/Disk/QFullSampleSize*
+
+[listing]
+----
+   Path: /Disk/QFullSampleSize
+   Type: integer
+   Int Value: 32
+   Default Int Value: 0
+   Min Value: 0
+   Max Value: 64
+   String Value:
+   Default String Value:
+   Valid Characters:
+   Description: Default I/O samples to monitor for detecting non-transient queue full condition. Should be nonzero to enable queue depth throttling. Device specific QFull options will take precedence over this value if set.
+----
+
+
+== 已知問題
+
+沒有已知問題。
+
+
+
+== 相關連結
+
+* link:https://www.netapp.com/media/13550-tr4597.pdf["TR-4597- VMware vSphere搭配ONTAP VMware"^]
+* link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
+* link:https://kb.vmware.com/s/article/83370["NetApp ONTAP 功能搭配NetApp SnapMirror營運不中斷（SMBC）與VMware vSphere Metro儲存叢集（VMSC）"^]
+

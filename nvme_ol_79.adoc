@@ -1,0 +1,249 @@
+---
+sidebar: sidebar 
+permalink: nvme_ol_79.html 
+keywords: nvme, linux, oracle, 7.9 
+summary: 以VMware為例、設定Oracle Linux 7.9的VME/FC主機組態ONTAP 
+---
+= 適用於Oracle Linux 7.9的NVMe / FC主機組態（ONTAP 含功能）
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 支援能力
+
+Oracle Linux 7.9支援ONTAP NVMe或更新版本的NVMe/FC。Oracle Linux 7.9主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+
+
+
+== 已知限制
+
+* 原生NVMe / FC自動連線指令碼在「NVMe - CLI」套件中無法使用。使用HBA廠商提供的外部自動連線指令碼。
+* 根據預設、NVMe多重路徑中不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。如需在Oracle Linux 7.9上啟用NVMe/FC的步驟、請參閱一節。
+* 不支援NVMe/FC、因此Oracle Linux 7.9不支援Linux Unified Host Utilities（Luhu）NVMe / FC。使用ONTAP NetApp外掛程式隨附於原生NVMe CLI中的支援功能之一、即可取得的支援功能。
+
+
+
+
+== 啟用NVMe/FC
+
+. 在伺服器上安裝Oracle Linux 7.9。
+. 安裝完成後、請確認您執行的是支援的Unbreakable Enterprise核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
++
+[listing]
+----
+# uname -r
+5.4.17-2011.6.2.el7uek.x86_64
+----
+. 升級「NVMe - CLI」套件。
++
+[listing]
+----
+# rpm -qa | grep nvme-cli
+nvme-cli-1.8.1-3.el7.x86_64
+----
+. 請將下列字串新增為單獨的udevc規則、網址為：「/lib/udev/raths.d/71-nvme-iopolicy-netapp-ONTAP.rules`」。這可為NVMe多重路徑啟用循環配置資源負載平衡。
++
+[listing]
+----
+# cat /lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules
+# Enable round-robin for NetApp ONTAP
+ACTION=="add", SUBSYSTEMS=="nvme-subsystem", ATTRS{model}=="NetApp ONTAP Controller          ", ATTR{iopolicy}="round-robin"
+----
+. 在Oracle Linux L 7.9主機上、檢查位於「/etc/nexe/hostnqn」的主機NQN字串、並驗證其是否與ONTAP 位於該等資料陣列上對應子系統的主機NQN字串相符。
++
+[listing]
+----
+# cat /etc/nvme/hostnqn
+nqn.2014-08.org.nvmexpress:uuid:497ad959-e6d0-4987-8dc2-a89267400874
+----
++
+[listing]
+----
+*> vserver nvme subsystem host show -vserver vs_nvme_10
+Vserver Subsystem Host NQN
+------- --------- -------------------------------------- -----------
+ol_157_nvme_ss_10_0
+nqn.2014-08.org.nvmexpress:uuid:497ad959-e6d0-4987-8dc2-a89267400874
+----
++
+如果「+hostnqn+」字串不相符、您應該使用「vserver modify」命令來更新對應ONTAP 的BIOS陣列子系統上的主機NQN字串、以符合主機上「etc/nvm/hostnqn」中的主機NQN字串。
+
+. 重新啟動主機。
+
+
+
+
+== 設定適用於NVMe / FC的Broadcom FC介面卡
+
+. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/modelname
+LPe32002-M2
+LPe32002-M2
+----
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/modeldesc
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+----
+. 預設已啟用lffc中的NVMe支援：
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+3
+----
++
+較新的lfit驅動程式（包括收件匣和發件匣）預設為3。因此、您不需要在「/etc/modprobe.d/lffc.conf」中明確設定此項目。
+
+. 接下來、安裝建議的lfit自動連線指令碼：
++
+ # rpm -ivh nvmefc-connect-12.8.264.0-1.noarch.rpm
+. 確認已安裝自動連線指令碼。
++
+[listing]
+----
+# rpm -qa | grep nvmefc
+nvmefc-connect-12.8.264.0-1.noarch
+----
+. 驗證啟動器連接埠是否已啟動並正在執行。
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_name
+0x10000090fae0ec61
+0x10000090fae0ec62
+
+# cat /sys/class/fc_host/host*/port_state
+Online
+Online
+----
+. 確認已啟用NVMe / FC啟動器連接埠、而且能夠看到目標連接埠、而且所有連接埠都已啟動並正在執行。
++
+在以下範例中、只有一個啟動器連接埠已啟用、並與兩個目標LIF連線、如下面輸出所示：
+
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/nvme_info
+
+NVME Initiator Enabled
+XRI Dist lpfc0 Total 6144 NVME 2947 SCSI 2947 ELS 250
+NVME LPORT lpfc0 WWPN x10000090fae0ec61 WWNN x20000090fae0ec61 DID x012000 ONLINE
+NVME RPORT WWPN x202d00a098c80f09 WWNN x202c00a098c80f09 DID x010201 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203100a098c80f09 WWNN x202c00a098c80f09 DID x010601 TARGET DISCSRVC ONLINE
+----
+
+
+
+
+== 驗證NVMe/FC
+
+. 驗證下列NVMe / FC設定。
++
+[listing]
+----
+# cat /sys/module/nvme_core/parameters/multipath
+Y
+----
++
+[listing]
+----
+# cat /sys/class/nvme-subsystem/nvme-subsys*/model
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+----
++
+[listing]
+----
+# cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+round-robin
+round-robin
+----
++
+在上述範例中、兩個命名空間會對應至Oracle Linux 7.9 ANA主機。這可透過四個目標生命期來查看：兩個本機節點生命期、以及兩個其他合作夥伴/遠端節點生命期。此設定顯示主機上每個命名空間的兩個ANA最佳化路徑和兩個ANA不可存取路徑。
+
+. 確認已建立命名空間。
++
+[listing]
+----
+# nvme list
+Node SN Model Namespace Usage Format FW Rev
+---------------- -------------------- -----------------------
+/dev/nvme0n1 80BADBKnB/JvAAAAAAAC NetApp ONTAP Controller 1 53.69 GB / 53.69 GB 4 KiB + 0 B FFFFFFFF
+----
+. 驗證全日空路徑的狀態。
++
+[listing]
+----
+# nvme list-subsys/dev/nvme0n1
+Nvme-subsysf0 – NQN=nqn.1992-08.com.netapp:sn.341541339b9511e8a9b500a098c80f09:subsystem.ol_157_nvme_ss_10_0
+\
++- nvme0 fc traddr=nn-0x202c00a098c80f09:pn-0x202d00a098c80f09 host_traddr=nn-0x20000090fae0ec61:pn-0x10000090fae0ec61 live optimized
++- nvme1 fc traddr=nn-0x207300a098dfdd91:pn-0x207600a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
++- nvme2 fc traddr=nn-0x207300a098dfdd91:pn-0x207500a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
++- nvme3 fc traddr=nn-0x207300a098dfdd91:pn-0x207700a098dfdd91 host traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live inaccessible
+----
+. 驗證NetApp外掛ONTAP 程式是否適用於各種不實裝置。
++
+[listing]
+----
+# nvme netapp ontapdevices -o column
+Device   Vserver  Namespace Path             NSID   UUID   Size
+-------  -------- -------------------------  ------ ----- -----
+/dev/nvme0n1   vs_nvme_10       /vol/rhel_141_vol_10_0/ol_157_ns_10_0    1        55baf453-f629-4a18-9364-b6aee3f50dad   53.69GB
+
+# nvme netapp ontapdevices -o json
+{
+   "ONTAPdevices" : [
+   {
+        Device" : "/dev/nvme0n1",
+        "Vserver" : "vs_nvme_10",
+        "Namespace_Path" : "/vol/rhel_141_vol_10_0/ol_157_ns_10_0",
+         "NSID" : 1,
+         "UUID" : "55baf453-f629-4a18-9364-b6aee3f50dad",
+         "Size" : "53.69GB",
+         "LBA_Data_Size" : 4096,
+         "Namespace_Size" : 13107200
+    }
+]
+----
+
+
+
+
+== 啟用Broadcom NVMe / FC的1MB I/O大小
+
+必須將lfc_sg_seg_cnt參數 設定為256、主機才會發出1MB大小的I/O
+
+. 將「lfc_sg_seg_cnt"參數設為256。
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. 執行「dracut -f」命令、然後重新啟動主機。
+. 驗證「lfc_sg_seg_cnt"是否為256。
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+

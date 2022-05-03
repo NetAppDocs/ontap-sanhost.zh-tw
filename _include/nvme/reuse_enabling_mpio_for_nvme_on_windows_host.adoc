@@ -1,0 +1,35 @@
+= 
+:allow-uri-read: 
+
+
+. 安裝Windows主機公用程式套件7.1、以設定FC和NVMe通用的驅動程式參數。
+. 開啟MPIO內容。
+. 從*探索多重路徑*索引標籤、新增NVMe所列的裝置ID。
++
+MPIO會感知NVMe裝置、這些裝置可在磁碟管理下看到。
+
+. 打開* Disk Management（磁碟管理）*、然後移至* Disk Properties（磁碟內容）*。
+. 在「* MPIO *」索引標籤中、按一下「* Details *」。
+. 設定下列MSDSM設定：
++
+** PathVerfiedPeriod:* 10*
+** PathVerifyEnabled:* Enabled*
+** 重試計數：* 6 *
+** 重試時間間隔：* 1*
+** PDORemovedPeriod:* 130*
+
+
+. 選擇MPIO Policy * Round Robin with Subscal*。
+. 變更登錄值：
++
+[listing]
+----
+HKLM\SYSTEM\CurrentControlSet\Services\mpio\Parameters\PathRecoveryInterval DWORD -> 30
+
+HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\ UseCustomPathRecoveryInterval  DWORD-> 1
+----
+. 重新啟動主機。
++
+NVMe組態現在已在Windows主機上完成。
+
+

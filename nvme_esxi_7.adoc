@@ -1,0 +1,216 @@
+---
+sidebar: sidebar 
+permalink: nvme_esxi_7.html 
+keywords: nvme, esxi, ontap 
+summary: 說明如何使用ONTAP VMware設定適用於ESXi 7.x的NVMe 
+---
+= 適用於ESXi 7.x的NVMe主機組態、ONTAP 含功能不全
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 支援能力
+
+NVMe over Fibre Channel（NVMe / FC）支援ONTAP 於NVM9.7或更新版本。
+
+
+
+== 功能
+
+* ESXi啟動器主機可透過相同的介面卡連接埠、同時執行NVMe/FC和FCP流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援組態和版本清單。
+* 從VMware支援的版本號為0、99.1、P3開始ONTAP 、ESXi 7.0更新版本3支援NVMe / FC功能。
+* 對於ESXi 7.0及更新版本、HPP（高效能外掛程式）是NVMe裝置的預設外掛程式。
+
+
+
+
+== 已知限制
+
+不支援下列組態：
+
+* RDM對應
+* VVols
+
+
+
+
+== 啟用NVMe/FC
+
+. 檢查ESXi主機NQN字串、並確認其與ONTAP VMware ESXi陣列上對應子系統的主機NQN字串相符：
++
+[listing]
+----
+# esxcli nvme  info get
+Host NQN: nqn.2014-08.com.vmware:nvme:nvme-esx
+
+# vserver nvme subsystem host show -vserver vserver_nvme
+  Vserver Subsystem             Host NQN
+  ------- ------------------- ----------------------------------------
+  vserver_nvme ss_vserver_nvme nqn.2014-08.com.vmware:nvme:nvme-esx
+----
+
+
+
+
+=== 設定Broadcom / Emulex
+
+. 請參閱、檢查所需的驅動程式/韌體是否支援該組態 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+. 設定lffc驅動程式參數「lffc_enable_FC4_type=3」、以便在「lffc"驅動程式中啟用nvm/FC支援、然後重新啟動主機。
+
+
+
+NOTE: 從vSphere 7.0更新3開始、「brcmnvmefc"驅動程式已無法使用。因此、「lffc」驅動程式現在包含先前隨「brcmnvmefc」驅動程式提供的NVMe over Fibre Channel（NVMe / FC）功能。
+
+
+NOTE: LPe35000系列介面卡預設會設定「lfc_enable_FC4_type=3」參數。您必須針對LPe32000系列和LPe31000系列介面卡手動設定下列命令。
+
+[listing]
+----
+# esxcli system module parameters set -m lpfc -p lpfc_enable_fc4_type=3
+
+#esxcli system module parameters list  -m lpfc | grep lpfc_enable_fc4_type
+lpfc_enable_fc4_type              int     3      Defines what FC4 types are supported
+
+#esxcli storage core adapter list
+HBA Name  Driver   Link State  UID                                   Capabilities         Description
+--------  -------  ----------  ------------------------------------  -------------------  -----------
+vmhba1    lpfc     link-up     fc.200000109b95456f:100000109b95456f  Second Level Lun ID  (0000:86:00.0) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter    FC HBA
+vmhba2    lpfc     link-up     fc.200000109b954570:100000109b954570  Second Level Lun ID  (0000:86:00.1) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter    FC HBA
+vmhba64   lpfc     link-up     fc.200000109b95456f:100000109b95456f                       (0000:86:00.0) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter   NVMe HBA
+vmhba65   lpfc     link-up     fc.200000109b954570:100000109b954570                       (0000:86:00.1) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter   NVMe HBA
+----
+
+
+=== 設定Marvell / QLogic
+
+. 請參閱、檢查所需的驅動程式/韌體是否支援組態 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+. 將「qlnativefc」驅動程式參數「ql2xnvmesupport=1」設定為在「qlnativefc」驅動程式中啟用nvm/FC支援、然後重新啟動主機。
++
+'# esxcfg-module-s 'ql2xnvmesupport=1' qlnativefc'
+
++
+
+NOTE: QLE 277x系列介面卡預設會設定「qlnativefc」驅動程式參數。您必須執行下列命令、以手動設定QLE 277x系列介面卡。
+
++
+[listing]
+----
+esxcfg-module -l | grep qlnativefc
+qlnativefc               4    1912
+----
+. 檢查介面卡是否已啟用NVMe：
++
+[listing]
+----
+  #esxcli storage core adapter list
+HBA Name  Driver      Link State  UID                                   Capabilities         Description
+--------  ----------  ----------  ------------------------------------  -------------------  -----------
+ vmhba3    qlnativefc  link-up     fc.20000024ff1817ae:21000024ff1817ae  Second Level Lun ID  (0000:5e:00.0) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter    FC Adapter
+vmhba4    qlnativefc  link-up     fc.20000024ff1817af:21000024ff1817af  Second Level Lun ID  (0000:5e:00.1) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter FC Adapter
+vmhba64   qlnativefc  link-up     fc.20000024ff1817ae:21000024ff1817ae                       (0000:5e:00.0) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter  NVMe FC Adapter
+vmhba65   qlnativefc  link-up     fc.20000024ff1817af:21000024ff1817af                       (0000:5e:00.1) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter  NVMe FC Adapter
+----
+
+
+
+
+== 驗證NVMe/FC
+
+. 確認ESXi主機上已列出NVMe / FC介面卡：
++
+[listing]
+----
+# esxcli nvme adapter list
+
+Adapter  Adapter Qualified Name           Transport Type  Driver      Associated Devices
+-------  -------------------------------  --------------  ----------  ------------------
+vmhba64  aqn:qlnativefc:21000024ff1817ae  FC              qlnativefc
+vmhba65  aqn:qlnativefc:21000024ff1817af  FC              qlnativefc
+vmhba66  aqn:lpfc:100000109b579d9c 	      FC              lpfc
+vmhba67  aqn:lpfc:100000109b579d9d 	      FC              lpfc
+
+----
+. 確認已正確建立NVMe / FC命名空間：
++
+下列範例中的UUID代表NVMe / FC命名空間裝置。
+
++
+[listing]
+----
+# esxcfg-mpath -b
+uuid.5084e29a6bb24fbca5ba076eda8ecd7e : NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   vmhba65:C0:T0:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:69 WWPN: 21:00:34:80:0d:6d:72:69  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:2f:00:a0:98:df:e3:d1
+   vmhba65:C0:T1:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:69 WWPN: 21:00:34:80:0d:6d:72:69  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:1a:00:a0:98:df:e3:d1
+   vmhba64:C0:T0:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:68 WWPN: 21:00:34:80:0d:6d:72:68  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:18:00:a0:98:df:e3:d1
+   vmhba64:C0:T1:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:68 WWPN: 21:00:34:80:0d:6d:72:68  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:19:00:a0:98:df:e3:d1
+----
++
+
+NOTE: 在支援支援支援的支援區塊9.7中ONTAP 、NVMe / FC命名空間的預設區塊大小為4K。此預設大小與ESXi不相容。因此、在建立ESXi命名空間時、您必須將命名空間區塊大小設為512B。您可以使用「vserver NVMe命名空間create」命令來執行此動作。
+
++
+「Vserver NVMe命名空間create -vserver vvs 1 -path /vol/nslov/namespace1 -size 100g -osttype VMware -block-size 512B」
+
++
+請參閱 link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr%2FGUID-5CB10C70-AC11-41C0-8C16-B4D0DF916E9B.html["指令手冊頁ONTAP"^] 以取得更多詳細資料。
+
+. 驗證個別NVMe / FC命名空間裝置的個別ANA路徑狀態：
++
+[listing]
+----
+esxcli storage hpp path list -d uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+fc.200034800d6d7268:210034800d6d7268-fc.201700a098dfe3d1:201800a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba64:C0:T0:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active
+   Path Config: {TPG_id=0,TPG_state=AO,RTP_id=0,health=UP}
+
+fc.200034800d6d7269:210034800d6d7269-fc.201700a098dfe3d1:201a00a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba65:C0:T1:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active
+   Path Config: {TPG_id=0,TPG_state=AO,RTP_id=0,health=UP}
+
+fc.200034800d6d7269:210034800d6d7269-fc.201700a098dfe3d1:202f00a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba65:C0:T0:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active unoptimized
+   Path Config: {TPG_id=0,TPG_state=ANO,RTP_id=0,health=UP}
+
+fc.200034800d6d7268:210034800d6d7268-fc.201700a098dfe3d1:201900a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba64:C0:T1:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active unoptimized
+   Path Config: {TPG_id=0,TPG_state=ANO,RTP_id=0,health=UP}
+----
+
+
+
+
+== 已知問題
+
+* ESXi 7.0 U3（及更新版本）、支援NVMe/FC、從ONTAP 版本號的更新版本更新至版本號的更新版本。這是因為主要NVMe中止（由ESXi 7.0 U3及更新版本發行）修正程式ONTAP 、僅從版本號支援更新到版本號更新。請參閱相關的待處理公開報告、網址為 https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654[] 以取得詳細資料。
+
+
+
+
+== 相關連結
+
+link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]
+link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
+link:https://kb.vmware.com/s/article/83370["VMware vSphere 6.x與7.x支援搭配NetApp®SnapMirror®營運不中斷（SMBC）"^]

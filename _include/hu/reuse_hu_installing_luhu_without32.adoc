@@ -1,0 +1,17 @@
+= 
+:allow-uri-read: 
+
+
+NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 在64位元.rpm檔案中。
+
+強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+
+如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。
+
+.步驟
+. 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 到您的主機。
+. 使用下列命令安裝軟體套件：
++
+「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
+
+

@@ -1,0 +1,26 @@
+= 
+:allow-uri-read: 
+
+
+. 備份您的「/etc/NVMe / host*」檔案。
+. 如果您有手動編輯的「udev"規則、請將其移除：
++
+[listing]
+----
+/lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules
+----
+. 執行升級。
+. 升級完成後、請執行下列命令：
++
+[listing]
+----
+yum remove nvme-cli
+----
+. 將主機檔案還原至「/etc/NVMe /」。
++
+[listing]
+----
+yum install nvmecli
+----
+. 將原始的「/etc/NVMe / host*」內容從備份複製到實際的主機檔案、網址為：「etc/NVMe /」。
+

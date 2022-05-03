@@ -1,0 +1,243 @@
+---
+sidebar: sidebar 
+permalink: hu_citrix_8x.html 
+keywords: host utilities, citrix, hypervisor, 8.0, 8.1, 8.2, netapp, ontap 
+summary: 說明如何搭配ONTAP 使用Citrix Hypervisor 8.x搭配使用 
+---
+= 使用Citrix Hypervisor搭配NetApp ONTAP 功能
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 簡介
+
+本文件針對ONTAP Citrix Hypervisor 8系列作業系統版本（含FC、FCoE和iSCSI傳輸協定）提供有關SAN主機組態設定的指引。
+
+
+
+== SAN開機
+
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+
+.步驟
+. 將SAN開機LUN對應至主機。
+. 確認有多個可用路徑。
++
+請記住、只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。
+
+. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
++
+如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
+
+. 重新啟動主機、確認開機成功。
+
+
+
+
+== 多重路徑
+
+對於Citrix Hypervisor（CH）8.x、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CH 8.x是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。您可以使用「/sbin/mpathutils」狀態命令來驗證ONTAP 您的還原LUN設定。下列各節提供對應ASA 至角色的LUN的多重路徑輸出範例。
+
+
+
+=== All SAN Array（ASA 整個SAN陣列）組態
+
+對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑均為「主動/最佳化」、這表示它們由控制器提供服務、而I/O則會傳送至所有作用中路徑。
+
+下列範例顯示ONTAP 使用四個主動/最佳化路徑之「列舉LUN」的正確輸出：
+
+....
+# mpathutil status
+3600a09803830344674244a357579386a dm-13 NETAPP  ,LUN C-Mode
+size=30G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi   130:64   active ready running
+  |- 11:0:9:1    sdiy  8:288     active ready running
+  |- 11:0:10:1  sdml 69:464   active ready running
+  |- 11:0:11:1  sdpt  131:304  active ready running
+....
+
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+
+
+
+=== 非ASA組態
+
+對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
+
+....
+# mpathutil status
+3600a09803830344674244a357579386a dm-13 NETAPP  ,LUN C-Mode
+size=30G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+ |- 1:0:0:11   sde   8:64    active ready running
+`- 12:0:8:11  sdua  66:544  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+   |- 1:0:9:11   sddo  71:96   active ready running
+   `- 12:0:26:11 sdyt  129:720 active ready running
+....
+
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+
+
+
+== 建議設定
+
+Citrix Hypervisor 8.x OS是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。對於Citrix Hypervisor 8.x、必須存在空白的零位元組「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。
+
+從* XenCenter Management Portal/*啟用主機多重路徑服務、並確認多重路徑服務已啟用並正在執行。
+
+[listing]
+----
+# systemct1 status multipathd
+multipathd.service - Device-Mapper Multipath Device Controller
+  Loaded:  load (/usr/lib/systemd/system/multipathd.service; enabled; vendor preset: enabled)
+ Drop-In:  /etc/systemd/system/multipathd.service.d
+             slice.config
+  Active:  active (running) since Fri YYYY-MM-DD 00:00:26 IST; 1 month 9 days ago
+Main PID:  3789 (multipathd)
+  CGroup:  /control.slice/multipathd.service
+            3789  /sbin/multipathd
+----
+除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要將內容附加到/etc/multipath.conf檔案。您可以將下列語法新增至多重路徑.conf檔案、以排除不需要的裝置。
+
+[listing]
+----
+# cat /etc/multipath.conf
+blacklist {
+     wwid    <DevId>
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+----
+
+NOTE: 將*取代為您要排除之裝置的WWID字串。
+
+在此Citrix Hypervisor 8.x範例中、「sda」是黑名單所需的本機SCSI磁碟。
+
+. 執行下列命令來判斷WWID：
++
+[listing]
+----
+# lib/udev/scsi_id -gud /dev/sda
+3600a098038303458772450714535317a
+----
+. 將此WWID新增至「/etc/multipath.conf」中的黑名單節：
++
+[listing]
+----
+#cat /etc/multipath.conf
+blacklist {
+  wwid    3600a098038303458772450714535317a
+  devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9*]"
+  devnode "^hd[a-z]"
+  devnode "^cciss.*"
+}
+----
+
+
+請使用「$multipathd show config」命令來參閱多重路徑參數執行時間組態。您應該一律檢查執行中的組態、查看可能會覆寫預設設定的舊版設定、尤其是在預設值區段。
+
+下表顯示ONTAP 適用於整個過程的關鍵*多路徑d*參數、以及所需的值。如果主機連接至其他廠商的LUN、且任一參數被覆寫、則需要在*多重路徑.conf *中的稍後儲存區加以修正、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。下列預設值僅應在諮詢NetApp和/或作業系統廠商、且必須完全瞭解其影響時予以覆寫。
+
+[cols="2*"]
+|===
+| 參數 | 設定 
+
+
+| "Detect_prio" | 是的 
+
+
+| 「DEEV_Loss」TMO | "無限遠" 
+
+
+| 故障恢復 | 立即 
+
+
+| 「fast_io_fail _tmo」 | 5. 
+
+
+| 功能 | "3 queue_if_no_path pg_init_retries 50" 
+
+
+| 「Flush」 | "是" 
+
+
+| 硬體處理常式 | 「0」 
+
+
+| "path_checker_" | "周" 
+
+
+| "path_grouping_policy_" | "群組by_prio" 
+
+
+| "path_selector" | "服務時間0" 
+
+
+| "Polling_時間 間隔" | 5. 
+
+
+| 《prio》 | 「NetApp」ONTAP 
+
+
+| 《產品》 | LUN.* 
+
+
+| "REATH_ATHOND_HW_Handler" | 是的 
+
+
+| "rr_weight（rrr_weight）" | "統一" 
+
+
+| 《user_fuse_names》 | 否 
+
+
+| 「第一」 | NetApp 
+|===
+以下範例說明如何修正被覆寫的預設值。在此情況下、* multipath.conf *檔案會定義* path_checker*和* detect_prio*的值、這些值與ONTAP 不相容於哪些LUN。如果因為主機連接的其他SAN陣列而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
+
+[listing]
+----
+# cat /etc/multipath.conf
+defaults {
+  path_checker readsector0
+  detect_prio no
+}
+devices{
+        device{
+                vendor "NETAPP "
+                product "LUN.*"
+                path_checker tur
+                detect_prio yes
+        }
+}
+----
+
+NOTE: Citrix Hypervisor建議針對所有Linux和Windows型客體VM使用Citrix VM工具、以進行支援的組態。
+
+
+
+== 已知問題與限制
+
+[cols="4*"]
+|===
+| NetApp錯誤ID | 標題 | 說明 | Citrix Tracker ID 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1242343["1242343"^] | 在儲存容錯移轉作業期間、Citrix Hypervisor 8.0與QLogic QLE2742 32GB FC的核心中斷 | 在使用QLogic QLE2742 32GB HBA的Citrix Hypervisor 8.0核心（4.19.0+1）上執行儲存容錯移轉作業時、可能會發生核心中斷。此問題會提示重新開機作業系統、並導致應用程式中斷。如果設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以使用vmcore檔案來瞭解故障原因。核心中斷之後、您可以重新啟動主機作業系統並重新啟動應用程式、藉此恢復作業系統。 | link:https://tracker.citrix.com/browse/NETAPP-98["NetApp-98"^] 
+|===

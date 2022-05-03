@@ -1,0 +1,10 @@
+= 
+:allow-uri-read: 
+
+
+在Windows環境中使用適用於FC/NVMe的Broadcom介面卡時、每個主機匯流排介面卡（HBA）連接埠都會產生一個「+hostnqn+」。"+hostnqn+"格式如下。
+
+....
+nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9765
+nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9766
+....

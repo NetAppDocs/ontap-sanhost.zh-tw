@@ -1,0 +1,214 @@
+---
+sidebar: sidebar 
+permalink: hu_aix_72_sanbooting_powervm_vscsi.html 
+keywords: host utilities, aix, powervm, 7.2 netapp, ontap, luns, configure, discover, configuring, discovering 
+summary: 說明如何使用PowerVM vSCSI來探索及設定LUN 
+---
+= （PowerVM vSCSI）探索及設定LUN
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+當您使用PowerVM vSCSI和VIO伺服器時、必須使用padmin登入和適當的命令來設定和探索LUN。
+
+.步驟
+. 以padmin身分登入主機。
+. 在AIX主機上、輸入下列命令以探索新建立的LUN：
++
+《cfgdev'》
+
++
+cfgdeve命令會導致：
+
++
+** 用於登入Fabric的啟動器。
+** 用於檢查新裝置的系統。
+** 系統會建立新的裝置項目、並使用預設PCM將新LUN對應為MPIO裝置。
+
+
+. 若要驗證hdisk MPIO裝置是否已建立、請輸入下列命令：
++
+"lsdev-type disk"
+
++
+LUN在主機上顯示為磁碟。您可以使用這些磁碟、就像使用主機上的本機磁碟一樣。
+
++
+記下hdisk執行個體編號。您可以在執行路徑組態時使用它們。
+
++
+「lsdev-type disk」命令會產生下列類型的輸出。此範例中的輸出已被刪減。
+
++
+[listing]
+----
+vioserver$ lsdev -type disk NetApp
+name     status      description
+hdisk0   Available   16 Bit LVD SCSI Disk Drive
+hdisk1   Available   16 Bit LVD SCSI Disk Drive
+hdisk2   Available   MPIO NetApp FCP Default PCM Disk
+hdisk3   Available   MPIO NetApp FCP Default PCM Disk
+hdisk4   Available   MPIO NetApp FCP Default PCM Disk
+hdisk5   Available   MPIO NetApp FCP Default PCM Disk
+hdisk6   Available   MPIO NetApp FCP Default PCM Disk
+----
+. 若要取得設定的相關資訊、請輸入下列命令：
++
+"lsdev-devhdisk_name -attr"
+
++
+lsdev-devhdisk_name -attr'命令會產生下列輸出：
+
++
+[listing]
+----
+vioserver$ lsdev -dev hdisk2 -attr
+attribute value                   description                user-settable
+PCM   PCM/friend/NetApp   PCM Path Control Module          False
+PR_key_value    none                             Persistent Reserve Key Value            True
+algorithm       round_robin                      Algorithm                               True
+clr_q           no                               Device CLEARS its Queue on error        True
+dist_err_pcnt   0                                Distributed Error Sample Time           True
+dist_tw_width   50                               Distributed Error Sample Time           True
+hcheck_cmd      inquiry                          Health Check Command                    True
+hcheck_interval 30                               Health Check Interval                   True
+hcheck_mode     nonactive                        Health Check Mode                       True
+location                                         Location Label                          True
+lun_id          0x2000000000000                  Logical Unit Number ID                  False
+lun_reset_spt   yes                              LUN Level Reset                         True
+max_transfer    0x100000                         Maximum TRANSFER Size                   True
+node_name       0x500a0980894ae0e0               FC Node Name                            False
+pvid            00067fbad453a1da0000000000000000 Physical volume identifier              False
+q_err           yes                              Use QERR bit                            True
+q_type          simple                           Queuing TYPE                            True
+qfull_dly       2                                Delay in seconds for SCSI TASK SET FULL True
+queue_depth     64                               Queue DEPTH                             True
+reassign_to     120                              REASSIGN time out value                 True
+reserve_policy  no_reserve                       Reserve Policy                          True
+rw_timeout      30                               READ/WRITE time out value               True
+scsi_id         0xd10001                         SCSI ID                                 False
+start_timeout   60                               START unit time out value               True
+ww_name         0x500a0984994ae0e0               FC World Wide Name                      False
+----
+. 如果您的組態不支援ALUA、則必須執行DotPaths公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用ALUA、請勿使用dotPaths公用程式。輸入下列命令、切換至「OEM_setup_env」模式以執行dotPaths：
++
+「OEM_setup_env」
+
++
+當您進入「OEM_setup_env」模式時、命令列提示字元會從美元符號變更為英鎊符號、並維持在「OEM_setup_env」模式、直到您輸入結束等命令停止為止。
+
++
+「# vioserver$ OEM_setup_env」
+
+. 如果您的組態支援ALUA、您可以使用它來設定路徑優先順序。確認已啟用ALUA：
++
+「LUN igroup show -instance igroup_name」
+
++
+.. 如果未啟用ALUA、請啟用它：
++
+「igroup set igroup_name alua yes」
+
+
+
+. 如果您的組態不支援ALUA、則必須執行DotPaths公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用ALUA、請勿使用dotPaths公用程式。
++
+.. 若要設定所有Data ONTAP 的LUN優先順序、請輸入：
++
+"DotPaths（路徑）"
+
+.. 若要設定特定磁碟集的優先順序、請輸入：
++
+「DotPaths（-HQV）[hdiskN ...（hdiskN ...）」
+
++
+使用「-v」選項可啟用詳細模式並顯示所有優先順序。使用「-q'」選項可查詢所有或個別的磁碟優先順序。
+
++
+以下是使用DotPaths公用程式的範例：
+
++
+[listing]
+----
+vioserver# dotpaths -v
+hdisk2 (path 0): Optimized path - Setting priority to 255
+hdisk2 (path 1): Optimized path - Setting priority to 255
+hdisk2 (path 2): Unoptimized path - Current priority of 1 is correct
+hdisk2 (path 3): Unoptimized path - Current priority of 1 is correct
+...
+Path priority set and/or verified for 22 disks, 86 total paths.
+vioserver#
+----
+
+
+. 若要驗證主機是否已找到LUN、請輸入下列命令：
++
+sanlun LUN show -p'
+
++
+此範例顯示直接附加組態的「lanlun LUN show -p」命令典型輸出。它還包含「sanlun LUN show -d hdisk9 -v」命令、可顯示有關hdisk9的資訊。此命令的輸出已被截短。
+
++
+[listing]
+----
+sanlun lun show -p
+
+                    ONTAP Path: fas3170-aix03:/vol/ibmbc_aix01b14_fcp_vol8/ibmbc-aix01b14_fcp_lun0
+                           LUN: 8
+                      LUN Size: 3g
+           Controller CF State: Cluster Enabled
+            Controller Partner: fas3170-aix04
+                   Host Device: hdisk9
+                          Mode: 7
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+--------- ----------- ------ ------- ------------- ----------
+host      controller  AIX            controller    AIX MPIO
+path      path        MPIO   host    target        path
+state     type        path   adapter port          priority
+--------- ----------- ------ ------- ------------- ----------
+up        secondary   path0  fcs0    3b              1
+up        primary     path1  fcs0    3a              1
+up        secondary   path2  fcs0    3a              1
+up        primary     path3  fcs0    3b              1
+up        secondary   path4  fcs0    4b              1
+up        secondary   path5  fcs0    4a              1
+up        primary     path6  fcs0    4b              1
+up        primary     path7  fcs0    4a              1
+up        secondary   path8  fcs1    3b              1
+up        primary     path9  fcs1    3a              1
+up        secondary   path10 fcs1    3a              1
+up        primary     path11 fcs1    3b              1
+up        secondary   path12 fcs1    4b              1
+up        secondary   path13 fcs1    4a              1
+up        primary     path14 fcs1    4b              1
+up        primary     path15 fcs1    4a              1
+----
++
+[listing]
+----
+sanlun lun show -vd hdisk10
+                                                                      device          host                  lun
+vserver              lun-pathname                                     filename        adapter    protocol   size    mode
+------------------------------------------------------------------------------------------------------------------------
+GPFS_p520_FC         /vol/GPFS_p520_FC_FlexVol_2/GPFS_p520_FC_LUN_2_4 hdisk10         fcs3       FCP        100g    C
+             LUN Serial number: 1k/yM$-ia5HC
+         Controller Model Name: N5600
+          Vserver FCP nodename: 200200a0980c892f
+          Vserver FCP portname: 200a00a0980c892f
+              Vserver LIF name: GPFS_p520_FC_2
+            Vserver IP address: 10.225.121.100
+           Vserver volume name: GPFS_p520_FC_FlexVol_2  MSID::0x00000000000000000000000080000420
+         Vserver snapshot name:
+----
+
