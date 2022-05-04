@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head class="at-element-marker">
-  <title>將CentOS 7.7搭配NetApp ONTAP 功能使用</title>
+  <title>使用Oracle Linux 8.5搭配NetApp ONTAP 功能</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="將CentOS 7.7搭配NetApp ONTAP 功能使用" />
+  <meta property="og:title" content="使用Oracle Linux 8.5搭配NetApp ONTAP 功能" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_centos_77.html" />
-	<meta property="og:description" content="說明如何搭配ONTAP 使用CentOS 7.7搭配使用功能" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_ol_85.html" />
+	<meta property="og:description" content="說明如何搭配ONTAP 使用Oracle Linux 8.5搭配使用" />
   <meta property="og:image" content="https://docs.netapp.com/zh-tw/ontap-sanhost/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="說明如何搭配ONTAP 使用CentOS 7.7搭配使用功能">
-  <meta name="keywords" content=" host utilities, centos, linux, 7.7, netapp, ontap, netapp"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="說明如何搭配ONTAP 使用Oracle Linux 8.5搭配使用">
+  <meta name="keywords" content=" host utilities, oracle, linux, 8.5, netapp, ontap"><!-- Icons -->
   <link rel="icon" href="/zh-tw/ontap-sanhost/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -169,7 +169,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/issues/new?body=Page%3A%20[將CentOS 7.7搭配NetApp ONTAP 功能使用](https://docs.netapp.com/zh-tw/ontap-sanhost/hu_centos_77.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/discuss-sm.svg" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_centos_77.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/edit-sm.svg" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-sanhost/images/article-sm.svg" class="github-icon" />瞭解如何作出貢獻</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/issues/new?body=Page%3A%20[使用Oracle Linux 8.5搭配NetApp ONTAP 功能](https://docs.netapp.com/zh-tw/ontap-sanhost/hu_ol_85.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/discuss-sm.svg" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_ol_85.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/edit-sm.svg" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-sanhost/images/article-sm.svg" class="github-icon" />瞭解如何作出貢獻</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">在此頁面上</div>
@@ -292,15 +292,15 @@
           <ul class="n-menu__list">
             <li class="n-menu__list-column">
               <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_centos_77.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                  <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_ol_85.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_centos_77.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                  <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_ol_85.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_centos_77.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                  <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_ol_85.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_centos_77.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                  <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_ol_85.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_centos_77.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
+                  <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_ol_85.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -693,15 +693,6 @@
 
 
 
-    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
-  <a target="_blank" href="/zh-tw/ontap-sanhost/pdfs/pages/hu_centos_77.pdf" >
-    <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
-    PDF of this page
-  </a>
-</li>
-
-</ul>
-  
 
 
 
@@ -892,6 +883,15 @@
             ol 8.
           </a>
           
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/zh-tw/ontap-sanhost/pdfs/pages/hu_ol_85.pdf" >
+    <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
 
 
 
@@ -1478,7 +1478,7 @@
         7.9
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_78.html">
         7.8%
-      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_77.html">
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_77.html">
         7.7.7.
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_76.html">
         7.6.7.
@@ -1536,7 +1536,7 @@
       <ul><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> ol 8.</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_85.html">
+      <ul><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_85.html">
         8.5
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_84.html">
         8.4.
@@ -1752,14 +1752,14 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">將CentOS 7.7搭配NetApp ONTAP 功能使用</h1>
+  <h1 class="n-doc__component-detail-heading">使用Oracle Linux 8.5搭配NetApp ONTAP 功能</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 10:41:41 +0000">05/03/2022</time>
+    <time datetime="2022-05-04 14:11:27 +0000">05/04/2022</time>
     
   
 
@@ -1774,15 +1774,15 @@
 <li><a href="#san開機">SAN開機</a></li>
 <li><a href="#多重路徑">多重路徑</a></li>
 <li><a href="#建議設定">建議設定</a></li>
+<li><a href="#kvm設定">KVM設定</a></li>
 <li><a href="#已知問題與限制">已知問題與限制</a></li>
-<li><a href="#版本資訊">版本資訊</a></li>
 </ul>
 </div>
 <div class="sect1">
 <h2 id="安裝linux-unified-host-utilities">安裝Linux Unified Host Utilities</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>NetApp Linux Unified Host Utilities軟體套件可在上取得 <a href="https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&amp;platform=Linux" target="_blank" rel="noopener">"NetApp 支援網站"</a> 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 <a href="https://mysupport.netapp.com/matrix/#welcome" target="_blank" rel="noopener">"NetApp 互通性對照表工具"</a> 驗證您需要哪一個。</p>
+<p>NetApp Linux Unified Host Utilities軟體套件可在上取得 <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab" target="_blank" rel="noopener">"NetApp 支援網站"</a> 在64位元.rpm檔案中。</p>
 </div>
 <div class="paragraph">
 <p>強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</p>
@@ -1791,9 +1791,10 @@
 <p>如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。</p>
 </div>
 <div class="olist arabic">
+<div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>從下載32位元或64位元Linux Unified Host Utilities軟體套件 <a href="https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&amp;platform=Linux" target="_blank" rel="noopener">"NetApp 支援網站"</a> 站台到主機。</p>
+<p>從下載64位元Linux Unified Host Utilities軟體套件 <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab" target="_blank" rel="noopener">"NetApp 支援網站"</a> 到您的主機。</p>
 </li>
 <li>
 <p>使用下列命令安裝軟體套件：</p>
@@ -1832,7 +1833,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 <h2 id="san開機">SAN開機</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=89085;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp 互通性對照表工具"</a> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</p>
+<p>如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp 互通性對照表工具"</a> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</p>
 </div>
 <div class="olist arabic">
 <div class="title">步驟</div>
@@ -1863,29 +1864,33 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 <h2 id="多重路徑">多重路徑</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>對於CentOS 7.7、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.7是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</p>
+<p>對於Oracle Linux（OL）8.5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.5是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。</p>
+<p>您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。</p>
+</div>
+<div class="paragraph">
+<p>以下各節提供LUN對應非ASA角色的多重路徑輸出範例。</p>
 </div>
 <div class="sect2">
-<h3 id="所有san陣列組態">所有SAN陣列組態</h3>
+<h3 id="非asa組態">非ASA組態</h3>
 <div class="paragraph">
-<p>在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</p>
+<p>對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</p>
 </div>
 <div class="paragraph">
-<p>下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：</p>
+<p>下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre># multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G  features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-`-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running</pre>
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb 69:624 active ready running
+| |- 16:0:5:35 sdun 66:752 active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+|- 15:0:0:35 sdaj 66:48 active ready running
+|- 15:0:1:35 sdbx 68:176 active ready running</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1902,24 +1907,23 @@ size=80G  features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
 </div>
 </div>
 <div class="sect2">
-<h3 id="非asa組態">非ASA組態</h3>
+<h3 id="所有san陣列組態">所有SAN陣列組態</h3>
 <div class="paragraph">
-<p>對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</p>
+<p>在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</p>
 </div>
 <div class="paragraph">
-<p>下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：</p>
+<p>下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre># multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle’ hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=active
-| |- 11:0:1:0 sdj  8:144  active ready running
-| |- 11:0:2:0 sdr  65:16  active ready running
-`-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:0:0 sdb  8:i6   active ready running
-  |- 12:0:0:0 sdz  65:144 active ready running</pre>
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  `- 12:0:1:6   sdgp 132:80  active ready running</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1941,7 +1945,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 <h2 id="建議設定">建議設定</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>CentOS 7.7作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動為ASA 各種版本的支援和非ASA組態設定正確的所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</p>
+<p>Oracle Linux 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</p>
 </div>
 <div class="paragraph">
 <p>第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。</p>
@@ -2022,7 +2026,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">開發損失_tmo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"無限遠"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">無限</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">容錯回復</p></td>
@@ -2034,15 +2038,15 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">功能</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"3 queue_if_no_path pg_init_retries 50"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 pg_init_retries 50</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Flip_on_last刪除</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"是"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是的</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">硬體處理常式</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">「0」</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no_path_retry</p></td>
@@ -2050,15 +2054,15 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">path_checker_</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"周"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tur</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">path_grouping_policy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"群組by_prio"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">群組_by_prio</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">path_selector</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"服務時間0"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">服務時間0</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Polling_時間 間隔</p></td>
@@ -2066,7 +2070,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">優先</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">「NetApp」ONTAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ONTAP</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">產品</p></td>
@@ -2078,7 +2082,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RR_weight</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"統一"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">統一</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">使用者易記名稱</p></td>
@@ -2090,31 +2094,51 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 </tr>
 </tbody>
 </table>
+<div class="ulist">
+<ul>
+<li>
+<p>範例 *</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>defaults {
-   path_checker      readsector0
-   no_path_retry      fail
-}
-
+ path_checker readsector0
+ no_path_retry fail
+ }
 devices {
-   device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
-      no_path_retry     queue
-      path_checker      tur
-   }
+ device {
+ vendor "NETAPP "
+ product "LUN.*"
+ no_path_retry queue
+ path_checker tur
+ }
 }</pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="kvm設定">KVM設定</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="附註">
+</td>
+<td class="content">
+若要設定Oracle Linux 8.5 RedHat Enterprise核心（RHCK）、請使用 <a href="hu_rhel_85.html#recommended-settings">"建議設定"</a> 適用於Red Hat Enterprise Linux（RHEL）8.5。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="kvm設定">KVM設定</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。</p>
-</div>
 </div>
 </div>
 </div>
@@ -2122,18 +2146,19 @@ devices {
 <h2 id="已知問題與限制">已知問題與限制</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>如需CentOS（Red Hat相容核心）已知問題、請參閱 <a href="hu_rhel_77.html#known-problems-and-limitations">"已知問題"</a> 適用於Red Hat Enterprise Linux（RHEL）7.7。</p>
+<p>Oracle Linux 8.5沒有已知問題。</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="版本資訊">版本資訊</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="asm鏡射">ASM鏡射</h3>
-<div class="paragraph">
-<p>ASM鏡射可能需要變更Linux多重路徑設定、以允許ASM辨識問題並切換至其他故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 <a href="https://www.netapp.com/us/media/tr-3633.pdf" target="_blank" rel="noopener">"Oracle資料庫ONTAP"</a> 以取得更多資訊。</p>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="附註">
+</td>
+<td class="content">
+如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <a href="hu_rhel_85.html#known-problems-and-limitations">"已知問題"</a> 相關Red Hat Enterprise Linux版本文件中的一節。
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
