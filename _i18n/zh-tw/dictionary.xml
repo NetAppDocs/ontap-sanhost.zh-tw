@@ -2294,4 +2294,11 @@
   <block id="27467eebfd85deae554fa659c40d5f50" category="sidebar">Veritas</block>
   <block id="47d254fd002b7f1a6c06e1aa7c25a4ef" category="sidebar">Infoscale 7.</block>
   <block id="66b0812a8cbedc46db133ed5327291bd" category="sidebar">儲存基礎6.</block>
+  <block id="072bbeb072deda2033d37a6e9af67b96" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.5搭配使用</block>
+  <block id="bebf74152cdc0b8f2233ff49a9112052" category="doc">使用Oracle Linux 8.5搭配NetApp ONTAP 功能</block>
+  <block id="5afff738a58f6889eebdd3efb2f2c405" category="paragraph">對於Oracle Linux（OL）8.5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.5是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
+  <block id="d361bd25a0b2583985eb39dd89875090" category="paragraph">Oracle Linux 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
+  <block id="2e4318e2eccbd53d66a800f6dabff27f" category="admonition">若要設定Oracle Linux 8.5 RedHat Enterprise核心（RHCK）、請使用 <block ref="7e47a54075763937d25ec51fa82726e1" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.5。</block>
+  <block id="2e4b1a8e103650d2f0fe4c61f4f8d5fb" category="paragraph">Oracle Linux 8.5沒有已知問題。</block>
+  <block id="5d90071a09878a695a26d84f9a4f073b" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="b5087b96e856dc400373808e0f627382" category="inline-link-macro-rx"></block> 相關Red Hat Enterprise Linux版本文件中的一節。</block>
 </blocks>
