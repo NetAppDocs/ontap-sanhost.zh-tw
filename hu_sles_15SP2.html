@@ -1791,7 +1791,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 10:41:41 +0000">05/03/2022</time>
+    <time datetime="2022-05-11 15:34:17 +0000">05/11/2022</time>
     
   
 
@@ -1989,7 +1989,10 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
 </ol>
 </div>
 <div class="paragraph">
-<p>您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</p>
+<p>您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。</p>
+</div>
+<div class="paragraph">
+<p>下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
