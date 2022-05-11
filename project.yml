@@ -14,11 +14,14 @@ sidebar:
   - title: SAN主機公用程式
     entries:
     - title: AIX主機公用程式
-      url: "/hu_aix_61.html"
     - title: HPUX主機公用程式
       url: "/hu_hpux_60.html"
     - title: Linux統一化主機公用程式
-      url: "/hu_luhu_71.html"
+      entries:
+      - title: 安裝Luhu 7.1
+        url: "/hu_luhu_71.html"
+      - title: 版本資訊
+        url: "/hu_luhu_71_rn.html"
     - title: Solaris主機公用程式
       url: "/hu_solaris_62.html"
     - title: Windows統一化主機公用程式
