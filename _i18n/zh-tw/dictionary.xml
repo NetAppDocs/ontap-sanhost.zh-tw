@@ -326,7 +326,6 @@
   <block id="ace7da9c570d42fb25b932b78d3ece3e" category="paragraph">對於Oracle Linux（OL）8.2、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.2是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="04a5e299cf45ffa9952cc41f997c1f37" category="paragraph">您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。</block>
   <block id="03462612fe6be5ba3f7d2fc9b60e97da" category="paragraph">以下各節提供LUN對應非ASA角色的多重路徑輸出範例。</block>
-  <block id="6537d85e6259b39a52ebcbe3f5fdbcb8" category="paragraph">Oracle Linux 8.2作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
   <block id="f2fdee93271556e428dd9507b3da7235" category="cell">無限</block>
   <block id="6cba5c7dad29b66fb547b78b24a3814b" category="cell">2 pg_init_retries 50</block>
   <block id="cfcd208495d565ef66e7dff9f98764da" category="cell">0</block>
@@ -832,7 +831,6 @@
   <block id="1af1d134f1d2df0e60d3d26a745e9a9c" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.4搭配使用</block>
   <block id="7bc6016873cc966321b4e882f304f708" category="doc">使用Oracle Linux 8.4搭配NetApp ONTAP 功能</block>
   <block id="3f3097c34940e47c43cc1e2aaf144513" category="paragraph">對於Oracle Linux（OL）8.4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.4是以辨識及正確管理ONTAP 各種LUN所需的所有設定所編譯。</block>
-  <block id="2194f935f1bad1f819b4713a9f2e19a5" category="paragraph">Oracle Linux 8.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
   <block id="938f1047c15f00fdd0cbfc8e4cfa15e1" category="paragraph">* 範例 *</block>
   <block id="306a27cab6be29f525fedb01d2a9a56e" category="admonition">若要設定Oracle Linux 8.4 RedHat Enterprise核心（RHCK）、請使用 <block ref="2a5bf462d4974235d181075f07ec40ac" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.4。</block>
   <block id="62769ac5811a4b0727cd77616bb3d368" category="paragraph">Oracle Linux 8.4沒有已知問題。</block>
@@ -853,7 +851,6 @@
   <block id="66ea9cf358437f905712380440a8eddd" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="8c7533773fc489aa5fe9c5ca6e019e25" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="05b3b7ebfe3f9b8f7b7fa7d073f86fcd" category="paragraph">對於Oracle Linux 8.0、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 8.0是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
   <block id="f01b02d5e89762686d3f51d4b0f7f138" category="paragraph">您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
-  <block id="455407acf3d83d38dd1523b3e6b49ff9" category="paragraph">Oracle Linux 8.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
   <block id="e43b7887a27711ba5e2bd52d8cbffd65" category="admonition">若要設定Oracle Linux 8.0 RedHat Enterprise核心（RHCK）、請使用 <block ref="dd019c9be944c1791639aca9ec9dceb1" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.0。</block>
   <block id="ae2aedd8068d0177ea81418345fb1719" category="paragraph">Oracle Linux 8.0沒有已知問題。</block>
   <block id="f32d48cf755668783343d18d81af5662" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.0。</block>
@@ -1219,7 +1216,6 @@
   <block id="1007b7632045ad8e75cf3589b6d28f94" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.1搭配使用功能</block>
   <block id="76b5f29f2210c120279557998f5b220b" category="doc">使用Oracle Linux 8.1搭配NetApp ONTAP 功能</block>
   <block id="3adfaacb5236083e12561cfda09586f4" category="paragraph">對於Oracle Linux 8.1、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 8.1的所有設定都經過編譯、可辨識及正確管理ONTAP 各種LUN。</block>
-  <block id="46e58c4fb20b9b2820b3df05f5c771c6" category="paragraph">Oracle Linux 8.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
   <block id="80b15714c0bcc6206a8342b0b67b57a7" category="admonition">若要設定Oracle Linux 8.1 RedHat Enterprise核心（RHCK）、請使用 <block ref="ba385beac84ef95968bf8513eda510a6" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.1。</block>
   <block id="26ca817ec054dedbbbe822324c1f3666" category="paragraph">Oracle Linux 8.1沒有已知問題。</block>
   <block id="04727b6e26d6c60a42231cfea7028876" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.1。</block>
@@ -2110,7 +2106,6 @@
   <block id="cea2e5f9065bd07d72cb5caab3c1db47" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.3搭配使用功能</block>
   <block id="254bb3d9a7cf5cab4c0853ebfdd5582c" category="doc">使用Oracle Linux 8.3搭配NetApp ONTAP 功能</block>
   <block id="3512af03a0184fdf02e1a9a23f8da83c" category="paragraph">對於Oracle Linux（OL）8.3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.3是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
-  <block id="3bd3dac5f92157e9ddb2491b51213ac2" category="paragraph">Oracle Linux 8.3作業系統已經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
   <block id="dfa4360b9ef5c59ee3bab4c95d016689" category="admonition">若要設定Oracle Linux 8.3 Red Hat Enterprise核心（RHCK）、請使用 <block ref="4e79a9939610f9dc89e0e26786a809f0" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.3。</block>
   <block id="dbe552aa6706cdda69944fc1f527ec35" category="paragraph">Oracle Linux 8.3沒有已知問題。</block>
   <block id="273955f9a81b6001ec0fed11c89c61c3" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="3c7f0100e93cbb394731ee7d8982c161" category="inline-link-macro-rx"></block> 相關Red Hat Enterprise Linux版本文件中的一節。</block>
@@ -2297,7 +2292,6 @@
   <block id="072bbeb072deda2033d37a6e9af67b96" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.5搭配使用</block>
   <block id="bebf74152cdc0b8f2233ff49a9112052" category="doc">使用Oracle Linux 8.5搭配NetApp ONTAP 功能</block>
   <block id="5afff738a58f6889eebdd3efb2f2c405" category="paragraph">對於Oracle Linux（OL）8.5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.5是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
-  <block id="d361bd25a0b2583985eb39dd89875090" category="paragraph">Oracle Linux 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
   <block id="2e4318e2eccbd53d66a800f6dabff27f" category="admonition">若要設定Oracle Linux 8.5 RedHat Enterprise核心（RHCK）、請使用 <block ref="7e47a54075763937d25ec51fa82726e1" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.5。</block>
   <block id="2e4b1a8e103650d2f0fe4c61f4f8d5fb" category="paragraph">Oracle Linux 8.5沒有已知問題。</block>
   <block id="5d90071a09878a695a26d84f9a4f073b" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="b5087b96e856dc400373808e0f627382" category="inline-link-macro-rx"></block> 相關Red Hat Enterprise Linux版本文件中的一節。</block>
@@ -2369,4 +2363,12 @@
   <block id="5f93f381aa8df330451fa5b834f54def" category="inline-link-macro">E系列文件</block>
   <block id="476ffa3f7602d624a09df7aa5753ffef" category="paragraph">前往 <block ref="9baa7224a8255cea231b31bb3cb8d26c" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
   <block id="2c0074fce84282581b2b52e56eacf78e" category="sidebar">安裝Luhu 7.1</block>
+  <block id="3e88abad927ef9520e50cf89d3f1ddf7" category="paragraph">您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。</block>
+  <block id="ac9cd03712fd30de041cfad595bfc616" category="paragraph">下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</block>
+  <block id="51f210eb8bfa53321744e9dca7258c87" category="paragraph">Oracle Linux 8.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
+  <block id="60f09d4774647857c92f5a51f6de2354" category="paragraph">Oracle Linux 8.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
+  <block id="ffe5b32185032e3b293e94d4a0232f34" category="paragraph">Oracle Linux 8.2作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
+  <block id="73d4b705776db33e6478d2847ebc567c" category="paragraph">Oracle Linux 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
+  <block id="cb209f9eec3baeb4065409d39ca1f4d5" category="paragraph">Oracle Linux 8.3作業系統已經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
+  <block id="ce431e2558ea7b456c531991fb4a7e92" category="paragraph">Oracle Linux 8.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
 </blocks>
