@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head class="at-element-marker">
-  <title>使用SUSE Linux Enterprise Server 15 SP2搭配NetApp ONTAP 功能</title>
+  <title>將CentOS 8.4與NetApp ONTAP 搭配使用</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="使用SUSE Linux Enterprise Server 15 SP2搭配NetApp ONTAP 功能" />
+  <meta property="og:title" content="將CentOS 8.4與NetApp ONTAP 搭配使用" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_sles_15SP2.html" />
-	<meta property="og:description" content="說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 15 SP2搭配使用功能" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_centos_84.html" />
+	<meta property="og:description" content="說明如何搭配ONTAP 使用CentOS 8.4搭配使用" />
   <meta property="og:image" content="https://docs.netapp.com/zh-tw/ontap-sanhost/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 15 SP2搭配使用功能">
-  <meta name="keywords" content=" host utilities, suse linux enterprise server 15 sp2, suse, linux, 15 sp2, netapp, ontap"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="說明如何搭配ONTAP 使用CentOS 8.4搭配使用">
+  <meta name="keywords" content=" host utilities, centos, linux, 8.4, netapp, ontap"><!-- Icons -->
   <link rel="icon" href="/zh-tw/ontap-sanhost/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -169,7 +169,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/issues/new?body=Page%3A%20[使用SUSE Linux Enterprise Server 15 SP2搭配NetApp ONTAP 功能](https://docs.netapp.com/zh-tw/ontap-sanhost/hu_sles_15SP2.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/discuss-sm.svg" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_sles_15SP2.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/edit-sm.svg" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-sanhost/images/article-sm.svg" class="github-icon" />瞭解如何作出貢獻</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/issues/new?body=Page%3A%20[將CentOS 8.4與NetApp ONTAP 搭配使用](https://docs.netapp.com/zh-tw/ontap-sanhost/hu_centos_84.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/discuss-sm.svg" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_centos_84.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/edit-sm.svg" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-sanhost/images/article-sm.svg" class="github-icon" />瞭解如何作出貢獻</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">在此頁面上</div>
@@ -292,15 +292,15 @@
           <ul class="n-menu__list">
             <li class="n-menu__list-column">
               <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_sles_15SP2.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                  <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_centos_84.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_sles_15SP2.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                  <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_centos_84.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_sles_15SP2.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                  <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_centos_84.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_sles_15SP2.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                  <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_centos_84.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_sles_15SP2.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
+                  <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_centos_84.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -685,6 +685,15 @@
           
 
 
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/zh-tw/ontap-sanhost/pdfs/pages/hu_centos_84.pdf" >
+    <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
 
 
 
@@ -1237,15 +1246,6 @@
           
 
 
-    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
-  <a target="_blank" href="/zh-tw/ontap-sanhost/pdfs/pages/hu_sles_15SP2.pdf" >
-    <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
-    PDF of this page
-  </a>
-</li>
-
-</ul>
-  
 
 
 
@@ -1501,7 +1501,7 @@
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_85.html">
         8.5
-      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_84.html">
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_84.html">
         8.4.
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_centos_83.html">
         8.3
@@ -1701,7 +1701,7 @@
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_15SP3.html">
         15 SP3
-      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_15SP2.html">
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_15SP2.html">
         15 SP2
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_sles_15SP1.html">
         15 SP1
@@ -1792,14 +1792,14 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">使用SUSE Linux Enterprise Server 15 SP2搭配NetApp ONTAP 功能</h1>
+  <h1 class="n-doc__component-detail-heading">將CentOS 8.4與NetApp ONTAP 搭配使用</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2022-05-11 15:34:17 +0000">05/11/2022</time>
+    <time datetime="2022-05-13 18:24:42 +0000">05/13/2022</time>
     
   
 
@@ -1822,7 +1822,7 @@
 <h2 id="安裝linux-unified-host-utilities">安裝Linux Unified Host Utilities</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>NetApp Linux Unified Host Utilities軟體套件可在上取得 <a href="https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&amp;platform=Linux" target="_blank" rel="noopener">"NetApp 支援網站"</a> 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 <a href="https://mysupport.netapp.com/matrix/#welcome" target="_blank" rel="noopener">"NetApp 互通性對照表工具"</a> 驗證您需要哪一個。</p>
+<p>NetApp Linux Unified Host Utilities軟體套件可在上取得 <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab" target="_blank" rel="noopener">"NetApp 支援網站"</a> 在64位元.rpm檔案中。</p>
 </div>
 <div class="paragraph">
 <p>強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</p>
@@ -1831,9 +1831,10 @@
 <p>如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。</p>
 </div>
 <div class="olist arabic">
+<div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>從下載32位元或64位元Linux Unified Host Utilities軟體套件 <a href="https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&amp;platform=Linux" target="_blank" rel="noopener">"NetApp 支援網站"</a> 站台到主機。</p>
+<p>從下載64位元Linux Unified Host Utilities軟體套件 <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab" target="_blank" rel="noopener">"NetApp 支援網站"</a> 到您的主機。</p>
 </li>
 <li>
 <p>使用下列命令安裝軟體套件：</p>
@@ -1872,7 +1873,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 <h2 id="san開機">SAN開機</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=84067;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp 互通性對照表工具"</a> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</p>
+<p>如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&amp;solution=236&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp 互通性對照表工具"</a> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</p>
 </div>
 <div class="olist arabic">
 <div class="title">步驟</div>
@@ -1903,29 +1904,77 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 <h2 id="多重路徑">多重路徑</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>對於SUSE Linux Enterprise Server 15 SP2、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 15 SP2是以辨識及正確管理ONTAP 等功能所需的所有設定所編譯。使用「multipath-l」命令來驗證ONTAP 您的還原LUN設定。</p>
+<p>對於CentOS 8.4、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.4是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</p>
 </div>
 <div class="paragraph">
-<p>應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</p>
+<p>您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。</p>
+</div>
+<div class="sect2">
+<h3 id="所有san陣列組態">所有SAN陣列組態</h3>
+<div class="paragraph">
+<p>在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</p>
 </div>
 <div class="paragraph">
-<p>下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。</p>
+<p>下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre># multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
 size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=enabled
-| |- 11:0:1:0 sdj 8:144 active ready running
-| |- 11:0:2:0 sdr 65:16 active ready running
-`-+- policy='service-time 0' prio=10 status=enabled
-|- 11:0:0:0 sdb 8:i6 active ready running
-|- 12:0:0:0 sdz 65:144 active ready running</pre>
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi   130:64   active ready running
+  |- 11:0:9:1    sdiy  8:288     active ready running
+  |- 11:0:10:1  sdml 69:464   active ready running
+  |- 11:0:11:1  sdpt  131:304  active ready running</pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="附註">
+</td>
+<td class="content">
+請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="非asa組態">非ASA組態</h3>
+<div class="paragraph">
+<p>對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</p>
 </div>
 <div class="paragraph">
-<p>請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。</p>
+<p>下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="附註">
+</td>
+<td class="content">
+請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -1933,7 +1982,7 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
 <h2 id="建議設定">建議設定</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>SUSE Linux Enterprise Server 15 SP2作業系統經過編譯、可辨識ONTAP 出各種LUN、並自動正確設定所有組態參數。</p>
+<p>CentOS 8.4經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</p>
 </div>
 <div class="paragraph">
 <p>要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</p>
@@ -2097,6 +2146,7 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
    path_checker      readsector0
    no_path_retry      fail
 }
+
 devices {
    device {
       vendor         "NETAPP  "
@@ -2107,48 +2157,20 @@ devices {
 }</pre>
 </div>
 </div>
+<div class="sect2">
+<h3 id="kvm設定">KVM設定</h3>
+<div class="paragraph">
+<p>您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="已知問題與限制">已知問題與限制</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 50%;">
-<col style="width: 16.6668%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">NetApp錯誤ID</th>
-<th class="tableblock halign-left valign-top">標題</th>
-<th class="tableblock halign-left valign-top">說明</th>
-<th class="tableblock halign-left valign-top">Bugzilla ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&amp;Display=1308744" target="_blank" rel="noopener">"1308744"</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">完成SLES15SP2作業系統安裝之後、從SAN開機的iSCSI無法以靜態IP組態開機</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>使用靜態IP組態完成SLES 15 SP2作業系統安裝後、iSCSI sanbootedLUN無法開機。每次使用靜態IP組態時都會發生開機失敗。這會導致伺服器拒絕繼續開機程序、並顯示下列錯誤訊息：</p>
+<div class="paragraph">
+<p>CentOS 8.4沒有已知問題。</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre>dracut-cmdline[241]: warning: Empty autoconf values default to dhcp
-
-dracut: FATAL: FATAL: For argument ip=eth4:static, setting client-ip does not make sense for dhcp
-
-dracut: Refusing to continue
-
-reboot: System halted</pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://bugzilla.suse.com/show_bug.cgi?id=1167494" target="_blank" rel="noopener">"1167494"</a></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="sect1">
