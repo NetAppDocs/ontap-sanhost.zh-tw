@@ -95,7 +95,6 @@
   <block id="5dd03e8d039863e563e049be198c3fd3" category="section-title">版本資訊</block>
   <block id="f25da2d4ec4aacff4750d97e83acec21" category="section-title">ASM鏡射</block>
   <block id="446548f2b1301893641e29657fc7fe53" category="inline-link-macro">Oracle資料庫ONTAP</block>
-  <block id="84ab437a6a1e12ed066bb64a998dbdff" category="paragraph">ASM鏡射可能需要變更Linux多重路徑設定、以允許ASM辨識問題並切換至其他故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
   <block id="a6dc6c62ee31196ca4228a01ceaf054f" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.6搭配使用功能</block>
   <block id="bb416c7f83582cb630ec7e8f1451631f" category="doc">使用Red Hat Enterprise Linux 7.6搭配NetApp ONTAP 功能</block>
   <block id="2cf246d491f7ad45523fc8e4a88fc641" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="7ce73c7ae176dd6b577d1c14b445f0cd" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -2371,4 +2370,15 @@
   <block id="73d4b705776db33e6478d2847ebc567c" category="paragraph">Oracle Linux 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
   <block id="cb209f9eec3baeb4065409d39ca1f4d5" category="paragraph">Oracle Linux 8.3作業系統已經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
   <block id="ce431e2558ea7b456c531991fb4a7e92" category="paragraph">Oracle Linux 8.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
+  <block id="c785c7cbae0a664e0cc339dfef33bde1" category="paragraph">ASM鏡射可能需要變更Linux多重路徑設定、以允許ASM辨識問題並切換至其他故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
+  <block id="3eeb371f92f74d2b6501646282092ca7" category="summary">說明如何搭配ONTAP 使用CentOS 8.4搭配使用</block>
+  <block id="32d86924bbcb8820c9a350a7d741cbea" category="doc">將CentOS 8.4與NetApp ONTAP 搭配使用</block>
+  <block id="e5a962185d7bd63be4f29de827478b1c" category="paragraph">對於CentOS 8.4、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.4是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
+  <block id="ea4f6ca54725c6a00ccdbd33cafe2aa2" category="paragraph">CentOS 8.4經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
+  <block id="a90e366fa7d3040cef07cc0169093dcc" category="paragraph">CentOS 8.4沒有已知問題。</block>
+  <block id="c33b879e8a189cf4ded38992165273b7" category="summary">說明如何搭配ONTAP 使用CentOS 8.5搭配使用</block>
+  <block id="d5af4406caf44199917cb9aa00203c40" category="doc">將CentOS 8.5與NetApp ONTAP 搭配使用</block>
+  <block id="60d0d78dbe9bb18e16690c35ce6867e1" category="paragraph">對於CentOS 8.5、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.5是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
+  <block id="fd586a803662833af2a4932bc04d30c2" category="paragraph">CentOS 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
+  <block id="18c14def8d42f0c0db0b8f08922c712b" category="paragraph">CentOS 8.5沒有已知問題。</block>
 </blocks>
