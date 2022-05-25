@@ -1314,6 +1314,8 @@
             Veritas
           </a>
           
+
+
     <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
   <a target="_blank" href="/zh-tw/ontap-sanhost/pdfs/pages/hu_veritas_7x.pdf" >
     <img src="/zh-tw/ontap-sanhost/images/pdf.png" width="16" height="16"/>
@@ -1725,7 +1727,9 @@
       </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Veritas</div>
       </a>
-      <ul><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_veritas_7x.html">
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_veritas_8x.html">
+        Infoscale 8.
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_veritas_7x.html">
         Infoscale 7.
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_veritas_6x.html">
         儲存基礎6.
@@ -1799,7 +1803,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 10:41:41 +0000">05/03/2022</time>
+    <time datetime="2022-05-25 10:34:18 +0000">05/25/2022</time>
     
   
 
@@ -1814,6 +1818,7 @@
 <li><a href="#san工具套件">SAN工具套件</a></li>
 <li><a href="#san開機">SAN開機</a></li>
 <li><a href="#多重路徑">多重路徑</a></li>
+<li><a href="#所有san陣列組態">所有SAN陣列組態</a></li>
 <li><a href="#多重路徑共存">多重路徑共存</a></li>
 <li><a href="#已知問題與限制">已知問題與限制</a></li>
 </ul>
@@ -1924,7 +1929,7 @@ enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192</pr
 <h2 id="多重路徑">多重路徑</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您必須驗證組態是否符合系統需求。如需詳細資訊、請參閱 <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp 互通性對照表工具"</a> 以及Veritas HCL Matrix。</p>
+<p>您必須驗證組態是否符合系統需求。如需詳細資訊、請參閱NetApp互通性對照表工具和Veritas HCL對照表。</p>
 </div>
 <div class="paragraph">
 <p>在此範例中、可使用「vxdmpadm」命令來驗證VxDMP多重路徑ONTAP 是否附加了「支援」目標陣列。</p>
@@ -1934,12 +1939,8 @@ enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192</pr
 <pre># vxdmpadm listenclosure
 ENCLR_NAME   ENCLR_TYPE  ENCLR_SNO     STATUS      ARRAY_TYPE    LUN_COUNT    FIRMWARE
 =====================================================================================
-sfrac0       SFRAC       804Xw$PqE52h  CONNECTED   ALUA          43           9800</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># vxdmpadm getdmpnode
+sfrac0       SFRAC       804Xw$PqE52h  CONNECTED   ALUA          43           9800
+# vxdmpadm getdmpnode
 NAME       STATE    ENCLR-TYPE  PATHS  ENBL  DSBL ENCLR-NAME
 ===================================================================
 sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0</pre>
@@ -1954,21 +1955,13 @@ sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0</pre>
 <div class="listingblock">
 <div class="content">
 <pre># vxdmpadm list dmpnode dmpnodename=sfrac0_47 | grep asl
-asl        = libvxnetapp.so</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># vxddladm listversion |grep libvxnetapp.so
+asl        = libvxnetapp.so
+# vxddladm listversion |grep libvxnetapp.so
 libvxnetapp.so              vm-7.4-rev-1    6.1
 
 # rpm -qa |grep VRTSaslapm
-VRTSaslapm-x.x.x.0000-RHEL8.X86_64</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>vxddladm listsupport libname=libvxnetapp.so
+VRTSaslapm-x.x.x.0000-RHEL8.X86_64
+vxddladm listsupport libname=libvxnetapp.so
 ATTR_NAME   ATTR_VALUE
 =========================================
 LIBNAME     libvxnetapp.so
@@ -1976,6 +1969,40 @@ VID         NETAPP
 PID         All
 ARRAY_TYPE  ALUA, A/A</pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="所有san陣列組態">所有SAN陣列組態</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</p>
+</div>
+<div class="paragraph">
+<p>下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># vxdmpadm getsubpaths dmpnodename-sfrac0_47
+NAME  STATE[A]   PATH-TYPE[M]   CTLR-NAME   ENCLR-TYPE  ENCLR-NAME  ATTRS  PRIORITY
+===================================================================================
+sdas  ENABLED (A)    Active/Optimized c13   SFRAC       sfrac0     -      -
+sdb   ENABLED(A) Active/Optimized     c14   SFRAC       sfrac0     -      -
+sdcj  ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
+sdea  ENABLED (A)    Active/Optimized c14   SFRAC       sfrac0     -</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="附註">
+</td>
+<td class="content">
+請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="非asa組態">非ASA組態</h3>
