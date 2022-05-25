@@ -2381,4 +2381,10 @@
   <block id="60d0d78dbe9bb18e16690c35ce6867e1" category="paragraph">對於CentOS 8.5、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.5是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
   <block id="fd586a803662833af2a4932bc04d30c2" category="paragraph">CentOS 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
   <block id="18c14def8d42f0c0db0b8f08922c712b" category="paragraph">CentOS 8.5沒有已知問題。</block>
+  <block id="6ae085cbc4684a00a3e68524ecf70cfa" category="doc">使用Veritas Infoscale 8 for Linux搭配NetApp ONTAP 功能</block>
+  <block id="1b2a59730ea53da6436d8353216d1a0c" category="paragraph">本文件針對ONTAP 採用FC、FCoE和iSCSI傳輸協定的Red Hat Enterprise Linux和Oracle Linux（RHCK型）平台、提供有關Veritas Infoscale儲存基礎8系列版本的SAN主機組態設定指引。</block>
+  <block id="c5b648f7fb06555dc55d907fcf7b4c14" category="paragraph">您必須驗證組態是否符合系統需求。如需詳細資訊、請參閱NetApp互通性對照表工具和Veritas HCL對照表。</block>
+  <block id="ce081634ead33780d73e0e1f6b9ea0ca" category="paragraph">有了Veritas動態多重路徑（VxDMP）、您必須執行組態工作、將NetApp LUN宣告為Veritas多重路徑裝置。您必須安裝由Veritas為NetApp儲存系統提供的Array Support程式庫（ASB）和Array Policy Module（APM）套件。雖然Veritas軟體安裝會隨產品一起載入預設的ASLM套件、但建議您使用Veritas支援入口網站上列出的最新支援套件。</block>
+  <block id="697675a4c21edc6fc07599249d9fe748" category="paragraph">在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</block>
+  <block id="4e0b2b4c829cef3166a5190a135bb26f" category="sidebar">Infoscale 8.</block>
 </blocks>
