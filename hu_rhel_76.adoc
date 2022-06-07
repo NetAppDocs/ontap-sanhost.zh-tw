@@ -252,6 +252,9 @@ devices {
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
+| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]。 | 不適用 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1186754["1186754"^] | 使用QLogic QLE2742主機的RHEL7U6遠端連接埠狀態、可能會在主機探索期間遭到封鎖 | 在主機探索期間、使用QLogic QLE2742介面卡的RHEL7U6主機上的FC遠端連接埠狀態可能會進入封鎖狀態。這些封鎖的遠端連接埠可能會導致通往LUN的路徑變成無法使用。在儲存容錯移轉期間、路徑備援可能會減少、並導致I/O中斷。您可以輸入下列命令來檢查遠端連接埠狀態：# cat /sys/class/fc_reme_ports/rport-*/port_state | link:https://bugzilla.redhat.com/show_bug.cgi?id=1628039["1628039"^] 
 
 

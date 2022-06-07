@@ -207,12 +207,10 @@
   <block id="e6134970e8d5973c94d66165bc3ebc13" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="5564eab34da8df006dd99a2c2ee21d68" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="4a498bc14dff7d28b1cbe385198ffd2e" category="paragraph">對於Red Hat Enterprise Linux（RHEL）7.8、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 7.8的所有設定都已經過編譯、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="5765160c5d780dc6ba6425d1dd92e011" category="paragraph">RHEL 7.8作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="81586f14ee1a495c4934b94635bf1904" category="paragraph">RHEL 7.8沒有已知問題。</block>
   <block id="fbd83cf0e839e6dec73fa3ff243bb8c5" category="summary">說明如何搭配ONTAP 使用CentOS 7.8搭配使用</block>
   <block id="9ae2e2f0116f96b133ac014c223f3745" category="doc">使用CentOS 7.8搭配NetApp ONTAP 功能</block>
   <block id="76174ed9b35d8ad81e135443f4af3887" category="paragraph">對於CentOS 7.8、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.8是以辨識及正確管理ONTAP 的所有必要設定所編譯。</block>
   <block id="564c66db186999fb0cce9161132dfe24" category="paragraph">CentOS 7.8作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="e1a1bebeae4dcfa6f21f72c47a48d5bc" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="3a06823278fda302102a106bc94a18f7" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.8。</block>
   <block id="f016701b52511d7388e9b01258eaff35" category="summary">說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12 SP3搭配使用</block>
   <block id="7c5674dabbccc0a7d51145478b428e7a" category="doc">使用SUSE Linux Enterprise Server 12 SP3搭配NetApp ONTAP 功能</block>
   <block id="7adcaa4e5a35b413a61f9652b9b8e6bd" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="2e3100a5f55723fd5f208c30b3d4a68b" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -303,7 +301,6 @@
   <block id="0ab1d58d11afaa3c04cf66282eb98ab3" category="inline-link-macro">建議設定</block>
   <block id="de50d87828d6c062d5ee3ed42e95ae42" category="admonition">若要設定Oracle Linux 7.1 RedHat Enterprise核心（RHCK）、請使用 <block ref="ac06888ec4e3e5a4526108ac1f8520b7" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.1。</block>
   <block id="d92da7c3e5e1c0b3a496a0771d576f96" category="paragraph">Oracle Linux 7.1沒有已知問題。</block>
-  <block id="0f2db389fe3b2cb5362092280677dce5" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="ced590fe156efd06c547fb4b408501cd" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.1。</block>
   <block id="6ef4ca5514fc3496c82be53f21ea03d2" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.3搭配使用功能</block>
   <block id="cba10735819f3a0f3705658cb271e05c" category="doc">使用Red Hat Enterprise Linux 7.3搭配NetApp ONTAP 功能</block>
   <block id="3b8e165405f5e10d3920f8e146dde743" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="f8a436a3c9bbe06e4f88036e4f03a4f5" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -563,7 +560,6 @@
   <block id="5c12d7919f70a52feb5b05d38f67a518" category="doc">將CentOS 7.3搭配NetApp ONTAP 功能使用</block>
   <block id="ef96b3a7a075d8418a575b9d3ec01e49" category="paragraph">對於CentOS 7.3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.3是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
   <block id="39f20345b68a1cd5b83ffd31c17f1ddd" category="paragraph">CentOS 7.3作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="e57066ab16e696f7a69a7f3f9c43d87b" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="5e4bf77e6394be9d860675fb343643e9" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.3。</block>
   <block id="60c701fe07370fac945573158f732b05" category="summary">說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12 SP4搭配使用功能</block>
   <block id="67e1cc50445d9196739a5702120346bc" category="doc">使用SUSE Linux Enterprise Server 12 SP4搭配NetApp ONTAP 功能</block>
   <block id="3a754ad11b84b93f6a753f6d500e2e18" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="2ad585f32bf1ef6f5e41daa29755a76e" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -839,12 +835,10 @@
   <block id="546af78030809541fd22a7381f44e6f3" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="ac8113ff6c666fd4e19867c5326a1178" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="5bd816c2094b5347fe9888b31305809d" category="paragraph">對於CentOS 7.0、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.0採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各個LUN。</block>
   <block id="8517938f22eed4a2a447a2a76f9b4a2b" category="paragraph">CentOS 7.0作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本設定正確的所有組態參數、以利執行各種版本的更新和非ASA組態設定。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="1c6470fc0c5a673e462d1dbf62400a30" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="246c4652661004d5759d6a65e7446177" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.0。</block>
   <block id="0fd599859ca499a908d11962595ba872" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.9與功能</block>
   <block id="5015c54f6ae860e4388dc79aec2d5365" category="doc">使用Red Hat Enterprise Linux 7.9搭配NetApp ONTAP 功能</block>
   <block id="02ef7cdb14b82d2d03d7952385e853c9" category="paragraph">對於Red Hat Enterprise Linux（RHEL）7.9、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 7.9的所有設定均已完成編譯、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="b9c3e890e59dd43c4f5634fcad20c6cf" category="paragraph">RHEL 7.9作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="dbaf6099d236023ebb9ab99c9b52c407" category="paragraph">RHEL 7.9沒有已知問題。</block>
   <block id="157584ac811d45f102c8c688e0c7c7a4" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.0搭配使用功能</block>
   <block id="d25d835edd5dae4c8da09161a31e26a8" category="doc">使用Oracle Linux 8.0搭配NetApp ONTAP 功能</block>
   <block id="66ea9cf358437f905712380440a8eddd" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="8c7533773fc489aa5fe9c5ca6e019e25" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -877,7 +871,6 @@
   <block id="41e7560cde89e1cd58f68637cb85187c" category="summary">說明如何搭配ONTAP 使用CentOS 7.6搭配使用</block>
   <block id="da9f40e3285e3c02f85bcebc7e825fec" category="doc">將CentOS 7.6搭配NetApp ONTAP 功能使用</block>
   <block id="6c0dbd01652c6507117bd7f2e71f213c" category="paragraph">CentOS 7.6作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本設定正確的所有組態參數、以利執行各種版本的更新和非ASA組態設定。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="2b11d4c29a087c69c028d65087a7cb25" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="0f8f9bd959566521e4eb1faf7eb72b62" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.6。</block>
   <block id="063981d5e2e841e661249aba9ca9682a" category="summary">以VMware為例、針對Oracle Linux 8.1設定VME/FC主機組態ONTAP</block>
   <block id="ab5f40e0204a9868aebbaee0226f0547" category="doc">適用於Oracle Linux 8.1的NVMe / FC主機組態（ONTAP 含功能更新）</block>
   <block id="f58813ca14ecba2def986836fee74fc0" category="paragraph">Oracle Linux 8.1支援NVMe/FC ONTAP 、支援用在支援的版本為32、6或更新版本。Oracle Linux 8.1主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請注意、Broadcom啟動器可透過相同的FC介面卡連接埠、同時處理NVMe/FC和FCP流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
@@ -969,7 +962,6 @@
   <block id="166327ea23d320202db49689e089e8f1" category="cell">在Oracle Linux 7.8核心（5.4.17-2011.1.2.el8uek.x86_64）與QLogic LPe32002 32G HBA上執行儲存容錯移轉作業期間、I/O作業可能無法繼續執行現有的作用中路徑。如果在儲存容錯移轉期間、由於無法繼續通過現有的作用中路徑而導致I/O進度停止、則I/O作業可能無法繼續、導致I/O延遲。只有在儲存容錯移轉還原作業完成之後、I/O作業才會恢復。</block>
   <block id="7a5cdf95716ea8fdfcfafa0f545139e0" category="inline-link-macro">17319</block>
   <block id="69e5ae046a9943b657bd5c50bd583d28" category="cell"><block ref="69e5ae046a9943b657bd5c50bd583d28" category="inline-link-macro-rx"></block></block>
-  <block id="f994219423e399efdca019b949b7b55a" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="9f4ccc9b870b80347bff9a68482dd18d" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.9。</block>
   <block id="5fc5720a1a04d98fd8788b6a94e31e4e" category="summary">使用VMware技術設定適用於Oracle Linux 7.8的VME/FC主機組態ONTAP 、並提供範例</block>
   <block id="62eef3d72485420aaef57ae6f4135044" category="doc">適用於Oracle Linux 7.8的NVMe / FC主機組態、ONTAP 含功能</block>
   <block id="806bc64df06f53e39492ea141c1547ac" category="paragraph">Oracle Linux 7.8的支援在支援NVMe 9.6或更新版本上。ONTAPOracle Linux 7.8主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請注意、Broadcom啟動器可透過相同的FC介面卡連接埠、同時處理NVMe/FC和FCP流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
@@ -1132,7 +1124,6 @@
   <block id="2a5337b34ae2f42558961dd451ec2a21" category="cell">您可能會看到10G FCoE邏輯（QLE8152）主機上的邏輯驅動程式模組發生核心當機。當機發生於IO的儲存容錯移轉作業期間。發生這種當機的可能性很高、導致主機的IO中斷時間更長。</block>
   <block id="9841401331f8c5563c4b060ff5370e72" category="inline-link-macro">15019</block>
   <block id="3c146cad71f41f0977cca30911d433b7" category="cell"><block ref="3c146cad71f41f0977cca30911d433b7" category="inline-link-macro-rx"></block></block>
-  <block id="6882bef4cefc5733f551c1805f02cb34" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="246c4652661004d5759d6a65e7446177" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.0。</block>
   <block id="c973ee9c17b37717f62a4aff80aecfb5" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.1搭配使用功能</block>
   <block id="3ce6290065aca5f2379be4018bde8494" category="doc">使用Red Hat Enterprise Linux 7.1搭配NetApp ONTAP 功能</block>
   <block id="2b581afbd27b61920ecd4178bff90d65" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="43096333be688daf930575ef64d477b5" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -1211,7 +1202,6 @@
   <block id="501bcccc8f9d47ad0f5a58eda68930e0" category="cell">在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行QLogic QLE2672 16G主機和QLE2742 32GB Fibre Channel（FC）主機匯流排介面卡（HBA）、IO進度可能會因為封鎖的連接埠而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online</block>
   <block id="775a46e8c6d09ce5548db66cc249435c" category="inline-link-macro">16853</block>
   <block id="bd1474c0722e21037b60abd57027a5a8" category="cell"><block ref="bd1474c0722e21037b60abd57027a5a8" category="inline-link-macro-rx"></block></block>
-  <block id="074d78c6f92f22117d2b8417c6d1a9db" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="7da0cf27325ceb77c258ebf5ec85252d" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.7。</block>
   <block id="1007b7632045ad8e75cf3589b6d28f94" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.1搭配使用功能</block>
   <block id="76b5f29f2210c120279557998f5b220b" category="doc">使用Oracle Linux 8.1搭配NetApp ONTAP 功能</block>
   <block id="3adfaacb5236083e12561cfda09586f4" category="paragraph">對於Oracle Linux 8.1、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 8.1的所有設定都經過編譯、可辨識及正確管理ONTAP 各種LUN。</block>
@@ -1253,7 +1243,6 @@
   <block id="9104aa498f971a4f36b36c41f445ce30" category="cell"><block ref="a8f52c228282c2c6ed4c049cc277ae5a" category="inline-link-macro-rx"></block></block>
   <block id="7d937b6efb504d37a46095c07e7716cd" category="cell">在儲存容錯移轉作業期間、利用QLogic QLE2672 16G FC觀察到OL7.5發生核心中斷</block>
   <block id="7a1b52e64826aa344229a4f10a14cabf" category="cell">在使用核心4.1.12-112.16.4.el7uek.x86_64和QLogic QLE2672 HBA的Oracle Linux 7（OL7.5）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示重新開機作業系統、導致應用程式中斷。如果設定kdump、核心中斷會在/var/crash /目錄中建立vmcore檔案。這種中斷可以在模組「kmem_cache _alloc+118」中觀察、此模組會記錄在vmcore檔案中、並以字串「例外RIP：kmem_cache _alloc+118」來識別。 核心中斷之後、您可以重新啟動主機作業系統並重新啟動應用程式來恢復。</block>
-  <block id="e702555a4a59e000c8d92006a5792f0b" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="bfc8e8ee41816e9c4dceb3d16efabae3" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.5。</block>
   <block id="8eee884db44f521f0d19cac36bf258cc" category="summary">搭配ONTAP 使用Windows Server 2016搭配使用</block>
   <block id="f5cba97c30a47867e3649fd136cca68c" category="inline-link-macro">Microsoft Update目錄2016</block>
   <block id="68744b8d382d9303c5e3ae596645d8f1" category="admonition">前往 <block ref="6e6b75f4256049ee1dbc008868e8aa3a" category="inline-link-macro-rx"></block> 網站、取得並安裝適用於您Windows版本的必要Windows修補程式。</block>
@@ -1346,7 +1335,6 @@
   <block id="2c4482fc356b97d876c074f19f3c021c" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="14c4ef0ebddeee898c232e26b853e472" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="74b9535debb295fda5221dbd495584f5" category="paragraph">對於CentOS 7.4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.4是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
   <block id="3056cb9ca32def2fb2f2fd97cb7a82d7" category="paragraph">CentOS 7.4作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="dc4ea0d0c9b4e7f5d56d5a0dcba15eff" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="6e4336b1d4088de52f34e622701c0df2" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.4。</block>
   <block id="af542c850dcba761107186a0c4f1cd8f" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.2搭配使用功能</block>
   <block id="2d022d8cbf7152df1b17c45be3158c88" category="doc">使用Red Hat Enterprise Linux 8.2搭配NetApp ONTAP 功能</block>
   <block id="4760c3b673835516c579d9024201af61" category="paragraph">對於Red Hat Enterprise Linux（RHEL）8.2、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.2已使用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。</block>
@@ -1362,7 +1350,6 @@
   <block id="7079c64a5b24cdd32462fc31603b1135" category="cell"><block ref="db94b7133d12176606a6a4461fe651e0" category="inline-link-macro-rx"></block></block>
   <block id="82acca8af52f5f8d8536c7d62c245815" category="cell">在使用QLE8362卡的OL7.4 Hypervisor上觀察到韌體傾印</block>
   <block id="d6afe009ea52239221866c17107326f9" category="cell">在使用QLE8362卡的OL7.4 Hypervisor上執行儲存容錯移轉作業時、偶爾會觀察到韌體傾印。韌體傾印可能會導致主機I/O中斷、可能會長達500秒。介面卡完成韌體傾印後、I/O作業會以正常方式恢復。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/message檔案中會顯示下列訊息：qla2xxx [0000:0c:00.3]-d001:8：韌體傾印已儲存至暫存緩衝區（8/ffffc90008901000）、傾印狀態旗標（0x3f）</block>
-  <block id="ffa7b1f39269fb0871ceed9ecc9e7c03" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="6e4336b1d4088de52f34e622701c0df2" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.4。</block>
   <block id="28d6df6dca047dcc2e777e7124494ec5" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.0搭配使用功能</block>
   <block id="1f40e1a1a4e6362e04a98d9072900e16" category="doc">使用Red Hat Enterprise Linux 7.0搭配NetApp ONTAP 功能</block>
   <block id="0522c3e73855540eb2f0017e0bee58f6" category="paragraph">對於Red Hat Enterprise Linux（RHEL）7.0、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 7.0的所有設定都已經過編譯、可辨識及正確管理ONTAP 各種LUN。</block>
@@ -1411,7 +1398,6 @@
   <block id="253f9a8620f20f372c2bbdf28eec14f4" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="de6f4b59a170663afff37b664d89bb37" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="6a2c85eca0b58ae9120cd4aa738a6949" category="paragraph">對於CentOS 7.5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.5是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
   <block id="118bc1ed4f7992653349b3a6aebc8126" category="paragraph">CentOS 7.5作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本設定正確的所有組態參數、以利執行各種版本的更新和非ASA組態設定。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="18815f4d06de8e712eef1e0eb588661c" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="bfc8e8ee41816e9c4dceb3d16efabae3" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.5。</block>
   <block id="13875804930272cb7e31a51605d09c65" category="doc">Solaris Host Utilities 6.2</block>
   <block id="408c1c436b88f56a9e4cf815ca520ffc" category="list-text">為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。</block>
   <block id="8f3b9d0cc42d20c0623a5f0990c4181e" category="paragraph">Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</block>
@@ -1470,7 +1456,6 @@
   <block id="cb3913ee3213f28b1d82507efb22156d" category="doc">將CentOS 7.1與NetApp ONTAP 搭配使用</block>
   <block id="95f05a2f59b08c6cdec0baaa96182662" category="paragraph">對於CentOS 7.1、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.1是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
   <block id="1fe8de9a4233735ec5baff035c7e8460" category="paragraph">CentOS 7.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="fdd46b70edd09a7c9e43a6a3a04cc4a8" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="ced590fe156efd06c547fb4b408501cd" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.1。</block>
   <block id="fefc4c656e279365e6f2d544c146d1c6" category="summary">說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 15 SP2搭配使用功能</block>
   <block id="b19a1aa2328ca72961ca90632fd634e5" category="doc">使用SUSE Linux Enterprise Server 15 SP2搭配NetApp ONTAP 功能</block>
   <block id="0d6b5d3df8b9a42aafd9fa98a9641d82" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="4b97f5ca007d612f607bd68ef2a0c253" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -1487,7 +1472,6 @@
   <block id="6d7ed438586af8771033a6222425dff3" category="doc">將CentOS 7.2搭配NetApp ONTAP 功能使用</block>
   <block id="5e264cc9d3c17161fd51d23fc1227896" category="paragraph">對於CentOS 7.2、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.2是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
   <block id="45db864985333e0c1e3be6da0535ec16" category="paragraph">CentOS 7.2作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="98162b9ea246bf7c1798ec214201c1c7" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="ab27a539a1cbb70b89584000e9c1d691" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.2。</block>
   <block id="2ec06282192bf9b2cd91d1e3242e96f4" category="doc">使用Solaris 11.4搭配NetApp ONTAP 功能</block>
   <block id="78dad9d652edc0f2255634fdd6120f93" category="paragraph">您可以從NetApp支援網站下載包含主機公用程式軟體套件的壓縮檔案。取得檔案後、您必須解壓縮檔案、才能取得安裝Host Utilities所需的軟體套件。</block>
   <block id="f814c4c509cfee1aaec985d122ae9223" category="list-text">解壓縮檔案。</block>
@@ -1577,7 +1561,6 @@
   <block id="35764b35c24428477e00e911d5e66bbe" category="doc">使用Red Hat Enterprise Linux 7.4搭配NetApp ONTAP 功能</block>
   <block id="6d9367bff959eeca53afc4e48b616f9e" category="paragraph">對於Red Hat Enterprise Linux（RHEL）7.4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 7.4已使用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="f5bd1c87a82329c908a6a69f3a08446a" category="paragraph">RHEL 7.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="5f4a43942ec70183b60befe61cf46d9c" category="paragraph">RHEL 7.4沒有已知問題。</block>
   <block id="ce33fe68519e0e2d14428572a71c7569" category="summary">以VMware為例、針對Oracle Linux 8.2設定VME/FC主機組態ONTAP</block>
   <block id="89d62bb3e0891fdc6a601122dddc0440" category="doc">適用於Oracle Linux 8.2（ONTAP 含擴充功能）的NVMe/FC主機組態</block>
   <block id="2a0a4348e3cfffb7106ae13ae6827b6d" category="paragraph">Oracle Linux 8.2支援NVMe / FC ONTAP 、不適用於支援更新版本9.6。Oracle Linux 8.2主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe/FC和FCP流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
@@ -1598,7 +1581,6 @@
   <block id="d25a3062ed96c87dc1a6d114e43686a8" category="paragraph">Oracle Linux 7.3作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
   <block id="f554f8ae0fcea497dc4db54ed18e2e5b" category="admonition">若要設定Oracle Linux 7.3 RedHat Enterprise核心（RHCK）、請使用 <block ref="afd18201682c20761a139e3ba1b44320" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.3。</block>
   <block id="f909d8a9e3b0ea24e758ecf1323e3235" category="paragraph">Oracle Linux 7.3沒有已知問題。</block>
-  <block id="5870b18802ab14745ffe6fdfe4e24772" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="5e4bf77e6394be9d860675fb343643e9" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.3。</block>
   <block id="eea65c7c864efb688d55381c5b21a910" category="summary">說明如何搭配ONTAP 使用Veritas Infoscale 6.5與6.7 for Linux搭配使用</block>
   <block id="05d7c7c2b6d6ca4fb59e67f4f34b7e2b" category="doc">使用VMware vSphere 6.5和6.7搭配NetApp ONTAP 功能</block>
   <block id="cf46645d175a0f99f53e120079789f83" category="paragraph">本文件針對ONTAP vSphere 6.5.x和6.7.x版本搭配FC、FCoE和iSCSI傳輸協定、提供有關VMware SAN主機組態設定的指引。</block>
@@ -1731,7 +1713,6 @@
   <block id="8499ac147d02c58a3d85f2d4f6752557" category="paragraph">您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應非ASA角色的多重路徑輸出範例。</block>
   <block id="4e9ae0b5e17ff4de4954e9d6f6c80609" category="paragraph">Oracle Linux 7.8作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
   <block id="0abc977b99b5f67c94ba5221df34ff03" category="admonition">若要設定Oracle Linux 7.8 RedHat Enterprise核心（RHCK）、請使用 <block ref="f258b7d81a3180e673755835c6a903ac" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.8。</block>
-  <block id="583e591c2185306b2cdceb0dfa81f2a6" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="3a06823278fda302102a106bc94a18f7" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.8。</block>
   <block id="39e2f887814ee9598f2240638f02ad73" category="summary">說明如何搭配ONTAP 使用CentOS 8.3搭配使用功能</block>
   <block id="0c3b5a7f0382879805ac3bf9efaa2288" category="doc">將CentOS 8.3搭配NetApp ONTAP 功能使用</block>
   <block id="ef00ac506f369c446209297666bbc1c1" category="paragraph">對於CentOS 8.3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.3是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
@@ -1756,7 +1737,6 @@
   <block id="3d5742ce7d4d5ca13461bc85b97a93a6" category="doc">將CentOS 7.7搭配NetApp ONTAP 功能使用</block>
   <block id="85c1cd097e2b89074f8df27d3f429558" category="paragraph">對於CentOS 7.7、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.7是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
   <block id="2f0a9f2f85776bf6f638ce5e461ef16e" category="paragraph">CentOS 7.7作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動為ASA 各種版本的支援和非ASA組態設定正確的所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="41a65cfa210ec163e641f01bd09cbb85" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="7da0cf27325ceb77c258ebf5ec85252d" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.7。</block>
   <block id="b5532e466b7ace9d1d9ddb98b57ec0d7" category="summary">說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterprise Server 15 SP3的NVMe/FC</block>
   <block id="59788ae5607a12c1afe34deb1ad155a2" category="doc">適用於SUSE Linux Enterprise Server 15 SP3的NVMe主機組態搭配ONTAP 功能</block>
   <block id="e70c1030d9edf847e05fc47a0de27a27" category="paragraph">採用ANA（非對稱命名空間存取）的SUSE Linux Enterprise Server 15 SP3（SLES15 SP3）支援NVMe over Fabric或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需啟用NVMe的詳細資料、請ONTAP 參閱此處以ANA on SLS15 SP3和以之為目標的內核NVMe多重路徑。</block>
@@ -2077,7 +2057,6 @@
   <block id="310e18c99baea86232364acadb939a15" category="cell">在Oracle Linux 7.6上執行儲存容錯移轉作業時、如果UEK5U2核心執行Emulex LPe16002B-m6 16G光纖通道（FC）主機匯流排介面卡（HBA）、I/O進度可能會因為報告遭到封鎖而停止。儲存容錯移轉作業報告會從「線上」狀態變更為「封鎖」狀態、導致讀取和寫入作業延遲。作業成功完成後、報告將無法返回「線上」狀態、並繼續保持「封鎖」狀態。</block>
   <block id="803346e13fcd7415573e4bec58e22f89" category="cell">在儲存容錯移轉作業期間、QLogic QLE2672 16G主機上的遠端連接埠狀態遭到封鎖</block>
   <block id="b2aadc0859a33b6672ced88dfb500d44" category="cell">在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行QLogic QLE2672 16G主機和QLE2742 32GB Fibre Channel（FC）主機匯流排介面卡（HBA）、IO進度可能會因為封鎖的連接埠而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online</block>
-  <block id="e73c18132f791b8f47eb6f574cf2046d" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="0f8f9bd959566521e4eb1faf7eb72b62" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.6。</block>
   <block id="bc2395f0cdf95b5f51262e33c9faa5e6" category="summary">說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12 SP2搭配使用功能</block>
   <block id="4187a178ebfd4740fe88cee2b18b8b28" category="doc">使用SUSE Linux Enterprise Server 12 SP2搭配NetApp ONTAP 功能</block>
   <block id="cf55f22cba1bd78a550b24129856d31b" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="7103ca6e78fec9daba4ed8d32067a33d" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -2093,7 +2072,6 @@
   <block id="8b2711a091056ad63103e1e13083ec13" category="paragraph">Oracle Linux 7.2作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
   <block id="31cf8046288558f6d4e1ae6619a70d13" category="admonition">若要設定Oracle Linux 7.2 RedHat Enterprise核心（RHCK）、請使用 <block ref="b6341682387f7873fba9fb1f6f4c5842" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.2。</block>
   <block id="28a076f4875989d2a91944bc7342d0fc" category="paragraph">Oracle Linux 7.2沒有已知問題。</block>
-  <block id="8fec8e0109d6229ca66c9ad28f23a41a" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="ab27a539a1cbb70b89584000e9c1d691" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.2。</block>
   <block id="bea05db7b205cebd49d85c581b86c97e" category="summary">針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態設定的指引</block>
   <block id="018e7312915cc7977d800bfc07ff8e98" category="doc">使用Veritas Storage Foundation 6 for Linux搭配NetApp ONTAP 功能</block>
   <block id="736c980a1fb2f447faa0dedf6080305f" category="paragraph">本文件針對ONTAP 採用FC、FCoE和iSCSI傳輸協定的Red Hat Enterprise Linux與Oracle Linux（RHCK型）平台、提供有關Veritas Storage Foundation 6系列發行版之SAN主機組態設定的指引。</block>
@@ -2101,7 +2079,6 @@
   <block id="9a57d403bb39ff42c58535b5695a4d75" category="doc">將CentOS 7.9與NetApp ONTAP 結合使用</block>
   <block id="266073eadfa1373804ed4272aa64c5e3" category="paragraph">對於CentOS 7.9、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.9採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各個LUN。</block>
   <block id="225338acf861e72e16eabfde3dbe33e2" category="paragraph">CentOS 7.9作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="ad7c114f254c5e63bf199af37e29b54f" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="9f4ccc9b870b80347bff9a68482dd18d" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.9。</block>
   <block id="cea2e5f9065bd07d72cb5caab3c1db47" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.3搭配使用功能</block>
   <block id="254bb3d9a7cf5cab4c0853ebfdd5582c" category="doc">使用Oracle Linux 8.3搭配NetApp ONTAP 功能</block>
   <block id="3512af03a0184fdf02e1a9a23f8da83c" category="paragraph">對於Oracle Linux（OL）8.3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.3是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
@@ -2387,4 +2364,13 @@
   <block id="ce081634ead33780d73e0e1f6b9ea0ca" category="paragraph">有了Veritas動態多重路徑（VxDMP）、您必須執行組態工作、將NetApp LUN宣告為Veritas多重路徑裝置。您必須安裝由Veritas為NetApp儲存系統提供的Array Support程式庫（ASB）和Array Policy Module（APM）套件。雖然Veritas軟體安裝會隨產品一起載入預設的ASLM套件、但建議您使用Veritas支援入口網站上列出的最新支援套件。</block>
   <block id="697675a4c21edc6fc07599249d9fe748" category="paragraph">在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</block>
   <block id="4e0b2b4c829cef3166a5190a135bb26f" category="sidebar">Infoscale 8.</block>
+  <block id="25a8014bcb3b1759e3c29f5d375c6bf2" category="paragraph">CentOS 7.0沒有已知問題。</block>
+  <block id="0d22c29a0eb01e70e085a44916b321b4" category="cell">1440718</block>
+  <block id="2a80f8446aa4a429e9f97920b1e74d2c" category="cell">如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。</block>
+  <block id="432a6b98702aceeda0bf1a325e31bcf4" category="inline-link-macro">NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損</block>
+  <block id="0317854ad5c788fd489e5dfe652c06cd" category="cell">當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 <block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>。</block>
+  <block id="382b0f5185773fa0f67a8ed8056c7759" category="cell">不適用</block>
+  <block id="3c0005e386c72a025042c9cd742e78cf" category="paragraph">CentOS 7.2沒有已知問題。</block>
+  <block id="4a77bd6ca1098e847cb75095287cdf8d" category="paragraph">CentOS 7.3沒有已知問題。</block>
+  <block id="ebc6dd08dd10ab545441a995fcd41e3f" category="paragraph">CentOS 7.1沒有已知問題。</block>
 </blocks>

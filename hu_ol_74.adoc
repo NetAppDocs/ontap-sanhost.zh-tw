@@ -234,11 +234,11 @@ NOTE: 若要設定Oracle Linux 7.4 RedHat Enterprise核心（RHCK）、請使用
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
+| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]。 | 不適用 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1109468["1109468"^] | 在使用QLE8362卡的OL7.4 Hypervisor上觀察到韌體傾印 | 在使用QLE8362卡的OL7.4 Hypervisor上執行儲存容錯移轉作業時、偶爾會觀察到韌體傾印。韌體傾印可能會導致主機I/O中斷、可能會長達500秒。介面卡完成韌體傾印後、I/O作業會以正常方式恢復。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/message檔案中會顯示下列訊息：qla2xxx [0000:0c:00.3]-d001:8：韌體傾印已儲存至暫存緩衝區（8/ffffc90008901000）、傾印狀態旗標（0x3f） | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=16039["16039"^] 
 |===
-
-NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_74.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）7.4。
-
 
 
 == 版本資訊

@@ -264,7 +264,8 @@ NOTE: 若要設定Oracle Linux 7.9 RedHat Enterprise核心（RHCK）、請使用
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
+| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]。 | 不適用 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1328944["1328943."^] | 在使用Emulex LPe32002（32G）主機進行儲存容錯移轉期間、發現I/O延遲 | 在Oracle Linux 7.8核心（5.4.17-2011.1.2.el8uek.x86_64）與QLogic LPe32002 32G HBA上執行儲存容錯移轉作業期間、I/O作業可能無法繼續執行現有的作用中路徑。如果在儲存容錯移轉期間、由於無法繼續通過現有的作用中路徑而導致I/O進度停止、則I/O作業可能無法繼續、導致I/O延遲。只有在儲存容錯移轉還原作業完成之後、I/O作業才會恢復。 | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=17319["17319"^] 
 |===
-
-NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_79.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）7.9。

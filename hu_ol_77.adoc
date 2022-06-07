@@ -234,6 +234,9 @@ NOTE: 若要設定Oracle Linux 7.7 RedHat Enterprise核心（RHCK）、請使用
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
+| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]。 | 不適用 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311575["1311575"^] | 在使用QLogic QLE2672（16G）進行儲存容錯移轉期間、由於讀取/寫入作業而導致IO延遲無法切換至次要路徑 | 在Oracle Linux 7.7核心（5.4.17-2011.0.7.el7uek.x86_64）與QLogic QLE2672 16G HBA的儲存容錯移轉作業期間、I/O作業可能無法透過次要路徑繼續。如果在儲存容錯移轉期間、由於主要路徑遭到封鎖而導致I/O進度停止、則可能無法透過次要路徑繼續I/O作業、導致I/O延遲。只有在主路徑完成儲存容錯移轉還原作業後才會恢復I/O作業。 | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=17171["17171."^] 
 
 
@@ -245,5 +248,3 @@ NOTE: 若要設定Oracle Linux 7.7 RedHat Enterprise核心（RHCK）、請使用
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327["1246327"^] | 觀察到IO延遲、且Rport在使用QLogic QLE2672（16G）和QLE2742（32G）進行儲存容錯移轉期間移至封鎖、不存在狀態 | 在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行QLogic QLE2672 16G主機和QLE2742 32GB Fibre Channel（FC）主機匯流排介面卡（HBA）、IO進度可能會因為封鎖的連接埠而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=16853["16853"^] 
 |===
-
-NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_77.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）7.7。

@@ -271,6 +271,9 @@ devices {
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
+| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]。 | 不適用 
+
+
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1139053["1139053"^] | 在儲存容錯移轉作業期間、使用QLogic QLE2672 16GB FC的RHEL7.5會發生核心中斷 | 在使用QLogic QLE2672 16GB光纖通道主機匯流排介面卡的RHEL7U5核心上執行儲存容錯移轉作業時、核心會因為核心中的恐慌而中斷。核心異常會導致RHEL 7.5重新開機、進而導致應用程式中斷。如果已設定kdump、核心異常會在/var/crash /目錄下產生vmcore檔案。vmcore檔案用於瞭解故障原因。在這種情況下、vmcore檔案中記錄的「Get_no_timer_interrupt+440」模組會出現緊急狀況、並顯示下列字串：「[例外RIP：Get_no_timer_interrupt+440]」核心中斷之後、您可以重新啟動主機作業系統、並視需要重新啟動應用程式、以恢復作業系統。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1542564["1542564"^] 
 
 
