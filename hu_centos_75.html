@@ -277,35 +277,27 @@
     </div>
   </div>
   <div class="n-property-bar__toolbar">
-    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
-      <div id="ie-i18n-menu">
-      <span class="ie-i18n-lang">繁體中文</span>
-        <button class="ie-i18n-icon-container" type="button">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">繁體中文</span>
           <svg class="n-globe__icon" aria-labelledby="title">
             <title>globe</title>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/ontap-sanhost/common/svg/sprite.svg#globe"></use>
           </svg>
         </button>
       </div>
-      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
-        <div class="n-language-selector-menu">
-          <ul class="n-menu__list">
-            <li class="n-menu__list-column">
-              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_centos_75.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_centos_75.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_centos_75.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_centos_75.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_centos_75.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
-                </li></ul>
-            </li>
-          </ul>
-        </div>
-      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_centos_75.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_centos_75.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_centos_75.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_centos_75.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_centos_75.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li></ul>
     </div><!-- End Language Selector -->
 
     <div class="n-property-bar__cta"></div>
@@ -1414,7 +1406,7 @@
     $("#toggleContainerPdf").toggle('display');
     $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
   });
-</script><div class="sidebar-nav-container">
+</script><div class="sidebar-nav-container" id="mysidebardiv">
   <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/index.html">
         主頁
       </a></li><li class="subfolders "><a href="#">
@@ -1803,7 +1795,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-11 15:34:17 +0000">05/11/2022</time>
+    <time datetime="2022-06-07 16:40:55 +0000">06/07/2022</time>
     
   
 
@@ -2168,9 +2160,30 @@ devices {
 <div class="sect1">
 <h2 id="已知問題與限制">已知問題與限制</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>如需CentOS（Red Hat相容核心）已知問題、請參閱 <a href="hu_rhel_75.html#known-problems-and-limitations">"已知問題"</a> 適用於Red Hat Enterprise Linux（RHEL）7.5。</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">NetApp錯誤ID</th>
+<th class="tableblock halign-left valign-top">標題</th>
+<th class="tableblock halign-left valign-top">說明</th>
+<th class="tableblock halign-left valign-top">Bugzilla ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1440718</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 <a href="https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7" target="_blank" rel="noopener">"NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"</a>。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">不適用</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -2330,4 +2343,5 @@ devices {
     </script>
     <script src='/zh-tw/ontap-sanhost/js/www-ntap.js'></script>
     <script src='/zh-tw/ontap-sanhost/js/tabbed-blocks.js'></script>
+    <script src='/zh-tw/ontap-sanhost/js/sidebar.js'></script>
   </body></html>
