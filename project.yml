@@ -14,7 +14,11 @@ sidebar:
   - title: SAN主機公用程式
     entries:
     - title: AIX主機公用程式
-      url: "/hu_aix_61.html"
+      entries:
+      - title: 安裝AIX Hu 6.1
+        url: "/hu_aix_61.html"
+      - title: 版本資訊
+        url: "/hu_aix_61_rn.html"
     - title: HPUX主機公用程式
       url: "/hu_hpux_60.html"
     - title: Linux統一化主機公用程式
