@@ -365,7 +365,6 @@
   <block id="33fb3916b5bbccadc7502b97d2b47e0a" category="summary">說明如何搭配ONTAP 使用Citrix XenServer 7.x與VMware</block>
   <block id="9873f1b83211d16cf532c7bbb3c830b9" category="doc">使用Citrix XenServer搭配NetApp ONTAP 解決方案</block>
   <block id="0b79795d3efc95b9976c7c5b933afce2" category="section-title">簡介</block>
-  <block id="c2c2558eb447d94ed557cacb48863870" category="paragraph">本文件針對ONTAP Citrix XenServer 7系列OS版本搭配FC、FCoE和iSCSI傳輸協定、提供有關VMware SAN主機組態設定的指引。</block>
   <block id="a51e3210f96458fa393e6f4bf88caabc" category="paragraph">Citrix XenServer中的多重路徑支援是以Device對應器Multibathd元件為基礎。不會自動為所有顯示給XenServer的LUN建立裝置對應器節點、而且只有當儲存管理層（API）主動使用LUN時、才會進行資源配置。Citrix XenServer Storage Manager API外掛程式可自動啟動及停用多重路徑節點。</block>
   <block id="614673c0b1eeb91e8ffc86cde6faa93b" category="paragraph">由於與整合式多重路徑管理架構不相容、Citrix建議您使用Citrix XenCenter應用程式來管理儲存組態。如果需要手動查詢Device Mapper表的狀態、或在系統上列出作用中的裝置對應器多重路徑節點、您可以使用「/sbin/mpathutils STATUS」命令來驗證ONTAP 您的還原LUN設定。如需詳細資訊、請參閱Citrix XenServer的標準廠商文件。</block>
   <block id="9fc86c956b59ea355d470ac30580447a" category="paragraph">Citrix XenServer 7.x OS是以辨識及正確管理ONTAP VMware LUN所需的所有設定所編譯。對於Citrix XenServer 7.x、必須存在空白的零位元組「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。</block>
@@ -2417,4 +2416,7 @@
   <block id="98d83a607473e5d6dab1096f6758273a" category="paragraph">RHEL 8.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
   <block id="18b8e1deb73eabf9425b04753d2b006d" category="paragraph">RHEL 8.6.沒有已知問題。</block>
   <block id="9b402891c0d38b9c654dcfa36df9d722" category="sidebar">8.6.</block>
+  <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">AIX主機公用程式6.1版本資訊</block>
+  <block id="b46a43d1dd4c2f14b94228f8a8b1e193" category="paragraph">本文件提供ONTAP 有關Citrix XenServer 7系列OS版本（含FC、FCoE和iSCSI傳輸協定）的VMware SAN主機組態設定指南。</block>
+  <block id="c03432d938277a67cb7c8ce5d783b2ca" category="paragraph">下列範例顯示ONTAP 所有四個主動/最佳化路徑之用、正確輸出的列舉之一：</block>
 </blocks>
