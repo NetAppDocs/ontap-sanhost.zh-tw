@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head class="at-element-marker">
-  <title>適用於Oracle Linux 7.9的NVMe / FC主機組態（ONTAP 含功能）</title>
+  <title>使用Oracle Linux 8.6搭配NetApp ONTAP 功能</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="適用於Oracle Linux 7.9的NVMe / FC主機組態（ONTAP 含功能）" />
+  <meta property="og:title" content="使用Oracle Linux 8.6搭配NetApp ONTAP 功能" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-sanhost/nvme_ol_79.html" />
-	<meta property="og:description" content="以VMware為例、設定Oracle Linux 7.9的VME/FC主機組態ONTAP" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_ol_86.html" />
+	<meta property="og:description" content="說明如何搭配ONTAP 使用Oracle Linux 8.6." />
   <meta property="og:image" content="https://docs.netapp.com/zh-tw/ontap-sanhost/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="以VMware為例、設定Oracle Linux 7.9的VME/FC主機組態ONTAP">
-  <meta name="keywords" content=" nvme, linux, oracle, 7.9"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="說明如何搭配ONTAP 使用Oracle Linux 8.6.">
+  <meta name="keywords" content=" host utilities, oracle, linux, 8.6, netapp, ontap"><!-- Icons -->
   <link rel="icon" href="/zh-tw/ontap-sanhost/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -169,7 +169,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/issues/new?body=Page%3A%20[適用於Oracle Linux 7.9的NVMe / FC主機組態（ONTAP 含功能）](https://docs.netapp.com/zh-tw/ontap-sanhost/nvme_ol_79.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/discuss-sm.svg" alt="" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/nvme_ol_79.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/edit-sm.svg" alt="" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-sanhost/images/article-sm.svg" alt="" class="github-icon" />瞭解如何作出貢獻</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/issues/new?body=Page%3A%20[使用Oracle Linux 8.6搭配NetApp ONTAP 功能](https://docs.netapp.com/zh-tw/ontap-sanhost/hu_ol_86.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/discuss-sm.svg" alt="" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_ol_86.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-sanhost/images/edit-sm.svg" alt="" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-sanhost/images/article-sm.svg" alt="" class="github-icon" />瞭解如何作出貢獻</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">在此頁面上</div>
@@ -288,15 +288,15 @@
       </div>
 
       <ul class="custom-dropdown-menu"><li>
-          <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/nvme_ol_79.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+          <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_ol_86.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/us-en/ontap-sanhost/nvme_ol_79.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+          <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_ol_86.html" target="_self"><span translate="no" class="notranslate">English</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/nvme_ol_79.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+          <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_ol_86.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/nvme_ol_79.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+          <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_ol_86.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/nvme_ol_79.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+          <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_ol_86.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
         </li></ul>
     </div><!-- End Language Selector -->
 
@@ -496,8 +496,6 @@
 
 
 
-    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
-  
 
 
 
@@ -899,6 +897,8 @@
             ol 8.
           </a>
           
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
 
 
 
@@ -1402,7 +1402,7 @@
         8.2
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_ol_81.html">
         8.1
-      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_ol_79.html">
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_ol_79.html">
         7.9
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/nvme_ol_78.html">
         7.8%
@@ -1530,7 +1530,7 @@
       <ul><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> ol 8.</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_86.html">
+      <ul><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_86.html">
         8.6.
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_85.html">
         8.5
@@ -1752,14 +1752,14 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">適用於Oracle Linux 7.9的NVMe / FC主機組態（ONTAP 含功能）</h1>
+  <h1 class="n-doc__component-detail-heading">使用Oracle Linux 8.6搭配NetApp ONTAP 功能</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 10:41:41 +0000">05/03/2022</time>
+    <time datetime="2022-06-24 17:11:03 +0000">06/24/2022</time>
     
   
 
@@ -1769,304 +1769,395 @@
 <div id="toc" class="toc">
 <div id="toctitle">目錄</div>
 <ul class="sectlevel1">
-<li><a href="#支援能力">支援能力</a></li>
-<li><a href="#已知限制">已知限制</a></li>
-<li><a href="#啟用nvmefc">啟用NVMe/FC</a></li>
-<li><a href="#設定適用於nvme-fc的broadcom-fc介面卡">設定適用於NVMe / FC的Broadcom FC介面卡</a></li>
-<li><a href="#驗證nvmefc">驗證NVMe/FC</a></li>
-<li><a href="#啟用broadcom-nvme-fc的1mb-io大小">啟用Broadcom NVMe / FC的1MB I/O大小</a></li>
+<li><a href="#安裝linux-unified-host-utilities">安裝Linux Unified Host Utilities</a></li>
+<li><a href="#san工具套件">SAN工具套件</a></li>
+<li><a href="#san開機">SAN開機</a></li>
+<li><a href="#多重路徑">多重路徑</a></li>
+<li><a href="#建議設定">建議設定</a></li>
+<li><a href="#kvm設定">KVM設定</a></li>
+<li><a href="#已知問題與限制">已知問題與限制</a></li>
 </ul>
 </div>
 <div class="sect1">
-<h2 id="支援能力">支援能力</h2>
+<h2 id="安裝linux-unified-host-utilities">安裝Linux Unified Host Utilities</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Oracle Linux 7.9支援ONTAP NVMe或更新版本的NVMe/FC。Oracle Linux 7.9主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請參閱 <a href="https://hwu.netapp.com/Home/Index" target="_blank" rel="noopener">"Hardware Universe"</a> 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">"NetApp 互通性對照表"</a>。</p>
+<p>NetApp Linux Unified Host Utilities軟體套件可在上取得 <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab" target="_blank" rel="noopener">"NetApp 支援網站"</a> 在64位元.rpm檔案中。</p>
 </div>
+<div class="paragraph">
+<p>強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</p>
 </div>
+<div class="paragraph">
+<p>如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。</p>
 </div>
-<div class="sect1">
-<h2 id="已知限制">已知限制</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>原生NVMe / FC自動連線指令碼在「NVMe - CLI」套件中無法使用。使用HBA廠商提供的外部自動連線指令碼。</p>
-</li>
-<li>
-<p>根據預設、NVMe多重路徑中不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。如需在Oracle Linux 7.9上啟用NVMe/FC的步驟、請參閱一節。</p>
-</li>
-<li>
-<p>不支援NVMe/FC、因此Oracle Linux 7.9不支援Linux Unified Host Utilities（Luhu）NVMe / FC。使用ONTAP NetApp外掛程式隨附於原生NVMe CLI中的支援功能之一、即可取得的支援功能。</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="啟用nvmefc">啟用NVMe/FC</h2>
-<div class="sectionbody">
 <div class="olist arabic">
+<div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>在伺服器上安裝Oracle Linux 7.9。</p>
+<p>從下載64位元Linux Unified Host Utilities軟體套件 <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab" target="_blank" rel="noopener">"NetApp 支援網站"</a> 到您的主機。</p>
 </li>
 <li>
-<p>安裝完成後、請確認您執行的是支援的Unbreakable Enterprise核心。請參閱 <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">"NetApp 互通性對照表"</a>。</p>
-<div class="listingblock">
-<div class="content">
-<pre># uname -r
-5.4.17-2011.6.2.el7uek.x86_64</pre>
-</div>
-</div>
-</li>
-<li>
-<p>升級「NVMe - CLI」套件。</p>
-<div class="listingblock">
-<div class="content">
-<pre># rpm -qa | grep nvme-cli
-nvme-cli-1.8.1-3.el7.x86_64</pre>
-</div>
-</div>
-</li>
-<li>
-<p>請將下列字串新增為單獨的udevc規則、網址為：「/lib/udev/raths.d/71-nvme-iopolicy-netapp-ONTAP.rules`」。這可為NVMe多重路徑啟用循環配置資源負載平衡。</p>
-<div class="listingblock">
-<div class="content">
-<pre># cat /lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules
-# Enable round-robin for NetApp ONTAP
-ACTION=="add", SUBSYSTEMS=="nvme-subsystem", ATTRS{model}=="NetApp ONTAP Controller          ", ATTR{iopolicy}="round-robin"</pre>
-</div>
-</div>
-</li>
-<li>
-<p>在Oracle Linux L 7.9主機上、檢查位於「/etc/nexe/hostnqn」的主機NQN字串、並驗證其是否與ONTAP 位於該等資料陣列上對應子系統的主機NQN字串相符。</p>
-<div class="listingblock">
-<div class="content">
-<pre># cat /etc/nvme/hostnqn
-nqn.2014-08.org.nvmexpress:uuid:497ad959-e6d0-4987-8dc2-a89267400874</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>*&gt; vserver nvme subsystem host show -vserver vs_nvme_10
-Vserver Subsystem Host NQN
-------- --------- -------------------------------------- -----------
-ol_157_nvme_ss_10_0
-nqn.2014-08.org.nvmexpress:uuid:497ad959-e6d0-4987-8dc2-a89267400874</pre>
-</div>
-</div>
+<p>使用下列命令安裝軟體套件：</p>
 <div class="paragraph">
-<p>如果「hostnqn」字串不相符、您應該使用「vserver modify」命令來更新對應ONTAP 的BIOS陣列子系統上的主機NQN字串、以符合主機上「etc/nvm/hostnqn」中的主機NQN字串。</p>
+<p>「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」</p>
 </div>
-</li>
-<li>
-<p>重新啟動主機。</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="設定適用於nvme-fc的broadcom-fc介面卡">設定適用於NVMe / FC的Broadcom FC介面卡</h2>
+<h2 id="san工具套件">SAN工具套件</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</p>
+</div>
+<div class="paragraph">
+<p>在以下範例中、「左LUN show command」會傳回LUN資訊。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># sanlun lun show all
+controller(7mode/E-Series)/            device     host               lun
+vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
+-------------------------------------------------------------------------
+data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="san開機">SAN開機</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp 互通性對照表工具"</a> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</p>
+</div>
 <div class="olist arabic">
+<div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">"NetApp 互通性對照表"</a>。</p>
-<div class="listingblock">
-<div class="content">
-<pre># cat /sys/class/scsi_host/host*/modelname
-LPe32002-M2
-LPe32002-M2</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># cat /sys/class/scsi_host/host*/modeldesc
-Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
-Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter</pre>
-</div>
+<p>將SAN開機LUN對應至主機。</p>
+</li>
+<li>
+<p>確認有多個可用路徑。</p>
+<div class="paragraph">
+<p>請記住、只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。</p>
 </div>
 </li>
 <li>
-<p>預設已啟用lffc中的NVMe支援：</p>
+<p>在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。</p>
+<div class="paragraph">
+<p>如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。</p>
+</div>
+</li>
+<li>
+<p>重新啟動主機、確認開機成功。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="多重路徑">多重路徑</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>對於Oracle Linux（OL）8.6"/etc/multipath.conf "檔案必須存在、但您不需要對該檔案進行特定變更。OL 8.6是使用所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</p>
+</div>
+<div class="paragraph">
+<p>您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。</p>
+</div>
+<div class="paragraph">
+<p>以下各節提供LUN對應非ASA角色的多重路徑輸出範例。</p>
+</div>
+<div class="sect2">
+<h3 id="非asa組態">非ASA組態</h3>
+<div class="paragraph">
+<p>對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</p>
+</div>
+<div class="paragraph">
+<p>下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre># cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
-3</pre>
+<pre># multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb 69:624 active ready running
+| |- 16:0:5:35 sdun 66:752 active ready running
+|-+- policy='service-time 0' prio=10 status=enabled
+|- 15:0:0:35 sdaj 66:48 active ready running
+|- 15:0:1:35 sdbx 68:176 active ready running</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="附註">
+</td>
+<td class="content">
+請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="所有san陣列組態">所有SAN陣列組態</h3>
+<div class="paragraph">
+<p>在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</p>
+</div>
+<div class="paragraph">
+<p>下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="附註">
+</td>
+<td class="content">
+請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="建議設定">建議設定</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Oracle Linux 8.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</p>
+</div>
+<div class="paragraph">
+<p>要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</p>
+</div>
+<div class="paragraph">
+<p>第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># systemctl enable multipathd
+# systemctl start multipathd</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>較新的lfit驅動程式（包括收件匣和發件匣）預設為3。因此、您不需要在「/etc/modprobe.d/lffc.conf」中明確設定此項目。</p>
+<p>不需要直接將任何內容新增至「多重路徑.conf」檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。</p>
 </div>
-</li>
-<li>
-<p>接下來、安裝建議的lfit自動連線指令碼：</p>
+<div class="paragraph">
+<p>您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。</p>
+</div>
+<div class="paragraph">
+<p>將「&lt;DevID&gt;」取代為您要排除的裝置WWID字串。使用下列命令來判斷WWID：</p>
+</div>
 <div class="literalblock">
 <div class="content">
-<pre> # rpm -ivh nvmefc-connect-12.8.264.0-1.noarch.rpm
-. 確認已安裝自動連線指令碼。</pre>
+<pre>blacklist {
+        wwid &lt;DevId&gt;
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}</pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre># rpm -qa | grep nvmefc
-nvmefc-connect-12.8.264.0-1.noarch</pre>
-</div>
-</div>
-</li>
-<li>
-<p>驗證啟動器連接埠是否已啟動並正在執行。</p>
-<div class="listingblock">
-<div class="content">
-<pre># cat /sys/class/fc_host/host*/port_name
-0x10000090fae0ec61
-0x10000090fae0ec62
-
-# cat /sys/class/fc_host/host*/port_state
-Online
-Online</pre>
-</div>
-</div>
-</li>
-<li>
-<p>確認已啟用NVMe / FC啟動器連接埠、而且能夠看到目標連接埠、而且所有連接埠都已啟動並正在執行。</p>
 <div class="paragraph">
-<p>在以下範例中、只有一個啟動器連接埠已啟用、並與兩個目標LIF連線、如下面輸出所示：</p>
+<p>在此範例中、「sda」是我們需要列入黑名單的本機SCSI磁碟。</p>
 </div>
-<div class="listingblock">
+<div class="olist arabic">
+<div class="title">步驟</div>
+<ol class="arabic">
+<li>
+<p>執行下列命令來判斷WWID：</p>
+<div class="literalblock">
 <div class="content">
-<pre># cat /sys/class/scsi_host/host*/nvme_info
-
-NVME Initiator Enabled
-XRI Dist lpfc0 Total 6144 NVME 2947 SCSI 2947 ELS 250
-NVME LPORT lpfc0 WWPN x10000090fae0ec61 WWNN x20000090fae0ec61 DID x012000 ONLINE
-NVME RPORT WWPN x202d00a098c80f09 WWNN x202c00a098c80f09 DID x010201 TARGET DISCSRVC ONLINE
-NVME RPORT WWPN x203100a098c80f09 WWNN x202c00a098c80f09 DID x010601 TARGET DISCSRVC ONLINE</pre>
+<pre># /lib/udev/scsi_id -gud /dev/sda
+360030057024d0730239134810c0cb833</pre>
+</div>
+</div>
+</li>
+<li>
+<p>將此WWID新增至「/etc/multipath.conf」中的黑名單節：</p>
+<div class="literalblock">
+<div class="content">
+<pre>blacklist {
+     wwid   360030057024d0730239134810c0cb833
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}</pre>
 </div>
 </div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。</p>
+</div>
+<div class="paragraph">
+<p>下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">參數</th>
+<th class="tableblock halign-left valign-top">設定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DETECT（偵測）_prio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是的</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">開發損失_tmo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">無限</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">容錯回復</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">立即</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fast_io_f故障_tmo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">功能</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 pg_init_retries 50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flip_on_last刪除</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是的</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">硬體處理常式</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no_path_retry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">佇列</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path_checker_</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path_grouping_policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">群組_by_prio</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path_selector</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">服務時間0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Polling_時間 間隔</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">優先</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ONTAP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">產品</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LUN.*</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Retain附加的硬體處理常式</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是的</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RR_weight</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">統一</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">使用者易記名稱</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">廠商</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>defaults {
+ path_checker readsector0
+ no_path_retry fail
+ }
+devices {
+ device {
+ vendor "NETAPP "
+ product "LUN.*"
+ no_path_retry queue
+ path_checker tur
+ }
+}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="附註">
+</td>
+<td class="content">
+若要設定Oracle Linux 8.6 RedHat Enterprise核心（RHCK）、請使用 <a href="hu_rhel_86.html#recommended-settings">"建議設定"</a> 適用於Red Hat Enterprise Linux（RHEL）8.6.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="驗證nvmefc">驗證NVMe/FC</h2>
+<h2 id="kvm設定">KVM設定</h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>驗證下列NVMe / FC設定。</p>
-<div class="listingblock">
-<div class="content">
-<pre># cat /sys/module/nvme_core/parameters/multipath
-Y</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># cat /sys/class/nvme-subsystem/nvme-subsys*/model
-NetApp ONTAP Controller
-NetApp ONTAP Controller</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
-round-robin
-round-robin</pre>
-</div>
-</div>
 <div class="paragraph">
-<p>在上述範例中、兩個命名空間會對應至Oracle Linux 7.9 ANA主機。這可透過四個目標生命期來查看：兩個本機節點生命期、以及兩個其他合作夥伴/遠端節點生命期。此設定顯示主機上每個命名空間的兩個ANA最佳化路徑和兩個ANA不可存取路徑。</p>
-</div>
-</li>
-<li>
-<p>確認已建立命名空間。</p>
-<div class="listingblock">
-<div class="content">
-<pre># nvme list
-Node SN Model Namespace Usage Format FW Rev
----------------- -------------------- -----------------------
-/dev/nvme0n1 80BADBKnB/JvAAAAAAAC NetApp ONTAP Controller 1 53.69 GB / 53.69 GB 4 KiB + 0 B FFFFFFFF</pre>
-</div>
-</div>
-</li>
-<li>
-<p>驗證全日空路徑的狀態。</p>
-<div class="listingblock">
-<div class="content">
-<pre># nvme list-subsys/dev/nvme0n1
-Nvme-subsysf0 – NQN=nqn.1992-08.com.netapp:sn.341541339b9511e8a9b500a098c80f09:subsystem.ol_157_nvme_ss_10_0
-\
-+- nvme0 fc traddr=nn-0x202c00a098c80f09:pn-0x202d00a098c80f09 host_traddr=nn-0x20000090fae0ec61:pn-0x10000090fae0ec61 live optimized
-+- nvme1 fc traddr=nn-0x207300a098dfdd91:pn-0x207600a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
-+- nvme2 fc traddr=nn-0x207300a098dfdd91:pn-0x207500a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
-+- nvme3 fc traddr=nn-0x207300a098dfdd91:pn-0x207700a098dfdd91 host traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live inaccessible</pre>
-</div>
-</div>
-</li>
-<li>
-<p>驗證NetApp外掛ONTAP 程式是否適用於各種不實裝置。</p>
-<div class="listingblock">
-<div class="content">
-<pre># nvme netapp ontapdevices -o column
-Device   Vserver  Namespace Path             NSID   UUID   Size
--------  -------- -------------------------  ------ ----- -----
-/dev/nvme0n1   vs_nvme_10       /vol/rhel_141_vol_10_0/ol_157_ns_10_0    1        55baf453-f629-4a18-9364-b6aee3f50dad   53.69GB
-
-# nvme netapp ontapdevices -o json
-{
-   "ONTAPdevices" : [
-   {
-        Device" : "/dev/nvme0n1",
-        "Vserver" : "vs_nvme_10",
-        "Namespace_Path" : "/vol/rhel_141_vol_10_0/ol_157_ns_10_0",
-         "NSID" : 1,
-         "UUID" : "55baf453-f629-4a18-9364-b6aee3f50dad",
-         "Size" : "53.69GB",
-         "LBA_Data_Size" : 4096,
-         "Namespace_Size" : 13107200
-    }
-]</pre>
-</div>
-</div>
-</li>
-</ol>
+<p>您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="啟用broadcom-nvme-fc的1mb-io大小">啟用Broadcom NVMe / FC的1MB I/O大小</h2>
+<h2 id="已知問題與限制">已知問題與限制</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>必須將lfc_sg_seg_cnt參數 設定為256、主機才會發出1MB大小的I/O</p>
+<p>Oracle Linux 8．6沒有已知問題。</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>將「lfc_sg_seg_cnt"參數設為256。</p>
-<div class="listingblock">
-<div class="content">
-<pre># cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_sg_seg_cnt=256</pre>
-</div>
-</div>
-</li>
-<li>
-<p>執行「dracut -f」命令、然後重新啟動主機。</p>
-</li>
-<li>
-<p>驗證「lfc_sg_seg_cnt"是否為256。</p>
-<div class="listingblock">
-<div class="content">
-<pre># cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256</pre>
-</div>
-</div>
-</li>
-</ol>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="附註">
+</td>
+<td class="content">
+如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <a href="hu_rhel_86.html#known-problems-and-limitations">"已知問題"</a> 相關Red Hat Enterprise Linux版本文件中的一節。
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>

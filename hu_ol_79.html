@@ -909,6 +909,8 @@
 
 
 
+
+
         </li>
       </ul>
     
@@ -1528,7 +1530,9 @@
       <ul><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> ol 8.</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_85.html">
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_86.html">
+        8.6.
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_85.html">
         8.5
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-sanhost/hu_ol_84.html">
         8.4.
@@ -1755,7 +1759,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-06-07 16:40:55 +0000">06/07/2022</time>
+    <time datetime="2022-06-24 17:11:03 +0000">06/24/2022</time>
     
   
 
@@ -1879,7 +1883,7 @@ size=40G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 |-+- policy='service-time 0' prio=50 status=active
 | |- 11:0:5:7   sdbg 67:160  active ready running
 | `- 12:0:13:7  sdlg 67:480  active ready running
-`-+- policy='service-time 0' prio=10 status=enabled
+|-+- policy='service-time 0' prio=10 status=enabled
   |- 11:0:8:7   sdck 69:128  active ready running
   |- 11:0:12:7  sddy 128:0   active ready running</pre>
 </div>
@@ -1910,11 +1914,11 @@ size=40G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 <pre># multipath -ll
 3600a0980383143596f5d514b65507846 dm-7 NETAPP  ,LUN C-Mode
 size=10G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-`-+- policy='service-time 0' prio=50 status=active
+|-+- policy='service-time 0' prio=50 status=active
   |- 11:0:7:6   sdbz 68:208  active ready running
   |- 11:0:11:6  sddn 71:80   active ready running
   |- 11:0:15:6  sdfb 129:208 active ready running
-  `- 12:0:1:6   sdgp 132:80  active ready running</pre>
+  |- 12:0:1:6   sdgp 132:80  active ready running</pre>
 </div>
 </div>
 <div class="admonitionblock note">
