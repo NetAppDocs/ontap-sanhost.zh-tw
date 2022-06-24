@@ -2419,4 +2419,11 @@
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">AIX主機公用程式6.1版本資訊</block>
   <block id="b46a43d1dd4c2f14b94228f8a8b1e193" category="paragraph">本文件提供ONTAP 有關Citrix XenServer 7系列OS版本（含FC、FCoE和iSCSI傳輸協定）的VMware SAN主機組態設定指南。</block>
   <block id="c03432d938277a67cb7c8ce5d783b2ca" category="paragraph">下列範例顯示ONTAP 所有四個主動/最佳化路徑之用、正確輸出的列舉之一：</block>
+  <block id="c1326fec4f12ec093296d507d6b6e33a" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.6.</block>
+  <block id="b53c88044f47f5b72ea564dc18bd61d6" category="doc">使用Oracle Linux 8.6搭配NetApp ONTAP 功能</block>
+  <block id="fa491ee178ddf6e96992dad027671112" category="paragraph">對於Oracle Linux（OL）8.6"/etc/multipath.conf "檔案必須存在、但您不需要對該檔案進行特定變更。OL 8.6是使用所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
+  <block id="ea11e68a3ea4e3736ee4012985057991" category="paragraph">Oracle Linux 8.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
+  <block id="805a476dee7a3e2c96d744778fabadf2" category="admonition">若要設定Oracle Linux 8.6 RedHat Enterprise核心（RHCK）、請使用 <block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.6.</block>
+  <block id="eb39e2dacde05fafa987d04a67eb15ff" category="paragraph">Oracle Linux 8．6沒有已知問題。</block>
+  <block id="5ebe49302359fb6e4d762fdceb288864" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="10ee08d1b3d909bc389f3b317276174b" category="inline-link-macro-rx"></block> 相關Red Hat Enterprise Linux版本文件中的一節。</block>
 </blocks>

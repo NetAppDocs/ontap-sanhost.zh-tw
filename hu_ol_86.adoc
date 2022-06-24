@@ -1,16 +1,16 @@
 ---
 sidebar: sidebar 
-permalink: hu_ol_80.html 
-keywords: host utilities, oracle, linux, 8.0, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用Oracle Linux 8.0搭配使用功能 
+permalink: hu_ol_86.html 
+keywords: host utilities, oracle, linux, 8.6, netapp, ontap 
+summary: 說明如何搭配ONTAP 使用Oracle Linux 8.6. 
 ---
-= 使用Oracle Linux 8.0搭配NetApp ONTAP 功能
+= 使用Oracle Linux 8.6搭配NetApp ONTAP 功能
 :toc: macro
 :hardbreaks:
-:toclevels: 1
+:toclevels: 1P
 :allow-uri-read: 
 :toc: 
-:toclevels: 1
+:toclevels: 1P
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -59,7 +59,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN開機
 
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=89523;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -78,17 +78,25 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == 多重路徑
 
-對於Oracle Linux 8.0、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 8.0是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。
+對於Oracle Linux（OL）8.6"/etc/multipath.conf "檔案必須存在、但您不需要對該檔案進行特定變更。OL 8.6是使用所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。
 
-您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。
 
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
+以下各節提供LUN對應非ASA角色的多重路徑輸出範例。
+
+
+
+=== 非ASA組態
+
+對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
 
 [listing]
 ----
 # multipath -ll
 3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
 | |- 16:0:6:35 sdwb 69:624 active ready running
 | |- 16:0:5:35 sdun 66:752 active ready running
@@ -101,9 +109,31 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑�
 
 
 
+=== 所有SAN陣列組態
+
+在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。
+
+下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
+
+[listing]
+----
+# multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
+----
+
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+
+
+
 == 建議設定
 
-Oracle Linux 8.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。
+Oracle Linux 8.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。
 
 要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案
 
@@ -161,7 +191,7 @@ blacklist {
 | DETECT（偵測）_prio | 是的 
 
 
-| 開發損失_tmo | "無限遠" 
+| 開發損失_tmo | 無限 
 
 
 | 容錯回復 | 立即 
@@ -170,31 +200,31 @@ blacklist {
 | fast_io_f故障_tmo | 5. 
 
 
-| 功能 | "2 pg_init_retries 50" 
+| 功能 | 2 pg_init_retries 50 
 
 
-| Flip_on_last刪除 | "是" 
+| Flip_on_last刪除 | 是的 
 
 
-| 硬體處理常式 | 「0」 
+| 硬體處理常式 | 0 
 
 
 | no_path_retry | 佇列 
 
 
-| path_checker_ | "周" 
+| path_checker_ | Tur 
 
 
-| path_grouping_policy | "群組by_prio" 
+| path_grouping_policy | 群組_by_prio 
 
 
-| path_selector | "服務時間0" 
+| path_selector | 服務時間0 
 
 
 | Polling_時間 間隔 | 5. 
 
 
-| 優先 | 「NetApp」ONTAP 
+| 優先 | ONTAP 
 
 
 | 產品 | LUN.* 
@@ -203,7 +233,7 @@ blacklist {
 | Retain附加的硬體處理常式 | 是的 
 
 
-| RR_weight | "統一" 
+| RR_weight | 統一 
 
 
 | 使用者易記名稱 | 否 
@@ -229,23 +259,19 @@ devices {
 }
 ----
 
-NOTE: 若要設定Oracle Linux 8.0 RedHat Enterprise核心（RHCK）、請使用 link:hu_rhel_80.html#recommended-settings["建議設定"] 適用於Red Hat Enterprise Linux（RHEL）8.0。
+NOTE: 若要設定Oracle Linux 8.6 RedHat Enterprise核心（RHCK）、請使用 link:hu_rhel_86.html#recommended-settings["建議設定"] 適用於Red Hat Enterprise Linux（RHEL）8.6.
+
+
+
+== KVM設定
+
+您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
 
 
 
 == 已知問題與限制
 
-Oracle Linux 8.0沒有已知問題。
+Oracle Linux 8．6沒有已知問題。
 
 
-NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_80.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）8.0。
-
-
-
-== 版本資訊
-
-
-
-=== ASM鏡射
-
-ASM鏡射可能需要變更Linux多重路徑設定、以允許ASM辨識問題並切換至其他故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle資料庫ONTAP"^] 以取得更多資訊。
+NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_86.html#known-problems-and-limitations["已知問題"] 相關Red Hat Enterprise Linux版本文件中的一節。

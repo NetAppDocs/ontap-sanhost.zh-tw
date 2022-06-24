@@ -158,6 +158,8 @@ sidebar:
       entries:
       - title: ol 8.
         entries:
+        - title: 8.6.
+          url: "/hu_ol_86.html"
         - title: '8.5'
           url: "/hu_ol_85.html"
         - title: 8.4.
