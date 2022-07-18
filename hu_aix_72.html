@@ -258,11 +258,13 @@
           <div id="react-search" 
           data-search-html="/zh-tw/ontap-sanhost/search.html"
           data-type="widget" 
-          data-placeholder="搜尋文件" 
-          data-no-results-found="找不到符合 {query} 的相關結果。" 
-          data-did-you-mean="搜尋 {suggestion}。" 
-          data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？" 
-          data-results-found="找到 {hitCount} 筆結果"  
+          data-placeholder="搜尋文件"
+          data-no-results-found="找不到符合 {query} 的相關結果。"
+          data-did-you-mean="搜尋 {suggestion}。"
+          data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？"
+          data-results-found="找到 {hitCount} 筆結果"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
           data-sk-es-pf-indexes=""
           data-flavor=""></div>
           <button class="n-property-bar__search-toggle-button" type="button">
@@ -1763,7 +1765,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 10:41:41 +0000">05/03/2022</time>
+    <time datetime="2022-07-18 13:32:59 +0000">07/18/2022</time>
     
   
 
@@ -1779,6 +1781,7 @@
 <li><a href="#多重路徑">多重路徑</a></li>
 <li><a href="#建議設定">建議設定</a></li>
 <li><a href="#推薦metrocluster-的功能設定">推薦MetroCluster 的功能設定</a></li>
+<li><a href="#支援sm至bc的aix">支援SM至BC的AIX</a></li>
 <li><a href="#已知問題與限制">已知問題與限制</a></li>
 </ul>
 </div>
@@ -2080,6 +2083,20 @@ up     primary  path3  fcs1    fc_aix_4     1</pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>根據預設、如果沒有LUN路徑可用、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 <a href="https://kb.netapp.com/app/answers/answer_view/a_id/1001318" target="_blank" rel="noopener">"NetApp KB1001318"</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="支援sm至bc的aix">支援SM至BC的AIX</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>從ONTAP 《支援》版本的《支援》（從《支援》版本的版本起）開始、《支援AIX》（SMBC）在AIX組態下、主要叢集是「作用中」叢集。</p>
+</div>
+<div class="paragraph">
+<p>在AIX組態中、容錯移轉會中斷運作。每次容錯移轉時、您都必須在主機上執行重新掃描、才能恢復I/O作業。</p>
+</div>
+<div class="paragraph">
+<p>若要設定適用於SM至BC的AIX、請參閱知識庫文章 <a href="https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)" target="_blank" rel="noopener">"如何設定AIX主機以實現SnapMirror營運不中斷（SMBC）"</a>。</p>
 </div>
 </div>
 </div>
