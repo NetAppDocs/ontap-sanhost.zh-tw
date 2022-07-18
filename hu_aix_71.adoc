@@ -209,6 +209,16 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 
 
+== 支援SM至BC的AIX
+
+從ONTAP 《支援》版本的《支援》（從《支援》版本的版本起）開始、《支援AIX》（SMBC）在AIX組態下、主要叢集是「作用中」叢集。
+
+在AIX組態中、容錯移轉會中斷運作。每次容錯移轉時、您都必須在主機上執行重新掃描、才能恢復I/O作業。
+
+若要設定適用於SM至BC的AIX、請參閱知識庫文章 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["如何設定AIX主機以實現SnapMirror營運不中斷（SMBC）"^]。
+
+
+
 == 已知問題與限制
 
 沒有已知的問題和限制。

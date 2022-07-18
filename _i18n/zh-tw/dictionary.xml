@@ -2426,4 +2426,9 @@
   <block id="805a476dee7a3e2c96d744778fabadf2" category="admonition">若要設定Oracle Linux 8.6 RedHat Enterprise核心（RHCK）、請使用 <block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.6.</block>
   <block id="eb39e2dacde05fafa987d04a67eb15ff" category="paragraph">Oracle Linux 8．6沒有已知問題。</block>
   <block id="5ebe49302359fb6e4d762fdceb288864" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="10ee08d1b3d909bc389f3b317276174b" category="inline-link-macro-rx"></block> 相關Red Hat Enterprise Linux版本文件中的一節。</block>
+  <block id="c0555368ec9919ce9b1c9712c00dbb76" category="section-title">支援SM至BC的AIX</block>
+  <block id="a87c560166b76536072b61a847b883d2" category="paragraph">從ONTAP 《支援》版本的《支援》（從《支援》版本的版本起）開始、《支援AIX》（SMBC）在AIX組態下、主要叢集是「作用中」叢集。</block>
+  <block id="244c37afdc307098d90d497c08f88069" category="paragraph">在AIX組態中、容錯移轉會中斷運作。每次容錯移轉時、您都必須在主機上執行重新掃描、才能恢復I/O作業。</block>
+  <block id="ba865279c8bb1f9a639935e3cb2406b0" category="inline-link-macro">如何設定AIX主機以實現SnapMirror營運不中斷（SMBC）</block>
+  <block id="ce41c78a17a5925101abf561eb152ad3" category="paragraph">若要設定適用於SM至BC的AIX、請參閱知識庫文章 <block ref="bfd553e439e8f0adcfe76e0cf010b4a4" category="inline-link-macro-rx"></block>。</block>
 </blocks>
