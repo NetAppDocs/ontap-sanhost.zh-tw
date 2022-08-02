@@ -4,7 +4,7 @@ permalink: hu_hpux_60.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用 
 ---
-= HPUX主機公用程式6.0
+= HP-UX Host Utilities 6.0
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -28,7 +28,7 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 
 == SAN工具套件
 
-HPUX主機公用程式是NetApp主機軟體、可在HPUX主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
+HP-UX Host Utilities是NetApp主機軟體、可在HP-UX主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
 
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
@@ -50,9 +50,9 @@ NOTE: 此工具套件適用於Host Utilities的所有組態和傳輸協定。因
 
 
 
-== 安裝HPUX主機公用程式
+== 安裝HP-UX主機公用程式
 
-NetApp HPUX主機公用程式軟體套件可在上取得 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 在壓縮檔案中。
+NetApp HP-UX主機公用程式軟體套件可在上取得 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 在壓縮檔案中。
 
 您可以從下載包含主機公用程式軟體套件的壓縮檔案 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^]。下載檔案之後、您必須先解壓縮檔案、才能安裝。
 

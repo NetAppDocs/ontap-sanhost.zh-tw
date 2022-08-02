@@ -174,8 +174,8 @@ up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
 | 1447287.14 | 在SMBC組態中、隔離主叢集上的AUFO事件會導致HP-UX主機暫時中斷 | 當SnapMirror營運不中斷（SMBC）組態中的隔離主叢集發生自動非計畫性容錯移轉（AUFO）事件時、就會發生此問題。在HP-UX主機上恢復I/O可能需要120秒以上、但這可能不會造成任何I/O中斷或錯誤訊息。此問題會導致雙事件故障、因為主要與次要叢集之間的連線中斷、而且主要叢集與中介器之間的連線也會中斷。這是罕見的事件、與其他AUFO事件不同。 | 不適用 
 
 
-| 1344935 | HPUX 11.31 Host會在ASA 不正確的情況下、在進行功能性設定時、間歇性回報路徑狀態。 | 路徑報告問題ASA 與不符合需求的組態。 | 不適用 
+| 1344935 | HP-UX 11.31 Host會在ASA 進行功能性設定時、間歇性回報路徑狀態不正確。 | 路徑報告問題ASA 與不符合需求的組態。 | 不適用 
 
 
-| 1306354 | 建立HPUX LVM會傳送超過1MB區塊大小的I/O | 在Sing All SAN Array中、SCSI傳輸長度上限為1 MB。ONTAP若要限制連接ONTAP 到Sing All SAN Array時、從HP-UX主機傳輸的最大傳輸長度、必須將HP-UX SCSI子系統允許的最大I/O大小設為1 MB。如需詳細資訊、請參閱HP-UX廠商文件。 | 不適用 
+| 1306354 | 建立HP-UX LVM會傳送超過1MB區塊大小的I/O | 在Sing All SAN Array中、SCSI傳輸長度上限為1 MB。ONTAP若要限制連接ONTAP 到Sing All SAN Array時、從HP-UX主機傳輸的最大傳輸長度、必須將HP-UX SCSI子系統允許的最大I/O大小設為1 MB。如需詳細資訊、請參閱HP-UX廠商文件。 | 不適用 
 |===

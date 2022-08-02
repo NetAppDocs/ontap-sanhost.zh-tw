@@ -42,7 +42,7 @@ NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysu
 
 當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
 
-在以下範例中、「左LUN show command」會傳回LUN資訊。
+在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
 [listing]
 ----

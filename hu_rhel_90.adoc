@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_69.html 
-keywords: host utilities, red hat, rhel, linux, 6.9, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 6.9搭配使用功能 
+permalink: hu_rhel_90.html 
+keywords: host utilities, red hat, rhel, linux, 8.6, netapp, ontap 
+summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.6. 
 ---
-= 使用Red Hat Enterprise Linux 6.9搭配NetApp ONTAP 功能
+= 使用Red Hat Enterprise Linux 9.0搭配NetApp ONTAP 功能
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -22,13 +22,14 @@ summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 6.9搭配使用�
 
 == 安裝Linux Unified Host Utilities
 
-NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp 支援網站"^] 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 互通性對照表工具"^] 驗證您需要哪一個。
+NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 在64位元.rpm檔案中。
 
 強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。
 
-. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp 支援網站"^] 站台到主機。
+.步驟
+. 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 到您的主機。
 . 使用下列命令安裝軟體套件：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
@@ -58,7 +59,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN開機
 
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=77603;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -77,18 +78,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == 多重路徑
 
-對於Red Hat Enterprise Linux（RHEL）6.9、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 6.9是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：
-
-. 建立initrd-image的備份。
-. 將下列參數值附加至核心、以便ALUA和非ALUA正常運作：「rdaloaddriver=scsi_d_alua」
-+
-....
-kernel /vmlinuz-2.6.32-358.6.1.el6.x86_64 ro root=/dev/mapper/ vg_ibmx355021082-lv_root rd_NO_LUKS rd_LVM_LV=vg_ibmx355021082/ lv_root LANG=en_US.UTF-8 rd_LVM_LV=vg_ibmx355021082/lv_swap rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet rdloaddriver=scsi_dh_alua
-....
-. 使用「mkitrd」命令重新建立initrd-image。RHEL 6x及更新版本可使用以下命令：命令：「mkitrd -f /boot/ initrd-"uname -r"。imguname -r"或命令：「Dracut -f」
-. 重新啟動主機。
-. 驗證「cat /proc/cmdline」命令的輸出、以確保設定完成。
-
+對於Red Hat Enterprise Linux（RHEL）9.0、必須存在/etc/multipath.conf檔案、但您不需要對該檔案進行特定變更。RHEL 9.0的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。
 
 您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
 
@@ -103,13 +93,13 @@ kernel /vmlinuz-2.6.32-358.6.1.el6.x86_64 ro root=/dev/mapper/ vg_ibmx355021082-
 [listing]
 ----
 # multipath -ll
-3600a0980383034466b2b4a3775474859 dm-3 NETAPP,LUN C-Mode
-size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-|-+- policy='round-robin 0' prio=50 status=active
-|- 1:0:8:1  sdb 8:16 active ready running
-|- 2:0:8:1  sdd 8:48 active ready running
-|- 1:0:9:1  sdc 8:32 active ready running
-|- 2:0:9:1  sde 8:64 active ready running
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi   130:64   active ready running
+  |- 11:0:9:1    sdiy  8:288     active ready running
+  |- 11:0:10:1  sdml 69:464   active ready running
+  |- 11:0:11:1  sdpt  131:304  active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
@@ -125,14 +115,14 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑�
 [listing]
 ----
 # multipath -ll
-3600a0980383034466b2b4a3775474859 dm-3 NETAPP,LUN C-Mode
-size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-|-+- policy='round-robin 0' prio=50 status=active
-| |- 1:0:8:1  sdb 8:16 active ready running
-| `- 2:0:8:1  sdd 8:48 active ready running
-`-+- policy='round-robin 0' prio=10 status=enabled
-  |- 1:0:9:1  sdc 8:32 active ready running
-  `- 2:0:9:1  sde 8:64 active ready running
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
@@ -141,7 +131,7 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑�
 
 == 建議設定
 
-RHEL 6.9作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。
+RHEL 9.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。
 
 要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案
 
@@ -208,7 +198,7 @@ blacklist {
 | fast_io_f故障_tmo | 5. 
 
 
-| 功能 | "3 queue_if_no_path pg_init_retries 50" 
+| 功能 | "2 pg_init_retries 50" 
 
 
 | Flip_on_last刪除 | "是" 
@@ -226,7 +216,7 @@ blacklist {
 | path_grouping_policy | "群組by_prio" 
 
 
-| path_selector | "循環資源0" 
+| path_selector | "服務時間0" 
 
 
 | Polling_時間 間隔 | 5. 
@@ -277,16 +267,8 @@ devices {
 
 == 已知問題與限制
 
-[cols="4*"]
-|===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+RHEL 9.0沒有已知問題。
 
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1067272["1067272"^] | 在儲存容錯移轉作業期間、Emulex LPe32002主機上的遠端連接埠狀態可能處於「封鎖」狀態 | 在儲存容錯移轉作業期間、使用LPe32002介面卡的RHEL 6.9主機上的特定遠端連接埠狀態可能會進入「封鎖」狀態。由於儲存節點當機時、邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設定為「封鎖」狀態。但是、當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠狀態預期為「線上」。但在某些情況下、遠端連接埠仍處於「封鎖」狀態。此狀態會在多重路徑層的LUN上顯示為「故障」。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1427496["427496"^] 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1076584["1076584"^] | 在儲存容錯移轉作業期間、Red Hat Enterprise Linux 6.9 QLogic QE8362 HBA會發生韌體傾印 | 在使用QLogic QLE8362主機匯流排介面卡（HBA）的Red Hat Enterprise Linux（RHEL）6.9主機上執行儲存容錯移轉作業時、可能會發生韌體傾印。韌體傾印可能會在主機上顯示為I/O中斷、持續時間長達1200秒。介面卡完成卸載韌體核心之後、I/O作業會恢復正常。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/messages檔案中會顯示下列訊息：kernel：qla2xxx [0000:0c:00.3]-d001:3：韌體傾印已儲存至暫存緩衝區（3/ffffc90018b01000）、傾印狀態旗標（0x3f） | link:https://bugzilla.redhat.com/show_bug.cgi?id=1438711["1438711"^] 
-|===
 
 
 == 版本資訊

@@ -19,8 +19,12 @@ sidebar:
         url: "/hu_aix_61.html"
       - title: 版本資訊
         url: "/hu_aix_61_rn.html"
-    - title: HPUX主機公用程式
-      url: "/hu_hpux_60.html"
+    - title: HP-UX主機公用程式
+      entries:
+      - title: 安裝HP-UX HU 6.0
+        url: "/hu_hpux_60.html"
+      - title: 版本資訊
+        url: "/hu_hpux_60_rn.html"
     - title: Linux統一化主機公用程式
       entries:
       - title: 安裝Luhu 7.1
@@ -28,7 +32,11 @@ sidebar:
       - title: 版本資訊
         url: "/hu_luhu_71_rn.html"
     - title: Solaris主機公用程式
-      url: "/hu_solaris_62.html"
+      entries:
+      - title: 安裝Solaris Hu 6.2
+        url: "/hu_solaris_62.html"
+      - title: 版本資訊
+        url: "/hu_solaris_62_rn.html"
     - title: Windows統一化主機公用程式
       url: "/hu_wuhu_71.html"
   - title: NVMe主機組態
@@ -53,6 +61,8 @@ sidebar:
     - title: RHEL
       pdf-filename: NVMeF RHEL
       entries:
+      - title: '9.0'
+        url: "/nvme_rhel_90.html"
       - title: 8.4.
         url: "/nvme_rhel_84.html"
       - title: '8.3'
@@ -214,6 +224,10 @@ sidebar:
           url: "/hu_ol_64.html"
     - title: RHEL
       entries:
+      - title: RHEL 9
+        entries:
+        - title: '9.0'
+          url: "/hu_rhel_90.html"
       - title: RHEL 8
         entries:
         - title: 8.6.

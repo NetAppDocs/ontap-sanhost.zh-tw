@@ -13,7 +13,6 @@
   <block id="04a6a4dcd6c76702d2da3ff70e4a7ec8" category="paragraph">「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」</block>
   <block id="b80744314bf569766c44748e7c613ca7" category="section-title">SAN工具套件</block>
   <block id="fdc9ca1731d1c119aadc1c244f9b44ce" category="paragraph">當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</block>
-  <block id="bdf731284d034aaa9944ce43fb0b02f5" category="paragraph">在以下範例中、「左LUN show command」會傳回LUN資訊。</block>
   <block id="35182f1950df8120cb4894c510afca6f" category="section-title">SAN開機</block>
   <block id="5c418e7e8faea588a8aaca3632cdef5c" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="d51d9bd8ee469ad0aee13f86bf1610ea" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">步驟</block>
@@ -315,7 +314,6 @@
   <block id="3f3aace2ffb7262d9561af1516e90d56" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="e902c52a637fd9b5e253806bf7aafa95" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="5297043b43f5cb19511228a79f308d23" category="paragraph">對於Red Hat Enterprise Linux（RHEL）8.5、必須存在/etc/multipath.conf檔案、但您不需要對檔案進行特定變更。RHEL 8.5是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="685ee6c581bc2df3a8910672a2af1ac3" category="paragraph">RHEL 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="85970e65e1203ba97f80413235d75970" category="paragraph">RHEL 8.5沒有已知問題。</block>
   <block id="922724d30ab7c207a8746d06dbe805f2" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.2搭配使用功能</block>
   <block id="feb6906975dfa95bd38b1b7f935bb959" category="doc">使用Oracle Linux 8.2搭配NetApp ONTAP 功能</block>
   <block id="9dbfd05f0dcf7ea7f5d678dc3ac216c7" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="e6f1d72f4eb45ad3af66c651a6a8a1b4" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -533,7 +531,6 @@
   <block id="72e702431882de8ed92aa1c2e3726dea" category="list-text">在RHEL 8.2主機上、檢查/etc/np/hostnqn上的主機NQN字串、並確認其符合ONTAP 位於該等子系統上對應子系統的主機NQN字串。</block>
   <block id="2490396f1344fd16bd1bd0da5ce25167" category="paragraph">如果主機NQN字串不相符、請使用「vserver modify」命令來更新對應ONTAP 的BIOS陣列子系統上的主機NQN字串、以符合主機上/etc/nvme/hostnqn的主機NQm字串。</block>
   <block id="b041c12317a88da69581757a98db42d2" category="list-text">更新「啟用外部」設定（選用）_。</block>
-  <block id="62304a27ab79f1e94b19449dd83b7fcc" category="paragraph">如果您打算在同一部RHEL 8.2共存主機上同時執行NVMe和SCSI流量、建議ONTAP 您分別使用核心內建NVMe多重路徑來執行支援資源命名空間、ONTAP 並使用dm-multipath來執行支援資源的LUN。您應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將「啟用外部」設定新增至/etc/multipath.conf、如下所示。</block>
   <block id="4e9e6a353c31b00bcbf2e522fd8093c3" category="list-text">執行「stystemctl重新啟動多路徑d」來重新啟動多路徑精靈。</block>
   <block id="bf2fd4f30d4d99e83aea737d5c100ea0" category="section-title">設定適用於NVMe / FC的Broadcom FC介面卡</block>
   <block id="7e7451dacba473800a5cdbb40e615ba6" category="paragraph">如需最新的支援介面卡清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
@@ -569,7 +566,6 @@
   <block id="4137ad0ecb9476c03488b817fe529868" category="doc">使用Red Hat Enterprise Linux 8.3搭配NetApp ONTAP 功能</block>
   <block id="76a654b50e8a1ecef0af22f2af8b3a5e" category="paragraph">對於Red Hat Enterprise Linux（RHEL）8.3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.3是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="5454d075074e8f827f59ce80d2e812c2" category="paragraph">RHEL 8.3作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="0685794451729fed8cf073d1a389dc27" category="paragraph">RHEL 8.3沒有已知問題。</block>
   <block id="039c572446bfd0a2b1ec8e52fc45283c" category="summary">說明如何搭配ONTAP 使用CentOS 6.9搭配使用功能</block>
   <block id="473b0a13f88c4ec4d764633d7504c8d6" category="doc">使用CentOS 6.9搭配NetApp ONTAP 功能</block>
   <block id="30882960e4e91384155a1bff6c886630" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="70efe35e64cc9ba99c6f021b1f4d02ec" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -577,15 +573,11 @@
   <block id="4c8b41567795f35c88d1ebcfb4c0daec" category="paragraph">CentOS 6.9作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。</block>
   <block id="9c5b436e1bb8a6899180fe9890e5395b" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="6381fe6a72f9bd9f067a0ec390d2a8fb" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.9。</block>
   <block id="8d1d1e53a5b8a67ed06ee929fcb68093" category="summary">說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用</block>
-  <block id="71a803ec7e0a7413f38513eccfb51d23" category="doc">HPUX主機公用程式6.0</block>
   <block id="a711863513c11f3a6d86294acc7be0ba" category="list-title">您需要的是 #8217 ；需要的是什麼</block>
   <block id="43483b029ef264a410a7bccd99e5f66a" category="list-text">為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。</block>
   <block id="9e1ea4643210fa4abca0c804c4fe3eec" category="paragraph">您可以使用 <block ref="1c6d071c1749743e8ebf715f1c64c2a1" category="inline-link-macro-rx"></block> 以驗證組態。</block>
-  <block id="3112cdbeaee6d9032c13b95ac8d4dc32" category="paragraph">HPUX主機公用程式是NetApp主機軟體、可在HPUX主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</block>
   <block id="fcd0175f66a20efc7cd1c6567f9a5578" category="paragraph">在以下範例中、「左LUN show」命令會傳回LUN資訊。</block>
   <block id="df806afef9dae5d43f20297c99fb14ca" category="admonition">此工具套件適用於Host Utilities的所有組態和傳輸協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。</block>
-  <block id="d4fafab7425136eae505dcc30fe94743" category="section-title">安裝HPUX主機公用程式</block>
-  <block id="235ab8a9f571fa3f1ae7daa2b9e3a1c3" category="paragraph">NetApp HPUX主機公用程式軟體套件可在上取得 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 在壓縮檔案中。</block>
   <block id="e6836ae92ec45bf946aba470c3ee98e5" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block>。下載檔案之後、您必須先解壓縮檔案、才能安裝。</block>
   <block id="83ea987146445e3a3ff4069f8c0095ac" category="list-text">登入您的主機。</block>
   <block id="dd0ef0f389a16b505e475797a7b752ac" category="list-text">從下載HP-UX主機公用程式檔案「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 到HP-UX主機。</block>
@@ -1304,7 +1296,6 @@
   <block id="c26038fbed8a35ee02f96936352801ca" category="doc">使用Red Hat Enterprise Linux 8.4搭配NetApp ONTAP 功能</block>
   <block id="cd1096d4eecda656e5c9911606fb0c35" category="paragraph">對於Red Hat Enterprise Linux（RHEL）8.4、必須存在/etc/multipath.conf檔案、但您不需要對檔案進行特定變更。RHEL 8.4的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="0c1a2fa6a162d103bd725793b80bb571" category="paragraph">RHEL 8.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="0ec69b0cdf656c32bffa9e37cf748912" category="paragraph">RHEL 8.4沒有已知問題。</block>
   <block id="a51f869a9a131effa58d99e63266e02d" category="summary">說明如何搭配ONTAP 使用Citrix Hypervisor 8.x搭配使用</block>
   <block id="e9cb7b8f17e8f27f0130bdc68558c4cc" category="doc">使用Citrix Hypervisor搭配NetApp ONTAP 功能</block>
   <block id="b4fb72e88112026a3055df686f0141d6" category="paragraph">本文件針對ONTAP Citrix Hypervisor 8系列作業系統版本（含FC、FCoE和iSCSI傳輸協定）提供有關SAN主機組態設定的指引。</block>
@@ -1673,10 +1664,8 @@
   <block id="778fd215ce10bd514de565e6df2b1758" category="cell">在SMBC組態中、隔離主叢集上的AUFO事件會導致HP-UX主機暫時中斷</block>
   <block id="6f80f2e204ff92f2e954367d70413775" category="cell">當SnapMirror營運不中斷（SMBC）組態中的隔離主叢集發生自動非計畫性容錯移轉（AUFO）事件時、就會發生此問題。在HP-UX主機上恢復I/O可能需要120秒以上、但這可能不會造成任何I/O中斷或錯誤訊息。此問題會導致雙事件故障、因為主要與次要叢集之間的連線中斷、而且主要叢集與中介器之間的連線也會中斷。這是罕見的事件、與其他AUFO事件不同。</block>
   <block id="ccea754e7046e3a8078e83df3db0dd24" category="cell">1344935</block>
-  <block id="f41d0ae017cb9a0c3ddccf20caaaedd2" category="cell">HPUX 11.31 Host會在ASA 不正確的情況下、在進行功能性設定時、間歇性回報路徑狀態。</block>
   <block id="ae1b434f4d27837b33cfc80ed6814a95" category="cell">路徑報告問題ASA 與不符合需求的組態。</block>
   <block id="1288c56822a6bb56a7acdc5941948855" category="cell">1306354</block>
-  <block id="8e3600ab3c3c846015270c7967718159" category="cell">建立HPUX LVM會傳送超過1MB區塊大小的I/O</block>
   <block id="fc3dae564fdea298fb1911d12d99bb45" category="cell">在Sing All SAN Array中、SCSI傳輸長度上限為1 MB。ONTAP若要限制連接ONTAP 到Sing All SAN Array時、從HP-UX主機傳輸的最大傳輸長度、必須將HP-UX SCSI子系統允許的最大I/O大小設為1 MB。如需詳細資訊、請參閱HP-UX廠商文件。</block>
   <block id="9a8a0895e5f69c5c06d82e847ceb32e9" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.5搭配使用功能</block>
   <block id="724f685b8e77a5417a8a2703b3d831b2" category="doc">使用Red Hat Enterprise Linux 7.5搭配NetApp ONTAP 功能</block>
@@ -2188,7 +2177,6 @@
   <block id="8cf04a9734132302f96da8e113e80ce5" category="sidebar">主頁</block>
   <block id="7b77ca74daebfde9d9723cc5ef879cf8" category="sidebar">SAN主機公用程式</block>
   <block id="069c43556e66148f1f1eeabd7e9e7872" category="sidebar">AIX主機公用程式</block>
-  <block id="19b1462d6d0a4e6e5b814edb100a77c6" category="sidebar">HPUX主機公用程式</block>
   <block id="a4d5754af636a6318ee2ffcd80c52e27" category="sidebar">Linux統一化主機公用程式</block>
   <block id="289d4a224c51f2aeb418b081093d4d1e" category="sidebar">Solaris主機公用程式</block>
   <block id="748753e893fd2f6b904a298d120af491" category="sidebar">Windows統一化主機公用程式</block>
@@ -2351,7 +2339,6 @@
   <block id="32d86924bbcb8820c9a350a7d741cbea" category="doc">將CentOS 8.4與NetApp ONTAP 搭配使用</block>
   <block id="e5a962185d7bd63be4f29de827478b1c" category="paragraph">對於CentOS 8.4、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.4是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
   <block id="ea4f6ca54725c6a00ccdbd33cafe2aa2" category="paragraph">CentOS 8.4經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="a90e366fa7d3040cef07cc0169093dcc" category="paragraph">CentOS 8.4沒有已知問題。</block>
   <block id="c33b879e8a189cf4ded38992165273b7" category="summary">說明如何搭配ONTAP 使用CentOS 8.5搭配使用</block>
   <block id="d5af4406caf44199917cb9aa00203c40" category="doc">將CentOS 8.5與NetApp ONTAP 搭配使用</block>
   <block id="60d0d78dbe9bb18e16690c35ce6867e1" category="paragraph">對於CentOS 8.5、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.5是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
@@ -2379,42 +2366,32 @@
   <block id="f418c08cd071f42a28a07d007dd30c34" category="paragraph">AIX主機公用程式可讓您將AIX主機連線至NetApp儲存設備。AIX主機公用程式支援多種環境、以及FC、FCoE和iSCSI傳輸協定。支援的環境包括AIX MPIO（原生作業系統）和PowerVM。</block>
   <block id="66c2d1ced882bffc99d6170e17a232ef" category="paragraph">如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 <block ref="7ce73c7ae176dd6b577d1c14b445f0cd" category="inline-link-macro-rx"></block>。</block>
   <block id="3f26b03249bcf33b72a6e9f71d4c4282" category="paragraph">如需更多有關PowerVM功能的資訊、請參閱IBM PowerVM Live分區行動性Red Book（英文）。</block>
-  <block id="7388ad4cb5a7feb6810701b52e7fcead" category="paragraph">Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從NetApp支援網站下載壓縮檔案及文件。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP</block>
   <block id="96fc0af94642a00891e1f664446fd1e7" category="admonition">您必須啟用所有FC和FCoE啟動器的動態追蹤功能、才能進行叢集Data ONTAP 式的支援。</block>
   <block id="156a1e571b521a8e82a746701d96aeca" category="section-title">AIX Host Utilities 6.1增強功能</block>
   <block id="40289338bc754c0009f5e9a173f6e09a" category="list-text">AIX主機公用程式6.1新增了對舊版AIX主機作業系統中發生的記憶體故障問題的支援。有了AIX Host Utilities 6.1、只有sanlun二進位檔已變更。MPIO和相關的ODM維持不變。</block>
   <block id="1d453c5c717af73a82e2d6b6cedf1fce" category="section-title">已修正問題</block>
   <block id="31e6a451d2627922bc41740af153d931" category="cell">BugID</block>
   <block id="ce88cf74aded8b7f41efd83d007f21f2" category="inline-link-macro">872113.</block>
-  <block id="91100cceb259d6da4a14b08359cc3eb8" category="cell"><block ref="91100cceb259d6da4a14b08359cc3eb8" category="inline-link-macro-rx"></block></block>
   <block id="3a2f9996a60f471edd9edae7099e1d69" category="cell">「anlun LUN show–p」命令可能會在某些版本的AIX主機作業系統上造成記憶體故障</block>
   <block id="74aed4fe3d0a3c89158ce037c3d1305f" category="cell">在執行「lanlun LUN show -p」命令時、會報告AIX coredump的間歇執行個體。Sanlun的「LUN show -p」選項提供主機上所有探索LUN的多重路徑資訊。它會排列此資訊、以顯示來源於哪個SCSI裝置的LUN、路徑狀態（主要或次要）及其他詳細資料。但是、在執行「lanlun LUN show -p」命令的部分AIX主機上、可能會導致記憶體故障。只有當您使用「-p」選項執行sanlun命令時、才會發生此問題。</block>
   <block id="18dfadbcd8c4c8fb9d50fac0fb3aeb16" category="paragraph">若要有效率地使用主機公用程式、您應該注意、特定功能的已知問題（例如網路）或主機公用程式不支援的功能（例如特定版本的作業系統）可能會影響效能。</block>
   <block id="b066ca6122c9857ad1ee3a44f18cc5e7" category="cell">錯誤ID</block>
   <block id="31a061fd71807c34f31d154d95c10691" category="inline-link-macro">1069147</block>
-  <block id="e8c18173fb06e0c2666a1fd7a0fbe17b" category="cell"><block ref="e8c18173fb06e0c2666a1fd7a0fbe17b" category="inline-link-macro-rx"></block></block>
   <block id="cad62af5cd7e448be659302e1eba73b4" category="cell">AIX Hu Sanlun報告HBA速度不正確</block>
   <block id="64c42781be8a2208b9ffdc60d28bc076" category="cell">執行「sanlun FCP show介面卡–v」命令時、會報告sanlun顯示錯誤HBA速度的執行個體。「ianlun FCP show介面卡–v」命令會顯示HBA卡資訊、例如介面卡的支援和協調速度。這似乎只是報告問題。若要識別實際速度、請使用「fcstat fcsx」命令。</block>
   <block id="f83b431a86f1d264a4fc51c9a667a1ee" category="paragraph"><block ref="2f247b6bc715dd3b3f556a7c1dea26c9" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：</block>
   <block id="31dade612c24301b89dad4a9747ed73e" category="list-text">FCP一般：顯示與特定主機無關的FC和HBA錯誤。</block>
   <block id="09244b95824d6e702b6eaab2034bdeec" category="list-text">FCP - AIX</block>
   <block id="bba7946c172f683f15783fc909c9d5cf" category="paragraph">SAN主機公用程式的文件包含在中 <block ref="257925f1258b094e61a79b35ac8d3a5c" category="inline-link-macro-rx"></block> 文件。整個SAN主機組態文件都是累積性的、涵蓋所有目前的SAN主機版本。ONTAP各版本之間的任何功能差異都會記錄在上下文中。</block>
-  <block id="50f66ded0854572ca8ed0f243a0ec38c" category="list-text">。 <block ref="206633049dac20bcc789824bc56ff330" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
   <block id="e01ab2a4280a36b99ef1be4dac2123ef" category="inline-link-macro">《SAN管理指南》ONTAP</block>
-  <block id="ec263c216b2591d09b1b18cac1d6d689" category="list-text">。 <block ref="7aab157b9ae6c78afbd7e0b3cade79f0" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
-  <block id="012e2372f667cb2ee5fbb880bb6b907f" category="list-text">。 <block ref="70e6266524a3fa8cf76b1611cdf89cf0" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
-  <block id="1c2375a9f8b4b3c327caa1bfc9cb07c2" category="list-text"><block ref="1c2375a9f8b4b3c327caa1bfc9cb07c2" category="inline-link-macro-rx"></block></block>
-  <block id="4d0377323e0534441af71e05c931ef5c" category="list-text"><block ref="6ec228dfe84ccdb5f038627d2fe43701" category="inline-link-macro-rx"></block> （前身為《系統組態指南》）</block>
   <block id="b90eb3e688d069ada30157d4030b66f5" category="inline-link-macro">支援的Fibre Channel SAN拓撲</block>
   <block id="a1976a5397f63f5caa13a0e86733d543" category="list-text"><block ref="a1976a5397f63f5caa13a0e86733d543" category="inline-link-macro-rx"></block></block>
   <block id="c0965c2d259d63a3e2cbab60c837eaaa" category="inline-link-macro">設定主機的主機公用程式</block>
-  <block id="903a5a2a39aaeff84744ed68f14407d4" category="list-text"><block ref="903a5a2a39aaeff84744ed68f14407d4" category="inline-link-macro-rx"></block></block>
   <block id="2ee1fba4400a50245e66ef649b54d588" category="sidebar">安裝AIX Hu 6.1</block>
   <block id="b767aaa513fc8b09074940ccea06b212" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.6.</block>
   <block id="0202939493cea9d89d8217a646a65b54" category="doc">使用Red Hat Enterprise Linux 8．6搭配NetApp ONTAP 功能</block>
   <block id="be200813e91d3b0e3285391fd2e20825" category="paragraph">若為Red Hat Enterprise Linux（RHEL）8．6、則必須存在/etc/multipath.conf檔案、但您不需要對該檔案進行特定變更。RHEL 8.6是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="98d83a607473e5d6dab1096f6758273a" category="paragraph">RHEL 8.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="18b8e1deb73eabf9425b04753d2b006d" category="paragraph">RHEL 8.6.沒有已知問題。</block>
   <block id="9b402891c0d38b9c654dcfa36df9d722" category="sidebar">8.6.</block>
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">AIX主機公用程式6.1版本資訊</block>
   <block id="b46a43d1dd4c2f14b94228f8a8b1e193" category="paragraph">本文件提供ONTAP 有關Citrix XenServer 7系列OS版本（含FC、FCoE和iSCSI傳輸協定）的VMware SAN主機組態設定指南。</block>
@@ -2431,4 +2408,127 @@
   <block id="244c37afdc307098d90d497c08f88069" category="paragraph">在AIX組態中、容錯移轉會中斷運作。每次容錯移轉時、您都必須在主機上執行重新掃描、才能恢復I/O作業。</block>
   <block id="ba865279c8bb1f9a639935e3cb2406b0" category="inline-link-macro">如何設定AIX主機以實現SnapMirror營運不中斷（SMBC）</block>
   <block id="ce41c78a17a5925101abf561eb152ad3" category="paragraph">若要設定適用於SM至BC的AIX、請參閱知識庫文章 <block ref="bfd553e439e8f0adcfe76e0cf010b4a4" category="inline-link-macro-rx"></block>。</block>
+  <block id="90d3fa524bd535112a1305441a6b2d57" category="paragraph">RHEL 8.5沒有已知問題。</block>
+  <block id="ad2169ec031852e9940a4b4b46c207f8" category="paragraph">RHEL 8.4沒有已知問題。</block>
+  <block id="16ded13e0c1b6477bffcca576db8e692" category="doc">使用Red Hat Enterprise Linux 9.0搭配NetApp ONTAP 功能</block>
+  <block id="ea1335497ead6bd540f2e523154123a0" category="paragraph">對於Red Hat Enterprise Linux（RHEL）9.0、必須存在/etc/multipath.conf檔案、但您不需要對該檔案進行特定變更。RHEL 9.0的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
+  <block id="40aa2a6195f4abccde9c89cc1ad6965b" category="paragraph">RHEL 9.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
+  <block id="29cafbf989ec1577f968e04d52752f5e" category="paragraph">RHEL 9.0沒有已知問題。</block>
+  <block id="587384a32d909bff27b8405e18d9d7cf" category="summary">如何針對RHEL 9.0設定NVMe主機、ONTAP 並搭配使用功能</block>
+  <block id="e9ee682ada1a582afd7d18367051b9ba" category="doc">適用於RHEL 9.0 ONTAP 的NVMe主機組態（含功能性）</block>
+  <block id="d5a9179e304fd13ff8268ac2240e3ef4" category="paragraph">RHEL 9.0支援NVMe（包括NVMe / FC和NVMe / TCP）、並具備ONTAP 非對稱命名空間存取（ANA）功能、可在不間斷的儲存容錯移轉（SFO）上執行。ANA是與NVM環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。本文件詳細說明如何在RHEL 9.0上啟用NVMe、並ONTAP 將ANA用作目標的內核NVMe多重路徑。</block>
+  <block id="95369a4b9030e2f901d021df167f021b" category="list-text">從RHEL 9.0開始、NVMe/TCP不再是技術預覽功能（不像RHEL 8）、而是完全支援的企業功能本身。</block>
+  <block id="c1e6aa7090af15f8d8efefa50c5ebbb9" category="list-text">從RHEL 9.0開始、預設會針對NVMe命名空間啟用內核NVMe多重路徑、而不需要明確設定（不像RHEL 8）。</block>
+  <block id="e646e16bee8b32e6ea29e30d01970a6c" category="section-title">限制</block>
+  <block id="8dc2bb86558c5fa9a6925f0d8bd82e21" category="list-text">不像NVMe / FC、NVMe / TCP沒有自動連線功能。這反映出Linux主機的兩大限制：</block>
+  <block id="b7c3db78c3a82d963056f99e4aa58d39" category="list-text">路徑恢復後不自動重新連線：在路徑關閉後的10分鐘內、NVMe / TCP無法自動重新連線至恢復的路徑。</block>
+  <block id="fa4425742c4d1fb5d8e39e4339d06d6e" category="list-text">主機開機期間不自動連線-在主機開機期間、NVMe / TCP也無法自動連線。為了輕鬆克服ONTAP 諸如適用於NVMe / TCP的SFO等故障切換事件、建議您調整「Ctrl-Loss _tmo」定時器、以設定較長的重試時間、例如30分鐘。</block>
+  <block id="140268ba3849abd78f34f907f067407f" category="paragraph">請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 如需支援組態的詳細資訊、請參閱。</block>
+  <block id="061e98174e60e8e432e858a83311d44d" category="list-text">在伺服器上安裝RHEL 9.0。安裝完成後、請確認您執行的是指定的RHEL 9.0核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
+  <block id="aa752093cf87ece20a99a98640048b70" category="list-text">安裝完成後、請確認您執行的是指定的RHEL 9.0核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
+  <block id="d79792e27890df0330ac43850943e028" category="list-text">安裝「NVMe - CLI」套件。</block>
+  <block id="f5b9e6db2b2e5a554b55fd280914f516" category="list-text">在主機上、檢查位於「/etc/nape/hostnqn」的主機NQN字串、並驗證其是否符合ONTAP 位於「the」（子系統）上之對應子系統的主機NQN字串。例如、</block>
+  <block id="e842da2108d28a3593f8615a854fc699" category="admonition">如果主機NQN字串不相符、您應該使用「vserver modify」命令來更新對應ONTAP 的NVMe子系統上的主機NQN字串、使其符合主機上的「/etc/nvm/hostnqn」中的主機NQN字串。</block>
+  <block id="bad5d213c95812779e8e7d73fa0f92a4" category="list-text">確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
+  <block id="2a8380564c8c0b5cd202773abd4f94d3" category="list-text">請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
+  <block id="f3eaa9e3e89c370c17729852377aed2f" category="list-text">確認「lffc_enable _FC4_type'」設定為「3」。</block>
+  <block id="3966ea09485d038487c75511d7133dc9" category="list-text">啟用1MB I/O大小。</block>
+  <block id="99e650add6ead46b272ac60ccc4c6184" category="paragraph">需要將"lfc_sg_seg_cnt"參數設為"256"、以讓"lffc"驅動程式發出大小高達1 MB的I/O要求。</block>
+  <block id="7f905df84e3f641e977ad2d5240dee4b" category="list-text">主機開機後、請確認「lfc_sg_seg_cnt'」設定為「256」。</block>
+  <block id="73a7814e5695a25d9824e6de50fe0979" category="paragraph">RHEL 9.0核心隨附的原生內建內建qla2xxx驅動程式、提供ONTAP 最新的上游修正程式、是支援此功能不可或缺的要素。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
+  <block id="b3cc0f8131b6dd17671baba8c63d88b6" category="paragraph">不像NVMe / FC、NVMe / TCP沒有自動連線功能。這反映出Linux NVMe/TCP主機的兩大限制：</block>
+  <block id="828f6c28a4d526b6783eecef0ac05b8a" category="list-text">主機開機期間不自動連線-在主機開機期間、NVMe / TCP也無法自動連線。為了輕鬆克服ONTAP SFO等故障切換事件、建議您調整「Ctrl-Loss _tmo」定時器、設定較長的重試時間、例如30分鐘。以下是詳細資料：</block>
+  <block id="055436915aa042f3fdf8045e013acbb5" category="list-text">驗證啟動器連接埠是否能夠擷取支援的NVMe / TCP LIF上的探索記錄頁面資料：</block>
+  <block id="351f4726c12d45250df101c8bd9578d6" category="list-text">同樣地、請確認其他的NVMe/TCP啟動器目標LIF組合能夠成功擷取探索記錄頁面資料。例如、</block>
+  <block id="7ce841894f1ef8447498c5c8f5b1f19a" category="section-title">驗證NVMf</block>
+  <block id="dc53dad0b533fb8bfe7d6c60ef1fa91e" category="list-text">驗證ONTAP 適當的NVMf設定（例如、設定為「NetApp支援控制器」的模型、以及將「iopolicing」設定為「循環配置資源」的負載平衡）ONTAP 、以正確反映在主機上：</block>
+  <block id="85d648e4cde5d10dc52f7133eae3a296" category="list-text">確認ONTAP 支援的名稱空間能正確反映在主機上。例如（A）、</block>
+  <block id="cebb9dfdc378481f9e93e7b505fe4f1d" category="paragraph">範例（b）：</block>
+  <block id="cdb0ca847e914e0c124768ae14142869" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如（A）、</block>
+  <block id="86a8f02d0c1226cbab77460737c32b26" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個不支援的名稱空間裝置的正確值。例如（A）、</block>
+  <block id="1718051495b27f0539c358a077bb3e35" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請務必確保您所執行的組態符合IMT 《支援技術規範的要求。然後繼續執行下列步驟、以偵錯任何主機端問題。</block>
+  <block id="8f04ccd4b6d17f7acb33a4a2262bb3e9" category="section-title">lffc詳細記錄</block>
+  <block id="aaea768bb3e8e6a627ea335fd9c9f934" category="paragraph">以下是適用於NVMe/FC的lpfcs驅動程式記錄位元遮罩清單、如「驅動程式/scsi/lffc/lffc_logmsg.h」所示：</block>
+  <block id="bcb565adfa69c5b85ffe2a63c2276769" category="paragraph">您可以將「lffc_log_verbose」驅動程式設定（附加至lfc行、位於「/etc/modprobe.d/lffc.conf」）設定為上述任何值、以便從「lfc」驅動程式觀點記錄nvm/FC事件。然後執行「dracut -f」命令重新建立「initramfs」、然後重新啟動主機。重新開機後、請使用上述「log_nvm_disc」位元遮罩、檢查下列項目、確認是否已套用詳細記錄：</block>
+  <block id="dd1f73319dd2881afa35604270a821b9" category="section-title">qla2xxx詳細記錄</block>
+  <block id="292a88b738894f862e50bb3161bd2fac" category="paragraph">NVMe / FC沒有類似的特定qla2xxx記錄、如「lffc」中所示。您可以在此處設定一般qla2xxx記錄層級、例如「ql2xextended _error_logging=0x1e400000」。您可以將此值附加至對應的「modf探測qla2xxx conf"檔案、以完成此作業。然後執行「dracut -f」重新建立「initramfs」、然後重新啟動主機。重新開機後、請確認已套用詳細記錄、如下所示：</block>
+  <block id="e3f05e6b08d377aca967243a953ecfb9" category="section-title">常見的NVMe-CLI錯誤和因應措施</block>
+  <block id="22c54dce95fdc049759d97572077c406" category="cell">「無法寫入/開發/ NVMe架構：無效的引數」錯誤發生於「NVMe探索」、「NVMe連線」或「NVMe連線-全部」</block>
+  <block id="45161d7ae04ea62480ae1583b09c337a" category="cell">如果語法錯誤、通常會顯示此錯誤訊息。</block>
+  <block id="4d68eca36b7598d8d220c8109ee77d2c" category="cell">「無法寫入/開發/ NVMe架構：在「NVMe探索」、「NVMe連線」或「NVMe連線全部」期間、沒有這類檔案或目錄</block>
+  <block id="0d6f3d7e1a23f40a79b28023090d2a74" category="cell">可能會引發多個問題。常見的情況包括：您將錯誤的引數傳遞給上述NVMe命令。</block>
+  <block id="0300a463a2779250716b195b0f15c1ba" category="paragraph">請確定您已針對上述命令傳遞適當的引數（例如適當的WWNN字串、WWPN字串等）。如果引數正確、但仍看到此錯誤、請檢查NVMe啟動器的「/sys/class/scsi_host/host/nvm_info'」輸出是否正確、並在遠端連接埠區段下方正確顯示「已啟用」和nvm/FC目標LIF。例如、</block>
+  <block id="ad02181fdbf4245ee0052cfb92cb8bcc" category="paragraph">因應措施：如果「NVMe資訊」輸出中未顯示上述目標LIF、請檢查「/var/log/Messages」和「dmesg」輸出是否有任何可疑的NVMe / FC故障、並據此報告或修正。</block>
+  <block id="9f7680250af5452ad3bc6e1373a71a11" category="cell">在「NVMe探索」、「NVMe連線」或「NVMe連線」期間、「無探索記錄項目可擷取」</block>
+  <block id="5bb9931249b357349ab3bbe1fedc8d23" category="cell">如果尚未將「/etc/nexe/hostnqn」字串新增至NetApp陣列上的對應子系統、或是在個別子系統中新增不正確的hostnqn字串、通常會出現此錯誤訊息。</block>
+  <block id="6bd22b028f1c581999993ec8672aea1c" category="cell">請確定NetApp陣列上的對應子系統中已新增確切的「/etc/nvm/hostnqn」字串（請透過「vserver NVMe子系統主機show」驗證）。</block>
+  <block id="00443539b6acea3b81b118f7a7f62818" category="cell">「無法寫入/開發/ NVMe架構：作業已在進行中」、「NVMe探索」、「NVMe連線」或「NVMe連線-全部」</block>
+  <block id="796b7594f30be7947c1efffc9c471c02" category="cell">如果已建立控制器關聯或指定的作業、或正在建立、就會出現此錯誤訊息。這可能是上述安裝之自動連線指令碼的一部分。</block>
+  <block id="628687124665ca6b9dfc96e945da3db4" category="cell">無。若為「NVMe探索」、請稍後嘗試執行此命令。對於「NVMe Connect」和「Connect All」、請執行「NVMe清單」、以驗證命名空間裝置是否已建立並顯示在主機上。</block>
+  <block id="d8d35afc7bc23b483a5dc93bbbfaef70" category="section-title">偵錯所需的檔案和命令輸出</block>
+  <block id="2d9c87ae045b9e45b670135f74d969b1" category="paragraph">如果您仍遇到問題、請收集下列檔案和命令輸出、然後將其傳送以供進一步分類：</block>
+  <block id="e7e8e011c8e0651dc3a6d06305d8279e" category="paragraph">RHEL 8.3沒有已知問題。</block>
+  <block id="ce420cebd9b134c2ee33ae6a490c31ba" category="paragraph">如果您打算在同一部RHEL 8.2共存主機上同時執行NVMe和SCSI流量、建議ONTAP 您分別使用核心內建NVMe多重路徑來執行支援資源命名空間、ONTAP 並使用dm-multipath來執行支援資源的LUN。您也應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將「啟用外部」設定新增至/etc/multipath.conf、如下所示。</block>
+  <block id="6507882f376544268e31289f84d4ee08" category="doc">HP-UX Host Utilities 6.0</block>
+  <block id="0f03ad1ba726a38547e37a072e28a71f" category="paragraph">HP-UX Host Utilities是NetApp主機軟體、可在HP-UX主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</block>
+  <block id="272bb0cd3faf2ede65f3ff18b59a2e04" category="section-title">安裝HP-UX主機公用程式</block>
+  <block id="8d8dc06df50e7cce23a5ef1dbeed7796" category="paragraph">NetApp HP-UX主機公用程式軟體套件可在上取得 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 在壓縮檔案中。</block>
+  <block id="c0a1ecccf7e7b3c14696d029be49ed25" category="paragraph">RHEL 8.6.沒有已知問題。</block>
+  <block id="dfd9db293eabf1724158b5cc08e4dd12" category="cell">HP-UX 11.31 Host會在ASA 進行功能性設定時、間歇性回報路徑狀態不正確。</block>
+  <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">建立HP-UX LVM會傳送超過1MB區塊大小的I/O</block>
+  <block id="24cc4783034cf857703516141d8cc8ad" category="summary">Solaris Host Utilities 6.2版本資訊</block>
+  <block id="07cb401e35e41c1ea4ba568ba75b0261" category="doc">Solaris Host Utilities 6.2版本說明</block>
+  <block id="6680e6f1f2da4905e1106056bcccc97b" category="paragraph">本發行說明文件包含Solaris Host Utilities 6.2的最新資訊、包括已知問題和限制的更新、ONTAP 以及設定和管理您的故障儲存系統。</block>
+  <block id="a8d190b8be84e8cfdb8b2df1b04cb957" category="paragraph">當提供有關使用Solaris主機公用程式的新資訊時、即會更新版本資訊文件。</block>
+  <block id="83abaefac7375849eeb586ba637a2d22" category="section-title">關於Solaris Host Utilities 6.2版本</block>
+  <block id="d64c00d8393bc6d797e2fd2eb038c7f6" category="paragraph">Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。</block>
+  <block id="5a5633c19126b79400042b56b8dcdf4a" category="paragraph">主要主機公用程式環境包括：</block>
+  <block id="767f7d3fe0b51453e22e1a752809bb31" category="paragraph">Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從下載壓縮檔案及文件 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block>。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP</block>
+  <block id="fb9cdd561144e3cb503f58cd43dd40d8" category="section-title">Solaris Host Utilities 6.2增強功能</block>
+  <block id="52750b526bc4bf2e606bf8c9f028a7dd" category="paragraph">Solaris Unified Host Utilities 6.2繼續支援下列版本的Solaris：</block>
+  <block id="238f1d3f645f5f1e553625afd4dc7fb0" category="list-text">Solaris 11.x系列</block>
+  <block id="2b8110c907876ccbe7f01756c156e957" category="list-text">Solaris 10.x系列</block>
+  <block id="d73ed314065ad31059ac799a62ab4558" category="inline-link-macro">1385189.</block>
+  <block id="61699638eccafbea1975db4ccc09e234" category="cell"><block ref="61699638eccafbea1975db4ccc09e234" category="inline-link-macro-rx"></block></block>
+  <block id="a86ba0de523aff5743fd70c108891432" category="cell">在Huk 6.2中需要進行Solaris 11.4 FC驅動程式連結變更</block>
+  <block id="675cd835d9ce32e06a4658192745eec8" category="cell">Solaris 11.4與Huk建議。FC驅動程式繫結會從"sSD（4d）"變更為"sd（4d）"。如Oracle所述、將您在「sSD.conf」中的組態移至「s d.conf」（文件ID 2595926.1）。新安裝的Solaris 11.4系統會有不同的行為、並從11.3版或更低版本升級。</block>
+  <block id="00dc1b7be02ff53d2291441f5821cfa6" category="paragraph"><block ref="355b22d66d025f6de0a19431aae0f536" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：</block>
+  <block id="5efa35169834b61127329a24175ec34d" category="list-text">FCP一般：顯示與特定主機無關的FC和HBA錯誤</block>
+  <block id="f19106aa57c6316e97d751c16d547b41" category="list-text">FCP - Solaris</block>
+  <block id="3c7828b2d190734834ce40e8064c1dac" category="list-text"><block ref="3c7828b2d190734834ce40e8064c1dac" category="inline-link-macro-rx"></block></block>
+  <block id="2aa7ada2848fa0738fbfac1114907aa4" category="list-text"><block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> （前身為《系統組態指南》）</block>
+  <block id="15b39b3049d63d1b09b2b4d4ddc115a4" category="list-text"><block ref="15b39b3049d63d1b09b2b4d4ddc115a4" category="inline-link-macro-rx"></block></block>
+  <block id="c52f3cfca61100f76a974648c1c9a180" category="list-text"><block ref="c52f3cfca61100f76a974648c1c9a180" category="inline-link-macro-rx"></block></block>
+  <block id="0a9958781afdc779222e135d13dce352" category="paragraph">Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從下載壓縮檔案及文件 <block ref="c51b16e40c82542166bd05959a366a37" category="inline-link-macro-rx"></block>。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP</block>
+  <block id="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="cell"><block ref="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="inline-link-macro-rx"></block></block>
+  <block id="ba57f19b6b69755c2919b58188582a77" category="cell"><block ref="ba57f19b6b69755c2919b58188582a77" category="inline-link-macro-rx"></block></block>
+  <block id="e8db03fc399918672bed8132e0d8ea35" category="list-text">。 <block ref="0f33c30ae119203ebbfd38575ad3015e" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
+  <block id="230a02b4afeea5b0d97c6a68a6530da3" category="summary">HPUX主機公用程式6.0版本資訊</block>
+  <block id="e16c4360565a75371ee1b578b4c1ecca" category="doc">HP-UX Host Utilities 6.0版本說明</block>
+  <block id="928dee6fba9a0c4ccb1b167e31071cc0" category="paragraph">本版本資訊文件包含HP-UX Host Utilities 6.0版本的最新資訊、包括已知問題、限制、以及ONTAP 設定及管理您的更新。當有更多有關使用HP-UX主機公用程式的新資訊可供使用時、版本資訊文件即會更新。</block>
+  <block id="02f8eb4aa3c5b1158e37fd1a9c849ca8" category="section-title">關於HP-UX Host Utilities 6.0版本</block>
+  <block id="18691c1295f4b1c26d2e8a9a5b67cfb9" category="paragraph">HP-UX主機公用程式支援多種HP-UX環境和多種傳輸協定。HP-UX主機公用程式支援下列環境：</block>
+  <block id="8017a7ef798d9749aaed2e77fcebed98" category="list-text">原生MPIO</block>
+  <block id="4aade2cc63558a9db8aa3c9a6c9639d3" category="list-text">Veritas動態多路徑（DMP）</block>
+  <block id="89d83ddcffe2153b6741a0e85d8548a2" category="admonition">為了立即清楚說明所使用的環境、本文檔有時會針對Veritas DMP環境指定「DMP」、針對HP-UX原生環境指定「MPIO」。在某些情況下、您使用的命令可能會因您使用的驅動程式而有所不同。在這些情況下、會同時指定環境和驅動程式類型。</block>
+  <block id="06cc7f9865c73b00a63121a0f4b0b752" category="section-title">HP-UX Host Utilities 6.0增強功能</block>
+  <block id="8812d57ba4da4daf9e7f43422d05e0a9" category="paragraph">發行說明會在產品版本之間更新、以取得新資訊。HP-UX Host Utilities 6.0繼續支援下列版本：</block>
+  <block id="c7c7e4d1fc8a47f946a88914900694c3" category="list-text">HP-UX 11iv2</block>
+  <block id="4feac8845db3a6b1f4e4ead570b6b3ad" category="list-text">HP-UX 11iv3</block>
+  <block id="7a1ba2e6d3a8198d5626f5d4e55d2293" category="paragraph">HP-UX 6.0版本沒有已知問題。</block>
+  <block id="24fd1012a719e6b6977b3715ecf0b77d" category="inline-link-macro">SAN主機組態文件。ONTAP</block>
+  <block id="7ab7d878b8d563f012f51b55009390ab" category="paragraph">SAN主機公用程式的文件包含在中 <block ref="63739903ee7032df0e31764cc24a819c" category="inline-link-macro-rx"></block> 此功能為累積性的《SAN主機組態文件》ONTAP 、涵蓋所有目前的SAN主機版本。各版本之間的任何功能差異都會記錄在上下文中。</block>
+  <block id="5f5628241e19b1175cc4bdd9c398f5b7" category="inline-link-macro">適用於您的版本的《軟件安裝指南》ONTAP ONTAP</block>
+  <block id="3b0fe6f7d254eb266d210040bae111f5" category="list-text">。 <block ref="18f02cc408dbe2e94ae9ae202c089ef8" category="inline-link-macro-rx"></block></block>
+  <block id="29ecce87abc03f76c20d3fe564e26dbe" category="inline-link-macro">適用您版本的《SAN管理指南》ONTAP ONTAP</block>
+  <block id="2895d2b5c5ce91fe3e854c5054f19b62" category="list-text">。 <block ref="13c491dae34255ba8eee5d0f620c1f33" category="inline-link-macro-rx"></block></block>
+  <block id="13d4f4be1ab239d2cd36fb812fad5fc1" category="inline-link-macro">適用於您的版本的更新說明ONTAP ONTAP</block>
+  <block id="d7b5ae94e622a21572fe07c48e20da09" category="list-text">。 <block ref="2ba744c2429cbcfc53bdb0428522a053" category="inline-link-macro-rx"></block></block>
+  <block id="60cb9c3f22cf2b74a314e1d7baf48bef" category="paragraph">CentOS 8.4沒有已知問題。</block>
+  <block id="2cac689df6b99782e23a143c9bfa2346" category="sidebar">HP-UX主機公用程式</block>
+  <block id="032f858f49a253e7a44870c242d0aa5b" category="sidebar">安裝HP-UX HU 6.0</block>
+  <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">版本資訊</block>
+  <block id="a7a862c0d782706aace5e07821f4f4c9" category="sidebar">安裝Solaris Hu 6.2</block>
+  <block id="cf5f238fca8b6e155078aa41c175743a" category="sidebar">9.0</block>
+  <block id="38aef0bc7cf230dfcf5476915774aa95" category="sidebar">RHEL 9</block>
 </blocks>

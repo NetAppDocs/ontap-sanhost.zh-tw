@@ -106,7 +106,7 @@ Vserver      Subsystem        Host           NQN
 . 重新啟動主機。
 . 更新「啟用外部」設定（選用）_。
 +
-如果您打算在同一部RHEL 8.2共存主機上同時執行NVMe和SCSI流量、建議ONTAP 您分別使用核心內建NVMe多重路徑來執行支援資源命名空間、ONTAP 並使用dm-multipath來執行支援資源的LUN。您應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將「啟用外部」設定新增至/etc/multipath.conf、如下所示。
+如果您打算在同一部RHEL 8.2共存主機上同時執行NVMe和SCSI流量、建議ONTAP 您分別使用核心內建NVMe多重路徑來執行支援資源命名空間、ONTAP 並使用dm-multipath來執行支援資源的LUN。您也應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將「啟用外部」設定新增至/etc/multipath.conf、如下所示。
 
 +
 [listing]

@@ -36,7 +36,7 @@ AIX主機公用程式可讓您將AIX主機連線至NetApp儲存設備。AIX主�
 如需更多有關PowerVM功能的資訊、請參閱IBM PowerVM Live分區行動性Red Book（英文）。
 
 ====
-Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從NetApp支援網站下載壓縮檔案及文件。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP
+Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從下載壓縮檔案及文件 link:link:https://mysupport.netapp.com/site/["NetApp 支援網站"^]。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP
 
 
 NOTE: 您必須啟用所有FC和FCoE啟動器的動態追蹤功能、才能進行叢集Data ONTAP 式的支援。
@@ -57,7 +57,7 @@ NOTE: 您必須啟用所有FC和FCoE啟動器的動態追蹤功能、才能進�
 | BugID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/872113["872113."] | 「anlun LUN show–p」命令可能會在某些版本的AIX主機作業系統上造成記憶體故障 | 在執行「lanlun LUN show -p」命令時、會報告AIX coredump的間歇執行個體。Sanlun的「LUN show -p」選項提供主機上所有探索LUN的多重路徑資訊。它會排列此資訊、以顯示來源於哪個SCSI裝置的LUN、路徑狀態（主要或次要）及其他詳細資料。但是、在執行「lanlun LUN show -p」命令的部分AIX主機上、可能會導致記憶體故障。只有當您使用「-p」選項執行sanlun命令時、才會發生此問題。 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/872113["872113."^] | 「anlun LUN show–p」命令可能會在某些版本的AIX主機作業系統上造成記憶體故障 | 在執行「lanlun LUN show -p」命令時、會報告AIX coredump的間歇執行個體。Sanlun的「LUN show -p」選項提供主機上所有探索LUN的多重路徑資訊。它會排列此資訊、以顯示來源於哪個SCSI裝置的LUN、路徑狀態（主要或次要）及其他詳細資料。但是、在執行「lanlun LUN show -p」命令的部分AIX主機上、可能會導致記憶體故障。只有當您使用「-p」選項執行sanlun命令時、才會發生此問題。 
 |===
 
 
@@ -70,7 +70,7 @@ NOTE: 您必須啟用所有FC和FCoE啟動器的動態追蹤功能、才能進�
 | 錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1069147["1069147"] | AIX Hu Sanlun報告HBA速度不正確 | 執行「sanlun FCP show介面卡–v」命令時、會報告sanlun顯示錯誤HBA速度的執行個體。「ianlun FCP show介面卡–v」命令會顯示HBA卡資訊、例如介面卡的支援和協調速度。這似乎只是報告問題。若要識別實際速度、請使用「fcstat fcsx」命令。 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1069147["1069147"^] | AIX Hu Sanlun報告HBA速度不正確 | 執行「sanlun FCP show介面卡–v」命令時、會報告sanlun顯示錯誤HBA速度的執行個體。「ianlun FCP show介面卡–v」命令會顯示HBA卡資訊、例如介面卡的支援和協調速度。這似乎只是報告問題。若要識別實際速度、請使用「fcstat fcsx」命令。 
 |===
 link:https://mysupport.netapp.com/site/["NetApp線上錯誤"] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：
 
@@ -92,11 +92,11 @@ SAN主機公用程式的文件包含在中 link:https://docs.netapp.com/us-en/on
 
 *設定及管理ONTAP 您的資料不一樣儲存系統*
 
-* 。 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["《軟體設定指南》ONTAP"] 適用於ONTAP 您的版本的
-* 。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["《SAN管理指南》ONTAP"] 適用於ONTAP 您的版本的
-* 。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明 ONTAP"] 適用於ONTAP 您的版本的
-* link:https://mysupport.netapp.com/site/["NetApp 互通性對照表"]
-* link:https://hwu.netapp.com/["Hardware Universe"] （前身為《系統組態指南》）
-* link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["支援的Fibre Channel SAN拓撲"]
-* link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61343["設定主機的主機公用程式"]
+* 。 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["《軟體設定指南》ONTAP"^] 適用於ONTAP 您的版本的
+* 。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["《SAN管理指南》ONTAP"^] 適用於ONTAP 您的版本的
+* 。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明 ONTAP"^] 適用於ONTAP 您的版本的
+* link:https://imt.netapp.com/matrix/#welcome["NetApp 互通性對照表"^]
+* link:https://hwu.netapp.com/["Hardware Universe"^] （前身為《系統組態指南》）
+* link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["支援的Fibre Channel SAN拓撲"^]
+* link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61343["設定主機的主機公用程式"^]
 
