@@ -2531,4 +2531,21 @@
   <block id="a7a862c0d782706aace5e07821f4f4c9" category="sidebar">安裝Solaris Hu 6.2</block>
   <block id="cf5f238fca8b6e155078aa41c175743a" category="sidebar">9.0</block>
   <block id="38aef0bc7cf230dfcf5476915774aa95" category="sidebar">RHEL 9</block>
+  <block id="3f11bd75d4bcc18b35f7eeb9b9966c9c" category="summary">如何針對RHEL 8.6設定NVMe主機以ONTAP 使用功能</block>
+  <block id="b9eb9bf81c2c715367e1e8b187ea1f75" category="doc">適用於RHEL 8.6的NVMe主機組態（ONTAP 含功能性）</block>
+  <block id="fefda4d440faefacdda0158d1d3fb686" category="paragraph">採用ANA（非對稱命名空間存取）的RHEL 8.6支援NVMe over Fabric或NVMe（包括NVMe / FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.6上使用ANA和ONTAP 以之為目標的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。</block>
+  <block id="d5328c13c170a1ce1607fad34405b646" category="list-text">RHEL 8.6除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。原生NVMe CLI套件中的NetApp外掛程式能夠顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資訊。</block>
+  <block id="8b247e50297ab7aed14b6a8ff2b845c9" category="list-text">對於RHEL 8.6、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="be5312f4fb03f3ebb989659ec7b543ee" category="inline-link">RHEL 8.6版本說明</block>
+  <block id="4e51b6ca34ea06c883ab4b1c963bee49" category="list-text">RHEL 8.6上的NVMe/TCP仍是技術預覽功能、因為仍有開放式問題。請參閱<block ref="e25c0351018067ddae5b70edc45d84fc" category="inline-link-rx"></block> 以取得詳細資料。</block>
+  <block id="5060cc5b216e626855bc2ef2a9b98372" category="list-text">在伺服器上安裝RHEL 8.6。安裝完成後、請確認您執行的是指定的RHEL 8.6核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
+  <block id="67a7c2662b17653a8ac76448e703f0b7" category="list-text">安裝完成後、請確認您執行的是指定的RHEL 8.6核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
+  <block id="71dcdd59971df1a5bb4dfbb60ffe2bad" category="list-text">驗證啟動器連接埠是否已啟動並正在執行、以及您是否可以看到目標LIF。</block>
+  <block id="95e3f3faa5bf8e48441621d165c05044" category="paragraph">RHEL 8.6核心隨附的原生內建「qla2xxx」驅動程式有最新的上游修正程式、這些修正程式對於ONTAP 支援不支援而言非常重要。</block>
+  <block id="b964263fad43476391626a8c5994d66f" category="paragraph">為了輕鬆克服ONTAP SFO等故障切換事件、建議您將「Ctrl-Loss _tmo」定時器調整為30分鐘、以設定更長的重試時間。以下是詳細資料：</block>
+  <block id="346a874868cfe5950cc070d607e10dda" category="list-text">確認其他NVMe / TCP啟動器目標LIF組合可以成功擷取探索記錄頁面資料。例如：</block>
+  <block id="7e4e5f748eea832eccfa25b6f84c9beb" category="list-text">在所有支援的NVMe /TCP啟動器目標LIF上、跨節點執行「NVMe Connect All」命令。請確保在連線期間經過較長的「Ctrl-Loss _tmo」期間（例如30分鐘、可設定至「-l 1800」）、以便在路徑遺失時重試更長時間。例如：</block>
+  <block id="3bb5487a25f2c91e7d62566cb6026b68" category="list-text">確認ONTAP 支援的名稱空間能正確反映在主機上。例如：</block>
+  <block id="f2af591771f10d63662bd947024ee100" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如：</block>
+  <block id="c13733aade7c22e1d6c0fb7be8a8c754" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如：</block>
 </blocks>
