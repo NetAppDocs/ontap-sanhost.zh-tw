@@ -140,7 +140,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/module/lpfc/version
 0:14.0.0.4
 ----
-. 確認lfc_enable _FC4_type已設定為3
+. 確認「lffc_enable _FC4_type]已設定為3
 +
 [listing]
 ----
@@ -316,7 +316,7 @@ sectype: none
 # cat /sys/module/nvme_core/parameters/multipath
 Y
 ----
-. 驗證ONTAP 個別ONTAP 的各個支援名稱空間是否正確反映主機上的適當NVMe設定（例如、將「model」設為「NetApp支援控制器」和「負載平衡iopolicy」設定為「循環」）：
+. 驗證ONTAP 適當的NVMe設定值（例如、將「model」設為「NetApp還原控制器」、並將負載平衡「iopolicy」設為「循環」）、以正確ONTAP 反映在主機上：
 +
 [listing]
 ----
@@ -474,17 +474,25 @@ NVME RPORT WWPN x200900a098c80f09 WWNN x200800a098c80f09 DID x010301 TARGET DISC
 NVME Statistics
 LS: Xmt 0000000000000006 Cmpl 0000000000000006
 FCP: Rd 0000000000000073 Wr 0000000000000005 IO 0000000000000031
-Cmpl 00000000000000a8 Outstanding 0000000000000001`
+Cmpl 00000000000000a8 Outstanding 0000000000000001
 ----
 * 如果NVMe資訊輸出中的目標LIF未如前所述顯示、請檢查「/var/log/Messages」和「dmesg」輸出是否有任何可疑的NVMe / FC故障、並據此報告或修正。
 
 
 
 
-| 「沒有要擷取的探索記錄項目」 | 一般會看到、NetApp陣列上的對應子系統是否未新增「/etc/nNVMe / hostnqn」字串、或是在個別子系統中新增不正確的hostnqn字串。 | 請確定NetApp陣列上的對應子系統中已新增確切的「/etc/nvm/hostnqn」字串（請透過「vserver NVMe Subsystem host show」命令進行驗證）。 
+| 「沒有要擷取的探索記錄項目」  a| 
+一般會看到、NetApp陣列上的對應子系統是否未新增「/etc/nexe/hostnqn」字串、或是在個別子系統中新增不正確的「hostnqn」字串。
+ a| 
+請確定NetApp陣列上的對應子系統中已新增確切的「/etc/nvm/hostnqn」字串（請透過「vserver NVMe Subsystem host show」命令進行驗證）。
 
 
-| 「寫入/dev/NVMe架構失敗：作業已在進行中」 | 已查看控制器關聯或指定的作業是否已建立或正在建立。這可能是上述安裝之自動連線指令碼的一部分。 | 無。如需NVMe探索、請稍後再試執行此命令。對於NVMe Connect和Connect All、請執行「NVMe list」命令、確認命名空間裝置已建立並顯示在主機上。 
+
+| 「寫入/dev/NVMe架構失敗：作業已在進行中」  a| 
+已查看控制器關聯或指定的作業是否已建立或正在建立。這可能是上述安裝之自動連線指令碼的一部分。
+ a| 
+無。若為「NVMe探索」、請稍後嘗試執行此命令。對於「NVMe Connect」和「Connect All」、請執行「NVMe list」命令、確認命名空間裝置已建立並顯示在主機上。
+
 |===
 
 

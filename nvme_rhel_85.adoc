@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_rhel_84.html 
+permalink: nvme_rhel_85.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何針對RHEL 8.4設定NVMe主機ONTAP 以使用功能 
+summary: 如何使用ONTAP 支援功能為RHEL 8.5設定NVMe主機 
 ---
-= 適用於RHEL 8.4 ONTAP 的NVMe主機組態、含功能不全
+= 適用於RHEL 8.5的NVMe主機組態（ONTAP 含功能性）
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -23,24 +23,21 @@ summary: 如何針對RHEL 8.4設定NVMe主機ONTAP 以使用功能
 
 == 支援能力
 
-採用ANA（非對稱命名空間存取）的RHEL 8.4支援NVMe over Fabric或NVMe（包括NVMe / FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.4和ONTAP 以RHEL為目標使用ANA的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。
+採用ANA（非對稱命名空間存取）的RHEL 8.5支援NVMe over Fabrics或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.5和ONTAP 以RHEL為目標使用ANA的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。
 
 
 
 == 功能
 
-* 從RHEL 8.2開始、原生的「NVMe -光纖通道自動連線」指令碼會包含在原生的「NVMe - CLI」套件中。您可以仰賴這些原生的自動連線指令碼、而不必安裝外部廠商提供的外接式自動連線指令碼。
-* 從RHEL 8.2開始、原生的「udev"規則已納入「NVMe - CLI」套件、可針對NVMe多重路徑啟用循環配置資源負載平衡。您不需要再手動建立此規則（如RHEL 8.1所做）。
-* 從RHEL 8.2開始、NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是客戶最常部署的主機組態。因此、對於SCSI、您可以像往常一樣為SCSI LUN設定「dm-multipaths」、以產生「mpath」裝置、而NVMe多重路徑則可用於在主機上設定NVMe多重路徑裝置。
-* 從RHEL 8.2開始、原生「NVMe - CLI」套件中的NetApp外掛程式也能顯示ONTAP 有關ONTAP 資訊的詳細資料、以及有關名稱空間的資訊。
+* RHEL 8.5除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。原生NVMe CLI套件中的NetApp外掛程式可顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資訊。
 
 
 
 
 == 已知限制
 
-* 對於RHEL 8.4、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。
-* RHEL 8.4上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.4_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.4版本資訊"^] 以取得詳細資料。
+* 在RHEL 8.5中、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。
+* RHEL 8.5上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.5_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.5版本說明"^] 以取得詳細資料。
 
 
 
@@ -53,8 +50,7 @@ summary: 如何針對RHEL 8.4設定NVMe主機ONTAP 以使用功能
 
 == 啟用內核NVMe多重路徑
 
-. 在伺服器上安裝RHEL 8.4 GA。安裝完成後、請確認您執行的是指定的RHEL 8.4 GA核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
-. 安裝完成後、請確認您執行的是指定的RHEL 8.4核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
+. 在伺服器上安裝RHEL 8.5 GA。安裝完成後、請確認您執行的是指定的RHEL 8.5 GA核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
 +
 範例：
 
@@ -62,7 +58,7 @@ summary: 如何針對RHEL 8.4設定NVMe主機ONTAP 以使用功能
 [listing]
 ----
 # uname -r
-4.18.0-305.el8.x86_64
+4.18.0-348.el8.x86_64
 ----
 . 安裝「NVMe-CLI（NVMe - CLI）套件：
 +
@@ -72,13 +68,13 @@ summary: 如何針對RHEL 8.4設定NVMe主機ONTAP 以使用功能
 [listing]
 ----
 # rpm -qa|grep nvme-cli
-nvme-cli-1.12-3.el8.x86_64
+nvme-cli-1.14-3.el8.x86_64
 ----
 . 啟用核心內建NVMe多重路徑：
 +
 [listing]
 ----
-# grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-305.el8.x86_64
+# grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-348.el8.x86_64
 ----
 . 在主機上、檢查位於「/etc/nape/hostnqn」的主機NQN字串、並驗證其是否符合ONTAP 位於「the」（子系統）上之對應子系統的主機NQN字串。範例：
 +
@@ -138,10 +134,10 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 [listing]
 ----
 # cat /sys/class/scsi_host/host*/fwrev
-12.8.340.8, sli-4:2:c
-12.8.340.8, sli-4:2:c
+12.8.351.47, sli-4:2:c
+12.8.351.47, sli-4:2:c
 # cat /sys/module/lpfc/version
-0:12.8.0.5
+0:12.8.0.10
 ----
 . 確認「lffc_enable _FC4_type]已設定為3
 +
@@ -150,33 +146,39 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
 3
 ----
-. 確認啟動器連接埠已啟動並正在執行、而且您可以看到目標LIF。
+. 驗證啟動器連接埠是否已啟動並正在執行、以及您是否可以看到目標LIF。
 +
 [listing, subs="+quotes"]
 ----
 # cat /sys/class/fc_host/host*/port_name
 0x100000109b1c1204
 0x100000109b1c1205
+
 # cat /sys/class/fc_host/host*/port_state
 Online
 Online
+
 # cat /sys/class/scsi_host/host*/nvme_info
+
 NVME Initiator Enabled
 XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
-*NVME LPORT lpfc0 WWPN x100000109b1c1204 WWNN x200000109b1c1204 DID x011d00 ONLINE*
-*NVME RPORT WWPN x203800a098dfdd91 WWNN x203700a098dfdd91 DID x010c07 TARGET DISCSRVC ONLINE*
-*NVME RPORT WWPN x203900a098dfdd91 WWNN x203700a098dfdd91 DID x011507 TARGET DISCSRVC ONLINE*
+NVME LPORT lpfc0 WWPN x100000109b1c1204 WWNN x200000109b1c1204 DID x011d00 ONLINE
+NVME RPORT WWPN x203800a098dfdd91 WWNN x203700a098dfdd91 DID x010c07 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203900a098dfdd91 WWNN x203700a098dfdd91 DID x011507 TARGET DISCSRVC ONLINE
+
 NVME Statistics
 LS: Xmt 0000000f78 Cmpl 0000000f78 Abort 00000000
 LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
 Total FCP Cmpl 000000002fe29bba Issue 000000002fe29bc4 OutIO 000000000000000a
 abort 00001bc7 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
 FCP CMPL: xb 00001e15 Err 0000d906
+
 NVME Initiator Enabled
 XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
-*NVME LPORT lpfc1 WWPN x100000109b1c1205 WWNN x200000109b1c1205 DID x011900 ONLINE
+NVME LPORT lpfc1 WWPN x100000109b1c1205 WWNN x200000109b1c1205 DID x011900 ONLINE
 NVME RPORT WWPN x203d00a098dfdd91 WWNN x203700a098dfdd91 DID x010007 TARGET DISCSRVC ONLINE
-NVME RPORT WWPN x203a00a098dfdd91 WWNN x203700a098dfdd91 DID x012a07 TARGET DISCSRVC ONLINE*
+NVME RPORT WWPN x203a00a098dfdd91 WWNN x203700a098dfdd91 DID x012a07 TARGET DISCSRVC ONLINE
+
 NVME Statistics
 LS: Xmt 0000000fa8 Cmpl 0000000fa8 Abort 00000000
 LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
@@ -216,15 +218,15 @@ options lpfc lpfc_sg_seg_cnt=256
 
 === Marvell / QLogic
 
-RHEL 8.4 GA核心隨附的原生內建「qla2xxx」驅動程式、提供ONTAP 最新的上游修正程式、這些修正程式對於支援支援而言非常重要。
+RHEL 8.5 GA核心隨附的原生內建「qla2xxx」驅動程式、提供ONTAP 最新的上游修正程式、這些修正程式對支援進行支援是不可或缺的。
 
 . 使用下列命令、確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]
 ----
 # cat /sys/class/fc_host/host*/symbolic_name
-QLE2742 FW:v9.06.02 DVR:v10.02.00.104-k
-QLE2742 FW:v9.06.02 DVR:v10.02.00.104-k
+QLE2742 FW:v9.06.02 DVR:v10.02.00.106-k
+QLE2742 FW:v9.06.02 DVR:v10.02.00.106-k
 ----
 . 確認已設定「ql2xnvmeenable」、以便Marvell介面卡能以NVMe / FC啟動器的形式運作、請使用下列命令：
 +
@@ -285,15 +287,16 @@ traddr: 192.168.2.56
 sectype: none
 ...
 ----
-. 確認其他NVMe / TCP啟動器目標LIF組合是否能夠成功擷取探索記錄頁面資料。例如、
+. 確認其他NVMe / TCP啟動器目標LIF組合可以成功擷取探索記錄頁面資料。例如：
 +
 [listing]
 ----
+# nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.51
 # nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.52
 # nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.56
 # nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.57
 ----
-. 在所有支援的NVMe /TCP啟動器目標LIF上、跨節點執行「NVMe Connect All」命令。請確保在連線期間經過較長的「Ctrl-Loss _tmo」期間（例如30分鐘、可設定至「-l 1800」）、以便在路徑遺失時重試更長時間。例如、
+. 在所有支援的NVMe /TCP啟動器目標LIF上、跨節點執行「NVMe Connect All」命令。確保在連線期間經過較長的「Ctrl-Loss _tmo」期間（例如30分鐘、可設定至「-l 1800」）、以便在路徑遺失時重試較長時間。例如：
 +
 [listing]
 ----
@@ -315,7 +318,7 @@ sectype: none
 # cat /sys/module/nvme_core/parameters/multipath
 Y
 ----
-. 驗證ONTAP 適當的NVMe設定值（例如、將「model」設為「NetApp還原控制器」、並將負載平衡「iopolicy」設為「循環」）、以正確ONTAP 反映在主機上：
+. 驗證ONTAP 個別ONTAP 的各個支援名稱空間是否正確反映主機上的適當NVMe設定（例如、將「model」設為「NetApp支援控制器」和「負載平衡iopolicy」設定為「循環」）：
 +
 [listing]
 ----
@@ -327,63 +330,30 @@ NetApp ONTAP Controller
 round-robin
 round-robin
 ----
-. 確認ONTAP 支援的名稱空間能正確反映在主機上。例如、
+. 確認ONTAP 支援的名稱空間能正確反映在主機上。例如：
 +
 [listing]
 ----
 # nvme list
 Node           SN                    Model                   Namespace
 ------------   --------------------- ---------------------------------
-/dev/nvme0n1   81CZ5BQuUNfGAAAAAAAB  NetApp ONTAP Controller   1
+/dev/nvme0n1    814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller   1
 
 Usage                Format         FW Rev
 -------------------  -----------    --------
 85.90 GB / 85.90 GB  4 KiB + 0 B    FFFFFFFF
 ----
-+
-另一個範例：
-
-+
-[listing]
-----
-# nvme list
-Node           SN                    Model                   Namespace
-------------   --------------------- ---------------------------------
-/dev/nvme0n1   81CYrBQuTHQFAAAAAAAC  NetApp ONTAP Controller   1
-
-Usage                Format         FW Rev
--------------------  -----------    --------
-85.90 GB / 85.90 GB  4 KiB + 0 B    FFFFFFFF
-----
-. 確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如、
+. 確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如：
 +
 [listing, subs="+quotes"]
 ----
-# nvme list-subsys /dev/nvme1n1
-nvme-subsys1 - NQN=nqn.1992-08.com.netapp:sn.04ba0732530911ea8e8300a098dfdd91:subsystem.nvme_145_1
+# nvme list-subsys /dev/nvme0n1
+nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:subsystem.nvme_141_1
 \
-+- nvme2 fc traddr=nn-0x208100a098dfdd91:pn-0x208200a098dfdd91 host_traddr=nn-0x200000109b579d5f:pn-0x100000109b579d5f live *non-optimized*
-+- nvme3 fc traddr=nn-0x208100a098dfdd91:pn-0x208500a098dfdd91 host_traddr=nn-0x200000109b579d5e:pn-0x100000109b579d5e live *non-optimized*
-+- nvme4 fc traddr=nn-0x208100a098dfdd91:pn-0x208400a098dfdd91 host_traddr=nn-0x200000109b579d5e:pn-0x100000109b579d5e live *optimized*
-+- nvme6 fc traddr=nn-0x208100a098dfdd91:pn-0x208300a098dfdd91 host_traddr=nn-0x200000109b579d5f:pn-0x100000109b579d5f live *optimized*
-----
-+
-另一個範例：
-
-+
-[listing, subs="+quotes"]
-----
-#nvme list-subsys /dev/nvme0n1
-nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.37ba7d9cbfba11eba35dd039ea165514:subsystem.nvme_114_tcp_1
-\
-+- nvme0 tcp traddr=192.168.2.36 trsvcid=4420 host_traddr=192.168.1.4 live *optimized*
-+- nvme1 tcp traddr=192.168.1.31 trsvcid=4420 host_traddr=192.168.1.4 live *optimized*
-+- nvme10 tcp traddr=192.168.2.37 trsvcid=4420 host_traddr=192.168.1.4 live *non-optimized*
-+- nvme11 tcp traddr=192.168.1.32 trsvcid=4420 host_traddr=192.168.1.4 live *non-optimized*
-+- nvme20 tcp traddr=192.168.2.36 trsvcid=4420 host_traddr=192.168.2.5 live *optimized*
-+- nvme21 tcp traddr=192.168.1.31 trsvcid=4420 host_traddr=192.168.2.5 live *optimized*
-+- nvme30 tcp traddr=192.168.2.37 trsvcid=4420 host_traddr=192.168.2.5 live *non-optimized*
-+- nvme31 tcp traddr=192.168.1.32 trsvcid=4420 host_traddr=192.168.2.5 live *non-optimized*
++- nvme0 fc traddr=nn-0x203700a098dfdd91:pn-0x203800a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 *live inaccessible*
++- nvme1 fc traddr=nn-0x203700a098dfdd91:pn-0x203900a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 *live inaccessible*
++- nvme2 fc traddr=nn-0x203700a098dfdd91:pn-0x203a00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 *live optimized*
++- nvme3 fc traddr=nn-0x203700a098dfdd91:pn-0x203d00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 *live optimized*
 ----
 . 驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如、
 +
@@ -392,60 +362,27 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.37ba7d9cbfba11eba35dd039ea165514:su
 # nvme netapp ontapdevices -o column
 Device       Vserver          Namespace Path
 ---------    -------          --------------------------------------------------
-/dev/nvme1n1 vserver_fcnvme_145 /vol/fcnvme_145_vol_1_0_0/fcnvme_145_ns
+/dev/nvme0n1 vs_fcnvme_141  vol/fcnvme_141_vol_1_1_0/fcnvme_141_ns
 
 NSID  UUID                                   Size
 ----  ------------------------------         ------
-1      23766b68-e261-444e-b378-2e84dbe0e5e1  85.90GB
+1     72b887b1-5fb6-47b8-be0b-33326e2542e2  85.90GB
 
 
 # nvme netapp ontapdevices -o json
 {
 "ONTAPdevices" : [
-     {
-       "Device" : "/dev/nvme1n1",
-       "Vserver" : "vserver_fcnvme_145",
-       "Namespace_Path" : "/vol/fcnvme_145_vol_1_0_0/fcnvme_145_ns",
-       "NSID" : 1,
-       "UUID" : "23766b68-e261-444e-b378-2e84dbe0e5e1",
-       "Size" : "85.90GB",
-       "LBA_Data_Size" : 4096,
-       "Namespace_Size" : 20971520
-     }
+    {
+        "Device" : "/dev/nvme0n1",
+        "Vserver" : "vs_fcnvme_141",
+        "Namespace_Path" : "/vol/fcnvme_141_vol_1_1_0/fcnvme_141_ns",
+        "NSID" : 1,
+        "UUID" : "72b887b1-5fb6-47b8-be0b-33326e2542e2",
+        "Size" : "85.90GB",
+        "LBA_Data_Size" : 4096,
+        "Namespace_Size" : 20971520
+    }
   ]
-}
-----
-+
-另一個範例：
-
-+
-[listing]
-----
-# nvme netapp ontapdevices -o column
-Device       Vserver          Namespace Path
----------    -------          --------------------------------------------------
-/dev/nvme0n1 vs_tcp_114       /vol/tcpnvme_114_1_0_1/tcpnvme_114_ns
-
-NSID  UUID                                   Size
-----  ------------------------------         ------
-1      a6aee036-e12f-4b07-8e79-4d38a9165686  85.90GB
-
-
-# nvme netapp ontapdevices -o json
-{
-     "ONTAPdevices" : [
-     {
-          "Device" : "/dev/nvme0n1",
-           "Vserver" : "vs_tcp_114",
-          "Namespace_Path" : "/vol/tcpnvme_114_1_0_1/tcpnvme_114_ns",
-          "NSID" : 1,
-          "UUID" : "a6aee036-e12f-4b07-8e79-4d38a9165686",
-          "Size" : "85.90GB",
-          "LBA_Data_Size" : 4096,
-          "Namespace_Size" : 20971520
-       }
-  ]
-
 }
 ----
 

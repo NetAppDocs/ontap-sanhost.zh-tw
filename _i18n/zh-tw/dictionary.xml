@@ -1014,7 +1014,6 @@
   <block id="3ea394f2d9cebf2dfc911ba5e025db7a" category="section-title">Broadcom / Emulex</block>
   <block id="558772c2923356166b7dbc78142c82d1" category="list-text">確認您使用的是支援的介面卡。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援介面卡清單。</block>
   <block id="b683fa7bfd2f7f01ea49576352757cd5" category="list-text">請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援介面卡驅動程式和韌體版本清單。</block>
-  <block id="46e2b7cc014d11d7552d6921801d0753" category="list-text">確認lfc_enable _FC4_type已設定為3</block>
   <block id="2defc9958244f438872605820e3ca11a" category="list-text">確認啟動器連接埠已啟動並正在執行、而且您可以看到目標LIF。</block>
   <block id="c0aa648bd7e5700f1ad07528684facf8" category="section-title">啟用1MB I/O大小（選用）</block>
   <block id="ebca1c9e44630148af4439559839580e" category="paragraph">在「識別控制器」資料中、若能報告MDTS（不含資料的傳輸大小）為8、表示I/O要求的最大大小應為1 MB。ONTAP MAX Data不過、若要針對Broadcom NVMe / FC主機發出大小為1 MB的I/O要求、則lfc參數「lffc_sg_seg_cnt"也應該從預設值64增加至256。請依照下列指示操作：</block>
@@ -2460,7 +2459,6 @@
   <block id="0300a463a2779250716b195b0f15c1ba" category="paragraph">請確定您已針對上述命令傳遞適當的引數（例如適當的WWNN字串、WWPN字串等）。如果引數正確、但仍看到此錯誤、請檢查NVMe啟動器的「/sys/class/scsi_host/host/nvm_info'」輸出是否正確、並在遠端連接埠區段下方正確顯示「已啟用」和nvm/FC目標LIF。例如、</block>
   <block id="ad02181fdbf4245ee0052cfb92cb8bcc" category="paragraph">因應措施：如果「NVMe資訊」輸出中未顯示上述目標LIF、請檢查「/var/log/Messages」和「dmesg」輸出是否有任何可疑的NVMe / FC故障、並據此報告或修正。</block>
   <block id="9f7680250af5452ad3bc6e1373a71a11" category="cell">在「NVMe探索」、「NVMe連線」或「NVMe連線」期間、「無探索記錄項目可擷取」</block>
-  <block id="5bb9931249b357349ab3bbe1fedc8d23" category="cell">如果尚未將「/etc/nexe/hostnqn」字串新增至NetApp陣列上的對應子系統、或是在個別子系統中新增不正確的hostnqn字串、通常會出現此錯誤訊息。</block>
   <block id="6bd22b028f1c581999993ec8672aea1c" category="cell">請確定NetApp陣列上的對應子系統中已新增確切的「/etc/nvm/hostnqn」字串（請透過「vserver NVMe子系統主機show」驗證）。</block>
   <block id="00443539b6acea3b81b118f7a7f62818" category="cell">「無法寫入/開發/ NVMe架構：作業已在進行中」、「NVMe探索」、「NVMe連線」或「NVMe連線-全部」</block>
   <block id="796b7594f30be7947c1efffc9c471c02" category="cell">如果已建立控制器關聯或指定的作業、或正在建立、就會出現此錯誤訊息。這可能是上述安裝之自動連線指令碼的一部分。</block>
@@ -2548,4 +2546,19 @@
   <block id="3bb5487a25f2c91e7d62566cb6026b68" category="list-text">確認ONTAP 支援的名稱空間能正確反映在主機上。例如：</block>
   <block id="f2af591771f10d63662bd947024ee100" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如：</block>
   <block id="c13733aade7c22e1d6c0fb7be8a8c754" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如：</block>
+  <block id="295d37bcf3aa6754427b612bea361663" category="paragraph">如果NetApp陣列上的對應子系統未新增「/etc/nexe/hostnqn」字串、或是在個別子系統中新增不正確的「hostnqn」字串、通常會出現此錯誤訊息。</block>
+  <block id="dcda2cb33413b9ab0c8373225de75578" category="summary">如何使用ONTAP 支援功能為RHEL 8.5設定NVMe主機</block>
+  <block id="3ae77fb5b2d43b5802128bed00b85944" category="doc">適用於RHEL 8.5的NVMe主機組態（ONTAP 含功能性）</block>
+  <block id="9eea7fd01633455098385cd20b7dd183" category="paragraph">採用ANA（非對稱命名空間存取）的RHEL 8.5支援NVMe over Fabrics或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.5和ONTAP 以RHEL為目標使用ANA的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。</block>
+  <block id="ec81597eac06c85c5ddfa44cc8fcbd52" category="list-text">RHEL 8.5除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。原生NVMe CLI套件中的NetApp外掛程式可顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資訊。</block>
+  <block id="206f20ba4ee9fc54736165b9006258a5" category="list-text">在RHEL 8.5中、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="46e2bc1ba1e17f9c87c8bdd0665dde6a" category="inline-link">RHEL 8.5版本說明</block>
+  <block id="ba53163a27cd9bc34ed5a326c3bcd717" category="list-text">RHEL 8.5上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱<block ref="e17db2abe54f171cfce139c1feeab28f" category="inline-link-rx"></block> 以取得詳細資料。</block>
+  <block id="9c7d4fd2f8e0f3f2d80343ad47595e46" category="list-text">在伺服器上安裝RHEL 8.5 GA。安裝完成後、請確認您執行的是指定的RHEL 8.5 GA核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
+  <block id="3010e81137392b43d689728401eb1ea9" category="list-text">確認「lffc_enable _FC4_type]已設定為3</block>
+  <block id="d5236e74852c6cce228c1229faf5ea4f" category="paragraph">RHEL 8.5 GA核心隨附的原生內建「qla2xxx」驅動程式、提供ONTAP 最新的上游修正程式、這些修正程式對支援進行支援是不可或缺的。</block>
+  <block id="e23d82164b7ed25abb97130635815a09" category="list-text">在所有支援的NVMe /TCP啟動器目標LIF上、跨節點執行「NVMe Connect All」命令。確保在連線期間經過較長的「Ctrl-Loss _tmo」期間（例如30分鐘、可設定至「-l 1800」）、以便在路徑遺失時重試較長時間。例如：</block>
+  <block id="431b68e6f738b5c8bf76d7972d17685f" category="paragraph">一般會看到、NetApp陣列上的對應子系統是否未新增「/etc/nexe/hostnqn」字串、或是在個別子系統中新增不正確的「hostnqn」字串。</block>
+  <block id="d9062f55beecc22ab1e0baaa195b1f68" category="paragraph">無。若為「NVMe探索」、請稍後嘗試執行此命令。對於「NVMe Connect」和「Connect All」、請執行「NVMe list」命令、確認命名空間裝置已建立並顯示在主機上。</block>
+  <block id="9b2d197e1555229882f18589d7c32cce" category="list-text">驗證ONTAP 適當的NVMe設定值（例如、將「model」設為「NetApp還原控制器」、並將負載平衡「iopolicy」設為「循環」）、以正確ONTAP 反映在主機上：</block>
 </blocks>
