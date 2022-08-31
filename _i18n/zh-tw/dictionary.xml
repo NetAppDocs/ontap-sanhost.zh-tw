@@ -2561,4 +2561,11 @@
   <block id="431b68e6f738b5c8bf76d7972d17685f" category="paragraph">一般會看到、NetApp陣列上的對應子系統是否未新增「/etc/nexe/hostnqn」字串、或是在個別子系統中新增不正確的「hostnqn」字串。</block>
   <block id="d9062f55beecc22ab1e0baaa195b1f68" category="paragraph">無。若為「NVMe探索」、請稍後嘗試執行此命令。對於「NVMe Connect」和「Connect All」、請執行「NVMe list」命令、確認命名空間裝置已建立並顯示在主機上。</block>
   <block id="9b2d197e1555229882f18589d7c32cce" category="list-text">驗證ONTAP 適當的NVMe設定值（例如、將「model」設為「NetApp還原控制器」、並將負載平衡「iopolicy」設為「循環」）、以正確ONTAP 反映在主機上：</block>
+  <block id="6cbc9fed5483c62cf8d3ec78d1467ec4" category="list-text">從7.0U3c及更新版本開始、支援ESXi Hypervisor的NVMe/TCP功能。</block>
+  <block id="cc2bd6356672cd21ca706ee5860d746e" category="list-text">從版本支援的更新版本起、支援NVMe/TCP功能。ONTAP ONTAP</block>
+  <block id="fc42d5b62a406fecb7a634ca014f42c2" category="paragraph">從7.0U3c開始、預設會載入所需的NVMe/TCP模組。如需設定網路和NVMe/TCP介面卡、請參閱VMware vSphere文件。</block>
+  <block id="209ae9abdc2efd05e90e3a97a8913a9b" category="section-title">驗證NVMe/TCP</block>
+  <block id="e4dbb8bc2f2492f010d3f33dd68f00c8" category="list-text">驗證NVMe / TCP介面卡的狀態。</block>
+  <block id="d4babb87959d757516a4f480642224cf" category="list-text">若要列出NVMe / TCP連線、請使用下列命令：</block>
+  <block id="75d2257ae841105f67aa7e6940b3fccb" category="list-text">若要列出NVMe命名空間的路徑數目、請使用下列命令：</block>
 </blocks>
