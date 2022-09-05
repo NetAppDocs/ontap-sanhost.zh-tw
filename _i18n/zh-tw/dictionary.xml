@@ -2568,4 +2568,14 @@
   <block id="e4dbb8bc2f2492f010d3f33dd68f00c8" category="list-text">驗證NVMe / TCP介面卡的狀態。</block>
   <block id="d4babb87959d757516a4f480642224cf" category="list-text">若要列出NVMe / TCP連線、請使用下列命令：</block>
   <block id="75d2257ae841105f67aa7e6940b3fccb" category="list-text">若要列出NVMe命名空間的路徑數目、請使用下列命令：</block>
+  <block id="d1672d22493ff360a1f07bc1cfac7524" category="doc">使用SUSE Linux Enterprise Server 15 SP4搭配NetApp ONTAP 功能</block>
+  <block id="aaf285a33d84d021ddb3cf7d93395617" category="paragraph">對於SUSE Linux Enterprise Server 15 SP4、必須存在「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。SUSE Linux Enterprise Server 15 SP4的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
+  <block id="3dfda629d29a9eff997fc21c726b36da" category="paragraph">SUSE Linux Enterprise Server 15 SP4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本的顯示和非ASA組態、正確設定所有組態參數。</block>
+  <block id="bdb5443c5dd9643367f9496b5fb35d08" category="paragraph">要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
+  <block id="a96d8f77801154cf5d51080e06fa3215" category="paragraph">將「&lt;DevID&gt;」取代為您要排除的裝置的「WWID」字串。使用下列命令來判斷「WWID」：</block>
+  <block id="9d29c9f01ddee621ba147e8ccc4bc7b0" category="list-text">執行下列命令來判斷「WWID」：</block>
+  <block id="e97b2c87e2a473e6975fd85e7af8bc02" category="list-text">將此「WWID」新增至「/etc/multipath.conf」中的黑名單節：</block>
+  <block id="588664bdfe3aca23316ad7f26a08e2a5" category="paragraph">下表顯示ONTAP 了適用於整個過程的關鍵多路徑參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</block>
+  <block id="e1f518829ea0b48c92b1926c70a84380" category="paragraph">SUSE Linux Enterprise Server 15 SP4沒有已知問題。</block>
+  <block id="cf79be42f6c9a2f2225f202bfec080c2" category="sidebar">15 SP4</block>
 </blocks>

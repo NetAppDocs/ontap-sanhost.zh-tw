@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_centos_69.html 
-keywords: host utilities, cent, os, 6.9, netapp, ontap, linux 
-summary: 說明如何搭配ONTAP 使用CentOS 6.9搭配使用功能 
+permalink: hu_sles_15SP4.html 
+keywords: host utilities, suse linux enterprise server 15 sp3, suse, linux, 15 sp3, netapp, ontap 
+summary: 說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 15 SP3搭配使用 
 ---
-= 使用CentOS 6.9搭配NetApp ONTAP 功能
+= 使用SUSE Linux Enterprise Server 15 SP4搭配NetApp ONTAP 功能
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -58,7 +58,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN開機
 
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=77603;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=84067;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -77,20 +77,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == 多重路徑
 
-對於CentOS 6.9"/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 6.9是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。
-
-若要啟用ALUA處理常式、請執行下列步驟：
-
-. 建立initrd-image的備份。
-. 將下列參數值附加至核心、以便ALUA和非ALUA正常運作：「rdaloaddriver=scsi_d_alua」
-+
-....
-kernel /vmlinuz-2.6.32-358.6.1.el6.x86_64 ro root=/dev/mapper/ vg_ibmx355021082-lv_root rd_NO_LUKS rd_LVM_LV=vg_ibmx355021082/ lv_root LANG=en_US.UTF-8 rd_LVM_LV=vg_ibmx355021082/lv_swap rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet rdloaddriver=scsi_dh_alua
-....
-. 使用「mkitrd」命令重新建立initrd-image。CentOS 6x及更新版本可使用下列命令：「mkitrd -f /boot/ initrd-"uname -r"。imguname -r"或命令：「Dracut -f"
-. 重新啟動主機。
-. 驗證「cat /proc/cmdline」命令的輸出、以確保設定完成。
-
+對於SUSE Linux Enterprise Server 15 SP4、必須存在「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。SUSE Linux Enterprise Server 15 SP4的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。
 
 您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
 
@@ -105,13 +92,13 @@ kernel /vmlinuz-2.6.32-358.6.1.el6.x86_64 ro root=/dev/mapper/ vg_ibmx355021082-
 [listing]
 ----
 # multipath -ll
-3600a0980383034466b2b4a3775474859 dm-3 NETAPP,LUN C-Mode
-size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-|-+- policy='round-robin 0' prio=50 status=active
-|- 1:0:8:1  sdb 8:16 active ready running
-|- 2:0:8:1  sdd 8:48 active ready running
-|- 1:0:9:1  sdc 8:32 active ready running
-|- 2:0:9:1  sde 8:64 active ready running
+3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 3:0:7:9    sdco 69:192  active ready running
+  |- 3:0:8:9    sddi 71:0    active ready running
+  |- 14:0:8:9   sdjq 65:320  active ready running
+  `- 14:0:7:9   sdiw 8:256   active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
@@ -127,14 +114,14 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑�
 [listing]
 ----
 # multipath -ll
-3600a0980383034466b2b4a3775474859 dm-3 NETAPP,LUN C-Mode
-size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-|-+- policy='round-robin 0' prio=50 status=active
-| |- 1:0:8:1  sdb 8:16 active ready running
-| `- 2:0:8:1  sdd 8:48 active ready running
-`-+- policy='round-robin 0' prio=10 status=enabled
-  |- 1:0:9:1  sdc 8:32 active ready running
-  `- 2:0:9:1  sde 8:64 active ready running
+3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 3:0:3:0    sdd  8:48    active ready running
+| |- 3:0:4:0    sdx  65:112  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 14:0:2:0   sdfk 130:96  active ready running
+  `- 14:0:5:0   sdgz 132:240 active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
@@ -143,57 +130,45 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑�
 
 == 建議設定
 
-CentOS 6.9作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。
+SUSE Linux Enterprise Server 15 SP4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本的顯示和非ASA組態、正確設定所有組態參數。
 
 要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案
 
 第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。
 
-[listing]
-----
-# systemctl enable multipathd
-# systemctl start multipathd
-----
 不需要直接將任何內容新增至「多重路徑.conf」檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。
 
 您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。
 
-將「<DevID>」取代為您要排除的裝置WWID字串。使用下列命令來判斷WWID：
+將「<DevID>」取代為您要排除的裝置的「WWID」字串。使用下列命令來判斷「WWID」：
 
-....
-blacklist {
-        wwid <DevId>
-        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-        devnode "^hd[a-z]"
-        devnode "^cciss.*"
-}
-....
 在此範例中、「sda」是我們需要列入黑名單的本機SCSI磁碟。
 
 .步驟
-. 執行下列命令來判斷WWID：
+. 執行下列命令來判斷「WWID」：
 +
-....
-# /lib/udev/scsi_id -gud /dev/sda
+[listing]
+----
+# /usr/lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
-....
-. 將此WWID新增至「/etc/multipath.conf」中的黑名單節：
+----
+. 將此「WWID」新增至「/etc/multipath.conf」中的黑名單節：
 +
-....
+[listing]
+----
 blacklist {
-     wwid   360030057024d0730239134810c0cb833
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
+wwid	360030057024d0730239134810c0cb833
+devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*" devnode "^hd[a-z]"
+devnode "^cciss.*"
 }
-....
+----
 
 
 您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。
 
-下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。
+下表顯示ONTAP 了適用於整個過程的關鍵多路徑參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。
 
-[cols="2*"]
+[cols="2"]
 |===
 | 參數 | 設定 
 
@@ -210,7 +185,7 @@ blacklist {
 | fast_io_f故障_tmo | 5. 
 
 
-| 功能 | "3 queue_if_no_path pg_init_retries 50" 
+| 功能 | "2 pg_init_retries 50" 
 
 
 | Flip_on_last刪除 | "是" 
@@ -228,7 +203,7 @@ blacklist {
 | path_grouping_policy | "群組by_prio" 
 
 
-| path_selector | "循環資源0" 
+| path_selector | "服務時間0" 
 
 
 | Polling_時間 間隔 | 5. 
@@ -259,7 +234,6 @@ defaults {
    path_checker      readsector0
    no_path_retry      fail
 }
-
 devices {
    device {
       vendor         "NETAPP  "
@@ -271,15 +245,9 @@ devices {
 ----
 
 
-=== KVM設定
-
-您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
-
-
-
 == 已知問題與限制
 
-如需CentOS（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_69.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）6.9。
+SUSE Linux Enterprise Server 15 SP4沒有已知問題。
 
 
 
