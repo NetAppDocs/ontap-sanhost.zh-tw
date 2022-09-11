@@ -2578,4 +2578,27 @@
   <block id="588664bdfe3aca23316ad7f26a08e2a5" category="paragraph">下表顯示ONTAP 了適用於整個過程的關鍵多路徑參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</block>
   <block id="e1f518829ea0b48c92b1926c70a84380" category="paragraph">SUSE Linux Enterprise Server 15 SP4沒有已知問題。</block>
   <block id="cf79be42f6c9a2f2225f202bfec080c2" category="sidebar">15 SP4</block>
+  <block id="8da61845fa1ac07e5d54097fe9d2a4cb" category="summary">說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterprise Server 15 SP4的NVMe/FC</block>
+  <block id="8eb74debb51b4f25feba23cb4c810b37" category="doc">適用於SUSE Linux Enterprise Server 15 SP4及ONTAP 支援功能的NVMe主機組態</block>
+  <block id="c75db19ac5a0dcb194a365e12ad2a6df" category="paragraph">採用ANA（非對稱命名空間存取）的SUSE Linux Enterprise Server 15 SP4（SLES15 SP4）支援NVMe over Fabric或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需啟用NVMe的詳細資料、請ONTAP 參閱此處以ANA on SLES15 SP4和以之為目標的內核NVMe多重路徑。</block>
+  <block id="6bf6f26e72e1a43152386a3d529598cb" category="list-text">SLES15 SP4支援NVMe / FC及其他傳輸。</block>
+  <block id="142ea2bd2623f2c2d64d9ef53c347b24" category="list-text">NVMe不支援「anlun」。因此、在SLES15 SP4上、不會支援NVMe的Luhu。您可以改用原生「NVMe - CLI」隨附的NetApp外掛程式。這應該適用於所有NVMe傳輸。</block>
+  <block id="10bc893eed35189e5092c4f181aedb5e" category="list-text">NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是通常部署的主機組態。因此、對於SCSI而言、您可以像往常一樣為SCSI LUN設定「dm-multipath"、以產生mpath裝置、而NVMe多重路徑則可用於在主機上設定NVMe多重路徑裝置。</block>
+  <block id="4b148e1d7f44cff075101f1edbc6a9fe" category="paragraph">請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得所支援組態的正確詳細資料。</block>
+  <block id="b545ab3ca975cd0517fdd21a1729e795" category="paragraph">核心內建NVMe多重路徑已在SLES主機（例如、SLES15 SP4）上預設啟用。因此、此處不需要其他設定。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得所支援組態的正確詳細資料。</block>
+  <block id="4933033127862860b194cbe455635310" category="list-text">請確認您已在SLES15 SP4 MU主機上安裝必要的核心和「NVMe-CLI」維護更新（MU）套件。</block>
+  <block id="c5887937b5b23714e6333cc2805b4864" category="list-text">檢查主機上的「hostnqn」字串（位於「/etc/nexe/hostnqn」）、並確保其與ONTAP 「hostnqn」字串正確相符、以對應於該等子系統的「hostnqn」字串。例如、</block>
+  <block id="d9f4f7d9a9eb182e8b8863d6c183e841" category="paragraph">視主機上使用的FC介面卡而定、繼續執行下列步驟。</block>
+  <block id="75870a630c07f219a37133dad55f104f" category="paragraph">較新的lpfcc驅動程式（包括收件匣和發件匣）已將「lffc_enable _FC4_type]預設值設為3、因此您不再需要在「/etc/modprofile.d/lffc.conf」中明確設定、然後重新建立「initrd」。預設已啟用「lfit NVMe」支援：</block>
+  <block id="32ecb9890aed827558c7cd1a318fda14" category="paragraph">現有的原生原生lffc驅動程式已經是最新的、且與NVMe/FC相容。因此、您不需要安裝隨裝即用（OOB）的lfit驅動程式。</block>
+  <block id="ce48d43c1e6c7a418733e722925a43b8" category="list-text">確認NVMe / FC啟動器連接埠已啟用、而且您可以看到目標連接埠、而且所有連接埠都已啟動並正在執行。在此範例中、只會啟用一個啟動器連接埠、並與輸出中所示的兩個目標LIF連線：</block>
+  <block id="bc1eafdc5546c34f6a9034570437fcc0" category="list-text">執行dracut -f命令、然後重新啟動主機。</block>
+  <block id="61efa8d63e1b266809e1e79422fed58f" category="paragraph">較新版本的SLES15 SP4 MU核心隨附的原生內建qla2xxx驅動程式、具有最新的上游修正程式、是ONTAP 支援此功能不可或缺的要素。</block>
+  <block id="859c1dcdb0decd8fe22f184abe2b92f7" category="list-text">路徑恢復後、不會自動重新連線、因為在路徑關閉後的10分鐘內、預設的「Ctrl-Loss - TMO"定時器無法自動重新連線至恢復的路徑。</block>
+  <block id="1077e8ad3542ff8af32bed26b6b21ee8" category="list-text">在主機開機期間、不會自動連線NVMe / TCP、也無法在主機開機期間自動連線。</block>
+  <block id="bf67db93bdc191f54bf3b60580bdafe9" category="paragraph">為了輕鬆克服ONTAP 諸如儲存容錯移轉（SFO）等故障切換事件、建議您調整「Ctrl-Loss _tmo」定時器、設定較長的重試時間、例如30分鐘。以下是詳細資料：</block>
+  <block id="bf093b1c5c4b0f979c7987042c56c3d8" category="list-text">在所有支援的NVMe /TCP啟動器目標LIF上、跨節點執行「NVMe Connect All」命令。確保您在「連線至所有」期間經過較長的「Ctrl-Loss _tmo」期間（例如30分鐘、可設定至-l 1800）、以便在路徑遺失時重試較長時間。例如、</block>
+  <block id="b2edbac4a48e893081ffbe4cda9a7dec" category="list-text">驗證ONTAP 個別ONTAP 的各個還原命名空間是否適當反映在主機上的NVMe設定（例如、設定為NetApp支援資源控制器的模型、以及將負載平衡iopolicy設定為循環配置資源）：</block>
+  <block id="0882578f9915da36a8ab5c612728ad30" category="paragraph">範例（A）：</block>
+  <block id="07cf625ee23005956a460fdd83c0142d" category="list-text">如果「NVMe資訊」輸出中沒有顯示上述目標LIF、請檢查「/var/log/Messages」和「dmesg」輸出是否有任何可疑的NVMe / FC故障、並據此報告或修正。</block>
 </blocks>
