@@ -49,7 +49,10 @@ sidebar:
     - title: Oracle Linux
       entries:
       - title: ol 8.
+        pdf-filename: NVMeF OL
         entries:
+        - title: '8.5'
+          url: "/nvme_ol_85.html"
         - title: '8.2'
           url: "/nvme_ol_82.html"
         - title: '8.1'
@@ -351,4 +354,4 @@ sidebar:
 product-family:
   name: ONTAP
   repo: ontap-family
-  sidebar_label: All ONTAP product documentation
+  sidebar_label: 所有ONTAP 產品文件
