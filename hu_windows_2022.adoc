@@ -1,0 +1,146 @@
+---
+sidebar: sidebar 
+permalink: hu_windows_2022.html 
+keywords: windows, enterprise 
+summary: 搭配ONTAP 使用Windows Server 2022搭配使用 
+---
+= 搭配ONTAP 使用Windows Server 2022搭配使用
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 開機作業系統
+
+開機作業系統有兩種選項：使用本機開機或SAN開機。若要進行本機開機、您需要在本機硬碟（SSD、SATA、RAID等）上安裝作業系統。如需SAN開機、請參閱下列指示。
+
+
+
+=== SAN開機
+
+如果您選擇使用SAN開機、您的組態必須支援SAN開機。您可以使用NetApp互通性對照表工具來驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+
+. 將SAN開機LUN對應至主機。
+. 確認有多個可用路徑。請記住、只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。
+. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
+. 重新啟動主機、確認開機成功。
+
+
+
+
+== 安裝Windows修補程式
+
+我們建議在伺服器上安裝*最新的累計更新*。
+
+
+NOTE: 前往 link:https://www.catalog.update.microsoft.com/Search.aspx?q=update%20%22windows%20server%202022%22["Microsoft Update目錄2022"^] 網站、取得並安裝適用於您Windows版本的必要Windows修補程式。
+
+. 從Microsoft支援網站下載即時修補程式。
+
+
+
+NOTE: 部分修補程式無法直接下載。在這些情況下、您需要向Microsoft支援人員索取特定的修補程式。
+
+. 依照Microsoft提供的指示安裝修補程式。
+
+
+
+TIP: 許多修補程式都需要重新開機Windows主機、但您可以選擇等待重新開機主機、直到安裝或升級Host Utilities為止。
+
+
+
+== 安裝Windows Unified Host Utilities
+
+Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。我們建議下載並安裝最新的公用程式套件。如需Wuhu組態資訊與說明、請參閱 link:https://mysupport.netapp.com/documentation/docweb/index.html?productID=62322&platformID=30462&language=en-US["Wuhu 7.1文件"^]。
+
+
+
+== 多重路徑
+
+如果您的Windows主機有多個儲存系統路徑、則必須安裝MPIO軟體並設定多重路徑。如果沒有MPIO軟體、作業系統可能會將每個路徑視為獨立的磁碟、進而導致資料毀損。MPIO軟體為所有路徑的作業系統提供單一磁碟、而裝置專屬模組（DSM）則負責管理路徑容錯移轉。
+
+在Windows系統上、任何MPIO解決方案的兩個主要元件為DSM和Windows MPIO。在Hyper-V虛擬機器中執行的Windows XP或Windows Vista不支援MPIO。
+
+
+NOTE: 當您選取MPIO支援時、Windows Unified Host Utilities會啟用Windows Server 2022隨附的MPIO功能。
+
+
+
+== SAN組態
+
+
+
+=== 非ASA組態
+
+對於非ASA組態、應該有兩組具有不同優先順序的路徑。
+
+優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。
+
+優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。
+
+
+NOTE: 未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
+
+image::nonasa.png[非asa]
+
+
+
+=== 所有SAN陣列組態
+
+對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑都是主動/最佳化的；也就是由控制器提供服務、並在所有作用中路徑上傳送I/O。
+
+image::asa.png[ASA]
+
+
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+
+
+
+== 建議設定
+
+在使用FC的系統上、選取MPIO時、必須提供Emulex和QLogic FC HBA的下列逾時值。
+
+對於Emulex Fibre Channel HBA：
+
+[cols="2*"]
+|===
+| 內容類型 | 屬性值 
+
+
+| LinkTimeDOut | 1. 
+
+
+| 節點時間輸出 | 10. 
+|===
+若為QLogic Fibre Channel HBA：
+
+[cols="2*"]
+|===
+| 內容類型 | 屬性值 
+
+
+| LinkDownTimeDOut | 1. 
+
+
+| PortDownRetryCount | 10. 
+|===
+
+NOTE: Windows Unified Host Utility會設定這些值。如需詳細的建議設定、請參閱 link:https://library.netapp.com/ecmdocs/ECMLP2789202/html/index.html["Windows 7.1主機公用程式安裝指南"^]。
+
+
+
+== 已知限制
+
+Windows Server 2022沒有已知問題。

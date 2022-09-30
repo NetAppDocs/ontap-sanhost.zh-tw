@@ -1,0 +1,233 @@
+---
+sidebar: sidebar 
+permalink: nvme_windows_2022.html 
+keywords: nvme, windows, enterprise 
+summary: 適用於Windows Server 2022的NVMe / FC主機組態、ONTAP 含功能更新 
+---
+= 適用於Windows Server 2022的NVMe / FC主機組態、ONTAP 含功能更新
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 支援能力
+
+適用於Windows Server 2022的NVMe 9.7或更新版本支援NVMe / FC ONTAP 。
+
+請注意、Broadcom啟動器可透過相同的32G FC介面卡連接埠、同時處理NVMe/FC和FCP流量。對於FCP和FC/NVMe、請使用MSDSM做為Microsoft多重路徑I/O（MPIO）選項。
+
+請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。如需支援的組態與版本最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+
+
+
+== 已知限制
+
+不支援ONTAP Windows容錯移轉叢集（WFC）搭配使用不支援使用NVMe / FC、因為ONTAP 目前不支援使用NVMe / FC的持續保留。
+
+
+NOTE: Broadcom為Windows NVMe / FC提供的外部驅動程式並非真正的NVMe / FC驅動程式、而是轉譯式SCSI非NVMe驅動程式。這種轉譯負荷並不一定會影響效能、但確實會抵消NVMe / FC的效能優勢。因此、在Windows伺服器上、NVMe / FC和FCP的效能是一樣的、這與其他作業系統（例如Linux）不同、因為NVMe / FC的效能明顯優於FCP。
+
+
+
+== 在Windows啟動器主機上啟用NVMe/FC
+
+請遵循下列步驟、在Windows啟動器主機上啟用FC/NVMe：
+
+. 在Windows主機上安裝OneCommand Manager公用程式。
+. 在每個HBA啟動器連接埠上、設定下列HBA驅動程式參數：
++
+** 啟用NVMe = 1
+** NVMEMode = 0
+** LemTransferSize=1
+
+
+. 重新啟動主機。
+
+
+
+
+== 在Windows中設定適用於NVMe / FC的Broadcom FC介面卡
+
+在Windows環境中使用適用於FC/NVMe的Broadcom介面卡時、每個主機匯流排介面卡（HBA）連接埠都會產生一個「+hostnqn+」。"+hostnqn+"格式如下。
+
+....
+nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9765
+nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9766
+....
+
+
+=== 在Windows主機上啟用NVMe裝置的MPIO
+
+. 安裝Windows主機公用程式套件7.1、以設定FC和NVMe通用的驅動程式參數。
+. 開啟MPIO內容。
+. 從*探索多重路徑*索引標籤、新增NVMe所列的裝置ID。
++
+MPIO會感知NVMe裝置、這些裝置可在磁碟管理下看到。
+
+. 打開* Disk Management（磁碟管理）*、然後移至* Disk Properties（磁碟內容）*。
+. 在「* MPIO *」索引標籤中、按一下「* Details *」。
+. 設定下列MSDSM設定：
++
+** PathVerfiedPeriod:* 10*
+** PathVerifyEnabled:* Enabled*
+** 重試計數：* 6 *
+** 重試時間間隔：* 1*
+** PDORemovedPeriod:* 130*
+
+
+. 選擇MPIO Policy * Round Robin with Subscal*。
+. 變更登錄值：
++
+[listing]
+----
+HKLM\SYSTEM\CurrentControlSet\Services\mpio\Parameters\PathRecoveryInterval DWORD -> 30
+
+HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\ UseCustomPathRecoveryInterval  DWORD-> 1
+----
+. 重新啟動主機。
++
+NVMe組態現在已在Windows主機上完成。
+
+
+
+
+
+== 驗證NVMe/FC
+
+. 驗證連接埠類型是否為FC+NVMe。
++
+啟用NVMe之後、您應該看到「+連接埠類型+」列示為「+FC+NVMe +」、如下所示。
+
++
+[listing]
+----
+PS C:\Program Files\Emulex\Util\OCManager> .\hbacmd listhba
+
+Manageable HBA List
+
+Port WWN       : 10:00:00:10:9b:1b:97:65
+Node WWN       : 20:00:00:10:9b:1b:97:65
+Fabric Name    : 10:00:c4:f5:7c:a5:32:e0
+Flags          : 8000e300
+Host Name      : INTEROP-57-159
+Mfg            : Emulex Corporation
+Serial No.     : FC71367217
+Port Number    : 0
+Mode           : Initiator
+PCI Bus Number : 94
+PCI Function   : 0
+Port Type      : FC+NVMe
+Model          : LPe32002-M2
+
+Port WWN       : 10:00:00:10:9b:1b:97:66
+Node WWN       : 20:00:00:10:9b:1b:97:66
+Fabric Name    : 10:00:c4:f5:7c:a5:32:e0
+Flags          : 8000e300
+Host Name      : INTEROP-57-159
+Mfg            : Emulex Corporation
+Serial No.     : FC71367217
+Port Number    : 1
+Mode           : Initiator
+PCI Bus Number : 94
+PCI Function   : 1
+Port Type      : FC+NVMe
+Model          : LPe32002-M2
+----
+. 驗證是否已探索到NVMe/FC子系統。
++
+「+NVMe清單+」命令會列出NVMe / FC探索到的子系統。
+
++
+[listing]
+----
+PS C:\Program Files\Emulex\Util\OCManager> .\hbacmd nvme-list 10:00:00:10:9b:1b:97:65
+
+Discovered NVMe Subsystems for 10:00:00:10:9b:1b:97:65
+
+NVMe Qualified Name     :  nqn.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159
+Port WWN                :  20:09:d0:39:ea:14:11:04
+Node WWN                :  20:05:d0:39:ea:14:11:04
+Controller ID           :  0x0180
+Model Number            :  NetApp ONTAP Controller
+Serial Number           :  81CGZBPU5T/uAAAAAAAB
+Firmware Version        :  FFFFFFFF
+Total Capacity          :  Not Available
+Unallocated Capacity    :  Not Available
+
+NVMe Qualified Name     :  nqn.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159
+Port WWN                :  20:06:d0:39:ea:14:11:04
+Node WWN                :  20:05:d0:39:ea:14:11:04
+Controller ID           :  0x0181
+Model Number            :  NetApp ONTAP Controller
+Serial Number           :  81CGZBPU5T/uAAAAAAAB
+Firmware Version        :  FFFFFFFF
+Total Capacity          :  Not Available
+Unallocated Capacity    :  Not Available
+Note: At present Namespace Management is not supported by NetApp Arrays.
+----
++
+[listing]
+----
+PS C:\Program Files\Emulex\Util\OCManager> .\hbacmd nvme-list 10:00:00:10:9b:1b:97:66
+
+Discovered NVMe Subsystems for 10:00:00:10:9b:1b:97:66
+
+NVMe Qualified Name     :  nqn.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159
+Port WWN                :  20:07:d0:39:ea:14:11:04
+Node WWN                :  20:05:d0:39:ea:14:11:04
+Controller ID           :  0x0140
+Model Number            :  NetApp ONTAP Controller
+Serial Number           :  81CGZBPU5T/uAAAAAAAB
+Firmware Version        :  FFFFFFFF
+Total Capacity          :  Not Available
+Unallocated Capacity    :  Not Available
+
+NVMe Qualified Name     :  nqn.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159
+Port WWN                :  20:08:d0:39:ea:14:11:04
+Node WWN                :  20:05:d0:39:ea:14:11:04
+Controller ID           :  0x0141
+Model Number            :  NetApp ONTAP Controller
+Serial Number           :  81CGZBPU5T/uAAAAAAAB
+Firmware Version        :  FFFFFFFF
+Total Capacity          :  Not Available
+Unallocated Capacity    :  Not Available
+
+Note: At present Namespace Management is not supported by NetApp Arrays.
+----
+. 驗證是否已建立命名空間。
++
+「+nNVMe清單-ns +」命令會列出指定NVMe目標的命名空間、列出連接至主機的命名空間。
+
++
+[listing]
+----
+PS C:\Program Files\Emulex\Util\OCManager> .\HbaCmd.exe nvme-list-ns 10:00:00:10:9b:1b:97:66 20:08:d0:39:ea:14:11:04 nq
+.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159 0
+
+
+Active Namespaces (attached to controller 0x0141):
+
+                                       SCSI           SCSI           SCSI
+   NSID           DeviceName        Bus Number    Target Number     OS LUN
+-----------  --------------------  ------------  ---------------   ---------
+0x00000001   \\.\PHYSICALDRIVE9         0               1              0
+0x00000002   \\.\PHYSICALDRIVE10        0               1              1
+0x00000003   \\.\PHYSICALDRIVE11        0               1              2
+0x00000004   \\.\PHYSICALDRIVE12        0               1              3
+0x00000005   \\.\PHYSICALDRIVE13        0               1              4
+0x00000006   \\.\PHYSICALDRIVE14        0               1              5
+0x00000007   \\.\PHYSICALDRIVE15        0               1              6
+0x00000008   \\.\PHYSICALDRIVE16        0               1              7
+
+----
+
