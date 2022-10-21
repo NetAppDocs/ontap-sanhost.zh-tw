@@ -1,6 +1,6 @@
 ---
 settings:
-  name: SAN Host
+  name: SAN hosts and cloud clients
   internal:
     pdf_enabled: true
   prod:
@@ -9,8 +9,10 @@ settings:
   langs: zh-tw,us-en,ja-jp,zh-cn,ko-kr
 sidebar:
   entries:
-  - title: 主頁
+  - title: 設定SAN主機和雲端用戶端
     url: "/index.html"
+  - title: 總覽
+    url: "/overview.html"
   - title: SAN主機公用程式
     entries:
     - title: AIX主機公用程式
@@ -44,7 +46,7 @@ sidebar:
     - title: ESXi
       pdf-filename: NVMeoF ESXi
       entries:
-      - title: 7.x
+      - title: VMware vSphere 7
         url: "/nvme_esxi_7.html"
     - title: Oracle Linux
       entries:
@@ -68,7 +70,7 @@ sidebar:
         - title: 7.7.7.
           url: "/nvme_ol_77.html"
     - title: RHEL
-      pdf-filename: NVMeF RHEL
+      pdf-filename: NVMeoF RHEL
       entries:
       - title: RHEL 9
         entries:

@@ -1,10 +1,11 @@
 ---
+layout: astra 
 sidebar: sidebar 
 permalink: index.html 
-keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, 
-summary: SAN主機文件 
+keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracle, linux, windows, enterprise, fc, fcp, isci, aix, powervm, vios, centos, citrix, hp-ux, solaris, veritas, cvo, cloud, volume, ontap, clients, configuration, FSx, instance, netapp 
+summary: 本內容針對發佈內容、提供如何設定連接ONTAP 到NetApp儲存設備的SAN用戶端的相關指引。 
 ---
-= SAN主機組態ONTAP
+= SAN主機和雲端用戶端
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -13,19 +14,3 @@ summary: SAN主機文件
 :imagesdir: ./media/
 
 
-[role="lead"]
-本內容針對發佈內容提供有關如何為ONTAP NVMe、iSCSI和FC傳輸協定設定SAN主機的特定指引。
-
-為獲得最佳效能並確保容錯移轉成功、請務必使用ONTAP VMware SAN儲存設備正確設定SAN主機。這些文件說明如何快速設定最佳實務做法組態。
-
-對於iSCSI和FC、本文件取代傳統的Linux Unified Host Utilities指南。每份文件都是針對一個發行版本和Linux版本、因此您只能看到確切版本的資訊。如果您的Linux版本尚未列出、請稍後再回來查看。
-
-
-
-== 更多資訊
-
-如需SAN組態的其他資訊、請參閱下列文件：
-
-link:https://docs.netapp.com/us-en/ontap/task_asa_software_configuration.html["All SAN Array Software Configuration Guide（所有SAN陣列軟體組態"^]
-link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanag/home.html["SAN管理指南"^]
-link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html["SAN組態指南"^]

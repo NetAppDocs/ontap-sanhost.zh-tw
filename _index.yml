@@ -1,0 +1,50 @@
+---
+indexpage:
+  lead: 本內容針對發佈內容、提供如何設定連接ONTAP 到NetApp儲存設備的SAN用戶端的相關指引。SAN用戶端和ONTAP 功能不全的儲存設備可以位於內部部署或雲端。
+  tiles:
+  - title: 開始使用
+    links:
+    - title: AIX主機公用程式版本說明
+      url: "/hu_aix_61_rn.html"
+    - title: HP-UX主機公用程式版本說明
+      url: "/hu_hpux_60_rn.html"
+    - title: Linux主機公用程式版本說明
+      url: "/hu_luhu_71_rn.html"
+    - title: Solaris主機公用程式版本說明
+      url: "/hu_solaris_62_rn.html"
+  - title: FCP與iSCSI主機組態
+    links:
+    - title: VMware vSphere 7
+      url: "/hu_vsphere_7.html"
+    - title: Red Hat Enterprise Linux 9.0
+      url: "/hu_rhel_90.html"
+    - title: SUSE Linux Enterprise Server 15 SP4
+      url: "/hu_sles_15SP4.html"
+    - title: Windows Server 2022
+      url: "/hu_windows_2022.html"
+    - title: IBM AIX 7.2與PowerVM（VIOS 3.1）
+      url: "/hu_aix_72.html"
+    - title: Oracle Solaris 11.4
+      url: "/hu_solaris_114.html"
+  - title: NVMe主機組態
+    links:
+    - title: VMware vSphere 7
+      url: "/nvme_esxi_7.html"
+    - title: Red Hat Enterprise Linux 9.0
+      url: "/nvme_rhel_90.html"
+    - title: SUSE Linux Enterprise Server 15 SP4
+      url: "/nvme_sles15_sp4.html"
+    - title: Windows Server 2022
+      url: "/nvme_windows_2022.html"
+  - title: 更多資源
+    links:
+    - title: Cloud Volumes ONTAP
+      url: https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html
+    - title: Amazon FSX for ONTAP Sf
+      url: https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html
+    - title: 所有SAN Array軟體組態
+      url: https://docs.netapp.com/us-en/ontap/task_asa_software_configuration.html
+    - title: SAN管理
+      url: https://docs.netapp.com/us-en/ontap/san-admin/index.html
+    - title: SAN組態
+      url: https://docs.netapp.com/us-en/ontap-metrocluster/
