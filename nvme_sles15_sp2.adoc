@@ -27,6 +27,9 @@ summary: 說明如何針對SUSE Linux Enterprise Server 15 SP2 ONTAP 搭配使�
 如需支援的組態與版本最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
 
 
+NOTE: 您可以使用此內容中提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+
+
 
 == 已知限制
 

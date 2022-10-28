@@ -2725,4 +2725,6 @@
   <block id="c134d5805f93afa1db7c6399465d2bd8" category="sidebar">Solaris主機公用程式</block>
   <block id="bcc66daaa6f6f7ca19890b95ffa6b4c0" category="sidebar">Windows統一化主機公用程式</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">NVMeoF RHEL</block>
+  <block id="8200a3db147155676a7739eb43b685c9" category="admonition">您可以使用此內容中提供的組態設定來設定連線至的雲端用戶端 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 和 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>。</block>
+  <block id="f561aaf6ef0bf14d4208bb46a4ccb3ad" category="paragraph">XXX</block>
 </blocks>
