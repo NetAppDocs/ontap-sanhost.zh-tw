@@ -60,7 +60,11 @@ Windows Unified Host Utilities內含安裝程式、可設定所需的Windows登�
 
 .步驟
 . 檢查中支援的組態 http://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]。
-. 在SAN主機說明文件中、檢查各主機所需的修補程式。
+. 檢查上個別主機所需的修補程式 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機Windows文件"]。
++
+
+NOTE: link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["使用Windows Server 2022 ONTAP 搭配使用"] 提供相關指示 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["安裝Windows修補程式"] 適用於Windows伺服器2022。請參閱「主機組態」類別中的Windows文件、以尋找舊版Windows伺服器的相關修補程式資訊。
+
 . 新增iSCSI或FCP授權、然後啟動目標服務。
 +
 光纖通道和iSCSI傳輸協定不需要使用SANtricity ENetApp Storage Manager的E系列儲存系統授權。

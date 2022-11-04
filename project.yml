@@ -40,7 +40,11 @@ sidebar:
       - title: 版本資訊
         url: "/hu_solaris_62_rn.html"
     - title: Windows統一化主機公用程式
-      url: "/hu_wuhu_71.html"
+      entries:
+      - title: 安裝Wuhu 7.1
+        url: "/hu_wuhu_71.html"
+      - title: 版本資訊
+        url: "/hu_wuhu_71_rn.html"
   - title: NVMe主機組態
     entries:
     - title: ESXi

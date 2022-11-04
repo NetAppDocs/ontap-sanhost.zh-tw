@@ -144,7 +144,6 @@
   <block id="56dd1899b4280d897ff6670fb0968e02" category="admonition">許多修補程式都需要重新開機Windows主機、但您可以選擇等待重新開機主機、直到安裝或升級Host Utilities為止。</block>
   <block id="36b258cf83367d27741cf0be3d246eca" category="section-title">安裝Windows Unified Host Utilities</block>
   <block id="ba490f365e20da97a23546cfe0da8569" category="inline-link-macro">Wuhu 7.1文件</block>
-  <block id="47e355e7eaad5d4a7f631164efee9da4" category="paragraph">Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。我們建議下載並安裝最新的公用程式套件。如需Wuhu組態資訊與說明、請參閱 <block ref="8ecfeb68c5bc6c6d13bf3c3939739f31" category="inline-link-macro-rx"></block>。</block>
   <block id="d25621141f24193488d8ea2276c47e01" category="paragraph">如果您的Windows主機有多個儲存系統路徑、則必須安裝MPIO軟體並設定多重路徑。如果沒有MPIO軟體、作業系統可能會將每個路徑視為獨立的磁碟、進而導致資料毀損。MPIO軟體為所有路徑的作業系統提供單一磁碟、而裝置專屬模組（DSM）則負責管理路徑容錯移轉。</block>
   <block id="a0e497cbff11ff2d61625663418c3fc8" category="paragraph">在Windows系統上、任何MPIO解決方案的兩個主要元件為DSM和Windows MPIO。在Hyper-V虛擬機器中執行的Windows XP或Windows Vista不支援MPIO。</block>
   <block id="60bdc643bd0e4fed0f4a29dbcd77bc2b" category="admonition">當您選取MPIO支援時、Windows Unified Host Utilities會啟用Windows Server 2012 R2隨附的MPIO功能。</block>
@@ -1250,7 +1249,6 @@
   <block id="073bde40ca4f1c0bc9a2024c00df60ac" category="section-title">在Windows中設定適用於NVMe / FC的Broadcom FC介面卡</block>
   <block id="95feeb984f6b07e38a54290d155380fb" category="paragraph">在Windows環境中使用適用於FC/NVMe的Broadcom介面卡時、每個主機匯流排介面卡（HBA）連接埠都會產生一個「+hostnqn+」。"+hostnqn+"格式如下。</block>
   <block id="6d50f9a166e2b5b5cadd884e2bfaf99a" category="section-title">在Windows主機上啟用NVMe裝置的MPIO</block>
-  <block id="410fc92241ee85585a89a22f4f38a389" category="list-text">安裝Windows主機公用程式套件7.1、以設定FC和NVMe通用的驅動程式參數。</block>
   <block id="cc6f38a02ffcad6a7b76b5c9c2a8a868" category="list-text">開啟MPIO內容。</block>
   <block id="8eff5eebf9f16bb0e2893ae3c5998da1" category="list-text">從*探索多重路徑*索引標籤、新增NVMe所列的裝置ID。</block>
   <block id="1fc4b6b7368b8cca78fdc9a59572d5bb" category="paragraph">MPIO會感知NVMe裝置、這些裝置可在磁碟管理下看到。</block>
@@ -1783,11 +1781,9 @@
   <block id="271e95bb5110c34300c9e4e30ad2991d" category="cell">「an版本」</block>
   <block id="ab595e8644eb54589f5d769321b11cc4" category="cell">顯示主機公用程式和光纖通道HBA的版本。</block>
   <block id="86d6299bc9dab5266c5f61d0a0769264" category="section-title">主機公用程式支援的組態</block>
-  <block id="298aa3c26f019d0f6b504317238a932c" category="paragraph">主機公用程式支援不同的Windows主機組態、傳輸協定和多路徑選項。如需詳細資訊、請參閱<block ref="b7322bec4509d45107de6de43ca1f517" category="inline-link-rx"></block>。</block>
   <block id="c0a6e0dc55b98c30081b044a2713737b" category="section-title">驗證您的主機和儲存系統組態</block>
   <block id="700f2514d3d4cc2ed02cb06d8b922b2d" category="paragraph">安裝主機公用程式之前、您必須先確認主機公用程式版本是否支援主機和儲存系統組態、以便正確安裝軟體。</block>
   <block id="84d4097a38ff264dfaf97e1cec24b529" category="list-text">檢查中支援的組態<block ref="49d81d143d5c8b402603532056154481" category="inline-link-rx"></block>。</block>
-  <block id="bd723d0221300797678f431604539bd8" category="list-text">在SAN主機說明文件中、檢查各主機所需的修補程式。</block>
   <block id="29cd26a0b6469ed25fabeac1805eb8a6" category="list-text">新增iSCSI或FCP授權、然後啟動目標服務。</block>
   <block id="185e819968cd77ce618663a3c7abd72d" category="paragraph">光纖通道和iSCSI傳輸協定不需要使用SANtricity ENetApp Storage Manager的E系列儲存系統授權。</block>
   <block id="dafd8a261adaf4e33c8e8c74baa71755" category="list-text">驗證纜線</block>
@@ -2723,8 +2719,51 @@
   <block id="6644e7ab2de97becedaef22c5a1099e9" category="sidebar">HP-UX主機公用程式</block>
   <block id="237e46c87c95b6d72dceaf420c603d90" category="sidebar">Linux統一化主機公用程式</block>
   <block id="c134d5805f93afa1db7c6399465d2bd8" category="sidebar">Solaris主機公用程式</block>
-  <block id="bcc66daaa6f6f7ca19890b95ffa6b4c0" category="sidebar">Windows統一化主機公用程式</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">NVMeoF RHEL</block>
   <block id="8200a3db147155676a7739eb43b685c9" category="admonition">您可以使用此內容中提供的組態設定來設定連線至的雲端用戶端 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 和 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>。</block>
   <block id="f561aaf6ef0bf14d4208bb46a4ccb3ad" category="paragraph">XXX</block>
+  <block id="47e2092f9d666fc24b67c7da02de84c7" category="paragraph">Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。我們建議下載並安裝最新的公用程式套件。如需Wuhu組態資訊與說明、請參閱 <block ref="f7fe1c204ed60a7e9dd594c09fd7b1a5" category="inline-link-macro-rx"></block>。</block>
+  <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows主機公用程式套件7.1</block>
+  <block id="47806b50157f4c2450dab9085e65bf42" category="list-text">安裝 <block ref="3da09c0cdee3c0d99e3c71a79e706ce0" category="inline-link-macro-rx"></block> 設定FC和NVMe通用的驅動程式參數。</block>
+  <block id="a94e97667092f5ff8b67813ccebdb0ca" category="paragraph">主機公用程式支援不同的Windows主機組態、傳輸協定和多路徑選項。如需詳細資訊、請參閱<block ref="b7322bec4509d45107de6de43ca1f517" category="inline-link-rx"></block>。</block>
+  <block id="0165fb41a35ddb937948f77394256403" category="inline-link-macro">SAN主機Windows文件</block>
+  <block id="6edf97e112927c25a9a1571ba78c02f9" category="list-text">檢查上個別主機所需的修補程式 <block ref="d639dff184f4bf79d87dbc978d26f542" category="inline-link-macro-rx"></block>。</block>
+  <block id="125c89a36748abb41fb38e89f5009ec9" category="inline-link-macro">使用Windows Server 2022 ONTAP 搭配使用</block>
+  <block id="eff83cf87307f9f0c4cf876914031ade" category="inline-link-macro">安裝Windows修補程式</block>
+  <block id="74c96d3ba2305a0f126dc2494f4cd977" category="admonition"><block ref="c6686e038b760393cddd662d474b7627" category="inline-link-macro-rx"></block> 提供相關指示 <block ref="9dcc96c7a1b888cfbb8ae39c864be341" category="inline-link-macro-rx"></block> 適用於Windows伺服器2022。請參閱「主機組態」類別中的Windows文件、以尋找舊版Windows伺服器的相關修補程式資訊。</block>
+  <block id="f8a9c652b77d95b070fee4e944c23c55" category="summary">Windows Unified Host Utilities 7.1版本資訊</block>
+  <block id="8a9391447d14b7fa38cc33b8b42a5eee" category="doc">Windows Unified Host Utilities 7.1版本資訊</block>
+  <block id="84f4f58e26d14120cd13928993415ef8" category="paragraph">本版本資訊文件包含Windows Unified Host Utilities 7.1版本的最新資訊、包括有關新功能、增強功能和已知問題的更新資訊。當Windows主機公用程式的新使用資訊可供使用時、即會更新文件。</block>
+  <block id="792c65ea8e28d4d1ad3178bd5ed7a65b" category="section-title">關於Windows Unified Host Utilities 7.1版本</block>
+  <block id="34eb6bacd27b9f225e7ca9de29f4668b" category="paragraph">Windows Unified Host Utilities可讓您將Windows主機電腦連線至NetApp儲存系統。Windows Unified Host Utilities包含一個安裝程式、可設定所需的Windows登錄和HBA值。</block>
+  <block id="13e6b822d7fe9f7e9f0efeca225b29a0" category="paragraph">Windows Unified Host Utilities 7.1繼續支援下列Windows版本：</block>
+  <block id="8e81245b7f02b8484320ddb3e4b13c18" category="list-text">Windows 2012</block>
+  <block id="1347f9ce905795bee095e16712f81913" category="list-text">Windows 2012R2</block>
+  <block id="4083fee85864d55c66d5e0b21a7928b3" category="list-text">Windows 2016</block>
+  <block id="0a412bceaa4a8d671231ab04d2e0296e" category="list-text">Windows 2019</block>
+  <block id="3ffd22c07b48a1c76b76f941ad1cad96" category="list-text">Windows 2022</block>
+  <block id="f30ac79774ac72cad690c3f814efd2fa" category="admonition">NetApp可在主機公用程式軟體版本之間提供額外元件。如需系統需求的最新資訊、請參閱 <block ref="454ffc53fb26d285d765b8fbe8c25a5d" category="inline-link-macro-rx"></block>。</block>
+  <block id="feb11f8755baed6ff89937754d9fdb5e" category="section-title">主機公用程式版本的功能</block>
+  <block id="ff71b00ca4f59efb041754af8a3c5633" category="paragraph">Windows Unified Host Utilities 7.1支援E系列儲存系統、ONTAP 支援支援更新版本的功能、以及增強的iSCSI逾時功能、可加快容錯移轉速度。</block>
+  <block id="2f7c358042ffb7d37991aff648b1cb3d" category="section-title">重要注意事項</block>
+  <block id="aacc0d256c74ef3a06a601980b807a0e" category="paragraph">在部署最新版的Windows主機公用程式之前、您必須先閱讀可用的資訊、以協助識別及解決可能影響系統運作的問題。</block>
+  <block id="7cd36e8f4d329b5cfafec87711c36cbd" category="paragraph">如需個別錯誤的詳細資訊、以及探索其他與錯誤相關的工具、請參閱 <block ref="06c8d471f4d0311b3446a94e54fc8a82" category="inline-link-macro-rx"></block>。</block>
+  <block id="14604b92d34df545c8df1df02158a241" category="section-title">安裝所需的修補程式</block>
+  <block id="9271b83ea2248c31dc793920e78f3085" category="paragraph">若要確保成功安裝或升級Windows Unified Host Utilities、您必須安裝特定的Windows熱修復程式。有些即時修復程式是Windows更新的元件。</block>
+  <block id="f00aa3de5284bd6ffc1c6eb440a68428" category="inline-link-macro">Windows主機公用程式文件</block>
+  <block id="231e5ff41539516674c45e33de03b0be" category="paragraph">請參閱 <block ref="f5596c1e3b207c40ba7cdd523469fc51" category="inline-link-macro-rx"></block> 以滿足您的特定組態熱修復需求。</block>
+  <block id="95dc0391ce7b396d7dd5622284e8fc3e" category="section-title">已知問題</block>
+  <block id="fa8a4c6fcae2ff0a42db985d96655a59" category="paragraph">本版本已找出一些非預期或可能不想要的行為、以及在某些情況下避免這些行為的因應措施。</block>
+  <block id="56659c18435d50a38e076a58b32163a4" category="cell">執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 在執行Red Hat Enterprise Linux或SUSE Linux Enterprise Server的Hyper-V客體上、不再需要指令碼</block>
+  <block id="ea42119311b1ebffaae8c2a3d60d8cfd" category="cell">您不再需要執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 指令碼、用於變更Red Hat Enterprise Linux 5、Red Hat Enterprise Linux 6或SUSE Linux Enterprise Server 11 Hyper-V來賓作業系統上的磁碟逾時、因為使用的是預設的逾時設定。。<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 先前版本的主機公用程式所包含的指令碼、不再包含在Windows Unified Host Utilities中。Windows Unified Host Utilities 7.1會使用預設的磁碟逾時設定。</block>
+  <block id="e91b41f5f9d74fcfaa3733fe1534d7c8" category="cell">iSCSI工作階段在重新開機後、不會以混合式的IPv4和IPv6重新連線</block>
+  <block id="03a5ef9a07e32294246c302f24714cba" category="cell">在多重路徑I/O（MPIO）組態中、或是每個工作階段（MCS）有多個連線（同時具有IPv4和IPv6端點）組態中、某些iSCSI工作階段可能會在重新啟動Windows主機後無法重新連線。</block>
+  <block id="7781892f22565c078543a9afe054eafe" category="cell">若要確保所有iSCSI路徑在重新開機後都會傳回、請使用所有的IPv4端點或所有IPv6。請勿混用IPV4和IPV6。</block>
+  <block id="9ffe40d778f0a3ffe9e1f6de2a49fb40" category="cell">iSCSI軟體開機不支援MCS</block>
+  <block id="63f871187249b3071dc36a54982c1e17" category="cell">使用iSCSI軟體開機搭配iSCSI時、每個工作階段有多個連線（MCS）、iSCSI開機前置連線無法受到保護。這可能導致從開機LUN中斷連線、導致主機當機。</block>
+  <block id="a77cd68a790d44f2359fe8a4dd45b1dc" category="cell">Microsoft不支援將MCS用於iSCSI軟體開機主機。使用MPIO作為高可用度解決方案。請注意、不支援混合使用MPIO和MCS。</block>
+  <block id="05aa4f4bc5b51efef2c52f4fb2ddc55f" category="paragraph"><block ref="06c8d471f4d0311b3446a94e54fc8a82" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。</block>
+  <block id="a64644439f45078aa7c8e54709b6fb99" category="paragraph">請參閱 <block ref="098b68c05e072d65de8b63c55177a5c6" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
+  <block id="748753e893fd2f6b904a298d120af491" category="sidebar">Windows統一化主機公用程式</block>
+  <block id="7b4c9d36bd8121e0d136897711d66090" category="sidebar">安裝Wuhu 7.1</block>
 </blocks>
