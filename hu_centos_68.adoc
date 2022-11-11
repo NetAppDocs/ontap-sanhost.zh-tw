@@ -84,6 +84,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 若要啟用ALUA處理常式、請執行下列步驟：
 
+.步驟
 . 建立initrd-image的備份。
 . 將下列參數值附加至核心、以便ALUA和非ALUA正常運作：「rdaloaddriver=scsi_d_alua」
 +

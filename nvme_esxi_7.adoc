@@ -97,6 +97,7 @@ vmhba65   lpfc     link-up     fc.200000109b954570:100000109b954570             
 
 === 設定Marvell / QLogic
 
+.步驟
 . 請參閱、檢查所需的驅動程式/韌體是否支援組態 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
 . 將「qlnativefc」驅動程式參數「ql2xnvmesupport=1」設定為在「qlnativefc」驅動程式中啟用nvm/FC支援、然後重新啟動主機。
 +
@@ -269,7 +270,7 @@ tcp.vmnic3:34:80:Od:30:ca:el-tcp.unknown-uuid.400bf333abf74ab8b96dc18ffadc3f99
 
 == 已知問題
 
-* ESXi 7.0 U3（及更新版本）、支援NVMe/FC、從ONTAP 版本號的更新版本更新至版本號的更新版本。這是因為主要NVMe中止（由ESXi 7.0 U3及更新版本發行）修正程式ONTAP 、僅從版本號支援更新到版本號更新。請參閱相關的待處理公開報告、網址為 https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654[] 以取得詳細資料。
+* ESXi 7.0 U3（及更新版本）、支援NVMe/FC、從ONTAP 功能介紹的版本為：從功能介紹的更新版本起、即可從ONTAP 功能介紹的更新版本中、取得關鍵NVMe中止修正程式（由ESXi 7.0 U3及更新版本發行）、從功能介紹的版本為：從功能介紹的更新版本開始提供。請參閱相關的待處理公開報告、網址為 https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654[] 以取得詳細資料。
 
 
 

@@ -19,7 +19,7 @@ summary: Solaris Host Utilities 6.2版本資訊
 
 
 [role="lead"]
-本發行說明文件包含Solaris Host Utilities 6.2的最新資訊、包括已知問題和限制的更新、ONTAP 以及設定和管理您的故障儲存系統。
+本發行說明文件包含Solaris Host Utilities 6.2的最新資訊、包括已知問題、限制、ONTAP 設定及管理您的不二儲存系統的更新。
 
 當提供有關使用Solaris主機公用程式的新資訊時、即會更新版本資訊文件。
 

@@ -46,6 +46,7 @@ NOTE: Broadcom為Windows NVMe / FC提供的外部驅動程式並非真正的NVMe
 
 請遵循下列步驟、在Windows啟動器主機上啟用FC/NVMe：
 
+.步驟
 . 在Windows主機上安裝OneCommand Manager公用程式。
 . 在每個HBA啟動器連接埠上、設定下列HBA驅動程式參數：
 +

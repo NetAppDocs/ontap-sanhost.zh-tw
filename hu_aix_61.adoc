@@ -18,10 +18,6 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 :toc-position: content
 
 
-
-
-== 先決條件
-
 .您需要的是 #8217 ；需要的是什麼
 * 為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。
 +

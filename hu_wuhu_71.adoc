@@ -426,7 +426,7 @@ NOTE: 參數名稱可能會因程式而稍有不同。例如、在QLogic QConver
 * 如果iSCSI LUN在重新開機後無法使用、您必須確認目標在Microsoft iSCSI啟動器GUI的「持續目標」索引標籤上列為持續性目標。
 * 如果使用LUN的應用程式在啟動時顯示錯誤、您必須確認應用程式已設定為依賴iSCSI服務。
 * 對於連接至執行ONTAP 效能不全的儲存控制器的Fibre Channel路徑、您必須確認FC交換器已使用目標生命體的WWPN進行分區、而非使用節點上實體連接埠的WWPN。
-* 您必須檢閱 https://library.netapp.com/ecm/ecm_download_file/ECMLP2789205["Windows主機公用程式版本資訊"^] 檢查已知問題。版本資訊中包含已知問題與限制的清單。
+* 您必須檢閱 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式版本資訊"] 檢查已知問題。版本資訊中包含已知問題與限制的清單。
 * 您必須檢閱中的疑難排解資訊 https://docs.netapp.com/ontap-9/index.jsp["SAN管理指南"^] 適用於ONTAP 您的版本的
 * 您必須搜尋 https://mysupport.netapp.com/site/bugs-online/["線上錯誤"^] 針對最近發現的問題。
 * 在「進階搜尋」下的「錯誤類型」欄位中、您應該選取「iSCSI - Windows」、然後按一下「執行」。您應該重複搜尋錯誤類型FCP -Windows。

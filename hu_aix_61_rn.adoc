@@ -19,7 +19,7 @@ summary: AIX主機公用程式6.1版本資訊
 
 
 [role="lead"]
-本版本說明文件包含AIX Host Utilities 6.1版本的最新資訊、包括已知問題、限制、以及ONTAP 設定和管理您的更新。
+本版本說明文件包含AIX Host Utilities 6.1版本的最新資訊、包括已知問題、限制、ONTAP 設定及管理您的一套更新。
 
 當使用AIX主機公用程式的新資訊可供使用時、版本資訊文件會更新。
 
@@ -36,7 +36,7 @@ AIX主機公用程式可讓您將AIX主機連線至NetApp儲存設備。AIX主�
 如需更多有關PowerVM功能的資訊、請參閱IBM PowerVM Live分區行動性Red Book（英文）。
 
 ====
-Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從下載壓縮檔案及文件 link:link:https://mysupport.netapp.com/site/["NetApp 支援網站"^]。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP
+Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從下載壓縮檔案及文件 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^]。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP
 
 
 NOTE: 您必須啟用所有FC和FCoE啟動器的動態追蹤功能、才能進行叢集Data ONTAP 式的支援。

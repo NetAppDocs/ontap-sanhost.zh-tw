@@ -12,6 +12,8 @@ indexpage:
       url: "/hu_luhu_71_rn.html"
     - title: Solaris主機公用程式版本說明
       url: "/hu_solaris_62_rn.html"
+    - title: Windows主機公用程式版本資訊
+      url: "/hu_wuhu_71_rn.html"
   - title: FCP與iSCSI主機組態
     links:
     - title: VMware vSphere 7

@@ -264,6 +264,7 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
 
 必須將lfc_sg_seg_cnt參數 設定為256、主機才會發出1MB大小的I/O
 
+.步驟
 . 將「lfc_sg_seg_cnt"參數設為256。
 +
 [listing]

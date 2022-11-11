@@ -292,7 +292,6 @@
   <block id="073055d89f87f920dc7706848774e7b2" category="paragraph">Oracle Linux 7.1支援Unbreakable Enterprise Kernel（UEK）R3和UEK R4。作業系統預設會以UEK R3核心開機。</block>
   <block id="66cd34e86ff7d645147b1d5d5a6c9f10" category="paragraph">對於Oracle Linux 7.1 UEK R3、請建立一個空的multipath.conf檔案。Oracle Linux 7.1 UEK的設定預設會自動更新、且不會更新ALUA。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="f4d88f38762443125e864f0e0bf3dc56" category="list-text">使用「dracut -f」命令重新建立initrd-image。</block>
-  <block id="020cab387f9cfdce82fc2e3751625f87" category="paragraph">對於Oracle Linux 7.1 UEK R4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.1是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="0aa6d9cb7674d34a808be2224e074189" category="paragraph">下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。</block>
   <block id="6ff43f8d58cf03692931460affd888be" category="paragraph">Oracle Linux 7.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
   <block id="97bfb8bbe6415581f3c953b6daabb241" category="paragraph">下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「detect_prio'」的值、這些值與ONTAP 不相容於哪些LUN。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
@@ -339,13 +338,11 @@
   <block id="31df1b3be5d57ead2772d8f24d7f3661" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="0c6007e6b6b7d891a61a3130a6b08c13" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="3b3051e9028e74cd5ada27ca8f32e352" category="paragraph">對於Oracle Linux 6.10、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.10是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="4c489d4721694c4117162307ded4345c" category="list-text">使用「mkitrd」命令重新建立initrd-image。Oracle 6x及更新版本可使用以下命令：命令：「mkitrd -f /boot/ initrd-"uname -r"。imguname -r"或命令：「Dracut -f」</block>
-  <block id="fdb062d5e36f31296f4e16a54ea52c2e" category="list-text">驗證「cat /proc/cmdline」命令的輸出、以確保設定完成。您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="00d1a8ad09df702e5b164c26cbd1bc1a" category="paragraph">Oracle Linux 6.10作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
   <block id="eed881bb2a34d1ee7f7f847943028439" category="paragraph">多重路徑精靈必須存在multipath.conf檔案、才能啟動、但您可以使用命令「Touch /etc/multipath.conf」建立空白的零位元組檔案、這是您第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。</block>
   <block id="3e62478acd97c41a7fea67ffea8ef9a1" category="paragraph">除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要直接將任何內容新增至multipath.conf。您可以將下列語法新增至多重路徑.conf檔案、以排除不需要的裝置。</block>
   <block id="3bd7fde20a9abc176890c7422cf0f77f" category="admonition">將&lt;DevID&gt;取代為您要排除的裝置WWID字串。使用下列命令來判斷WWID：</block>
   <block id="58449f79b301eee405bcc04689e38467" category="paragraph">在此範例中、sda是我們需要列入黑名單的本機SCSI磁碟。</block>
-  <block id="8d39ccb2975dcb64ce078ed12e229a84" category="list-text">將此WWID新增至/etc/multipath.conf中的黑名單stanza：</block>
   <block id="e56af6b270edfc4a1dd8c5ee0e1144e1" category="admonition">若要設定Oracle Linux 6.10 RedHat Enterprise核心（RHCK）、請使用 <block ref="a294cf4df5bbbd1673f2ccf0dacf7b03" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.10。</block>
   <block id="95a2a60b3c81348f445296ddb1b67056" category="paragraph">Oracle 6.10沒有已知問題。</block>
   <block id="e2fadd98203b659772427cfe42d4a39e" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.10。</block>
@@ -572,7 +569,6 @@
   <block id="dd0ef0f389a16b505e475797a7b752ac" category="list-text">從下載HP-UX主機公用程式檔案「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 到HP-UX主機。</block>
   <block id="5eaf61000f0f261f2e4793f7e336889a" category="list-text">輸入下列命令、解壓縮「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」檔案：</block>
   <block id="93b6e09e96afb8006209af84f438ca2b" category="paragraph">gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`</block>
-  <block id="d10caeaed75e8947d0e8840674994b68" category="paragraph">系統會將擷取的軟體放在您解壓縮儲存庫檔案的目錄中。</block>
   <block id="2a346f59c525e5728cec25bf9a377f2f" category="list-text">輸入下列命令來安裝軟體：</block>
   <block id="2d903390e509c4d2f6da1a4d0787b5b6" category="paragraph">swinstall /s /depot_path'</block>
   <block id="999cc5e84fec57fdd157e6fdacc5c96a" category="paragraph">「Depot_path」提供進廠檔案的路徑和名稱。</block>
@@ -823,7 +819,6 @@
   <block id="d25d835edd5dae4c8da09161a31e26a8" category="doc">使用Oracle Linux 8.0搭配NetApp ONTAP 功能</block>
   <block id="66ea9cf358437f905712380440a8eddd" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="8c7533773fc489aa5fe9c5ca6e019e25" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="05b3b7ebfe3f9b8f7b7fa7d073f86fcd" category="paragraph">對於Oracle Linux 8.0、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 8.0是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
-  <block id="f01b02d5e89762686d3f51d4b0f7f138" category="paragraph">您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="e43b7887a27711ba5e2bd52d8cbffd65" category="admonition">若要設定Oracle Linux 8.0 RedHat Enterprise核心（RHCK）、請使用 <block ref="dd019c9be944c1791639aca9ec9dceb1" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.0。</block>
   <block id="ae2aedd8068d0177ea81418345fb1719" category="paragraph">Oracle Linux 8.0沒有已知問題。</block>
   <block id="f32d48cf755668783343d18d81af5662" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.0。</block>
@@ -920,7 +915,6 @@
   <block id="297f86e3f009c4831d4973ff8e686c8e" category="cell">500 for AIX（獨立式/實體）200 for VIOC</block>
   <block id="c78667df66d3342c7fe6a58f227a56c1" category="cell">FC EN0G</block>
   <block id="52929637ce970c2251eb80190b86d5c8" category="inline-link-macro">NetApp KB1001318</block>
-  <block id="78ba88bcc67458c1a5065ee8f68514e8" category="paragraph">根據預設、如果沒有LUN路徑可用、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 <block ref="682b92f396ad2229bd62e99c5a518610" category="inline-link-macro-rx"></block></block>
   <block id="d6a549e2961efba4f33c4deb10965085" category="summary">說明如何搭配ONTAP 使用Oracle Linux 6.6搭配使用</block>
   <block id="94208a234965797fceed6103c20a6005" category="doc">使用Oracle Linux 6.6搭配NetApp ONTAP 功能</block>
   <block id="f25e7d0c2e23e28b5e2fcc826eab9d89" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="20a6fac93934f3cd0fc46716c10ade14" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -1288,12 +1282,10 @@
   <block id="b4fb72e88112026a3055df686f0141d6" category="paragraph">本文件針對ONTAP Citrix Hypervisor 8系列作業系統版本（含FC、FCoE和iSCSI傳輸協定）提供有關SAN主機組態設定的指引。</block>
   <block id="d87433b06a0f03952a4dc973f5315687" category="paragraph">對於Citrix Hypervisor（CH）8.x、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CH 8.x是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。您可以使用「/sbin/mpathutils」狀態命令來驗證ONTAP 您的還原LUN設定。下列各節提供對應ASA 至角色的LUN的多重路徑輸出範例。</block>
   <block id="d6001c34c29bb04684b5c07f3b8c9209" category="section-title">All SAN Array（ASA 整個SAN陣列）組態</block>
-  <block id="c17362e9d01452047d060a128e8e3634" category="paragraph">對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑均為「主動/最佳化」、這表示它們由控制器提供服務、而I/O則會傳送至所有作用中路徑。</block>
   <block id="15e8bfaa3c1b932b597dedce3820fa11" category="paragraph">下列範例顯示ONTAP 使用四個主動/最佳化路徑之「列舉LUN」的正確輸出：</block>
   <block id="dfdecabe17f4f61a0c5b353fdc3dfeef" category="paragraph">Citrix Hypervisor 8.x OS是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。對於Citrix Hypervisor 8.x、必須存在空白的零位元組「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。</block>
   <block id="4d9e4d5a080304464911deeebee0a0b3" category="paragraph">除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要將內容附加到/etc/multipath.conf檔案。您可以將下列語法新增至多重路徑.conf檔案、以排除不需要的裝置。</block>
   <block id="258e01d6ca463cd89e79be409a5b9398" category="paragraph">在此Citrix Hypervisor 8.x範例中、「sda」是黑名單所需的本機SCSI磁碟。</block>
-  <block id="90b4f63b7d8602eb40cd95b55d20f105" category="paragraph">請使用「$multipathd show config」命令來參閱多重路徑參數執行時間組態。您應該一律檢查執行中的組態、查看可能會覆寫預設設定的舊版設定、尤其是在預設值區段。</block>
   <block id="891983ab249dd51fa02a51e1da92fd57" category="admonition">Citrix Hypervisor建議針對所有Linux和Windows型客體VM使用Citrix VM工具、以進行支援的組態。</block>
   <block id="39f11cb747dafe51ae2cd54386744d96" category="cell">Citrix Tracker ID</block>
   <block id="37a4830e2093543aff3053de0d030043" category="inline-link-macro">1242343</block>
@@ -1390,7 +1382,6 @@
   <block id="8b2e8dcabd2803cfffe6d347e740d632" category="list-text">x86/x64 CPU：「netapp_solaris主機公用程式_6_2_amd.tar.gz」</block>
   <block id="4b9b8c4fa4d1eb96283d16c11c709e8e" category="list-text">使用gunzip命令解壓縮檔案</block>
   <block id="1f2423b6dd7c87600c006dd4fe70055e" category="paragraph">gunzip NetApp_solution_host_utilitutions_6_2_SPARC.tar.gz</block>
-  <block id="72f9fed930907b19e060560561469054" category="list-text">解壓縮檔案。您可以使用「tar xvf」命令來執行此作業。</block>
   <block id="d35a857c138589666873eef37b70bd9c" category="paragraph">"# tar xvf netapp_solaris主機公用程式_6_2_SPARC.tar</block>
   <block id="963069b30b9e059f13bf53eb0a7cfbfe" category="list-text">將您從tar檔案擷取的套件新增至主機。您可以使用「pkgadd」命令來執行此作業。</block>
   <block id="0c91635f19857d5fe1642e137ecfe86f" category="paragraph">這些套件會新增至「/opt/NTAP/SANToolkit / bin」目錄。以下範例使用「pkgadd（軟體組新增））指令來安裝Solaris安裝套件：</block>
@@ -1492,7 +1483,6 @@
   <block id="a12eee609318f789b110fe7492bac976" category="list-text">QLogic HBA–QConvertgeConsole CLI</block>
   <block id="59b271fe18b45209cf86bc956dfb5f7e" category="list-text">Emulex HBA - OneCommand Manager核心應用程式CLI</block>
   <block id="5ab8738b15e4372e4fe9670449a5b820" category="list-text">Brocade HBA–Brocade命令公用程式CLI</block>
-  <block id="ac6b9eb61f566a414937fce88a660057" category="paragraph">每個Linux發行套件的RPM套件「libhbaapi」和「libhBalinux」應安裝在主機作業系統上。</block>
   <block id="ffdedbe1187a1ddb0d5c60a0ac382630" category="paragraph">Linux Unified Host Utilities是NetApp主機軟體、可在Linux主機上提供命令列工具套件。</block>
   <block id="00c00a19ea488ceb63e99f408a6b6118" category="admonition">此工具套件適用於Host Utilities的所有組態和傳輸協定。因此部分內容會套用至某個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。</block>
   <block id="7f239a97a66cea4e3bb767698099b430" category="admonition">Citrix XenServer、Oracle VM和Red Hat Enterprise Virtualization Hypervisor不支援SAN工具套件。</block>
@@ -1752,7 +1742,6 @@
   <block id="a40ecef4a09b118c1f7f8b069486d849" category="list-text">解壓縮檔案並解壓縮SAN Toolkit軟體套件。</block>
   <block id="f79c6b17105bfd3884500ded694cb1f2" category="paragraph">SAN開機是將SAN附加磁碟（LUN）設定為AIX/PowerVM主機的開機裝置的程序。您可以設定SAN開機LUN、以便在以FC或FCoE傳輸協定執行AIX主機公用程式的AIX MPIO環境中運作。您在AIX MPIO環境中建立SAN開機LUN及在其上安裝新的OS映像的方法可能有所不同、視您使用的傳輸協定而定。</block>
   <block id="4b1288921d45a28c64d922c51edfb95d" category="paragraph">多重路徑可讓您在主機與儲存系統之間設定多個網路路徑。如果其中一條路徑故障、則其餘路徑上的流量會繼續傳輸。Host Utilities的AIX和PowerVM環境使用AIX的原生多重路徑解決方案（MPIO）。</block>
-  <block id="1697f4d36614d1ab7c528058860fd4fd" category="paragraph">以下是NetApp ONTAP 解決方案LUN的一些建議參數設定。安裝NetApp主機公用程式套件後、會自動設定適用於LUN的關鍵參數ONTAP 。</block>
   <block id="0e413d300c65d6eeae3946b5cd377d21" category="cell">適用於AIX 3072 for VIOS的1024</block>
   <block id="354315ccea353183f3cbbd3c90fe0c38" category="cell">1416221.</block>
   <block id="6db33a0501378d225ab739c6288d3808" category="cell">在儲存容錯移轉期間、AIX 7200-05-01在虛擬iSCSI磁碟（VIOS 3.1.1.x）上發生I/O中斷</block>
@@ -1927,7 +1916,6 @@
   <block id="e8197b03c53adb4c255babbea70b0dbb" category="list-text">如果使用LUN的應用程式在啟動時顯示錯誤、您必須確認應用程式已設定為依賴iSCSI服務。</block>
   <block id="7cfb60f9be60bdb510439f18ec6998be" category="list-text">對於連接至執行ONTAP 效能不全的儲存控制器的Fibre Channel路徑、您必須確認FC交換器已使用目標生命體的WWPN進行分區、而非使用節點上實體連接埠的WWPN。</block>
   <block id="1ecdb3fa7b640490717a296d259753d7" category="inline-link">Windows主機公用程式版本資訊</block>
-  <block id="9781d69195e9bb9dad9ea221e352929d" category="list-text">您必須檢閱<block ref="c98f6369245de310035299ae832b1997" category="inline-link-rx"></block> 檢查已知問題。版本資訊中包含已知問題與限制的清單。</block>
   <block id="0b10f822d26382a922afd1635db5de2d" category="list-text">您必須檢閱中的疑難排解資訊<block ref="766939a89871d4c04af2f6ac1ab2650b" category="inline-link-rx"></block> 適用於ONTAP 您的版本的</block>
   <block id="e96e50bb8a7d5f2a62a9ad0cd0c6527c" category="inline-link">線上錯誤</block>
   <block id="9083840fa5bcf62c5684d884151ab69b" category="list-text">您必須搜尋<block ref="9f91bb070a65615e92f64b6a068e1d9d" category="inline-link-rx"></block> 針對最近發現的問題。</block>
@@ -2119,7 +2107,6 @@
   <block id="9a85ce7daf00cd97d2ba489c461c944f" category="paragraph">請參閱 <block ref="6bc1436da9f0920d54a0f738830d902f" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="6a290a5d71dc6c05e5ec68fcd97cbe87" category="list-text">驗證個別NVMe / FC命名空間裝置的個別ANA路徑狀態：</block>
   <block id="e83464ce8bd634efb1f099c956ec64a8" category="section-title">已知問題</block>
-  <block id="7c6b30ab95aa6f3eeb2a6b9cbaf31f6c" category="list-text">ESXi 7.0 U3（及更新版本）、支援NVMe/FC、從ONTAP 版本號的更新版本更新至版本號的更新版本。這是因為主要NVMe中止（由ESXi 7.0 U3及更新版本發行）修正程式ONTAP 、僅從版本號支援更新到版本號更新。請參閱相關的待處理公開報告、網址為<block ref="e74f384cf37401802acc612082793163" category="inline-link-rx"></block> 以取得詳細資料。</block>
   <block id="471e82326ed5017bfdb518b5d33377cc" category="inline-link-macro">VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）</block>
   <block id="0a7c052037789d22811592a15b7a2e17" category="inline-link-macro">VMware vSphere 6.x與7.x支援搭配NetApp®SnapMirror®營運不中斷（SMBC）</block>
   <block id="d1456688e4d9e6236e75dfb01f3ed2ec" category="paragraph"><block ref="ec1f030f0caddb932644a46761f74630" category="inline-link-macro-rx"></block>
@@ -2335,7 +2322,6 @@
   <block id="4a77bd6ca1098e847cb75095287cdf8d" category="paragraph">CentOS 7.3沒有已知問題。</block>
   <block id="ebc6dd08dd10ab545441a995fcd41e3f" category="paragraph">CentOS 7.1沒有已知問題。</block>
   <block id="4391e4a69364ebb845d6562846716af4" category="doc">《AIX Host Utilities 6.1發行說明》</block>
-  <block id="81bca837c40611da67f18f391bb32923" category="paragraph">本版本說明文件包含AIX Host Utilities 6.1版本的最新資訊、包括已知問題、限制、以及ONTAP 設定和管理您的更新。</block>
   <block id="ebdfd2288177a34c60438efc134f52c4" category="paragraph">當使用AIX主機公用程式的新資訊可供使用時、版本資訊文件會更新。</block>
   <block id="cfbc0c9386472f86132990683d16796f" category="section-title">關於AIX Host Utilities 6.1版本</block>
   <block id="f418c08cd071f42a28a07d007dd30c34" category="paragraph">AIX主機公用程式可讓您將AIX主機連線至NetApp儲存設備。AIX主機公用程式支援多種環境、以及FC、FCoE和iSCSI傳輸協定。支援的環境包括AIX MPIO（原生作業系統）和PowerVM。</block>
@@ -2451,7 +2437,6 @@
   <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">建立HP-UX LVM會傳送超過1MB區塊大小的I/O</block>
   <block id="24cc4783034cf857703516141d8cc8ad" category="summary">Solaris Host Utilities 6.2版本資訊</block>
   <block id="07cb401e35e41c1ea4ba568ba75b0261" category="doc">Solaris Host Utilities 6.2版本說明</block>
-  <block id="6680e6f1f2da4905e1106056bcccc97b" category="paragraph">本發行說明文件包含Solaris Host Utilities 6.2的最新資訊、包括已知問題和限制的更新、ONTAP 以及設定和管理您的故障儲存系統。</block>
   <block id="a8d190b8be84e8cfdb8b2df1b04cb957" category="paragraph">當提供有關使用Solaris主機公用程式的新資訊時、即會更新版本資訊文件。</block>
   <block id="83abaefac7375849eeb586ba637a2d22" category="section-title">關於Solaris Host Utilities 6.2版本</block>
   <block id="d64c00d8393bc6d797e2fd2eb038c7f6" category="paragraph">Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。</block>
@@ -2472,7 +2457,6 @@
   <block id="2aa7ada2848fa0738fbfac1114907aa4" category="list-text"><block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> （前身為《系統組態指南》）</block>
   <block id="15b39b3049d63d1b09b2b4d4ddc115a4" category="list-text"><block ref="15b39b3049d63d1b09b2b4d4ddc115a4" category="inline-link-macro-rx"></block></block>
   <block id="c52f3cfca61100f76a974648c1c9a180" category="list-text"><block ref="c52f3cfca61100f76a974648c1c9a180" category="inline-link-macro-rx"></block></block>
-  <block id="0a9958781afdc779222e135d13dce352" category="paragraph">Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從下載壓縮檔案及文件 <block ref="c51b16e40c82542166bd05959a366a37" category="inline-link-macro-rx"></block>。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP</block>
   <block id="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="cell"><block ref="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="inline-link-macro-rx"></block></block>
   <block id="ba57f19b6b69755c2919b58188582a77" category="cell"><block ref="ba57f19b6b69755c2919b58188582a77" category="inline-link-macro-rx"></block></block>
   <block id="e8db03fc399918672bed8132e0d8ea35" category="list-text">。 <block ref="0f33c30ae119203ebbfd38575ad3015e" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
@@ -2689,12 +2673,9 @@
   <block id="d1c811acf82829db30f1d8b3e6c940d6" category="doc">SAN主機和雲端用戶端</block>
   <block id="708c2a641aba7d3caf588312e9a41596" category="summary">本內容提供特定於發佈的指引、說明如何設定連接Cloud Volumes ONTAP 至下列項目的雲端用戶端ONTAP ：針對連接至內部部署ONTAP 的更新儲存設備的介面和SAN主機、設定連接至原地更新儲存設備的Amazon FSX和Amazon FSX。</block>
   <block id="be2f9317bef1b02401365be22d60a02b" category="doc">SAN主機組態總覽</block>
-  <block id="08d0a34cb57428b1414232e7c1592ef5" category="paragraph">本內容提供主機和版本的特定最佳實務做法、可快速設定連接ONTAP 到靜態儲存設備的SAN主機。</block>
   <block id="ab5c1cc33879491a00632f6478216936" category="paragraph">您的SAN主機和ONTAP 支援功能可存放在內部部署、雲端或兩者。</block>
-  <block id="d99091ccf334938dd920fe960b4e1341" category="admonition">在雲端環境中、主機通常稱為用戶端。此內容中的所有主機專屬資訊也適用於雲端用戶端。</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="inline-link-macro">Cloud Volumes ONTAP</block>
   <block id="18cf072964a583150dd247485ba75b92" category="inline-link-macro">Amazon FSX for ONTAP Sf</block>
-  <block id="aad6098c26fd28acf5ce95db0964f759" category="paragraph">例如、您可以設定內部部署ONTAP 的支援區、以連線至內部部署的SAN主機、或連線至SAN雲端用戶端。您也可以設定 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 或 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block> 連線至內部部署SAN主機或連線至SAN雲端用戶端。</block>
   <block id="bd4300690dfdbe14b72c16ede45c8a40" category="paragraph">正確的組態對於最佳效能和成功的容錯移轉非常重要。</block>
   <block id="5206f5e3d376aae380267b11c8d7e8a0" category="sidebar">本內容針對發佈內容、提供如何設定連接ONTAP 到NetApp儲存設備的SAN用戶端的相關指引。SAN用戶端和ONTAP 功能不全的儲存設備可以位於內部部署或雲端。</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">開始使用</block>
@@ -2766,4 +2747,23 @@
   <block id="a64644439f45078aa7c8e54709b6fb99" category="paragraph">請參閱 <block ref="098b68c05e072d65de8b63c55177a5c6" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
   <block id="748753e893fd2f6b904a298d120af491" category="sidebar">Windows統一化主機公用程式</block>
   <block id="7b4c9d36bd8121e0d136897711d66090" category="sidebar">安裝Wuhu 7.1</block>
+  <block id="1f87ccc57172166c30629890b2884f0e" category="paragraph">您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
+  <block id="1bad318175e7aa1eb67e6db2256bb9b1" category="paragraph">系統會將擷取的軟體放在您解壓縮儲存庫檔案的目錄中。</block>
+  <block id="5bd6f64a8cbf5643612affb8bd552a8d" category="paragraph">本版本說明文件包含AIX Host Utilities 6.1版本的最新資訊、包括已知問題、限制、ONTAP 設定及管理您的一套更新。</block>
+  <block id="39b3dd6edf4819881415b4ccbfcf4d58" category="paragraph">對於Oracle Linux 7.1 UEK R4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.1是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
+  <block id="b2cff30246d08cdfde41ba01866ee693" category="list-text">ESXi 7.0 U3（及更新版本）、支援NVMe/FC、從ONTAP 功能介紹的版本為：從功能介紹的更新版本起、即可從ONTAP 功能介紹的更新版本中、取得關鍵NVMe中止修正程式（由ESXi 7.0 U3及更新版本發行）、從功能介紹的版本為：從功能介紹的更新版本開始提供。請參閱相關的待處理公開報告、網址為<block ref="e74f384cf37401802acc612082793163" category="inline-link-rx"></block> 以取得詳細資料。</block>
+  <block id="36889db7961eacd91f01477a29a2c5ea" category="list-text">確認的輸出<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block> 命令以確保設定完成。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
+  <block id="8798c6858a1c8968b7b9cad1ace9d91a" category="list-text">將此WWID新增至/etc/multipath.conf中的「黑名單」節：</block>
+  <block id="3ad269cd9c25c5c028bf155f768f0618" category="paragraph">根據預設、當沒有LUN可用的路徑時、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 <block ref="682b92f396ad2229bd62e99c5a518610" category="inline-link-macro-rx"></block></block>
+  <block id="eae76491b6011f6e80494775aea500b6" category="paragraph">對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑均為「主動/最佳化」、這表示它們由控制器提供服務、而I/O則會傳送至所有作用中路徑。</block>
+  <block id="3012ce3908219f8e726469f86858ac26" category="paragraph">對於AIX、路徑控制模組（PCM）負責控制多個路徑。PCM是儲存設備廠商提供的程式碼、可處理路徑管理。這項功能會在主機公用程式安裝過程中安裝及啟用。</block>
+  <block id="f5188f0db18a0455b279280c37baccd9" category="list-text">解壓縮檔案。您可以使用<block ref="310cb972d0a51b72a4a64dd98fcc2fb1" prefix=" " category="inline-code"></block> 執行此作業的命令。</block>
+  <block id="5c3a15590c180da4d9be3de55cf1bab9" category="list-text">您必須檢閱 <block ref="a681b254fb67a8552286997361f8b0b5" category="inline-link-macro-rx"></block> 檢查已知問題。版本資訊中包含已知問題與限制的清單。</block>
+  <block id="488ee7d410bfc05042cf79417f62b731" category="paragraph">本內容提供主機和版本專屬的最佳實務做法、可快速設定連接ONTAP 到靜態儲存設備的SAN主機。</block>
+  <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">在雲端環境中、主機通常稱為用戶端。此內容中的所有主機專屬資訊也適用於雲端用戶端。</block>
+  <block id="7dac0335f353ff4aea15e7349355818e" category="paragraph">例如、您可以設定內部部署ONTAP 的不支援儲存設備、以連線至內部部署的SAN主機、或連線至SAN雲端用戶端。您也可以設定 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 或 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block> 連線至內部部署SAN主機或連線至SAN雲端用戶端。</block>
+  <block id="6889073c7d1502d89a41a22f7b933a57" category="paragraph">本發行說明文件包含Solaris Host Utilities 6.2的最新資訊、包括已知問題、限制、ONTAP 設定及管理您的不二儲存系統的更新。</block>
+  <block id="94ed2eb93c1ea841359ebf631638ec66" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
+  <block id="a667026321ffb956d941d648c0ad659f" category="paragraph">每個Linux配送的RPM套件「libhbaapi」和「libhBalinux」應安裝在主機作業系統上。</block>
+  <block id="2e2f435df31672c9332b32b2b69afe2a" category="sidebar">Windows主機公用程式版本資訊</block>
 </blocks>

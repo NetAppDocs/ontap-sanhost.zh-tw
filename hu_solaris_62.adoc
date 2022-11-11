@@ -77,7 +77,7 @@ NOTE: NetApp Solaris主機公用程式軟體套件可在上取得 link:https://m
 +
 gunzip NetApp_solution_host_utilitutions_6_2_SPARC.tar.gz
 
-. 解壓縮檔案。您可以使用「tar xvf」命令來執行此作業。
+. 解壓縮檔案。您可以使用 `tar xvf` 執行此作業的命令。
 +
 "# tar xvf netapp_solaris主機公用程式_6_2_SPARC.tar
 

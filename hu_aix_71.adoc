@@ -205,7 +205,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 == 推薦MetroCluster 的功能設定
 
-根據預設、如果沒有LUN路徑可用、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 link:https://kb.netapp.com/app/answers/answer_view/a_id/1001318["NetApp KB1001318"^]
+根據預設、當沒有LUN可用的路徑時、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 link:https://kb.netapp.com/app/answers/answer_view/a_id/1001318["NetApp KB1001318"^]
 
 
 
