@@ -45,7 +45,6 @@
   <block id="6e7eef95f0e9ee9b717340ce72d65e5b" category="paragraph">不需要直接將任何內容新增至「多重路徑.conf」檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。</block>
   <block id="36da0e0b56843a1256e96e81029390fa" category="paragraph">您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。</block>
   <block id="32fdadaf90804487f6b463983fc1c553" category="paragraph">將「&lt;DevID&gt;」取代為您要排除的裝置WWID字串。使用下列命令來判斷WWID：</block>
-  <block id="090f01b46aada524696024ccba0a31de" category="paragraph">在此範例中、「sda」是我們需要列入黑名單的本機SCSI磁碟。</block>
   <block id="4d70a817ac85626aff88bbc73d0a2deb" category="list-text">執行下列命令來判斷WWID：</block>
   <block id="ff73d7e0f0c6051bbd80575105bb1cb1" category="list-text">將此WWID新增至「/etc/multipath.conf」中的黑名單節：</block>
   <block id="21613f1f81985ce9edca2dc6272a765e" category="paragraph">您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</block>
@@ -342,7 +341,6 @@
   <block id="eed881bb2a34d1ee7f7f847943028439" category="paragraph">多重路徑精靈必須存在multipath.conf檔案、才能啟動、但您可以使用命令「Touch /etc/multipath.conf」建立空白的零位元組檔案、這是您第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。</block>
   <block id="3e62478acd97c41a7fea67ffea8ef9a1" category="paragraph">除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要直接將任何內容新增至multipath.conf。您可以將下列語法新增至多重路徑.conf檔案、以排除不需要的裝置。</block>
   <block id="3bd7fde20a9abc176890c7422cf0f77f" category="admonition">將&lt;DevID&gt;取代為您要排除的裝置WWID字串。使用下列命令來判斷WWID：</block>
-  <block id="58449f79b301eee405bcc04689e38467" category="paragraph">在此範例中、sda是我們需要列入黑名單的本機SCSI磁碟。</block>
   <block id="e56af6b270edfc4a1dd8c5ee0e1144e1" category="admonition">若要設定Oracle Linux 6.10 RedHat Enterprise核心（RHCK）、請使用 <block ref="a294cf4df5bbbd1673f2ccf0dacf7b03" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.10。</block>
   <block id="95a2a60b3c81348f445296ddb1b67056" category="paragraph">Oracle 6.10沒有已知問題。</block>
   <block id="e2fadd98203b659772427cfe42d4a39e" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.10。</block>
@@ -355,7 +353,6 @@
   <block id="410267f88a5f79f5d40838a8e7a35e62" category="paragraph">從* XenCenter Management Portal/*啟用主機多重路徑服務、並確認多重路徑服務已啟用並正在執行。</block>
   <block id="cd96c3aa1c1e2627c438d2fe6fda056c" category="paragraph">除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要將內容附加到/etc/multipath.conf檔案。您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。</block>
   <block id="b00ab7c17a141468a5921157cdf11ec3" category="admonition">將*取代為您要排除之裝置的WWID字串。</block>
-  <block id="71b9d2719d4bd590da83c5da238b05fc" category="paragraph">在此Citrix XenServer 7.x範例中、「sda」是黑名單所需的本機SCSI磁碟。</block>
   <block id="ec8b35f300ba884a5dff762db20c0a35" category="paragraph">請使用「$multipathd show config」命令來參考多重路徑參數執行時間組態。您應該一律檢查執行中的組態、查看可能會覆寫預設設定的舊版設定、尤其是在預設值區段。</block>
   <block id="aea5fd959632948a3225c2ddd5323d43" category="paragraph">下表顯示ONTAP 適用於整個過程的關鍵*多路徑d*參數、以及所需的值。如果主機連接至其他廠商的LUN、且任一參數被覆寫、則需要在*多重路徑.conf *中的稍後儲存區加以修正、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。下列預設值僅應在諮詢NetApp和/或作業系統廠商、且必須完全瞭解其影響時予以覆寫。</block>
   <block id="093280d0b1b888a2d2861cdc763f5f54" category="cell">"Detect_prio"</block>
@@ -1011,10 +1008,8 @@
   <block id="02ec5a6431274b50044361aad326cbdc" category="paragraph">不像NVMe / FC、NVMe / TCP沒有自動連線功能。這對Linux NVMe/TCP主機有兩大限制：</block>
   <block id="524fa08703d908aeca5cccda70508020" category="list-text">*路徑恢復後不自動重新連線* NVMe/TCP無法自動重新連線至恢復路徑、超過路徑中斷後10分鐘的預設「Ctrl-Loss TMO"定時器。</block>
   <block id="5ac8d4417219a758cb216b44e499a52a" category="list-text">*主機開機期間不自動連線* NVMe / TCP也無法在主機開機期間自動連線。</block>
-  <block id="237af845a336c688dd92384a771f5c92" category="paragraph">為了輕鬆克服ONTAP SFO等故障切換事件、建議您調整「Ctrl-Loss _tmo」定時器、設定較長的重試時間、例如30分鐘。以下是詳細資料：</block>
   <block id="9f291dc2ffc26a15b15d66dfbe7c03c7" category="list-text">驗證啟動器連接埠是否可在支援的NVMe/TCP LIF中擷取探索記錄頁面資料：</block>
   <block id="cdad7a1e7e4e6d6a5603c6ee5b84a18b" category="list-text">確認其他NVMe / TCP啟動器目標LIF組合是否能夠成功擷取探索記錄頁面資料。例如、</block>
-  <block id="c3f202b40a54d75b57fbe1fedd71b1e7" category="list-text">在所有支援的NVMe /TCP啟動器目標LIF上、跨節點執行「NVMe Connect All」命令。請確保在連線期間經過較長的「Ctrl-Loss _tmo」期間（例如30分鐘、可設定至「-l 1800」）、以便在路徑遺失時重試更長時間。例如、</block>
   <block id="55ab77cd94d55aaa364453f7cf104285" category="section-title">驗證NVMe</block>
   <block id="a0eb26e72e628156638ad8b9cea45ac5" category="list-text">檢查下列項目、確認內核NVMe多重路徑確實已啟用：</block>
   <block id="d59a70bb68888f817286630067489719" category="list-text">驗證ONTAP 個別ONTAP 的各個支援名稱空間是否正確反映主機上的適當NVMe設定（例如、將「model」設為「NetApp支援控制器」和「負載平衡iopolicy」設定為「循環」）：</block>
@@ -1285,7 +1280,6 @@
   <block id="15e8bfaa3c1b932b597dedce3820fa11" category="paragraph">下列範例顯示ONTAP 使用四個主動/最佳化路徑之「列舉LUN」的正確輸出：</block>
   <block id="dfdecabe17f4f61a0c5b353fdc3dfeef" category="paragraph">Citrix Hypervisor 8.x OS是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。對於Citrix Hypervisor 8.x、必須存在空白的零位元組「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。</block>
   <block id="4d9e4d5a080304464911deeebee0a0b3" category="paragraph">除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要將內容附加到/etc/multipath.conf檔案。您可以將下列語法新增至多重路徑.conf檔案、以排除不需要的裝置。</block>
-  <block id="258e01d6ca463cd89e79be409a5b9398" category="paragraph">在此Citrix Hypervisor 8.x範例中、「sda」是黑名單所需的本機SCSI磁碟。</block>
   <block id="891983ab249dd51fa02a51e1da92fd57" category="admonition">Citrix Hypervisor建議針對所有Linux和Windows型客體VM使用Citrix VM工具、以進行支援的組態。</block>
   <block id="39f11cb747dafe51ae2cd54386744d96" category="cell">Citrix Tracker ID</block>
   <block id="37a4830e2093543aff3053de0d030043" category="inline-link-macro">1242343</block>
@@ -2383,7 +2377,6 @@
   <block id="e646e16bee8b32e6ea29e30d01970a6c" category="section-title">限制</block>
   <block id="8dc2bb86558c5fa9a6925f0d8bd82e21" category="list-text">不像NVMe / FC、NVMe / TCP沒有自動連線功能。這反映出Linux主機的兩大限制：</block>
   <block id="b7c3db78c3a82d963056f99e4aa58d39" category="list-text">路徑恢復後不自動重新連線：在路徑關閉後的10分鐘內、NVMe / TCP無法自動重新連線至恢復的路徑。</block>
-  <block id="fa4425742c4d1fb5d8e39e4339d06d6e" category="list-text">主機開機期間不自動連線-在主機開機期間、NVMe / TCP也無法自動連線。為了輕鬆克服ONTAP 諸如適用於NVMe / TCP的SFO等故障切換事件、建議您調整「Ctrl-Loss _tmo」定時器、以設定較長的重試時間、例如30分鐘。</block>
   <block id="140268ba3849abd78f34f907f067407f" category="paragraph">請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 如需支援組態的詳細資訊、請參閱。</block>
   <block id="061e98174e60e8e432e858a83311d44d" category="list-text">在伺服器上安裝RHEL 9.0。安裝完成後、請確認您執行的是指定的RHEL 9.0核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
   <block id="aa752093cf87ece20a99a98640048b70" category="list-text">安裝完成後、請確認您執行的是指定的RHEL 9.0核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
@@ -2398,7 +2391,6 @@
   <block id="7f905df84e3f641e977ad2d5240dee4b" category="list-text">主機開機後、請確認「lfc_sg_seg_cnt'」設定為「256」。</block>
   <block id="73a7814e5695a25d9824e6de50fe0979" category="paragraph">RHEL 9.0核心隨附的原生內建內建qla2xxx驅動程式、提供ONTAP 最新的上游修正程式、是支援此功能不可或缺的要素。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
   <block id="b3cc0f8131b6dd17671baba8c63d88b6" category="paragraph">不像NVMe / FC、NVMe / TCP沒有自動連線功能。這反映出Linux NVMe/TCP主機的兩大限制：</block>
-  <block id="828f6c28a4d526b6783eecef0ac05b8a" category="list-text">主機開機期間不自動連線-在主機開機期間、NVMe / TCP也無法自動連線。為了輕鬆克服ONTAP SFO等故障切換事件、建議您調整「Ctrl-Loss _tmo」定時器、設定較長的重試時間、例如30分鐘。以下是詳細資料：</block>
   <block id="055436915aa042f3fdf8045e013acbb5" category="list-text">驗證啟動器連接埠是否能夠擷取支援的NVMe / TCP LIF上的探索記錄頁面資料：</block>
   <block id="351f4726c12d45250df101c8bd9578d6" category="list-text">同樣地、請確認其他的NVMe/TCP啟動器目標LIF組合能夠成功擷取探索記錄頁面資料。例如、</block>
   <block id="7ce841894f1ef8447498c5c8f5b1f19a" category="section-title">驗證NVMf</block>
@@ -2498,9 +2490,7 @@
   <block id="67a7c2662b17653a8ac76448e703f0b7" category="list-text">安裝完成後、請確認您執行的是指定的RHEL 8.6核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
   <block id="71dcdd59971df1a5bb4dfbb60ffe2bad" category="list-text">驗證啟動器連接埠是否已啟動並正在執行、以及您是否可以看到目標LIF。</block>
   <block id="95e3f3faa5bf8e48441621d165c05044" category="paragraph">RHEL 8.6核心隨附的原生內建「qla2xxx」驅動程式有最新的上游修正程式、這些修正程式對於ONTAP 支援不支援而言非常重要。</block>
-  <block id="b964263fad43476391626a8c5994d66f" category="paragraph">為了輕鬆克服ONTAP SFO等故障切換事件、建議您將「Ctrl-Loss _tmo」定時器調整為30分鐘、以設定更長的重試時間。以下是詳細資料：</block>
   <block id="346a874868cfe5950cc070d607e10dda" category="list-text">確認其他NVMe / TCP啟動器目標LIF組合可以成功擷取探索記錄頁面資料。例如：</block>
-  <block id="7e4e5f748eea832eccfa25b6f84c9beb" category="list-text">在所有支援的NVMe /TCP啟動器目標LIF上、跨節點執行「NVMe Connect All」命令。請確保在連線期間經過較長的「Ctrl-Loss _tmo」期間（例如30分鐘、可設定至「-l 1800」）、以便在路徑遺失時重試更長時間。例如：</block>
   <block id="3bb5487a25f2c91e7d62566cb6026b68" category="list-text">確認ONTAP 支援的名稱空間能正確反映在主機上。例如：</block>
   <block id="f2af591771f10d63662bd947024ee100" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如：</block>
   <block id="c13733aade7c22e1d6c0fb7be8a8c754" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如：</block>
@@ -2515,7 +2505,6 @@
   <block id="9c7d4fd2f8e0f3f2d80343ad47595e46" category="list-text">在伺服器上安裝RHEL 8.5 GA。安裝完成後、請確認您執行的是指定的RHEL 8.5 GA核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
   <block id="3010e81137392b43d689728401eb1ea9" category="list-text">確認「lffc_enable _FC4_type]已設定為3</block>
   <block id="d5236e74852c6cce228c1229faf5ea4f" category="paragraph">RHEL 8.5 GA核心隨附的原生內建「qla2xxx」驅動程式、提供ONTAP 最新的上游修正程式、這些修正程式對支援進行支援是不可或缺的。</block>
-  <block id="e23d82164b7ed25abb97130635815a09" category="list-text">在所有支援的NVMe /TCP啟動器目標LIF上、跨節點執行「NVMe Connect All」命令。確保在連線期間經過較長的「Ctrl-Loss _tmo」期間（例如30分鐘、可設定至「-l 1800」）、以便在路徑遺失時重試較長時間。例如：</block>
   <block id="431b68e6f738b5c8bf76d7972d17685f" category="paragraph">一般會看到、NetApp陣列上的對應子系統是否未新增「/etc/nexe/hostnqn」字串、或是在個別子系統中新增不正確的「hostnqn」字串。</block>
   <block id="d9062f55beecc22ab1e0baaa195b1f68" category="paragraph">無。若為「NVMe探索」、請稍後嘗試執行此命令。對於「NVMe Connect」和「Connect All」、請執行「NVMe list」命令、確認命名空間裝置已建立並顯示在主機上。</block>
   <block id="9b2d197e1555229882f18589d7c32cce" category="list-text">驗證ONTAP 適當的NVMe設定值（例如、將「model」設為「NetApp還原控制器」、並將負載平衡「iopolicy」設為「循環」）、以正確ONTAP 反映在主機上：</block>
@@ -2554,8 +2543,6 @@
   <block id="61efa8d63e1b266809e1e79422fed58f" category="paragraph">較新版本的SLES15 SP4 MU核心隨附的原生內建qla2xxx驅動程式、具有最新的上游修正程式、是ONTAP 支援此功能不可或缺的要素。</block>
   <block id="859c1dcdb0decd8fe22f184abe2b92f7" category="list-text">路徑恢復後、不會自動重新連線、因為在路徑關閉後的10分鐘內、預設的「Ctrl-Loss - TMO"定時器無法自動重新連線至恢復的路徑。</block>
   <block id="1077e8ad3542ff8af32bed26b6b21ee8" category="list-text">在主機開機期間、不會自動連線NVMe / TCP、也無法在主機開機期間自動連線。</block>
-  <block id="bf67db93bdc191f54bf3b60580bdafe9" category="paragraph">為了輕鬆克服ONTAP 諸如儲存容錯移轉（SFO）等故障切換事件、建議您調整「Ctrl-Loss _tmo」定時器、設定較長的重試時間、例如30分鐘。以下是詳細資料：</block>
-  <block id="bf093b1c5c4b0f979c7987042c56c3d8" category="list-text">在所有支援的NVMe /TCP啟動器目標LIF上、跨節點執行「NVMe Connect All」命令。確保您在「連線至所有」期間經過較長的「Ctrl-Loss _tmo」期間（例如30分鐘、可設定至-l 1800）、以便在路徑遺失時重試較長時間。例如、</block>
   <block id="b2edbac4a48e893081ffbe4cda9a7dec" category="list-text">驗證ONTAP 個別ONTAP 的各個還原命名空間是否適當反映在主機上的NVMe設定（例如、設定為NetApp支援資源控制器的模型、以及將負載平衡iopolicy設定為循環配置資源）：</block>
   <block id="0882578f9915da36a8ab5c612728ad30" category="paragraph">範例（A）：</block>
   <block id="07cf625ee23005956a460fdd83c0142d" category="list-text">如果「NVMe資訊」輸出中沒有顯示上述目標LIF、請檢查「/var/log/Messages」和「dmesg」輸出是否有任何可疑的NVMe / FC故障、並據此報告或修正。</block>
@@ -2766,4 +2753,16 @@
   <block id="94ed2eb93c1ea841359ebf631638ec66" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="a667026321ffb956d941d648c0ad659f" category="paragraph">每個Linux配送的RPM套件「libhbaapi」和「libhBalinux」應安裝在主機作業系統上。</block>
   <block id="2e2f435df31672c9332b32b2b69afe2a" category="sidebar">Windows主機公用程式版本資訊</block>
+  <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">在此範例中、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
+  <block id="83b4ba657748695cb0894283702e0f3e" category="list-text">主機開機期間不自動連線-在主機開機期間、NVMe / TCP也無法自動連線。您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。</block>
+  <block id="f0f82e2793c63d13158f3daced159083" category="list-text">主機開機期間不自動連線-在主機開機期間、NVMe / TCP也無法自動連線。您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：</block>
+  <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如、</block>
+  <block id="30058c2cccf9fdeeb47f9d3fbf9108bf" category="paragraph">在此範例中、sda是我們需要新增至黑名單的本機SCSI磁碟。</block>
+  <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：</block>
+  <block id="9ac1e2761e536d1b08b677a24976cad9" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可設定至-l 1800）<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 如此一來、當路徑遺失時、它會重試更長時間。例如、</block>
+  <block id="1272c37c0c38bd618d6d76d763f54041" category="paragraph">在此範例中、Citrix Hypervisor 8.x、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
+  <block id="1de6caecfe16b961f2f1c858579203f0" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時重試較長時間。例如：</block>
+  <block id="557c4124a10a18982aa7103d5c4f8b02" category="paragraph">在本例中、Citrix XenServer 7.x、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
+  <block id="ad6d243201e40d0f0153f9cf8a6eca49" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如：</block>
+  <block id="96e313a007231cc32cb878d3d92047fb" category="paragraph">您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：</block>
 </blocks>

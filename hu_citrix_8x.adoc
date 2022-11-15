@@ -127,7 +127,7 @@ blacklist {
 
 NOTE: 將*取代為您要排除之裝置的WWID字串。
 
-在此Citrix Hypervisor 8.x範例中、「sda」是黑名單所需的本機SCSI磁碟。
+在此範例中、Citrix Hypervisor 8.x、 `sda` 是我們需要新增至黑名單的本機SCSI磁碟。
 
 . 執行下列命令來判斷WWID：
 +
