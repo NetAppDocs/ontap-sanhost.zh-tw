@@ -131,6 +131,7 @@ ww_name         0x500a0984994ae0e0               FC World Wide Name             
 《# sanlun LUN show》（# sanlun LUN show）
 
 +
+.範例
 此範例顯示MPIO多重路徑環境中「左LUN show」命令的典型輸出。
 
 +

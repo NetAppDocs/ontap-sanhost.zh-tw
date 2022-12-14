@@ -358,6 +358,7 @@ Windows Unified Host Utilities安裝程式會根據您在安裝期間所做的�
 
 | HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval | 1. | 當您的伺服器僅適用於Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時 
 |===
+.相關資訊
 請參閱 https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users["Microsoft文件"^] 以取得登錄參數詳細資料。
 
 
@@ -411,6 +412,7 @@ Windows Unified Host Utilities安裝程式會根據您在安裝期間所做的�
 
 NOTE: 參數名稱可能會因程式而稍有不同。例如、在QLogic QConvertgeConsole程式中、此參數會顯示為「Link down timeout（連結中斷逾時）」。主機公用程式「fcconfig.ini`檔案」會根據是否指定MPIO、將此參數顯示為「LinkDownTimeOut」或「PioLinkDownTimeOut」。但是、所有這些名稱都是指相同的HBA參數。
 
+.相關資訊
 請參閱 https://www.broadcom.com/support/download-search["Emulex"^] 或 https://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/Netapp_search.aspx["QLogic"^] 網站以深入瞭解逾時參數。
 
 
@@ -437,6 +439,7 @@ NOTE: 參數名稱可能會因程式而稍有不同。例如、在QLogic QConver
 * 如果您無法解決問題、請聯絡NetApp技術支援部門。
 
 
+.相關資訊
 http://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
 https://mysupport.netapp.com/portal/documentation["NetApp文件"^]
 https://mysupport.netapp.com/NOW/cgi-bin/bol["NetApp線上錯誤"^]

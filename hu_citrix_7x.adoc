@@ -28,6 +28,7 @@ summary: 說明如何搭配ONTAP 使用Citrix XenServer 7.x與VMware
 
 == SAN開機
 
+.您需要的產品
 如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 .步驟
@@ -57,6 +58,7 @@ Citrix XenServer中的多重路徑支援是以Device對應器Multibathd元件為
 
 對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
 
+.範例
 下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
 
 [listing]
@@ -86,6 +88,7 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑�
 
 在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。
 
+.範例
 下列範例顯示ONTAP 所有四個主動/最佳化路徑之用、正確輸出的列舉之一：
 
 [listing]
@@ -139,6 +142,7 @@ blacklist {
 
 NOTE: 將*取代為您要排除之裝置的WWID字串。
 
+.範例
 在本例中、Citrix XenServer 7.x、 `sda` 是我們需要新增至黑名單的本機SCSI磁碟。
 
 . 執行下列命令來判斷WWID：
@@ -221,6 +225,7 @@ blacklist {
 
 | 「第一」 | NetApp 
 |===
+.範例
 以下範例說明如何修正被覆寫的預設值。在此情況下、* multipath.conf *檔案會定義* path_checker*和* detect_prio*的值、這些值與ONTAP 不相容於哪些LUN。如果因為主機連接的其他SAN陣列而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]

@@ -18,7 +18,7 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 :toc-position: content
 
 
-.您需要的是 #8217 ；需要的是什麼
+.您需要的產品
 * 為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。
 
 
@@ -30,6 +30,7 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 
 Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
 
+.範例
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
 [listing]

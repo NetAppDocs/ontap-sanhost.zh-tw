@@ -74,6 +74,7 @@ summary: 說明如何安裝Solaris主機公用程式
 
 當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
 
+.範例
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
 [listing]
@@ -90,6 +91,7 @@ data_vserver       /vol/vol2/lun2  /dev/rdsk/c0t600A098038314362705D51465A626475
 
 == SAN開機
 
+.您需要的產品
 如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 SAN開機是將SAN附加磁碟（LUN）設定為Solaris主機的開機裝置的程序。
@@ -108,6 +110,7 @@ SAN開機是將SAN附加磁碟（LUN）設定為Solaris主機的開機裝置的�
 
 對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
 
+.範例
 下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
 
 路徑優先順序會顯示在OS原生的「mpathadm show Lu <LUN>」命令中、每個LUN的「*存取狀態*」區段。
@@ -118,6 +121,7 @@ SAN開機是將SAN附加磁碟（LUN）設定為Solaris主機的開機裝置的�
 
 在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。
 
+.範例
 下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
 
 「sanlun」命令的輸出與ASA 不適用於ASA組態的輸出相同。

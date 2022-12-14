@@ -90,6 +90,7 @@ SAN主機公用程式的文件包含在中 link:https://docs.netapp.com/us-en/on
 
 您可以存取所有NetApp產品的文件、並在NetApp公司網站的「產品文件」頁面上找到其他產品資訊資源、例如技術報告和白皮書。
 
+.相關資訊
 *設定及管理ONTAP 您的資料不一樣儲存系統*
 
 * 。 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["《軟體設定指南》ONTAP"^] 適用於ONTAP 您的版本的

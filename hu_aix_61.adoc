@@ -18,7 +18,7 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 :toc-position: content
 
 
-.您需要的是 #8217 ；需要的是什麼
+.您需要的產品
 * 為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。
 +
 您可以使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 以驗證組態。

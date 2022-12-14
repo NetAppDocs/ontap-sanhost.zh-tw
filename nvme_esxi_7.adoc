@@ -164,6 +164,7 @@ uuid.5084e29a6bb24fbca5ba076eda8ecd7e : NVMe Fibre Channel Disk (uuid.5084e29a6b
 NOTE: 在支援支援支援的支援區塊9.7中ONTAP 、NVMe / FC命名空間的預設區塊大小為4K。此預設大小與ESXi不相容。因此、在建立ESXi命名空間時、您必須將命名空間區塊大小設為512B。您可以使用「vserver NVMe命名空間create」命令來執行此動作。
 
 +
+.範例
 「Vserver NVMe命名空間create -vserver vvs 1 -path /vol/nslov/namespace1 -size 100g -osttype VMware -block-size 512B」
 
 +

@@ -6,6 +6,7 @@ NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysu
 
 強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
+.您需要的產品
 如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。
 
 .步驟
