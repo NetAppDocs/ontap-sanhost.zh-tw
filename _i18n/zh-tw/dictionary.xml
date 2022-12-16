@@ -2281,7 +2281,6 @@
   <block id="476ffa3f7602d624a09df7aa5753ffef" category="paragraph">前往 <block ref="9baa7224a8255cea231b31bb3cb8d26c" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
   <block id="2c0074fce84282581b2b52e56eacf78e" category="sidebar">安裝Luhu 7.1</block>
   <block id="3e88abad927ef9520e50cf89d3f1ddf7" category="paragraph">您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。</block>
-  <block id="ac9cd03712fd30de041cfad595bfc616" category="paragraph">下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</block>
   <block id="51f210eb8bfa53321744e9dca7258c87" category="paragraph">Oracle Linux 8.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
   <block id="60f09d4774647857c92f5a51f6de2354" category="paragraph">Oracle Linux 8.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
   <block id="ffe5b32185032e3b293e94d4a0232f34" category="paragraph">Oracle Linux 8.2作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
@@ -2596,7 +2595,6 @@
   <block id="237e46c87c95b6d72dceaf420c603d90" category="sidebar">Linux統一化主機公用程式</block>
   <block id="c134d5805f93afa1db7c6399465d2bd8" category="sidebar">Solaris主機公用程式</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">NVMeoF RHEL</block>
-  <block id="8200a3db147155676a7739eb43b685c9" category="admonition">您可以使用此內容中提供的組態設定來設定連線至的雲端用戶端 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 和 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>。</block>
   <block id="f561aaf6ef0bf14d4208bb46a4ccb3ad" category="paragraph">XXX</block>
   <block id="47e2092f9d666fc24b67c7da02de84c7" category="paragraph">Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。我們建議下載並安裝最新的公用程式套件。如需Wuhu組態資訊與說明、請參閱 <block ref="f7fe1c204ed60a7e9dd594c09fd7b1a5" category="inline-link-macro-rx"></block>。</block>
   <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows主機公用程式套件7.1</block>
@@ -2680,4 +2678,41 @@
   <block id="41984fe104ed2a03ac98e13699db0858" category="section-title">7.1版的新功能</block>
   <block id="f76dacb09cf26865aa39e565e340c25b" category="paragraph-title">Oracle Linux 7.2 UEK R3組態</block>
   <block id="214edbb0ed79a899577c5689a76a98e3" category="paragraph-title">Oracle Linux 7.2 UEK R4組態</block>
+  <block id="50d880869dbad54df4986a506d8e811c" category="admonition">您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 和 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>。</block>
+  <block id="563bea0904ae52572ef481dbaa30e7b6" category="paragraph">無需直接在中新增任何內容<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。</block>
+  <block id="c6c681f2d9c6e0299e9cad2b809ff1be" category="paragraph">您應該隨時檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 舊版設定的檔案、尤其是預設值區段、可能會覆寫預設設定。</block>
+  <block id="e7ca608348039bbac0657502a5108091" category="paragraph">下表顯示要徑<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> 支援的參數ONTAP 和所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要稍後在中的節能區段加以修正<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 特別適用於ONTAP 整個LUN的檔案。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</block>
+  <block id="98a246e1f1b81f16a2ceb0cc274c4da8" category="summary">如何針對RHEL 8.7設定NVMe主機、ONTAP 並搭配使用功能</block>
+  <block id="b4c2617aeac68a32be5cd8b1d7435cda" category="doc">適用於RHEL 8.7的NVMe主機組態（ONTAP 含功能）</block>
+  <block id="848b204c7de8049fc74d45505dd8d0c7" category="paragraph">採用ANA（非對稱命名空間存取）的RHEL 8.7支援NVMe over Fabrics或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.7上使用ANA和ONTAP 以之為目標的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。</block>
+  <block id="a3492942cb4c45f8a31e3e3845c9f04a" category="paragraph">RHEL 8.7除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。原生NVMe CLI套件中的NetApp外掛程式能夠顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資訊。</block>
+  <block id="0e15c36dca614df066cc960ea227ce1c" category="list-text">在RHEL 8.7中、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="22bdfd7e91e72cf608df0b09fc912791" category="inline-link-macro">RHEL 8.7版本說明</block>
+  <block id="8c2b765ab97c39979798e34af69b0f1c" category="list-text">RHEL 8.7上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱 <block ref="3b0b5f7859cfdb8f0e4748ec41710206" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
+  <block id="0762a5fd7b3c1a28aefc4db9de8ed1fa" category="list-text">在伺服器上安裝RHEL 8.7。安裝完成後、請確認您執行的是指定的RHEL 8.7核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
+  <block id="37d7cdc3434cd2c93f357a0dbab71896" category="list-text">安裝完成後、請確認您執行的是指定的RHEL 8.7核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
+  <block id="2575819b82d12e9109581acdab9442a5" category="paragraph">如果您打算在同一部主機上同時執行NVMe和SCSI共存的流量、建議您分別使用核心內建NVMe多重路徑ONTAP 來執行支援的名稱空間、ONTAP 以及使用dm-multipathon來執行支援的LUN。這表示ONTAP 應從dm-multipaths中排除支援的對象名稱空間、以避免dm-multipaths宣告這些命名空間裝置。您可以將啟用外部設定新增至、以完成此作業<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
+  <block id="336e17a7bbcba7cb9c2f65ad935d30f6" category="paragraph">原生收件匣<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block> RHEL 8.7核心所含的驅動程式有最新的上游修正程式、這些修正程式對ONTAP 支援功能至關重要。</block>
+  <block id="18364f61161412813e05ad8b27bed23e" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請先確定您執行的組態符合IMT 「支援」規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
+  <block id="3a3b7ac2e39541ea05707ccd6eb054d4" category="section-title">已知問題與限制</block>
+  <block id="4c865e0cb70fa33868e69a5e88daad47" category="cell">1479047</block>
+  <block id="cf6366d36f548ad4fbfb319ac121f2a5" category="cell">RHEL 8.x NVMe主機會建立重複的持續探索控制器</block>
+  <block id="c58f4b32e0b4018e032143845aa6c3e4" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以提供來建立持續探索控制器（PD）<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。對於指定的啟動器-目標組合、每次呼叫時都會建立一個資料中心<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。不過、從ONTAP 版本號為Rse.9.10.1開始、Red Hat Enterprise Linux（RHEL）8.x NVMe主機會在每次呼叫時建立重複的PDF<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項。這會導致主機和目標上的資源浪費。</block>
+  <block id="f890a2d3eb444832b655a9838102f3df" category="cell">2087000</block>
+  <block id="3f4a3b3eec403674aa0cd9427d6deec9" category="cell">請確定您使用的是上述NVMe命令的正確語法。</block>
+  <block id="e0f847d0d970d13348c3311998e2e15c" category="cell">可能會引發多個問題。為NVMe命令提供錯誤的引數是常見原因之一。</block>
+  <block id="aaf9ff463934c32d04f550169d6bf924" category="list-text">請確定您已將正確的引數（例如、正確的WWNN字串、WWPN字串等）傳遞給命令。</block>
+  <block id="e3839c8fe205bd822dc235a5cd5a1f23" category="paragraph">請務必準確<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 字串會新增至NetApp陣列上的對應子系統（透過<block ref="0e04d4bf4054a77eef58ff3d9b9e59ae" prefix=" " category="inline-code"></block> 命令）。</block>
+  <block id="77f83f52d54fb4aeb889da304fc0ebe1" category="paragraph">如果控制器關聯或指定的作業已經建立或正在建立、請注意。這可能是上述安裝之自動連線指令碼的一部分。</block>
+  <block id="de63239808aba6bc3b6e058c280e2334" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.7搭配使用功能</block>
+  <block id="054dec9601134c2039198642192ad5cd" category="doc">使用Red Hat Enterprise Linux 8.7搭配NetApp ONTAP 功能</block>
+  <block id="42629720f0dd50e499b39533a5c8c6c6" category="paragraph">適用於Red Hat Enterprise Linux（RHEL）8.7<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.7已使用所有必要設定進行編譯、以辨識及正確管理ONTAP 支援LUN。</block>
+  <block id="41e60f77441a26af306d1caa0723d32b" category="paragraph">RHEL 8.7作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
+  <block id="3563f88528058cb4204fdaa22c14f966" category="cell">1501048</block>
+  <block id="dcda3b905d6ce3cc8adfc8ef13a4e227" category="cell">FC傳輸層逾時參數<block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block> 對於遠端SCSI目標連接埠、會報告負值（-1）</block>
+  <block id="139739455b391a36001ab3e7b53f83cd" category="cell"><block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix="" category="inline-code"></block> timeout參數表示FC傳輸應隔離以防止遠端連接埠遺失的預設秒數。超過此值時、SCSI目標會從主機移除。此參數值應為正整數值。然而在RHEL 8.7中、<block ref="58fa55ed07383d23de64a931619c03fe" prefix=" " category="inline-code"></block> 檔案系統會傳回的負值（-1）<block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block> SCSI裝置的逾時參數。以下是驗證的命令列範例<block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block> 工作主機上的參數：<block ref="227979672a108771b68f10c269922312" prefix=" " category="inline-code"></block>。RHEL 8.7中沒有此問題的因應措施。</block>
+  <block id="5b876ec80b215faac6b29b80c4b9ccb3" category="inline-link-macro">2124297</block>
+  <block id="06f7b53dab389e67432643a56b42a885" category="cell"><block ref="06f7b53dab389e67432643a56b42a885" category="inline-link-macro-rx"></block></block>
+  <block id="796d3a90e43ce105cbf37298c5065f7e" category="sidebar">9.1</block>
+  <block id="c7ed23f5281d7f5b606a1019ecd9fd97" category="sidebar">8.7%</block>
 </blocks>

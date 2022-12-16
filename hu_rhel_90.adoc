@@ -38,7 +38,7 @@ NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysu
 
 
 
-NOTE: 您可以使用此內容中提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
 
 
 
@@ -150,7 +150,7 @@ RHEL 9.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並
 # systemctl enable multipathd
 # systemctl start multipathd
 ----
-不需要直接將任何內容新增至「多重路徑.conf」檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。
+無需直接在中新增任何內容 `multipath.conf` 檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。
 
 您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。
 
@@ -186,9 +186,9 @@ blacklist {
 ....
 
 
-您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。
+您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是預設值區段、可能會覆寫預設設定。
 
-下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。
+下表顯示要徑 `multipathd` 支援的參數ONTAP 和所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要稍後在中的節能區段加以修正 `multipath.conf` 特別適用於ONTAP 整個LUN的檔案。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。
 
 [cols="2*"]
 |===
