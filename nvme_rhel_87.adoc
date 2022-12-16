@@ -23,10 +23,10 @@ summary: 如何針對RHEL 8.7設定NVMe主機、ONTAP 並搭配使用功能
 
 == 支援能力
 
-採用ANA（非對稱命名空間存取）的RHEL 8.7支援NVMe over Fabrics或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.7上使用ANA和ONTAP 以之為目標的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。
+採用ANA（非對稱命名空間存取）的RHEL 8.7支援NVMe over Fabrics或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。本主題包含在RHEL 8.7上啟用NVMe的詳細資料、並ONTAP 以ANA做為目標、以內核NVMe多重路徑啟用NVMe。
 
 
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+NOTE: 您可以使用本主題中提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
 
 
 
@@ -53,7 +53,7 @@ RHEL 8.7除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。�
 == 啟用內核NVMe多重路徑
 
 .步驟
-. 在伺服器上安裝RHEL 8.7。安裝完成後、請確認您執行的是指定的RHEL 8.7核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
+. 在伺服器上安裝RHEL 8.7。
 . 安裝完成後、請確認您執行的是指定的RHEL 8.7核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
 +
 範例：
@@ -194,7 +194,7 @@ FCP CMPL: xb 0000006b Err 00017f99
 
 
 
-==== 啟用1MB I/O大小（選用）
+==== 啟用1 MB I/O大小（選用）
 
 在「識別控制器」資料中、若能報告MDTS（不含資料的傳輸大小）為8、表示I/O要求的最大大小應為1 MB。ONTAP MAX Data不過、若要針對Broadcom NVMe / FC主機發出大小為1 MB的I/O要求、則lfc參數「lffc_sg_seg_cnt"也應該從預設值64增加至256。請依照下列指示操作：
 
@@ -215,7 +215,7 @@ options lpfc lpfc_sg_seg_cnt=256
 256
 ----
 +
-現在、Broadcom FC-NVMe主機應該能夠在ONTAP 該名稱空間裝置上傳送高達1MB的I/O要求。
+現在、Broadcom FC-NVMe主機應該能夠在ONTAP 該名稱空間裝置上傳送高達1 MB的I/O要求。
 
 
 
@@ -233,7 +233,7 @@ options lpfc lpfc_sg_seg_cnt=256
 QLE2772 FW:v9.08.02 DVR:v10.02.07.400-k-debug
 QLE2772 FW:v9.08.02 DVR:v10.02.07.400-k-debug
 ----
-. 確認已設定「ql2xnvmeenable」、以便Marvell介面卡能以NVMe / FC啟動器的形式運作、請使用下列命令：
+. 驗證 `ql2xnvmeenable` 已設定、可讓Marvell介面卡以NVMe / FC啟動器的形式運作、使用下列命令：
 +
 [listing]
 ----
@@ -530,7 +530,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 |===
 
 
-=== 常見的NVMe CLI錯誤和因應措施
+=== 常見的NVMe-CLI錯誤和因應措施
 
 NVMe探索、NVMe連線或NVMe連線所有作業期間顯示的「NVMe - CLI」錯誤及因應措施如下表所示：
 
