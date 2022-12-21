@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: nvme_ol_86.html 
+keywords:  
+summary:  
+---
+= 適用於Oracle Linux 8.6的NVMe / FC主機組態、ONTAP 含功能
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+當Oracle支援NVMe / FC完全符合此主機作業系統版本的資格時、將會發佈Oracle 8.6的NVMe / FC主機組態詳細資料。
