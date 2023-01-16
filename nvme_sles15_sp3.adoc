@@ -25,7 +25,7 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 採用ANA（非對稱命名空間存取）的SUSE Linux Enterprise Server 15 SP3（SLES15 SP3）支援NVMe over Fabric或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需啟用NVMe的詳細資料、請ONTAP 參閱此處以ANA on SLS15 SP3和以之為目標的內核NVMe多重路徑。
 
 
-NOTE: 您可以使用本主題中提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
 
 
 

@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_rhel_86.html 
+permalink: nvme_rhel_91.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何針對RHEL 8.6設定NVMe主機以ONTAP 使用功能 
+summary: 如何針對RHEL 8.7設定NVMe主機、ONTAP 並搭配使用功能 
 ---
-= 適用於RHEL 8.6的NVMe主機組態（ONTAP 含功能性）
+= 適用於RHEL 9.1 ONTAP 的NVMe主機組態（含功能性）
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -23,7 +23,7 @@ summary: 如何針對RHEL 8.6設定NVMe主機以ONTAP 使用功能
 
 == 支援能力
 
-採用ANA（非對稱命名空間存取）的RHEL 8.6支援NVMe over Fabric或NVMe（包括NVMe / FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.6上使用ANA和ONTAP 以之為目標的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。
+RHEL 9.1支援NVMe over Fabrics或NVMe（包括NVMe / FC和NVMe / TCP）、並具備非對稱命名空間存取（ANA）、ONTAP 可在不間斷的儲存容錯移轉（SFO）上執行。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。本文件詳細說明如何在使用ANA on RHEL 9.1和ONTAP 以之為目標的內核NVMe多重路徑上啟用NVMe。
 
 
 NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
@@ -32,15 +32,9 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 == 功能
 
-* RHEL 8.6除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。原生NVMe CLI套件中的NetApp外掛程式能夠顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資訊。
-
-
-
-
-== 已知限制
-
-* 對於RHEL 8.6、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。
-* RHEL 8.6上的NVMe/TCP仍是技術預覽功能、因為仍有開放式問題。請參閱 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.6_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.6版本說明"^] 以取得詳細資料。
+* RHEL 9.1除了支援NVMe / FC之外、還支援NVMe / TCP。原生的NetApp外掛程式 `nvme-cli` 套件可顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資料。
+* RHEL 9.1支援預設啟用的NVMe命名空間內核心NVMe多重路徑、不需要明確設定。
+* RHEL 9.1支援在特定HBA介面卡的同一主機上使用NVMe和SCSI共存的流量、而不需明確說明 `dm-multipath` 防止宣告NVMe命名空間的設定。
 
 
 
@@ -51,10 +45,11 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 
 
-== 啟用內核NVMe多重路徑
+== 啟用核心內建NVMe多重路徑
 
-. 在伺服器上安裝RHEL 8.6。安裝完成後、請確認您執行的是指定的RHEL 8.6核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
-. 安裝完成後、請確認您執行的是指定的RHEL 8.6核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
+.步驟
+. 在伺服器上安裝RHEL 9.1。安裝完成後、請確認您正在執行指定的RHEL 9.1核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
+. 安裝完成後、請確認您正在執行指定的RHEL 9.1核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
 +
 範例：
 
@@ -62,7 +57,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 [listing]
 ----
 # uname -r
-4.18.0-372.9.1.el8.x86_64
+ 5.14.0-162.6.1.el9_1.x86_64
 ----
 . 安裝「NVMe-CLI（NVMe - CLI）套件：
 +
@@ -72,13 +67,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 [listing]
 ----
 # rpm -qa|grep nvme-cli
-nvme-cli-1.16-3.el8.x86_64
-----
-. 啟用核心內建NVMe多重路徑：
-+
-[listing]
-----
-# grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-372.9.1.el8.x86_64
+nvme-cli-2.0-4.el9.x86_64
 ----
 . 在主機上、檢查位於「/etc/nape/hostnqn」的主機NQN字串、並驗證其是否符合ONTAP 位於「the」（子系統）上之對應子系統的主機NQN字串。範例：
 +
@@ -86,11 +75,13 @@ nvme-cli-1.16-3.el8.x86_64
 ----
 
 # cat /etc/nvme/hostnqn
-nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
-::> vserver nvme subsystem host show -vserver vs_fcnvme_141
+nqn.2014-08.org.nvmexpress:uuid:325e7554-1f9b-11ec-8489-3a68dd61a4df
+
+
+::> vserver nvme subsystem host show -vserver vs_nvme207
 Vserver     Subsystem       Host NQN
 ----------- --------------- ----------------------------------------------------------
-vs_fcnvme_14 nvme_141_1     nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
+vs_nvme207 rhel_207_LPe32002     nqn.2014-08.org.nvmexpress:uuid:325e7554-1f9b-11ec-8489-3a68dd61a4df
 
 ----
 +
@@ -98,20 +89,6 @@ vs_fcnvme_14 nvme_141_1     nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-9
 NOTE: 如果主機NQN字串不相符、您應該使用「vserver modify」命令來更新對應ONTAP 的NVMe子系統上的主機NQN字串、以符合主機上的主機NQN字串「/etc/nvm/hostnqn」。
 
 . 重新啟動主機。
-+
-[NOTE]
-====
-如果您打算在同一部主機上同時執行NVMe與SCSI共存的流量、建議您分別使用核心內建NVMe多重路徑ONTAP 來執行支援的名稱空間、ONTAP 以及針對支援的LUN執行dm多重路徑。這表示ONTAP 應從dm-multipaths中排除支援的對象名稱空間、以避免dm-multipaths宣告這些命名空間裝置。您可以將啟用外部設定新增至「/etc/multipath.conf」檔案來完成此作業：
-
-[listing]
-----
-# cat /etc/multipath.conf
-defaults {
-        enable_foreign     NONE
-}
-----
-====
-. 執行「stystemctl restart multipathd」命令重新啟動多路徑精靈、以允許新的設定生效。
 
 
 
@@ -122,26 +99,34 @@ defaults {
 
 === Broadcom / Emulex
 
-. 確認您使用的是支援的介面卡。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援介面卡清單。
+.步驟
+. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
 +
 [listing]
 ----
 # cat /sys/class/scsi_host/host*/modelname
 LPe32002-M2
 LPe32002-M2
+
 # cat /sys/class/scsi_host/host*/modeldesc
+
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+
 ----
 . 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援介面卡驅動程式和韌體版本清單。
 +
 [listing]
 ----
 # cat /sys/class/scsi_host/host*/fwrev
-12.8.351.47, sli-4:2:c
-12.8.351.47, sli-4:2:c
+14.0.505.11, sli-4:2:c
+14.0.505.11, sli-4:2:c
+----
++
+[listing]
+----
 # cat /sys/module/lpfc/version
-0:14.0.0.4
+0:14.2.0.5
 ----
 . 確認「lffc_enable _FC4_type]已設定為3
 +
@@ -149,43 +134,53 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
 # cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
 3
+
 ----
 . 驗證啟動器連接埠是否已啟動並正在執行、以及您是否可以看到目標LIF。
 +
-[listing, subs="+quotes"]
+[listing]
 ----
 # cat /sys/class/fc_host/host*/port_name
-0x100000109b1c1204
-0x100000109b1c1205
+0x100000109b1b95ef
+0x100000109b1b95f0
+----
++
+[listing]
+----
 # cat /sys/class/fc_host/host*/port_state
 Online
 Online
+----
++
+[listing]
+----
 # cat /sys/class/scsi_host/host*/nvme_info
 NVME Initiator Enabled
 XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc0 WWPN x100000109b1c1204 WWNN x200000109b1c1204 DID x011d00 ONLINE
-NVME RPORT WWPN x203800a098dfdd91 WWNN x203700a098dfdd91 DID x010c07 TARGET DISCSRVC ONLINE
-NVME RPORT WWPN x203900a098dfdd91 WWNN x203700a098dfdd91 DID x011507 TARGET DISCSRVC ONLINE
+NVME LPORT lpfc0 WWPN x100000109b1b95ef WWNN x200000109b1b95ef DID x061700 ONLINE
+NVME RPORT       WWPN x2035d039ea1308e5 WWNN x2082d039ea1308e5 DID x062f05 TARGET DISCSRVC ONLINE
+NVME RPORT       WWPN x2083d039ea1308e5 WWNN x2082d039ea1308e5 DID x062407 TARGET DISCSRVC ONLINE
 
 NVME Statistics
-LS: Xmt 0000000f78 Cmpl 0000000f78 Abort 00000000
-LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 000000002fe29bba Issue 000000002fe29bc4 OutIO 000000000000000a
-abort 00001bc7 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 00001e15 Err 0000d906
+LS: Xmt 000000000e Cmpl 000000000e Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000000001df6c Issue 000000000001df6e OutIO 0000000000000002
+        abort 00000000 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000000 Err 00000004
 
 NVME Initiator Enabled
 XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc1 WWPN x100000109b1c1205 WWNN x200000109b1c1205 DID x011900 ONLINE
-NVME RPORT WWPN x203d00a098dfdd91 WWNN x203700a098dfdd91 DID x010007 TARGET DISCSRVC ONLINE
-NVME RPORT WWPN x203a00a098dfdd91 WWNN x203700a098dfdd91 DID x012a07 TARGET DISCSRVC ONLINE
+NVME LPORT lpfc1 WWPN x100000109b1b95f0 WWNN x200000109b1b95f0 DID x061400 ONLINE
+NVME RPORT       WWPN x2036d039ea1308e5 WWNN x2082d039ea1308e5 DID x061605 TARGET DISCSRVC ONLINE
+NVME RPORT       WWPN x2037d039ea1308e5 WWNN x2082d039ea1308e5 DID x062007 TARGET DISCSRVC ONLINE
 
 NVME Statistics
-LS: Xmt 0000000fa8 Cmpl 0000000fa8 Abort 00000000
-LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 000000002e14f170 Issue 000000002e14f17a OutIO 000000000000000a
-abort 000016bb noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 00001f50 Err 0000d9f8
+LS: Xmt 000000000e Cmpl 000000000e Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000000001dd28 Issue 000000000001dd29 OutIO 0000000000000001
+        abort 00000000 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000000 Err 00000004
+
 ----
 
 
@@ -193,8 +188,9 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 
 ==== 啟用1MB I/O大小（選用）
 
-在「識別控制器」資料中、若能報告MDTS（不含資料的傳輸大小）為8、表示I/O要求的最大大小應為1 MB。ONTAP MAX Data不過、若要針對Broadcom NVMe / FC主機發出大小為1 MB的I/O要求、則lfc參數「lffc_sg_seg_cnt"也應該從預設值64增加至256。請依照下列指示操作：
+在「識別控制器」資料中、若能報告MDTS（不含資料的傳輸大小）為8、表示I/O要求的最大大小應為1 MB。ONTAP MAX Data不過、若要針對Broadcom NVMe / FC主機發出大小為1 MB的I/O要求、則lfc參數lfc_sg_seg_cnts也應該從預設值64增加至256。請依照下列指示操作：
 
+.步驟
 . 在相應的「modf探測lffc.conf」檔案中附加「256」值：
 +
 [listing]
@@ -219,17 +215,18 @@ options lpfc lpfc_sg_seg_cnt=256
 
 === Marvell / QLogic
 
-RHEL 8.6核心隨附的原生內建「qla2xxx」驅動程式有最新的上游修正程式、這些修正程式對於ONTAP 支援不支援而言非常重要。
+原生收件匣 `qla2xxx` RHEL 9.1核心所含的驅動程式有最新的上游修正程式、這些修正程式對ONTAP 支援功能至關重要。
 
+.步驟
 . 使用下列命令、確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]
 ----
 # cat /sys/class/fc_host/host*/symbolic_name
-QLE2742 FW:v9.06.02 DVR:v10.02.00.200-k
-QLE2742 FW:v9.06.02 DVR:v10.02.00.200-k
+QLE2772 FW:v9.08.02 DVR:v10.02.07.400-k-debug
+QLE2772 FW:v9.08.02 DVR:v10.02.07.400-k-debug
 ----
-. 確認已設定「ql2xnvmeenable」、以便Marvell介面卡能以NVMe / FC啟動器的形式運作、請使用下列命令：
+. 驗證 `ql2xnvmeenable` 已設定、可讓Marvell介面卡以NVMe / FC啟動器的形式運作、使用下列命令：
 +
 [listing]
 ----
@@ -245,10 +242,10 @@ QLE2742 FW:v9.06.02 DVR:v10.02.00.200-k
 不像NVMe / FC、NVMe / TCP沒有自動連線功能。這對Linux NVMe/TCP主機有兩大限制：
 
 * *路徑恢復後不自動重新連線* NVMe/TCP無法自動重新連線至恢復路徑、超過路徑中斷後10分鐘的預設「Ctrl-Loss TMO"定時器。
-* *主機開機期間不自動連線* NVMe / TCP也無法在主機開機期間自動連線。
+* *主機開機期間無法自動連線* NVMe/TCP、無法在主機開機期間自動連線。
 
 
-您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：
+您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加的值來增加重試期間 `ctrl_loss_tmo timer` 使用下列程序：
 
 .步驟
 . 驗證啟動器連接埠是否可在支援的NVMe/TCP LIF中擷取探索記錄頁面資料：
@@ -256,6 +253,7 @@ QLE2742 FW:v9.06.02 DVR:v10.02.00.200-k
 [listing]
 ----
 # nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.51
+
 Discovery Log Number of Records 10, Generation counter 119
 =====Discovery Log Entry 0======
 trtype: tcp
@@ -298,7 +296,7 @@ sectype: none
 # nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.56
 # nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.57
 ----
-. 執行 `nvme connect-all` 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間 `ctrl_loss_tmo` 定時器重試期間（例如30分鐘、可透過設定 `-l 1800`）在連線期間、以便在路徑遺失時、重試更長時間。例如：
+. 執行 `nvme connect-all` 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請務必設定更長的時間 `ctrl_loss_tmo` 定時器重試期間（例如30分鐘、可透過設定 `-l 1800`） `connect-all` 命令、以便在路徑遺失時重試更長時間。例如：
 +
 [listing]
 ----
@@ -313,6 +311,7 @@ sectype: none
 
 == 驗證NVMe
 
+.步驟
 . 檢查下列項目、確認內核NVMe多重路徑確實已啟用：
 +
 [listing]
@@ -327,7 +326,10 @@ Y
 # cat /sys/class/nvme-subsystem/nvme-subsys*/model
 NetApp ONTAP Controller
 NetApp ONTAP Controller
-
+----
++
+[listing]
+----
 # cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
 round-robin
 round-robin
@@ -339,7 +341,7 @@ round-robin
 # nvme list
 Node           SN                    Model                   Namespace
 ------------   --------------------- ---------------------------------
-/dev/nvme0n1   814vWBNRwf9HAAAAAAAB   NetApp ONTAP Controller   1
+/dev/nvme0n1   81CZ5BQuUNfGAAAAAAAB   NetApp ONTAP Controller   1
 
 Usage                Format         FW Rev
 -------------------  -----------    --------
@@ -347,15 +349,33 @@ Usage                Format         FW Rev
 ----
 . 確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如：
 +
+範例（A）：
+
++
 [listing, subs="+quotes"]
 ----
-# nvme list-subsys /dev/nvme1n1
-nvme-subsys1 - nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:subsystem.nvme_141_1
+# nvme list-subsys /dev/nvme0n1
+nvme-subsys10 - NQN=nqn.1992-08.com.netapp:sn.82e7f9edc72311ec8187d039ea14107d:subsystem.rhel_131_QLe2742
 \
-+- nvme0 fc traddr=nn-0x203700a098dfdd91:pn-0x203800a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 *live inaccessible*
-+- nvme1 fc traddr=nn-0x203700a098dfdd91:pn-0x203900a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 *live inaccessible*
-+- nvme2 fc traddr=nn-0x203700a098dfdd91:pn-0x203a00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 *live optimized*
-+- nvme3 fc traddr=nn-0x203700a098dfdd91:pn-0x203d00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 *live optimized*
+ +- nvme2 fc traddr=nn-0x2038d039ea1308e5:pn-0x2039d039ea1308e5,host_traddr=nn-0x20000024ff171d30:pn-0x21000024ff171d30 live non-optimized
+ +- nvme3 fc traddr=nn-0x2038d039ea1308e5:pn-0x203cd039ea1308e5,host_traddr=nn-0x20000024ff171d31:pn-0x21000024ff171d31 live optimized
+ +- nvme4 fc traddr=nn-0x2038d039ea1308e5:pn-0x203bd039ea1308e5,host_traddr=nn-0x20000024ff171d30:pn-0x21000024ff171d30 live optimized
+ +- nvme5 fc traddr=nn-0x2038d039ea1308e5:pn-0x203ad039ea1308e5,host_traddr=nn-0x20000024ff171d31:pn-0x21000024ff171d31 live non-optimized
+
+----
++
+範例（b）：
+
++
+[listing]
+----
+# nvme list-subsys /dev/nvme0n1
+nvme-subsys1 - NQN=nqn.1992-08.com.netapp:sn.bf0691a7c74411ec8187d039ea14107d:subsystem.rhel_tcp_133
+\
+ +- nvme1 tcp traddr=192.168.166.21,trsvcid=4420,host_traddr=192.168.166.5 live non-optimized
+ +- nvme2 tcp traddr=192.168.166.20,trsvcid=4420,host_traddr=192.168.166.5 live optimized
+ +- nvme3 tcp traddr=192.168.167.21,trsvcid=4420,host_traddr=192.168.167.5 live non-optimized
+ +- nvme4 tcp traddr=192.168.167.20,trsvcid=4420,host_traddr=192.168.167.5 live optimized
 ----
 . 驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如：
 +
@@ -364,27 +384,64 @@ nvme-subsys1 - nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e
 # nvme netapp ontapdevices -o column
 Device       Vserver          Namespace Path
 ---------    -------          --------------------------------------------------
-/dev/nvme0n1 vs_fcnvme_141    /vol/fcnvme_141_vol_1_1_0/fcnvme_141_ns
+/dev/nvme0n1 vs_tcp79     /vol/vol1/ns1 
 
 NSID  UUID                                   Size
 ----  ------------------------------         ------
-1     72b887b1-5fb6-47b8-be0b-33326e2542e2  85.90GB
+1     79c2c569-b7fa-42d5-b870-d9d6d7e5fa84  21.47GB
 
 
 # nvme netapp ontapdevices -o json
 {
-"ONTAPdevices" : [
+
+  "ONTAPdevices" : [
+  {
+
+      "Device" : "/dev/nvme0n1",
+      "Vserver" : "vs_tcp79",
+      "Namespace_Path" : "/vol/vol1/ns1",
+      "NSID" : 1,
+      "UUID" : "79c2c569-b7fa-42d5-b870-d9d6d7e5fa84",
+      "Size" : "21.47GB",
+      "LBA_Data_Size" : 4096,
+      "Namespace_Size" : 5242880
+    },
+
+]
+
+}
+----
++
+範例（b）
+
++
+[listing]
+----
+# nvme netapp ontapdevices -o column
+
+Device           Vserver                   Namespace Path
+---------------- ------------------------- -----------------------------------
+/dev/nvme1n1     vs_tcp_133                /vol/vol1/ns1
+
+NSID UUID                                   Size
+-------------------------------------------------------
+1    1ef7cb56-bfed-43c1-97c1-ef22eeb92657   21.47GB
+
+# nvme netapp ontapdevices -o json
+{
+  "ONTAPdevices":[
     {
-        "Device" : "/dev/nvme0n1",
-        "Vserver" : "vs_fcnvme_141",
-        "Namespace_Path" : "/vol/fcnvme_141_vol_1_1_0/fcnvme_141_ns",
-        "NSID" : 1,
-        "UUID" : "72b887b1-5fb6-47b8-be0b-33326e2542e2",
-        "Size" : "85.90GB",
-        "LBA_Data_Size" : 4096,
-        "Namespace_Size" : 20971520
-    }
+      "Device":"/dev/nvme1n1",
+      "Vserver":"vs_tcp_133",
+      "Namespace_Path":"/vol/vol1/ns1",
+      "NSID":1,
+      "UUID":"1ef7cb56-bfed-43c1-97c1-ef22eeb92657",
+      "Size":"21.47GB",
+      "LBA_Data_Size":4096,
+      "Namespace_Size":5242880
+    },
   ]
+
 }
 ----
 
@@ -393,13 +450,14 @@ NSID  UUID                                   Size
 
 == 疑難排解
 
-在開始任何NVMe / FC故障的疑難排解之前、請先確定您執行的組態符合IMT 「支援」規格、然後繼續執行後續步驟來偵錯任何主機端問題。
+在開始任何NVMe / FC故障的疑難排解之前、請確定您執行的組態符合互通性對照表工具IMT （簡稱「互通性對照表工具」）規格、然後繼續執行後續步驟來偵錯任何主機端問題。
 
 
 
 === lffc詳細記錄
 
-. 您可以將「lffc_log_verbose」驅動程式設定設為下列任一值、以記錄nvm/FC事件：
+.步驟
+. 設定 `lpfc_log_verbose` 將驅動程式設定為下列任一值、以記錄NVMe/FC事件：
 +
 [listing]
 ----
@@ -415,9 +473,9 @@ NSID  UUID                                   Size
 +
 [listing]
 ----
-
 # cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_log_verbose=0xf00083
+
 
 # cat /sys/module/lpfc/parameters/lpfc_log_verbose
 15728771
@@ -428,8 +486,9 @@ options lpfc lpfc_log_verbose=0xf00083
 
 === qla2xxx詳細記錄
 
-對於NVMe/FC、沒有類似於lffc驅動程式的特定qla2xxx記錄。因此、您可以使用下列步驟設定一般的qla2xxx記錄層級：
+NVMe / FC沒有類似的特定qla2xxx記錄功能 `lpfc` 驅動程式：因此、您可以使用下列步驟設定一般的qla2xxx記錄層級：
 
+.步驟
 . 將「ql2xextend_error_logging=x1e400000」值附加至對應的「modf探測qla2xxx conf」檔案。
 . 執行「dracut -f」命令重新建立「initramfs」、然後重新啟動主機。
 . 重新開機後、請確認已套用詳細記錄、如下所示：
@@ -445,20 +504,20 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 
 
 
-== 已知問題與限制
+== 已知問題
 
 [cols="10,30,30,10"]
 |===
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
-| 1479047 | RHEL 8.6 NVMe主機會建立重複的持續探索控制器 | 在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是以NVMe為主機的Ris-9.10.1和Red Hat Enterprise Linux（RHEL）8.6、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。 | 2087000 
+| 1503468 | `nvme list-subsys` Command會針對特定子系統傳回重複的NVMe控制器清單 | 。 `nvme list-subsys` 命令應傳回與特定子系統相關聯的NVMe控制器唯一清單。在RHEL 9.1中 `nvme list-subsys` Command會針對屬於特定子系統的所有命名空間、傳回NVMe控制器及其各自的ANA狀態。不過、ANA狀態是每個命名空間的屬性、因此如果您列出指定命名空間的子系統命令語法、則最好顯示具有路徑狀態的獨特NVMe控制器項目。 | 2130106. 
 |===
 
 
-=== 常見的NVMe CLI錯誤和因應措施
+=== 常見的NVMe-CLI錯誤和因應措施
 
-NVMe探索、NVMe連線或NVMe連線所有作業期間顯示的「NVMe - CLI」錯誤及因應措施如下表所示：
+顯示的錯誤 `nvme-cli` 期間 `nvme discover`、 `nvme connect` 或 `nvme connect-all` 作業與因應措施如下表所示：
 
 [cols="20, 20, 50"]
 |===
@@ -513,7 +572,7 @@ Cmpl 00000000000000a8 Outstanding 0000000000000001
 
 === 何時聯絡技術支援
 
-如果您仍面臨問題、請收集下列檔案和命令輸出、並聯絡技術支援部門以進一步分類：
+如果您仍遇到問題、請收集下列檔案和命令輸出、並聯絡技術支援部門以進一步分類：
 
 [listing]
 ----

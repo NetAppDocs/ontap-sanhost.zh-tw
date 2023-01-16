@@ -26,7 +26,7 @@ summary: 如何針對RHEL 9.0設定NVMe主機、ONTAP 並搭配使用功能
 RHEL 9.0支援NVMe（包括NVMe / FC和NVMe / TCP）、並具備ONTAP 非對稱命名空間存取（ANA）功能、可在不間斷的儲存容錯移轉（SFO）上執行。ANA是與NVM環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。本文件詳細說明如何在RHEL 9.0上啟用NVMe、並ONTAP 將ANA用作目標的內核NVMe多重路徑。
 
 
-NOTE: 您可以使用本主題中提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
 
 
 
@@ -34,18 +34,6 @@ NOTE: 您可以使用本主題中提供的組態設定來設定連線至的雲�
 
 * 從RHEL 9.0開始、NVMe/TCP不再是技術預覽功能（不像RHEL 8）、而是完全支援的企業功能本身。
 * 從RHEL 9.0開始、預設會針對NVMe命名空間啟用內核NVMe多重路徑、而不需要明確設定（不像RHEL 8）。
-
-
-
-
-== 限制
-
-* 不像NVMe / FC、NVMe / TCP沒有自動連線功能。這反映出Linux主機的兩大限制：
-+
-** 路徑恢復後不自動重新連線：在路徑關閉後的10分鐘內、NVMe / TCP無法自動重新連線至恢復的路徑。
-** 主機開機期間不自動連線-在主機開機期間、NVMe / TCP也無法自動連線。您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。
-
-
 
 
 
@@ -232,11 +220,13 @@ QLE2742 FW:v9.06.02 DVR:v10.02.00.200-k
 
 == 設定NVMe/TCP
 
-不像NVMe / FC、NVMe / TCP沒有自動連線功能。這反映出Linux NVMe/TCP主機的兩大限制：
+不像NVMe / FC、NVMe / TCP沒有自動連線功能。這對Linux NVMe/TCP主機有兩大限制：
 
-* 路徑恢復後不自動重新連線：在路徑關閉後的10分鐘內、NVMe / TCP無法自動重新連線至恢復的路徑。
-* 主機開機期間不自動連線-在主機開機期間、NVMe / TCP也無法自動連線。您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：
+* *路徑恢復後不自動重新連線* NVMe/TCP無法自動重新連線至恢復路徑、超過路徑中斷後10分鐘的預設「Ctrl-Loss TMO"定時器。
+* *主機開機期間不自動連線* NVMe / TCP也無法在主機開機期間自動連線。
 
+
+您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：
 
 .步驟
 . 驗證啟動器連接埠是否能夠擷取支援的NVMe / TCP LIF上的探索記錄頁面資料：
@@ -302,6 +292,7 @@ sectype: none
 
 == 驗證NVMf
 
+.步驟
 . 檢查下列項目、確認內核NVMe多重路徑確實已啟用：
 +
 [listing]
@@ -491,6 +482,17 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 # cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
 507510784
 ----
+
+
+== 已知問題
+
+[cols="10,30,30,10"]
+|===
+| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+
+
+| 1479047 | RHEL 9.0 NVMe主機會建立重複的持續探索控制器 | 在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是以NVMe型主機執行的Ris-9.10.1和Red Hat Enterprise Linux（RHEL）9.0、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。 | 2087000 
+|===
 
 
 === 常見的NVMe-CLI錯誤和因應措施

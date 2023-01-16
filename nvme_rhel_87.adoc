@@ -26,7 +26,7 @@ summary: 如何針對RHEL 8.7設定NVMe主機、ONTAP 並搭配使用功能
 採用ANA（非對稱命名空間存取）的RHEL 8.7支援NVMe over Fabrics或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。本主題包含在RHEL 8.7上啟用NVMe的詳細資料、並ONTAP 以ANA做為目標、以內核NVMe多重路徑啟用NVMe。
 
 
-NOTE: 您可以使用本主題中提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
 
 
 
@@ -526,7 +526,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
-| 1479047 | RHEL 8.x NVMe主機會建立重複的持續探索控制器 | 在NVMe over Fabrics（NVMe）主機上、您可以提供來建立持續探索控制器（PD） `-p` 選項 `nvme discover` 命令。對於指定的啟動器-目標組合、每次呼叫時都會建立一個資料中心 `nvme discover` 命令。不過、從ONTAP 版本號為Rse.9.10.1開始、Red Hat Enterprise Linux（RHEL）8.x NVMe主機會在每次呼叫時建立重複的PDF `nvme discover` 命令 `-p` 選項。這會導致主機和目標上的資源浪費。 | 2087000 
+| 1479047 | RHEL 8.7 NVMe主機會建立重複的持續探索控制器 | 在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您在ONTAP NVMe主機上執行的是Ris-9.10.1和Red Hat Enterprise Linux（RHEL）8.7、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。 | 2087000 
 |===
 
 

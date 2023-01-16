@@ -38,7 +38,7 @@ NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysu
 
 
 
-NOTE: 您可以使用本主題中提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
 
 
 
@@ -273,19 +273,6 @@ devices {
 
 您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
 
-
-
-== 已知問題
-
-[cols="10,30,30,10"]
-|===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
-
-
-| 1501048 | FC傳輸層逾時參數 `dev_loss_tmo` 對於遠端SCSI目標連接埠、會報告負值（-1） |  `dev_loss_tmo` timeout參數表示FC傳輸應隔離以防止遠端連接埠遺失的預設秒數。超過此值時、SCSI目標會從主機移除。此參數值應為正整數值。然而在RHEL 8.7中、 `sysfs` 檔案系統會傳回的負值（-1） `dev_loss_tmo` SCSI裝置的逾時參數。以下是驗證的命令列範例 `dev_loss_tmo` 工作主機上的參數：
-`# cat /sys/devices/pci*/*/*/host*/rport*/fc_remote_ports/rport*/dev_loss_tmo
-4294967295`。RHEL 8.7中沒有此問題的因應措施。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=2124297["2124297"^] 
-|===
 
 
 == 版本資訊

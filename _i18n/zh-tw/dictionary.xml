@@ -2371,9 +2371,6 @@
   <block id="d5a9179e304fd13ff8268ac2240e3ef4" category="paragraph">RHEL 9.0支援NVMe（包括NVMe / FC和NVMe / TCP）、並具備ONTAP 非對稱命名空間存取（ANA）功能、可在不間斷的儲存容錯移轉（SFO）上執行。ANA是與NVM環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。本文件詳細說明如何在RHEL 9.0上啟用NVMe、並ONTAP 將ANA用作目標的內核NVMe多重路徑。</block>
   <block id="95369a4b9030e2f901d021df167f021b" category="list-text">從RHEL 9.0開始、NVMe/TCP不再是技術預覽功能（不像RHEL 8）、而是完全支援的企業功能本身。</block>
   <block id="c1e6aa7090af15f8d8efefa50c5ebbb9" category="list-text">從RHEL 9.0開始、預設會針對NVMe命名空間啟用內核NVMe多重路徑、而不需要明確設定（不像RHEL 8）。</block>
-  <block id="e646e16bee8b32e6ea29e30d01970a6c" category="section-title">限制</block>
-  <block id="8dc2bb86558c5fa9a6925f0d8bd82e21" category="list-text">不像NVMe / FC、NVMe / TCP沒有自動連線功能。這反映出Linux主機的兩大限制：</block>
-  <block id="b7c3db78c3a82d963056f99e4aa58d39" category="list-text">路徑恢復後不自動重新連線：在路徑關閉後的10分鐘內、NVMe / TCP無法自動重新連線至恢復的路徑。</block>
   <block id="140268ba3849abd78f34f907f067407f" category="paragraph">請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 如需支援組態的詳細資訊、請參閱。</block>
   <block id="061e98174e60e8e432e858a83311d44d" category="list-text">在伺服器上安裝RHEL 9.0。安裝完成後、請確認您執行的是指定的RHEL 9.0核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
   <block id="aa752093cf87ece20a99a98640048b70" category="list-text">安裝完成後、請確認您執行的是指定的RHEL 9.0核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
@@ -2387,7 +2384,6 @@
   <block id="99e650add6ead46b272ac60ccc4c6184" category="paragraph">需要將"lfc_sg_seg_cnt"參數設為"256"、以讓"lffc"驅動程式發出大小高達1 MB的I/O要求。</block>
   <block id="7f905df84e3f641e977ad2d5240dee4b" category="list-text">主機開機後、請確認「lfc_sg_seg_cnt'」設定為「256」。</block>
   <block id="73a7814e5695a25d9824e6de50fe0979" category="paragraph">RHEL 9.0核心隨附的原生內建內建qla2xxx驅動程式、提供ONTAP 最新的上游修正程式、是支援此功能不可或缺的要素。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
-  <block id="b3cc0f8131b6dd17671baba8c63d88b6" category="paragraph">不像NVMe / FC、NVMe / TCP沒有自動連線功能。這反映出Linux NVMe/TCP主機的兩大限制：</block>
   <block id="055436915aa042f3fdf8045e013acbb5" category="list-text">驗證啟動器連接埠是否能夠擷取支援的NVMe / TCP LIF上的探索記錄頁面資料：</block>
   <block id="351f4726c12d45250df101c8bd9578d6" category="list-text">同樣地、請確認其他的NVMe/TCP啟動器目標LIF組合能夠成功擷取探索記錄頁面資料。例如、</block>
   <block id="7ce841894f1ef8447498c5c8f5b1f19a" category="section-title">驗證NVMf</block>
@@ -2660,8 +2656,6 @@
   <block id="a667026321ffb956d941d648c0ad659f" category="paragraph">每個Linux配送的RPM套件「libhbaapi」和「libhBalinux」應安裝在主機作業系統上。</block>
   <block id="2e2f435df31672c9332b32b2b69afe2a" category="sidebar">Windows主機公用程式版本資訊</block>
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">在此範例中、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
-  <block id="83b4ba657748695cb0894283702e0f3e" category="list-text">主機開機期間不自動連線-在主機開機期間、NVMe / TCP也無法自動連線。您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。</block>
-  <block id="f0f82e2793c63d13158f3daced159083" category="list-text">主機開機期間不自動連線-在主機開機期間、NVMe / TCP也無法自動連線。您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如、</block>
   <block id="30058c2cccf9fdeeb47f9d3fbf9108bf" category="paragraph">在此範例中、sda是我們需要新增至黑名單的本機SCSI磁碟。</block>
   <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：</block>
@@ -2693,8 +2687,6 @@
   <block id="18364f61161412813e05ad8b27bed23e" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請先確定您執行的組態符合IMT 「支援」規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
   <block id="3a3b7ac2e39541ea05707ccd6eb054d4" category="section-title">已知問題與限制</block>
   <block id="4c865e0cb70fa33868e69a5e88daad47" category="cell">1479047</block>
-  <block id="cf6366d36f548ad4fbfb319ac121f2a5" category="cell">RHEL 8.x NVMe主機會建立重複的持續探索控制器</block>
-  <block id="c58f4b32e0b4018e032143845aa6c3e4" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以提供來建立持續探索控制器（PD）<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。對於指定的啟動器-目標組合、每次呼叫時都會建立一個資料中心<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。不過、從ONTAP 版本號為Rse.9.10.1開始、Red Hat Enterprise Linux（RHEL）8.x NVMe主機會在每次呼叫時建立重複的PDF<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項。這會導致主機和目標上的資源浪費。</block>
   <block id="f890a2d3eb444832b655a9838102f3df" category="cell">2087000</block>
   <block id="3f4a3b3eec403674aa0cd9427d6deec9" category="cell">請確定您使用的是上述NVMe命令的正確語法。</block>
   <block id="e0f847d0d970d13348c3311998e2e15c" category="cell">可能會引發多個問題。為NVMe命令提供錯誤的引數是常見原因之一。</block>
@@ -2702,12 +2694,7 @@
   <block id="de63239808aba6bc3b6e058c280e2334" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.7搭配使用功能</block>
   <block id="054dec9601134c2039198642192ad5cd" category="doc">使用Red Hat Enterprise Linux 8.7搭配NetApp ONTAP 功能</block>
   <block id="42629720f0dd50e499b39533a5c8c6c6" category="paragraph">適用於Red Hat Enterprise Linux（RHEL）8.7<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.7已使用所有必要設定進行編譯、以辨識及正確管理ONTAP 支援LUN。</block>
-  <block id="3563f88528058cb4204fdaa22c14f966" category="cell">1501048</block>
-  <block id="dcda3b905d6ce3cc8adfc8ef13a4e227" category="cell">FC傳輸層逾時參數<block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block> 對於遠端SCSI目標連接埠、會報告負值（-1）</block>
-  <block id="5b876ec80b215faac6b29b80c4b9ccb3" category="inline-link-macro">2124297</block>
-  <block id="06f7b53dab389e67432643a56b42a885" category="cell"><block ref="06f7b53dab389e67432643a56b42a885" category="inline-link-macro-rx"></block></block>
   <block id="c7ed23f5281d7f5b606a1019ecd9fd97" category="sidebar">8.7%</block>
-  <block id="cf240b20959199d80c7416984bf7bcbe" category="admonition">您可以使用本主題中提供的組態設定來設定連線至的雲端用戶端 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 和 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>。</block>
   <block id="fc410d61e7ecc158420724cd4cfa51e2" category="paragraph">採用ANA（非對稱命名空間存取）的RHEL 8.7支援NVMe over Fabrics或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。本主題包含在RHEL 8.7上啟用NVMe的詳細資料、並ONTAP 以ANA做為目標、以內核NVMe多重路徑啟用NVMe。</block>
   <block id="58640a39ebacf1c649f790a018923dc7" category="list-text">在伺服器上安裝RHEL 8.7。</block>
   <block id="41e09c9ea0ff8203b49cf60b08453bc3" category="section-title">啟用1 MB I/O大小（選用）</block>
@@ -2717,9 +2704,54 @@
   <block id="55cf75d4c35a2f0318cd0878633a2b64" category="list-text">請確定您已將正確的引數（例如、正確的WWNN字串、WWPN字串等）傳遞給命令。</block>
   <block id="d3ac6c9b9f08add73cc79ed8987c7638" category="paragraph">請務必準確<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 字串會新增至NetApp陣列上的對應子系統（透過<block ref="0e04d4bf4054a77eef58ff3d9b9e59ae" prefix=" " category="inline-code"></block> 命令）。</block>
   <block id="0fffdf54ff26eafef72a1df48bb79f76" category="paragraph">RHEL 8.7作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並針對ASA 各種不適用的ASA組態、自動正確設定所有組態參數。</block>
-  <block id="e2a722d31e0e80f2dd094823eb24d448" category="cell"><block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix="" category="inline-code"></block> timeout參數表示FC傳輸應隔離以防止遠端連接埠遺失的預設秒數。超過此值時、SCSI目標會從主機移除。此參數值應為正整數值。然而在RHEL 8.7中、<block ref="58fa55ed07383d23de64a931619c03fe" prefix=" " category="inline-code"></block> 檔案系統會傳回的負值（-1）<block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block> SCSI裝置的逾時參數。以下是驗證的命令列範例<block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block> 工作主機上的參數：<block ref="227979672a108771b68f10c269922312" prefix=" " category="inline-code"></block>。RHEL 8.7中沒有此問題的因應措施。</block>
   <block id="0dea8ccda08dc1647ed0a458849e5cda" category="doc">適用於Oracle Linux 8.6的NVMe / FC主機組態、ONTAP 含功能</block>
   <block id="6b9300bd0ee78fc87c33ec2c07cd7201" category="paragraph">當Oracle支援NVMe / FC完全符合此主機作業系統版本的資格時、將會發佈Oracle 8.6的NVMe / FC主機組態詳細資料。</block>
   <block id="309cf24349edc5122d2f31c53280bf27" category="doc">NVMe / FC主機組態、適用於Oracle Linux 8.5 with ONTAP Fisc</block>
   <block id="0d0f40ef84bd491b0391f725ee2511e1" category="paragraph">Oracle 8.5的NVMe / FC主機組態詳細資料將於Oracle支援NVMe / FC完全符合此主機作業系統版本的資格時發佈。</block>
+  <block id="50d880869dbad54df4986a506d8e811c" category="admonition">您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 和 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>。</block>
+  <block id="cc455daeb9e2e22ef5b2182030983b44" category="doc">適用於RHEL 9.1 ONTAP 的NVMe主機組態（含功能性）</block>
+  <block id="6f8b8f782bb2e1f5374f4c0c6a78046a" category="paragraph">RHEL 9.1支援NVMe over Fabrics或NVMe（包括NVMe / FC和NVMe / TCP）、並具備非對稱命名空間存取（ANA）、ONTAP 可在不間斷的儲存容錯移轉（SFO）上執行。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。本文件詳細說明如何在使用ANA on RHEL 9.1和ONTAP 以之為目標的內核NVMe多重路徑上啟用NVMe。</block>
+  <block id="5b567ce58b5a293a4e497c0fd053d9d5" category="list-text">RHEL 9.1除了支援NVMe / FC之外、還支援NVMe / TCP。原生的NetApp外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 套件可顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資料。</block>
+  <block id="362156721e24ceedbadf34c0abc7e007" category="list-text">RHEL 9.1支援預設啟用的NVMe命名空間內核心NVMe多重路徑、不需要明確設定。</block>
+  <block id="b08367cf0348d2ac07ce7d94bb17f61f" category="list-text">RHEL 9.1支援在特定HBA介面卡的同一主機上使用NVMe和SCSI共存的流量、而不需明確說明<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 防止宣告NVMe命名空間的設定。</block>
+  <block id="79d6a4c19ab1815ebac474c0cb176558" category="section-title">啟用核心內建NVMe多重路徑</block>
+  <block id="a2ed8d7465615184444b1bd0263933b1" category="list-text">在伺服器上安裝RHEL 9.1。安裝完成後、請確認您正在執行指定的RHEL 9.1核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
+  <block id="c165a8a0999d73184de84d184b3cfb60" category="list-text">安裝完成後、請確認您正在執行指定的RHEL 9.1核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
+  <block id="af93678559f055cf265aa9272c813836" category="paragraph">在「識別控制器」資料中、若能報告MDTS（不含資料的傳輸大小）為8、表示I/O要求的最大大小應為1 MB。ONTAP MAX Data不過、若要針對Broadcom NVMe / FC主機發出大小為1 MB的I/O要求、則lfc參數lfc_sg_seg_cnts也應該從預設值64增加至256。請依照下列指示操作：</block>
+  <block id="d8de9b016a8dece8e8d08e7b1fb7fbee" category="paragraph">原生收件匣<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block> RHEL 9.1核心所含的驅動程式有最新的上游修正程式、這些修正程式對ONTAP 支援功能至關重要。</block>
+  <block id="2d012da343e217426e95ab334286ee04" category="list-text">驗證<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 已設定、可讓Marvell介面卡以NVMe / FC啟動器的形式運作、使用下列命令：</block>
+  <block id="9dad4a6c520f673cad34a45d1f3d4ad7" category="list-text">*主機開機期間無法自動連線* NVMe/TCP、無法在主機開機期間自動連線。</block>
+  <block id="01b19bacee71cf6f295d5e63067360d5" category="paragraph">您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加的值來增加重試期間<block ref="fc1d9ee021cfa58095593ab68c41f727" prefix=" " category="inline-code"></block> 使用下列程序：</block>
+  <block id="4b74cb8caf9869d9c39202f5a7c8cd4d" category="list-text">確認其他NVMe / TCP啟動器目標LIF組合可以成功擷取探索記錄頁面資料。例如：</block>
+  <block id="7912d4b61044915bf839431d678f055d" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請務必設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 命令、以便在路徑遺失時重試更長時間。例如：</block>
+  <block id="8820bbf46f22897008878290f6060725" category="paragraph">範例（b）</block>
+  <block id="8ee542f1260df38017c8fcd1811b07cf" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請確定您執行的組態符合互通性對照表工具IMT （簡稱「互通性對照表工具」）規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
+  <block id="c93461d811b67f37d132425264a4d474" category="list-text">設定<block ref="6a6d27f670629373aedb61a672b398f8" prefix=" " category="inline-code"></block> 將驅動程式設定為下列任一值、以記錄NVMe/FC事件：</block>
+  <block id="df474dd19781ab3788a85cc52bf31865" category="paragraph">NVMe / FC沒有類似的特定qla2xxx記錄功能<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 驅動程式：因此、您可以使用下列步驟設定一般的qla2xxx記錄層級：</block>
+  <block id="0929df0c2d7b307ae019137c488669a8" category="cell">1503468</block>
+  <block id="2f8adf6e51ddcf7b0618dad0e63a4144" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> Command會針對特定子系統傳回重複的NVMe控制器清單</block>
+  <block id="95a3009a54be763a347295539b3b924d" category="cell">。<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 命令應傳回與特定子系統相關聯的NVMe控制器唯一清單。在RHEL 9.1中<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> Command會針對屬於特定子系統的所有命名空間、傳回NVMe控制器及其各自的ANA狀態。不過、ANA狀態是每個命名空間的屬性、因此如果您列出指定命名空間的子系統命令語法、則最好顯示具有路徑狀態的獨特NVMe控制器項目。</block>
+  <block id="83dccde7d3d49df72143822cd414e991" category="cell">2130106.</block>
+  <block id="3f9c3f7f21b77382c688aa95e76f1ff4" category="paragraph">顯示的錯誤<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 期間<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>、<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 作業與因應措施如下表所示：</block>
+  <block id="9e9ad12d8f7b421ec7b07bcffb518755" category="paragraph">如果您仍遇到問題、請收集下列檔案和命令輸出、並聯絡技術支援部門以進一步分類：</block>
+  <block id="54bb88571442321a8544c55cb834deb7" category="cell">RHEL 8.7 NVMe主機會建立重複的持續探索控制器</block>
+  <block id="c66549c6038d3ebbf4c13fa9699ba9c4" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您在ONTAP NVMe主機上執行的是Ris-9.10.1和Red Hat Enterprise Linux（RHEL）8.7、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="666e694f580810d83f5f40c26c2bb04c" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 9.1及其功能</block>
+  <block id="0ead5c0058ad569b752f4737e6eec052" category="doc">使用Red Hat Enterprise Linux 9.1搭配NetApp ONTAP 功能</block>
+  <block id="61487574b79af0e445bb9b6a2353e6f4" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得 <block ref="79a5efacdd8155d1c0d2f7284cc3f087" category="inline-link-macro-rx"></block> 在64位元.rpm檔案中。</block>
+  <block id="641179201ab176df256f3cb5ec55e897" category="paragraph">NetApp強烈建議安裝Linux Unified Host Utilities、但並非強制性。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</block>
+  <block id="a19e7b541def6d38087c1a02b106bef9" category="paragraph">如果您目前已安裝Linux Unified Host Utilities版本、則應升級或移除該版本、並使用下列步驟安裝最新版本。</block>
+  <block id="9c9e9d650c2c637a6eb987485cfd9382" category="list-text">從下載64位元Linux Unified Host Utilities軟體套件 <block ref="330783be0d422b9930cc959c12faae82" category="inline-link-macro-rx"></block> 到您的主機。</block>
+  <block id="a72a8c81440a1f3a15a9e6f5c9eafacd" category="list-text">安裝軟體套件：<block ref="0ce047b108d02190b0f47590efe3805d" prefix=" " category="inline-code"></block></block>
+  <block id="766a9020817a37f247568a9683a4d01c" category="paragraph">適用於Red Hat Enterprise Linux（RHEL）9.1<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 9.1的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
+  <block id="bf334af2d50eb1249867f683f4a2a80b" category="paragraph">RHEL 9.1 OS經過編譯、可辨識ONTAP 出各種不完整的LUN、並針對ASA 各種不適用的ASA組態、自動正確設定所有組態參數。</block>
+  <block id="2938598ecd7ea37f885251173aa43089" category="paragraph">下列範例說明如何修正被覆寫的預設值。在此案例中<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案定義的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 和<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> 與ONTAP 不兼容的如果因為其他SAN陣列仍連接至主機而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
+  <block id="2fefce185e7d7498c7e3da22bac84294" category="cell">1508554</block>
+  <block id="11613812ad376f15dc5ee5a9f425cea1" category="cell">NetApp Linux主機公用程式CLI需要額外的程式庫套件相依性、才能支援Emulex HBA介面卡探索</block>
+  <block id="dbb05aa69b81b84da4e6620226a55381" category="cell">在RHEL 9.1中、NetApp Linux SAN主機公用程式CLI<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> 失敗、因為找不到支援HBA探索的程式庫套件相依性。</block>
+  <block id="58cc994c670841fa2f2ecd4302d45e03" category="cell">RHEL 9.0 NVMe主機會建立重複的持續探索控制器</block>
+  <block id="e4c38008038c9c0402e9f00d369b82ea" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是以NVMe型主機執行的Ris-9.10.1和Red Hat Enterprise Linux（RHEL）9.0、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="de92f8bcc4d493d57927d45de496dfcd" category="cell">RHEL 8.6 NVMe主機會建立重複的持續探索控制器</block>
+  <block id="67eaffbea4f4f435b98dfd9d82b810fe" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是以NVMe為主機的Ris-9.10.1和Red Hat Enterprise Linux（RHEL）8.6、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="796d3a90e43ce105cbf37298c5065f7e" category="sidebar">9.1</block>
 </blocks>
