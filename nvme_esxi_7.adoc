@@ -22,9 +22,9 @@ summary: 說明如何使用ONTAP VMware設定適用於ESXi 7.x的NVMe
 
 == 支援能力
 
-* NVMe over Fibre Channel（NVMe / FC）支援ONTAP 於NVM9.7或更新版本。
-* 從7.0U3c及更新版本開始、支援ESXi Hypervisor的NVMe/TCP功能。
-* 從版本支援的更新版本起、支援NVMe/TCP功能。ONTAP ONTAP
+* 從ONTAP 支援VMware vSphere 9.7開始、將新增支援NVMe over Fibre Channel（NVMe / FC）的VMware vSphere版本。
+* 從7.0U3c開始、支援ESXi Hypervisor的NVMe/TCP功能。
+* 從ONTAP 支援的功能部件號為E59.10.1開始、ONTAP 支援的功能為NVMe/TCP。
 
 
 

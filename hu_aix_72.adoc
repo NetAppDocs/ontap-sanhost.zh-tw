@@ -22,9 +22,9 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 
 == 安裝AIS/VIOS主機公用程式
 
-您必須安裝AIX主機公用程式套件、才能將AIX MPIO與NetApp ONTAP 之間的儲存設備搭配使用。
+您必須安裝AIX主機公用程式套件、才能搭配使用AIX MPIO搭配NetApp ONTAP 功能儲存設備。
 
-您可以從NetApp支援網站下載包含主機公用程式軟體套件的壓縮檔案。取得檔案後、您必須解壓縮檔案、才能取得安裝Host Utilities所需的兩個軟體套件。
+您可以從 NetApp 支援網站下載包含 Host Utilities 軟體套件的壓縮檔案。取得檔案之後、您必須解壓縮檔案、才能取得安裝主機公用程式所需的兩個軟體套件。
 
 NetApp AIX Host Utilities 6.1是最新版本。此版本可解決先前版本中報告的記憶體洩漏問題。如需其他資訊、請參閱版本說明一節。
 
@@ -191,7 +191,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 | RESID_policy | MPIO /非MPIO | no_Reserve | 由主機公用程式設定 
 
 
-| Re_timeout（磁碟） | MPIO /非MPIO | 30秒 | 使用OS預設值 
+| rw_timeout（磁碟） | MPIO /非MPIO | 30秒 | 使用OS預設值 
 
 
 | Dyntrk | MPIO /非MPIO | 是的 | 使用OS預設值 
@@ -210,7 +210,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 |===
 
 
-== 推薦MetroCluster 的功能設定
+== 推薦MetroCluster 的設定
 
 根據預設、當沒有LUN可用的路徑時、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 link:https://kb.netapp.com/app/answers/answer_view/a_id/1001318["NetApp KB1001318"^]
 

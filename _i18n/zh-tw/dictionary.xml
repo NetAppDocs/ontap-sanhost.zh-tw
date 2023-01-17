@@ -1728,8 +1728,6 @@
   <block id="80748b874d55c5038d34ce16a870e640" category="section-title">qla2xxx詳細記錄</block>
   <block id="38a517c65e7a4cfa6d1b781c6a6e35f4" category="cell">請確定您使用的是NVMe命令語法正確。</block>
   <block id="5526e4fbaeff80cd5d23977ccd71e110" category="doc">將IBM AIX 7.2和/或PowerVM（VIOS 3.1）搭配NetApp ONTAP 功能使用</block>
-  <block id="326165d98b3f356087f845a446619afc" category="section-title">安裝AIS/VIOS主機公用程式</block>
-  <block id="8bd93b2eff143ccd3ead742068cf4430" category="paragraph">您可以從NetApp支援網站下載包含主機公用程式軟體套件的壓縮檔案。取得檔案後、您必須解壓縮檔案、才能取得安裝Host Utilities所需的兩個軟體套件。</block>
   <block id="1306166f349020a2e91d6b8afe8455fb" category="paragraph">NetApp AIX Host Utilities 6.1是最新版本。此版本可解決先前版本中報告的記憶體洩漏問題。如需其他資訊、請參閱版本說明一節。</block>
   <block id="be02c5fbd2d78a32d06d7da8385cae85" category="list-text">在PowerVM主機上、以* padmin*登入、然後輸入「OEM_setup_env」命令成為root。</block>
   <block id="a40ecef4a09b118c1f7f8b069486d849" category="list-text">解壓縮檔案並解壓縮SAN Toolkit軟體套件。</block>
@@ -2072,7 +2070,6 @@
   <block id="f04e1570ab7c52f5f4c102c61f685d1b" category="paragraph">SUSE Linux Enterprise Server 15 SP3沒有已知問題。</block>
   <block id="1da730d18c28f088385f1eaca3cb2f71" category="summary">說明如何使用ONTAP VMware設定適用於ESXi 7.x的NVMe</block>
   <block id="38a445b35a68bb2b838316376b083c19" category="doc">適用於ESXi 7.x的NVMe主機組態、ONTAP 含功能不全</block>
-  <block id="0f97c82c57e5402681bd180ec7889f9a" category="paragraph">NVMe over Fibre Channel（NVMe / FC）支援ONTAP 於NVM9.7或更新版本。</block>
   <block id="48041afc31abe79fadb7695b8cbfd4f7" category="list-text">ESXi啟動器主機可透過相同的介面卡連接埠、同時執行NVMe/FC和FCP流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援組態和版本清單。</block>
   <block id="1149b7a7ae9be623a3a7a3f347ff721f" category="list-text">從VMware支援的版本號為0、99.1、P3開始ONTAP 、ESXi 7.0更新版本3支援NVMe / FC功能。</block>
   <block id="087c6f6069a3f1c08cb62e3d53029f80" category="list-text">對於ESXi 7.0及更新版本、HPP（高效能外掛程式）是NVMe裝置的預設外掛程式。</block>
@@ -2501,8 +2498,6 @@
   <block id="431b68e6f738b5c8bf76d7972d17685f" category="paragraph">一般會看到、NetApp陣列上的對應子系統是否未新增「/etc/nexe/hostnqn」字串、或是在個別子系統中新增不正確的「hostnqn」字串。</block>
   <block id="d9062f55beecc22ab1e0baaa195b1f68" category="paragraph">無。若為「NVMe探索」、請稍後嘗試執行此命令。對於「NVMe Connect」和「Connect All」、請執行「NVMe list」命令、確認命名空間裝置已建立並顯示在主機上。</block>
   <block id="9b2d197e1555229882f18589d7c32cce" category="list-text">驗證ONTAP 適當的NVMe設定值（例如、將「model」設為「NetApp還原控制器」、並將負載平衡「iopolicy」設為「循環」）、以正確ONTAP 反映在主機上：</block>
-  <block id="6cbc9fed5483c62cf8d3ec78d1467ec4" category="list-text">從7.0U3c及更新版本開始、支援ESXi Hypervisor的NVMe/TCP功能。</block>
-  <block id="cc2bd6356672cd21ca706ee5860d746e" category="list-text">從版本支援的更新版本起、支援NVMe/TCP功能。ONTAP ONTAP</block>
   <block id="fc42d5b62a406fecb7a634ca014f42c2" category="paragraph">從7.0U3c開始、預設會載入所需的NVMe/TCP模組。如需設定網路和NVMe/TCP介面卡、請參閱VMware vSphere文件。</block>
   <block id="209ae9abdc2efd05e90e3a97a8913a9b" category="section-title">驗證NVMe/TCP</block>
   <block id="e4dbb8bc2f2492f010d3f33dd68f00c8" category="list-text">驗證NVMe / TCP介面卡的狀態。</block>
@@ -2754,4 +2749,13 @@
   <block id="de92f8bcc4d493d57927d45de496dfcd" category="cell">RHEL 8.6 NVMe主機會建立重複的持續探索控制器</block>
   <block id="67eaffbea4f4f435b98dfd9d82b810fe" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是以NVMe為主機的Ris-9.10.1和Red Hat Enterprise Linux（RHEL）8.6、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。</block>
   <block id="796d3a90e43ce105cbf37298c5065f7e" category="sidebar">9.1</block>
+  <block id="19c0ae184ff29a5cb77c04c8bea684af" category="list-text">從ONTAP 支援VMware vSphere 9.7開始、將新增支援NVMe over Fibre Channel（NVMe / FC）的VMware vSphere版本。</block>
+  <block id="3a34596144aee2d13108623781ca1789" category="list-text">從7.0U3c開始、支援ESXi Hypervisor的NVMe/TCP功能。</block>
+  <block id="98f0b197b8132a81e5d6da89bc6ded25" category="list-text">從ONTAP 支援的功能部件號為E59.10.1開始、ONTAP 支援的功能為NVMe/TCP。</block>
+  <block id="8f782d5cde04c444d313ce732c4c1552" category="section-title">安裝AIS/VIOS主機公用程式</block>
+  <block id="98ffdd0945470204439692dc82dc8d98" category="paragraph">您必須安裝AIX主機公用程式套件、才能搭配使用AIX MPIO搭配NetApp ONTAP 功能儲存設備。</block>
+  <block id="9aab5807a16ac54dff9ec8e124181169" category="paragraph">您可以從 NetApp 支援網站下載包含 Host Utilities 軟體套件的壓縮檔案。取得檔案之後、您必須解壓縮檔案、才能取得安裝主機公用程式所需的兩個軟體套件。</block>
+  <block id="191896e66abb860542afaf3bc97289fc" category="section-title">SAN工具套件</block>
+  <block id="01281e2990c631b64037834e8b22bd4c" category="cell">rw_timeout（磁碟）</block>
+  <block id="a97f41c78bd6ac237cc0a78dbc8e3557" category="section-title">推薦MetroCluster 的設定</block>
 </blocks>
