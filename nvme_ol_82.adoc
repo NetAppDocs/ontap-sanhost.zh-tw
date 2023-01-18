@@ -244,7 +244,7 @@ Device                 Vserver                         Namespace Path           
 
 == 啟用Broadcom NVMe / FC的1MB I/O大小
 
-必須將lfc_sg_seg_cnt參數 設定為256、主機才會發出1MB大小的I/O
+。 `lpfc_sg_seg_cnt` 參數必須設為256、主機才能發出1MB大小I/O
 
 .步驟
 . 將「lfc_sg_seg_cnt"參數設為256。

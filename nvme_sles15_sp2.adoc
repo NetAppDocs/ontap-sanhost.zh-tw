@@ -239,7 +239,7 @@ Device Vserver Namespace Path NSID UUID Size
 
 == 啟用Broadcom NVMe / FC的1MB I/O大小
 
-必須將lfc_sg_seg_cnt參數 設定為256、主機才會發出1MB大小的I/O
+。 `lpfc_sg_seg_cnt` 參數必須設為256、主機才能發出1MB大小I/O
 
 .步驟
 . 將「lfc_sg_seg_cnt"參數設為256。
@@ -263,7 +263,7 @@ options lpfc lpfc_sg_seg_cnt=256
 
 == lffc詳細記錄
 
-. 您可以將lffc_log_verbose驅動程式設定設為下列任一值、以記錄nvm/FC事件。
+. 設定 `lpfc_log_verbose` 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。
 +
 [listing]
 ----
@@ -272,8 +272,8 @@ options lpfc lpfc_sg_seg_cnt=256
 #define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
 #define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
 ----
-. 設定上述任何值後、請執行「dracut-f」並重新開機主機。
-. 重新開機後、請確認設定。
+. 設定值之後、請執行 `dracut-f` 命令並重新啟動主機。
+. 驗證設定。
 +
 [listing]
 ----

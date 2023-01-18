@@ -277,14 +277,10 @@
   <block id="d58a6348af94cbfcbf65485358c4a07d" category="list-text">驗證全日空路徑的狀態。</block>
   <block id="61713dcee5b85916fbe59e04b45b37d0" category="list-text">驗證NetApp外掛ONTAP 程式是否適用於各種不實裝置。</block>
   <block id="bb145463d4b33f8a2c6719372c1e8d1d" category="section-title">啟用Broadcom NVMe / FC的1MB I/O大小</block>
-  <block id="bad43103531df08ecaca22cdac67f137" category="paragraph">必須將lfc_sg_seg_cnt參數 設定為256、主機才會發出1MB大小的I/O</block>
   <block id="b2c535b12eae5c28a532e07cea962627" category="list-text">將「lfc_sg_seg_cnt"參數設為256。</block>
   <block id="d73152e7a2f3eb9fac20bc98a1ee9686" category="list-text">執行「dracut -f」命令、然後重新啟動主機。</block>
   <block id="681e25842821aed88b9536b9cde94730" category="list-text">驗證「lfc_sg_seg_cnt"是否為256。</block>
   <block id="abdf9c787f0ce3f5d12b402c6e131791" category="section-title">lffc詳細記錄</block>
-  <block id="3ff6ab719d63a53e948c2878cd3cb0fe" category="list-text">您可以將lffc_log_verbose驅動程式設定設為下列任一值、以記錄nvm/FC事件。</block>
-  <block id="59180a385bbc70f0147d8dcc2e40392c" category="list-text">設定上述任何值後、請執行「dracut-f」並重新開機主機。</block>
-  <block id="43a1ae88ecbcd358290c6d654acd3f5b" category="list-text">重新開機後、請確認設定。</block>
   <block id="a2e4546887c7d826529e2c2bc558c869" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.1搭配使用</block>
   <block id="7c30b44b559434a28ec34eef25698142" category="doc">使用Oracle Linux 7.1搭配NetApp ONTAP 功能</block>
   <block id="409809eafe9ba8af313e70c545a2b09f" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="65858e88d5a37b29d5e945cdcd520db6" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -2758,4 +2754,18 @@
   <block id="191896e66abb860542afaf3bc97289fc" category="section-title">SAN工具套件</block>
   <block id="01281e2990c631b64037834e8b22bd4c" category="cell">rw_timeout（磁碟）</block>
   <block id="a97f41c78bd6ac237cc0a78dbc8e3557" category="section-title">推薦MetroCluster 的設定</block>
+  <block id="ff1a4459902829746c9feae2fe88b4a7" category="paragraph">。<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 參數必須設為256、主機才能發出1MB大小I/O</block>
+  <block id="53a86d5c1b5a726e2014e8e7789d3e96" category="list-text">設定<block ref="6a6d27f670629373aedb61a672b398f8" prefix=" " category="inline-code"></block> 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。</block>
+  <block id="ac680a7503424f513ba95ee46f269bd8" category="list-text">設定值之後、請執行<block ref="212b9aebab74c7199bb59cfbc6fb92f9" prefix=" " category="inline-code"></block> 命令並重新啟動主機。</block>
+  <block id="814cc8b053fd0d3c9d35f87411477d5f" category="list-text">驗證設定。</block>
+  <block id="9c2f86beda575f2401b682f52ff52734" category="paragraph">顯示的錯誤<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 期間<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>、<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 作業與因應措施如下表所示：</block>
+  <block id="f9ffceb0310fe0428aa1a0ea1847693f" category="cell">請確認您使用的語法正確<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>、<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>和<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 命令。</block>
+  <block id="399c48f51a24097568f4d7f84e8946fb" category="cell">例如、多個問題可能會觸發這種情況、例如為NVMe命令提供錯誤的引數是常見原因之一。</block>
+  <block id="79083cbc1a1d7e0e24669a1f41c3b968" category="list-text">確認您已將正確的引數（例如、正確的WWNN字串、WWPN字串等）傳遞給命令。</block>
+  <block id="ff92d70f29c0c6b352a2a9817436b2c4" category="list-text">如果引數正確、但您仍看到此錯誤、請檢查是否有<block ref="3716e18360493a14deb6b4391cc3652f" prefix=" " category="inline-code"></block> 命令輸出正確、NVMe啟動器顯示為<block ref="00d23a76e43b46dae9ec7aa9dcbebb32" prefix=" " category="inline-code"></block>和NVMe / FC目標LIF會正確顯示在遠端連接埠區段下方。範例：</block>
+  <block id="0b95c202146fcc6556b5e4cc0c2b26dd" category="list-text">如果目標生命量未如上述所示顯示於<block ref="86265333b9052ec5fde056eeddb3a5ef" prefix=" " category="inline-code"></block> 命令輸出、請檢查<block ref="452905a167cf4509fd08acb964fdb20c" prefix=" " category="inline-code"></block> 和<block ref="6b8cf905772edc32b7a7d638713c0075" prefix=" " category="inline-code"></block> 針對任何可疑的NVMe/FC故障、提供命令輸出、並據此報告或修正。</block>
+  <block id="5f07f9d3d72a7357334dba748c6baebc" category="paragraph">一般在下列情況下觀察<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 字串尚未新增至NetApp陣列上的對應子系統、或是不正確<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串已新增至各自的子系統。</block>
+  <block id="c25aa2a919e3a63ca18f5d2ba0d93494" category="paragraph">確認正確無誤<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 字串會新增至NetApp陣列上的對應子系統（請使用<block ref="0e04d4bf4054a77eef58ff3d9b9e59ae" prefix=" " category="inline-code"></block> 命令）。</block>
+  <block id="d517a34201e69d7cbd98e82863cbb016" category="paragraph">觀察控制器關聯或指定作業已建立或正在建立的過程。這可能是上述安裝之自動連線指令碼的一部分。</block>
+  <block id="ed88a4dfde1eda848d0cd0880569e29d" category="paragraph">無。請嘗試執行<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 一段時間後再次命令。適用於<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 和<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>、執行<block ref="b0f1705bbfcfb10368af21a019072318" prefix=" " category="inline-code"></block> 命令來驗證命名空間裝置是否已建立並顯示在主機上。</block>
 </blocks>

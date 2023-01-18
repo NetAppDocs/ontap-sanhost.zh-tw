@@ -1,0 +1,19 @@
+= 
+:allow-uri-read: 
+
+
+NVMe / FC沒有類似的特定qla2xxx記錄功能 `lpfc` 驅動程式：因此、您可以使用下列步驟設定一般的qla2xxx記錄層級：
+
+.步驟
+. 將「ql2xextend_error_logging=x1e400000」值附加至對應的「modf探測qla2xxx conf」檔案。
+. 執行「dracut -f」命令重新建立「initramfs」、然後重新啟動主機。
+. 重新開機後、請確認已套用詳細記錄、如下所示：
++
+[listing]
+----
+# cat /etc/modprobe.d/qla2xxx.conf
+options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
+# cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
+507510784
+----
+
