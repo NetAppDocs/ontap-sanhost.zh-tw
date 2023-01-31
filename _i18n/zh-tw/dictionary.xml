@@ -632,7 +632,6 @@
   <block id="5526d07285513042d4092f2ededbb3d5" category="list-text">在某些情況下、可同時使用多個選項、例如特定Solaris邏輯網域內的Solaris Container。</block>
   <block id="ffc3e17a9258b28dbcb840e63a4da4d4" category="list-text">NetApp通常支援使用這些虛擬化技術、其中Oracle支援整體組態、且任何直接存取LUN的分割區均列於上<block ref="0a2387641ef9263b02d75ca03cdebda2" category="inline-link-rx"></block> 支援的組態。這包括根容器、LDOM IO網域、以及使用NPIV存取LUN的LDOM。</block>
   <block id="ce5e3ba4f12b670c7cec88d808b05d5b" category="list-text">僅使用虛擬化儲存資源（例如「vdsk」）的分割區和（或）虛擬機器不需要特定資格、因為它們無法直接存取NetApp LUN。只有直接存取基礎LUN的分割區/虛擬機器（例如LDOM IO網域）才能在中找到<block ref="0a2387641ef9263b02d75ca03cdebda2" category="inline-link-rx"></block>。</block>
-  <block id="5a691625528023b117e33add8f4779da" category="section-title">虛擬化的建議設定</block>
   <block id="a63c36dd82631ec1965478d89094624d" category="paragraph">當LUN在LDOM內作為虛擬磁碟裝置使用時、LUN的來源會被虛擬化遮罩、而LDOM將無法正確偵測區塊大小。為避免此問題、必須針對Oracle錯誤15824910修補LDOM作業系統、並建立「VDC-.conf」檔案、將虛擬磁碟的區塊大小設為4096。如需詳細資訊、請參閱Oracle Doc 2157669.1。</block>
   <block id="d814467c80971fad7dc38d7544ce98d0" category="paragraph">若要驗證修補程式、請執行下列步驟：</block>
   <block id="9f6b080eca87f7396d496ea0c81b7e3e" category="list-text">建立zPool。</block>
@@ -1446,15 +1445,9 @@
   <block id="1014a6a04423d551549d409e08fbcc51" category="paragraph">當LUN在LDOM內作為虛擬磁碟裝置使用時、LUN的來源會被虛擬化遮罩、而LDOM將無法正確偵測區塊大小。若要避免此問題、必須針對Oracle錯誤15824910修補LDOM作業系統、並建立「VDC-.conf」檔案、將虛擬磁碟的區塊大小設為4096。如需詳細資訊、請參閱Oracle Doc 2157669.1。</block>
   <block id="90fbed0fe328b6c16dbe12568b1cb193" category="paragraph">若要驗證修補程式、請執行下列步驟：</block>
   <block id="26aa8c05766be362fe2c469284c66a45" category="paragraph">如果* ashift*值不是12、請確認安裝的修補程式正確無誤、然後重新檢查「VDC-.conf」的內容。</block>
-  <block id="83b783cc8aa7959a24d34b681bbc1fd2" category="section-title">SnapMirror營運不中斷的建議設定</block>
-  <block id="0f82632d4a7c23010dbe44e368821348" category="paragraph">為了確保在SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式不會中斷營運、必須在Solaris 11.4主機上設定下列設定。此設定會置換容錯移轉模組「f_tpgs」、以防止偵測到衝突的程式碼路徑被執行。</block>
-  <block id="2bde94f95676c1c2bd32242e8415c1f8" category="admonition">從ONTAP 0到9、9.1開始、SM到BC設定組態在Solaris 11.4主機中受到支援。</block>
   <block id="025006946b1c53786cbb29eef3d30229" category="paragraph">依照指示設定置換參數：</block>
-  <block id="04b92c9c817cdf34e3eacbf5cd765484" category="list-text">建立組態檔「/etc/driver/drv/scsi_vhc.conf（包含與主機所連接之NetApp儲存類型類似的項目）：</block>
-  <block id="b6fdbb065aa5e5c1bf0f5af8ad73ca53" category="list-text">使用"devprop"和"mdb"命令來驗證是否已成功套用覆寫：</block>
   <block id="570f5761e2e0bfb396196b06d19e21b0" category="paragraph">「root@host-a:~# devprop -v -n /scsi_vhci-vhci-容 錯移轉-置換scsi-vhci-容 錯移轉= NetApp LUN + f_tpgs root@host-a:~#回應「* scsi_vhc_structip:print -x WWNDE_info dev_child |:mdb_print siv_print siv_print siv_devi資訊列印siv_dev_mdb_devi</block>
   <block id="5492ce934067a932652b5c7aa5dd991b" category="inline-link">Solaris主機支援SnapMirror營運不中斷（SMBC）組態中的建議設定</block>
-  <block id="2a8cf5b2d9486c637aaa9e7f5fb2bbf3" category="admonition">套用「shcsciv-vhci容錯移轉置換」時、「conf」會新增至「vl_fOPs_name」。如需更多資訊及預設設定的建議變更、請參閱NetApp知識庫文章<block ref="0b0122d84e6b5077349fe91550e086e2" category="inline-link-rx"></block>。</block>
   <block id="dd1e6355fcc2ca3c16ece42015663e00" category="cell">1362435</block>
   <block id="393cfee0a3b5d3e706f8a0cdeefa3ed8" category="cell">Huk 6.2和solaris _11.4 FC驅動程式連結變更</block>
   <block id="b2868986ab4f89d873eb88548fa648bb" category="cell">Solaris 11.4與Huk建議。FC驅動程式繫結會從SSD（4維）變更為SD（4維）。如Oracle（文件ID 2595926.1）所述、將您在「sSD.conf」中的組態移至「s d.conf」。新安裝的Solaris 11.4系統會有不同的行為、並從11.3版或更低版本升級。</block>
@@ -2768,4 +2761,15 @@
   <block id="c25aa2a919e3a63ca18f5d2ba0d93494" category="paragraph">確認正確無誤<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 字串會新增至NetApp陣列上的對應子系統（請使用<block ref="0e04d4bf4054a77eef58ff3d9b9e59ae" prefix=" " category="inline-code"></block> 命令）。</block>
   <block id="d517a34201e69d7cbd98e82863cbb016" category="paragraph">觀察控制器關聯或指定作業已建立或正在建立的過程。這可能是上述安裝之自動連線指令碼的一部分。</block>
   <block id="ed88a4dfde1eda848d0cd0880569e29d" category="paragraph">無。請嘗試執行<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 一段時間後再次命令。適用於<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 和<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>、執行<block ref="b0f1705bbfcfb10368af21a019072318" prefix=" " category="inline-code"></block> 命令來驗證命名空間裝置是否已建立並顯示在主機上。</block>
+  <block id="46a8331e5e839c47acb3298049532616" category="section-title">Oracle Solaris虛擬化</block>
+  <block id="1b047686d1675f4b3beb6b06153998c1" category="section-title">虛擬化的建議設定</block>
+  <block id="23013fc45b1e28aeba8b4521f80156eb" category="section-title">SnapMirror營運不中斷的建議設定</block>
+  <block id="32553d76838b87cefddf124e0799eafb" category="paragraph">為了確保在SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式不會中斷營運、必須在Solaris 11.3主機上設定下列設定。此設定將會覆寫容錯移轉模組<block ref="e66960c74638cf8300fb234ed66fcdb7" prefix=" " category="inline-code"></block> 防止偵測到衝突的程式碼路徑被執行。</block>
+  <block id="0dfb4cdaba75a3cede493d07bb6a34a7" category="admonition">從ONTAP 0到9、9.1開始、SM到BC設定組態在Solaris 11.3主機中受到支援。</block>
+  <block id="7682043e346a0976ad107c7cb3989145" category="list-text">建立組態檔<block ref="2c50293ac08c6ad6b30ce2ba7a8fcd9c" prefix=" " category="inline-code"></block> 對於連接至主機的NetApp儲存類型、輸入內容類似下列項目：</block>
+  <block id="05e4ba462549c2424bbff74659b276f2" category="list-text">使用<block ref="01fe732856e5259c0c505f9054c784ba" prefix=" " category="inline-code"></block> 和<block ref="801693b1d56b19d77272b3c6db46a751" prefix=" " category="inline-code"></block> 驗證置換參數的命令已成功套用：</block>
+  <block id="7f7d67d4a4b1712dc7bf97b923fea01b" category="admonition"><block ref="3a8e4c06e471595f6eb262bb9b5582d9" prefix="" category="inline-code"></block> 將新增至<block ref="552db9f221945d76c9e04206b850f3bc" prefix=" " category="inline-code"></block> 何時<block ref="ce0493257bc72d9f3741350d87a14b7d" prefix=" " category="inline-code"></block> 已套用。如需其他資訊及預設設定的建議變更、請參閱NetApp知識庫文章<block ref="0b0122d84e6b5077349fe91550e086e2" category="inline-link-rx"></block>。</block>
+  <block id="ca9ed2ccbdcc305e9773420d7547b568" category="paragraph">為了確保在SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式不會中斷營運、必須在Solaris 11.4主機上設定下列設定。此設定將會覆寫容錯移轉模組<block ref="e66960c74638cf8300fb234ed66fcdb7" prefix=" " category="inline-code"></block> 為了防止偵測到衝突的程式碼路徑被執行。</block>
+  <block id="976902513d73f70373bf832d81070379" category="admonition">從ONTAP 版本號為0.9.1開始、SM-BC設定組態在Solaris 11.4主機中受到支援。</block>
+  <block id="fbd29cc67321a256f7cc8237fc832a9b" category="list-text">使用<block ref="01fe732856e5259c0c505f9054c784ba" prefix=" " category="inline-code"></block> 和<block ref="801693b1d56b19d77272b3c6db46a751" prefix=" " category="inline-code"></block> 驗證置換參數的命令已成功套用：</block>
 </blocks>

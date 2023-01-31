@@ -176,7 +176,7 @@ NOTE: 從適用於Solaris主機的《支援所有SAN陣列ASA （EJUSTE）組態
 |===
 
 
-=== 推薦MetroCluster 的功能設定
+=== 推薦MetroCluster 的設定
 
 根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由「FCP離線延遲」參數所控制。「FCP離線延遲」的預設值適用於標準ONTAP 版的叢集。不過MetroCluster 、在不必要的組態中、「FCP離線延遲」的值必須增加至* 120 *、以確保I/O不會在作業期間（包括非計畫性容錯移轉）提早逾時。如需新增資訊及預設設定的建議變更、請參閱NetApp link:https://kb.netapp.com/app/answers/answer_view/a_id/1001373/loc/en_US["KB1001373"^]。
 
@@ -215,21 +215,21 @@ NOTE: 可在各種版本的Solaris上取得Oracle錯誤15824910的修補程式�
 
 == SnapMirror營運不中斷的建議設定
 
-為了確保在SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式不會中斷營運、必須在Solaris 11.4主機上設定下列設定。此設定會置換容錯移轉模組「f_tpgs」、以防止偵測到衝突的程式碼路徑被執行。
+為了確保在SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式不會中斷營運、必須在Solaris 11.4主機上設定下列設定。此設定將會覆寫容錯移轉模組 `f_tpgs` 為了防止偵測到衝突的程式碼路徑被執行。
 
 
-NOTE: 從ONTAP 0到9、9.1開始、SM到BC設定組態在Solaris 11.4主機中受到支援。
+NOTE: 從ONTAP 版本號為0.9.1開始、SM-BC設定組態在Solaris 11.4主機中受到支援。
 
 依照指示設定置換參數：
 
-. 建立組態檔「/etc/driver/drv/scsi_vhc.conf（包含與主機所連接之NetApp儲存類型類似的項目）：
+. 建立組態檔 `/etc/driver/drv/scsi_vhci.conf` 對於連接至主機的NetApp儲存類型、輸入內容類似下列項目：
 +
 [listing]
 ----
 scsi-vhci-failover-override =
 "NETAPP  LUN","f_tpgs"
 ----
-. 使用"devprop"和"mdb"命令來驗證是否已成功套用覆寫：
+. 使用 `devprop` 和 `mdb` 驗證置換參數的命令已成功套用：
 +
 「root@host-a:~# devprop -v -n /scsi_vhci-vhci-容 錯移轉-置換scsi-vhci-容 錯移轉= NetApp LUN + f_tpgs root@host-a:~#回應「* scsi_vhc_structip:print -x WWNDE_info dev_child |:mdb_print siv_print siv_print siv_devi資訊列印siv_dev_mdb_devi
 
@@ -242,7 +242,7 @@ svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 
 
 
-NOTE: 套用「shcsciv-vhci容錯移轉置換」時、「conf」會新增至「vl_fOPs_name」。如需更多資訊及預設設定的建議變更、請參閱NetApp知識庫文章 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris主機支援SnapMirror營運不中斷（SMBC）組態中的建議設定"^]。
+NOTE: `conf` 將新增至 `svl_fops_name` 何時 `scsi-vhci-failover-override` 已套用。如需其他資訊及預設設定的建議變更、請參閱NetApp知識庫文章 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris主機支援SnapMirror營運不中斷（SMBC）組態中的建議設定"^]。
 
 
 
