@@ -246,6 +246,7 @@ options lpfc lpfc_sg_seg_cnt=256
 
 == lffc詳細記錄
 
+.步驟
 . 設定 `lpfc_log_verbose` 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。
 +
 [listing]

@@ -626,7 +626,6 @@
   <block id="f7efa4f864ae9b88d43527f4b14f750f" category="cell">4096</block>
   <block id="3d37ecaaa38a68cc4cb45fa6244e970c" category="section-title">推薦MetroCluster 的功能設定</block>
   <block id="cb99705ba926b18eb56469f75cc39c4c" category="inline-link">KB1001373</block>
-  <block id="69c554c1475a518cc1bc743c147bcae6" category="paragraph">根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由「FCP離線延遲」參數所控制。「FCP離線延遲」的預設值適用於標準ONTAP 版的叢集。不過MetroCluster 、在不必要的組態中、「FCP離線延遲」的值必須增加至* 120 *、以確保I/O不會在作業期間（包括非計畫性容錯移轉）提早逾時。如需新增資訊及建議的預設設定變更、請參閱NetApp<block ref="c1922a8e804b8190c0daa8263ddd5748" category="inline-link-rx"></block>。</block>
   <block id="8f9dff1e201aa562bc3dd3aafff4d268" category="section-title">Oracle Solaris虛擬化</block>
   <block id="d73e6214e3336f5200c990aa71164cec" category="list-text">Solaris虛擬化選項包括Solaris邏輯網域（也稱為LDom或Oracle VM Server for SPARC）、Solaris動態網域、Solaris區域及Solaris Container。儘管這些技術是以非常不同的架構為基礎、但這些技術通常被重新標記為「Oracle虛擬機器」。</block>
   <block id="5526d07285513042d4092f2ededbb3d5" category="list-text">在某些情況下、可同時使用多個選項、例如特定Solaris邏輯網域內的Solaris Container。</block>
@@ -1036,11 +1035,9 @@
   <block id="55fd3388a3964cd90c0a1fb25a5104e0" category="list-text">如果引數正確、但您仍看到此錯誤、請檢查「/sys/class/scsi_host/host/nvm_info'」輸出是否正確、NVMe啟動器是否顯示為「已啟用」、以及在遠端連接埠區段下方正確顯示NVMe /FC目標LIF。範例：</block>
   <block id="0d996d199c6027dc68cd4cab85563b7c" category="list-text">如果NVMe資訊輸出中的目標LIF未如前所述顯示、請檢查「/var/log/Messages」和「dmesg」輸出是否有任何可疑的NVMe / FC故障、並據此報告或修正。</block>
   <block id="64ede1e6f2ef30c339f9a3e100f40cfc" category="cell">「沒有要擷取的探索記錄項目」</block>
-  <block id="b0dfa52656cffd6e279876e38ade4449" category="cell">一般會看到、NetApp陣列上的對應子系統是否未新增「/etc/nNVMe / hostnqn」字串、或是在個別子系統中新增不正確的hostnqn字串。</block>
   <block id="63de53510175cd2fa7213647b4db5fda" category="cell">請確定NetApp陣列上的對應子系統中已新增確切的「/etc/nvm/hostnqn」字串（請透過「vserver NVMe Subsystem host show」命令進行驗證）。</block>
   <block id="abbdb018748bb6cd12284ad6c1685b67" category="cell">「寫入/dev/NVMe架構失敗：作業已在進行中」</block>
   <block id="225b7a6d4ea820127fe205c2526ea209" category="cell">已查看控制器關聯或指定的作業是否已建立或正在建立。這可能是上述安裝之自動連線指令碼的一部分。</block>
-  <block id="3c7b3855799d1d584f0b34f56b7e8a85" category="cell">無。如需NVMe探索、請稍後再試執行此命令。對於NVMe Connect和Connect All、請執行「NVMe list」命令、確認命名空間裝置已建立並顯示在主機上。</block>
   <block id="5d58354522165b88ab742ec42aac9161" category="section-title">何時聯絡技術支援</block>
   <block id="db4ed55dc4a3e29a642f71c4df28880b" category="paragraph">如果您仍面臨問題、請收集下列檔案和命令輸出、並聯絡技術支援部門以進一步分類：</block>
   <block id="e16f67a9f3c6e6f9fd2a71ca2c71b042" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.0搭配使用功能</block>
@@ -1714,8 +1711,6 @@
   <block id="786d5eb75e325663513faf6273564ebf" category="list-text">請確認您執行的是支援的介面卡驅動程式和韌體版本、例如：</block>
   <block id="79ba4cec11a87f2af036439169eabd6c" category="list-text">驗證是否已設定「ql2xnvmeenable」、以便Marvell介面卡能作為NVMe / FC啟動器運作：</block>
   <block id="c59affec436f2685c9cf2603d66c8362" category="paragraph">按每個目錄下的每個目錄、每個目錄、每個單元、每個單元、每個單元、每個單元、每個單元、每個單元、每個單元、每個單元、每個單元</block>
-  <block id="80748b874d55c5038d34ce16a870e640" category="section-title">qla2xxx詳細記錄</block>
-  <block id="38a517c65e7a4cfa6d1b781c6a6e35f4" category="cell">請確定您使用的是NVMe命令語法正確。</block>
   <block id="5526e4fbaeff80cd5d23977ccd71e110" category="doc">將IBM AIX 7.2和/或PowerVM（VIOS 3.1）搭配NetApp ONTAP 功能使用</block>
   <block id="1306166f349020a2e91d6b8afe8455fb" category="paragraph">NetApp AIX Host Utilities 6.1是最新版本。此版本可解決先前版本中報告的記憶體洩漏問題。如需其他資訊、請參閱版本說明一節。</block>
   <block id="be02c5fbd2d78a32d06d7da8385cae85" category="list-text">在PowerVM主機上、以* padmin*登入、然後輸入「OEM_setup_env」命令成為root。</block>
@@ -2378,25 +2373,9 @@
   <block id="cebb9dfdc378481f9e93e7b505fe4f1d" category="paragraph">範例（b）：</block>
   <block id="cdb0ca847e914e0c124768ae14142869" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如（A）、</block>
   <block id="86a8f02d0c1226cbab77460737c32b26" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個不支援的名稱空間裝置的正確值。例如（A）、</block>
-  <block id="1718051495b27f0539c358a077bb3e35" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請務必確保您所執行的組態符合IMT 《支援技術規範的要求。然後繼續執行下列步驟、以偵錯任何主機端問題。</block>
   <block id="8f04ccd4b6d17f7acb33a4a2262bb3e9" category="section-title">lffc詳細記錄</block>
-  <block id="aaea768bb3e8e6a627ea335fd9c9f934" category="paragraph">以下是適用於NVMe/FC的lpfcs驅動程式記錄位元遮罩清單、如「驅動程式/scsi/lffc/lffc_logmsg.h」所示：</block>
-  <block id="bcb565adfa69c5b85ffe2a63c2276769" category="paragraph">您可以將「lffc_log_verbose」驅動程式設定（附加至lfc行、位於「/etc/modprobe.d/lffc.conf」）設定為上述任何值、以便從「lfc」驅動程式觀點記錄nvm/FC事件。然後執行「dracut -f」命令重新建立「initramfs」、然後重新啟動主機。重新開機後、請使用上述「log_nvm_disc」位元遮罩、檢查下列項目、確認是否已套用詳細記錄：</block>
   <block id="dd1f73319dd2881afa35604270a821b9" category="section-title">qla2xxx詳細記錄</block>
-  <block id="292a88b738894f862e50bb3161bd2fac" category="paragraph">NVMe / FC沒有類似的特定qla2xxx記錄、如「lffc」中所示。您可以在此處設定一般qla2xxx記錄層級、例如「ql2xextended _error_logging=0x1e400000」。您可以將此值附加至對應的「modf探測qla2xxx conf"檔案、以完成此作業。然後執行「dracut -f」重新建立「initramfs」、然後重新啟動主機。重新開機後、請確認已套用詳細記錄、如下所示：</block>
   <block id="e3f05e6b08d377aca967243a953ecfb9" category="section-title">常見的NVMe-CLI錯誤和因應措施</block>
-  <block id="22c54dce95fdc049759d97572077c406" category="cell">「無法寫入/開發/ NVMe架構：無效的引數」錯誤發生於「NVMe探索」、「NVMe連線」或「NVMe連線-全部」</block>
-  <block id="45161d7ae04ea62480ae1583b09c337a" category="cell">如果語法錯誤、通常會顯示此錯誤訊息。</block>
-  <block id="4d68eca36b7598d8d220c8109ee77d2c" category="cell">「無法寫入/開發/ NVMe架構：在「NVMe探索」、「NVMe連線」或「NVMe連線全部」期間、沒有這類檔案或目錄</block>
-  <block id="0d6f3d7e1a23f40a79b28023090d2a74" category="cell">可能會引發多個問題。常見的情況包括：您將錯誤的引數傳遞給上述NVMe命令。</block>
-  <block id="0300a463a2779250716b195b0f15c1ba" category="paragraph">請確定您已針對上述命令傳遞適當的引數（例如適當的WWNN字串、WWPN字串等）。如果引數正確、但仍看到此錯誤、請檢查NVMe啟動器的「/sys/class/scsi_host/host/nvm_info'」輸出是否正確、並在遠端連接埠區段下方正確顯示「已啟用」和nvm/FC目標LIF。例如、</block>
-  <block id="ad02181fdbf4245ee0052cfb92cb8bcc" category="paragraph">因應措施：如果「NVMe資訊」輸出中未顯示上述目標LIF、請檢查「/var/log/Messages」和「dmesg」輸出是否有任何可疑的NVMe / FC故障、並據此報告或修正。</block>
-  <block id="9f7680250af5452ad3bc6e1373a71a11" category="cell">在「NVMe探索」、「NVMe連線」或「NVMe連線」期間、「無探索記錄項目可擷取」</block>
-  <block id="6bd22b028f1c581999993ec8672aea1c" category="cell">請確定NetApp陣列上的對應子系統中已新增確切的「/etc/nvm/hostnqn」字串（請透過「vserver NVMe子系統主機show」驗證）。</block>
-  <block id="00443539b6acea3b81b118f7a7f62818" category="cell">「無法寫入/開發/ NVMe架構：作業已在進行中」、「NVMe探索」、「NVMe連線」或「NVMe連線-全部」</block>
-  <block id="796b7594f30be7947c1efffc9c471c02" category="cell">如果已建立控制器關聯或指定的作業、或正在建立、就會出現此錯誤訊息。這可能是上述安裝之自動連線指令碼的一部分。</block>
-  <block id="628687124665ca6b9dfc96e945da3db4" category="cell">無。若為「NVMe探索」、請稍後嘗試執行此命令。對於「NVMe Connect」和「Connect All」、請執行「NVMe清單」、以驗證命名空間裝置是否已建立並顯示在主機上。</block>
-  <block id="2d9c87ae045b9e45b670135f74d969b1" category="paragraph">如果您仍遇到問題、請收集下列檔案和命令輸出、然後將其傳送以供進一步分類：</block>
   <block id="e7e8e011c8e0651dc3a6d06305d8279e" category="paragraph">RHEL 8.3沒有已知問題。</block>
   <block id="ce420cebd9b134c2ee33ae6a490c31ba" category="paragraph">如果您打算在同一部RHEL 8.2共存主機上同時執行NVMe和SCSI流量、建議ONTAP 您分別使用核心內建NVMe多重路徑來執行支援資源命名空間、ONTAP 並使用dm-multipath來執行支援資源的LUN。您也應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將「啟用外部」設定新增至/etc/multipath.conf、如下所示。</block>
   <block id="6507882f376544268e31289f84d4ee08" category="doc">HP-UX Host Utilities 6.0</block>
@@ -2473,7 +2452,6 @@
   <block id="3bb5487a25f2c91e7d62566cb6026b68" category="list-text">確認ONTAP 支援的名稱空間能正確反映在主機上。例如：</block>
   <block id="f2af591771f10d63662bd947024ee100" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如：</block>
   <block id="c13733aade7c22e1d6c0fb7be8a8c754" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如：</block>
-  <block id="295d37bcf3aa6754427b612bea361663" category="paragraph">如果NetApp陣列上的對應子系統未新增「/etc/nexe/hostnqn」字串、或是在個別子系統中新增不正確的「hostnqn」字串、通常會出現此錯誤訊息。</block>
   <block id="dcda2cb33413b9ab0c8373225de75578" category="summary">如何使用ONTAP 支援功能為RHEL 8.5設定NVMe主機</block>
   <block id="3ae77fb5b2d43b5802128bed00b85944" category="doc">適用於RHEL 8.5的NVMe主機組態（ONTAP 含功能性）</block>
   <block id="9eea7fd01633455098385cd20b7dd183" category="paragraph">採用ANA（非對稱命名空間存取）的RHEL 8.5支援NVMe over Fabrics或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.5和ONTAP 以RHEL為目標使用ANA的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。</block>
@@ -2522,7 +2500,6 @@
   <block id="1077e8ad3542ff8af32bed26b6b21ee8" category="list-text">在主機開機期間、不會自動連線NVMe / TCP、也無法在主機開機期間自動連線。</block>
   <block id="b2edbac4a48e893081ffbe4cda9a7dec" category="list-text">驗證ONTAP 個別ONTAP 的各個還原命名空間是否適當反映在主機上的NVMe設定（例如、設定為NetApp支援資源控制器的模型、以及將負載平衡iopolicy設定為循環配置資源）：</block>
   <block id="0882578f9915da36a8ab5c612728ad30" category="paragraph">範例（A）：</block>
-  <block id="07cf625ee23005956a460fdd83c0142d" category="list-text">如果「NVMe資訊」輸出中沒有顯示上述目標LIF、請檢查「/var/log/Messages」和「dmesg」輸出是否有任何可疑的NVMe / FC故障、並據此報告或修正。</block>
   <block id="806707e47ee8fe684a6d5e5b0898539a" category="sidebar">NVMeF OL</block>
   <block id="d1b92a4930d50c6ed1038655db0d2684" category="sidebar">所有ONTAP 產品文件</block>
   <block id="0b6a095cb9010243600ae8c7163d4eab" category="summary">適用於Windows Server 2022的NVMe / FC主機組態、ONTAP 含功能更新</block>
@@ -2668,13 +2645,8 @@
   <block id="37d7cdc3434cd2c93f357a0dbab71896" category="list-text">安裝完成後、請確認您執行的是指定的RHEL 8.7核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
   <block id="2575819b82d12e9109581acdab9442a5" category="paragraph">如果您打算在同一部主機上同時執行NVMe和SCSI共存的流量、建議您分別使用核心內建NVMe多重路徑ONTAP 來執行支援的名稱空間、ONTAP 以及使用dm-multipathon來執行支援的LUN。這表示ONTAP 應從dm-multipaths中排除支援的對象名稱空間、以避免dm-multipaths宣告這些命名空間裝置。您可以將啟用外部設定新增至、以完成此作業<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
   <block id="336e17a7bbcba7cb9c2f65ad935d30f6" category="paragraph">原生收件匣<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block> RHEL 8.7核心所含的驅動程式有最新的上游修正程式、這些修正程式對ONTAP 支援功能至關重要。</block>
-  <block id="18364f61161412813e05ad8b27bed23e" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請先確定您執行的組態符合IMT 「支援」規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
-  <block id="3a3b7ac2e39541ea05707ccd6eb054d4" category="section-title">已知問題與限制</block>
   <block id="4c865e0cb70fa33868e69a5e88daad47" category="cell">1479047</block>
   <block id="f890a2d3eb444832b655a9838102f3df" category="cell">2087000</block>
-  <block id="3f4a3b3eec403674aa0cd9427d6deec9" category="cell">請確定您使用的是上述NVMe命令的正確語法。</block>
-  <block id="e0f847d0d970d13348c3311998e2e15c" category="cell">可能會引發多個問題。為NVMe命令提供錯誤的引數是常見原因之一。</block>
-  <block id="77f83f52d54fb4aeb889da304fc0ebe1" category="paragraph">如果控制器關聯或指定的作業已經建立或正在建立、請注意。這可能是上述安裝之自動連線指令碼的一部分。</block>
   <block id="de63239808aba6bc3b6e058c280e2334" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.7搭配使用功能</block>
   <block id="054dec9601134c2039198642192ad5cd" category="doc">使用Red Hat Enterprise Linux 8.7搭配NetApp ONTAP 功能</block>
   <block id="42629720f0dd50e499b39533a5c8c6c6" category="paragraph">適用於Red Hat Enterprise Linux（RHEL）8.7<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.7已使用所有必要設定進行編譯、以辨識及正確管理ONTAP 支援LUN。</block>
@@ -2684,9 +2656,6 @@
   <block id="41e09c9ea0ff8203b49cf60b08453bc3" category="section-title">啟用1 MB I/O大小（選用）</block>
   <block id="1ceacdae6aaf4ce4b35e9d889205b688" category="paragraph">現在、Broadcom FC-NVMe主機應該能夠在ONTAP 該名稱空間裝置上傳送高達1 MB的I/O要求。</block>
   <block id="579f8656182e55995ca799f60b8b3706" category="list-text">驗證<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 已設定、可讓Marvell介面卡以NVMe / FC啟動器的形式運作、使用下列命令：</block>
-  <block id="7be9aa10f19f6b39286cbd2769f88cd5" category="section-title">lffc詳細記錄</block>
-  <block id="55cf75d4c35a2f0318cd0878633a2b64" category="list-text">請確定您已將正確的引數（例如、正確的WWNN字串、WWPN字串等）傳遞給命令。</block>
-  <block id="d3ac6c9b9f08add73cc79ed8987c7638" category="paragraph">請務必準確<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 字串會新增至NetApp陣列上的對應子系統（透過<block ref="0e04d4bf4054a77eef58ff3d9b9e59ae" prefix=" " category="inline-code"></block> 命令）。</block>
   <block id="0fffdf54ff26eafef72a1df48bb79f76" category="paragraph">RHEL 8.7作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並針對ASA 各種不適用的ASA組態、自動正確設定所有組態參數。</block>
   <block id="0dea8ccda08dc1647ed0a458849e5cda" category="doc">適用於Oracle Linux 8.6的NVMe / FC主機組態、ONTAP 含功能</block>
   <block id="6b9300bd0ee78fc87c33ec2c07cd7201" category="paragraph">當Oracle支援NVMe / FC完全符合此主機作業系統版本的資格時、將會發佈Oracle 8.6的NVMe / FC主機組態詳細資料。</block>
@@ -2710,13 +2679,11 @@
   <block id="7912d4b61044915bf839431d678f055d" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請務必設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 命令、以便在路徑遺失時重試更長時間。例如：</block>
   <block id="8820bbf46f22897008878290f6060725" category="paragraph">範例（b）</block>
   <block id="8ee542f1260df38017c8fcd1811b07cf" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請確定您執行的組態符合互通性對照表工具IMT （簡稱「互通性對照表工具」）規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
-  <block id="c93461d811b67f37d132425264a4d474" category="list-text">設定<block ref="6a6d27f670629373aedb61a672b398f8" prefix=" " category="inline-code"></block> 將驅動程式設定為下列任一值、以記錄NVMe/FC事件：</block>
   <block id="df474dd19781ab3788a85cc52bf31865" category="paragraph">NVMe / FC沒有類似的特定qla2xxx記錄功能<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 驅動程式：因此、您可以使用下列步驟設定一般的qla2xxx記錄層級：</block>
   <block id="0929df0c2d7b307ae019137c488669a8" category="cell">1503468</block>
   <block id="2f8adf6e51ddcf7b0618dad0e63a4144" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> Command會針對特定子系統傳回重複的NVMe控制器清單</block>
   <block id="95a3009a54be763a347295539b3b924d" category="cell">。<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 命令應傳回與特定子系統相關聯的NVMe控制器唯一清單。在RHEL 9.1中<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> Command會針對屬於特定子系統的所有命名空間、傳回NVMe控制器及其各自的ANA狀態。不過、ANA狀態是每個命名空間的屬性、因此如果您列出指定命名空間的子系統命令語法、則最好顯示具有路徑狀態的獨特NVMe控制器項目。</block>
   <block id="83dccde7d3d49df72143822cd414e991" category="cell">2130106.</block>
-  <block id="3f9c3f7f21b77382c688aa95e76f1ff4" category="paragraph">顯示的錯誤<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 期間<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>、<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 作業與因應措施如下表所示：</block>
   <block id="9e9ad12d8f7b421ec7b07bcffb518755" category="paragraph">如果您仍遇到問題、請收集下列檔案和命令輸出、並聯絡技術支援部門以進一步分類：</block>
   <block id="54bb88571442321a8544c55cb834deb7" category="cell">RHEL 8.7 NVMe主機會建立重複的持續探索控制器</block>
   <block id="c66549c6038d3ebbf4c13fa9699ba9c4" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您在ONTAP NVMe主機上執行的是Ris-9.10.1和Red Hat Enterprise Linux（RHEL）8.7、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。</block>
@@ -2761,15 +2728,19 @@
   <block id="c25aa2a919e3a63ca18f5d2ba0d93494" category="paragraph">確認正確無誤<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 字串會新增至NetApp陣列上的對應子系統（請使用<block ref="0e04d4bf4054a77eef58ff3d9b9e59ae" prefix=" " category="inline-code"></block> 命令）。</block>
   <block id="d517a34201e69d7cbd98e82863cbb016" category="paragraph">觀察控制器關聯或指定作業已建立或正在建立的過程。這可能是上述安裝之自動連線指令碼的一部分。</block>
   <block id="ed88a4dfde1eda848d0cd0880569e29d" category="paragraph">無。請嘗試執行<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 一段時間後再次命令。適用於<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> 和<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>、執行<block ref="b0f1705bbfcfb10368af21a019072318" prefix=" " category="inline-code"></block> 命令來驗證命名空間裝置是否已建立並顯示在主機上。</block>
-  <block id="46a8331e5e839c47acb3298049532616" category="section-title">Oracle Solaris虛擬化</block>
   <block id="1b047686d1675f4b3beb6b06153998c1" category="section-title">虛擬化的建議設定</block>
   <block id="23013fc45b1e28aeba8b4521f80156eb" category="section-title">SnapMirror營運不中斷的建議設定</block>
-  <block id="32553d76838b87cefddf124e0799eafb" category="paragraph">為了確保在SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式不會中斷營運、必須在Solaris 11.3主機上設定下列設定。此設定將會覆寫容錯移轉模組<block ref="e66960c74638cf8300fb234ed66fcdb7" prefix=" " category="inline-code"></block> 防止偵測到衝突的程式碼路徑被執行。</block>
-  <block id="0dfb4cdaba75a3cede493d07bb6a34a7" category="admonition">從ONTAP 0到9、9.1開始、SM到BC設定組態在Solaris 11.3主機中受到支援。</block>
   <block id="7682043e346a0976ad107c7cb3989145" category="list-text">建立組態檔<block ref="2c50293ac08c6ad6b30ce2ba7a8fcd9c" prefix=" " category="inline-code"></block> 對於連接至主機的NetApp儲存類型、輸入內容類似下列項目：</block>
-  <block id="05e4ba462549c2424bbff74659b276f2" category="list-text">使用<block ref="01fe732856e5259c0c505f9054c784ba" prefix=" " category="inline-code"></block> 和<block ref="801693b1d56b19d77272b3c6db46a751" prefix=" " category="inline-code"></block> 驗證置換參數的命令已成功套用：</block>
-  <block id="7f7d67d4a4b1712dc7bf97b923fea01b" category="admonition"><block ref="3a8e4c06e471595f6eb262bb9b5582d9" prefix="" category="inline-code"></block> 將新增至<block ref="552db9f221945d76c9e04206b850f3bc" prefix=" " category="inline-code"></block> 何時<block ref="ce0493257bc72d9f3741350d87a14b7d" prefix=" " category="inline-code"></block> 已套用。如需其他資訊及預設設定的建議變更、請參閱NetApp知識庫文章<block ref="0b0122d84e6b5077349fe91550e086e2" category="inline-link-rx"></block>。</block>
-  <block id="ca9ed2ccbdcc305e9773420d7547b568" category="paragraph">為了確保在SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式不會中斷營運、必須在Solaris 11.4主機上設定下列設定。此設定將會覆寫容錯移轉模組<block ref="e66960c74638cf8300fb234ed66fcdb7" prefix=" " category="inline-code"></block> 為了防止偵測到衝突的程式碼路徑被執行。</block>
   <block id="976902513d73f70373bf832d81070379" category="admonition">從ONTAP 版本號為0.9.1開始、SM-BC設定組態在Solaris 11.4主機中受到支援。</block>
-  <block id="fbd29cc67321a256f7cc8237fc832a9b" category="list-text">使用<block ref="01fe732856e5259c0c505f9054c784ba" prefix=" " category="inline-code"></block> 和<block ref="801693b1d56b19d77272b3c6db46a751" prefix=" " category="inline-code"></block> 驗證置換參數的命令已成功套用：</block>
+  <block id="e49ccc598a2a177291bac4be5c852c5f" category="cell"><block ref="e49ccc598a2a177291bac4be5c852c5f" category="inline-link-macro-rx"></block></block>
+  <block id="5b3496bb3deba2c2222970d5c975df4a" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請確定您執行的組態符合互通性對照表工具IMT （簡稱「互通性對照表工具」）規格、然後繼續執行下列步驟來偵錯任何主機端問題。</block>
+  <block id="872e3157142338f8780c9227100229cb" category="paragraph">根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由所控制<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 參數。的預設值<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 適用於標準ONTAP 的叢集。不過MetroCluster 、在不完整的組態中、其價值是<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 必須增加至* 120 *、以確保I/O在作業期間不會提早逾時、包括非計畫性容錯移轉。如需更多資訊及建議的預設設定變更、請參閱NetApp<block ref="c1922a8e804b8190c0daa8263ddd5748" category="inline-link-rx"></block>。</block>
+  <block id="edd08258c3c5f3718f84028ff5971d1d" category="section-title">Oracle Solaris虛擬化</block>
+  <block id="fd515dc1fb4215f1d4f9c5a754b19cab" category="section-title">虛擬化的建議設定</block>
+  <block id="c25aaa60cb981e43df9a60c24d76e170" category="paragraph">為了驗證當SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式是否不中斷營運、您必須在Solaris 11.3主機上設定下列設定。此設定會覆寫容錯移轉模組<block ref="e66960c74638cf8300fb234ed66fcdb7" prefix=" " category="inline-code"></block> 防止執行偵測到衝突的程式碼路徑。</block>
+  <block id="a581ca8b747415e1f36b69571ad2cd82" category="admonition">從ONTAP 0到9、9.1開始、SM到BC設定組態在Solaris 11.3主機中受到支援。</block>
+  <block id="e246c6fa1d97174589605e1deac30e48" category="list-text">使用<block ref="01fe732856e5259c0c505f9054c784ba" prefix=" " category="inline-code"></block> 和<block ref="801693b1d56b19d77272b3c6db46a751" prefix=" " category="inline-code"></block> 用於驗證置換參數是否已成功套用的命令：</block>
+  <block id="206258ae3de99b2eff4c714432cf5621" category="admonition">之後<block ref="ce0493257bc72d9f3741350d87a14b7d" prefix=" " category="inline-code"></block> 已套用、<block ref="3a8e4c06e471595f6eb262bb9b5582d9" prefix=" " category="inline-code"></block> 已新增至<block ref="552db9f221945d76c9e04206b850f3bc" prefix=" " category="inline-code"></block>。如需其他資訊及預設設定的建議變更、請參閱NetApp知識庫文章<block ref="0b0122d84e6b5077349fe91550e086e2" category="inline-link-rx"></block>。</block>
+  <block id="ce9171caa524742973555de6b74fd04b" category="paragraph">為了驗證在SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式是否不中斷營運、您必須在Solaris 11.4主機上設定下列設定。此設定會覆寫容錯移轉模組<block ref="e66960c74638cf8300fb234ed66fcdb7" prefix=" " category="inline-code"></block> 防止執行偵測到衝突的程式碼路徑。</block>
+  <block id="f70abbfa68e7755bcd0d439688edae06" category="admonition">之後<block ref="ce0493257bc72d9f3741350d87a14b7d" prefix=" " category="inline-code"></block> 已套用、<block ref="3a8e4c06e471595f6eb262bb9b5582d9" prefix=" " category="inline-code"></block> 已新增至<block ref="552db9f221945d76c9e04206b850f3bc" prefix=" " category="inline-code"></block> 。如需其他資訊及預設設定的建議變更、請參閱NetApp知識庫文章<block ref="0b0122d84e6b5077349fe91550e086e2" category="inline-link-rx"></block>。</block>
 </blocks>
