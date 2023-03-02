@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_ol_85.html 
-keywords: nvme, linux, oracle, 
-summary:  
+permalink: nvme_ol_84.html 
+keywords: nvme, linux, oracle, 8.4 
+summary: 使用支援VMware的Oracle Linux 8.4設定VME/FC主機組態ONTAP 、範例如下 
 ---
-= NVMe / FC主機組態、適用於Oracle Linux 8.5 with ONTAP Fisc
+= 適用於Oracle Linux 8.4的NVMe/FC主機組態、ONTAP 含功能性
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -22,7 +22,7 @@ summary:
 
 == 支援能力
 
-NVMe over Fabrics或NVMe（包括NVMe / FC和NVMe / TCP）可搭配Oracle Linux 8.5搭配非對稱命名空間存取（ANA）支援、ONTAP 而非對稱式命名空間存取（非對稱式命名空間存取）則是在不間斷儲存容錯移轉（SFO）上所需的功能。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。本文件詳細說明如何在Oracle Linux 8.5和ONTAP 以ANA為目標的內核NVMe多重路徑上啟用NVMe。
+NVMe over Fabrics或NVMe（包括NVMe / FC和NVMe / TCP）可搭配Oracle Linux 8.4搭配非對稱命名空間存取（ANA）支援、ONTAP 而非對稱式命名空間存取（ANA）則是在不間斷儲存容錯移轉（SFO）上運作所需的功能。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。本主題詳細說明如何在Oracle Linux 8.4上使用ANA搭配ONTAP 以支援以NVMe為目標的內核NVMe多重路徑來啟用NVMe。
 
 
 NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
@@ -31,11 +31,11 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 == 功能
 
-* Oracle Linux 8.5預設為NVMe名稱套用內核NVMe多重路徑。
-* 使用Oracle Linux 8.5、 `nvme-fc auto-connect` 指令碼包含在原生中 `nvme-cli` 套件：您可以仰賴這些原生的自動連線指令碼、而非安裝外部廠商提供的外接式自動連線指令碼。
-* Oracle Linux 8.5是原生的 `udev` 規則是在中提供的一部分 `nvme-cli` 套件、可針對NVMe多重路徑啟用循環資源負載平衡。因此、您不再需要手動建立此規則。
-* 有了Oracle Linux 8.5、NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是通常部署的主機組態。因此、您可以像往常一樣為SCSI LUN設定dm-multipaths、以產生mpath裝置、而NVMe多重路徑則可用來設定NVMe多重路徑裝置（例如、 `/dev/nvmeXnY`）。
-* 使用Oracle Linux 8.5、原生的NetApp外掛程式 `nvme-cli` 套件能夠顯示ONTAP 各種細節及ONTAP 功能不完整的命名空間。
+* Oracle Linux 8.4預設會啟用NVMe名稱區的內核NVMe多重路徑。
+* 搭配Oracle Linux 8.4、 `nvme-fc auto-connect` 指令碼包含在原生中 `nvme-cli` 套件：您可以仰賴這些原生的自動連線指令碼、而非安裝外部廠商提供的外接式自動連線指令碼。
+* Oracle Linux 8.4是原生的 `udev` 規則是在中提供的一部分 `nvme-cli` 套件、可針對NVMe多重路徑啟用循環資源負載平衡。因此、您不再需要手動建立此規則。
+* 有了Oracle Linux 8.4、NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是通常部署的主機組態。因此、您可以像往常一樣為SCSI LUN設定dm-multipaths、以產生mpath裝置、而NVMe多重路徑則可用來設定NVMe多重路徑裝置（例如、 `/dev/nvmeXnY`）。
+* 使用Oracle Linux 8.4、原生NetApp外掛程式 `nvme-cli` 套件能夠顯示ONTAP 各種細節及ONTAP 功能不完整的命名空間。
 
 
 
@@ -48,48 +48,48 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 == 組態需求
 
-請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 如需支援組態的詳細資訊、請參閱。
+請參閱 link:https://mysupport.netapp.com/matrix/["NetApp互通性對照表IMT （僅限部分）"^] 以取得支援組態的確切詳細資料。
 
 
 
-== 使用Oracle Linux 8.5啟用NVMe/FC
+== 啟用NVMe/FC
 
 .步驟
-. 在伺服器上安裝Oracle Linux 8.5 General Availability（GA）。安裝完成後、請確認您執行的是指定的Oracle Linux 8.5 GA核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
+. 在伺服器上安裝Oracle Linux 8.4 GA。安裝完成後、請確認您執行的是指定的Oracle Linux 8.4 GA核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
 +
 [listing]
 ----
 # uname -r
-5.4.17-2136.309.4.el8uek.x86_64
+5.4.17-2102.206.1.el8uek.x86_64
 ----
 . 安裝「NVMe - CLI」套件。
 +
 [listing]
 ----
 # rpm -qa|grep nvme-cli
-nvme-cli-1.14-3.el8.x86_64
+nvme-cli-1.12-3.el8.x86_64
 ----
-. 在Oracle Linux 8.5主機上、檢查 `hostnqn` 字串at `/etc/nvme/hostnqn` 並驗證是否符合 `hostnqn` 字串、代表ONTAP 位於整個過程中的各個子系統。
+. 在Oracle Linux 8.4主機上、檢查hostnqn字串、網址為 `/etc/nvme/hostnqn` 並驗證其是否與ONTAP 支援該子系統的hostnqn字串相符。
 +
 [listing]
 ----
 # cat /etc/nvme/hostnqn
-nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
-::> vserver nvme subsystem host show -vserver vs_ol_nvme
+nqn.2014-08.org.nvmexpress:uuid:8b43c7c6-e98d-4cc7-a699-d66a69aa714e
+::> vserver nvme subsystem host show -vserver vs_coexistance_2
 
-Vserver    Subsystem      Host NQN
----------------------------------------------
-vs_ol_nvme nvme_ss_ol_1   nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
+Vserver         Subsystem Host NQN
+------- --------------------------------------------------------------------
+vs_coexistance_2 nvme_1   nqn.2014-08.org.nvmexpress:uuid:753881b6-3163-46f9-8145-0d1653d99389
 ----
 +
 
-NOTE: 如果是 `hostnqn` 字串不相符、您應該使用 `vserver modify` 命令來更新 `hostnqn` 字串、以ONTAP 符合 `hostnqn` 字串來源 `/etc/nvme/hostnqn` 在主機上。
+NOTE: 如果hostnqn字串不相符、您應該使用 `vserver modify` 用於更新對應ONTAP 的BIOS陣列子系統上hostnqn字串的命令、以符合中的hostnqn字串 `/etc/nvme/hostnqn` 在主機上。
 
 . 重新啟動主機。
 +
 [NOTE]
 ====
-如果您打算在相同的Oracle Linux 8.5共存主機上同時執行NVMe和SCSI流量、NetApp建議您分別使用核心內建NVMe多重路徑ONTAP 來執行支援對象名稱空間和支援ONTAP 對象LUN的dm多重路徑。這也表示ONTAP 應在dm-multipaths中列入清單以防止dm-multipaths宣告這些命名空間裝置。您可以新增來完成此作業 `enable_foreign` 設定為 `/etc/multipath.conf` 檔案：
+如果您打算在相同的Oracle Linux 8.4共存主機上同時執行NVMe和SCSI流量、NetApp建議您分別使用核心內建NVMe多重路徑ONTAP 來執行支援對象名稱空間和支援ONTAP 對象LUN的dm多重路徑。這也表示ONTAP 應在dm-multipaths中列入清單以防止dm-multipaths宣告這些命名空間裝置。您可以新增來完成此作業 `enable_foreign` 設定為 `/etc/multipath.conf` 檔案：
 
 [listing]
 ----
@@ -98,7 +98,7 @@ defaults {
     enable_foreign  NONE
 }
 ----
-重新啟動 `multipathd` 透過執行來監控 `systemctl restart multipathd` 命令讓新設定生效。
+執行以重新啟動多路徑精靈 `systemctl restart multipathd` 命令讓新設定生效。
 
 ====
 
@@ -115,6 +115,10 @@ defaults {
 # cat /sys/class/scsi_host/host*/modelname
 LPe32002-M2
 LPe32002-M2
+----
++
+[listing]
+----
 # cat /sys/class/scsi_host/host*/modeldesc
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
@@ -126,7 +130,10 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/class/scsi_host/host*/fwrev
 14.0.505.11, sli-4:2:c
 14.0.505.11, sli-4:2:c
-
+----
++
+[listing]
+----
 # cat /sys/module/lpfc/version
 0:12.8.0.5
 ----
@@ -144,16 +151,18 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/class/fc_host/host*/port_name
 0x100000109b213a00
 0x100000109b2139ff
+
 # cat /sys/class/fc_host/host*/port_state
 Online
 Online
-# cat /sys/class/scsi_host/host*/nvme_info
 
+# cat /sys/class/scsi_host/host*/nvme_info
 NVME Initiator Enabled
 XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
 NVME LPORT lpfc1 WWPN x100000109b213a00 WWNN x200000109b213a00 DID x031700     ONLINE
 NVME RPORT WWPN x208cd039ea243510 WWNN x208bd039ea243510 DID x03180a TARGET DISCSRVC ONLINE
 NVME RPORT WWPN x2090d039ea243510 WWNN x208bd039ea243510 DID x03140a TARGET DISCSRVC ONLINE
+
 NVME Statistics
 LS: Xmt 000000000e Cmpl 000000000e Abort 00000000
 LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
@@ -206,15 +215,15 @@ options lpfc lpfc_sg_seg_cnt=256
 == 設定適用於NVMe / FC的Marvell / QLogic FC介面卡
 
 .步驟
-. 確認您執行的是支援的介面卡驅動程式和韌體版本。OL 8.5 GA核心隨附的原生內建qla2xxx驅動程式、提供ONTAP 最新的上游修正程式、可支援下列功能：
+. 確認您執行的是支援的介面卡驅動程式和韌體版本。OL 8.4 GA核心隨附的原生內建qla2xxx驅動程式、提供ONTAP 最新的上游修正程式、是支援此功能的重要關鍵。
 +
 [listing]
 ----
 # cat /sys/class/fc_host/host*/symbolic_name
-QLE2742 FW:v9.06.02 DVR:v10.02.00.106-k
-QLE2742 FW:v9.06.02 DVR:v10.02.00.106-k
+QLE2742 FW:v9.08.02 DVR:v10.02.00.103-k
+QLE2742 FW:v9.08.02 DVR:v10.02.00.103-k
 ----
-. 驗證 `ql2xnvmeenable` 設定可讓Marvell介面卡作為NVMe / FC啟動器運作。
+. 確認 `ql2xnvmeenable` 此參數可讓Marvell介面卡做為NVMe / FC啟動器運作。
 +
 [listing]
 ----
@@ -236,7 +245,7 @@ QLE2742 FW:v9.06.02 DVR:v10.02.00.106-k
 您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加的值來增加重試期間 `ctrl_loss_tmo` 定時器：
 
 .步驟
-. 驗證啟動器連接埠是否能夠在支援的NVMe / TCP生命期中擷取探索記錄頁面資料。
+. 驗證啟動器連接埠是否能夠擷取支援的NVMe / TCP LIF上的探索記錄頁面資料：
 +
 [listing]
 ----
@@ -272,7 +281,6 @@ trsvcid: 4420
 subnqn: nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:subsystem.nvme_118_tcp_2
 traddr: 192.168.2.56
 sectype: none
-
 ...
 ----
 . 同樣地、請確認其他的NVMe/TCP啟動器目標LIF組合能夠成功擷取探索記錄頁面資料。範例：
@@ -280,13 +288,12 @@ sectype: none
 [listing]
 ----
 # nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.51
-# nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.52
+#nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.52
 # nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.56
 # nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.57
 ----
-. 現在執行 `nvme connect-all` 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請務必提供更長的時間 `ctrl_loss_tmo` 定時器期間（例如30分鐘、可設定為新增 `-l 1800`） `connect-all` 如此一來、當路徑遺失時、它會重試更長的時間。範例：
-
-
+. 現在執行 `nvme connect-all` 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請務必提供更長的時間 `ctrl_loss_tmo` 定時器期間（30分鐘以上、可設定為新增 `-l 1800`） `connect-all` 如此一來、當路徑遺失時、它會重試更長的時間。範例：
++
 [listing]
 ----
 # nvme connect-all -t tcp -w 192.168.1.8 -a 192.168.1.51 -l 1800
@@ -296,10 +303,12 @@ sectype: none
 ----
 
 
+
+
 == 驗證NVMe/FC
 
 .步驟
-. 驗證Oracle Linux 8.5主機上的下列NVMe/FC設定。
+. 驗證Oracle Linux 8.4主機上的下列NVMe/FC設定：
 +
 [listing]
 ----
@@ -320,22 +329,22 @@ NetApp ONTAP Controller
 round-robin
 round-robin
 ----
-. 確認已在主機上建立並正確探索命名空間。
+. 確認已在主機上建立命名空間並正確探索：
 +
 [listing]
 ----
 # nvme list
-Node         SN                    Model
----------------------------------------------------------------
-/dev/nvme0n1 814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller
-/dev/nvme0n2 814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller
-/dev/nvme0n3 814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller
+Node                  SN              Model                                   Namespace
+-----------------------------------------------------------------------------------------
+/dev/nvme0n1     814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller                1
+/dev/nvme0n2     814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller                2
+/dev/nvme0n3     814vWBNRwf9HAAAAAAAB  NetApp ONTAP Controller                3
 
-Namespace Usage  Format                  FW            Rev
---------------------------------------------------------------
-1                85.90 GB / 85.90 GB     4 KiB + 0 B   FFFFFFFF
-2                85.90 GB / 85.90 GB     4 KiB + 0 B   FFFFFFFF
-3                85.90 GB / 85.90 GB     4 KiB + 0 B   FFFFFFFF
+Usage      Format         FW Rev
+------------------------------------------------------
+85.90 GB / 85.90 GB     4 KiB + 0 B   FFFFFFFF
+85.90 GB / 85.90 GB     4 KiB + 0 B   FFFFFFFF
+85.90 GB / 85.90 GB     4 KiB + 0 B   FFFFFFFF
 ----
 . 確認每個路徑的控制器狀態均為有效、且具有正確的ANA狀態。
 +
@@ -349,23 +358,27 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:su
 +- nvme2 fc traddr=nn-0x203700a098dfdd91:pn-0x203a00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
 +- nvme3 fc traddr=nn-0x203700a098dfdd91:pn-0x203d00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
 ----
-. 驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間裝置的正確值。
+. 驗證NetApp外掛程式是否為每ONTAP 個不支援的名稱空間裝置顯示正確的值。
 +
 [listing]
 ----
+
 # nvme netapp ontapdevices -o column
-Device       Vserver  Namespace Path
------------------------------------
-/dev/nvme0n1  vs_ol_nvme  /vol/ol_nvme_vol_1_1_0/ol_nvme_ns
-/dev/nvme0n2  vs_ol_nvme  /vol/ol_nvme_vol_1_0_0/ol_nvme_ns
-/dev/nvme0n3  vs_ol_nvme  /vol/ol_nvme_vol_1_1_1/ol_nvme_ns
+Device                 Vserver          Namespace Path
+----------------------- ------------------------------ ----------------------------------------------------------------------- --------- --
+/dev/nvme0n1      vs_ol_nvme            /vol/ol_nvme_vol_1_1_0/ol_nvme_ns
+/dev/nvme0n2      vs_ol_nvme            /vol/ol_nvme_vol_1_0_0/ol_nvme_ns
+/dev/nvme0n3      vs_ol_nvme            /vol/ol_nvme_vol_1_1_1/ol_nvme_ns
 
-NSID    UUID                                   Size
------------------------------------------------------
-1       72b887b1-5fb6-47b8-be0b-33326e2542e2   85.90GB
-2       04bf9f6e-9031-40ea-99c7-a1a61b2d7d08   85.90GB
-3       264823b1-8e03-4155-80dd-e904237014a4   85.90GB
-
+NSID        UUID                                  Size
+--------------------------------------------------------------
+1          72b887b1-5fb6-47b8-be0b-33326e2542e2   85.90GB
+2          04bf9f6e-9031-40ea-99c7-a1a61b2d7d08   85.90GB
+3          264823b1-8e03-4155-80dd-e904237014a4   85.90GB
+----
++
+[listing]
+----
 # nvme netapp ontapdevices -o json
 {
 "ONTAPdevices" : [
@@ -408,18 +421,18 @@ NSID    UUID                                   Size
 
 == 已知問題
 
-[cols=""20"]
+[cols="10,30,30,10"]
 |===
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
-| 1517321 | Oracle Linux 8.5 NVMe主機會建立重複的持續探索控制器 | 在Oracle Linux 8.5 NVMe over Fabrics（NVMe）主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您是以ONTAP NVMe型主機執行EFlash 9.10.1和Oracle Linux 8.5、則每次都會建立一個重複的資料中心 `nvme discover -p` 已執行。這會導致主機和目標上的資源使用不必要。 | 18118. 
+| 1517321 | Oracle Linux 8.4 NVMe主機會建立重複的持續探索控制器 | 在Oracle Linux 8.4 NVMe over Fabrics（NVMe / of）主機上、您可以使用「NVMe探索-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是採用NVMe的主機執行的支援功能、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。 | 2087000 
 |===
 
 
 == 疑難排解
 
-針對任何NVMe / FC故障進行疑難排解之前、請先確定您執行的組態符合IMT 《支援技術規格》的要求、然後繼續執行後續步驟以修正任何主機端問題。
+在開始任何NVMe / FC故障的疑難排解之前、請先確定您執行的組態符合IMT 「支援」規格、然後繼續執行後續步驟來偵錯任何主機端問題。
 
 
 

@@ -62,7 +62,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 # uname -r
 5.4.17-2136.307.3.1.el8uek.x86_64
 ----
-. 安裝「NVMe - CLI」套件。
+. 安裝「NVMe-CLI（NVMe - CLI）套件：
 +
 [listing]
 ----
@@ -82,7 +82,7 @@ vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-9
 ----
 +
 
-NOTE: 如果hostnqn字串不相符、您應該使用 `vserver modify` 用於更新對應ONTAP 的BIOS陣列子系統上hostnqn字串的命令、以符合中的hostnqn字串 `/etc/nvme/hostnqn` 在主機上。
+NOTE: 如果是 `hostnqn` 字串不相符、您應該使用 `vserver modify` 命令來更新 `hostnqn` 字串、以ONTAP 符合 `hostnqn` 字串來源 `/etc/nvme/hostnqn` 在主機上：
 
 . 重新啟動主機。
 +
@@ -107,7 +107,7 @@ defaults {
 == 設定適用於NVMe / FC的Broadcom FC介面卡
 
 .步驟
-. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 。
+. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]：
 +
 [listing]
 ----
@@ -118,7 +118,7 @@ LPe32002-M2
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. 驗證您使用的是建議的Broadcom `lpfc` 韌體與內建驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 。
+. 驗證您使用的是建議的Broadcom `lpfc` 韌體與內建驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]：
 +
 [listing]
 ----
@@ -129,14 +129,14 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/module/lpfc/version
 0:12.8.0.11
 ----
-. 確認「lffc_enable _FC4_type'」設定為「3」。
+. 請確認 `lpfc_enable_fc4_type` 設為 `3`：
 +
 [listing]
 ----
 # cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
 3
 ----
-. 驗證啟動器連接埠是否已啟動並正在執行、以及您是否可以看到目標LIF。
+. 確認啟動器連接埠已啟動並正在執行、而且您可以看到目標LIF：
 +
 [listing]
 ----
@@ -201,7 +201,7 @@ options lpfc lpfc_sg_seg_cnt=256
 == 設定適用於NVMe / FC的Marvell / QLogic FC介面卡
 
 .步驟
-. 確認您執行的是支援的介面卡驅動程式和韌體版本。OL 8.6GA核心隨附的原生內建qla2xxx驅動程式、提供ONTAP 最新的上游修正程式、是支援此功能的重要關鍵。
+. 確認您執行的是支援的介面卡驅動程式和韌體版本。OL 8.6GA核心隨附的原生內建qla2xxx驅動程式、提供ONTAP 最新的上游修正程式、可支援下列功能：
 +
 [listing]
 ----
@@ -231,7 +231,7 @@ QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
 您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加的值來增加重試期間 `ctrl_loss_tmo` 定時器：
 
 .步驟
-. 驗證啟動器連接埠是否能夠在支援的NVMe / TCP生命期中擷取探索記錄頁面資料。
+. 確認啟動器連接埠可在支援的NVMe/TCP LIF中擷取探索記錄頁面資料：
 +
 [listing]
 ----
@@ -294,7 +294,7 @@ sectype: none
 == 驗證NVMe/FC
 
 .步驟
-. 在Oracle Linux 8．6主機上驗證下列NVMe / FC設定。
+. 驗證Oracle Linux 8．6主機上的下列NVMe/FC設定：
 +
 [listing]
 ----
@@ -307,7 +307,7 @@ NetApp ONTAP Controller
 round-robin
 round-robin
 ----
-. 確認已在主機上建立命名空間並正確探索。
+. 確認已在主機上建立並正確探索命名空間：
 +
 [listing]
 ----
@@ -325,7 +325,7 @@ Namespace Usage    Format             FW             Rev
 2                 85.90 GB / 85.90 GB  24 KiB + 0 B  FFFFFFFF
 3                 85.90 GB / 85.90 GB  4 KiB + 0 B   FFFFFFFF
 ----
-. 確認每個路徑的控制器狀態均為有效、且具有正確的ANA狀態。
+. 確認每個路徑的控制器狀態均為有效、且具有正確的ANA狀態：
 +
 [listing]
 ----
@@ -337,7 +337,7 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:su
 +- nvme2 fc traddr=nn-0x203700a098dfdd91:pn-0x203a00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
 +- nvme3 fc traddr=nn-0x203700a098dfdd91:pn-0x203d00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
 ----
-. 驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間裝置的正確值。
+. 驗證NetApp外掛程式是否顯示每ONTAP 個版本名稱空間裝置的正確值：
 +
 [listing]
 ----

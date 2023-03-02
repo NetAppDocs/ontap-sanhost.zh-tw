@@ -1,0 +1,525 @@
+---
+sidebar: sidebar 
+permalink: nvme_ol_83.html 
+keywords: nvme, linux, oracle, 8.3 
+summary: 以VMware為例、針對Oracle Linux 8.3設定VME/FC主機組態ONTAP 
+---
+= 適用於Oracle Linux 8.3的NVMe / FC主機組態（ONTAP 含功能性）
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== 支援能力
+
+NVMe over Fabrics或NVMe（包括NVMe / FC）可搭配Oracle Linux 8.3（非對稱命名空間存取（ANA））支援ONTAP 、以在整個過程中在整個過程中維持儲存容錯移轉（SFO）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。本文件詳細說明如何使用ANA on OL 8.3和ONTAP 以支援NVMe為目標的內核NVMe多重路徑來啟用NVMe。
+
+
+NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+
+
+
+== 功能
+
+* Oracle Linux 8.3預設為NVMe命名空間啟用內核NVMe多重路徑。
+* 使用Oracle Linux 8.3、 `nvme-fc auto-connect` 指令碼包含在原生的NVMe-CLI套件中。您可以仰賴這些原生的自動連線指令碼、而非安裝外部廠商提供的外接式自動連線指令碼。
+* Oracle Linux 8.3（原生） `udev` 規則是在中提供的一部分 `nvme-cli` 套件、可針對NVMe多重路徑啟用循環資源負載平衡。因此、您不再需要手動建立此規則。
+* 有了Oracle Linux 8.3、NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是通常部署的主機組態。因此、對於SCSI、您可以像往常一樣為SCSI LUN設定dm-multipaths、以產生mpath裝置、而NVMe多重路徑則可用於設定NVMe型多重路徑裝置（例如、 `/dev/nvmeXnY`）。
+* 使用Oracle Linux 8.3、原生的NetApp外掛程式 `nvme-cli` 套件能夠顯示ONTAP 各種細節及ONTAP 功能不完整的命名空間。
+
+
+
+
+== 已知限制
+
+無。
+
+
+
+== 組態需求
+
+請參閱 http://mysupport.netapp.com/matrix3["NetApp互通性對照表工具IMT （不含）"^] 以取得目前支援的組態清單。
+
+
+
+== 使用Oracle Linux 8.3啟用NVMe / FC
+
+.步驟
+. 在伺服器上安裝Oracle Linux 8.3 GA。安裝完成後、請確認您執行的是指定的Oracle Linux 8.3 GA核心。請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援版本清單。
++
+[listing]
+----
+# uname -r
+5.4.17-2011.7.4.el8uek.x86_64
+----
+. 安裝「NVMe - CLI」套件。
++
+[listing]
+----
+# rpm -qa|grep nvme-cli
+
+nvme-cli-1.12-2.el8.x86_64_
+----
+. 在Oracle Linux 8.3主機上、檢查hostnqn字串、網址為 `/etc/nvme/hostnqn` 並驗證是否符合 `hostnqn` 字串、代表ONTAP 位於整個過程中的各個子系統。
++
+[listing]
+----
+#cat /etc/nvme/hostnqn
+nqn.2014-08.org.nvmexpress:uuid:446c21ab-f4c1-47ed-9a8f-1def96f3fed2
+
+::> vserver nvme subsystem host show -vserver vs_coexistance_2
+Vserver   Subsystem      Host NQN
+------- --------- ----------------------------------------------------------
+vs_coexistance_2 nvme_1 nqn.2014-08.org.nvmexpress:uuid:446c21ab-f4c1-47ed-9a8f-1def96f3fed2
+----
++
+
+NOTE: 如果hostnqn字串不相符、您應該使用 `vserver modify` 用於更新對應ONTAP 的BIOS陣列子系統上hostnqn字串的命令、以符合中的hostnqn字串 `/etc/nvme/hostnqn` 在主機上。
+
+. 重新啟動主機。
++
+[NOTE]
+====
+如果您打算在相同的Oracle Linux 8.3共存主機上同時執行NVMe和SCSI流量、NetApp建議您使用核心內建NVMe多重路徑ONTAP 來執行不含任何名稱空間的命名空間和 `dm-multipath` 分別用於ONTAP 支援的LUN。這也表示ONTAP 應在中列入不符合需求的命名空間 `dm-multipath` 預防 `dm-multipath` 並宣告這些命名空間裝置。您可以將_enable外部_設定新增至來完成此作業 `/etc/multipath.conf` 檔案：
+
+[listing]
+----
+#cat /etc/multipath.conf
+defaults {
+   enable_foreign  NONE
+}
+----
+執行_systemctl restart多路徑d_命令、讓新設定生效、以重新啟動多路徑d精靈。
+
+====
+
+
+
+
+== 設定適用於NVMe / FC的Broadcom FC介面卡
+
+.步驟
+. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
++
+[listing]
+----
+#cat /sys/class/scsi_host/host*/modelname
+LPe36002-M2
+LPe36002-M2
+----
++
+[listing]
+----
+#cat /sys/class/scsi_host/host*/modeldesc
+Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
+Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
+----
+. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
++
+[listing]
+----
+#cat /sys/class/scsi_host/host*/fwrev
+12.8.351.49, sli-4:6:d
+12.8.351.49, sli-4:6:d
+----
++
+[listing]
+----
+#cat /sys/module/lpfc/version
+0:12.6.0.3
+----
+. 確認 `lpfc_enable_fc4_type` 參數設為3。
++
+[listing]
+----
+#cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+3
+----
+. 驗證啟動器連接埠是否已啟動並正在執行、以及您是否可以看到目標LIF。
++
+[listing]
+----
+#cat /sys/class/fc_host/host*/port_name
+0x100000109bf0447b
+0x100000109bf0447c
+----
++
+[listing]
+----
+#cat /sys/class/fc_host/host*/port_state
+Online
+Online
+----
++
+[listing]
+----
+#cat /sys/class/scsi_host/host*/nvme_info
+
+NVME Initiator Enabled
+XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc0 WWPN x100000109bf0447b WWNN x200000109bf0447b DID x022400 ONLINE
+NVME RPORT WWPN x20e1d039ea243510 WWNN x20e0d039ea243510 DID x0a0314 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x20e4d039ea243510 WWNN x20e0d039ea243510 DID x0a0713 TARGET DISCSRVC ONLINE
+
+NVME Statistics
+LS: Xmt 00000003b6 Cmpl 00000003b6 Abort 00000000
+LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 00000000be1425e8 Issue 00000000be1425f2 OutIO 000000000000000a
+abort 00000251 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000c5b Err 0000d176
+
+NVME Initiator Enabled
+XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc1 WWPN x100000109bf0447c WWNN x200000109bf0447c DID x021600 ONLINE
+NVME RPORT WWPN x20e2d039ea243510 WWNN x20e0d039ea243510 DID x0a0213 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x20e3d039ea243510 WWNN x20e0d039ea243510 DID x0a0614 TARGET DISCSRVC ONLINE
+
+NVME Statistics
+LS: Xmt 0000000419 Cmpl 0000000419 Abort 00000000
+LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 00000000be37ff65 Issue 00000000be37ff84 OutIO 000000000000001f
+abort 0000025a noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000c89 Err 0000cd87
+----
+
+
+
+
+=== 啟用1MB I/O大小
+
+。 `lpfc_sg_seg_cnt` 參數必須設為256、主機才能發出1MB大小I/O
+
+.步驟
+. 將「lfc_sg_seg_cnt"參數設為256。
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. 執行「dracut -f」命令、然後重新啟動主機。
+. 驗證「lfc_sg_seg_cnt"是否為256。
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+
+== 設定適用於NVMe / FC的Marvell / QLogic FC介面卡
+
+.步驟
+. 確認您執行的是支援的介面卡驅動程式和韌體版本。OL 8.3 GA核心隨附的原生內建qla2xxx驅動程式、提供ONTAP 最新的上游修正程式、是支援此功能的重要關鍵。
++
+[listing]
+----
+#cat /sys/class/fc_host/host*/symbolic_name
+QLE2742 FW:v9.10.11 DVR:v10.01.00.25-k
+QLE2742 FW:v9.10.11 DVR:v10.01.00.25-k
+----
+. 確認 `ql2xnvmeenable` 此參數可讓Marvell介面卡做為NVMe / FC啟動器運作。
++
+[listing]
+----
+#cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
+1
+----
+
+
+
+
+== 驗證NVMe/FC
+
+.步驟
+. 驗證Oracle Linux 8.3主機上的下列NVMe/FC設定。
++
+[listing]
+----
+#cat /sys/module/nvme_core/parameters/multipath
+Y
+
+#cat /sys/class/nvme-subsystem/nvme-subsys*/model
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+
+#cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+round-robin
+round-robin
+----
+. 確認已在主機上建立命名空間並正確探索。
++
+[listing]
+----
+# nvme list
+Node         SN                   Model                  Namespace Usage              Format FW Rev
+---------------- -------------------- ---------------------------------------- --------- ------------------
+/dev/nvme0n1 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 1        37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n10 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 10      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n11 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 11      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n12 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 12      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n13 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 13      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n14 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 14      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n15 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 15      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n16 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 16      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n17 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 17      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n18 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 18      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n19 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 19      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n2 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 2        37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n20 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 20      37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n3 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 3        37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n4 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 4        37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n5 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 5        37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n6 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 6        37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n7 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 7        37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n8 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 8        37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+/dev/nvme0n9 81Ec-JRMlkL9AAAAAAAB NetApp ONTAP Controller 9        37.58 GB / 37.58 GB 4 KiB + 0 B FFFFFFFF
+
+----
+. 確認每個路徑的控制器狀態均為有效、且具有正確的ANA狀態。
++
+[listing]
+----
+# nvme list-subsys /dev/nvme0n1
+nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.b79f5c6e4d0911edb3a0d039ea243511:subsystem.nvme_1
+\ +
++- nvme214 fc traddr=nn-0x20e0d039ea243510:pn-0x20e4d039ea243510 host_traddr=nn-0x200000109bf0447b:pn-0x100000109bf0447b live non-optimized
++- nvme219 fc traddr=nn-0x20e0d039ea243510:pn-0x20e2d039ea243510 host_traddr=nn-0x200000109bf0447c:pn-0x100000109bf0447c live optimized
++- nvme223 fc traddr=nn-0x20e0d039ea243510:pn-0x20e1d039ea243510 host_traddr=nn-0x200000109bf0447b:pn-0x100000109bf0447b live optimized
++- nvme228 fc traddr=nn-0x20e0d039ea243510:pn-0x20e3d039ea243510 host_traddr=nn-0x200000109bf0447c:pn-0x100000109bf0447c live non-optimized
+----
+. 驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間裝置的正確值。
++
+[listing]
+----
+#nvme netapp ontapdevices -o column
+Device      Vserver         Namespace Path             NSID UUID                               Size
+---------------- ------------------------- -------------------------------------------------- ---- ---------
+/dev/nvme0n1 LPE36002_ASA_BL /vol/fcnvme_1_0_0/fcnvme_ns 1 ae10e16d-1fa4-49c2-8594-02bf6f3b1af1 37.58GB
+/dev/nvme0n10 LPE36002_ASA_BL /vol/fcnvme_1_0_9/fcnvme_ns 10 2cf00782-e2bf-40fe-8495-63e4501727cd 37.58GB
+/dev/nvme0n11 LPE36002_ASA_BL /vol/fcnvme_1_1_9/fcnvme_ns 11 fbefbe6c-90fe-46a2-8a51-47bad9e2eb95 37.58GB
+/dev/nvme0n12 LPE36002_ASA_BL /vol/fcnvme_1_1_0/fcnvme_ns 12 0e9cc8fa-d821-4f1c-8944-3003dcded864 37.58GB
+/dev/nvme0n13 LPE36002_ASA_BL /vol/fcnvme_1_1_1/fcnvme_ns 13 31f03b13-aaf9-4a3f-826b-d126ef007991 37.58GB
+/dev/nvme0n14 LPE36002_ASA_BL /vol/fcnvme_1_1_8/fcnvme_ns 14 bcf4627c-5bf9-4a51-a920-5da174ec9876 37.58GB
+/dev/nvme0n15 LPE36002_ASA_BL /vol/fcnvme_1_1_7/fcnvme_ns 15 239fd09d-11db-46a3-8e94-b5ebe6eb2421 37.58GB
+/dev/nvme0n16 LPE36002_ASA_BL /vol/fcnvme_1_1_2/fcnvme_ns 16 1d8004df-f2e8-48c8-8ccb-ce45f18a15ae 37.58GB
+/dev/nvme0n17 LPE36002_ASA_BL /vol/fcnvme_1_1_3/fcnvme_ns 17 4f7afbcf-3ace-4e6c-9245-cbf5bd155ef4 37.58GB
+/dev/nvme0n18 LPE36002_ASA_BL /vol/fcnvme_1_1_4/fcnvme_ns 18 b022c944-6ebf-4986-a28c-8d9e8ec130c9 37.58GB
+/dev/nvme0n19 LPE36002_ASA_BL /vol/fcnvme_1_1_5/fcnvme_ns 19 c457d0c7-bfea-43aa-97ef-c749d8612a72 37.58GB
+/dev/nvme0n2 LPE36002_ASA_BL /vol/fcnvme_1_0_1/fcnvme_ns 2 d2413d8b-e82e-4412-89d3-c9a751ed7716 37.58GB
+/dev/nvme0n20 LPE36002_ASA_BL /vol/fcnvme_1_1_6/fcnvme_ns 20 650e0d93-967d-4415-874a-36bf9c93c952 37.58GB
+/dev/nvme0n3 LPE36002_ASA_BL /vol/fcnvme_1_0_2/fcnvme_ns 3 09d89d9a-7835-423f-93e7-f6f3ece1dcbc 37.58GB
+/dev/nvme0n4 LPE36002_ASA_BL /vol/fcnvme_1_0_3/fcnvme_ns 4 d8e99326-a67c-469f-b3e9-e0e4a38c8a76 37.58GB
+/dev/nvme0n5 LPE36002_ASA_BL /vol/fcnvme_1_0_4/fcnvme_ns 5 c91c71f9-3e04-4844-b376-30acab6311f1 37.58GB
+/dev/nvme0n6 LPE36002_ASA_BL /vol/fcnvme_1_0_5/fcnvme_ns 6 4e8b4345-e5b1-4aa4-ae1a-adf0de2879ea 37.58GB
+/dev/nvme0n7 LPE36002_ASA_BL /vol/fcnvme_1_0_6/fcnvme_ns 7 ef715a16-a946-4bb8-8735-74f214785874 37.58GB
+/dev/nvme0n8 LPE36002_ASA_BL /vol/fcnvme_1_0_7/fcnvme_ns 8 4b038502-966c-49fd-9631-a17f23478ae0 37.58GB
+/dev/nvme0n9 LPE36002_ASA_BL /vol/fcnvme_1_0_8/fcnvme_ns 9 f565724c-992f-41f6-83b5-da1fe741c09b 37.58GB
+----
++
+[listing]
+----
+#nvme netapp ontapdevices -o json
+{
+"ONTAPdevices" : [
+{
+"Device" : "/dev/nvme0n1",
+"Vserver" : "LPE36002_ASA_BL",
+"Namespace_Path" : "/vol/fcnvme_1_0_0/fcnvme_ns",
+"NSID" : 1,
+"UUID" : "ae10e16d-1fa4-49c2-8594-02bf6f3b1af1",
+"Size" : "37.58GB",
+"LBA_Data_Size" : 4096,
+"Namespace_Size" : 9175040
+},
+{
+"Device" : "/dev/nvme0n10",
+"Vserver" : "LPE36002_ASA_BL",
+"Namespace_Path" : "/vol/fcnvme_1_0_9/fcnvme_ns",
+"NSID" : 10,
+"UUID" : "2cf00782-e2bf-40fe-8495-63e4501727cd",
+"Size" : "37.58GB",
+"LBA_Data_Size" : 4096,
+"Namespace_Size" : 9175040
+},
+{
+"Device" : "/dev/nvme0n11",
+"Vserver" : "LPE36002_ASA_BL",
+"Namespace_Path" : "/vol/fcnvme_1_1_9/fcnvme_ns",
+"NSID" : 11,
+"UUID" : "fbefbe6c-90fe-46a2-8a51-47bad9e2eb95",
+"Size" : "37.58GB",
+"LBA_Data_Size" : 4096,
+"Namespace_Size" : 9175040
+},
+{
+"Device" : "/dev/nvme0n12",
+"Vserver" : "LPE36002_ASA_BL",
+"Namespace_Path" : "/vol/fcnvme_1_1_0/fcnvme_ns",
+"NSID" : 12,
+"UUID" : "0e9cc8fa-d821-4f1c-8944-3003dcded864",
+"Size" : "37.58GB",
+"LBA_Data_Size" : 4096,
+"Namespace_Size" : 9175040
+},
+{
+"Device" : "/dev/nvme0n13",
+"Vserver" : "LPE36002_ASA_BL",
+"Namespace_Path" : "/vol/fcnvme_1_1_1/fcnvme_ns",
+"NSID" : 13,
+"UUID" : "31f03b13-aaf9-4a3f-826b-d126ef007991",
+"Size" : "37.58GB",
+"LBA_Data_Size" : 4096,
+"Namespace_Size" : 9175040
+},
+
+----
+
+
+
+
+== 已知問題
+
+[cols="20, 20, 50, 20"]
+|===
+| NetApp錯誤ID | 標題 | 說明 | Oracle Bugzilla 
+
+
+| 1517321 | Oracle Linux 8.3 NVMe主機會建立重複的持續探索控制器 | 在Oracle Linux 8.3 NVMe over Fabrics（NVMe）主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您是以ONTAP NVMe型主機執行EFlash 9.10.1和Oracle Linux 8.3、則每次都會建立一個重複的資料中心 `nvme discover -p` 已執行。這會導致主機和目標上的資源使用不必要。 | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118."^] 
+|===
+
+
+== 疑難排解
+
+在開始任何NVMe / FC故障的疑難排解之前、請確定您執行的組態符合互通性對照表工具IMT （簡稱「互通性對照表工具」）規格、然後繼續執行後續步驟來偵錯任何主機端問題。
+
+
+
+=== lffc詳細記錄
+
+.步驟
+. 設定 `lpfc_log_verbose` 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。
++
+[listing]
+----
+#define LOG_NVME 0x00100000 /* NVME general events. */
+#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
+#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
+#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
+----
+. 設定值之後、請執行 `dracut-f` 命令並重新啟動主機。
+. 驗證設定。
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_log_verbose=0xf00083
+
+# cat /sys/module/lpfc/parameters/lpfc_log_verbose
+15728771
+----
+
+
+
+
+=== qla2xxx詳細記錄
+
+NVMe / FC沒有類似的特定qla2xxx記錄功能 `lpfc` 驅動程式：因此、您可以使用下列步驟設定一般的qla2xxx記錄層級：
+
+.步驟
+. 將「ql2xextend_error_logging=x1e400000」值附加至對應的「modf探測qla2xxx conf」檔案。
+. 執行「dracut -f」命令重新建立「initramfs」、然後重新啟動主機。
+. 重新開機後、請確認已套用詳細記錄、如下所示：
++
+[listing]
+----
+# cat /etc/modprobe.d/qla2xxx.conf
+options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
+# cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
+507510784
+----
+
+
+
+
+=== 常見的NVMe-CLI錯誤和因應措施
+
+顯示的錯誤 `nvme-cli` 期間 `nvme discover`、 `nvme connect`或 `nvme connect-all` 作業與因應措施如下表所示：
+
+[cols="20, 20, 50"]
+|===
+| 「NVMe - CLI」顯示錯誤 | 可能原因 | 因應措施 
+
+
+| 「寫入/dev/NVMe架構失敗：無效的引數」 | 語法不正確 | 請確認您使用的語法正確 `nvme discover`、 `nvme connect`和 `nvme connect-all` 命令。 
+
+
+| 「寫入/dev/NVMe架構失敗：沒有這類檔案或目錄」 | 例如、多個問題可能會觸發這種情況、例如為NVMe命令提供錯誤的引數是常見原因之一。  a| 
+* 確認您已將正確的引數（例如、正確的WWNN字串、WWPN字串等）傳遞給命令。
+* 如果引數正確、但您仍看到此錯誤、請檢查是否有 `/sys/class/scsi_host/host*/nvme_info` 命令輸出正確、NVMe啟動器顯示為 `Enabled`和NVMe / FC目標LIF會正確顯示在遠端連接埠區段下方。範例：
++
+[listing]
+----
+
+# cat /sys/class/scsi_host/host*/nvme_info
+NVME Initiator Enabled
+NVME LPORT lpfc0 WWPN x10000090fae0ec9d WWNN x20000090fae0ec9d DID x012000 ONLINE
+NVME RPORT WWPN x200b00a098c80f09 WWNN x200a00a098c80f09 DID x010601 TARGET DISCSRVC ONLINE
+NVME Statistics
+LS: Xmt 0000000000000006 Cmpl 0000000000000006
+FCP: Rd 0000000000000071 Wr 0000000000000005 IO 0000000000000031
+Cmpl 00000000000000a6 Outstanding 0000000000000001
+NVME Initiator Enabled
+NVME LPORT lpfc1 WWPN x10000090fae0ec9e WWNN x20000090fae0ec9e DID x012400 ONLINE
+NVME RPORT WWPN x200900a098c80f09 WWNN x200800a098c80f09 DID x010301 TARGET DISCSRVC ONLINE
+NVME Statistics
+LS: Xmt 0000000000000006 Cmpl 0000000000000006
+FCP: Rd 0000000000000073 Wr 0000000000000005 IO 0000000000000031
+Cmpl 00000000000000a8 Outstanding 0000000000000001
+----
+* 如果目標生命量未如上述所示顯示於 `nvme_info` 命令輸出、請檢查 `/var/log/messages` 和 `dmesg` 針對任何可疑的NVMe/FC故障、提供命令輸出、並據此報告或修正。
+
+
+
+
+| 「沒有要擷取的探索記錄項目」  a| 
+一般在下列情況下觀察 `/etc/nvme/hostnqn` 字串尚未新增至NetApp陣列上的對應子系統、或是不正確 `hostnqn` 字串已新增至各自的子系統。
+ a| 
+確認正確無誤 `/etc/nvme/hostnqn` 字串會新增至NetApp陣列上的對應子系統（請使用 `vserver nvme subsystem host show` 命令）。
+
+
+
+| 「寫入/dev/NVMe架構失敗：作業已在進行中」  a| 
+觀察控制器關聯或指定作業已建立或正在建立的過程。這可能是上述安裝之自動連線指令碼的一部分。
+ a| 
+無。請嘗試執行 `nvme discover` 一段時間後再次命令。適用於 `nvme connect` 和 `connect-all`、執行 `nvme list` 命令來驗證命名空間裝置是否已建立並顯示在主機上。
+
+|===
+
+
+=== 何時聯絡技術支援
+
+如果您仍遇到問題、請收集下列檔案和命令輸出、並聯絡技術支援部門以進一步分類：
+
+[listing]
+----
+cat /sys/class/scsi_host/host*/nvme_info
+/var/log/messages
+dmesg
+nvme discover output as in:
+nvme discover --transport=fc --traddr=nn-0x200a00a098c80f09:pn-0x200b00a098c80f09 --host-traddr=nn-0x20000090fae0ec9d:pn-0x10000090fae0ec9d
+nvme list
+nvme list-subsys /dev/nvmeXnY
+----
