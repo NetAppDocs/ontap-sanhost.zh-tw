@@ -385,6 +385,8 @@ sidebar:
         url: "/hu_windows_2016.html"
       - title: 2012 R2
         url: "/hu_windows_2012r2.html"
+  - title: 法律聲明
+    url: "/legal_notice.html"
 product-family:
   name: ONTAP
   repo: ontap-family
