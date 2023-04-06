@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_ol_86.html 
+permalink: nvme_ol_90.html 
 keywords:  
 summary:  
 ---
-= 適用於Oracle Linux 8.6的NVMe / FC主機組態、ONTAP 含功能
+= 適用於 ONTAP 的 Oracle Linux 9.0 的 NVMe / FC 主機組態
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -18,103 +18,132 @@ summary:
 :toc-position: content
 
 
+[role="lead"]
+含非對稱命名空間存取（ ANA ）的 Oracle Linux 9.0 支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe / FC 和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。
 
-
-== 支援能力
-
-NVMe over Fabrics或NVMe（包括NVMe / FC和NVMe / TCP）可搭配Oracle Linux 8．6搭配非對稱命名空間存取（ANA）支援、ONTAP 而非對稱陣列上的儲存容錯移轉（SFO）則需要此功能。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。本文件詳細說明如何在Oracle Linux 8.6和ONTAP 以之為目標的Oracle Linux上使用ANA啟用NVMe與內核NVMe多重路徑。
-
-
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
 
 
 
 == 功能
 
-* Oracle Linux 8．6預設會啟用NVMe名稱的內核NVMe多重路徑。
-* 使用Oracle Linux 8.6、 `nvme-fc auto-connect` 指令碼包含在原生中 `nvme-cli` 套件：您可以仰賴這些原生的自動連線指令碼、而非安裝外部廠商提供的外接式自動連線指令碼。
-* Oracle Linux 8．6是原生的 `udev` 規則是在中提供的一部分 `nvme-cli` 套件、可針對NVMe多重路徑啟用循環資源負載平衡。因此、您不再需要手動建立此規則。
-* 有了Oracle Linux 8．6、NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是通常部署的主機組態。因此、您可以像往常一樣為SCSI LUN設定dm-multipaths、以產生mpath裝置、而NVMe多重路徑則可用來設定NVMe多重路徑裝置（例如、 `/dev/nvmeXnY`）。
-* 使用Oracle Linux 8．6、原生的NetApp外掛程式 `nvme-cli` 套件能夠顯示ONTAP 各種細節及ONTAP 功能不完整的命名空間。
+* Oracle Linux 9.0 預設已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。
 
 
 
 
 == 已知限制
 
-無。
+沒有已知的限制。
 
 
 
-== 組態需求
+== 驗證軟體版本
 
-請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 如需支援組態的詳細資訊、請參閱。
-
-
-
-== 使用Oracle Linux 8.6.啟用NVMe/FC
+您可以使用下列程序驗證支援的最低 OL 9.0 軟體版本。
 
 .步驟
-. 在伺服器上安裝Oracle Linux 8.6GA。安裝完成後、請確認您執行的是指定的Oracle Linux 8.6 GA核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
+. 在伺服器上安裝 Oracle Linux 9.0 GA 。安裝完成後、請確認您正在執行指定的 Oracle Linux 9.0 GA 核心。
 +
 [listing]
 ----
 # uname -r
-5.4.17-2136.307.3.1.el8uek.x86_64
+----
++
+* 輸出範例： *
+
++
+[listing]
+----
+5.15.0-0.30.19.el9uek.x86_64
 ----
 . 安裝「NVMe-CLI（NVMe - CLI）套件：
 +
 [listing]
 ----
 # rpm -qa|grep nvme-cli
-nvme-cli-1.14-3.el8.x86_64
 ----
-. 在Oracle Linux 8．6主機上、檢查 `hostnqn` 字串at `/etc/nvme/hostnqn` 並驗證其是否與ONTAP 支援該子系統的hostnqn字串相符。
++
+* 輸出範例： *
+
++
+[listing]
+----
+nvme-cli-1.16-3.el9.x86_64
+----
+. 在 Oracle Linux 9.0 主機上、請檢查 `hostnqn` 字串at `/etc/nvme/hostnqn`：
 +
 [listing]
 ----
 # cat /etc/nvme/hostnqn
-nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3310-8033-b8c04f4c5132
-::> vserver nvme subsystem host show -vserver vs_ol_nvme
-Vserver     Subsystem          Host NQN
------------ --------------- ----------------------------------------------------------
-vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
 ----
 +
+* 輸出範例： *
 
-NOTE: 如果是 `hostnqn` 字串不相符、您應該使用 `vserver modify` 命令來更新 `hostnqn` 字串、以ONTAP 符合 `hostnqn` 字串來源 `/etc/nvme/hostnqn` 在主機上：
-
-. 重新啟動主機。
 +
-[NOTE]
-====
-如果您打算在相同的Oracle Linux 8.6共存主機上同時執行NVMe和SCSI流量、NetApp建議您分別使用核心內建NVMe多重路徑ONTAP 來執行支援對象名稱空間和支援ONTAP 對象LUN的dm多重路徑。這也表示ONTAP 應在dm-multipaths中列入清單以防止dm-multipaths宣告這些命名空間裝置。您可以新增來完成此作業 `enable_foreign` 設定為 `/etc/multipath.conf` 檔案：
-
 [listing]
 ----
-#cat /etc/multipath.conf
-defaults {
-    enable_foreign  NONE
-}
+nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3310-8033-b8c04f4c5132
 ----
-執行以重新啟動多路徑精靈 `systemctl restart multipathd` 命令讓新設定生效。
+. 確認 `hostnqn` 字串符合 `hostnqn` ONTAP 陣列上對應子系統的字串：
++
+[listing]
+----
+::> vserver nvme subsystem host show -vserver vs_ol_nvme
+----
++
+* 輸出範例： *
 
++
+[listing]
+----
+Vserver     Subsystem          Host NQN
+----------- --------------- ----------------------------------------------------------
+vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3310-8033-b8c04f4c5132
+----
++
+
+NOTE: 如果是 `hostnqn` 字串不相符、您應該使用 `vserver modify` 命令來更新 `hostnqn` 對應 ONTAP 陣列子系統上的字串、以符合 `hostnqn` 字串來源 `/etc/nvme/hostnqn` 在主機上。
+
+
+
+
+
+== 設定NVMe/FC
+
+您可以為 Broadcom / Emulex 介面卡或 Marvell/Qlogic 介面卡設定 NVMe / FC 。
+
+[role="tabbed-block"]
 ====
-
-
-
-
-== 設定適用於NVMe / FC的Broadcom FC介面卡
-
+.Broadcom / Emulex
+--
 .步驟
-. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]：
+. 確認您使用的是支援的介面卡機型。
 +
 [listing]
 ----
 # cat /sys/class/scsi_host/host*/modelname
+----
++
+* 輸出範例： *
+
++
+[listing]
+----
 LPe32002-M2
 LPe32002-M2
+----
++
+[listing]
+----
 # cat /sys/class/scsi_host/host*/modeldesc
+----
++
+* 輸出範例： *
+
++
+[listing]
+----
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
@@ -172,6 +201,129 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 
 
+--
+.適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡
+--
+.步驟
+. 確認您執行的是支援的介面卡驅動程式和韌體版本。OL 9.0 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正：
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/symbolic_name
+QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
+QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
+----
+. 請確認 `ql2xnvmeenable` 設為可讓Marvell介面卡做為NVMe / FC啟動器運作：
++
+[listing]
+----
+# cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
+1
+----
+
+
+--
+====
+
+
+== 設定NVMe/TCP
+
+NVMe / TCP 沒有自動連線功能。因此、如果某個路徑發生故障、且在 10 分鐘的預設逾時期間內未恢復、則 NVMe / TCP 無法自動重新連線。若要避免逾時、您應該將容錯移轉事件的重試期間設為至少 30 分鐘。
+
+.步驟
+. 確認啟動器連接埠可在支援的NVMe/TCP LIF中擷取探索記錄頁面資料：
++
+[listing]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+* 輸出範例： *
+
++
+[listing]
+----
+#  nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.15
+Discovery Log Number of Records 6, Generation counter 8
+=====Discovery Log Entry 0======
+trtype: tcp
+adrfam: ipv4
+subtype: unrecognized
+treq: not specified
+portid: 0
+trsvcid: 8009
+subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:discovery
+traddr: 192.168.6.17
+sectype: none
+=====Discovery Log Entry 1======
+trtype: tcp
+adrfam: ipv4
+subtype: unrecognized
+treq: not specified
+portid: 1
+trsvcid: 8009
+subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:discovery
+traddr: 192.168.5.17
+sectype: none
+=====Discovery Log Entry 2======
+trtype: tcp
+adrfam: ipv4
+subtype: unrecognized
+treq: not specified
+portid: 2
+trsvcid: 8009
+subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:discovery
+traddr: 192.168.6.15
+sectype: none
+=====Discovery Log Entry 3======
+trtype: tcp
+adrfam: ipv4
+subtype: nvme subsystem
+treq: not specified
+portid: 0
+trsvcid: 4420
+subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:subsystem.host_95
+traddr: 192.168.6.17
+sectype: none
+..........
+
+----
+. 確認其他的 NVMe / TCP 啟動器目標 LIF 組合能夠成功擷取探索記錄頁面資料。
++
+[listing]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+* 輸出範例： *
+
++
+[listing]
+----
+# nvme discover -t tcp -w 192.168.5.13 -a 192.168.5.15
+# nvme discover -t tcp -w 192.168.5.13 -a 192.168.5.17
+# nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.15
+# nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.17
+----
+. 執行 `nvme connect-all` 跨所有節點支援的 NVMe / TCP 啟動器目標生命週期執行命令、並將控制器遺失逾時週期設為至少 30 分鐘或 1800 秒：
++
+[listing]
+----
+nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
+----
++
+* 輸出範例： *
+
++
+[listing]
+----
+# nvme connect-all -t tcp -w 192.168.5.13 -a 192.168.5.15 -l 1800
+# nvme connect-all -t tcp -w 192.168.5.13 -a 192.168.5.17 -l 1800
+# nvme connect-all -t tcp -w 192.168.6.13 -a 192.168.6.15 -l 1800
+# nvme connect-all -t tcp -w 192.168.6.13 -a 192.168.6.17 -l 1800
+----
+
+
 
 
 === 啟用1MB I/O大小
@@ -198,97 +350,10 @@ options lpfc lpfc_sg_seg_cnt=256
 
 
 
-== 設定適用於NVMe / FC的Marvell / QLogic FC介面卡
+== 驗證NVMe
 
 .步驟
-. 確認您執行的是支援的介面卡驅動程式和韌體版本。OL 8.6GA核心隨附的原生內建qla2xxx驅動程式、提供ONTAP 最新的上游修正程式、可支援下列功能：
-+
-[listing]
-----
-# cat /sys/class/fc_host/host*/symbolic_name
-QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
-QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
-----
-. 請確認 `ql2xnvmeenable` 設為可讓Marvell介面卡做為NVMe / FC啟動器運作：
-+
-[listing]
-----
-# cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
-1
-----
-
-
-
-
-== 設定NVMe/TCP
-
-NVMe / TCP 沒有自動連線功能。因此、如果某個路徑發生故障、且在 10 分鐘的預設逾時期間內未恢復、則 NVMe / TCP 無法自動重新連線。若要避免逾時、您應該將容錯移轉事件的重試期間設為至少 30 分鐘。
-
-.步驟
-. 確認啟動器連接埠可在支援的NVMe/TCP LIF中擷取探索記錄頁面資料：
-+
-[listing]
-----
-# nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.51
-Discovery Log Number of Records 10, Generation counter 119
-=====Discovery Log Entry 0======
-trtype: tcp
-adrfam: ipv4
-subtype: nvme subsystem
-treq: not specified
-portid: 0
-trsvcid: 4420
-subnqn: nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:subsystem.nvme_118_tcp_1
-traddr: 192.168.2.56
-sectype: none
-=====Discovery Log Entry 1======
-trtype: tcp
-adrfam: ipv4
-subtype: nvme subsystem
-treq: not specified
-portid: 1
-trsvcid: 4420
-subnqn: nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:subsystem.nvme_118_tcp_1
-traddr: 192.168.1.51
-sectype: none
-=====Discovery Log Entry 2======
-trtype: tcp
-adrfam: ipv4
-subtype: nvme subsystem
-treq: not specified
-portid: 0
-trsvcid: 4420
-subnqn: nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:subsystem.nvme_118_tcp_2
-traddr: 192.168.2.56
-sectype: none
-...
-----
-. 同樣地、請確認其他的NVMe/TCP啟動器目標LIF組合能夠成功擷取探索記錄頁面資料。範例：
-+
-[listing]
-----
-#nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.51
-# nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.52
-# nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.56
-# nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.57
-----
-. 現在執行 `nvme connect-all` 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保您通過的時間更長 `ctrl_loss_tmo` 期間（例如30分鐘、可設定至 `-l 1800`） `connect-all` 如此一來、當路徑遺失時、它會重試更長的時間。例如、
-+
-[listing]
-----
-# nvme connect-all -t tcp -w 192.168.1.8 -a 192.168.1.51 -l 1800
-# nvme connect-all -t tcp -w 192.168.1.8 -a 192.168.1.52 -l 1800
-# nvme connect-all -t tcp -w 192.168.2.9 -a 192.168.2.56 -l 1800
-# nvme connect-all -t tcp -w 192.168.2.9 -a 192.168.2.57 -l 1800
-----
-
-
-
-
-== 驗證NVMe/FC
-
-.步驟
-. 驗證Oracle Linux 8．6主機上的下列NVMe/FC設定：
+. 驗證 Oracle Linux 9.0 主機上的下列 NVMe / FC 設定：
 +
 [listing]
 ----
@@ -306,6 +371,13 @@ round-robin
 [listing]
 ----
 # nvme list
+----
++
+* 輸出範例： *
+
++
+[listing]
+----
 Node         SN                   Model
 ---------------------------------------------------------
 /dev/nvme0n1 814vWBNRwf9HAAAAAAAB NetApp ONTAP Controller
@@ -324,6 +396,13 @@ Namespace Usage    Format             FW             Rev
 [listing]
 ----
 # nvme list-subsys /dev/nvme0n1
+----
++
+* 輸出範例： *
+
++
+[listing]
+----
 nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:subsystem.nvme_ss_ol_1
 \
 +- nvme0 fc traddr=nn-0x203700a098dfdd91:pn-0x203800a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
@@ -336,7 +415,13 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:su
 [listing]
 ----
 # nvme netapp ontapdevices -o column
+----
++
+* 輸出範例： *
 
++
+[listing]
+----
 Device        Vserver   Namespace Path
 ----------------------- ------------------------------
 /dev/nvme0n1   vs_ol_nvme  /vol/ol_nvme_vol_1_1_0/ol_nvme_ns
@@ -350,8 +435,7 @@ NSID       UUID                                   Size
 2          04bf9f6e-9031-40ea-99c7-a1a61b2d7d08   85.90GB
 3          264823b1-8e03-4155-80dd-e904237014a4   85.90GB
 ----
-
-
++
 [listing]
 ----
 # nvme netapp ontapdevices -o json
@@ -392,6 +476,8 @@ NSID       UUID                                   Size
 ----
 
 
+
+
 == 已知問題
 
 [cols=""20"]
@@ -399,18 +485,27 @@ NSID       UUID                                   Size
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
-| 1517321 | Oracle Linux 8.6NVMe主機會建立重複的持續探索控制器 | 在Oracle Linux 8.6NVMe over Fabrics（NVMe）主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是採用NVMe的主機、則每次都會建立一個重複的資料中心 `nvme discover -p` 已執行。這會導致主機和目標上的資源使用不必要。 | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118."^] 
+| 1517321 | Oracle Linux 9.0 NVMe 主機會建立重複的持續探索控制器 | 在 Oracle Linux 9.0 NVMe over Fabrics （ NVMe of ）主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行的是 ONTAP 9.10.1 和 Oracle Linux 9.0 搭配 NVMe 主機、則每次都會建立重複的 PDC `nvme discover -p` 已執行。這會導致主機和目標上的資源使用不必要。 | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118."^] 
 |===
 
 
 == 疑難排解
 
-在開始任何NVMe / FC故障的疑難排解之前、請先確定您執行的組態符合IMT 「支援」規格、然後繼續執行後續步驟來偵錯任何主機端問題。
+在疑難排解任何 NVMe / FC 故障之前、請先確認您執行的組態符合 IMT 規格、然後繼續執行後續步驟來偵錯任何主機端問題。
 
 
 
-=== lffc詳細記錄
+=== 啟用詳細記錄
 
+如果您的組態發生問題、詳細記錄可提供疑難排解所需的重要資訊。
+
+.步驟
+設定 Qlogic （ qla2xxx ）詳細記錄的程序與設定 lpfc 詳細記錄的程序不同。
+
+[role="tabbed-block"]
+====
+.lpfc
+--
 .步驟
 . 設定 `lpfc_log_verbose` 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。
 +
@@ -434,10 +529,9 @@ options lpfc lpfc_log_verbose=0xf00083
 ----
 
 
-
-
-=== qla2xxx詳細記錄
-
+--
+.qla2xxx
+--
 NVMe / FC沒有類似的特定qla2xxx記錄功能 `lpfc` 驅動程式：因此、您可以使用下列步驟設定一般的qla2xxx記錄層級：
 
 .步驟
@@ -454,6 +548,8 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 ----
 
 
+--
+====
 
 
 === 常見的NVMe-CLI錯誤和因應措施

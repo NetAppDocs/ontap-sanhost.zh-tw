@@ -52,6 +52,11 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 [listing]
 ----
 # sanlun lun show all
+----
+輸出範例：
+
+[listing]
+----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
 -------------------------------------------------------------------------

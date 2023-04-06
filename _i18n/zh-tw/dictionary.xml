@@ -2756,9 +2756,6 @@
   <block id="e42d2937239f99af3555e447c690bae4" category="section-title">啟用1MB I/O大小</block>
   <block id="4e607aa60f743cf23d102c38d262e0ce" category="section-title">設定適用於NVMe / FC的Marvell / QLogic FC介面卡</block>
   <block id="dcf9c1daaefaae22f7202d217cd05be1" category="list-text">請確認<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 設為可讓Marvell介面卡做為NVMe / FC啟動器運作：</block>
-  <block id="e98cbaaa1dad7fa881f7b9e5dc526195" category="list-text">*路徑恢復後不自動重新連線*- NVMe/TCP無法自動重新連線至預設值以外的恢復路徑<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block> 定時器為10分鐘、會在一條路徑下移。</block>
-  <block id="d2022b31505ee91b7e27d079c2942aec" category="list-text">*主機開機期間不自動連線*- NVMe / TCP無法在主機開機期間自動連線。</block>
-  <block id="a4ab86f49ce98a35d17bd2f072f94439" category="paragraph">您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加的值來增加重試期間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器：</block>
   <block id="497514b0e075b1b4f0a02b0a0bdc49c3" category="list-text">驗證啟動器連接埠是否能夠在支援的NVMe / TCP生命期中擷取探索記錄頁面資料。</block>
   <block id="cc1376f3d88929c0b6332513de3fdbc9" category="list-text">同樣地、請確認其他的NVMe/TCP啟動器目標LIF組合能夠成功擷取探索記錄頁面資料。範例：</block>
   <block id="7f6f90fe10241433c68e7ce29b87dbde" category="list-text">現在執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保您通過的時間更長<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 期間（例如30分鐘、可設定至<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 如此一來、當路徑遺失時、它會重試更長的時間。例如、</block>
@@ -2881,4 +2878,44 @@
   <block id="acad552cc1f69d130b13381f823afd65" category="list-text"><block ref="acad552cc1f69d130b13381f823afd65" category="inline-link-macro-rx"></block></block>
   <block id="c44700394b9a4063439bc92ea42d5e41" category="inline-link-macro">Windows 注意事項</block>
   <block id="9d9a9c7064b8193ac433a5365fe1afdb" category="list-text"><block ref="9d9a9c7064b8193ac433a5365fe1afdb" category="inline-link-macro-rx"></block></block>
+  <block id="8637d6c1f3e0436f7f2ec935b829bd22" category="paragraph">輸出範例：</block>
+  <block id="4c4c3dde0aa2241b7309f48a51b17be1" category="paragraph">NVMe / TCP 沒有自動連線功能。因此、如果某個路徑發生故障、且在 10 分鐘的預設逾時期間內未恢復、則 NVMe / TCP 無法自動重新連線。若要避免逾時、您應該將容錯移轉事件的重試期間設為至少 30 分鐘。</block>
+  <block id="e5bb15bb11bc9d2f4a5298c657566227" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.0</block>
+  <block id="4218cca0e66f5dacb43716e0a9523276" category="doc">將 Oracle Linux 9.0 與 NetApp ONTAP 搭配使用</block>
+  <block id="70c435210209e4fcc06e3525a39366c4" category="paragraph">當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供 sanlun 公用程式、可協助您管理 LUN 和 HBA 。sanlun 命令會傳回有關對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
+  <block id="768382c1e455944bfcfdcebd2c7be7af" category="paragraph">在以下範例中、 sanlun LUN show 命令會傳回 LUN 資訊。</block>
+  <block id="ae8e81252a704349cea5f061e9fb652e" category="paragraph">對於 Oracle Linux （ OL ） 9.0<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。OL 9.0 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
+  <block id="5e51169d33c14ff0aaa1bdcad247d216" category="paragraph">以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。</block>
+  <block id="2722dd408e2c6dddce120893d4c5c0a7" category="paragraph">Oracle Linux 9.0 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。</block>
+  <block id="834ccc84967581d1336062ada79c9a0e" category="admonition">若要設定 Oracle Linux 9.0 RedHat Enterprise Kernel （ RHCK ）、請使用 <block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux （ RHEL ） 9.0 。</block>
+  <block id="2de4eb9b3af281c4790a039cf2f92eb7" category="section-title">KVM 設定</block>
+  <block id="fdf71d22ca12e1b94c3cffe88a22f330" category="paragraph">Oracle Linux 9.0 沒有已知問題。</block>
+  <block id="e5d062225c58cec8d22b3128331f0488" category="paragraph">ASM鏡射可能需要變更Linux多重路徑設定、以允許ASM辨識問題並切換至其他故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊、請參閱 ONTAP 上的 Oracle 資料庫。</block>
+  <block id="678b361384466d6bf28f930dd514a9a8" category="doc">適用於 ONTAP 的 Oracle Linux 9.0 的 NVMe / FC 主機組態</block>
+  <block id="5cb5911912e86cb36a8fd5e61044fcf9" category="paragraph">含非對稱命名空間存取（ ANA ）的 Oracle Linux 9.0 支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe / FC 和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
+  <block id="2cbaf680f82c54fd6fb7778f0101ab88" category="paragraph">如需支援組態的詳細資訊、請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block>。</block>
+  <block id="55fb7862f01474277c3620f9debfb3d5" category="list-text">Oracle Linux 9.0 預設已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。</block>
+  <block id="b064015a3282fc489c69be4a7699cc91" category="section-title">驗證軟體版本</block>
+  <block id="b76db361f4ec79f85164719f414b064f" category="paragraph">您可以使用下列程序驗證支援的最低 OL 9.0 軟體版本。</block>
+  <block id="ed14e1c5f9c2e5c334a5bff4288d87ce" category="list-text">在伺服器上安裝 Oracle Linux 9.0 GA 。安裝完成後、請確認您正在執行指定的 Oracle Linux 9.0 GA 核心。</block>
+  <block id="52b5830420efb96c3a91beb52bac3b23" category="paragraph">* 輸出範例： *</block>
+  <block id="2dae71c1d86116eab552b9b056780e26" category="list-text">在 Oracle Linux 9.0 主機上、請檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串at<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="256141e56255da4626b3cd641b2f785a" category="list-text">確認<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串符合<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> ONTAP 陣列上對應子系統的字串：</block>
+  <block id="79894377ddb5e7ce912ed785003b69fe" category="admonition">如果是<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串不相符、您應該使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 命令來更新<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 對應 ONTAP 陣列子系統上的字串、以符合<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串來源<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 在主機上。</block>
+  <block id="d56e4e530b3041c524f4212efc9efc17" category="paragraph">您可以為 Broadcom / Emulex 介面卡或 Marvell/Qlogic 介面卡設定 NVMe / FC 。</block>
+  <block id="2f749c740a41c151c1485b84206264ca" category="list-text">確認您使用的是支援的介面卡機型。</block>
+  <block id="fd3cbdb4a32644d25b951ee0b3bc5aae" category="open-title">適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡</block>
+  <block id="632cccb989f7ba938ccedab64dafd738" category="list-text">確認您執行的是支援的介面卡驅動程式和韌體版本。OL 9.0 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正：</block>
+  <block id="61048cc84224cb0a87e2b824e5e313ea" category="list-text">確認其他的 NVMe / TCP 啟動器目標 LIF 組合能夠成功擷取探索記錄頁面資料。</block>
+  <block id="ce6047856868bd861d72aba06f0054ce" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨所有節點支援的 NVMe / TCP 啟動器目標生命週期執行命令、並將控制器遺失逾時週期設為至少 30 分鐘或 1800 秒：</block>
+  <block id="707080871f35808fd049a250385d4f06" category="list-text">驗證 Oracle Linux 9.0 主機上的下列 NVMe / FC 設定：</block>
+  <block id="0121ea908d2a2cb95436d77156b96a8c" category="cell">Oracle Linux 9.0 NVMe 主機會建立重複的持續探索控制器</block>
+  <block id="91ef9105de2091600f7c347406622a2e" category="cell">在 Oracle Linux 9.0 NVMe over Fabrics （ NVMe of ）主機上、您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行的是 ONTAP 9.10.1 和 Oracle Linux 9.0 搭配 NVMe 主機、則每次都會建立重複的 PDC<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 已執行。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="f50972c35190e5df79b7272d295f432e" category="paragraph">在疑難排解任何 NVMe / FC 故障之前、請先確認您執行的組態符合 IMT 規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
+  <block id="25f321fe018cf20163dc0c70e2eea888" category="section-title">啟用詳細記錄</block>
+  <block id="39015274ce6bc3d4a2365f4b9d55591e" category="paragraph">如果您的組態發生問題、詳細記錄可提供疑難排解所需的重要資訊。</block>
+  <block id="65427f0cfd42249488837342e79863a2" category="paragraph">設定 Qlogic （ qla2xxx ）詳細記錄的程序與設定 lpfc 詳細記錄的程序不同。</block>
+  <block id="2401f6c892699dd24f7fa72c9a39b053" category="open-title">lpfc</block>
+  <block id="db9afb1f05f1d6930c84839b76060ccc" category="open-title">qla2xxx</block>
+  <block id="7ad56430e8db8d37194a3ee41cf45911" category="sidebar">ol 9.</block>
 </blocks>

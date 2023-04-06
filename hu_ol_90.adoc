@@ -1,16 +1,16 @@
 ---
 sidebar: sidebar 
-permalink: hu_sles_15.html 
-keywords: host utilities, suse linux enterprise server 15, suse, linux, 15, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 15搭配使用功能 
+permalink: hu_ol_90.html 
+keywords: host utilities, oracle, linux, 9.0, netapp, ontap 
+summary: 說明如何搭配 ONTAP 使用 Oracle Linux 9.0 
 ---
-= 使用SUSE Linux Enterprise Server 15搭配NetApp ONTAP 功能
+= 將 Oracle Linux 9.0 與 NetApp ONTAP 搭配使用
 :toc: macro
 :hardbreaks:
-:toclevels: 1
+:toclevels: 1P
 :allow-uri-read: 
 :toc: 
-:toclevels: 1
+:toclevels: 1P
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -22,14 +22,15 @@ summary: 說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 15搭配使�
 
 == 安裝Linux Unified Host Utilities
 
-NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp 支援網站"^] 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 互通性對照表工具"^] 驗證您需要哪一個。
+NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 在64位元.rpm檔案中。
 
 強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 .您需要的產品
 如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。
 
-. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp 支援網站"^] 站台到主機。
+.步驟
+. 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 到您的主機。
 . 使用下列命令安裝軟體套件：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
@@ -37,16 +38,12 @@ NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysu
 
 
 
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
-
-
 
 == SAN工具套件
 
-當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
+當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供 sanlun 公用程式、可協助您管理 LUN 和 HBA 。sanlun 命令會傳回有關對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
 
-.範例
-在以下範例中、「左LUN show」命令會傳回LUN資訊。
+在以下範例中、 sanlun LUN show 命令會傳回 LUN 資訊。
 
 [listing]
 ----
@@ -59,17 +56,17 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
 -------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       80.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       80.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       80.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       80.0g  cDOT
 ----
 
 
 == SAN開機
 
 .您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=84067;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -88,9 +85,11 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == 多重路徑
 
-對於SUSE Linux Enterprise Server 15、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 15採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。
+對於 Oracle Linux （ OL ） 9.0 `/etc/multipath.conf` 檔案必須存在、但您不需要對檔案進行特定變更。OL 9.0 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。
 
-您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
+您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。
+
+以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
 
 
 
@@ -104,14 +103,13 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 [listing]
 ----
 # multipath -ll
-3600a0980383034466b2b4a3775474859 dm-3 NETAPP,LUN C-Mode
-size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-|-+- policy='round-robin 0' prio=50 status=active
-| |- 1:0:8:1  sdb 8:16 active ready running
-| `- 2:0:8:1  sdd 8:48 active ready running
-`-+- policy='round-robin 0' prio=10 status=enabled
-  |- 1:0:9:1  sdc 8:32 active ready running
-  `- 2:0:9:1  sde 8:64 active ready running
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
@@ -128,14 +126,14 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑�
 [listing]
 ----
 # multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G  features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=enabled
-| |- 11:0:1:0 sdj 8:144 active ready running
-| |- 11:0:2:0 sdr 65:16 active ready running
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
- |- 11:0:0:0 sdb 8:i6 active ready running
- |- 12:0:0:0 sdz 65:144 active ready running
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
@@ -144,7 +142,9 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑�
 
 == 建議設定
 
-SUSE Linux Enterprise Server 15作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案
+Oracle Linux 9.0 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。
+
+要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案
 
 第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。
 
@@ -201,7 +201,7 @@ blacklist {
 | DETECT（偵測）_prio | 是的 
 
 
-| 開發損失_tmo | "無限遠" 
+| 開發損失_tmo | 無限 
 
 
 | 容錯回復 | 立即 
@@ -210,31 +210,31 @@ blacklist {
 | fast_io_f故障_tmo | 5. 
 
 
-| 功能 | "2 pg_init_retries 50" 
+| 功能 | 2 pg_init_retries 50 
 
 
-| Flip_on_last刪除 | "是" 
+| Flip_on_last刪除 | 是的 
 
 
-| 硬體處理常式 | 「0」 
+| 硬體處理常式 | 0 
 
 
 | no_path_retry | 佇列 
 
 
-| path_checker_ | "周" 
+| path_checker_ | Tur 
 
 
-| path_grouping_policy | "群組by_prio" 
+| path_grouping_policy | 群組_by_prio 
 
 
-| path_selector | "服務時間0" 
+| path_selector | 服務時間0 
 
 
 | Polling_時間 間隔 | 5. 
 
 
-| 優先 | 「NetApp」ONTAP 
+| 優先 | ONTAP 
 
 
 | 產品 | LUN.* 
@@ -243,7 +243,7 @@ blacklist {
 | Retain附加的硬體處理常式 | 是的 
 
 
-| RR_weight | "統一" 
+| RR_weight | 統一 
 
 
 | 使用者易記名稱 | 否 
@@ -257,30 +257,33 @@ blacklist {
 [listing]
 ----
 defaults {
-   path_checker      readsector0
-   no_path_retry      fail
-}
-
+ path_checker readsector0
+ no_path_retry fail
+ }
 devices {
-   device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
-      no_path_retry     queue
-      path_checker      tur
-   }
+ device {
+ vendor "NETAPP "
+ product "LUN.*"
+ no_path_retry queue
+ path_checker tur
+ }
 }
 ----
 
-
-== 已知問題與限制
-
-[cols="4*"]
-|===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+NOTE: 若要設定 Oracle Linux 9.0 RedHat Enterprise Kernel （ RHCK ）、請使用 link:hu_rhel_86.html#recommended-settings["建議設定"] 適用於 Red Hat Enterprise Linux （ RHEL ） 9.0 。
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1154309["1154309."^] | 重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式 | 重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式。維護模式會變成單一使用者模式、並顯示訊息：「提供root密碼以進行維護（或按Ctrl-D繼續）」 | link:https://bugzilla.suse.com/show_bug.cgi?id=1104173["1104173"^] 
-|===
+
+== KVM 設定
+
+您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
+
+
+
+== 已知問題
+
+Oracle Linux 9.0 沒有已知問題。
+
 
 
 == 版本資訊
@@ -289,4 +292,4 @@ devices {
 
 === ASM鏡射
 
-ASM鏡射可能需要變更Linux多重路徑設定、以允許ASM辨識問題並切換至其他故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle資料庫ONTAP"^] 以取得更多資訊。
+ASM鏡射可能需要變更Linux多重路徑設定、以允許ASM辨識問題並切換至其他故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊、請參閱 ONTAP 上的 Oracle 資料庫。

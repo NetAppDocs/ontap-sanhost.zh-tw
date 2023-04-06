@@ -10,6 +10,11 @@
 [listing]
 ----
 # sanlun lun show all
+----
+輸出範例：
+
+[listing]
+----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
 -------------------------------------------------------------------------
