@@ -19,7 +19,7 @@ summary:
 
 
 [role="lead"]
-含非對稱命名空間存取（ ANA ）的 Oracle Linux 9.0 支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe / FC 和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。
+Oracle Linux （ OL ） 9.0 支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe / FC 和其他傳輸、並提供非對稱命名空間存取（ ANA ）。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。
 
 如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
 
@@ -43,7 +43,7 @@ summary:
 您可以使用下列程序驗證支援的最低 OL 9.0 軟體版本。
 
 .步驟
-. 在伺服器上安裝 Oracle Linux 9.0 GA 。安裝完成後、請確認您正在執行指定的 Oracle Linux 9.0 GA 核心。
+. 在伺服器上安裝 OL 9.0 GA 。安裝完成後、請確認您正在執行指定的 OL 9.0 GA 核心。
 +
 [listing]
 ----
@@ -353,7 +353,7 @@ options lpfc lpfc_sg_seg_cnt=256
 == 驗證NVMe
 
 .步驟
-. 驗證 Oracle Linux 9.0 主機上的下列 NVMe / FC 設定：
+. 確認 OL 9.0 主機上的下列 NVMe / FC 設定：
 +
 [listing]
 ----
@@ -497,7 +497,7 @@ NSID       UUID                                   Size
 
 === 啟用詳細記錄
 
-如果您的組態發生問題、詳細記錄可提供疑難排解所需的重要資訊。
+如果您的組態有問題、詳細記錄可提供疑難排解的必要資訊。
 
 .步驟
 設定 Qlogic （ qla2xxx ）詳細記錄的程序與設定 lpfc 詳細記錄的程序不同。

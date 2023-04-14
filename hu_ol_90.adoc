@@ -41,9 +41,9 @@ NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysu
 
 == SAN工具套件
 
-當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供 sanlun 公用程式、可協助您管理 LUN 和 HBA 。sanlun 命令會傳回有關對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
+當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
 
-在以下範例中、 sanlun LUN show 命令會傳回 LUN 資訊。
+在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
 [listing]
 ----
@@ -276,7 +276,7 @@ NOTE: 若要設定 Oracle Linux 9.0 RedHat Enterprise Kernel （ RHCK ）、請�
 
 == KVM 設定
 
-您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
+您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
 
 
 
@@ -292,4 +292,4 @@ Oracle Linux 9.0 沒有已知問題。
 
 === ASM鏡射
 
-ASM鏡射可能需要變更Linux多重路徑設定、以允許ASM辨識問題並切換至其他故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊、請參閱 ONTAP 上的 Oracle 資料庫。
+ASM 鏡像可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代的故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊、請參閱 ONTAP 上的 Oracle 資料庫。
