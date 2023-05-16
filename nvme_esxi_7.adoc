@@ -271,7 +271,7 @@ tcp.vmnic3:34:80:Od:30:ca:el-tcp.unknown-uuid.400bf333abf74ab8b96dc18ffadc3f99
 
 == 已知問題
 
-* ESXi 7.0 U3（及更新版本）、支援NVMe/FC、從ONTAP 功能介紹的版本為：從功能介紹的更新版本起、即可從ONTAP 功能介紹的更新版本中、取得關鍵NVMe中止修正程式（由ESXi 7.0 U3及更新版本發行）、從功能介紹的版本為：從功能介紹的更新版本開始提供。請參閱相關的待處理公開報告、網址為 https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654[] 以取得詳細資料。
+* ESXi 7.0 U3（及更新版本）、支援NVMe/FC、從ONTAP 功能介紹的版本為：從功能介紹的更新版本起、即可從ONTAP 功能介紹的更新版本中、取得關鍵NVMe中止修正程式（由ESXi 7.0 U3及更新版本發行）、從功能介紹的版本為：從功能介紹的更新版本開始提供。請參閱相關的待處理公開報告、網址為 https://[] 以取得詳細資料。
 
 
 

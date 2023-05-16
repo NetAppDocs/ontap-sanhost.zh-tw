@@ -24,7 +24,7 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 
 * 為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。
 +
-您可以使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 以驗證組態。
+您可以使用 https://["NetApp 互通性對照表工具"^] 以驗證組態。
 
 * 您必須在廠商的網站上安裝所提供的HBA管理套件。
 +

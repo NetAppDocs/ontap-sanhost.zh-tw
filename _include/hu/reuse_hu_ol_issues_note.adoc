@@ -3,4 +3,4 @@
 
 
 
-NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱對應的「已知問題」一節 https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63146["Red Hat Enterprise Linux版本"^] 文件。
+NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱對應的「已知問題」一節 https://["Red Hat Enterprise Linux版本"^] 文件。

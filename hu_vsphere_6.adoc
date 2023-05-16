@@ -29,7 +29,7 @@ summary: 說明如何搭配ONTAP 使用Veritas Infoscale 6.5與6.7 for Linux搭�
 == Hypervisor SAN開機
 
 .您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 https://["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -188,13 +188,13 @@ VMware vSphere的VMware vSphere支援VASA Provider for VMware、提供整合點�
 
 
 
-NOTE: 您必須部署ONTAP VMware vSphere的支援功能、才能啟用VASA Provider。VASA Provider會為您管理所有的igroup設定、因此不需要在vVols環境中建立或管理igroup。
+NOTE: 您必須部署ONTAP VMware vSphere的支援功能、才能啟用VASA Provider。VASA Provider 將為您管理所有的 igroup 設定、因此無需在 vVols 環境中建立或管理 iGroups 。
 
 NetApp目前不建議變更任何vVols設定。
 
-請參閱 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 適用於ONTAP 特定版本的支援工具、或適用於特定版本vSphere和ONTAP VMware的舊版VASA供應商。
+請參閱 https://["NetApp 互通性對照表工具"^] 適用於ONTAP 特定版本的支援工具、或適用於特定版本vSphere和ONTAP VMware的舊版VASA供應商。
 
-如需資源配置與管理vVols的詳細資訊、請參閱ONTAP VMware vSphere的VMware工具文件及 link:https://docs.netapp.com/us-en/netapp-solutions/hybrid-cloud/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] 和 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400."^]
+如需資源配置與管理vVols的詳細資訊、請參閱ONTAP VMware vSphere的VMware工具文件及 https://["TR-4597"^] 和 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400."^]
 
 
 
@@ -220,7 +220,7 @@ ATS鎖定是VAAI相容儲存設備和升級的VMFS5的*強制性*、因此需要
 | 磁碟/QFullSampleSize | 0 | 32 | ESXi開始節流之前所需的佇列已滿或忙碌條件數。 
 |===
 
-NOTE: 針對所有對應至VMware vSphere的LUN啟用空間分配設定、以便取消對應以正常運作。如需詳細資料、請參閱 https://docs.netapp.com/ontap-9/index.jsp["資訊文件ONTAP"^]。
+NOTE: 針對所有對應至VMware vSphere的LUN啟用空間分配設定、以便取消對應以正常運作。如需詳細資料、請參閱 https://["資訊文件ONTAP"^]。
 
 
 
@@ -323,7 +323,7 @@ naa.600a098038304731783f506670553355
 
 == 相關連結
 
-* 若要使用TR-4597- VMware vSphere ONTAP 搭配VMware vCenter、請參閱 link:https://cert.vmware.com/caas/support/case/00088028["客戶案例：00088028"^] 和 link:https://cert.vmware.com/caas/support/case/00088029["客戶案例：00088029"^]
+* link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]
 * link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
 * link:https://kb.vmware.com/s/article/83370["NetApp ONTAP 功能搭配NetApp SnapMirror營運不中斷（SMBC）與VMware vSphere Metro儲存叢集（VMSC）"^]
 

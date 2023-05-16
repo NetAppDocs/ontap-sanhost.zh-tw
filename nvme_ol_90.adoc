@@ -485,7 +485,7 @@ NSID       UUID                                   Size
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
-| 1517321 | Oracle Linux 9.0 NVMe 主機會建立重複的持續探索控制器 | 在 Oracle Linux 9.0 NVMe over Fabrics （ NVMe of ）主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行的是 ONTAP 9.10.1 和 Oracle Linux 9.0 搭配 NVMe 主機、則每次都會建立重複的 PDC `nvme discover -p` 已執行。這會導致主機和目標上的資源使用不必要。 | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118."^] 
+| 1517321 | Oracle Linux 9.0 NVMe 主機會建立重複的持續探索控制器 | 在 Oracle Linux 9.0 NVMe over Fabrics （ NVMe of ）主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行的是 ONTAP 9.10.1 和 Oracle Linux 9.0 搭配 NVMe 主機、則每次都會建立重複的 PDC `nvme discover -p` 已執行。這會導致主機和目標上的資源使用不必要。 | https://["18118."^] 
 |===
 
 

@@ -48,14 +48,14 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 == 組態需求
 
-請參閱 http://mysupport.netapp.com/matrix3["NetApp互通性對照表工具IMT （不含）"^] 以取得目前支援的組態清單。
+請參閱 http://["NetApp互通性對照表工具IMT （不含）"^] 以取得目前支援的組態清單。
 
 
 
 == 使用Oracle Linux 8.3啟用NVMe / FC
 
 .步驟
-. 在伺服器上安裝Oracle Linux 8.3 GA。安裝完成後、請確認您執行的是指定的Oracle Linux 8.3 GA核心。請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援版本清單。
+. 在伺服器上安裝Oracle Linux 8.3 GA。安裝完成後、請確認您執行的是指定的Oracle Linux 8.3 GA核心。請參閱 https://["NetApp 互通性對照表工具"^] 以取得最新的支援版本清單。
 +
 [listing]
 ----
@@ -109,7 +109,7 @@ defaults {
 == 設定適用於NVMe / FC的Broadcom FC介面卡
 
 .步驟
-. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 https://["NetApp 互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -124,7 +124,7 @@ LPe36002-M2
 Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 ----
-. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 https://["NetApp 互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -397,7 +397,7 @@ Device      Vserver         Namespace Path             NSID UUID                
 | NetApp錯誤ID | 標題 | 說明 | Oracle Bugzilla 
 
 
-| 1517321 | Oracle Linux 8.3 NVMe主機會建立重複的持續探索控制器 | 在Oracle Linux 8.3 NVMe over Fabrics（NVMe）主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您是以ONTAP NVMe型主機執行EFlash 9.10.1和Oracle Linux 8.3、則每次都會建立一個重複的資料中心 `nvme discover -p` 已執行。這會導致主機和目標上的資源使用不必要。 | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118."^] 
+| 1517321 | Oracle Linux 8.3 NVMe主機會建立重複的持續探索控制器 | 在Oracle Linux 8.3 NVMe over Fabrics（NVMe）主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您是以ONTAP NVMe型主機執行EFlash 9.10.1和Oracle Linux 8.3、則每次都會建立一個重複的資料中心 `nvme discover -p` 已執行。這會導致主機和目標上的資源使用不必要。 | https://["18118."^] 
 |===
 
 
