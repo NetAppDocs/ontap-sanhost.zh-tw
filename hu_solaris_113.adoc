@@ -58,7 +58,7 @@ summary: 說明如何安裝Solaris主機公用程式
 「host_config」命令會執行下列動作：
 
 +
-** 變更適用於 x86 和 SPARC 系統的光纖通道和 SCSI 驅動程式的設定
+** 變更 x86 和 SPARC 系統的 Fibre Channel 和 SCSI 驅動程式設定
 ** 提供兩種MPxIO組態的SCSI逾時設定
 ** 設定VID/PID資訊
 ** 啟用或停用ALUA
@@ -178,7 +178,7 @@ NOTE: 從適用於Solaris主機的《支援所有SAN陣列ASA （EJUSTE）組態
 
 === 推薦MetroCluster 的設定
 
-根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由所控制 `fcp_offline_delay` 參數。的預設值 `fcp_offline_delay` 適用於標準ONTAP 的叢集。不過MetroCluster 、在不完整的組態中、其價值是 `fcp_offline_delay` 必須增加至* 120 *、以確保I/O在作業期間不會提早逾時、包括非計畫性容錯移轉。如需更多資訊及預設設定的建議變更、請參閱 NetApp 知識庫文章 https://["Solaris主機支援MetroCluster 考量的功能"^]。
+根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由所控制 `fcp_offline_delay` 參數。的預設值 `fcp_offline_delay` 適用於標準ONTAP 的叢集。不過MetroCluster 、在不完整的組態中、其價值是 `fcp_offline_delay` 必須增加至* 120 *、以確保I/O在作業期間不會提早逾時、包括非計畫性容錯移轉。如需更多資訊及預設設定的建議變更、請參閱知識庫文章 https://["Solaris主機支援MetroCluster 考量的功能"^]。
 
 
 
@@ -258,5 +258,5 @@ NOTE: 之後 `scsi-vhci-failover-override` 已套用、 `conf` 已新增至 `svl
 | 1366780 | x86架構上的Emulex 32G HBA在GB期間發生Solaris LIF問題 | 適用於x86_64平台上的Emulex韌體12.6.x版及更新版本 | SR 3-24746803021 
 
 
-| 1368957 | Solaris 11.x 'cfgadm -c configuration' 會導致端點對端 Emulex 組態發生 I/O 錯誤 | 執行中 `cfgadm -c configure` 在 Emulex 端點對端組態上、會導致 I/O 錯誤。此問題已在9.5P17、9.6P14、9.7P13和9.8P2中修正 | 不適用 
+| 1368957 | Solaris 11.x 'cfgadm -c configuration' 會導致端點對端 Emulex 組態發生 I/O 錯誤 | 執行中 `cfgadm -c configure` 在 Emulex 端點對端組態上、會導致 I/O 錯誤。ONTAP 9.5P17 、 9.6P14 、 9.7P13 和 9.8P2 中已修正此問題 | 不適用 
 |===

@@ -1,0 +1,293 @@
+---
+sidebar: sidebar 
+permalink: nvme_esxi_8.html 
+keywords: nvme, esxi, ontap, nvme/fc, hypervisor 
+summary: 您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe over Fabrics （ NVMe of ）作為目標。 
+---
+= 適用於 ESXi 8.x 與 ONTAP 的 NVMe 主機組態
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe over Fabrics （ NVMe of ）作為目標。
+
+
+
+== 支援能力
+
+* 從 ONTAP 9.10.1 開始、 ONTAP 支援 NVMe / TCP 傳輸協定。
+* 從 ONTAP 9.9.1 P3 開始、 ESXi 8 及更新版本支援 NVMe / FC 傳輸協定。
+
+
+
+
+== 功能
+
+* ESXi 啟動器主機可透過相同的介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援組態和版本清單。
+* 對於 ESXi 8.0 及更新版本、 HPP （高效能外掛程式）是 NVMe 裝置的預設外掛程式。
+
+
+
+
+== 已知限制
+
+* 不支援 RDM 對應。
+
+
+
+
+== 啟用NVMe/FC
+
+在 vSphere 版本中、 NVMe / FC 預設為啟用。
+
+.驗證主機 NQN
+您必須檢查 ESXi 主機 NQN 字串、並確認其與 ONTAP 陣列上對應子系統的主機 NQN 字串相符。
+
+[listing]
+----
+# esxcli nvme info get
+----
+輸出範例：
+
+[listing]
+----
+Host NQN: nqn.2014-08.org.nvmexpress:uuid:62a19711-ba8c-475d-c954-0000c9f1a436
+----
+[listing]
+----
+# vserver nvme subsystem host show -vserver nvme_fc
+----
+輸出範例：
+
+[listing]
+----
+Vserver Subsystem Host NQN
+------- --------- ----------------------------------------------------------
+nvme_fc nvme_ss  nqn.2014-08.org.nvmexpress:uuid:62a19711-ba8c-475d-c954-0000c9f1a436
+----
+如果主機 NQN 字串不相符、您應該使用 `vserver nvme subsystem host add` 用於更新對應 ONTAP NVMe 子系統上正確主機 NQN 字串的命令。
+
+
+
+== 設定 Broadcom/Emulex 和 Marvell/Qlogic
+
+。 `lpfc` 驅動程式和 `qlnativefc` vSphere 8.x 中的驅動程式預設會啟用 NVMe / FC 功能。
+
+請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 檢查驅動程式或韌體是否支援組態。
+
+
+
+== 驗證NVMe/FC
+
+您可以使用下列程序來驗證 NVMe / FC 。
+
+.步驟
+. 確認 ESXi 主機上已列出 NVMe / FC 介面卡：
++
+[listing]
+----
+# esxcli nvme adapter list
+----
++
+輸出範例：
+
++
+[listing]
+----
+
+Adapter  Adapter Qualified Name           Transport Type  Driver      Associated Devices
+-------  -------------------------------  --------------  ----------  ------------------
+vmhba64  aqn:lpfc:100000109b579f11        FC              lpfc
+vmhba65  aqn:lpfc:100000109b579f12        FC              lpfc
+vmhba66  aqn:qlnativefc:2100f4e9d456e286  FC              qlnativefc
+vmhba67  aqn:qlnativefc:2100f4e9d456e287  FC              qlnativefc
+----
+. 確認已正確建立 NVMe / FC 命名空間：
++
+下列範例中的UUID代表NVMe / FC命名空間裝置。
+
++
+[listing, subs="+quotes"]
+----
+# esxcfg-mpath -b
+uuid.116cb7ed9e574a0faf35ac2ec115969d : NVMe Fibre Channel Disk (*uuid.116cb7ed9e574a0faf35ac2ec115969d*)
+   vmhba64:C0:T0:L5 LUN:5 state:active fc Adapter: WWNN: 20:00:00:24:ff:7f:4a:50 WWPN: 21:00:00:24:ff:7f:4a:50  Target: WWNN: 20:04:d0:39:ea:3a:b2:1f WWPN: 20:05:d0:39:ea:3a:b2:1f
+   vmhba64:C0:T1:L5 LUN:5 state:active fc Adapter: WWNN: 20:00:00:24:ff:7f:4a:50 WWPN: 21:00:00:24:ff:7f:4a:50  Target: WWNN: 20:04:d0:39:ea:3a:b2:1f WWPN: 20:07:d0:39:ea:3a:b2:1f
+   vmhba65:C0:T1:L5 LUN:5 state:active fc Adapter: WWNN: 20:00:00:24:ff:7f:4a:51 WWPN: 21:00:00:24:ff:7f:4a:51  Target: WWNN: 20:04:d0:39:ea:3a:b2:1f WWPN: 20:08:d0:39:ea:3a:b2:1f
+   vmhba65:C0:T0:L5 LUN:5 state:active fc Adapter: WWNN: 20:00:00:24:ff:7f:4a:51 WWPN: 21:00:00:24:ff:7f:4a:51  Target: WWNN: 20:04:d0:39:ea:3a:b2:1f WWPN: 20:06:d0:39:ea:3a:b2:1f
+----
++
+[NOTE]
+====
+在 ONTAP 9.7 中、 NVMe / FC 命名空間的預設區塊大小為 4K 。此預設大小與ESXi不相容。因此、在為 ESXi 建立命名空間時、您必須將命名空間區塊大小設為 *512B* 。您可以使用執行此動作 `vserver nvme namespace create` 命令。
+
+範例：
+
+「Vserver NVMe命名空間create -vserver vvs 1 -path /vol/nslov/namespace1 -size 100g -osttype VMware -block-size 512B」
+
+請參閱 link:https://docs.netapp.com/us-en/ontap/concepts/manual-pages.html["指令手冊頁ONTAP"^] 以取得更多詳細資料。
+
+====
+. 驗證個別NVMe / FC命名空間裝置的個別ANA路徑狀態：
++
+[listing, subs="+quotes"]
+----
+# esxcli storage hpp path list -d uuid.df960bebb5a74a3eaaa1ae55e6b3411d
+
+fc.20000024ff7f4a50:21000024ff7f4a50-fc.2004d039ea3ab21f:2005d039ea3ab21f-uuid.df960bebb5a74a3eaaa1ae55e6b3411d
+   Runtime Name: vmhba64:C0:T0:L3
+   Device: uuid.df960bebb5a74a3eaaa1ae55e6b3411d
+   Device Display Name: NVMe Fibre Channel Disk (uuid.df960bebb5a74a3eaaa1ae55e6b3411d)
+   Path State: active unoptimized
+   Path Config: {ANA_GRP_id=4,*ANA_GRP_state=ANO*,health=UP}
+
+fc.20000024ff7f4a51:21000024ff7f4a51-fc.2004d039ea3ab21f:2008d039ea3ab21f-uuid.df960bebb5a74a3eaaa1ae55e6b3411d
+   Runtime Name: vmhba65:C0:T1:L3
+   Device: uuid.df960bebb5a74a3eaaa1ae55e6b3411d
+   Device Display Name: NVMe Fibre Channel Disk (uuid.df960bebb5a74a3eaaa1ae55e6b3411d)
+   Path State: active
+   Path Config: {ANA_GRP_id=4,*ANA_GRP_state=AO*,health=UP}
+
+fc.20000024ff7f4a51:21000024ff7f4a51-fc.2004d039ea3ab21f:2006d039ea3ab21f-uuid.df960bebb5a74a3eaaa1ae55e6b3411d
+   Runtime Name: vmhba65:C0:T0:L3
+   Device: uuid.df960bebb5a74a3eaaa1ae55e6b3411d
+   Device Display Name: NVMe Fibre Channel Disk (uuid.df960bebb5a74a3eaaa1ae55e6b3411d)
+   Path State: active unoptimized
+   Path Config: {ANA_GRP_id=4,*ANA_GRP_state=ANO*,health=UP}
+
+fc.20000024ff7f4a50:21000024ff7f4a50-fc.2004d039ea3ab21f:2007d039ea3ab21f-uuid.df960bebb5a74a3eaaa1ae55e6b3411d
+   Runtime Name: vmhba64:C0:T1:L3
+   Device: uuid.df960bebb5a74a3eaaa1ae55e6b3411d
+   Device Display Name: NVMe Fibre Channel Disk (uuid.df960bebb5a74a3eaaa1ae55e6b3411d)
+   Path State: active
+   Path Config: {ANA_GRP_id=4,*ANA_GRP_state=AO*,health=UP}
+
+----
+
+
+
+
+== 設定NVMe/TCP
+
+在 ESXi 8.x 中、預設會載入所需的 NVMe / TCP 模組。若要設定網路和 NVMe / TCP 介面卡、請參閱 VMware vSphere 文件。
+
+
+
+== 驗證NVMe/TCP
+
+您可以使用下列程序來驗證 NVMe / TCP 。
+
+.步驟
+. 驗證 NVMe / TCP 介面卡的狀態：
++
+[listing]
+----
+esxcli nvme adapter list
+----
++
+輸出範例：
+
++
+[listing]
+----
+Adapter  Adapter Qualified Name           Transport Type  Driver   Associated Devices
+-------  -------------------------------  --------------  -------  ------------------
+vmhba65  aqn:nvmetcp:ec-2a-72-0f-e2-30-T  TCP             nvmetcp  vmnic0
+vmhba66  aqn:nvmetcp:34-80-0d-30-d1-a0-T  TCP             nvmetcp  vmnic2
+vmhba67  aqn:nvmetcp:34-80-0d-30-d1-a1-T  TCP             nvmetcp  vmnic3
+----
+. 擷取 NVMe / TCP 連線清單：
++
+[listing]
+----
+esxcli nvme controller list
+----
++
+輸出範例：
+
++
+[listing]
+----
+Name                                                  Controller Number  Adapter  Transport Type  Is Online  Is VVOL
+---------------------------------------------------------------------------------------------------------  -----------------  -------
+nqn.2014-08.org.nvmexpress.discovery#vmhba64#192.168.100.166:8009  256  vmhba64  TCP                  true    false
+nqn.1992-08.com.netapp:sn.89bb1a28a89a11ed8a88d039ea263f93:subsystem.nvme_ss#vmhba64#192.168.100.165:4420 258  vmhba64  TCP  true    false
+nqn.1992-08.com.netapp:sn.89bb1a28a89a11ed8a88d039ea263f93:subsystem.nvme_ss#vmhba64#192.168.100.168:4420 259  vmhba64  TCP  true    false
+nqn.1992-08.com.netapp:sn.89bb1a28a89a11ed8a88d039ea263f93:subsystem.nvme_ss#vmhba64#192.168.100.166:4420 260  vmhba64  TCP  true    false
+nqn.2014-08.org.nvmexpress.discovery#vmhba64#192.168.100.165:8009  261  vmhba64  TCP                  true    false
+nqn.2014-08.org.nvmexpress.discovery#vmhba65#192.168.100.155:8009  262  vmhba65  TCP                  true    false
+nqn.1992-08.com.netapp:sn.89bb1a28a89a11ed8a88d039ea263f93:subsystem.nvme_ss#vmhba64#192.168.100.167:4420 264  vmhba64  TCP  true    false
+
+----
+. 擷取 NVMe 命名空間的路徑數量清單：
++
+[listing, subs="+quotes"]
+----
+esxcli storage hpp path list -d *uuid.f4f14337c3ad4a639edf0e21de8b88bf*
+----
++
+輸出範例：
+
++
+[listing, subs="+quotes"]
+----
+tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.165:4420-uuid.f4f14337c3ad4a639edf0e21de8b88bf
+   Runtime Name: vmhba64:C0:T0:L5
+   Device: uuid.f4f14337c3ad4a639edf0e21de8b88bf
+   Device Display Name: NVMe TCP Disk (uuid.f4f14337c3ad4a639edf0e21de8b88bf)
+   Path State: active
+   Path Config: {ANA_GRP_id=6,*ANA_GRP_state=AO*,health=UP}
+
+tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.168:4420-uuid.f4f14337c3ad4a639edf0e21de8b88bf
+   Runtime Name: vmhba64:C0:T3:L5
+   Device: uuid.f4f14337c3ad4a639edf0e21de8b88bf
+   Device Display Name: NVMe TCP Disk (uuid.f4f14337c3ad4a639edf0e21de8b88bf)
+   Path State: active unoptimized
+   Path Config: {ANA_GRP_id=6,*ANA_GRP_state=ANO*,health=UP}
+
+tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.166:4420-uuid.f4f14337c3ad4a639edf0e21de8b88bf
+   Runtime Name: vmhba64:C0:T2:L5
+   Device: uuid.f4f14337c3ad4a639edf0e21de8b88bf
+   Device Display Name: NVMe TCP Disk (uuid.f4f14337c3ad4a639edf0e21de8b88bf)
+   Path State: active unoptimized
+   Path Config: {ANA_GRP_id=6,*ANA_GRP_state=ANO*,health=UP}
+
+tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.167:4420-uuid.f4f14337c3ad4a639edf0e21de8b88bf
+   Runtime Name: vmhba64:C0:T1:L5
+   Device: uuid.f4f14337c3ad4a639edf0e21de8b88bf
+   Device Display Name: NVMe TCP Disk (uuid.f4f14337c3ad4a639edf0e21de8b88bf)
+   Path State: active
+   Path Config: {ANA_GRP_id=6,*ANA_GRP_state=AO*,health=UP}
+----
+
+
+
+
+== 已知問題
+
+[cols="10,30,30"]
+|===
+| NetApp錯誤ID | 標題 | 說明 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654["1420654"^] | ONTAP 節點在 ONTAP 9.9.1 版中使用 NVMe / FC 傳輸協定時無法運作 | ONTAP 9.9.1 已推出 NVMe 「中止」命令支援。當 ONTAP 收到「中止」命令以中止正在等待其合作夥伴命令的 NVMe 融合命令時、 ONTAP 節點就會中斷。只有使用 NVMe 融合命令（例如 ESX ）和光纖通道（ FC ）傳輸的主機才會發生此問題。 
+
+
+| 1543660 | 當使用 vNVMe 介面卡的 Linux VM 遇到長時間的 All Paths Down （ APD ）視窗時、就會發生 I/O 錯誤  a| 
+執行 vSphere 8.x 及更新版本、並使用虛擬 NVMe （ vNVMe ）介面卡的 Linux VM 會發生 I/O 錯誤、因為根據預設、 vNVMe 重試作業會停用。為了避免在所有路徑停機（ APD ）或大量 I/O 負載期間、在執行舊版核心的 Linux VM 上造成中斷、 VMware 推出了可調整的「 VSCSIDisableNvmeRetry 」來停用 vNVMe 重試作業。
+
+|===
+.相關連結
+link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]
+link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
+link:https://kb.vmware.com/s/article/83370["VMware vSphere 6.x與7.x支援搭配NetApp®SnapMirror®營運不中斷（SMBC）"^]

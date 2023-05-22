@@ -2565,7 +2565,6 @@
   <block id="1bad318175e7aa1eb67e6db2256bb9b1" category="paragraph">系統會將擷取的軟體放在您解壓縮儲存庫檔案的目錄中。</block>
   <block id="5bd6f64a8cbf5643612affb8bd552a8d" category="paragraph">本版本說明文件包含AIX Host Utilities 6.1版本的最新資訊、包括已知問題、限制、ONTAP 設定及管理您的一套更新。</block>
   <block id="39b3dd6edf4819881415b4ccbfcf4d58" category="paragraph">對於Oracle Linux 7.1 UEK R4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.1是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
-  <block id="b2cff30246d08cdfde41ba01866ee693" category="list-text">ESXi 7.0 U3（及更新版本）、支援NVMe/FC、從ONTAP 功能介紹的版本為：從功能介紹的更新版本起、即可從ONTAP 功能介紹的更新版本中、取得關鍵NVMe中止修正程式（由ESXi 7.0 U3及更新版本發行）、從功能介紹的版本為：從功能介紹的更新版本開始提供。請參閱相關的待處理公開報告、網址為<block ref="e74f384cf37401802acc612082793163" category="inline-link-rx"></block> 以取得詳細資料。</block>
   <block id="36889db7961eacd91f01477a29a2c5ea" category="list-text">確認的輸出<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block> 命令以確保設定完成。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="8798c6858a1c8968b7b9cad1ace9d91a" category="list-text">將此WWID新增至/etc/multipath.conf中的「黑名單」節：</block>
   <block id="3ad269cd9c25c5c028bf155f768f0618" category="paragraph">根據預設、當沒有LUN可用的路徑時、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 <block ref="682b92f396ad2229bd62e99c5a518610" category="inline-link-macro-rx"></block></block>
@@ -3029,29 +3028,90 @@
   <block id="d6f0420e884ba06233920f24aeacd0b4" category="sidebar">安裝蕪湖 7.2</block>
   <block id="c89f54db5376bd3f5d9ade2c6d3362fd" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block>。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。</block>
   <block id="acabba98705eb29393554dc66f1ee4e2" category="paragraph">以下範例解壓縮SPARC系統的檔案。對於x86至64平台、請使用x86/x64套件。</block>
-  <block id="7b80b257325a5b162e64740743f1f56b" category="paragraph">若要完成安裝、您必須使用設定環境的主機參數（本例中為 MPxIO ）<block ref="3062dc928daa4d85f6e34b6dea110a00" prefix=" " category="inline-code"></block> 命令。</block>
-  <block id="2e6c1117a40c601f7b1e729219ae60d4" category="list-text">變更適用於 x86 和 SPARC 系統的光纖通道和 SCSI 驅動程式的設定</block>
   <block id="c4cad7deef0c16d999553f9114b69a38" category="inline-link">安裝 Solaris 主機公用程式</block>
   <block id="f3fa3c55f6e1d616adca4cc7545092f0" category="paragraph">您可以使用FC傳輸協定設定SAN開機LUN、以便在Solaris MPxIO環境中運作、並執行Solaris Host Utilities。您用來設定SAN開機LUN的方法可能會因Volume Manager和檔案系統而異。請參閱<block ref="b122ff225ade2e6fc15e0025cf78e2d2" category="inline-link-rx"></block> 如需 Solaris MPIO 環境中 SAN Booting LUN 的詳細資訊、請參閱。</block>
   <block id="daa135326b602a4d4c5bd7b55808870a" category="inline-link">Solaris主機支援MetroCluster 考量的功能</block>
-  <block id="c0fb739872dac94bedef68b1bae6c33c" category="paragraph">根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由所控制<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 參數。的預設值<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 適用於標準ONTAP 的叢集。不過MetroCluster 、在不完整的組態中、其價值是<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 必須增加至* 120 *、以確保I/O在作業期間不會提早逾時、包括非計畫性容錯移轉。如需更多資訊及預設設定的建議變更、請參閱 NetApp 知識庫文章<block ref="193f3884faade962417df8b9640856de" category="inline-link-rx"></block>。</block>
   <block id="8f4e34dd626d27db6da17b83e4d7f329" category="cell">Solaris 11.x 'cfgadm -c configuration' 會導致端點對端 Emulex 組態發生 I/O 錯誤</block>
-  <block id="67618ee20fc9c9dc6bacf85ab256b07c" category="cell">執行中<block ref="cb4b12dfd645e3fcd47ea6dec988643f" prefix=" " category="inline-code"></block> 在 Emulex 端點對端組態上、會導致 I/O 錯誤。此問題已在9.5P17、9.6P14、9.7P13和9.8P2中修正</block>
   <block id="05a2e5d38b7302b051a92c093ea62da1" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block>。檔案放好之後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。</block>
   <block id="a387e31363493fb3c0fbdcc0d7458c52" category="list-text">解壓縮檔案。</block>
   <block id="8fe0dc9943c3dbce8070a7613545cb91" category="paragraph">以下範例解壓縮SPARC系統的檔案。對於 x86-64 平台、請使用<block ref="2dea9af09f7e80915b8298deb9ca9b8a" prefix=" " category="inline-code"></block> 套件：</block>
   <block id="db3593f61ef4c56ea67fd06ebc7a6825" category="admonition">所有 SAN 陣列（ ASA ）組態都支援從 ONTAP 9.8 開始、適用於 Solaris 主機。</block>
   <block id="f8af07f878832a82df53431926e7c3f6" category="paragraph">以下是建議使用NetApp ONTAP 支援LUN的Solaris 11.4 SPARC和x86_64參數設定。這些參數值由Host Utilities設定。如需Solaris 11.4系統的其他設定、請參閱Oracle DOC ID：2595926.1</block>
-  <block id="df005c493acb8e00e9543058c5ac6269" category="paragraph">根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由所控制<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 參數。的預設值<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 適用於標準ONTAP 的叢集。不過、在 MetroCluster 組態中、的值是<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 必須增加至* 120 *、以確保I/O在作業期間不會提早逾時、包括非計畫性容錯移轉。如需其他資訊及預設設定的建議變更、請參閱 NetApp 知識庫文章<block ref="193f3884faade962417df8b9640856de" category="inline-link-rx"></block>。</block>
-  <block id="64799ab49723d2dcfaeadf0cc963a0af" category="list-text">Solaris虛擬化選項包括Solaris邏輯網域（也稱為LDom或Oracle VM Server for SPARC）、Solaris動態網域、Solaris區域及Solaris Container。雖然這些技術是以不同的架構為基礎、但這些技術已被重新標記為「 Oracle 虛擬機器」。</block>
   <block id="3cdb50c8bf082811e79154b6cdabdb1f" category="paragraph">當LUN在LDOM內作為虛擬磁碟裝置使用時、LUN的來源會被虛擬化遮罩、而LDOM將無法正確偵測區塊大小。為了避免此問題、必須為 _Oracle Bug 15824910_ 和 A 修補 LDOM 作業系統<block ref="3328fba80b08b36663ffae0684f6c578" prefix=" " category="inline-code"></block> 必須建立檔案、將虛擬磁碟的區塊大小設為 4096 。如需詳細資訊、請參閱Oracle Doc 2157669.1。</block>
   <block id="c39a85f8ec6b0a29f08919e66d066295" category="cell">遵循 Solaris 11.4 和 Huk 建議。FC驅動程式繫結會從SSD（4維）變更為SD（4維）。移動您在中的組態<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> 至<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> 如 Oracle （文件編號 2595926.1 ）所述。新安裝的Solaris 11.4系統會有不同的行為、並從11.3版或更低版本升級。</block>
   <block id="cb5a5fbf7b377c4121e5a7dee7e950e5" category="cell">Solaris 11.x<block ref="cb4b12dfd645e3fcd47ea6dec988643f" prefix=" " category="inline-code"></block> 端點對端點 Emulex 組態導致 I/O 錯誤</block>
   <block id="a15ed55b009e93df31791bff39016875" category="paragraph">請參閱 <block ref="a39850964251401babb6e797f9dd15c1" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
-  <block id="2f250814a775a0365f902dbe562032c6" category="paragraph">請參閱 <block ref="7f9ee14ffba4539bbbffe56322464e8d" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
-  <block id="ad29963bc78eccf5ea7c4b874af41073" category="paragraph">如需資源配置與管理vVols的詳細資訊、請參閱ONTAP VMware vSphere的VMware工具文件及 <block ref="ec1f030f0caddb932644a46761f74630" category="inline-link-macro-rx"></block> 和 <block ref="a74613d919ef64732e37564f6282a452" category="inline-link-macro-rx"></block></block>
   <block id="f6bd0d7447ff66cc6b859603a88fbde9" category="section-title">相關連結</block>
   <block id="ec1f030f0caddb932644a46761f74630" category="list-text"><block ref="ec1f030f0caddb932644a46761f74630" category="inline-link-macro-rx"></block></block>
   <block id="e0ace13bee28a678ec04ad1b076b4b00" category="admonition">您必須部署ONTAP VMware vSphere的支援功能、才能啟用VASA Provider。VASA Provider 將為您管理所有的 igroup 設定、因此無需在 vVols 環境中建立或管理 iGroups 。</block>
   <block id="a2093eec2c1b326b4a76efce454cc95a" category="paragraph">如需資源配置與管理vVols的詳細資訊、請參閱ONTAP VMware vSphere的VMware工具文件及<block ref="fc9815e7b1405959c49ad47e9a23e3a5" category="inline-link-rx"></block> 和 <block ref="a74613d919ef64732e37564f6282a452" category="inline-link-macro-rx"></block></block>
+  <block id="8b09e18eadcf22c450f1d7d911321716" category="paragraph">若要完成安裝、您必須使用設定環境的主機參數（本例中為 MPxIO ）<block ref="3062dc928daa4d85f6e34b6dea110a00" prefix=" " category="inline-code"></block> 命令。</block>
+  <block id="a59067c75792ec364887962f5388c9af" category="list-text">變更 x86 和 SPARC 系統的 Fibre Channel 和 SCSI 驅動程式設定</block>
+  <block id="168fdc611543547ce1e8f26fcfc2b182" category="paragraph">根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由所控制<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 參數。的預設值<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 適用於標準ONTAP 的叢集。不過MetroCluster 、在不完整的組態中、其價值是<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 必須增加至* 120 *、以確保I/O在作業期間不會提早逾時、包括非計畫性容錯移轉。如需更多資訊及預設設定的建議變更、請參閱知識庫文章<block ref="193f3884faade962417df8b9640856de" category="inline-link-rx"></block>。</block>
+  <block id="4ace21de4701510a7868bf0b96619e05" category="cell">執行中<block ref="cb4b12dfd645e3fcd47ea6dec988643f" prefix=" " category="inline-code"></block> 在 Emulex 端點對端組態上、會導致 I/O 錯誤。ONTAP 9.5P17 、 9.6P14 、 9.7P13 和 9.8P2 中已修正此問題</block>
+  <block id="2d15eeef1c034eb367e3e2bdf54c1d44" category="paragraph">您可以使用FC傳輸協定設定SAN開機LUN、以便在Solaris MPxIO環境中運作、並執行Solaris Host Utilities。您用來設定SAN開機LUN的方法可能會因Volume Manager和檔案系統而異。請參閱<block ref="d20544b1cb103be423151e95ebf1c3ce" category="inline-link-rx"></block> 如需 Solaris MPIO 環境中 SAN Booting LUN 的詳細資訊、請參閱。</block>
+  <block id="46f0926a49e1e94eb293a199875f98b9" category="paragraph">根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由所控制<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 參數。的預設值<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 適用於標準ONTAP 的叢集。不過、在 MetroCluster 組態中、的值是<block ref="23bc35b0d0a6788857b3169bbd3adddd" prefix=" " category="inline-code"></block> 必須增加至* 120 *、以確保I/O在作業期間不會提早逾時、包括非計畫性容錯移轉。如需預設設定的新增資訊和建議變更、請參閱知識庫文章<block ref="193f3884faade962417df8b9640856de" category="inline-link-rx"></block>。</block>
+  <block id="ff91b353cdd0cfbd758a014f3a8eb777" category="list-text">Solaris虛擬化選項包括Solaris邏輯網域（也稱為LDom或Oracle VM Server for SPARC）、Solaris動態網域、Solaris區域及Solaris Container。雖然這些技術是以不同的架構為基礎、但這些技術已被重新標記為「 Oracle 虛擬機器」。</block>
+  <block id="7ff276d19a76a720d17e3dcf4d050ee3" category="summary">您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe over Fabrics （ NVMe of ）作為目標。</block>
+  <block id="c719ab5e5b2a188adebd62c0829a9f96" category="doc">適用於 ESXi 8.x 與 ONTAP 的 NVMe 主機組態</block>
+  <block id="53b4135529508b3c01c35cf73dca64d0" category="list-text">從 ONTAP 9.10.1 開始、 ONTAP 支援 NVMe / TCP 傳輸協定。</block>
+  <block id="7237142305a120be2bd65985f2ef736c" category="list-text">從 ONTAP 9.9.1 P3 開始、 ESXi 8 及更新版本支援 NVMe / FC 傳輸協定。</block>
+  <block id="7c1c1c55c2c606a3cf3259643b78a017" category="list-text">ESXi 啟動器主機可透過相同的介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block> 以取得最新的支援組態和版本清單。</block>
+  <block id="d202ecba0de538b2ab3f4e53f0191f53" category="list-text">對於 ESXi 8.0 及更新版本、 HPP （高效能外掛程式）是 NVMe 裝置的預設外掛程式。</block>
+  <block id="b1d7de4d8d51704fba7a0c0f12c2c299" category="list-text">不支援 RDM 對應。</block>
+  <block id="cb56b881b7fbeb83a5d042635cd3d79d" category="paragraph">在 vSphere 版本中、 NVMe / FC 預設為啟用。</block>
+  <block id="6d7a35d7f614ee089a2ca03495dddec5" category="paragraph-title">驗證主機 NQN</block>
+  <block id="37ff421f2417d73d59b2924fd899cd8c" category="paragraph">您必須檢查 ESXi 主機 NQN 字串、並確認其與 ONTAP 陣列上對應子系統的主機 NQN 字串相符。</block>
+  <block id="4a5758dd5956965d547b1cb45d67a575" category="paragraph">如果主機 NQN 字串不相符、您應該使用<block ref="037f8d599d4c7dd20cf7edd2a56379ce" prefix=" " category="inline-code"></block> 用於更新對應 ONTAP NVMe 子系統上正確主機 NQN 字串的命令。</block>
+  <block id="c0258b0d4807f8c5d210d24a07f7b5a5" category="section-title">設定 Broadcom/Emulex 和 Marvell/Qlogic</block>
+  <block id="03e2c707931af39e8a945724180de793" category="paragraph">。<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 驅動程式和<block ref="d38f1c79c480647ae5bdf4c854fbdce3" prefix=" " category="inline-code"></block> vSphere 8.x 中的驅動程式預設會啟用 NVMe / FC 功能。</block>
+  <block id="1b806581ee4833315ec4773f5d725880" category="paragraph">請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block> 檢查驅動程式或韌體是否支援組態。</block>
+  <block id="ab59463ceab4b1c6a30ae9eae073bf3b" category="paragraph">您可以使用下列程序來驗證 NVMe / FC 。</block>
+  <block id="90c9ebe9c42a74ad4d9455aebe8b9c93" category="list-text">確認 ESXi 主機上已列出 NVMe / FC 介面卡：</block>
+  <block id="428a9b553fcdd96c492bbc12bc36a9a1" category="list-text">確認已正確建立 NVMe / FC 命名空間：</block>
+  <block id="406799333bffbd7142130088a97c74bc" category="paragraph">在 ONTAP 9.7 中、 NVMe / FC 命名空間的預設區塊大小為 4K 。此預設大小與ESXi不相容。因此、在為 ESXi 建立命名空間時、您必須將命名空間區塊大小設為 *512B* 。您可以使用執行此動作<block ref="61d81914cbbf064ce9a19bff51785b24" prefix=" " category="inline-code"></block> 命令。</block>
+  <block id="1eccb728ae533945090a979925c23add" category="paragraph">範例：</block>
+  <block id="5b3298e4daae06c1fc8dfab698385946" category="paragraph">請參閱 <block ref="8e58017a2197e770fd8e78aaf7da6a84" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
+  <block id="cd685cf69530f787c9eda72ce3139eb1" category="paragraph">在 ESXi 8.x 中、預設會載入所需的 NVMe / TCP 模組。若要設定網路和 NVMe / TCP 介面卡、請參閱 VMware vSphere 文件。</block>
+  <block id="dbca68d1e16b8b8773e9fa923060d1c0" category="paragraph">您可以使用下列程序來驗證 NVMe / TCP 。</block>
+  <block id="6ae74f9d53438972eb1f1e5ec90f7f1b" category="list-text">驗證 NVMe / TCP 介面卡的狀態：</block>
+  <block id="c19fe6dee7f7a3724a5f9dcec2948091" category="list-text">擷取 NVMe / TCP 連線清單：</block>
+  <block id="7b2ec28c3dfb12efddfebc7d80f05316" category="list-text">擷取 NVMe 命名空間的路徑數量清單：</block>
+  <block id="c3bd18851ce712c62533ac8c331b71d8" category="inline-link-macro">1420654</block>
+  <block id="7fa79b2d844dd78eb5ebb9aa901e8f14" category="cell"><block ref="7fa79b2d844dd78eb5ebb9aa901e8f14" category="inline-link-macro-rx"></block></block>
+  <block id="6c5ab2230ea5f786135c35ed670ce6d6" category="cell">ONTAP 節點在 ONTAP 9.9.1 版中使用 NVMe / FC 傳輸協定時無法運作</block>
+  <block id="85dcf040cfea5e44024dcdee365ef36f" category="cell">ONTAP 9.9.1 已推出 NVMe 「中止」命令支援。當 ONTAP 收到「中止」命令以中止正在等待其合作夥伴命令的 NVMe 融合命令時、 ONTAP 節點就會中斷。只有使用 NVMe 融合命令（例如 ESX ）和光纖通道（ FC ）傳輸的主機才會發生此問題。</block>
+  <block id="fe73a89d7c677ea4abb2a996360023fa" category="cell">1543660</block>
+  <block id="5a3b86e99232b3604afe4db20db45884" category="cell">當使用 vNVMe 介面卡的 Linux VM 遇到長時間的 All Paths Down （ APD ）視窗時、就會發生 I/O 錯誤</block>
+  <block id="9c72461f3069d27216e1faab60848be8" category="paragraph">執行 vSphere 8.x 及更新版本、並使用虛擬 NVMe （ vNVMe ）介面卡的 Linux VM 會發生 I/O 錯誤、因為根據預設、 vNVMe 重試作業會停用。為了避免在所有路徑停機（ APD ）或大量 I/O 負載期間、在執行舊版核心的 Linux VM 上造成中斷、 VMware 推出了可調整的「 VSCSIDisableNvmeRetry 」來停用 vNVMe 重試作業。</block>
+  <block id="03d0e633810a3de10e61ce29a7d4abb0" category="cell">檢查並修正主機架構中的任何網路問題。如果這沒有幫助、請升級至可修正此問題的修補程式。</block>
+  <block id="d9dd0dcd952b59a8a387ef9beb4c00f2" category="paragraph">請參閱 <block ref="655b517a7a97afe4ca5d1c4eeafd2bfe" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
+  <block id="dad160104969c39365dd2cd4c98dd300" category="inline-link-macro">TR-4400</block>
+  <block id="a36f49fe4436012bee1d9977a9ab9b95" category="paragraph">如需資源配置與管理vVols的詳細資訊、請參閱ONTAP VMware vSphere的VMware工具文件及 <block ref="ec1f030f0caddb932644a46761f74630" category="inline-link-macro-rx"></block> 和 <block ref="bcecf0e9ae9f2444b66065a431138ac6" category="inline-link-macro-rx"></block>。</block>
+  <block id="ec28bcc44a923317b69c457e0afb81a2" category="summary">您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 VMware vSphere 8.x 版本設定 ONTAP SAN 主機設定。</block>
+  <block id="4666c702a235d23b17ec55d988d16d3e" category="doc">將 VMware vSphere 8.x 與 NetApp ONTAP 搭配使用</block>
+  <block id="826ec041a0aff526181c163b6a4e0c3d" category="section-title">Hypervisor SAN 開機</block>
+  <block id="a2f3bc96cbc046a0257c4be3c7ced6d9" category="paragraph">ESXi 提供一個稱為原生多路徑外掛程式（ NMP ）的可延伸多重路徑模組、可管理子外掛程式、儲存陣列類型外掛程式（ Storage Array Type Plugins 、簡稱 SATP ）和路徑選擇外掛程式（ CSP ）。根據預設、 ESXi 提供這些 SATAP 規則。</block>
+  <block id="5aec6957b0d2d12d3804dd3a930de977" category="paragraph">對於 NetApp ONTAP 儲存設備、<block ref="d4f7bd3bf4872a2f8cd0cbe400fb23d0" prefix=" " category="inline-code"></block> 外掛程式預設用於<block ref="4646bb781f9a95f64c182af129e43c7c" prefix=" " category="inline-code"></block> 作為路徑選擇原則（ PSP ）。您可以使用下列命令進行確認：</block>
+  <block id="f97e2682b008f063e93b88b3fd21dec5" category="paragraph">虛擬磁碟區（ vVols ）是一種 VMware 物件類型、對應於虛擬機器（ VM ）磁碟、其快照和快速複製。</block>
+  <block id="4d473bf9776286f2c0e6c4560b881e47" category="paragraph">VMware vSphere的VMware vSphere支援VASA Provider for VMware、提供整合點、讓VMware vCenter能夠運用vVols型儲存設備。ONTAP ONTAP當您部署 ONTAP 工具開放式虛擬化設備（ OVA ）時、系統會自動在 vCenter 伺服器上註冊、並啟用 VASA 提供者。</block>
+  <block id="c07b705fb9620f086ea38c4b77ac01b8" category="paragraph">使用vCenter使用者介面建立vVols資料存放區時、會引導您建立FlexVols作為資料存放區的備份儲存設備。ESXi 主機使用傳輸協定端點（ PE ）來存取 vVols 資料存放區內的 VVols 。在SAN環境FlexVol 中、資料存放區中的每個功能區都會建立一個4 MB LUN、作為PE使用。SAN PE是管理邏輯單元（ALU）。vVols是輔助邏輯單元（SLU）。</block>
+  <block id="cbb6add88005b9e195154a0f8f85eeaf" category="list-text">消除任何單點故障。在使用多個虛擬交換器時、在使用 NIC 群組的不同網路子網路上使用多個 VMkernel 網路介面、或使用多個連接到多個實體交換器的實體 NIC 來提供 HA 和提高處理量。</block>
+  <block id="46ec41b6e978af4bf2bcdae563d90ea4" category="list-text">視主機連線需求設定分區、 VLAN 或兩者。</block>
+  <block id="3fc902961119186032f704ba3435c6b2" category="list-text">確認所有必要的啟動器都已登入所需 SVM 上的目標生命。</block>
+  <block id="db234a15624d05512170fa7a780b7283" category="admonition">您必須部署ONTAP VMware vSphere的支援功能、才能啟用VASA Provider。VASA Provider 將為您管理所有的 iGroup 設定、因此無需在 vVols 環境中建立或管理 iGroups 。</block>
+  <block id="6961083e089f23fe2e08fee4e11ce67d" category="paragraph">如需資源配置與管理 vVols 的詳細資訊、請參閱 ONTAP Tools for VMware vSphere 文件、 <block ref="52e81e11040c41825151f9c7710055f2" category="inline-link-macro-rx"></block>和 <block ref="bcecf0e9ae9f2444b66065a431138ac6" category="inline-link-macro-rx"></block>。</block>
+  <block id="85c20d8ed50da2b685dee6048290bc6b" category="section-title">ATS 鎖定</block>
+  <block id="2a25d8db6ac1adf1bf990599279ec725" category="admonition">啟用<block ref="e855ec75b8d039b41e36e5b06323d66b" prefix=" " category="inline-code"></block> 針對對應至 VMware vSphere 的所有 LUN 進行設定<block ref="c92fdf55401abf777b4eb053ea6c606b" prefix=" " category="inline-code"></block> 以利工作。如需詳細資訊、請參閱 ONTAP 文件。</block>
+  <block id="fc762f7b8978e7422da00476297460a4" category="paragraph">您可以使用建議的客體作業系統調整來手動設定虛擬機器。調整更新之後、您必須重新開機客體、更新才會生效。</block>
+  <block id="50d0455997a85b31fbe42e78c301b264" category="section-title">驗證 vSphere 可調整的功能</block>
+  <block id="444ed403aaf81677cb3dd3c37eac7299" category="paragraph">您可以使用下列命令來驗證<block ref="26b00496bdf993ad7862062ddcf5fed5" prefix=" " category="inline-code"></block> 設定：</block>
+  <block id="b8a4c508b30d28aacdd6831c95eac830" category="paragraph"><block ref="8be06aa7887782bd4e41da5c199983f2" prefix="" category="inline-code"></block></block>
+  <block id="5969785f7e2cf46109d13be9407a2c26" category="section-title">驗證磁碟 IOPs 設定</block>
+  <block id="2bbdad1b88dae05e21d90f30c22f2fa5" category="paragraph">您可以使用下列命令來驗證 IOPs 設定。</block>
+  <block id="e5df657fd388d8f39a43697287ad4be4" category="paragraph"><block ref="c473f85e097dac32fab2ca7cf250ea1c" prefix="" category="inline-code"></block></block>
+  <block id="34c0ffbf32ee377ba7a81a38a98102b3" category="section-title">驗證 QFullSampleSize</block>
+  <block id="6900c94ed3bcf3920ffd579cf50e5209" category="paragraph">您可以使用下列命令來驗證 QFullSampleSize 。</block>
+  <block id="7cdbf4845592ad7b5cdb4ccc2c4e2638" category="paragraph"><block ref="d6c304a8136df005fd734e2f1889954c" prefix="" category="inline-code"></block></block>
+  <block id="8d0e68de728c46da62cafb173eb4dabc" category="sidebar">VMware vSphere 8.</block>
 </blocks>

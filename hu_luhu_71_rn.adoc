@@ -160,4 +160,4 @@ SAN主機公用程式的文件包含在中 link:https://docs.netapp.com/us-en/on
 * 適用於您的版本的《關於您的版次的《》《》《》。SANtricity SANtricity
 
 
-請參閱 link:https://docs.netapp.com/us-en/e-series/index.html["E系列文件"] 以尋找SANtricity 有關的文件。
+請參閱 link:https://docs.netapp.com/us-en/e-series/index.html["E系列文件"^] 以尋找SANtricity 有關的文件。

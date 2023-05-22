@@ -58,7 +58,7 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 「host_config」命令會執行下列動作：
 
 +
-** 變更適用於 x86 和 SPARC 系統的光纖通道和 SCSI 驅動程式的設定
+** 變更 x86 和 SPARC 系統的 Fibre Channel 和 SCSI 驅動程式設定
 ** 提供兩種MPxIO組態的SCSI逾時設定
 ** 設定VID/PID資訊
 ** 啟用或停用ALUA
@@ -96,7 +96,7 @@ data_vserver       /vol/vol2/lun2  /dev/rdsk/c0t600A098038314362705D51465A626475
 
 SAN開機是將SAN附加磁碟（LUN）設定為Solaris主機的開機裝置的程序。
 
-您可以使用FC傳輸協定設定SAN開機LUN、以便在Solaris MPxIO環境中運作、並執行Solaris Host Utilities。您用來設定SAN開機LUN的方法可能會因Volume Manager和檔案系統而異。請參閱 https://["安裝 Solaris 主機公用程式"^] 如需 Solaris MPIO 環境中 SAN Booting LUN 的詳細資訊、請參閱。
+您可以使用FC傳輸協定設定SAN開機LUN、以便在Solaris MPxIO環境中運作、並執行Solaris Host Utilities。您用來設定SAN開機LUN的方法可能會因Volume Manager和檔案系統而異。請參閱 https://["安裝 Solaris 主機公用程式"] 如需 Solaris MPIO 環境中 SAN Booting LUN 的詳細資訊、請參閱。
 
 
 
@@ -178,7 +178,7 @@ NOTE: 所有 SAN 陣列（ ASA ）組態都支援從 ONTAP 9.8 開始、適用�
 
 === 推薦MetroCluster 的設定
 
-根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由所控制 `fcp_offline_delay` 參數。的預設值 `fcp_offline_delay` 適用於標準ONTAP 的叢集。不過、在 MetroCluster 組態中、的值是 `fcp_offline_delay` 必須增加至* 120 *、以確保I/O在作業期間不會提早逾時、包括非計畫性容錯移轉。如需其他資訊及預設設定的建議變更、請參閱 NetApp 知識庫文章 https://["Solaris主機支援MetroCluster 考量的功能"^]。
+根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由所控制 `fcp_offline_delay` 參數。的預設值 `fcp_offline_delay` 適用於標準ONTAP 的叢集。不過、在 MetroCluster 組態中、的值是 `fcp_offline_delay` 必須增加至* 120 *、以確保I/O在作業期間不會提早逾時、包括非計畫性容錯移轉。如需預設設定的新增資訊和建議變更、請參閱知識庫文章 https://["Solaris主機支援MetroCluster 考量的功能"^]。
 
 
 
