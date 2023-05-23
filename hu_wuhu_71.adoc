@@ -50,7 +50,7 @@ Windows Unified Host Utilities內含安裝程式、可設定所需的Windows登�
 
 == 主機公用程式支援的組態
 
-主機公用程式支援不同的Windows主機組態、傳輸協定和多路徑選項。如需詳細資訊、請參閱 https://["NetApp 互通性對照表工具"^]。
+主機公用程式支援不同的Windows主機組態、傳輸協定和多路徑選項。如需詳細資訊、請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
 
 
 
@@ -59,7 +59,7 @@ Windows Unified Host Utilities內含安裝程式、可設定所需的Windows登�
 安裝主機公用程式之前、您必須先確認主機公用程式版本是否支援主機和儲存系統組態、以便正確安裝軟體。
 
 .步驟
-. 檢查中支援的組態 http://["NetApp 互通性對照表工具"^]。
+. 檢查中支援的組態 http://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]。
 . 檢查上個別主機所需的修補程式 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機Windows文件"]。
 +
 
@@ -71,7 +71,7 @@ NOTE: link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["使
 
 . 驗證纜線
 +
-請參閱 https://["SAN組態指南"^] 適用於ONTAP 您的版本的 https://["E系列硬體佈線指南"^] 以取得詳細的纜線和組態資訊。
+請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN組態指南"^] 適用於ONTAP 您的版本的 https://mysupport.netapp.com/ecm/ecm_get_file/ECMLP2773533["E系列硬體佈線指南"^] 以取得詳細的纜線和組態資訊。
 
 
 
@@ -91,7 +91,7 @@ NOTE: 請勿手動變更HBA設定。
 . 取得支援的HBA驅動程式和管理公用程式、並依照HBA廠商提供的指示進行安裝。
 . 將HBA連接至光纖通道交換器或直接連接至儲存系統。
 . 根據您的Fibre Channel交換器說明文件、在Fibre Channel交換器上建立區域。
-. 如需使用此功能、請將交換器分區為WWPN。ONTAP請務必使用LIF的WWPN、而非儲存控制器上的實體連接埠。如需詳細資訊、請參閱 https://["SAN組態指南"^]。
+. 如需使用此功能、請將交換器分區為WWPN。ONTAP請務必使用LIF的WWPN、而非儲存控制器上的實體連接埠。如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN組態指南"^]。
 
 
 
@@ -116,7 +116,7 @@ NOTE: 請勿手動變更HBA設定。
 若要以互動方式安裝主機公用程式軟體套件、您必須執行主機公用程式安裝程式、然後依照提示進行。
 
 .步驟
-. 從下載執行檔 https://["NetApp 支援網站"^]。
+. 從下載執行檔 https://mysupport.netapp.com/site/["NetApp 支援網站"^]。
 . 切換到您下載執行檔的目錄。
 . 執行「NetApp_windows_host_utilities」7.1_x64檔案、然後依照畫面上的指示操作。
 . 出現提示時、重新啟動Windows主機。
@@ -359,7 +359,7 @@ Windows Unified Host Utilities安裝程式會根據您在安裝期間所做的�
 | HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval | 1. | 當您的伺服器僅適用於Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時 
 |===
 .相關資訊
-請參閱 https://["Microsoft文件"^] 以取得登錄參數詳細資料。
+請參閱 https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users["Microsoft文件"^] 以取得登錄參數詳細資料。
 
 
 
@@ -413,7 +413,7 @@ Windows Unified Host Utilities安裝程式會根據您在安裝期間所做的�
 NOTE: 參數名稱可能會因程式而稍有不同。例如、在QLogic QConvertgeConsole程式中、此參數會顯示為「Link down timeout（連結中斷逾時）」。主機公用程式「fcconfig.ini`檔案」會根據是否指定MPIO、將此參數顯示為「LinkDownTimeOut」或「PioLinkDownTimeOut」。但是、所有這些名稱都是指相同的HBA參數。
 
 .相關資訊
-請參閱 https://["Emulex"^] 或 https://["QLogic"^] 網站以深入瞭解逾時參數。
+請參閱 https://www.broadcom.com/support/download-search["Emulex"^] 或 https://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/Netapp_search.aspx["QLogic"^] 網站以深入瞭解逾時參數。
 
 
 
@@ -429,8 +429,8 @@ NOTE: 參數名稱可能會因程式而稍有不同。例如、在QLogic QConver
 * 如果使用LUN的應用程式在啟動時顯示錯誤、您必須確認應用程式已設定為依賴iSCSI服務。
 * 對於連接至執行ONTAP 效能不全的儲存控制器的Fibre Channel路徑、您必須確認FC交換器已使用目標生命體的WWPN進行分區、而非使用節點上實體連接埠的WWPN。
 * 您必須檢閱 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式版本資訊"] 檢查已知問題。版本資訊中包含已知問題與限制的清單。
-* 您必須檢閱中的疑難排解資訊 https://["SAN管理指南"^] 適用於ONTAP 您的版本的
-* 您必須搜尋 https://["線上錯誤"^] 針對最近發現的問題。
+* 您必須檢閱中的疑難排解資訊 https://docs.netapp.com/ontap-9/index.jsp["SAN管理指南"^] 適用於ONTAP 您的版本的
+* 您必須搜尋 https://mysupport.netapp.com/site/bugs-online/["線上錯誤"^] 針對最近發現的問題。
 * 在「進階搜尋」下的「錯誤類型」欄位中、您應該選取「iSCSI - Windows」、然後按一下「執行」。您應該重複搜尋錯誤類型FCP -Windows。
 * 您必須收集系統的相關資訊。
 * 記錄顯示在主機或儲存系統主控台上的任何錯誤訊息。
@@ -440,9 +440,9 @@ NOTE: 參數名稱可能會因程式而稍有不同。例如、在QLogic QConver
 
 
 .相關資訊
-http://["NetApp 互通性對照表工具"^]
-https://["NetApp文件"^]
-https://["NetApp線上錯誤"^]
+http://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+https://mysupport.netapp.com/portal/documentation["NetApp文件"^]
+https://mysupport.netapp.com/NOW/cgi-bin/bol["NetApp線上錯誤"^]
 
 
 

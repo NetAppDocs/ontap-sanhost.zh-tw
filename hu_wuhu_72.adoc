@@ -45,7 +45,7 @@ Windows 統一化主機公用程式包含一個安裝程式、可設定所需的
 
 == 主機公用程式支援的組態
 
-主機公用程式支援不同的 Windows 主機組態、通訊協定和多重路徑選項。如需詳細資訊、請參閱 https://["NetApp 互通性對照表工具"^]。
+主機公用程式支援不同的 Windows 主機組態、通訊協定和多重路徑選項。如需詳細資訊、請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
 
 
 
@@ -54,7 +54,7 @@ Windows 統一化主機公用程式包含一個安裝程式、可設定所需的
 安裝主機公用程式之前、您必須確認主機公用程式版本支援您的主機和儲存系統組態、以便軟體正確安裝。
 
 .步驟
-. 檢查中支援的組態 http://["NetApp 互通性對照表工具"^]。
+. 檢查中支援的組態 http://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]。
 . 檢查中個別主機所需的 Hotfix link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機Windows文件"]。
 +
 
@@ -66,7 +66,7 @@ FC 和 iSCSI 通訊協定不需要在使用 SANtricity Storage Manager 的 E 系
 
 . 驗證您的纜線。
 +
-請參閱 https://["SAN組態指南"^] 適用於您的 ONTAP 版本或 https://["E系列硬體佈線指南"^] 以取得詳細的纜線和組態資訊。
+請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN組態指南"^] 適用於您的 ONTAP 版本或 https://mysupport.netapp.com/ecm/ecm_get_file/ECMLP2773533["E系列硬體佈線指南"^] 以取得詳細的纜線和組態資訊。
 
 
 
@@ -86,7 +86,7 @@ CAUTION: 請勿手動變更 HBA 設定。
 . 取得支援的HBA驅動程式和管理公用程式、並依照HBA廠商提供的指示進行安裝。
 . 將 HBA 連接至 FC 交換器或直接連接至儲存系統。
 . 根據 FC 交換器文件、在 FC 交換器上建立區域。
-. 對於 ONTAP 、請將交換器分區為 WWPN 。請務必使用邏輯介面（生命體）的 WWPN 、而非儲存控制器上實體連接埠的 WWPN 。如需詳細資訊、請參閱 https://["SAN組態指南"^]。
+. 對於 ONTAP 、請將交換器分區為 WWPN 。請務必使用邏輯介面（生命體）的 WWPN 、而非儲存控制器上實體連接埠的 WWPN 。如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN組態指南"^]。
 
 
 
@@ -111,7 +111,7 @@ MPIO選項不適用於Windows XP和Windows Vista系統；這些來賓作業系�
 若要以互動方式安裝主機公用程式軟體套件、您必須執行主機公用程式安裝程式、並遵循提示進行。
 
 .步驟
-. 從下載執行檔 https://["NetApp 支援網站"^]。
+. 從下載執行檔 https://mysupport.netapp.com/site/["NetApp 支援網站"^]。
 . 變更至您下載執行檔的目錄。
 . 執行 `netapp_windows_host_utilities_7.2_x64` 請歸檔並遵循畫面上的指示。
 . 出現提示時、重新啟動Windows主機。
@@ -432,14 +432,14 @@ NOTE: 參數名稱可能會因程式而稍有不同。例如、在 QLogic QConve
 === 找出可能的互通性問題的不同領域
 
 * 若要識別潛在的互通性問題、您必須確認主機公用程式支援主機作業系統軟體、主機硬體、 ONTAP 軟體和儲存系統硬體的組合。
-* 您必須檢查 http://["NetApp 互通性對照表工具"^]。
+* 您必須檢查 http://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]。
 * 您必須驗證iSCSI組態是否正確。
 * 如果 iSCSI LUN 在重新開機後無法使用、您必須在 Microsoft iSCSI 啟動器 GUI 的 * 持續目標 * 索引標籤上、確認目標已列為持續性。
 * 如果使用LUN的應用程式在啟動時顯示錯誤、您必須確認應用程式已設定為依賴iSCSI服務。
 * 對於執行 ONTAP 的儲存控制器的 FC 路徑、您必須使用目標生命體的 WWPN 、而非節點上實體連接埠的 WWPN 、來確認 FC 交換器已分區。
 * 您必須檢閱 link:hu_wuhu_71_rn.html["版本資訊"] 讓 Windows 主機公用程式檢查已知問題。版本資訊包含已知問題與限制清單。
 * 您必須檢閱《 SAN 管理指南》中有關 ONTAP 版本的疑難排解資訊。
-* 您必須搜尋 https://["NetApp線上錯誤"^] 針對最近發現的問題。
+* 您必須搜尋 https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 針對最近發現的問題。
 +
 ** 在「進階搜尋」下的「錯誤類型」欄位中、您應該選取 *iSCSI - Windows* 、然後選取 *Go* 。您應該重複搜尋錯誤類型 *FCP -Windows* 。
 

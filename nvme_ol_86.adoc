@@ -399,7 +399,7 @@ NSID       UUID                                   Size
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
-| 1517321 | Oracle Linux 8.6NVMe主機會建立重複的持續探索控制器 | 在Oracle Linux 8.6NVMe over Fabrics（NVMe）主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是採用NVMe的主機、則每次都會建立一個重複的資料中心 `nvme discover -p` 已執行。這會導致主機和目標上的資源使用不必要。 | https://["18118."^] 
+| 1517321 | Oracle Linux 8.6NVMe主機會建立重複的持續探索控制器 | 在Oracle Linux 8.6NVMe over Fabrics（NVMe）主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是採用NVMe的主機、則每次都會建立一個重複的資料中心 `nvme discover -p` 已執行。這會導致主機和目標上的資源使用不必要。 | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118."^] 
 |===
 
 

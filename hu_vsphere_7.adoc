@@ -29,7 +29,7 @@ summary: 說明如何使用Veritas Infoscale 7.3 for Linux搭配ONTAP 使用功�
 == Hypervisor SAN開機
 
 .您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 https://["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -214,7 +214,7 @@ NOTE: 您必須部署ONTAP VMware vSphere的支援功能、才能啟用VASA Prov
 
 NetApp目前不建議變更任何vVols設定。
 
-請參閱 https://["NetApp 互通性對照表工具"^] 適用於ONTAP 特定版本的支援工具、或適用於特定版本vSphere和ONTAP VMware的舊版VASA供應商。
+請參閱 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 適用於ONTAP 特定版本的支援工具、或適用於特定版本vSphere和ONTAP VMware的舊版VASA供應商。
 
 如需資源配置與管理vVols的詳細資訊、請參閱ONTAP VMware vSphere的VMware工具文件及 link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^] 和 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^]。
 
