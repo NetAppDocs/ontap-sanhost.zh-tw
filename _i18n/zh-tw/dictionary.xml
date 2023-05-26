@@ -3114,4 +3114,81 @@
   <block id="6900c94ed3bcf3920ffd579cf50e5209" category="paragraph">您可以使用下列命令來驗證 QFullSampleSize 。</block>
   <block id="7cdbf4845592ad7b5cdb4ccc2c4e2638" category="paragraph"><block ref="d6c304a8136df005fd734e2f1889954c" prefix="" category="inline-code"></block></block>
   <block id="8d0e68de728c46da62cafb173eb4dabc" category="sidebar">VMware vSphere 8.</block>
+  <block id="2e920bc4fea58a11c2cd8f0900ced25a" category="summary">如何使用 ONTAP 設定適用於 AIX 的 NVMe / FC 主機</block>
+  <block id="ef44b1520fc219818110cbb848b83d4c" category="doc">適用於 AIX 與 ONTAP 的 NVMe / FC 主機組態</block>
+  <block id="8ab281bb60ad999625aaf3de3c38fb65" category="paragraph">您可以在 IBM AIX 和 VIOS/PowerVM 主機上啟用 NVMe / FC 、並使用 ONTAP 儲存設備作為目標。如需支援組態的詳細資訊、請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block>。</block>
+  <block id="3f30b3d0388d2e37b9eab09266e88352" category="paragraph">下列支援可用於具有 ONTAP 的 AIX 主機的 NVMe / FC 主機組態：</block>
+  <block id="0ea2a32c53bc6cd3ea3534dccecb8603" category="list-text">從 ONTAP 9.13.1 開始、 IBM AIX 7.2 TL5 SP6 、 AIX 7.3 TL1 SP2 和 VIOS 3.1.4.21 版本均新增 NVMe over Fibre Channel （ NVMe / FC ）支援、同時支援實體和虛擬堆疊的 SAN 開機。如需設定 SAN 開機支援的詳細資訊、請參閱 IBM 文件。</block>
+  <block id="870666297c802760e0f740c23ba0f86a" category="list-text">NVMe / FC 僅支援 Power9 和 Power10 IBM 伺服器。</block>
+  <block id="2cbe79c2517f134493f44b09d5cbb74f" category="list-text">NVMe 裝置不需要個別的 PCM （路徑控制模組）、例如 Huk for AIX SCSI MPIO 支援。</block>
+  <block id="4eb7ab60a4431529679ce25f0492c7af" category="list-text">VIOS 3.1.4.21 引進 NetApp （ VIOS/PowerVM ）的虛擬化支援。使用 Power10 IBM 伺服器透過 NPIV （ N_portID 虛擬化）儲存虛擬化模式支援這項功能（僅限 _ ）。</block>
+  <block id="3f11c6032647a5818c534829ca2b2ee0" category="list-text">確認您擁有 32 GB FC Emulex 介面卡（ EN1A 、 EN1B 、 EN1L 、 EN1M ）或 64 GB FC 介面卡（ EN1N 、 EN1P ）、以及介面卡韌體 12.4.257.30 及更新版本。</block>
+  <block id="8bd787dd7b428233f651ee1c46e21ee9" category="list-text">如果您有 MetroCluster 組態、 NetApp 建議您變更 AIX NVMe / FC 預設 APD （ All Path Down ）時間、以支援 MetroCluster 非計畫性切換事件、以避免 AIX 作業系統強制縮短 I/O 逾時。如需更多資訊及建議的預設設定變更、請參閱公開報告 1553249 。</block>
+  <block id="0e7e32cf18062ea2f0711c507e314b8a" category="list-text">依預設、 AIX 主機作業系統的 ANATT 值為 30 秒。IBM 提供一項臨時修復（ iFix ）、將 ANATT 值上限設為 60 秒；您需要從 IBM 網站安裝 iFix 、以確保所有 ONTAP 工作流程都不會中斷營運。</block>
+  <block id="feea0cbb465b6caacbe6b2e93f04da1d" category="admonition">對於 NVMe / FC AIX 支援、您需要在 AIX OS 的 GA 版本上安裝 iFix 。VIOS/PowerVM 作業系統不需要此功能。</block>
+  <block id="c07e427521a4c5ceb9704138566e124e" category="paragraph">iFix 詳細資料如下：</block>
+  <block id="e1fa9920a353e14604b971646734d9ad" category="list-text">對於 AIX 72-TL5-SP6-2320 層級、請安裝<block ref="f896e07534b8a3b773955f68065d246e" prefix=" " category="inline-code"></block> 套件：</block>
+  <block id="532cbcbb7aad95ce1f00e4e3fb4b03f6" category="list-text">對於 AIX 73-TL1-SP2-2320 層級、請安裝<block ref="9b3ffcc15ca4d75da623901d3832fc42" prefix=" " category="inline-code"></block> 套件：</block>
+  <block id="f17bfdf5999401bcdd6897f6d5dd675b" category="inline-link-macro">管理 AIX 上的臨時修復</block>
+  <block id="bcdcf815cb913fe205982051fea55f20" category="paragraph">如需管理 iFix 的詳細資訊、請參閱 <block ref="d0c56d52e1733062faaa4c2667974f7c" category="inline-link-macro-rx"></block>。</block>
+  <block id="fe969132e8cace79306a9789cbb1baf4" category="admonition">您需要在 AIX 版本上安裝 iFix 、但先前未安裝與相關的 iFix<block ref="ed3d677bd9df1c532cefdc326b4fb80e" prefix=" " category="inline-code"></block> 在系統上。如果存在這些 iFix 、則會與新安裝發生衝突。</block>
+  <block id="940130be22cd59a60c9c2a5671450753" category="paragraph">下表示範在非虛擬化模式下指派給 AIX LPAR （ AIX 邏輯分割區）或實體 / 原生堆疊的 HBA ：</block>
+  <block id="0437eec9c1ba5909642a99ee90c5a546" category="cell">主機作業系統</block>
+  <block id="11b3050b36fe4bf65551c9379e74cac7" category="cell">強大架構</block>
+  <block id="807dd41b75918d70b41f7722ef76ddcb" category="cell">Power FW 版本</block>
+  <block id="650be61892bf690026089544abbd9d26" category="cell">模式</block>
+  <block id="8413c683b4b27cc3f4dbd4c90329d8ba" category="cell">註解</block>
+  <block id="7b9eb3515c255f26f173af0f1d02ca10" category="cell">AIX 7.2 TL5 SP6.</block>
+  <block id="89832886f2c91d14b5ea95e8c8b2efc3" category="cell">Power9.</block>
+  <block id="fdcfefc0dd4d47b4775e7a895353b298" category="cell">FW 950 或更新版本</block>
+  <block id="da032935d38f58f2a80e85824e285a21" category="cell">實體堆疊</block>
+  <block id="948c847302bfad6875962089bd70b8eb" category="cell">可透過 TS012877410 取得 iFix 。</block>
+  <block id="ef68d757b6bda6ddbe9888cee04ed83e" category="cell">Power10</block>
+  <block id="491f480bd25135b61af1898f4382d024" category="cell">FW 1010 或更新版本</block>
+  <block id="e7cda58d3cb375f2860722871215ea51" category="cell">支援 SAN 開機。可透過 TS012877410 取得 iFix 。</block>
+  <block id="307b80695029d3fb204f358d595aa521" category="cell">AIX 7.3 TL1 SP2</block>
+  <block id="bfbb073807eefa21522d9a2da6f6143e" category="cell">實體與虛擬堆疊</block>
+  <block id="2169ce752df21260967f4168dcd448df" category="paragraph">下表示範在虛擬化模式下、指派給 VIOS 且支援 NPIV 的 HBA ：</block>
+  <block id="c31bfee70971bfd9d23d0e828b31f576" category="cell">Vios / PowerVM 3.1.4.21</block>
+  <block id="8ed3cb67c40a76fb7e1d9cf52f588283" category="cell">虛擬堆疊</block>
+  <block id="ffe61e892c57af1c7ba6edcf6cd43164" category="cell">從 AIX 7.3 TL1 SP2 for VIOCc 開始支援</block>
+  <block id="7497bca195bb082ae940f34297194a2d" category="paragraph">適用於 AIX （含 ONTAP ）的 NVMe / FC 主機組態具有下列已知限制：</block>
+  <block id="e210d5a356038b64a9864c04f6066b20" category="list-text">AIX 主機上的 QLogic/Marvel 32G FC HBA 不支援 NVMe / FC 。</block>
+  <block id="0addf2aa980ae0c0697b70236083a535" category="list-text">使用 Power9 IBM 伺服器的 NVMe / FC 裝置不支援 SAN 開機。</block>
+  <block id="108d929e2d13a7291d4c2a75f9607cb3" category="paragraph">IBM MPIO （多路徑 I/O ）用於 NVMe 多重路徑、在您安裝 AIX OS 時、預設會提供。</block>
+  <block id="55bd8b08aa29008e531a080aa61ecdb8" category="paragraph">您可以使用驗證是否已為 AIX 主機啟用 NVMe 多重路徑<block ref="d4911144bc4ed6672c49d5124ec36d0d" prefix=" " category="inline-code"></block> 命令：</block>
+  <block id="6ca857f7a44a21cfffda914cf9549710" category="paragraph">* 輸出範例 *</block>
+  <block id="befb82eb50a6a0cc76543fdb7fa81b05" category="paragraph">您可以使用下列程序來設定適用於 Broadcom / Emulex 介面卡的 NVMe / FC 。</block>
+  <block id="869544161f77927dc1a5671f65d62425" category="list-text">確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block>。</block>
+  <block id="ce2df3d84c39fdb894251f18b0f706c8" category="list-text">根據預設、實體 FC 會啟用 NVMe / FC 傳輸協定支援；不過、虛擬 I/O 伺服器（ VIOS ）上的虛擬光纖通道（ VFC ）會停用 NVMe / FC 傳輸協定支援。擷取停用 NVMe / FC 支援的介面卡清單：</block>
+  <block id="955736fca778773f397bfff3fb13554e" category="list-text">在介面卡上執行以啟用對 NVMe / FC 傳輸協定的支援<block ref="298944b0d52065fb6d4009e722898415" prefix=" " category="inline-code"></block> 在 VIOS 上執行命令：</block>
+  <block id="6cd5c80cb797f1e2d35f1d580ffe6d20" category="list-text">確認已在介面卡上啟用支援：</block>
+  <block id="8efc24b1df9bc9f173cfba2079a3ac11" category="list-text">為所有目前的介面卡或選取的介面卡啟用 NVMe / FC 傳輸協定：</block>
+  <block id="84b3e0604b5f47c082acaf2ab109e481" category="list-text">為所有介面卡啟用 NVMe / FC 傳輸協定：</block>
+  <block id="af34ce57ad4def33e18653786afd224e" category="list-text">變更<block ref="f554e1472be57a017a09b8e72df7e0b2" prefix=" " category="inline-code"></block> 的屬性值<block ref="6366faad0ce9db50ad4ec0b944e6804f" prefix=" " category="inline-code"></block> 將虛擬裝置傳送至<block ref="a6105c0a611b41b08f1209506350279e" prefix=" " category="inline-code"></block>。</block>
+  <block id="1e51be8d7b5e359a2e676b1786aa6f7c" category="list-text">設定<block ref="29869abeb6a28a2a0c3dcbf38108e625" prefix=" " category="inline-code"></block> 屬性值至<block ref="a6105c0a611b41b08f1209506350279e" prefix=" " category="inline-code"></block> 適用於所有 VFC 主機裝置。</block>
+  <block id="6ea83948bb41db592f1dd144bab617d5" category="list-text">變更以啟用所選介面卡的 NVMe / FC 傳輸協定<block ref="29869abeb6a28a2a0c3dcbf38108e625" prefix=" " category="inline-code"></block> VFC 主機裝置屬性的值<block ref="a6105c0a611b41b08f1209506350279e" prefix=" " category="inline-code"></block>。</block>
+  <block id="2b7b658346d3fa52c5363c17cfe2b64f" category="list-text">請確認<block ref="fb697c2845ab4f6877db5fb0f162a140" prefix=" " category="inline-code"></block> 已在伺服器上建立：</block>
+  <block id="9ca965cb8c1f3cc98538fd9fe17ee462" category="paragraph">* 輸出 *</block>
+  <block id="6205e6a8adf00a039a76f80fba751d5d" category="list-text">從伺服器記錄主機 NQN ：</block>
+  <block id="5609ae4308e7e13b571a4609a80ca28c" category="list-text">檢視分割區 UUID ：</block>
+  <block id="46fb92f9d8bcac6d074199517bcfd9da" category="list-text">檢查主機 NQN 、並確認它符合 ONTAP 陣列上對應子系統的主機 NQN 字串：</block>
+  <block id="da208fb575db2ac57ff1319036af2a6f" category="list-text">確認啟動器連接埠已啟動並正在執行、您可以看到目標生命體。</block>
+  <block id="413d1a842341ac8491856d35085746ac" category="paragraph">您需要驗證 ONTAP 命名空間是否正確反映在主機上。執行下列命令以執行：</block>
+  <block id="c4815a9e7bab07d952f3a16f2d250f1f" category="paragraph">您可以檢查多重路徑狀態：</block>
+  <block id="b1460fc99f40abf0e4777c0ef83f9340" category="paragraph">適用於 AIX 與 ONTAP 的 NVMe / FC 主機組態有下列已知問題：</block>
+  <block id="31c5b0de25b168798dceb058bef8a7f6" category="cell">Burt ID</block>
+  <block id="42dcdffc46f5810bfaac54d46fbf50ef" category="cell">1553249)</block>
+  <block id="650a7c31a67a66d1f1f10b3eccb13db4" category="cell">要修改的 AIX NVMe / FC 預設 APD 時間、以支援 MCC 非計畫性切換事件</block>
+  <block id="9f84e76956bfe4d716d3866a854ef57e" category="cell">根據預設、 NVMe / FC 的全路徑關機（ APD ）逾時值為 20 秒。  然而、 ONTAP MetroCluster 自動非計畫性切換（ AUSO ）和 tiebreaker 啟動的切換工作流程、可能會比 APD 逾時時間長一點、導致 I/O 錯誤。</block>
+  <block id="5f6372d1d8f487ae80b5feed7e441420" category="cell">1546017.</block>
+  <block id="24f2a7ff1a2835519ea571d3e22b1a36" category="cell">AIX NVMe / FC CAP ANATT 為 60s 、而非 ONTAP 所宣傳的 120s</block>
+  <block id="16c567932b89582ab5042df30072ca4e" category="cell">ONTAP 在控制器識別中通告 ANA （非對稱式命名空間存取）轉換逾時時間為 120 秒。目前、透過 iFix 、 AIX 會從控制器識別讀取 ANA 轉換逾時、但如果超過該限制、則有效地將其鎖定至 60 秒。</block>
+  <block id="9539a7ea940559ecdced176b2592b5d3" category="cell">1541386</block>
+  <block id="7dcc9f5201e7653745b04540dfb62afa" category="cell">AAIX NVMe / FC 在 ANATT 到期後符合 EIO</block>
+  <block id="005bc828fe1c9102500705a406202e5c" category="cell">對於任何儲存容錯移轉（ SFO ）事件、如果 ANA （非對稱式命名空間存取）轉換超過指定路徑上的 ANA 轉換逾時上限、則 AIX NVMe / FC 主機會失敗、並出現 I/O 錯誤、儘管命名空間有其他可用的健全路徑。</block>
+  <block id="51febd786dec93062cef9cfc8123006f" category="cell">1541380</block>
+  <block id="875f8b6e43bcfbc9770e44865a0aed5c" category="cell">AIX NVMe / FC 會等待半 / 全 ANATT 過期、然後在 ANA AEN 之後恢復 I/O</block>
+  <block id="656b00a7eb6f6aa3f9eb9c87cb124f32" category="cell">IBM AIX NVMe / FC 不支援 ONTAP 發佈的部分非同步通知（ AENs ）。這種低於最佳的全日空處理將導致 SFO 作業期間的效能不佳。</block>
+  <block id="7e6bb0931a72759d39514aa924b420bc" category="sidebar">AIX</block>
 </blocks>

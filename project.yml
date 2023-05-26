@@ -49,6 +49,8 @@ sidebar:
         url: "/hu_wuhu_71_rn.html"
   - title: NVMe主機組態
     entries:
+    - title: AIX
+      url: "/nvme_aix.html"
     - title: ESXi
       pdf-filename: NVMeoF ESXi
       entries:
