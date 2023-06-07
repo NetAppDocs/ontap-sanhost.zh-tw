@@ -147,54 +147,61 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 
 RHEL 9.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。
 
-要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案
+。 `multipath.conf` 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：
 
-第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。
+`touch /etc/multipath.conf`
+
+第一次建立此檔案時、您可能需要啟用和啟動多重路徑服務：
 
 [listing]
 ----
 # systemctl enable multipathd
 # systemctl start multipathd
 ----
-無需直接在中新增任何內容 `multipath.conf` 檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。
-
-您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。
-
-更換 `<DevId>` 使用您要排除的裝置 WWID 字串：
-
-....
+* 無需直接在中新增任何內容 `multipath.conf` 檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。
+* 若要排除不想要的裝置、請將下列語法新增至 `multipath.conf` 檔案。
++
+[listing]
+----
 blacklist {
         wwid <DevId>
         devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
         devnode "^hd[a-z]"
         devnode "^cciss.*"
 }
-....
+----
++
+更換 `<DevId>` 使用 `WWID` 要排除的裝置字串。
+
+
+
 .範例
 在此範例中、 `sda` 是我們需要新增至黑名單的本機SCSI磁碟。
 
 .步驟
 . 執行下列命令來判斷WWID：
 +
-....
+[listing]
+----
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
-....
-. 將此WWID新增至「/etc/multipath.conf」中的黑名單節：
+----
+. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
 +
-....
+[listing]
+----
 blacklist {
      wwid   360030057024d0730239134810c0cb833
      devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
      devnode "^hd[a-z]"
      devnode "^cciss.*"
 }
-....
+----
 
 
-您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是預設值區段、可能會覆寫預設設定。
+您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表顯示要徑 `multipathd` 支援的參數ONTAP 和所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要稍後在中的節能區段加以修正 `multipath.conf` 特別適用於ONTAP 整個LUN的檔案。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。
+下表說明了關鍵 `multipathd` 支援的參數ONTAP 和所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要稍後在中的節能區段加以修正 `multipath.conf` 特別適用於ONTAP 整個LUN的檔案。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應諮詢 NetApp 和 / 或作業系統廠商、以覆寫這些預設值。
 
 [cols="2*"]
 |===
