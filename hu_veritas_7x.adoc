@@ -30,14 +30,14 @@ summary: 提供ONTAP Veritas Infoscale 7系列版本的VMware SAN主機組態設
 
 NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 在64位元.rpm檔案中。
 
-強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 .您需要的產品
-如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。
+如果您目前已安裝 Linux Unified Host Utilities 版本、您應該升級或移除該版本、然後使用下列步驟來安裝最新版本。
 
 .步驟
 . 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 到您的主機。
-. 使用下列命令安裝軟體套件：
+. 安裝軟體套件：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
 
@@ -83,9 +83,10 @@ enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192
 
 .步驟
 . 將SAN開機LUN對應至主機。
-. 確認有多個可用路徑。
+. 確認有多個路徑可供使用。
 +
-請記住、只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。
+
+NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路徑可供使用。
 
 . 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
 +
@@ -162,7 +163,7 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑�
 
 === 非ASA組態
 
-對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
 
 .範例
 下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
@@ -178,7 +179,7 @@ sdcj  ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
 sdea  ENABLED     Active/Non-Optimized c14   SFRAC       sfrac0     -      -
 ----
 
-NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
 
 
 

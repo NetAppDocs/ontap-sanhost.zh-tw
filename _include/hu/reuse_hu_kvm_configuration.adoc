@@ -1,9 +1,9 @@
-= KVM設定
+= KVM 設定
 :allow-uri-read: 
 
 
 
 
-=== KVM設定
+=== KVM 設定
 
 您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。

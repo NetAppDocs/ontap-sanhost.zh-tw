@@ -17,8 +17,6 @@
   <block id="5c418e7e8faea588a8aaca3632cdef5c" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="d51d9bd8ee469ad0aee13f86bf1610ea" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">步驟</block>
   <block id="12979f8a3c6b4227894a0c63e81784a9" category="list-text">將SAN開機LUN對應至主機。</block>
-  <block id="7ae7cf34d310673da37557313a55892d" category="list-text">確認有多個可用路徑。</block>
-  <block id="a744de0e861e6bf93c1b8497aee8c74b" category="paragraph">請記住、只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。</block>
   <block id="ae2b455a54af72efa36eb66631dcf444" category="list-text">在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。</block>
   <block id="482fb3c22fb491f46c3f0e54cea6b9d1" category="paragraph">如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。</block>
   <block id="5a776bf93e0712efccb14ab4ad4ab170" category="list-text">重新啟動主機、確認開機成功。</block>
@@ -32,7 +30,6 @@
   <block id="fa75e27f7177881cb444c05d8eae6152" category="list-text">驗證「cat /proc/cmdline」命令的輸出、以確保設定完成。</block>
   <block id="32ef1514a118a90d123d7385cc9d865f" category="paragraph">您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。</block>
   <block id="dba35953d3af1713968cdc2eba05813a" category="section-title">所有SAN陣列組態</block>
-  <block id="718434eaab1a4acbc3513dfaac0abc65" category="paragraph">在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</block>
   <block id="0ad7491bc01531fcac211e10a0f8a9a0" category="paragraph">下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：</block>
   <block id="aa89a86e36a09e87ac1e23a259c8d26c" category="admonition">請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。</block>
   <block id="56dcd6f4fc148f38b926523ede2073aa" category="section-title">非ASA組態</block>
@@ -44,10 +41,8 @@
   <block id="639757de418f2423907f2b63fbc1458b" category="paragraph">第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。</block>
   <block id="6e7eef95f0e9ee9b717340ce72d65e5b" category="paragraph">不需要直接將任何內容新增至「多重路徑.conf」檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。</block>
   <block id="36da0e0b56843a1256e96e81029390fa" category="paragraph">您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。</block>
-  <block id="32fdadaf90804487f6b463983fc1c553" category="paragraph">將「&lt;DevID&gt;」取代為您要排除的裝置WWID字串。使用下列命令來判斷WWID：</block>
   <block id="4d70a817ac85626aff88bbc73d0a2deb" category="list-text">執行下列命令來判斷WWID：</block>
   <block id="ff73d7e0f0c6051bbd80575105bb1cb1" category="list-text">將此WWID新增至「/etc/multipath.conf」中的黑名單節：</block>
-  <block id="21613f1f81985ce9edca2dc6272a765e" category="paragraph">您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。下表顯示ONTAP 了關鍵的「多路徑d」參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</block>
   <block id="83f499a540b1323009c200d6f8cc9396" category="cell">參數</block>
   <block id="51ac4bf63a0c6a9cefa7ba69b4154ef1" category="cell">設定</block>
   <block id="dbffbd283cd0d9c7937014167893297e" category="cell">DETECT（偵測）_prio</block>
@@ -334,9 +329,6 @@
   <block id="3b3051e9028e74cd5ada27ca8f32e352" category="paragraph">對於Oracle Linux 6.10、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.10是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="4c489d4721694c4117162307ded4345c" category="list-text">使用「mkitrd」命令重新建立initrd-image。Oracle 6x及更新版本可使用以下命令：命令：「mkitrd -f /boot/ initrd-"uname -r"。imguname -r"或命令：「Dracut -f」</block>
   <block id="00d1a8ad09df702e5b164c26cbd1bc1a" category="paragraph">Oracle Linux 6.10作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="eed881bb2a34d1ee7f7f847943028439" category="paragraph">多重路徑精靈必須存在multipath.conf檔案、才能啟動、但您可以使用命令「Touch /etc/multipath.conf」建立空白的零位元組檔案、這是您第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。</block>
-  <block id="3e62478acd97c41a7fea67ffea8ef9a1" category="paragraph">除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要直接將任何內容新增至multipath.conf。您可以將下列語法新增至多重路徑.conf檔案、以排除不需要的裝置。</block>
-  <block id="3bd7fde20a9abc176890c7422cf0f77f" category="admonition">將&lt;DevID&gt;取代為您要排除的裝置WWID字串。使用下列命令來判斷WWID：</block>
   <block id="e56af6b270edfc4a1dd8c5ee0e1144e1" category="admonition">若要設定Oracle Linux 6.10 RedHat Enterprise核心（RHCK）、請使用 <block ref="a294cf4df5bbbd1673f2ccf0dacf7b03" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.10。</block>
   <block id="95a2a60b3c81348f445296ddb1b67056" category="paragraph">Oracle 6.10沒有已知問題。</block>
   <block id="e2fadd98203b659772427cfe42d4a39e" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.10。</block>
@@ -2243,7 +2235,6 @@
   <block id="73d4b705776db33e6478d2847ebc567c" category="paragraph">Oracle Linux 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
   <block id="cb209f9eec3baeb4065409d39ca1f4d5" category="paragraph">Oracle Linux 8.3作業系統已經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
   <block id="ce431e2558ea7b456c531991fb4a7e92" category="paragraph">Oracle Linux 8.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
-  <block id="c785c7cbae0a664e0cc339dfef33bde1" category="paragraph">ASM鏡射可能需要變更Linux多重路徑設定、以允許ASM辨識問題並切換至其他故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
   <block id="3eeb371f92f74d2b6501646282092ca7" category="summary">說明如何搭配ONTAP 使用CentOS 8.4搭配使用</block>
   <block id="32d86924bbcb8820c9a350a7d741cbea" category="doc">將CentOS 8.4與NetApp ONTAP 搭配使用</block>
   <block id="e5a962185d7bd63be4f29de827478b1c" category="paragraph">對於CentOS 8.4、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.4是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
@@ -2527,7 +2518,6 @@
   <block id="237e46c87c95b6d72dceaf420c603d90" category="sidebar">Linux統一化主機公用程式</block>
   <block id="c134d5805f93afa1db7c6399465d2bd8" category="sidebar">Solaris主機公用程式</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">NVMeoF RHEL</block>
-  <block id="f561aaf6ef0bf14d4208bb46a4ccb3ad" category="paragraph">XXX</block>
   <block id="47e2092f9d666fc24b67c7da02de84c7" category="paragraph">Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。我們建議下載並安裝最新的公用程式套件。如需Wuhu組態資訊與說明、請參閱 <block ref="f7fe1c204ed60a7e9dd594c09fd7b1a5" category="inline-link-macro-rx"></block>。</block>
   <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows主機公用程式套件7.1</block>
   <block id="47806b50157f4c2450dab9085e65bf42" category="list-text">安裝 <block ref="3da09c0cdee3c0d99e3c71a79e706ce0" category="inline-link-macro-rx"></block> 設定FC和NVMe通用的驅動程式參數。</block>
@@ -2581,7 +2571,6 @@
   <block id="2e2f435df31672c9332b32b2b69afe2a" category="sidebar">Windows主機公用程式版本資訊</block>
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">在此範例中、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如、</block>
-  <block id="30058c2cccf9fdeeb47f9d3fbf9108bf" category="paragraph">在此範例中、sda是我們需要新增至黑名單的本機SCSI磁碟。</block>
   <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：</block>
   <block id="9ac1e2761e536d1b08b677a24976cad9" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可設定至-l 1800）<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 如此一來、當路徑遺失時、它會重試更長時間。例如、</block>
   <block id="1272c37c0c38bd618d6d76d763f54041" category="paragraph">在此範例中、Citrix Hypervisor 8.x、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
@@ -2675,7 +2664,6 @@
   <block id="191896e66abb860542afaf3bc97289fc" category="section-title">SAN工具套件</block>
   <block id="01281e2990c631b64037834e8b22bd4c" category="cell">rw_timeout（磁碟）</block>
   <block id="a97f41c78bd6ac237cc0a78dbc8e3557" category="section-title">推薦MetroCluster 的設定</block>
-  <block id="ff1a4459902829746c9feae2fe88b4a7" category="paragraph">。<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 參數必須設為256、主機才能發出1MB大小I/O</block>
   <block id="53a86d5c1b5a726e2014e8e7789d3e96" category="list-text">設定<block ref="6a6d27f670629373aedb61a672b398f8" prefix=" " category="inline-code"></block> 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。</block>
   <block id="ac680a7503424f513ba95ee46f269bd8" category="list-text">設定值之後、請執行<block ref="212b9aebab74c7199bb59cfbc6fb92f9" prefix=" " category="inline-code"></block> 命令並重新啟動主機。</block>
   <block id="814cc8b053fd0d3c9d35f87411477d5f" category="list-text">驗證設定。</block>
@@ -2857,16 +2845,12 @@
   <block id="52b5830420efb96c3a91beb52bac3b23" category="paragraph">* 輸出範例： *</block>
   <block id="2dae71c1d86116eab552b9b056780e26" category="list-text">在 Oracle Linux 9.0 主機上、請檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串at<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="256141e56255da4626b3cd641b2f785a" category="list-text">確認<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串符合<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> ONTAP 陣列上對應子系統的字串：</block>
-  <block id="79894377ddb5e7ce912ed785003b69fe" category="admonition">如果是<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串不相符、您應該使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 命令來更新<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 對應 ONTAP 陣列子系統上的字串、以符合<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串來源<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 在主機上。</block>
-  <block id="d56e4e530b3041c524f4212efc9efc17" category="paragraph">您可以為 Broadcom / Emulex 介面卡或 Marvell/Qlogic 介面卡設定 NVMe / FC 。</block>
   <block id="2f749c740a41c151c1485b84206264ca" category="list-text">確認您使用的是支援的介面卡機型。</block>
   <block id="fd3cbdb4a32644d25b951ee0b3bc5aae" category="open-title">適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡</block>
-  <block id="632cccb989f7ba938ccedab64dafd738" category="list-text">確認您執行的是支援的介面卡驅動程式和韌體版本。OL 9.0 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正：</block>
   <block id="61048cc84224cb0a87e2b824e5e313ea" category="list-text">確認其他的 NVMe / TCP 啟動器目標 LIF 組合能夠成功擷取探索記錄頁面資料。</block>
   <block id="ce6047856868bd861d72aba06f0054ce" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨所有節點支援的 NVMe / TCP 啟動器目標生命週期執行命令、並將控制器遺失逾時週期設為至少 30 分鐘或 1800 秒：</block>
   <block id="0121ea908d2a2cb95436d77156b96a8c" category="cell">Oracle Linux 9.0 NVMe 主機會建立重複的持續探索控制器</block>
   <block id="91ef9105de2091600f7c347406622a2e" category="cell">在 Oracle Linux 9.0 NVMe over Fabrics （ NVMe of ）主機上、您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行的是 ONTAP 9.10.1 和 Oracle Linux 9.0 搭配 NVMe 主機、則每次都會建立重複的 PDC<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 已執行。這會導致主機和目標上的資源使用不必要。</block>
-  <block id="f50972c35190e5df79b7272d295f432e" category="paragraph">在疑難排解任何 NVMe / FC 故障之前、請先確認您執行的組態符合 IMT 規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
   <block id="25f321fe018cf20163dc0c70e2eea888" category="section-title">啟用詳細記錄</block>
   <block id="65427f0cfd42249488837342e79863a2" category="paragraph">設定 Qlogic （ qla2xxx ）詳細記錄的程序與設定 lpfc 詳細記錄的程序不同。</block>
   <block id="2401f6c892699dd24f7fa72c9a39b053" category="open-title">lpfc</block>
@@ -3192,4 +3176,65 @@
   <block id="e31c4b8d2ef22d8837e50793ada5f2e9" category="cell">根據預設、 AIX 作業系統會針對 NVMe / FC 使用 20 秒的 All path Down （ APD ）逾時值。  然而、 ONTAP MetroCluster 自動非計畫性切換（ AUSO ）和 tiebreaker 啟動的切換工作流程、可能會比 APD 逾時時間長一點、導致 I/O 錯誤。</block>
   <block id="bf14ca0596cd773b04205ea1d53bcc29" category="paragraph">在疑難排解任何 NVMe / FC 故障之前、請確認您執行的組態符合 IMT 規格。
 如果您仍面臨問題、請聯絡技術支援部門以進一步分類。</block>
+  <block id="9e10b0a5aea11686043890a4e7f7d67d" category="list-text">確認有多個路徑可供使用。</block>
+  <block id="f2e04893e244d58e7312b018d7c330cd" category="admonition">在主機作業系統啟動並在路徑上執行後、就會有多個路徑可供使用。</block>
+  <block id="159e1cf7b9f0c43c83e2d3d06cfe2786" category="list-text">重新啟動主機、確認開機成功。</block>
+  <block id="ddd1090ee13f345d376753ed7188e15e" category="section-title">所有 SAN 陣列組態</block>
+  <block id="a8b4b0587b094d82b6d3386124d9175b" category="paragraph">在 ASA 組態中、通往指定 LUN 的所有路徑均為作用中且最佳化。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。</block>
+  <block id="e7110b576f4777e8b343b6406c8d4267" category="paragraph">對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
+  <block id="2fdc50cddff5dd159786d2a4d669a93d" category="paragraph">更換<block ref="2f7ac3c5a9070e3fa18615d7bf03ce76" prefix=" " category="inline-code"></block> 使用您要排除的裝置 WWID 字串：</block>
+  <block id="8f9d6e3424d24a4eceeb55656ad594c9" category="paragraph">自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
+  <block id="b8aace167dae62ec049916430a97c733" category="paragraph">NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</block>
+  <block id="d72f84b2b8b1587fe9b792507fec3ba3" category="paragraph">如果您目前已安裝 Linux Unified Host Utilities 版本、您應該升級或移除該版本、然後使用下列步驟來安裝最新版本。</block>
+  <block id="3b8031b77b02d24160100543956f1809" category="list-text">安裝軟體套件：</block>
+  <block id="c2cf4076df2fdb507736cb2d40b34172" category="paragraph">ONTAP 在識別控制器資料中報告的 MDTS （ MAX Data 傳輸大小）為 8 、表示最大 I/O 要求大小可達 1MB 。不過、若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須增加<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 的價值<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 從預設值 64 到 256 。</block>
+  <block id="479c56a6c2e71cd83eb8b7b82e7309de" category="admonition">這不適用於 Qlogic NVMe / FC 主機。</block>
+  <block id="659d999dc67355a6fa94e75b8a8e6003" category="list-text">。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
+  <block id="98d5ba10607d84ac10d9c3ea5eee402b" category="list-text">無需直接在中新增任何內容<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 除非您有不想要多重路徑管理的裝置、或現有的設定會覆寫預設值、否則請勿使用檔案。</block>
+  <block id="e960448316bedab459bbbe74933b507d" category="list-text">將 &lt;DevId&gt; 取代為您要排除的裝置 WWID 字串：</block>
+  <block id="af1ef0e83aa109eafcb65ba8de6fe152" category="paragraph">您應該隨時檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。</block>
+  <block id="d77c2caeeb43d7810cc481398a7ecf1e" category="paragraph">下表顯示要徑<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> 支援的參數ONTAP 和所需的值。如果主機已從其他廠商連接至 LUN 、而且這些參數中的任何一個都會被覆寫、則必須在中的稍後方例項加以修正<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 特別適用於ONTAP 整個LUN的檔案。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、您才應諮詢 NetApp 和 / 或作業系統廠商、以覆寫這些預設值。</block>
+  <block id="6661a67145b2acf190d629ce621384e0" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.7</block>
+  <block id="3b9b21578c86f68c48f7ed6a98dc875a" category="doc">搭配 NetApp ONTAP 使用 Oracle Linux 8.7</block>
+  <block id="15d47787709114478b06814b72bcf21a" category="paragraph">當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
+  <block id="25a88a400c35827341a424c2bbeeb8bc" category="paragraph">對於 Oracle Linux （ OL ） 8.7<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在。您不需要對檔案進行特定變更、因為 OL 8.7 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
+  <block id="f02ddfd1ea8ae7239f534d1963d46c47" category="paragraph">下列各節提供對應至所有 SAN 陣列（ ASA ）和非 ASA 組態之 LUN 的多重路徑輸出範例。</block>
+  <block id="6987a1bad074cdd087026411bcd73daf" category="admonition">請勿使用過多的路徑來通往單一LUN。您應該不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。</block>
+  <block id="0064eaa73c470581d9f79567a5552a2c" category="paragraph">Oracle Linux 8.7 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。</block>
+  <block id="7558802010b056df08332b675440eea8" category="admonition">若要設定 Oracle Linux 8.7 RedHat Enterprise Kernel （ RHCK ）、請使用 <block ref="2799389175d462b609c459275109bc99" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux （ RHEL ） 8.7 。</block>
+  <block id="73ba9729c9740db82f51a4f8954414ff" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。當 LUN 對應至 Hypervisor 時、無需進行任何變更即可設定 KVM 。</block>
+  <block id="8c7c84346d72ecc6e19907a700f38429" category="paragraph">Oracle Linux 8.7 沒有已知問題。</block>
+  <block id="2c9a7203cf50b708a9ec676237f0b25d" category="paragraph">自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代的故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊、請參閱 ONTAP 上的 Oracle 資料庫。</block>
+  <block id="1918c14015c19cfe7ab5da89745a137f" category="doc">適用於 ONTAP 的 Oracle Linux 8.7 的 NVMe 主機組態</block>
+  <block id="24aa52aa9699b501c3a8bed92978c144" category="paragraph">NVMe over Fabrics （ NVMe of ）（包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸）均支援使用非對稱命名空間存取（ ANA ）的 Oracle Linux （ OL ） 8.7 。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
+  <block id="5e23e6a5bed72a0ca8cbff0598786db4" category="paragraph">下列支援適用於 OL 8.7 搭配 ONTAP 的 NVMe / FC 主機組態：</block>
+  <block id="78fb8c6b55daa0ee01a1235c7fd352e3" category="list-text">支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 套件會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。</block>
+  <block id="e92702d12f6aa1afc14988d919e8a06e" category="list-text">在指定主機匯流排介面卡（ HBA ）上的同一主機上使用 NVMe 和 SCSI 共存流量、而不使用明確的 dm-multipath 設定、以避免使用 NVMe 命名空間。</block>
+  <block id="be423ca367a6a52bc56a6355dfa45dfa" category="list-text">根據預設、 OL 8.7 已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。</block>
+  <block id="1381d2ec04228d2932b3d66dd461b039" category="paragraph">您可以使用下列程序來驗證支援的最低 OL 8.7 軟體版本。</block>
+  <block id="d5cfa1b99255a0dc13cc42ffb798fe70" category="list-text">在伺服器上安裝 OL 8.7 GA 。安裝完成後、請確認您正在執行指定的 OL 8.7 GA 核心。</block>
+  <block id="56057f7ee5989c8fafa715ae010e22d2" category="list-text">在 Oracle Linux 8.7 主機上、請檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串at<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="af362d93b6b79aab9ac6be9f1074a467" category="admonition">如果是<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串不相符、您可以使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 命令來更新<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 對應 ONTAP 陣列子系統上的字串、以符合<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串來源<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 在主機上。</block>
+  <block id="f6f33242227bf5d079f46a94f3780b75" category="paragraph">您可以為 Broadcom / Emulex 或 Marvell/Qlogic 介面卡設定 NVMe / FC 。</block>
+  <block id="10ce16d02c992727f1f013108c8de76e" category="list-text">驗證您使用的是建議的Broadcom<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 韌體與收件匣驅動程式：</block>
+  <block id="d5bfab963dcf3eb7acebfa1863c710ad" category="paragraph">如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block>。</block>
+  <block id="1b4a395375d9ded55e9f7026ae175a39" category="open-title">適用於 NVMe / FC 的 Marvell/Qlogic FC 介面卡</block>
+  <block id="d2256c2fb21e806282ba1bbcf97e721e" category="list-text">OL 8.7 GA 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
+  <block id="42d18363818951017351b676627b6308" category="list-text">請確認<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 已設定。這可讓 Marvell 介面卡作為 NVMe / FC 啟動器運作：</block>
+  <block id="4985227ddc1cd987688d7fe0d8873ec8" category="section-title">啟用 1MB I/O （選用）</block>
+  <block id="6be1ef1e13c4a8a41eb4b829efcce9f7" category="paragraph">您可以使用下列程序來驗證 NVMe 。</block>
+  <block id="dda2ba09426f9ec4c41c7c7170fe8abb" category="list-text">檢查以下項目、確認已啟用核心內建 NVMe 多重路徑：</block>
+  <block id="e3fab3cc007d641ec4678592ba0d33a2" category="list-text">確認適當的 NVMe 設定（例如<block ref="20f35e630daf44dbfa4c3f68f5399d8c" prefix=" " category="inline-code"></block> 設定為<block ref="756ad8952bac6a54235a8fd3a5378672" prefix=" " category="inline-code"></block> 和負載平衡<block ref="9dcdd7789010499b5bf49690aa44b8e9" prefix=" " category="inline-code"></block> 設定為<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>）對於相應的 ONTAP 命名空間，正確地反映在主機上：</block>
+  <block id="26bcb9f1cb6f391f4b2c18e676bb458d" category="open-title">NVMe / FC</block>
+  <block id="8b7c42123642e2e4ea7dd426aeb2de58" category="open-title">NVMe / TCP</block>
+  <block id="1976d7f704de389d9fe064e08ea35b2d" category="open-title">欄位</block>
+  <block id="0ecd11c1d7a287401d148a23bbd7a2f8" category="open-title">JSON</block>
+  <block id="942bc9ba97662019cbc2b7e41f8381db" category="paragraph">ONTAP 版本 OL 8.7 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="4d85197b1029241623e97a28c5823630" category="cell">Oracle Linux 8.7 NVMe 型主機會建立重複的持續探索控制器</block>
+  <block id="07ad87616fe3ef97097ef4a56610ba36" category="cell">在 OL 8.7 NVMe 型主機上、持續探索控制器（ PDC ）是透過傳遞建立的<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。對於指定的啟動器目標組合、每次啟動時、只會建立一個 PDC<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。不過、從 OL 8.x 開始、 NVMe 型主機會在每次呼叫時建立重複的 PDF<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項。這會浪費主機和目標上的資源。</block>
+  <block id="e547a2a229ecff025ac8a9944e494a73" category="paragraph">在疑難排解任何 NVMe 故障之前、請先確認您執行的組態符合 IMT 規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
+  <block id="564a7e3459c5ede626fd0f47cac71ff3" category="list-text">OL 9.0 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
+  <block id="c48bd590bf88d48a24d60b6b5c163ad4" category="paragraph">適用於 ONTAP 版本的 Oracle Linux 9.0 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="7fc2293e459de57e2832a921a712ac35" category="admonition">這不適用於 Qlogic NVMe / FC 主機。
+XXX</block>
 </blocks>

@@ -33,9 +33,10 @@ summary: 說明如何搭配ONTAP 使用Citrix Hypervisor 8.x搭配使用
 
 .步驟
 . 將SAN開機LUN對應至主機。
-. 確認有多個可用路徑。
+. 確認有多個路徑可供使用。
 +
-請記住、只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。
+
+NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路徑可供使用。
 
 . 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
 +
@@ -93,7 +94,7 @@ size=30G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
    `- 12:0:26:11 sdyt  129:720 active ready running
 ....
 
-NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
 
 
 

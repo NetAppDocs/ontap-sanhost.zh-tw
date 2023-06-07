@@ -15,7 +15,7 @@
 
 您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。
 
-將「<DevID>」取代為您要排除的裝置WWID字串。使用下列命令來判斷WWID：
+更換 `<DevId>` 使用您要排除的裝置 WWID 字串：
 
 ....
 blacklist {

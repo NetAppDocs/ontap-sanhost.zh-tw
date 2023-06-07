@@ -1,16 +1,16 @@
 ---
 sidebar: sidebar 
-permalink: hu_centos_83.html 
-keywords: host utilities, centos, linux, 8.3, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用CentOS 8.3搭配使用功能 
+permalink: hu_ol_87.html 
+keywords: host utilities, oracle, linux, 8.7, netapp, ontap 
+summary: 說明如何搭配 ONTAP 使用 Oracle Linux 8.7 
 ---
-= 將CentOS 8.3搭配NetApp ONTAP 功能使用
+= 搭配 NetApp ONTAP 使用 Oracle Linux 8.7
 :toc: macro
 :hardbreaks:
-:toclevels: 1
+:toclevels: 1P
 :allow-uri-read: 
 :toc: 
-:toclevels: 1
+:toclevels: 1P
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -38,39 +38,36 @@ NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強
 
 
 
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
-
-
 
 == SAN工具套件
 
-當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
+當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供 `sanlun` 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
 
-.範例
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
 [listing]
 ----
 # sanlun lun show all
 ----
-輸出範例：
+* 輸出範例： *
 
 [listing]
 ----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
 -------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       80.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       80.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       80.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       80.0g  cDOT
+
 ----
 
 
 == SAN開機
 
 .您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -90,9 +87,11 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 
 == 多重路徑
 
-對於CentOS 8.3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.3是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。
+對於 Oracle Linux （ OL ） 8.7 `/etc/multipath.conf` 檔案必須存在。您不需要對檔案進行特定變更、因為 OL 8.7 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。
 
-您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
+您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。
+
+下列各節提供對應至所有 SAN 陣列（ ASA ）和非 ASA 組態之 LUN 的多重路徑輸出範例。
 
 
 
@@ -108,14 +107,14 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 # multipath -ll
 3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
 size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-`-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
 ----
 
-NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+NOTE: 請勿使用過多的路徑來通往單一LUN。您應該不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
 
 
 
@@ -129,7 +128,7 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 [listing]
 ----
 # multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
 size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
 | |- 16:0:6:35 sdwb  69:624  active ready running
@@ -145,7 +144,9 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 
 == 建議設定
 
-CentOS 8.3作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案
+Oracle Linux 8.7 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。
+
+要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案
 
 第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。
 
@@ -202,7 +203,7 @@ blacklist {
 | DETECT（偵測）_prio | 是的 
 
 
-| 開發損失_tmo | "無限遠" 
+| 開發損失_tmo | 無限 
 
 
 | 容錯回復 | 立即 
@@ -211,31 +212,31 @@ blacklist {
 | fast_io_f故障_tmo | 5. 
 
 
-| 功能 | "2 pg_init_retries 50" 
+| 功能 | 2 pg_init_retries 50 
 
 
-| Flip_on_last刪除 | "是" 
+| Flip_on_last刪除 | 是的 
 
 
-| 硬體處理常式 | 「0」 
+| 硬體處理常式 | 0 
 
 
 | no_path_retry | 佇列 
 
 
-| path_checker_ | "周" 
+| path_checker_ | Tur 
 
 
-| path_grouping_policy | "群組by_prio" 
+| path_grouping_policy | 群組_by_prio 
 
 
-| path_selector | "服務時間0" 
+| path_selector | 服務時間0 
 
 
 | Polling_時間 間隔 | 5. 
 
 
-| 優先 | 「NetApp」ONTAP 
+| 優先 | ONTAP 
 
 
 | 產品 | LUN.* 
@@ -244,7 +245,7 @@ blacklist {
 | Retain附加的硬體處理常式 | 是的 
 
 
-| RR_weight | "統一" 
+| RR_weight | 統一 
 
 
 | 使用者易記名稱 | 否 
@@ -258,30 +259,32 @@ blacklist {
 [listing]
 ----
 defaults {
-   path_checker      readsector0
-   no_path_retry      fail
-}
-
+ path_checker readsector0
+ no_path_retry fail
+ }
 devices {
-   device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
-      no_path_retry     queue
-      path_checker      tur
-   }
+ device {
+ vendor "NETAPP "
+ product "LUN.*"
+ no_path_retry queue
+ path_checker tur
+ }
 }
 ----
 
-
-=== KVM 設定
-
-您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
+NOTE: 若要設定 Oracle Linux 8.7 RedHat Enterprise Kernel （ RHCK ）、請使用 link:hu_rhel_87.html#recommended-settings["建議設定"] 適用於 Red Hat Enterprise Linux （ RHEL ） 8.7 。
 
 
 
-== 已知問題與限制
+== KVM 設定
 
-如需CentOS（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_83.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）8.3。
+您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。當 LUN 對應至 Hypervisor 時、無需進行任何變更即可設定 KVM 。
+
+
+
+== 已知問題
+
+Oracle Linux 8.7 沒有已知問題。
 
 
 
@@ -291,4 +294,4 @@ devices {
 
 === ASM鏡射
 
-自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle資料庫ONTAP"^] 以取得更多資訊。
+自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代的故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊、請參閱 ONTAP 上的 Oracle 資料庫。
