@@ -3302,4 +3302,36 @@ XXX</block>
   <block id="fa084ae8b2dbc6a95f37460eeee74436" category="paragraph">Oracle Linux 7.3 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。
 。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
   <block id="43784ec2c1aaa42346ed96f22c8410b6" category="sidebar">9.2.</block>
+  <block id="30c9201611d0a0e2f87585a1866fa4bd" category="doc">適用於 ONTAP 的 Oracle Linux 9.1 的 NVMe 主機組態</block>
+  <block id="4f50054d9d230419cddd33dc0dfec902" category="paragraph">Oracle Linux （ OL ） 9.1 支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe / FC 和其他傳輸、並提供非對稱命名空間存取（ ANA ）。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
+  <block id="de83b7a38e0f01ada520a571da1c0ae7" category="paragraph">下列支援適用於 OL 9.1 搭配 ONTAP 的 NVMe 主機組態：</block>
+  <block id="3178ea29b080ab675001ea00192c87ef" category="list-text">Oracle Linux 9.1 預設已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。</block>
+  <block id="6108d173e82e63fbc1c54d48885f9779" category="paragraph">您可以使用下列程序來驗證支援的最低 OL 9.1 軟體版本。</block>
+  <block id="04f2004bd2882021bd0d5a844d49db59" category="list-text">在伺服器上安裝 OL 9.1 GA 。安裝完成後、請確認您正在執行指定的 OL 9.1 GA 核心。</block>
+  <block id="36613551a6c1d90fed466f991d6d7bed" category="list-text">在 Oracle Linux 9.1 主機上、請檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串at<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="bef7b9714a6aa50ad9f306404bee35cc" category="paragraph">您可以為 Broadcom / Emulex 介面卡或 Marvell/Qlogic 介面卡設定 NVMe / FC 。</block>
+  <block id="9cdf71978b23a4023a75f102c03f30d0" category="list-text">確認您使用的是支援的介面卡機型：</block>
+  <block id="b7d859687cee13a86312666f61100178" category="list-text">OL 9.1 GA 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
+  <block id="30a04882c68a73c9cf9bda1fde81eb99" category="list-text">確認 OL 9.1 主機上的下列 NVMe / FC 設定：</block>
+  <block id="2fa1372c51233d5657736d3be228889f" category="paragraph">OL 9.1 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
+  <block id="bed8afd121bcc77f7679ad8aa66edc6e" category="cell">1536937</block>
+  <block id="277f83d9faff75a0f8017279fcf07969" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> 命令會列印子系統的重複 NVMe 控制器</block>
+  <block id="8e34704e7af729eb74fd3ebaac0a9342" category="cell">。<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 命令應傳回與指定子系統相關聯的 NVMe 控制器唯一清單。在 Oracle Linux 9.1 中<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 命令會針對屬於指定子系統的所有命名空間、傳回具有各自非對稱命名空間存取（ ANA ）狀態的 NVMe 控制器。不過、如果您列出指定命名空間的子系統命令語法、則以路徑狀態顯示唯一的 NVMe 控制器項目會很有用、因為 ANA 狀態是每個命名空間的屬性。</block>
+  <block id="260e47ef04cdd6f9d4989f12facd3a91" category="inline-link-macro">17998</block>
+  <block id="1c68cdd2e6afb2c09809c25810c520aa" category="cell"><block ref="1c68cdd2e6afb2c09809c25810c520aa" category="inline-link-macro-rx"></block></block>
+  <block id="5cf8c44d0d04885f386e9f0d05461ec2" category="cell">1539101</block>
+  <block id="91a845901382406af3acfb27b99025ea" category="cell">Oracle Linux 9.1 NVMe 主機無法建立持續探索控制器</block>
+  <block id="465d3ac157f9559a71ac205312d4cf83" category="cell">在 Oracle Linux 9.1 NVMe over Fabrics （ NVMe of ）主機上、您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 建立持續探索控制器（PD）的命令。使用此命令時、應針對每個啟動器目標組合建立一個 PDC 。不過、如果您在 NVMe 主機上執行 Oracle Linux 9.1 、則在建立時、 PDC 會失敗<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 命令即會執行。</block>
+  <block id="86d73f9a9eafbf2a1bc89961929ab3e0" category="inline-link-macro">18196</block>
+  <block id="84ccd25799ec2ea76f7f5faab8db9837" category="cell"><block ref="84ccd25799ec2ea76f7f5faab8db9837" category="inline-link-macro-rx"></block></block>
+  <block id="533f5c2e4bcf35d9cefe9c97046f7654" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.1</block>
+  <block id="83b6364b5fed0880c85b1a8caf70b15f" category="doc">搭配 NetApp ONTAP 使用 Oracle Linux 9.1</block>
+  <block id="d1e17b610d12e40ce0477f24b702c3d2" category="paragraph">對於 OL 9.1<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。OL 9.1 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
+  <block id="2d3eb2d12b839784838915ca9789047f" category="paragraph">Oracle Linux 9.1 作業系統是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
+  <block id="4c27689c3548176781daa0cf49fc86d5" category="paragraph">下列範例示範如何修正覆寫的預設值。在此案例中<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案定義的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 和<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> 與ONTAP 不兼容的如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
+  <block id="c6951501d0b58604dc509284a2398484" category="admonition">若要設定 Oracle Linux 9.1 RedHat Enterprise Kernel （ RHCK ）、請使用 <block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux （ RHEL ） 9.1 。</block>
+  <block id="1c50fcd4efa065aedf6e2667df8523f3" category="paragraph">Oracle Linux 9.1 with NetApp ONTAP 版本有下列已知問題：</block>
+  <block id="da80aa62fc6cf6b66539a5a3933874a8" category="cell"><block ref="da80aa62fc6cf6b66539a5a3933874a8" category="inline-link-rx"></block></block>
+  <block id="00afbfe7fe5cea7d2316cbbc96e387c4" category="cell">使用 Emulex HBA 的 SAN LUN 公用程式需要從程式庫套件中取得符號連結</block>
+  <block id="20e1c7fed64a39ad5334f26be4f4d8c7" category="paragraph">當您在 SAN 主機上執行 Linux Unified Host Utilities CLI 命令「 sanlun FCP show adapter -v 」時、命令會失敗、並顯示錯誤訊息、顯示無法找到主機匯流排介面卡（ HBA ）探索所需的程式庫相依性：</block>
 </blocks>
