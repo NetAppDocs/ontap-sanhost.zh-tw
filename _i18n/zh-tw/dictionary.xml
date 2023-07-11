@@ -2801,7 +2801,6 @@
   <block id="2722dd408e2c6dddce120893d4c5c0a7" category="paragraph">Oracle Linux 9.0 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。</block>
   <block id="834ccc84967581d1336062ada79c9a0e" category="admonition">若要設定 Oracle Linux 9.0 RedHat Enterprise Kernel （ RHCK ）、請使用 <block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux （ RHEL ） 9.0 。</block>
   <block id="2de4eb9b3af281c4790a039cf2f92eb7" category="section-title">KVM 設定</block>
-  <block id="fdf71d22ca12e1b94c3cffe88a22f330" category="paragraph">Oracle Linux 9.0 沒有已知問題。</block>
   <block id="678b361384466d6bf28f930dd514a9a8" category="doc">適用於 ONTAP 的 Oracle Linux 9.0 的 NVMe / FC 主機組態</block>
   <block id="2cbaf680f82c54fd6fb7778f0101ab88" category="paragraph">如需支援組態的詳細資訊、請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block>。</block>
   <block id="55fb7862f01474277c3620f9debfb3d5" category="list-text">Oracle Linux 9.0 預設已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。</block>
@@ -3324,7 +3323,6 @@ XXX</block>
   <block id="533f5c2e4bcf35d9cefe9c97046f7654" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.1</block>
   <block id="83b6364b5fed0880c85b1a8caf70b15f" category="doc">搭配 NetApp ONTAP 使用 Oracle Linux 9.1</block>
   <block id="c6951501d0b58604dc509284a2398484" category="admonition">若要設定 Oracle Linux 9.1 RedHat Enterprise Kernel （ RHCK ）、請使用 <block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux （ RHEL ） 9.1 。</block>
-  <block id="1c50fcd4efa065aedf6e2667df8523f3" category="paragraph">Oracle Linux 9.1 with NetApp ONTAP 版本有下列已知問題：</block>
   <block id="da80aa62fc6cf6b66539a5a3933874a8" category="cell"><block ref="da80aa62fc6cf6b66539a5a3933874a8" category="inline-link-rx"></block></block>
   <block id="20e1c7fed64a39ad5334f26be4f4d8c7" category="paragraph">當您在 SAN 主機上執行 Linux Unified Host Utilities CLI 命令「 sanlun FCP show adapter -v 」時、命令會失敗、並顯示錯誤訊息、顯示無法找到主機匯流排介面卡（ HBA ）探索所需的程式庫相依性：</block>
   <block id="945ae6ecd5de8145a44bcea8e9d26556" category="summary">說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 8.8</block>
@@ -3377,4 +3375,7 @@ XXX</block>
   <block id="beb55dba3ba1d2be4056c146cb0bf458" category="paragraph">Oracle Linux 9.2 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="a706283e3f8c7062e0c4c4b423b93965" category="admonition">若要設定 Oracle Linux 9.2 RedHat Enterprise Kernel （ RHCK ）、請使用 <block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux （ RHEL ） 9.2 。</block>
   <block id="01ae493ab1dc24745cd1c1e47aa25447" category="paragraph">Oracle Linux 9.2 with NetApp ONTAP 版本有下列已知問題：</block>
+  <block id="02b2bcdfe73b2cce057d7b84806fa6ed" category="paragraph">Oracle Linux 9.1 with NetApp ONTAP 版本有下列已知問題：</block>
+  <block id="5890aebb0489382354458498eb36394e" category="paragraph">當您在 SAN 主機上執行 Linux Unified Host Utilities CLI 命令「 sanlun FCP show adapter -v 」時、命令會失敗、並顯示錯誤訊息、顯示無法找到主機匯流排介面卡（ HBA ）探索所需的程式庫相依性：</block>
+  <block id="cc40ed991073c638cc114ee18ad15d8c" category="paragraph">Oracle Linux 9.0 with NetApp ONTAP 版本有下列已知問題：</block>
 </blocks>
