@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: hu_fcp_scsi_index.html 
+keywords:  
+summary:  
+---
+= 總覽
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+您可以將某些 SAN 主機設定為 FCP 或 iSCSI 、並將 ONTAP 設定為目標。首先安裝相關的作業系統主機公用程式套件（包括 SAN 工具套件）、然後驗證 NetApp ONTAP LUN 的多重路徑設定。

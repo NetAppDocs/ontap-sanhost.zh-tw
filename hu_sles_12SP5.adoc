@@ -4,7 +4,7 @@ permalink: hu_sles_12SP5.html
 keywords: host utilities, suse linux enterprise server 12 SP5, suse, linux, 12 SP5, netapp, ontap 
 summary: 說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12附帶的SP5 
 ---
-= 搭配使用SUSE Linux Enterprise Server 12附帶NetApp ONTAP 功能的SP5
+= 搭配 ONTAP 使用 SUSE Linux Enterprise Server 12 SP5
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -24,7 +24,7 @@ summary: 說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12附帶的S
 
 NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp 支援網站"^] 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 互通性對照表工具"^] 驗證您需要哪一個。
 
-強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 .您需要的產品
 如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。
@@ -289,12 +289,3 @@ devices {
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1284293["1284293"^] | 儲存容錯移轉作業期間、使用QLogic QLE2562 8GB FC HBA的SLES12 SP5會發生核心中斷 | 使用QLogic QLE2562 Fibre Channel（FC）主機匯流排介面卡（HBA）在SLES12 SP5核心上執行儲存容錯移轉作業時、會發生核心中斷。核心中斷會導致SLES12 SP5重新開機、導致應用程式中斷。如果啟用kdump機制、核心中斷會產生位於/var/crash /目錄中的vmcore檔案。檢查vmcore檔案以判斷造成中斷的原因。使用QLogic QLE2562 HBA事件進行儲存容錯移轉會影響「thread資訊：ffff8aedf723c2c0」模組。在vmcore檔案中找出此事件、方法是找出下列字串：「[thread資訊：ffff8aedf723c2c0]」。核心中斷之後、請重新啟動主機作業系統、使其能夠恢復。然後重新啟動應用程式。 | link:http://bugzilla.suse.com/show_bug.cgi?id=1157966["1157956"^] 
 |===
-
-
-== 版本資訊
-
-
-
-=== ASM鏡射
-
-自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle資料庫ONTAP"^] 以取得更多資訊。

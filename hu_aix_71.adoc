@@ -4,7 +4,7 @@ permalink: hu_aix_71.html
 keywords: host utilities, aix, 7.1 netapp, ontap 
 summary: 說明如何搭配ONTAP 使用IBM AIX 7.1搭配使用 
 ---
-= 將IBM AIX 7.1與NetApp ONTAP 搭配使用
+= 將 IBM AIX 7.1 與 ONTAP 搭配使用
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,7 +20,7 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.1搭配使用
 
 
 
-== 安裝AIX主機公用程式
+== 安裝 AIX 主機公用程式
 
 您必須安裝AIX主機公用程式套件、才能將AIX MPIO與NetApp ONTAP 之間的儲存設備搭配使用。
 
@@ -154,7 +154,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 == 建議設定
 
-以下是一些建議的NetApp ONTAP LUN參數設定。安裝NetApp主機公用程式套件後、會自動設定適用於整個流程的關鍵參數ONTAP 。
+以下是 ONTAP LUN 的一些建議參數設定。  安裝NetApp主機公用程式套件後、會自動設定適用於整個流程的關鍵參數ONTAP 。
 
 [cols="4*"]
 |===

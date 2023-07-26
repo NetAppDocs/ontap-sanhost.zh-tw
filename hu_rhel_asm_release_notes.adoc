@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: hu_rhel_asm_release_notes.html 
+keywords:  
+summary:  
+---
+= 版本資訊
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+=== ASM鏡射
+
+自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle資料庫ONTAP"^] 以取得更多資訊。

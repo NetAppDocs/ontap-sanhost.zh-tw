@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: hu_sanhost_index.html 
+keywords:  
+summary:  
+---
+= 總覽
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+探索 SAN 主機公用程式版本的最新資訊、並存取主機組態的安裝程序。
+
+
+NOTE: 若要在安裝後獲得可靠的操作、請使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證您的主機是否支援完整的 NVMe over Fabric （包括 NVMe over TCP 和 NVMe over Fibre Channel ）、 iSCSI 、 FC 或 FCoE 組態。

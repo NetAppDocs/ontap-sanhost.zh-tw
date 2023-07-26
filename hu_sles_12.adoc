@@ -4,7 +4,7 @@ permalink: hu_sles_12.html
 keywords: host utilities, suse linux enterprise server 12, suse, linux, 12, netapp, ontap 
 summary: 說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12搭配使用功能 
 ---
-= 使用SUSE Linux Enterprise Server 12搭配NetApp ONTAP 功能
+= 搭配 ONTAP 使用 SUSE Linux Enterprise Server 12
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -24,7 +24,7 @@ summary: 說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12搭配使�
 
 NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp 支援網站"^] 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 互通性對照表工具"^] 驗證您需要哪一個。
 
-強烈建議安裝Linux Unified Host Utilities、但並非必要。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 .您需要的產品
 如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。
@@ -292,12 +292,3 @@ devices {
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=847490["847490"^] | 多重路徑精靈會在SLES 12上顯示路徑故障 | 您可能會在I/O期間發現儲存設備或網路故障時、在SLES12多重路徑精靈上發生路徑故障。 | link:https://bugzilla.novell.com/show_bug.cgi?id=890854["890854"^] 
 |===
-
-
-== 版本資訊
-
-
-
-=== ASM鏡射
-
-自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle資料庫ONTAP"^] 以取得更多資訊。

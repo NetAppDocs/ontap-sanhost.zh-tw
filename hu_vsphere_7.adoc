@@ -4,7 +4,7 @@ permalink: hu_vsphere_7.html
 keywords: host utilities, veritas, infoscale, 7.3. 7.3.1, netapp, ontap 
 summary: 說明如何使用Veritas Infoscale 7.3 for Linux搭配ONTAP 使用功能 
 ---
-= 將VMware vSphere 7.x與NetApp ONTAP 功能搭配使用
+= 搭配 ONTAP 使用 VMware vSphere 7.x
 :toc: macro
 :hardbreaks:
 :toclevels: 1

@@ -13,42 +13,332 @@ sidebar:
     url: "/index.html"
   - title: 總覽
     url: "/overview.html"
-  - title: SAN主機公用程式
+  - title: 安裝 SAN 主機公用程式
     entries:
+    - title: 總覽
+      url: "/hu_sanhost_index.html"
     - title: AIX主機公用程式
       entries:
-      - title: 安裝AIX Hu 6.1
-        url: "/hu_aix_61.html"
       - title: 版本資訊
         url: "/hu_aix_61_rn.html"
+      - title: 安裝AIX Hu 6.1
+        url: "/hu_aix_61.html"
     - title: HP-UX主機公用程式
       entries:
-      - title: 安裝HP-UX HU 6.0
-        url: "/hu_hpux_60.html"
       - title: 版本資訊
         url: "/hu_hpux_60_rn.html"
+      - title: 安裝HP-UX HU 6.0
+        url: "/hu_hpux_60.html"
     - title: Linux統一化主機公用程式
       entries:
-      - title: 安裝Luhu 7.1
-        url: "/hu_luhu_71.html"
       - title: 版本資訊
         url: "/hu_luhu_71_rn.html"
+      - title: 安裝Luhu 7.1
+        url: "/hu_luhu_71.html"
     - title: Solaris主機公用程式
       entries:
-      - title: 安裝Solaris Hu 6.2
-        url: "/hu_solaris_62.html"
       - title: 版本資訊
         url: "/hu_solaris_62_rn.html"
+      - title: 安裝Solaris Hu 6.2
+        url: "/hu_solaris_62.html"
     - title: Windows統一化主機公用程式
       entries:
+      - title: 版本資訊
+        url: "/hu_wuhu_71_rn.html"
       - title: 安裝蕪湖 7.2
         url: "/hu_wuhu_72.html"
       - title: 安裝Wuhu 7.1
         url: "/hu_wuhu_71.html"
-      - title: 版本資訊
-        url: "/hu_wuhu_71_rn.html"
-  - title: NVMe主機組態
+  - title: 使用 FCP 和 iSCSI 設定主機
     entries:
+    - title: 總覽
+      url: "/hu_fcp_scsi_index.html"
+    - title: AIX與PowerVM/VIOS
+      entries:
+      - title: 7.2/3.1
+        url: "/hu_aix_72.html"
+      - title: 7.1.
+        url: "/hu_aix_71.html"
+    - title: CentOS
+      entries:
+      - title: 版本資訊
+        url: "/hu_centos_asm_release_notes.html"
+      - title: CentOS 8.
+        entries:
+        - title: '8.5'
+          url: "/hu_centos_85.html"
+        - title: 8.4.
+          url: "/hu_centos_84.html"
+        - title: '8.3'
+          url: "/hu_centos_83.html"
+        - title: '8.2'
+          url: "/hu_centos_82.html"
+        - title: '8.1'
+          url: "/hu_centos_81.html"
+        - title: '8.0'
+          url: "/hu_centos_80.html"
+      - title: CentOS 7.
+        entries:
+        - title: '7.9'
+          url: "/hu_centos_79.html"
+        - title: 7.8%
+          url: "/hu_centos_78.html"
+        - title: 7.7.7.
+          url: "/hu_centos_77.html"
+        - title: 7.6.7.
+          url: "/hu_centos_76.html"
+        - title: '7.5'
+          url: "/hu_centos_75.html"
+        - title: 7.4.
+          url: "/hu_centos_74.html"
+        - title: 7.3.
+          url: "/hu_centos_73.html"
+        - title: '7.2'
+          url: "/hu_centos_72.html"
+        - title: 7.1.
+          url: "/hu_centos_71.html"
+        - title: '7.0'
+          url: "/hu_centos_70.html"
+      - title: CentOS 6.
+        entries:
+        - title: 6.10.
+          url: "/hu_centos_610.html"
+        - title: '6.9'
+          url: "/hu_centos_69.html"
+        - title: 6.8%
+          url: "/hu_centos_68.html"
+        - title: '6.7'
+          url: "/hu_centos_67.html"
+        - title: 6.6.6.
+          url: "/hu_centos_66.html"
+        - title: '6.5'
+          url: "/hu_centos_65.html"
+        - title: 6.4.
+          url: "/hu_centos_64.html"
+    - title: Citrix
+      entries:
+      - title: Hypervisor 8.
+        url: "/hu_citrix_8x.html"
+      - title: XenServer 7
+        url: "/hu_citrix_7x.html"
+    - title: ESXi
+      entries:
+      - title: VMware vSphere 8.
+        url: "/hu_vsphere_8.html"
+      - title: VMware vSphere 7
+        url: "/hu_vsphere_7.html"
+      - title: VMware vSphere 6.5與6.7
+        url: "/hu_vsphere_6.html"
+    - title: HP-UX
+      entries:
+      - title: 11i v3
+        url: "/hu_hpux_11iv3.html"
+    - title: Oracle Linux
+      pdf-filename: OA-FCP
+      entries:
+      - title: 版本資訊
+        url: "/hu_ol_asm_release_notes.html"
+      - title: ol 9.
+        entries:
+        - title: 9.2.
+          url: "/hu_ol_92.html"
+        - title: '9.1'
+          url: "/hu_ol_91.html"
+        - title: '9.0'
+          url: "/hu_ol_90.html"
+      - title: ol 8.
+        pdf-filename: ol-8-FCP
+        entries:
+        - title: 8.7%
+          url: "/hu_ol_87.html"
+        - title: 8.6.
+          url: "/hu_ol_86.html"
+        - title: '8.5'
+          url: "/hu_ol_85.html"
+        - title: 8.4.
+          url: "/hu_ol_84.html"
+        - title: '8.3'
+          url: "/hu_ol_83.html"
+        - title: '8.2'
+          url: "/hu_ol_82.html"
+        - title: '8.1'
+          url: "/hu_ol_81.html"
+        - title: '8.0'
+          url: "/hu_ol_80.html"
+      - title: ol 7.
+        pdf-filename: ol-7-FCP
+        entries:
+        - title: '7.9'
+          url: "/hu_ol_79.html"
+        - title: 7.8%
+          url: "/hu_ol_78.html"
+        - title: 7.7.7.
+          url: "/hu_ol_77.html"
+        - title: 7.6.7.
+          url: "/hu_ol_76.html"
+        - title: '7.5'
+          url: "/hu_ol_75.html"
+        - title: 7.4.
+          url: "/hu_ol_74.html"
+        - title: 7.3.
+          url: "/hu_ol_73.html"
+        - title: '7.2'
+          url: "/hu_ol_72.html"
+        - title: 7.1.
+          url: "/hu_ol_71.html"
+        - title: '7.0'
+          url: "/hu_ol_70.html"
+      - title: ol 6.
+        pdf-filename: ol-6-FCP
+        entries:
+        - title: 6.10.
+          url: "/hu_ol_610.html"
+        - title: '6.9'
+          url: "/hu_ol_69.html"
+        - title: 6.8%
+          url: "/hu_ol_68.html"
+        - title: '6.7'
+          url: "/hu_ol_67.html"
+        - title: 6.6.6.
+          url: "/hu_ol_66.html"
+        - title: '6.5'
+          url: "/hu_ol_65.html"
+        - title: 6.4.
+          url: "/hu_ol_64.html"
+    - title: RHEL
+      entries:
+      - title: 版本資訊
+        url: "/hu_rhel_asm_release_notes.html"
+      - title: RHEL 9
+        pdf-filename: RHEL-9-FCP
+        entries:
+        - title: 9.2.
+          url: "/hu_rhel_92.html"
+        - title: '9.1'
+          url: "/hu_rhel_91.html"
+        - title: '9.0'
+          url: "/hu_rhel_90.html"
+      - title: RHEL 8
+        pdf-filename: RHEL-8-FCP
+        entries:
+        - title: 8.8.8
+          url: "/hu_rhel_88.html"
+        - title: 8.7%
+          url: "/hu_rhel_87.html"
+        - title: 8.6.
+          url: "/hu_rhel_86.html"
+        - title: '8.5'
+          url: "/hu_rhel_85.html"
+        - title: 8.4.
+          url: "/hu_rhel_84.html"
+        - title: '8.3'
+          url: "/hu_rhel_83.html"
+        - title: '8.2'
+          url: "/hu_rhel_82.html"
+        - title: '8.1'
+          url: "/hu_rhel_81.html"
+        - title: '8.0'
+          url: "/hu_rhel_80.html"
+      - title: RHEL 7
+        pdf-filename: RHEL-7-FCP
+        entries:
+        - title: '7.9'
+          url: "/hu_rhel_79.html"
+        - title: 7.8%
+          url: "/hu_rhel_78.html"
+        - title: 7.7.7.
+          url: "/hu_rhel_77.html"
+        - title: 7.6.7.
+          url: "/hu_rhel_76.html"
+        - title: '7.5'
+          url: "/hu_rhel_75.html"
+        - title: 7.4.
+          url: "/hu_rhel_74.html"
+        - title: 7.3.
+          url: "/hu_rhel_73.html"
+        - title: '7.2'
+          url: "/hu_rhel_72.html"
+        - title: 7.1.
+          url: "/hu_rhel_71.html"
+        - title: '7.0'
+          url: "/hu_rhel_70.html"
+      - title: RHEL 6
+        pdf-filename: RHEL-6-FCP
+        entries:
+        - title: 6.10.
+          url: "/hu_rhel_610.html"
+        - title: '6.9'
+          url: "/hu_rhel_69.html"
+        - title: 6.8%
+          url: "/hu_rhel_68.html"
+        - title: '6.7'
+          url: "/hu_rhel_67.html"
+        - title: 6.6.6.
+          url: "/hu_rhel_66.html"
+        - title: '6.5'
+          url: "/hu_rhel_65.html"
+        - title: 6.4.
+          url: "/hu_rhel_64.html"
+    - title: Solaris
+      entries:
+      - title: '11.4'
+        url: "/hu_solaris_114.html"
+      - title: '11.3'
+        url: "/hu_solaris_113.html"
+    - title: SLES
+      entries:
+      - title: 版本資訊
+        url: "/hu_sles_asm_release_notes.html"
+      - title: SLES 15
+        pdf-filename: sles-15-FCP
+        entries:
+        - title: 15 SP4
+          url: "/hu_sles_15SP4.html"
+        - title: 15 SP3
+          url: "/hu_sles_15SP3.html"
+        - title: 15 SP2
+          url: "/hu_sles_15SP2.html"
+        - title: 15 SP1
+          url: "/hu_sles_15SP1.html"
+        - title: '15'
+          url: "/hu_sles_15.html"
+      - title: SLES 12
+        entries:
+        - title: 12 SP 5.
+          url: "/hu_sles_12SP5.html"
+        - title: 12 SP 4.
+          url: "/hu_sles_12SP4.html"
+        - title: 12 SP 3.
+          url: "/hu_sles_12SP3.html"
+        - title: 12 SP 2.
+          url: "/hu_sles_12SP2.html"
+        - title: 12 SP 1
+          url: "/hu_sles_12SP1.html"
+        - title: '12.'
+          url: "/hu_sles_12.html"
+    - title: Veritas
+      entries:
+      - title: Infoscale 8.
+        url: "/hu_veritas_8x.html"
+      - title: Infoscale 7.
+        url: "/hu_veritas_7x.html"
+      - title: 儲存基礎6.
+        url: "/hu_veritas_6x.html"
+    - title: Windows
+      pdf-filename: Windows -FCP
+      entries:
+      - title: 2022年
+        url: "/hu_windows_2022.html"
+      - title: 2019年
+        url: "/hu_windows_2019.html"
+      - title: 2016年
+        url: "/hu_windows_2016.html"
+      - title: 2012 R2
+        url: "/hu_windows_2012r2.html"
+  - title: 使用 NVMe 設定主機
+    entries:
+    - title: 總覽
+      url: "/hu_nvme_index.html"
     - title: AIX
       url: "/nvme_aix.html"
     - title: ESXi
@@ -146,282 +436,6 @@ sidebar:
         url: "/nvme_windows_2016.html"
       - title: 2012 R2
         url: "/nvme_windows_2012r2.html"
-  - title: FCP與iSCSI主機組態
-    entries:
-    - title: AIX與PowerVM/VIOS
-      entries:
-      - title: 7.2/3.1
-        url: "/hu_aix_72.html"
-      - title: 7.1.
-        url: "/hu_aix_71.html"
-    - title: CentOS
-      entries:
-      - title: CentOS 8.
-        entries:
-        - title: '8.5'
-          url: "/hu_centos_85.html"
-        - title: 8.4.
-          url: "/hu_centos_84.html"
-        - title: '8.3'
-          url: "/hu_centos_83.html"
-        - title: '8.2'
-          url: "/hu_centos_82.html"
-        - title: '8.1'
-          url: "/hu_centos_81.html"
-        - title: '8.0'
-          url: "/hu_centos_80.html"
-      - title: CentOS 7.
-        entries:
-        - title: '7.9'
-          url: "/hu_centos_79.html"
-        - title: 7.8%
-          url: "/hu_centos_78.html"
-        - title: 7.7.7.
-          url: "/hu_centos_77.html"
-        - title: 7.6.7.
-          url: "/hu_centos_76.html"
-        - title: '7.5'
-          url: "/hu_centos_75.html"
-        - title: 7.4.
-          url: "/hu_centos_74.html"
-        - title: 7.3.
-          url: "/hu_centos_73.html"
-        - title: '7.2'
-          url: "/hu_centos_72.html"
-        - title: 7.1.
-          url: "/hu_centos_71.html"
-        - title: '7.0'
-          url: "/hu_centos_70.html"
-      - title: CentOS 6.
-        entries:
-        - title: 6.10.
-          url: "/hu_centos_610.html"
-        - title: '6.9'
-          url: "/hu_centos_69.html"
-        - title: 6.8%
-          url: "/hu_centos_68.html"
-        - title: '6.7'
-          url: "/hu_centos_67.html"
-        - title: 6.6.6.
-          url: "/hu_centos_66.html"
-        - title: '6.5'
-          url: "/hu_centos_65.html"
-        - title: 6.4.
-          url: "/hu_centos_64.html"
-    - title: Citrix
-      entries:
-      - title: Hypervisor 8.
-        url: "/hu_citrix_8x.html"
-      - title: XenServer 7
-        url: "/hu_citrix_7x.html"
-    - title: ESXi
-      entries:
-      - title: VMware vSphere 8.
-        url: "/hu_vsphere_8.html"
-      - title: VMware vSphere 7
-        url: "/hu_vsphere_7.html"
-      - title: VMware vSphere 6.5與6.7
-        url: "/hu_vsphere_6.html"
-    - title: HP-UX
-      entries:
-      - title: 11i v3
-        url: "/hu_hpux_11iv3.html"
-    - title: Oracle Linux
-      pdf-filename: OA-FCP
-      entries:
-      - title: ol 9.
-        entries:
-        - title: 9.2.
-          url: "/hu_ol_92.html"
-        - title: '9.1'
-          url: "/hu_ol_91.html"
-        - title: '9.0'
-          url: "/hu_ol_90.html"
-      - title: ol 8.
-        pdf-filename: ol-8-FCP
-        entries:
-        - title: 8.7%
-          url: "/hu_ol_87.html"
-        - title: 8.6.
-          url: "/hu_ol_86.html"
-        - title: '8.5'
-          url: "/hu_ol_85.html"
-        - title: 8.4.
-          url: "/hu_ol_84.html"
-        - title: '8.3'
-          url: "/hu_ol_83.html"
-        - title: '8.2'
-          url: "/hu_ol_82.html"
-        - title: '8.1'
-          url: "/hu_ol_81.html"
-        - title: '8.0'
-          url: "/hu_ol_80.html"
-      - title: ol 7.
-        pdf-filename: ol-7-FCP
-        entries:
-        - title: '7.9'
-          url: "/hu_ol_79.html"
-        - title: 7.8%
-          url: "/hu_ol_78.html"
-        - title: 7.7.7.
-          url: "/hu_ol_77.html"
-        - title: 7.6.7.
-          url: "/hu_ol_76.html"
-        - title: '7.5'
-          url: "/hu_ol_75.html"
-        - title: 7.4.
-          url: "/hu_ol_74.html"
-        - title: 7.3.
-          url: "/hu_ol_73.html"
-        - title: '7.2'
-          url: "/hu_ol_72.html"
-        - title: 7.1.
-          url: "/hu_ol_71.html"
-        - title: '7.0'
-          url: "/hu_ol_70.html"
-      - title: ol 6.
-        pdf-filename: ol-6-FCP
-        entries:
-        - title: 6.10.
-          url: "/hu_ol_610.html"
-        - title: '6.9'
-          url: "/hu_ol_69.html"
-        - title: 6.8%
-          url: "/hu_ol_68.html"
-        - title: '6.7'
-          url: "/hu_ol_67.html"
-        - title: 6.6.6.
-          url: "/hu_ol_66.html"
-        - title: '6.5'
-          url: "/hu_ol_65.html"
-        - title: 6.4.
-          url: "/hu_ol_64.html"
-    - title: RHEL
-      entries:
-      - title: RHEL 9
-        pdf-filename: RHEL-9-FCP
-        entries:
-        - title: 9.2.
-          url: "/hu_rhel_92.html"
-        - title: '9.1'
-          url: "/hu_rhel_91.html"
-        - title: '9.0'
-          url: "/hu_rhel_90.html"
-      - title: RHEL 8
-        pdf-filename: RHEL-8-FCP
-        entries:
-        - title: 8.8.8
-          url: "/hu_rhel_88.html"
-        - title: 8.7%
-          url: "/hu_rhel_87.html"
-        - title: 8.6.
-          url: "/hu_rhel_86.html"
-        - title: '8.5'
-          url: "/hu_rhel_85.html"
-        - title: 8.4.
-          url: "/hu_rhel_84.html"
-        - title: '8.3'
-          url: "/hu_rhel_83.html"
-        - title: '8.2'
-          url: "/hu_rhel_82.html"
-        - title: '8.1'
-          url: "/hu_rhel_81.html"
-        - title: '8.0'
-          url: "/hu_rhel_80.html"
-      - title: RHEL 7
-        pdf-filename: RHEL-7-FCP
-        entries:
-        - title: '7.9'
-          url: "/hu_rhel_79.html"
-        - title: 7.8%
-          url: "/hu_rhel_78.html"
-        - title: 7.7.7.
-          url: "/hu_rhel_77.html"
-        - title: 7.6.7.
-          url: "/hu_rhel_76.html"
-        - title: '7.5'
-          url: "/hu_rhel_75.html"
-        - title: 7.4.
-          url: "/hu_rhel_74.html"
-        - title: 7.3.
-          url: "/hu_rhel_73.html"
-        - title: '7.2'
-          url: "/hu_rhel_72.html"
-        - title: 7.1.
-          url: "/hu_rhel_71.html"
-        - title: '7.0'
-          url: "/hu_rhel_70.html"
-      - title: RHEL 6
-        pdf-filename: RHEL-6-FCP
-        entries:
-        - title: 6.10.
-          url: "/hu_rhel_610.html"
-        - title: '6.9'
-          url: "/hu_rhel_69.html"
-        - title: 6.8%
-          url: "/hu_rhel_68.html"
-        - title: '6.7'
-          url: "/hu_rhel_67.html"
-        - title: 6.6.6.
-          url: "/hu_rhel_66.html"
-        - title: '6.5'
-          url: "/hu_rhel_65.html"
-        - title: 6.4.
-          url: "/hu_rhel_64.html"
-    - title: Solaris
-      entries:
-      - title: '11.4'
-        url: "/hu_solaris_114.html"
-      - title: '11.3'
-        url: "/hu_solaris_113.html"
-    - title: SLES
-      entries:
-      - title: SLES 15
-        pdf-filename: sles-15-FCP
-        entries:
-        - title: 15 SP4
-          url: "/hu_sles_15SP4.html"
-        - title: 15 SP3
-          url: "/hu_sles_15SP3.html"
-        - title: 15 SP2
-          url: "/hu_sles_15SP2.html"
-        - title: 15 SP1
-          url: "/hu_sles_15SP1.html"
-        - title: '15'
-          url: "/hu_sles_15.html"
-      - title: SLES 12
-        entries:
-        - title: 12 SP 5.
-          url: "/hu_sles_12SP5.html"
-        - title: 12 SP 4.
-          url: "/hu_sles_12SP4.html"
-        - title: 12 SP 3.
-          url: "/hu_sles_12SP3.html"
-        - title: 12 SP 2.
-          url: "/hu_sles_12SP2.html"
-        - title: 12 SP 1
-          url: "/hu_sles_12SP1.html"
-        - title: '12.'
-          url: "/hu_sles_12.html"
-    - title: Veritas
-      entries:
-      - title: Infoscale 8.
-        url: "/hu_veritas_8x.html"
-      - title: Infoscale 7.
-        url: "/hu_veritas_7x.html"
-      - title: 儲存基礎6.
-        url: "/hu_veritas_6x.html"
-    - title: Windows
-      pdf-filename: Windows -FCP
-      entries:
-      - title: 2022年
-        url: "/hu_windows_2022.html"
-      - title: 2019年
-        url: "/hu_windows_2019.html"
-      - title: 2016年
-        url: "/hu_windows_2016.html"
-      - title: 2012 R2
-        url: "/hu_windows_2012r2.html"
   - title: 法律聲明
     url: "/legal_notice.html"
 product-family:

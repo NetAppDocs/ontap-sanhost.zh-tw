@@ -4,7 +4,7 @@ permalink: hu_citrix_8x.html
 keywords: host utilities, citrix, hypervisor, 8.0, 8.1, 8.2, netapp, ontap, sanhost 
 summary: 說明如何搭配ONTAP 使用Citrix Hypervisor 8.x搭配使用 
 ---
-= 使用Citrix Hypervisor搭配NetApp ONTAP 功能
+= 搭配 ONTAP 使用 Citrix Hypervisor
 :toc: macro
 :hardbreaks:
 :toclevels: 1
