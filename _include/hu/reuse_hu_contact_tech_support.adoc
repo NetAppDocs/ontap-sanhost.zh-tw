@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-如果您仍遇到問題、請收集下列檔案和命令輸出、並聯絡技術支援部門以進一步分類：
+如果您仍面臨問題、請收集下列檔案和命令輸出及聯絡人 link:mysupport.netapp.com["NetApp支援"^] 進一步分類：
 
 [listing]
 ----

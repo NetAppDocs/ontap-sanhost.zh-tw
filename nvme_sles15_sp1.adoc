@@ -18,9 +18,8 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 :toc-position: content
 
 
-
-
-== 支援能力
+[role="lead"]
+您可以在執行 SUSE Linux Enterprise Server 15 SP1 和 ONTAP 的主機上、設定 NVMe over Fibre Channel （ NVMe / FC ）作為目標。
 
 下列版本的SLES支援NVMe或FC ONTAP ：
 
@@ -31,16 +30,14 @@ SLES15 SP1主機可透過相同的光纖通道啟動器介面卡連接埠、同�
 +
 如需支援的組態與版本最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
 
+* NVMe - CLI套件中包含原生的NVMe / FC自動連線指令碼。您可以在SLES15 SP1上使用原生的內建lfc驅動程式。
 
-
-
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
 
 
 
 == 已知限制
 
-無。NVMe - CLI套件中包含原生的NVMe / FC自動連線指令碼。您可以在SLES15 SP1上使用原生的內建lfc驅動程式。
+沒有已知的限制。
 
 
 
@@ -216,7 +213,12 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
     }
 ]
 ----
++
+= 已知問題
 
+
+
+沒有已知問題。
 
 
 
@@ -248,6 +250,8 @@ NOTE: 這不適用於 Qlogic NVMe / FC 主機。
 
 
 == lffc詳細記錄
+
+設定適用於 NVMe / FC 的 lpfc 驅動程式。
 
 .步驟
 . 設定 `lpfc_log_verbose` 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。

@@ -289,6 +289,8 @@ NOTE: 這不適用於 Qlogic NVMe / FC 主機。
 
 == lffc詳細記錄
 
+設定適用於 NVMe / FC 的 lpfc 驅動程式。
+
 .步驟
 . 設定 `lpfc_log_verbose` 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。
 +

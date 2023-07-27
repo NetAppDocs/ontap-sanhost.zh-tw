@@ -18,11 +18,8 @@ summary: 提供ONTAP Veritas Infoscale 7系列版本的VMware SAN主機組態設
 :toc-position: content
 
 
-
-
-== 簡介
-
-本文件針對ONTAP 採用FC、FCoE和iSCSI傳輸協定的Red Hat Enterprise Linux與Oracle Linux（RHCK型）平台、提供有關Veritas Infoscale儲存基礎7系列產品的VMware SAN主機組態設定指引。
+[role="lead"]
+您可以將 ONTAP SAN 主機組態設定用於 Veritas Infoscale Storage Foundation 7 系列版本、適用於採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RHHCK ）平台。
 
 
 
@@ -283,6 +280,6 @@ NOTE: 如需Veritas的所有其他特定設定、請參閱標準Veritas Infoscal
 
 
 
-== 已知問題與限制
+== 已知問題
 
-沒有已知的問題和限制。
+沒有已知問題。

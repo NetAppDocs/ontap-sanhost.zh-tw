@@ -18,9 +18,8 @@ summary: 適用於Windows Server 2012 R2 ONTAP 的NVMe / FC主機組態搭配使
 :toc-position: content
 
 
-
-
-== 支援能力
+[role="lead"]
+您可以在執行 Windows Server 2012 R2 和 ONTAP 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。
 
 適用於Windows Server 2012的NVMe 9.7或更新版本支援NVMe / FC ONTAP 。
 

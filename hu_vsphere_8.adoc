@@ -360,7 +360,7 @@ naa.600a098038304731783f506670553355
 執行 vSphere 8.x 及更新版本、並使用虛擬 NVMe （ vNVMe ）介面卡的 Linux VM 會發生 I/O 錯誤、因為根據預設、 vNVMe 重試作業會停用。為了避免在所有路徑停機（ APD ）或大量 I/O 負載期間、在執行舊版核心的 Linux VM 上造成中斷、 VMware 推出了可調整的「 VSCSIDisableNvmeRetry 」來停用 vNVMe 重試作業。
 
 |===
-.相關連結
+.相關資訊
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]
 * link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
 * link:https://kb.vmware.com/s/article/83370["NetApp ONTAP 功能搭配NetApp SnapMirror營運不中斷（SMBC）與VMware vSphere Metro儲存叢集（VMSC）"^]

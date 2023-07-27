@@ -18,9 +18,8 @@ summary: 適用於Windows Server 2019的NVMe / FC主機組態、ONTAP 含更新�
 :toc-position: content
 
 
-
-
-== 支援能力
+[role="lead"]
+您可以在執行 Windows Server 2019 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定 ONTAP 為目標。
 
 適用於2019年Windows Server的NVMe 9.7或更新版本支援NVMe / FC ONTAP 。
 

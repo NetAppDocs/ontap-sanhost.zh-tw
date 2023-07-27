@@ -271,6 +271,8 @@ tcp.vmnic3:34:80:Od:30:ca:el-tcp.unknown-uuid.400bf333abf74ab8b96dc18ffadc3f99
 
 == 已知問題
 
+含 ONTAP 版本的 ESXi 7.x 的 NVMe 主機組態有下列已知問題：
+
 [cols="10,30,30"]
 |===
 | NetApp錯誤ID | 標題 | 因應措施 
@@ -278,10 +280,7 @@ tcp.vmnic3:34:80:Od:30:ca:el-tcp.unknown-uuid.400bf333abf74ab8b96dc18ffadc3f99
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654["1420654"^] | ONTAP 節點在 ONTAP 9.9.1 版中使用 NVMe / FC 傳輸協定時無法運作 | 檢查並修正主機架構中的任何網路問題。如果這沒有幫助、請升級至可修正此問題的修補程式。 
 |===
-
-
-== 相關連結
-
+.相關資訊
 link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]
 link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
 link:https://kb.vmware.com/s/article/83370["VMware vSphere 6.x與7.x支援搭配NetApp®SnapMirror®營運不中斷（SMBC）"^]

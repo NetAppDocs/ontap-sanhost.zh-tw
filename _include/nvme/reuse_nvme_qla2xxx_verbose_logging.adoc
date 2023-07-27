@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-NVMe / FC沒有類似的特定qla2xxx記錄功能 `lpfc` 驅動程式：因此、您可以使用下列步驟設定一般的qla2xxx記錄層級：
+NVMe / FC 沒有類似於的特定 qla2xxx 記錄 `lpfc` 驅動程式：請改為設定一般 qla2xxx 記錄層級。
 
 .步驟
 . 將「ql2xextend_error_logging=x1e400000」值附加至對應的「modf探測qla2xxx conf」檔案。

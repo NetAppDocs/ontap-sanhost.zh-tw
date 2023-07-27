@@ -18,11 +18,8 @@ summary: 說明如何搭配ONTAP 使用Citrix Hypervisor 8.x搭配使用
 :toc-position: content
 
 
-
-
-== 簡介
-
-本文件針對ONTAP Citrix Hypervisor 8系列作業系統版本（含FC、FCoE和iSCSI傳輸協定）提供有關SAN主機組態設定的指引。
+[role="lead"]
+您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 Citrix Hypervisor 8 系列 OS 版本設定 ONTAP SAN 主機組態設定。
 
 
 

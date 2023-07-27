@@ -18,10 +18,7 @@ summary: 說明如何針對SUSE Linux Enterprise Server 15 SP2 ONTAP 搭配使�
 :toc-position: content
 
 
-
-
-== 支援能力
-
+[role="lead"]
 支援NVMe/FC ONTAP 的版本可在支援使用支援支援支援支援支援支援支援支援支援的版本9.6及更新版本（含SLES15 SP2）。SLES15 SP2主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行NVMe/FC和FCP流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。
 
 如需支援的組態與版本最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
@@ -33,7 +30,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 == 已知限制
 
-無。
+沒有已知的限制。
 
 
 
@@ -233,6 +230,10 @@ Device Vserver Namespace Path NSID UUID Size
   ]
 }
 ----
++
+= 已知問題
+沒有已知問題。
+
 
 
 
@@ -265,6 +266,8 @@ NOTE: 這不適用於 Qlogic NVMe / FC 主機。
 
 
 == lffc詳細記錄
+
+設定適用於 NVMe / FC 的 lpfc 驅動程式。
 
 .步驟
 . 設定 `lpfc_log_verbose` 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。

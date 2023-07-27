@@ -18,11 +18,8 @@ summary: 針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態�
 :toc-position: content
 
 
-
-
-== 簡介
-
-本文件針對ONTAP 採用FC、FCoE和iSCSI傳輸協定的Red Hat Enterprise Linux與Oracle Linux（RHCK型）平台、提供有關Veritas Storage Foundation 6系列發行版之SAN主機組態設定的指引。
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、為採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RCK 型）平台、提供 Veritas Storage Foundation 6 系列版本。
 
 
 

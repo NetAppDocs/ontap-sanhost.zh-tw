@@ -316,7 +316,6 @@
   <block id="95a2a60b3c81348f445296ddb1b67056" category="paragraph">Oracle 6.10沒有已知問題。</block>
   <block id="e2fadd98203b659772427cfe42d4a39e" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.10。</block>
   <block id="33fb3916b5bbccadc7502b97d2b47e0a" category="summary">說明如何搭配ONTAP 使用Citrix XenServer 7.x與VMware</block>
-  <block id="0b79795d3efc95b9976c7c5b933afce2" category="section-title">簡介</block>
   <block id="a51e3210f96458fa393e6f4bf88caabc" category="paragraph">Citrix XenServer中的多重路徑支援是以Device對應器Multibathd元件為基礎。不會自動為所有顯示給XenServer的LUN建立裝置對應器節點、而且只有當儲存管理層（API）主動使用LUN時、才會進行資源配置。Citrix XenServer Storage Manager API外掛程式可自動啟動及停用多重路徑節點。</block>
   <block id="614673c0b1eeb91e8ffc86cde6faa93b" category="paragraph">由於與整合式多重路徑管理架構不相容、Citrix建議您使用Citrix XenCenter應用程式來管理儲存組態。如果需要手動查詢Device Mapper表的狀態、或在系統上列出作用中的裝置對應器多重路徑節點、您可以使用「/sbin/mpathutils STATUS」命令來驗證ONTAP 您的還原LUN設定。如需詳細資訊、請參閱Citrix XenServer的標準廠商文件。</block>
   <block id="9fc86c956b59ea355d470ac30580447a" category="paragraph">Citrix XenServer 7.x OS是以辨識及正確管理ONTAP VMware LUN所需的所有設定所編譯。對於Citrix XenServer 7.x、必須存在空白的零位元組「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。</block>
@@ -351,7 +350,6 @@
   <block id="eb694d82bb8432a9005a1a1f219b1fa0" category="paragraph">CentOS 6.7作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動為ASA 各種版本的支援和非ASA組態設定正確的所有組態參數。</block>
   <block id="9d2a87ba78cec8237c139f77ffb44261" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="fd679b4991af24edfd6d66f5cbc5db76" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.7。</block>
   <block id="f8f27557fe3d0fcb534e0bcda02971bf" category="summary">說明如何使用Veritas Infoscale 7.3 for Linux搭配ONTAP 使用功能</block>
-  <block id="cc239a4513b4519cac8458b3c718aa7c" category="paragraph">本文件針對ONTAP vSphere 7.x版本搭配FC、FCoE和iSCSI傳輸協定、提供有關VMware SAN主機組態設定的指引。</block>
   <block id="e1059765ab19f25f118520b9942cefe8" category="section-title">Hypervisor SAN開機</block>
   <block id="fc705c5393a2e9aef173ed40205014bb" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="77ab0bbf377853176c70e55d32dcb81a" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="98743d7644276c713659bcbc70ea0c5b" category="paragraph">ESXi提供名為原生多路徑外掛程式（NMP）的可延伸多重路徑模組、可管理子外掛程式儲存陣列類型外掛程式（SATA）和路徑選擇外掛程式（ASP）。ESXi預設提供這些SATP規則。</block>
@@ -407,9 +405,7 @@
   <block id="9061941d5061bda4bcf4edf310b59de1" category="section-title">正在驗證QFullSampleSize</block>
   <block id="32014634f5e91fea92881a76289729e4" category="paragraph">使用下列命令來驗證QFullSampleSize</block>
   <block id="bcf5b4c5647c7c3861431c638d411876" category="paragraph">*「esxcli系統設定進階清單」-選項/Disk/QFullSampleSize*</block>
-  <block id="558ab0bef1894a7a726109d36632d09d" category="section-title">已知問題</block>
   <block id="784c795c066fdf3c4713aae58af639ff" category="paragraph">沒有已知問題。</block>
-  <block id="f8ec0f3aa329ebfedf13a79184b7867e" category="section-title">相關連結</block>
   <block id="c2e11c6f1a87d8cf2bf465e9c2562bdb" category="inline-link-macro">TR-4597- VMware vSphere搭配ONTAP VMware</block>
   <block id="52f50d0f0ab285059648c7da67b4b07f" category="inline-link-macro">VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）</block>
   <block id="8a515fe16331b7269862c5871e55c7e4" category="list-text"><block ref="8a515fe16331b7269862c5871e55c7e4" category="inline-link-macro-rx"></block></block>
@@ -450,7 +446,6 @@
   <block id="f2803bf30a3eaf1cf725f98652c23d14" category="list-text">SLES15 SP1</block>
   <block id="e4e8c2e3b1f2a437f2ee78761c02d287" category="paragraph">SLES15 SP1主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行NVMe/FC和FCP流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。</block>
   <block id="038caf673b7c529c453a9844cbb5d6c4" category="paragraph">如需支援的組態與版本最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
-  <block id="b8bcc67e9c36e9d4f18d613df77d7151" category="paragraph">無。NVMe - CLI套件中包含原生的NVMe / FC自動連線指令碼。您可以在SLES15 SP1上使用原生的內建lfc驅動程式。</block>
   <block id="130b6ac09e01287394faa2f305ddde82" category="section-title">在SLES15 SP1上啟用NVMe/FC</block>
   <block id="2faf433f2b14b03d43c24261953419bc" category="list-text">升級至建議的SLES15 SP2 MU核心</block>
   <block id="c7f1791a3f59c536386990c900c326c1" category="list-text">升級至建議的NVMe-CLI MU版本。</block>
@@ -536,7 +531,6 @@
   <block id="2cc89810a4025d52a6eccc82f2fdfc91" category="paragraph">對於CentOS 8.1、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.1是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
   <block id="4ed487db5845a58ae6349ab5f8fcc335" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.1。</block>
   <block id="7466d31b9a4018d8f402bd6f92090e59" category="summary">說明如何安裝Solaris主機公用程式</block>
-  <block id="16dcd3f6f3bbebb1de9769e4045dbb3f" category="section-title">安裝Solaris主機公用程式</block>
   <block id="193e9a3a22ec18786f1a8e1dccfdc4ac" category="list-text">從下載內含主機公用程式的壓縮檔案複本 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block> 到主機上的目錄。</block>
   <block id="c454d997c91275b70f2f0433fad3fe36" category="list-text">前往內含下載內容的目錄。</block>
   <block id="88a1748445927988a69d31c53331a565" category="list-text">擷取檔案。</block>
@@ -861,7 +855,6 @@
   <block id="d27af977823b8308d5d5cf4dc158a485" category="section-title">設定適用於NVMe / FC的Broadcom FC介面卡</block>
   <block id="864d504d782b9fe5527151b8a795cdae" category="section-title">正在驗證NVMe/FC</block>
   <block id="aec81109cc90f6dcce296e00814fd999" category="paragraph">在上述範例中、兩個命名空間會對應至Oracle Linux 7.8 ANA主機。這可透過四個目標生命期來查看：兩個本機節點生命期、以及兩個其他合作夥伴/遠端節點生命期。此設定顯示主機上每個命名空間的兩個ANA最佳化路徑和兩個ANA不可存取路徑。</block>
-  <block id="4d1a5dc427910a8f8e64f05cd745f04b" category="section-title">啟用Broadcom NVMe / FC的1MB I/O大小</block>
   <block id="5be7338acb62c4947afb236f2acac6f7" category="summary">說明如何使用ONTAP 支援功能來設定Oracle Linux 7.7的NVMe/FC</block>
   <block id="eb40a1520d522d20939a9321ce7560a9" category="doc">適用於Oracle Linux 7.7的NVMe / FC主機組態（ONTAP 含功能）</block>
   <block id="440dd386d307a6307c7ea4b97237db4b" category="paragraph">下列Oracle Linux版本的NVMe/FC支援ONTAP 在支援下列版本的支援中使用</block>
@@ -934,35 +927,19 @@
   <block id="726d293820a3b92756d72e370482b755" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如、</block>
   <block id="a4301741972a8d72156639b6c35de92e" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如、</block>
   <block id="231cf4c70d866b616c21baddaeed0696" category="section-title">疑難排解</block>
-  <block id="7b7cf2f51a50fd1958747b87b9de79d0" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請先確定您執行的組態符合IMT 「支援」規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
-  <block id="b74dd8eaf171dc7bdadb4b02805e11ef" category="list-text">您可以將「lffc_log_verbose」驅動程式設定設為下列任一值、以記錄nvm/FC事件：</block>
-  <block id="72eeec6a3c176f0aa6e7a2c82b9104d4" category="list-text">設定上述任何值之後、請執行「dracut-f」命令重新建立「initramfs」、然後重新啟動主機。</block>
-  <block id="c6c4209c61e5d15f1cdf22504926d2ab" category="list-text">重新開機後、請確認設定：</block>
-  <block id="e8211b68f4f8fe540f8a1f1df578cb9d" category="section-title">qla2xxx詳細記錄</block>
-  <block id="7e1bab1590d0a1b7415ae6393834f5f0" category="paragraph">對於NVMe/FC、沒有類似於lffc驅動程式的特定qla2xxx記錄。因此、您可以使用下列步驟設定一般的qla2xxx記錄層級：</block>
   <block id="0199c49af15b1997cf6d2ddd0ea8adf4" category="list-text">將「ql2xextend_error_logging=x1e400000」值附加至對應的「modf探測qla2xxx conf」檔案。</block>
   <block id="5d14823339a99ad173c461c5934c7795" category="list-text">執行「dracut -f」命令重新建立「initramfs」、然後重新啟動主機。</block>
   <block id="18c1ce7cd10cb855d9571af493e60d2f" category="list-text">重新開機後、請確認已套用詳細記錄、如下所示：</block>
-  <block id="336bb1163b96188b27a0c400c9ed3e7e" category="section-title">常見的NVMe CLI錯誤和因應措施</block>
-  <block id="34df248e027a4c30ed1b7d088594b696" category="paragraph">NVMe探索、NVMe連線或NVMe連線所有作業期間顯示的「NVMe - CLI」錯誤及因應措施如下表所示：</block>
   <block id="bd578ecd5b4e2ae0680ca3e17e20ed2a" category="cell">「NVMe - CLI」顯示錯誤</block>
   <block id="e8a5a7214d896558232c2e63f40a05c2" category="cell">可能原因</block>
   <block id="7aebfa1e2291377e040de92d7f7f335f" category="cell">因應措施</block>
   <block id="37ea58a1ef8410b6d6bf6ec383fdb9bb" category="cell">「寫入/dev/NVMe架構失敗：無效的引數」</block>
   <block id="e6abe40d88718ddd0b9bffc84a71160e" category="cell">語法不正確</block>
-  <block id="5db86bac1ba97f8a89650fb87fa3f00a" category="cell">請確定上述NVMe命令的語法正確無誤。</block>
   <block id="60059d5e6355695d881f6470b0b221b0" category="cell">「寫入/dev/NVMe架構失敗：沒有這類檔案或目錄」</block>
-  <block id="364d4f2f5f0f5b369d500a6d7ef097b8" category="cell">可能會引發多個問題。將錯誤的引數傳遞給NVMe命令是常見原因之一。</block>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
-  <block id="fd7607192f54bfc64a916ff4265b8284" category="list-text">請確定您已將正確的引數（例如、正確的WWNN字串、WWPN字串等）傳遞給命令。</block>
-  <block id="55fd3388a3964cd90c0a1fb25a5104e0" category="list-text">如果引數正確、但您仍看到此錯誤、請檢查「/sys/class/scsi_host/host/nvm_info'」輸出是否正確、NVMe啟動器是否顯示為「已啟用」、以及在遠端連接埠區段下方正確顯示NVMe /FC目標LIF。範例：</block>
-  <block id="0d996d199c6027dc68cd4cab85563b7c" category="list-text">如果NVMe資訊輸出中的目標LIF未如前所述顯示、請檢查「/var/log/Messages」和「dmesg」輸出是否有任何可疑的NVMe / FC故障、並據此報告或修正。</block>
   <block id="64ede1e6f2ef30c339f9a3e100f40cfc" category="cell">「沒有要擷取的探索記錄項目」</block>
-  <block id="63de53510175cd2fa7213647b4db5fda" category="cell">請確定NetApp陣列上的對應子系統中已新增確切的「/etc/nvm/hostnqn」字串（請透過「vserver NVMe Subsystem host show」命令進行驗證）。</block>
   <block id="abbdb018748bb6cd12284ad6c1685b67" category="cell">「寫入/dev/NVMe架構失敗：作業已在進行中」</block>
-  <block id="225b7a6d4ea820127fe205c2526ea209" category="cell">已查看控制器關聯或指定的作業是否已建立或正在建立。這可能是上述安裝之自動連線指令碼的一部分。</block>
   <block id="5d58354522165b88ab742ec42aac9161" category="section-title">何時聯絡技術支援</block>
-  <block id="db4ed55dc4a3e29a642f71c4df28880b" category="paragraph">如果您仍面臨問題、請收集下列檔案和命令輸出、並聯絡技術支援部門以進一步分類：</block>
   <block id="e16f67a9f3c6e6f9fd2a71ca2c71b042" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.0搭配使用功能</block>
   <block id="a8dc135d317a36a2ccd92726f9e0e598" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="33a1f2b8cd02575a35b77c10ba65d8f8" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="31db1dbc8875fe1d1fb0c598273975d6" category="paragraph">對於Oracle Linux 7.0、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.0採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
@@ -1175,7 +1152,6 @@
   <block id="cd1096d4eecda656e5c9911606fb0c35" category="paragraph">對於Red Hat Enterprise Linux（RHEL）8.4、必須存在/etc/multipath.conf檔案、但您不需要對檔案進行特定變更。RHEL 8.4的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="0c1a2fa6a162d103bd725793b80bb571" category="paragraph">RHEL 8.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
   <block id="a51f869a9a131effa58d99e63266e02d" category="summary">說明如何搭配ONTAP 使用Citrix Hypervisor 8.x搭配使用</block>
-  <block id="b4fb72e88112026a3055df686f0141d6" category="paragraph">本文件針對ONTAP Citrix Hypervisor 8系列作業系統版本（含FC、FCoE和iSCSI傳輸協定）提供有關SAN主機組態設定的指引。</block>
   <block id="d87433b06a0f03952a4dc973f5315687" category="paragraph">對於Citrix Hypervisor（CH）8.x、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CH 8.x是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。您可以使用「/sbin/mpathutils」狀態命令來驗證ONTAP 您的還原LUN設定。下列各節提供對應ASA 至角色的LUN的多重路徑輸出範例。</block>
   <block id="d6001c34c29bb04684b5c07f3b8c9209" category="section-title">All SAN Array（ASA 整個SAN陣列）組態</block>
   <block id="15e8bfaa3c1b932b597dedce3820fa11" category="paragraph">下列範例顯示ONTAP 使用四個主動/最佳化路徑之「列舉LUN」的正確輸出：</block>
@@ -1277,7 +1253,6 @@
   <block id="8ae046464e598978903e62c0c706373c" category="list-text">Veritas DMP</block>
   <block id="a335fa6e5bef06439b229f8adabc7dfe" category="section-title">列出從特定SVM/中對應至主機的所有LUN、列出對應至主機之特定LUN的所有屬性</block>
   <block id="53cded606153345462c89bc6a568b1dc" category="summary">提供ONTAP Veritas Infoscale 7系列版本的VMware SAN主機組態設定指引</block>
-  <block id="988ade58b67caf90656e537886fb1daa" category="paragraph">本文件針對ONTAP 採用FC、FCoE和iSCSI傳輸協定的Red Hat Enterprise Linux與Oracle Linux（RHCK型）平台、提供有關Veritas Infoscale儲存基礎7系列產品的VMware SAN主機組態設定指引。</block>
   <block id="31296a34c84ac7a114e2a64e59cc9d34" category="paragraph">在下圖中、「show」命令會傳回LUN資訊。</block>
   <block id="9bdb0807ef78c7192456335c7ef96e18" category="paragraph">請參閱Veritas支援入口網站（產品對照表、平台查詢、HCL對照表）、確認SAN開機組態是否可支援及已知的注意事項。</block>
   <block id="2385edf0d68ac69421a103d7c6128cd0" category="paragraph">您必須驗證組態是否符合系統需求。如需詳細資訊、請參閱<block ref="77ab0bbf377853176c70e55d32dcb81a" category="inline-link-rx"></block> 以及Veritas HCL Matrix。</block>
@@ -1390,7 +1365,6 @@
   <block id="ce33fe68519e0e2d14428572a71c7569" category="summary">以VMware為例、針對Oracle Linux 8.2設定VME/FC主機組態ONTAP</block>
   <block id="89d62bb3e0891fdc6a601122dddc0440" category="doc">適用於Oracle Linux 8.2（ONTAP 含擴充功能）的NVMe/FC主機組態</block>
   <block id="2a0a4348e3cfffb7106ae13ae6827b6d" category="paragraph">Oracle Linux 8.2支援NVMe / FC ONTAP 、不適用於支援更新版本9.6。Oracle Linux 8.2主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe/FC和FCP流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
-  <block id="983e45d9f14c8e4b92b207877e7cabb0" category="paragraph">無。</block>
   <block id="444ce06dcc32d405185ecb72eb5ab7a2" category="list-text">在伺服器上安裝Oracle Linux 8.2。</block>
   <block id="4aab3393d576bcf2907352ae44a0a440" category="list-text">升級NVMe-CLI套件。原生的NVMe-CLI套件包含NVMe / FC自動連線指令碼ONTAP 、即支援NVMe多重路徑循環負載平衡的《支援循環使用資源的evin規則》、以及ONTAP 適用於各種名稱空間的NetApp外掛程式。</block>
   <block id="f66be2d78c31b4dcc20cc20c3d56d86f" category="list-text">在Oracle Linux 8.2主機上、檢查/etc/np/hostnqn上的主機NQN字串、並確認其符合ONTAP 位於該等子系統上對應子系統的主機NQN字串。</block>
@@ -1406,7 +1380,6 @@
   <block id="f554f8ae0fcea497dc4db54ed18e2e5b" category="admonition">若要設定Oracle Linux 7.3 RedHat Enterprise核心（RHCK）、請使用 <block ref="afd18201682c20761a139e3ba1b44320" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.3。</block>
   <block id="f909d8a9e3b0ea24e758ecf1323e3235" category="paragraph">Oracle Linux 7.3沒有已知問題。</block>
   <block id="eea65c7c864efb688d55381c5b21a910" category="summary">說明如何搭配ONTAP 使用Veritas Infoscale 6.5與6.7 for Linux搭配使用</block>
-  <block id="cf46645d175a0f99f53e120079789f83" category="paragraph">本文件針對ONTAP vSphere 6.5.x和6.7.x版本搭配FC、FCoE和iSCSI傳輸協定、提供有關VMware SAN主機組態設定的指引。</block>
   <block id="d285d6f90c81abd47d57e4425faf9ed5" category="paragraph">對於NetApp ONTAP RealsStorage、VMW_SATP_ALUA外掛程式預設會使用「VMW_PSP_RR」作為路徑選擇原則（PSP）。您可以使用下列命令來確認：</block>
   <block id="97702a0c8ad7bf7deb907e6a931a9c14" category="paragraph">在上述範例中、LUN已從NetApp儲存設備對應4個路徑（4個主動最佳化路徑）。</block>
   <block id="285dc13017989020e1a1eb0ca9eb9125" category="paragraph">在上述範例中、LUN已從NetApp儲存設備對應4個路徑（2個主動最佳化路徑、2個主動-未最佳化路徑）。</block>
@@ -1545,7 +1518,6 @@
   <block id="79b488f9eaea99a6d3f6667b30d733e5" category="list-text">不支援NVMe的sanlun。因此、在SLES15 SP3上、不支援NVMe的Luhu。您可以改用原生NVMe CLI中隨附的NetApp外掛程式來取得相同的功能。這應該適用於所有NVMe傳輸。</block>
   <block id="fcfc5ba070a0675d68aab9fb9f245c43" category="list-text">NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是客戶最常部署的主機組態。因此、對於SCSI而言、您可以像往常一樣為SCSI LUN設定「dm-multipath"、以產生mpath裝置、而NVMe多重路徑則可用於在主機上設定NVMe多重路徑裝置。</block>
   <block id="1733de5a596dfd8c9179b7f061fe9051" category="paragraph">沒有已知的限制。</block>
-  <block id="42104bec91c2c82c24dfb75610f2ff97" category="section-title">組態需求</block>
   <block id="443e8164d670e55b2388725ef1a0bda5" category="paragraph">核心內建NVMe多重路徑已在SLES主機（例如、SLES15 SP3）上預設啟用。因此、此處不需要其他設定。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得所支援組態的正確詳細資料。</block>
   <block id="83314818bb7c47b391616d0ff767a7de" category="section-title">NVMe啟動器套件</block>
   <block id="abc4d57007eba9b1d8b3f88edac97e68" category="list-text">確認您已在SLES15 SP3 MU主機上安裝必要的核心與NVMe CLI MU套件。</block>
@@ -1858,7 +1830,6 @@
   <block id="31cf8046288558f6d4e1ae6619a70d13" category="admonition">若要設定Oracle Linux 7.2 RedHat Enterprise核心（RHCK）、請使用 <block ref="b6341682387f7873fba9fb1f6f4c5842" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.2。</block>
   <block id="28a076f4875989d2a91944bc7342d0fc" category="paragraph">Oracle Linux 7.2沒有已知問題。</block>
   <block id="bea05db7b205cebd49d85c581b86c97e" category="summary">針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態設定的指引</block>
-  <block id="736c980a1fb2f447faa0dedf6080305f" category="paragraph">本文件針對ONTAP 採用FC、FCoE和iSCSI傳輸協定的Red Hat Enterprise Linux與Oracle Linux（RHCK型）平台、提供有關Veritas Storage Foundation 6系列發行版之SAN主機組態設定的指引。</block>
   <block id="b277f2029ada9ac25bce475d62557cb4" category="summary">說明如何搭配ONTAP 使用CentOS 7.9與功能</block>
   <block id="266073eadfa1373804ed4272aa64c5e3" category="paragraph">對於CentOS 7.9、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.9採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各個LUN。</block>
   <block id="cea2e5f9065bd07d72cb5caab3c1db47" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.3搭配使用功能</block>
@@ -1921,7 +1892,6 @@
   <block id="b19cff5a6d037faf5ffa796506cf839f" category="inline-link-macro">指令手冊頁ONTAP</block>
   <block id="9a85ce7daf00cd97d2ba489c461c944f" category="paragraph">請參閱 <block ref="6bc1436da9f0920d54a0f738830d902f" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="6a290a5d71dc6c05e5ec68fcd97cbe87" category="list-text">驗證個別NVMe / FC命名空間裝置的個別ANA路徑狀態：</block>
-  <block id="e83464ce8bd634efb1f099c956ec64a8" category="section-title">已知問題</block>
   <block id="471e82326ed5017bfdb518b5d33377cc" category="inline-link-macro">VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）</block>
   <block id="0a7c052037789d22811592a15b7a2e17" category="inline-link-macro">VMware vSphere 6.x與7.x支援搭配NetApp®SnapMirror®營運不中斷（SMBC）</block>
   <block id="d1456688e4d9e6236e75dfb01f3ed2ec" category="paragraph"><block ref="ec1f030f0caddb932644a46761f74630" category="inline-link-macro-rx"></block>
@@ -2113,7 +2083,6 @@
   <block id="60d0d78dbe9bb18e16690c35ce6867e1" category="paragraph">對於CentOS 8.5、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.5是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
   <block id="fd586a803662833af2a4932bc04d30c2" category="paragraph">CentOS 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
   <block id="18c14def8d42f0c0db0b8f08922c712b" category="paragraph">CentOS 8.5沒有已知問題。</block>
-  <block id="1b2a59730ea53da6436d8353216d1a0c" category="paragraph">本文件針對ONTAP 採用FC、FCoE和iSCSI傳輸協定的Red Hat Enterprise Linux和Oracle Linux（RHCK型）平台、提供有關Veritas Infoscale儲存基礎8系列版本的SAN主機組態設定指引。</block>
   <block id="c5b648f7fb06555dc55d907fcf7b4c14" category="paragraph">您必須驗證組態是否符合系統需求。如需詳細資訊、請參閱NetApp互通性對照表工具和Veritas HCL對照表。</block>
   <block id="ce081634ead33780d73e0e1f6b9ea0ca" category="paragraph">有了Veritas動態多重路徑（VxDMP）、您必須執行組態工作、將NetApp LUN宣告為Veritas多重路徑裝置。您必須安裝由Veritas為NetApp儲存系統提供的Array Support程式庫（ASB）和Array Policy Module（APM）套件。雖然Veritas軟體安裝會隨產品一起載入預設的ASLM套件、但建議您使用Veritas支援入口網站上列出的最新支援套件。</block>
   <block id="697675a4c21edc6fc07599249d9fe748" category="paragraph">在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</block>
@@ -2204,8 +2173,6 @@
   <block id="cebb9dfdc378481f9e93e7b505fe4f1d" category="paragraph">範例（b）：</block>
   <block id="cdb0ca847e914e0c124768ae14142869" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如（A）、</block>
   <block id="86a8f02d0c1226cbab77460737c32b26" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個不支援的名稱空間裝置的正確值。例如（A）、</block>
-  <block id="8f04ccd4b6d17f7acb33a4a2262bb3e9" category="section-title">lffc詳細記錄</block>
-  <block id="dd1f73319dd2881afa35604270a821b9" category="section-title">qla2xxx詳細記錄</block>
   <block id="e3f05e6b08d377aca967243a953ecfb9" category="section-title">常見的NVMe-CLI錯誤和因應措施</block>
   <block id="e7e8e011c8e0651dc3a6d06305d8279e" category="paragraph">RHEL 8.3沒有已知問題。</block>
   <block id="ce420cebd9b134c2ee33ae6a490c31ba" category="paragraph">如果您打算在同一部RHEL 8.2共存主機上同時執行NVMe和SCSI流量、建議ONTAP 您分別使用核心內建NVMe多重路徑來執行支援資源命名空間、ONTAP 並使用dm-multipath來執行支援資源的LUN。您也應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將「啟用外部」設定新增至/etc/multipath.conf、如下所示。</block>
@@ -2293,8 +2260,6 @@
   <block id="9c7d4fd2f8e0f3f2d80343ad47595e46" category="list-text">在伺服器上安裝RHEL 8.5 GA。安裝完成後、請確認您執行的是指定的RHEL 8.5 GA核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
   <block id="3010e81137392b43d689728401eb1ea9" category="list-text">確認「lffc_enable _FC4_type]已設定為3</block>
   <block id="d5236e74852c6cce228c1229faf5ea4f" category="paragraph">RHEL 8.5 GA核心隨附的原生內建「qla2xxx」驅動程式、提供ONTAP 最新的上游修正程式、這些修正程式對支援進行支援是不可或缺的。</block>
-  <block id="431b68e6f738b5c8bf76d7972d17685f" category="paragraph">一般會看到、NetApp陣列上的對應子系統是否未新增「/etc/nexe/hostnqn」字串、或是在個別子系統中新增不正確的「hostnqn」字串。</block>
-  <block id="d9062f55beecc22ab1e0baaa195b1f68" category="paragraph">無。若為「NVMe探索」、請稍後嘗試執行此命令。對於「NVMe Connect」和「Connect All」、請執行「NVMe list」命令、確認命名空間裝置已建立並顯示在主機上。</block>
   <block id="9b2d197e1555229882f18589d7c32cce" category="list-text">驗證ONTAP 適當的NVMe設定值（例如、將「model」設為「NetApp還原控制器」、並將負載平衡「iopolicy」設為「循環」）、以正確ONTAP 反映在主機上：</block>
   <block id="fc42d5b62a406fecb7a634ca014f42c2" category="paragraph">從7.0U3c開始、預設會載入所需的NVMe/TCP模組。如需設定網路和NVMe/TCP介面卡、請參閱VMware vSphere文件。</block>
   <block id="209ae9abdc2efd05e90e3a97a8913a9b" category="section-title">驗證NVMe/TCP</block>
@@ -2470,13 +2435,10 @@
   <block id="4b74cb8caf9869d9c39202f5a7c8cd4d" category="list-text">確認其他NVMe / TCP啟動器目標LIF組合可以成功擷取探索記錄頁面資料。例如：</block>
   <block id="7912d4b61044915bf839431d678f055d" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請務必設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 命令、以便在路徑遺失時重試更長時間。例如：</block>
   <block id="8820bbf46f22897008878290f6060725" category="paragraph">範例（b）</block>
-  <block id="8ee542f1260df38017c8fcd1811b07cf" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請確定您執行的組態符合互通性對照表工具IMT （簡稱「互通性對照表工具」）規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
-  <block id="df474dd19781ab3788a85cc52bf31865" category="paragraph">NVMe / FC沒有類似的特定qla2xxx記錄功能<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 驅動程式：因此、您可以使用下列步驟設定一般的qla2xxx記錄層級：</block>
   <block id="0929df0c2d7b307ae019137c488669a8" category="cell">1503468</block>
   <block id="2f8adf6e51ddcf7b0618dad0e63a4144" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> Command會針對特定子系統傳回重複的NVMe控制器清單</block>
   <block id="95a3009a54be763a347295539b3b924d" category="cell">。<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 命令應傳回與特定子系統相關聯的NVMe控制器唯一清單。在RHEL 9.1中<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> Command會針對屬於特定子系統的所有命名空間、傳回NVMe控制器及其各自的ANA狀態。不過、ANA狀態是每個命名空間的屬性、因此如果您列出指定命名空間的子系統命令語法、則最好顯示具有路徑狀態的獨特NVMe控制器項目。</block>
   <block id="83dccde7d3d49df72143822cd414e991" category="cell">2130106.</block>
-  <block id="9e9ad12d8f7b421ec7b07bcffb518755" category="paragraph">如果您仍遇到問題、請收集下列檔案和命令輸出、並聯絡技術支援部門以進一步分類：</block>
   <block id="54bb88571442321a8544c55cb834deb7" category="cell">RHEL 8.7 NVMe主機會建立重複的持續探索控制器</block>
   <block id="c66549c6038d3ebbf4c13fa9699ba9c4" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您在ONTAP NVMe主機上執行的是Ris-9.10.1和Red Hat Enterprise Linux（RHEL）8.7、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。</block>
   <block id="666e694f580810d83f5f40c26c2bb04c" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 9.1及其功能</block>
@@ -2521,7 +2483,6 @@
   <block id="7682043e346a0976ad107c7cb3989145" category="list-text">建立組態檔<block ref="2c50293ac08c6ad6b30ce2ba7a8fcd9c" prefix=" " category="inline-code"></block> 對於連接至主機的NetApp儲存類型、輸入內容類似下列項目：</block>
   <block id="976902513d73f70373bf832d81070379" category="admonition">從ONTAP 版本號為0.9.1開始、SM-BC設定組態在Solaris 11.4主機中受到支援。</block>
   <block id="e49ccc598a2a177291bac4be5c852c5f" category="cell"><block ref="e49ccc598a2a177291bac4be5c852c5f" category="inline-link-macro-rx"></block></block>
-  <block id="5b3496bb3deba2c2222970d5c975df4a" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請確定您執行的組態符合互通性對照表工具IMT （簡稱「互通性對照表工具」）規格、然後繼續執行下列步驟來偵錯任何主機端問題。</block>
   <block id="edd08258c3c5f3718f84028ff5971d1d" category="section-title">Oracle Solaris虛擬化</block>
   <block id="fd515dc1fb4215f1d4f9c5a754b19cab" category="section-title">虛擬化的建議設定</block>
   <block id="c25aaa60cb981e43df9a60c24d76e170" category="paragraph">為了驗證當SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式是否不中斷營運、您必須在Solaris 11.3主機上設定下列設定。此設定會覆寫容錯移轉模組<block ref="e66960c74638cf8300fb234ed66fcdb7" prefix=" " category="inline-code"></block> 防止執行偵測到衝突的程式碼路徑。</block>
@@ -2553,7 +2514,6 @@
   <block id="eadd99715c27e14fe7508d5c9bf2c8bc" category="cell">Oracle Linux 8.6NVMe主機會建立重複的持續探索控制器</block>
   <block id="f775b9dd25663187ef2a06904bcffd62" category="cell">在Oracle Linux 8.6NVMe over Fabrics（NVMe）主機上、您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是採用NVMe的主機、則每次都會建立一個重複的資料中心<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 已執行。這會導致主機和目標上的資源使用不必要。</block>
   <block id="ea537a490c78c08866a1149ac8451043" category="cell">18118.</block>
-  <block id="18364f61161412813e05ad8b27bed23e" category="paragraph">在開始任何NVMe / FC故障的疑難排解之前、請先確定您執行的組態符合IMT 「支援」規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
   <block id="6a133285885bbf7ad82fbc82c4bfd8ee" category="summary">使用支援VMware的Oracle Linux 8.4設定VME/FC主機組態ONTAP 、範例如下</block>
   <block id="2d60c3fc33d0bb9862234393561976b3" category="doc">適用於Oracle Linux 8.4的NVMe/FC主機組態、ONTAP 含功能性</block>
   <block id="d06d1d488461357bdc27f97d34980d21" category="paragraph">NVMe over Fabrics或NVMe（包括NVMe / FC和NVMe / TCP）可搭配Oracle Linux 8.4搭配非對稱命名空間存取（ANA）支援、ONTAP 而非對稱式命名空間存取（ANA）則是在不間斷儲存容錯移轉（SFO）上運作所需的功能。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。本主題詳細說明如何在Oracle Linux 8.4上使用ANA搭配ONTAP 以支援以NVMe為目標的內核NVMe多重路徑來啟用NVMe。</block>
@@ -2644,7 +2604,6 @@
   <block id="ca13d5e31c4c214fae823252ea3ac466" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間裝置的正確值。</block>
   <block id="2777856007ced53036238eb6ac77a35c" category="cell">Oracle Linux 8.5 NVMe主機會建立重複的持續探索控制器</block>
   <block id="2f0abad3e4805563c626305c7ea008ba" category="cell">在Oracle Linux 8.5 NVMe over Fabrics（NVMe）主機上、您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 建立持續探索控制器（PD）的命令。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您是以ONTAP NVMe型主機執行EFlash 9.10.1和Oracle Linux 8.5、則每次都會建立一個重複的資料中心<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 已執行。這會導致主機和目標上的資源使用不必要。</block>
-  <block id="049cf7a01c96a6039648d00060516545" category="paragraph">針對任何NVMe / FC故障進行疑難排解之前、請先確定您執行的組態符合IMT 《支援技術規格》的要求、然後繼續執行後續步驟以修正任何主機端問題。</block>
   <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="summary">法律聲明提供版權聲明、商標、專利等存取權限。</block>
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">法律聲明</block>
   <block id="6016a2b341113bf496b719905398ecd2" category="section-title">版權</block>
@@ -2710,7 +2669,6 @@
   <block id="fea53c4695433409c2501af776af21c3" category="paragraph">SAN 主機公用程式的文件包含在中 <block ref="83855932909dca92603efe77cb42c173" category="inline-link-macro-rx"></block>。ONTAP SAN 主機組態文件是累積性的、涵蓋所有目前的 SAN 主機版本。各版本之間的任何功能差異都會記錄在上下文中。</block>
   <block id="b941110e14a54d454e0dea4fa380b5b9" category="list-text">SANtricity Storage Manager 多重路徑驅動程式指南、專為您的 SANtricity 版本所提供。</block>
   <block id="54ed56ff6f53cace0a89cfd9c793d498" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。</block>
-  <block id="663a5883675ae80b4bcdfec1d5268ae6" category="paragraph">ASM 鏡像可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代的故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊、請參閱 ONTAP 上的 Oracle 資料庫。</block>
   <block id="e0a63b6c7b84f763f3ca8d8b86db69b8" category="summary">Windows 統一化主機公用程式包含一個安裝程式、可設定所需的 Windows 登錄和 HBA 參數、讓 Windows 主機正確處理 NetApp ONTAP 和 E 系列平台的儲存系統行為。</block>
   <block id="e16334a1a12d2e212a82720b2f25b627" category="doc">Windows Unified Host Utilities 7.2</block>
   <block id="bf992d142295c3f916496b43e9f9214e" category="section-title">關於 Windows 主機公用程式</block>
@@ -2862,7 +2820,6 @@
   <block id="c39a85f8ec6b0a29f08919e66d066295" category="cell">遵循 Solaris 11.4 和 Huk 建議。FC驅動程式繫結會從SSD（4維）變更為SD（4維）。移動您在中的組態<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> 至<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> 如 Oracle （文件編號 2595926.1 ）所述。新安裝的Solaris 11.4系統會有不同的行為、並從11.3版或更低版本升級。</block>
   <block id="cb5a5fbf7b377c4121e5a7dee7e950e5" category="cell">Solaris 11.x<block ref="cb4b12dfd645e3fcd47ea6dec988643f" prefix=" " category="inline-code"></block> 端點對端點 Emulex 組態導致 I/O 錯誤</block>
   <block id="a15ed55b009e93df31791bff39016875" category="paragraph">請參閱 <block ref="a39850964251401babb6e797f9dd15c1" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
-  <block id="f6bd0d7447ff66cc6b859603a88fbde9" category="section-title">相關連結</block>
   <block id="ec1f030f0caddb932644a46761f74630" category="list-text"><block ref="ec1f030f0caddb932644a46761f74630" category="inline-link-macro-rx"></block></block>
   <block id="e0ace13bee28a678ec04ad1b076b4b00" category="admonition">您必須部署ONTAP VMware vSphere的支援功能、才能啟用VASA Provider。VASA Provider 將為您管理所有的 igroup 設定、因此無需在 vVols 環境中建立或管理 iGroups 。</block>
   <block id="a2093eec2c1b326b4a76efce454cc95a" category="paragraph">如需資源配置與管理vVols的詳細資訊、請參閱ONTAP VMware vSphere的VMware工具文件及<block ref="fc9815e7b1405959c49ad47e9a23e3a5" category="inline-link-rx"></block> 和 <block ref="a74613d919ef64732e37564f6282a452" category="inline-link-macro-rx"></block></block>
@@ -2983,7 +2940,6 @@
   <block id="da208fb575db2ac57ff1319036af2a6f" category="list-text">確認啟動器連接埠已啟動並正在執行、您可以看到目標生命體。</block>
   <block id="413d1a842341ac8491856d35085746ac" category="paragraph">您需要驗證 ONTAP 命名空間是否正確反映在主機上。執行下列命令以執行：</block>
   <block id="c4815a9e7bab07d952f3a16f2d250f1f" category="paragraph">您可以檢查多重路徑狀態：</block>
-  <block id="b1460fc99f40abf0e4777c0ef83f9340" category="paragraph">適用於 AIX 與 ONTAP 的 NVMe / FC 主機組態有下列已知問題：</block>
   <block id="31c5b0de25b168798dceb058bef8a7f6" category="cell">Burt ID</block>
   <block id="42dcdffc46f5810bfaac54d46fbf50ef" category="cell">1553249)</block>
   <block id="650a7c31a67a66d1f1f10b3eccb13db4" category="cell">要修改的 AIX NVMe / FC 預設 APD 時間、以支援 MCC 非計畫性切換事件</block>
@@ -3010,8 +2966,6 @@
   <block id="64ccbd06c1f5d18122faf6ea96805341" category="list-text">根據預設、實體 FC 會啟用 NVMe / FC 傳輸協定支援；不過、虛擬 I/O 伺服器（ VIOS ）上的虛擬光纖通道（ VFC ）會停用 NVMe / FC 傳輸協定支援。</block>
   <block id="9fd88788efc2039d4c86e3d60310b147" category="paragraph">擷取虛擬介面卡清單：</block>
   <block id="e31c4b8d2ef22d8837e50793ada5f2e9" category="cell">根據預設、 AIX 作業系統會針對 NVMe / FC 使用 20 秒的 All path Down （ APD ）逾時值。  然而、 ONTAP MetroCluster 自動非計畫性切換（ AUSO ）和 tiebreaker 啟動的切換工作流程、可能會比 APD 逾時時間長一點、導致 I/O 錯誤。</block>
-  <block id="bf14ca0596cd773b04205ea1d53bcc29" category="paragraph">在疑難排解任何 NVMe / FC 故障之前、請確認您執行的組態符合 IMT 規格。
-如果您仍面臨問題、請聯絡技術支援部門以進一步分類。</block>
   <block id="9e10b0a5aea11686043890a4e7f7d67d" category="list-text">確認有多個路徑可供使用。</block>
   <block id="f2e04893e244d58e7312b018d7c330cd" category="admonition">在主機作業系統啟動並在路徑上執行後、就會有多個路徑可供使用。</block>
   <block id="159e1cf7b9f0c43c83e2d3d06cfe2786" category="list-text">重新啟動主機、確認開機成功。</block>
@@ -3036,7 +2990,6 @@
   <block id="7558802010b056df08332b675440eea8" category="admonition">若要設定 Oracle Linux 8.7 RedHat Enterprise Kernel （ RHCK ）、請使用 <block ref="2799389175d462b609c459275109bc99" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux （ RHEL ） 8.7 。</block>
   <block id="73ba9729c9740db82f51a4f8954414ff" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。當 LUN 對應至 Hypervisor 時、無需進行任何變更即可設定 KVM 。</block>
   <block id="8c7c84346d72ecc6e19907a700f38429" category="paragraph">Oracle Linux 8.7 沒有已知問題。</block>
-  <block id="2c9a7203cf50b708a9ec676237f0b25d" category="paragraph">自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代的故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊、請參閱 ONTAP 上的 Oracle 資料庫。</block>
   <block id="1918c14015c19cfe7ab5da89745a137f" category="doc">適用於 ONTAP 的 Oracle Linux 8.7 的 NVMe 主機組態</block>
   <block id="24aa52aa9699b501c3a8bed92978c144" category="paragraph">NVMe over Fabrics （ NVMe of ）（包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸）均支援使用非對稱命名空間存取（ ANA ）的 Oracle Linux （ OL ） 8.7 。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="5e23e6a5bed72a0ca8cbff0598786db4" category="paragraph">下列支援適用於 OL 8.7 搭配 ONTAP 的 NVMe / FC 主機組態：</block>
@@ -3064,11 +3017,7 @@
   <block id="942bc9ba97662019cbc2b7e41f8381db" category="paragraph">ONTAP 版本 OL 8.7 的 NVMe 主機組態有下列已知問題：</block>
   <block id="4d85197b1029241623e97a28c5823630" category="cell">Oracle Linux 8.7 NVMe 型主機會建立重複的持續探索控制器</block>
   <block id="07ad87616fe3ef97097ef4a56610ba36" category="cell">在 OL 8.7 NVMe 型主機上、持續探索控制器（ PDC ）是透過傳遞建立的<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。對於指定的啟動器目標組合、每次啟動時、只會建立一個 PDC<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。不過、從 OL 8.x 開始、 NVMe 型主機會在每次呼叫時建立重複的 PDF<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項。這會浪費主機和目標上的資源。</block>
-  <block id="e547a2a229ecff025ac8a9944e494a73" category="paragraph">在疑難排解任何 NVMe 故障之前、請先確認您執行的組態符合 IMT 規格、然後繼續執行後續步驟來偵錯任何主機端問題。</block>
   <block id="564a7e3459c5ede626fd0f47cac71ff3" category="list-text">OL 9.0 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
-  <block id="c48bd590bf88d48a24d60b6b5c163ad4" category="paragraph">適用於 ONTAP 版本的 Oracle Linux 9.0 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="7fc2293e459de57e2832a921a712ac35" category="admonition">這不適用於 Qlogic NVMe / FC 主機。
-XXX</block>
   <block id="a3bfd4755428917359c01fd362495acc" category="paragraph">。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
   <block id="e30c75b0dc59992b638dfe73b8bf5597" category="paragraph"><block ref="307e748c432594fde04ec1d02c6808e4" prefix="" category="inline-code"></block></block>
   <block id="cf0c07eb31e8fda788f0ed252dc6975a" category="paragraph">第一次建立此檔案時、您可能需要啟用和啟動多重路徑服務：</block>
@@ -3241,7 +3190,6 @@ XXX</block>
   <block id="a55c64674e30e11be44367361a197b70" category="paragraph">對於 OL 9.2<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。OL 9.2 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
   <block id="beb55dba3ba1d2be4056c146cb0bf458" category="paragraph">Oracle Linux 9.2 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="a706283e3f8c7062e0c4c4b423b93965" category="admonition">若要設定 Oracle Linux 9.2 RedHat Enterprise Kernel （ RHCK ）、請使用 <block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux （ RHEL ） 9.2 。</block>
-  <block id="01ae493ab1dc24745cd1c1e47aa25447" category="paragraph">Oracle Linux 9.2 with NetApp ONTAP 版本有下列已知問題：</block>
   <block id="02b2bcdfe73b2cce057d7b84806fa6ed" category="paragraph">Oracle Linux 9.1 with NetApp ONTAP 版本有下列已知問題：</block>
   <block id="5890aebb0489382354458498eb36394e" category="paragraph">當您在 SAN 主機上執行 Linux Unified Host Utilities CLI 命令「 sanlun FCP show adapter -v 」時、命令會失敗、並顯示錯誤訊息、顯示無法找到主機匯流排介面卡（ HBA ）探索所需的程式庫相依性：</block>
   <block id="cc40ed991073c638cc114ee18ad15d8c" category="paragraph">Oracle Linux 9.0 with NetApp ONTAP 版本有下列已知問題：</block>
@@ -3314,7 +3262,6 @@ XXX</block>
   <block id="8081080397baec608d84fd3afffdb29d" category="doc">將 CentOS 6.5 搭配 ONTAP 使用</block>
   <block id="5fef9070d7cec9b1052ec5f805c82203" category="doc">將 CentOS 8.0 搭配 ONTAP 使用</block>
   <block id="fcd5a26f819291c5057cf1bf9ba4b0e3" category="doc">搭配 ONTAP 使用 Red Hat Enterprise Linux 6.10</block>
-  <block id="0f58bb2843522e2206b491398ef785df" category="doc">使用 Veritas Storage Foundation 6 for Linux with ONTAP</block>
   <block id="3e537edf35b6854e2685914d33b9835d" category="doc">將 Solaris 11.3 與 ONTAP 搭配使用</block>
   <block id="136a479cd65c7a7cb09b6cb800da37d1" category="doc">將 CentOS 6.10 搭配 ONTAP 使用</block>
   <block id="3369bed83566ad14c6e2c04fbbca3406" category="doc">將 Oracle Linux 7.7 與 ONTAP 搭配使用</block>
@@ -3372,4 +3319,47 @@ XXX</block>
   <block id="2cac689df6b99782e23a143c9bfa2346" category="sidebar">HP-UX主機公用程式</block>
   <block id="a4d5754af636a6318ee2ffcd80c52e27" category="sidebar">Linux統一化主機公用程式</block>
   <block id="289d4a224c51f2aeb418b081093d4d1e" category="sidebar">Solaris主機公用程式</block>
+  <block id="8557e53cdfdd197b67dd8b986e602bf0" category="paragraph">您可以將 ONTAP SAN 主機組態設定用於 Veritas Infoscale Storage Foundation 7 系列版本、適用於採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RHHCK ）平台。</block>
+  <block id="2748559fa3f480a739ce5c8aa1fb9f04" category="paragraph">Oracle Linux 9.2 with NetApp ONTAP 版本有下列已知問題：</block>
+  <block id="1bbb67631847a06bbd9b2e9dafec2134" category="section-title">安裝 Solaris 主機公用程式</block>
+  <block id="3b6d73c1a990f96b5a1195998cefcf0a" category="paragraph">含 ONTAP 版本的 ESXi 7.x 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="7d2ac39702ab406c53e1e589396dc20a" category="paragraph">您可以在執行 Windows Server 2019 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定 ONTAP 為目標。</block>
+  <block id="3f20da7f97c0948dba60855f74d8feb3" category="paragraph">您可以在執行 SUSE Linux Enterprise Server 15 SP1 和 ONTAP 的主機上、設定 NVMe over Fibre Channel （ NVMe / FC ）作為目標。</block>
+  <block id="c783ac9d690ea6f6744d8edf596a145a" category="list-text">NVMe - CLI套件中包含原生的NVMe / FC自動連線指令碼。您可以在SLES15 SP1上使用原生的內建lfc驅動程式。</block>
+  <block id="c5572eca1bd94cf7d7a382167c292395" category="paragraph">= 已知問題</block>
+  <block id="04e8d5a4c40a30787e3a35e62dfd0c1e" category="paragraph">設定適用於 NVMe / FC 的 lpfc 驅動程式。</block>
+  <block id="9f988f6d1200dcd570b84c8116f6eecd" category="paragraph">您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 Citrix Hypervisor 8 系列 OS 版本設定 ONTAP SAN 主機組態設定。</block>
+  <block id="58778ead591330ae1dd8f24f2549fc34" category="paragraph">OL 8.4 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
+  <block id="7b3bf1d8eef841f0a31f40eb5d332ced" category="paragraph">您可以在執行 Windows Server 2012 R2 和 ONTAP 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
+  <block id="838ed30bf9830d174974818ad89ac4c7" category="paragraph">採用 ONTAP 版本的 RHEL 8.6 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="e62de6043f25aae2915aa8c10fbaec9d" category="cell"><block ref="e62de6043f25aae2915aa8c10fbaec9d" category="inline-link-macro-rx"></block></block>
+  <block id="fad1bada1216764738043e879ec198a9" category="paragraph">= 已知問題
+沒有已知問題。</block>
+  <block id="c29b12d2cc17f9149a97f1cf82a6c263" category="paragraph">ONTAP 版本 OL 8.6 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="f5c1b43cd99bf5053de182854bd7e76a" category="paragraph">採用 ONTAP 版本的 RHEL 9.1 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="1341add2fe573f7064d22ce6afde8495" category="paragraph">您可以在執行 Windows Server 2016 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定 ONTAP 為目標。</block>
+  <block id="6dbaaee7c23e43374599aa43c101fa0b" category="paragraph">RHEL 8.7 沒有已知問題。</block>
+  <block id="0ea1561176c96894fb977d38bd38f871" category="section-title">為 Broadcom NVMe / FC 啟用 1MB I/O 大小</block>
+  <block id="624e2520b17b79e6e7312aaab546e064" category="section-title">為 Broadcom NVMe / FC 啟用 1MB I/O 大小</block>
+  <block id="794c839c1ce38d3e3fe9ddbfd7d3ee62" category="paragraph">採用 ONTAP 版本的 RHEL 9.0 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="7ed61b389d995a259f689087e9ac7cbf" category="paragraph">RHEL 8.8 沒有已知問題。</block>
+  <block id="0fcb153a09cf9f735fd10ea86aa03c38" category="paragraph">您可以在執行 Windows Server 2022 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定 ONTAP 為目標。</block>
+  <block id="eeb65ac9a4f35e659e92b61cc21d24b5" category="paragraph">採用 ONTAP 版本的 RHEL 8.7 NVMe 主機組態有下列已知問題：</block>
+  <block id="a597507af40f2b893bf64299ba506a89" category="doc">使用 Veritas Storage Foundation 6 for Linux with ONTAP</block>
+  <block id="f1ae093ec47cacaea6fabc35758d35f7" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、為採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RCK 型）平台、提供 Veritas Storage Foundation 6 系列版本。</block>
+  <block id="7766164b38459bfd3947f7747d94760a" category="paragraph">您可以使用 ONTAP SAN 主機組態設定來設定 vSphere 6.5.x 和 6.7.x 版本搭配 FC 、 FCoE 和 iSCSI 通訊協定。</block>
+  <block id="d60c463bb4096f3ed4bd1618626dfe10" category="doc">疑難排解</block>
+  <block id="e1cd8c01047ab9aa65fc1c931ccdb0a8" category="paragraph">針對 RHEL 、 OL 和 SLES 主機的任何 NVMe 故障進行疑難排解之前、請先確認您執行的組態符合互通性對照表工具（ IMT ）規格、然後繼續後續步驟、以偵錯任何主機端問題。</block>
+  <block id="4a446daa2697df931fbab571c023baef" category="admonition">疑難排解指示不適用於 AIX 、 Windows 和 ESXi 主機。</block>
+  <block id="96050aafb2fca1409b0f952e7597fd11" category="paragraph">NVMe / FC 沒有類似於的特定 qla2xxx 記錄<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 驅動程式：請改為設定一般 qla2xxx 記錄層級。</block>
+  <block id="0659d428df833a806e29e65e632d380a" category="inline-link-macro">NetApp支援</block>
+  <block id="b3303f1e3e1d5672f6b839c968637989" category="paragraph">如果您仍面臨問題、請收集下列檔案和命令輸出及聯絡人 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 進一步分類：</block>
+  <block id="678a8f2b559ba91fc985c5641c2d8f28" category="paragraph">適用於 ONTAP 版本的 Oracle Linux 9.0 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="b9e735e8617edf1ba79d42cb4c76dd1b" category="paragraph">OL 8.5 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
+  <block id="78186bcc2bcf3016d00a067d67064dea" category="paragraph">ONTAP 版本 OL 8.3 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="8e2fe53ccb05734b777fbcc2363d25ab" category="paragraph">您可以將 vSphere 7.x 版本的 ONTAP SAN 主機組態設定與 FC 、 FCoE 和 iSCSI 通訊協定一起使用。</block>
+  <block id="bb8697c974d608376ec4f0aa538c9a50" category="paragraph">適用於 AIX 與 ONTAP 版本的 NVMe / FC 主機組態有下列已知問題：</block>
+  <block id="d9a42f0deac96b98dbebf2e560cd7f5c" category="paragraph">在疑難排解任何 NVMe / FC 故障之前、請確認您執行的組態符合互通性對照表工具（ IMT ）規格。如果您仍面臨問題、請聯絡 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 進一步分類。</block>
+  <block id="3a4b11723a00030809010d89daf7ebe2" category="paragraph">您可以將 ONTAP SAN 主機組態設定用於 Veritas Infoscale Storage Foundation 8 系列版本、適用於採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RHHCK 型）平台。</block>
+  <block id="eaf39d9dce68a53c6bc9882062e6b8ac" category="paragraph">ESXi 8.x 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
 </blocks>

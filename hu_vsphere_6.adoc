@@ -18,11 +18,8 @@ summary: 說明如何搭配ONTAP 使用Veritas Infoscale 6.5與6.7 for Linux搭�
 :toc-position: content
 
 
-
-
-== 簡介
-
-本文件針對ONTAP vSphere 6.5.x和6.7.x版本搭配FC、FCoE和iSCSI傳輸協定、提供有關VMware SAN主機組態設定的指引。
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定來設定 vSphere 6.5.x 和 6.7.x 版本搭配 FC 、 FCoE 和 iSCSI 通訊協定。
 
 
 
@@ -320,10 +317,7 @@ naa.600a098038304731783f506670553355
 
 | ESXi 6.5.x和ESXi 6.7.x | 1256473.12 | 在Emulex介面卡上測試時出現PLOGI問題 |  
 |===
-
-
-== 相關連結
-
+.相關資訊
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]
 * link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
 * link:https://kb.vmware.com/s/article/83370["NetApp ONTAP 功能搭配NetApp SnapMirror營運不中斷（SMBC）與VMware vSphere Metro儲存叢集（VMSC）"^]
