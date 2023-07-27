@@ -28,3 +28,10 @@ NOTE: 在雲端環境中、主機通常稱為用戶端。此內容中的所有�
 例如、您可以設定內部部署ONTAP 的不支援儲存設備、以連線至內部部署的SAN主機、或連線至SAN雲端用戶端。您也可以設定 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 或 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^] 連線至內部部署SAN主機或連線至SAN雲端用戶端。
 
 正確的組態對於最佳效能和成功的容錯移轉非常重要。
+
+.相關資訊
+* 。 link:https://docs.netapp.com/us-en/ontap/san-config/index.html["ONTAP SAN 組態"^] 適用於ONTAP 您的版本的
+* 。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["《SAN管理指南》ONTAP"^] 適用於ONTAP 您的版本的
+* 。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明 ONTAP"^] 適用於ONTAP 您的版本的
+* 。 link:https://docs.netapp.com/us-en/e-series/index.html["E系列文件"^] 以尋找SANtricity 有關的文件。
+

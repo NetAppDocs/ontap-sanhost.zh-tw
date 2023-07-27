@@ -1,0 +1,220 @@
+---
+sidebar: sidebar 
+permalink: hu_aix_61_cmd.html 
+keywords: host utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
+summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用 
+---
+= 命令參考範例
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+您可以使用 AIX 主機公用程式 6.1 命令參考、使用主機公用程式工具來進行 NetApp 儲存組態的端點對端點驗證。
+
+
+
+== 列出所有對應至主機的主機啟動器
+
+您可以擷取對應至主機的主機啟動器清單。
+
+[source, cli]
+----
+# sanlun fcp show adapter -v
+----
+* 輸出範例 *
+
+[listing]
+----
+bash-3.2# sanlun fcp show adapter -v
+adapter name: fcs0
+WWPN: 100000109b22e143
+WWNN: 200000109b22e143
+driver name: /usr/lib/drivers/pci/emfcdd
+model: df1000e31410150
+model description: FC Adapter
+serial number: YA50HY79S117
+hardware version: Not Available
+driver version: 7.2.5.0
+firmware version: 00012000040025700027
+Number of ports: 1
+port type: Fabric
+port state: Operational
+supported speed: 16 GBit/sec
+negotiated speed: Unknown
+OS device name: fcs0
+adapter name: fcs1
+WWPN: 100000109b22e144
+WWNN: 200000109b22e144
+driver name: /usr/lib/drivers/pci/emfcdd
+model: df1000e31410150
+model description: FC Adapter
+serial number: YA50HY79S117
+hardware version: Not Available
+driver version: 7.2.5.0
+firmware version: 00012000040025700027
+Number of ports: 1
+port type: Fabric
+port state: Operational
+supported speed: 16 GBit/sec
+negotiated speed: Unknown
+OS device name: fcs1
+bash-3.2#
+----
+
+
+== 列出所有對應至主機的LUN
+
+您可以擷取對應至主機的所有 LUN 清單。
+
+[source, cli]
+----
+# sanlun lun show -p -v all
+----
+* 輸出範例 *
+
+[listing]
+----
+ONTAP Path: vs_aix_clus:/vol/gpfs_205p2_207p1_vol_0_8/aix_205p2_207p1_lun
+LUN: 88
+LUN Size: 15g
+Host Device: hdisk9
+Mode: C
+Multipath Provider: AIX Native
+Multipathing Algorithm: round_robin
+
+host    vserver  AIX   AIX MPIO
+path    path     MPIO  host      vserver      path
+state   type     path  adapter   LIF          priority
+-----------------------------------------------------
+up     primary   path0   fcs0    fc_aix_1     1
+up     primary   path1   fcs1    fc_aix_2     1
+up     secondary path2   fcs0    fc_aix_3     1
+up     secondary path3   fcs1    fc_aix_4     1
+----
+
+
+== 列出從特定SVM對應至主機的所有LUN
+
+您可以從指定的 SVM 擷取對應至主機的所有 LUN 清單。
+
+[source, cli]
+----
+# sanlun lun show -p -v sanboot_unix
+----
+* 輸出範例 *
+
+[listing]
+----
+ONTAP Path: sanboot_unix:/vol/aix_205p2_boot_0/boot_205p2_lun
+LUN: 0
+LUN Size: 80.0g
+Host Device: hdisk85
+Mode: C
+Multipath Provider: AIX Native
+Multipathing Algorithm: round_robin
+
+host    vserver    AIX   AIX MPIO
+path    path       MPIO  host    vserver    path
+state   type       path  adapter LIF        priority
+-------------------------------------------------
+up      primary    path0 fcs0    sanboot_1   1
+up      primary    path1 fcs1    sanboot_2   1
+up      secondary  path2 fcs0    sanboot_3   1
+up      secondary  path3 fcs1    sanboot_4   1
+----
+
+
+== 列出對應至主機之特定LUN的所有屬性
+
+您可以擷取對應至主機之指定 LUN 的所有屬性清單。
+
+[source, cli]
+----
+# sanlun lun show -p -v vs_aix_clus:/vol/gpfs_205p2_207p1_vol_0_8/aix_205p2_207p1_lun
+----
+* 輸出範例 *
+
+[listing]
+----
+ONTAP Path: vs_aix_clus:/vol/gpfs_205p2_207p1_vol_0_8/aix_205p2_207p1_lun
+LUN: 88
+LUN Size: 15g
+Host Device: hdisk9
+Mode: C
+Multipath Provider: AIX Native
+Multipathing Algorithm: round_robin
+
+host     vserver   AIX   AIX MPIO
+path     path      MPIO  host     vserver   path
+state    type      path  adapter  LIF       priority
+---------------------------------------------------------
+up       primary   path0 fcs0    fc_aix_1   1
+up       primary   path1 fcs1    fc_aix_2   1
+up       secondary path2 fcs0    fc_aix_3   1
+up       secondary path3 fcs1    fc_aix_4   1
+----
+
+
+== 依主機裝置檔案名稱列出 ONTAP LUN 屬性
+
+您可以透過指定主機裝置檔案名稱來擷取 ONTAP LUN 屬性清單。
+
+[source, cli]
+----
+#sanlun lun show -d /dev/hdisk1
+----
+* 輸出範例 *
+
+[listing]
+----
+controller(7mode)/
+device host lun
+vserver(Cmode)     lun-pathname
+-----------------------------------------------------------------------------
+vs_aix_clus       /vol/gpfs_205p2_207p1_vol_0_0/aix_205p2_207p1_lun
+
+filename adapter protocol size mode
+-----------------------------------
+hdisk1    fcs0    FCP     15g  C
+----
+
+
+== 列出附加至主機的所有SVM目標LIF WWPN
+
+您可以擷取附加至主機的所有 SVM 目標 LIF WWPN 清單。
+
+[source, cli]
+----
+# sanlun lun show -wwpn
+----
+* 輸出範例 *
+
+[listing]
+----
+controller(7mode)/
+target device host lun
+vserver(Cmode)          wwpn            lun-pathname
+--------------------------------------------------------------------------------
+
+vs_aix_clus          203300a098ba7afe  /vol/gpfs_205p2_207p1_vol_0_0/aix_205p2_207p1_lun
+vs_aix_clus          203300a098ba7afe  /vol/gpfs_205p2_207p1_vol_0_9/aix_205p2_207p1_lun
+vs_aix_clus          203300a098ba7afe  /vol/gpfs_205p2_207p1_vol_en_0_0/aix_205p2_207p1_lun_en
+vs_aix_clus          202f00a098ba7afe  /vol/gpfs_205p2_207p1_vol_en_0_1/aix_205p2_207p1_lun_en
+
+filename     adapter    size  mode
+-----------------------------------
+hdisk1       fcs0       15g    C
+hdisk10      fcs0       15g    C
+hdisk11      fcs0       15g    C
+hdisk12      fcs0       15g    C
+----

@@ -19,7 +19,7 @@ summary: 適用於Windows Server 2016 ONTAP 的NVMe / FC主機組態搭配使用
 
 
 [role="lead"]
-您可以在執行 Windows Server 2016 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定 ONTAP 為目標。
+您可以使用 ONTAP 做為目標、在執行 Windows Server 2016 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。
 
 適用於Windows Server 2016的NVMe 9.7或更新版本支援NVMe / FC ONTAP 。
 

@@ -488,7 +488,7 @@ NSID       UUID                                   Size
 
 == 已知問題
 
-適用於 ONTAP 版本的 Oracle Linux 9.0 的 NVMe 主機組態有下列已知問題：
+適用於 ONTAP 的 Oracle Linux 9.0 的 NVMe 主機組態有下列已知問題：
 
 [cols=""20"]
 |===

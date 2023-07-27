@@ -1,0 +1,137 @@
+---
+sidebar: sidebar 
+permalink: hu_solaris_62_cmd.html 
+keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用 
+---
+= Solaris 6.2 命令參考
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+您可以使用 Solaris 主機公用程式 6.2 範例命令參照、使用主機公用程式工具進行端點對端點 NetApp 儲存組態驗證。
+
+
+
+== 列出所有對應至主機的主機啟動器
+
+您可以擷取對應至主機的所有主機啟動器清單。
+
+[source, cli]
+----
+# sanlun fcp show adapter -v
+----
+* 輸出範例 *
+
+[listing]
+----
+adapter name:      qlc3
+WWPN:              21000024ff17a301
+WWNN:              20000024ff17a301
+driver name:       qlc
+model:             7335902
+model description: 7115462, Oracle Storage Dual-Port 32 Gb Fibre Channel PCIe HBA
+serial number:     463916R+1720333838
+hardware version:  Not Available
+driver version:    210226-5.10
+firmware version:  8.08.04
+Number of ports:   1 of 2
+port type:         Fabric
+port state:        Operational
+supported speed:   8 GBit/sec, 16 GBit/sec, 32 GBit/sec
+negotiated speed:  32 GBit/sec
+OS device name:    /dev/cfg/c7
+
+adapter name:      qlc2
+WWPN:              21000024ff17a300
+WWNN:              20000024ff17a300
+driver name:       qlc
+model:             7335902
+model description: 7115462, Oracle Storage Dual-Port 32 Gb Fibre Channel PCIe HBA
+serial number:     463916R+1720333838
+hardware version:  Not Available
+driver version:    210226-5.10
+firmware version:  8.08.04
+Number of ports:   2 of 2
+port type:         Fabric
+port state:        Operational
+supported speed:   8 GBit/sec, 16 GBit/sec, 32 GBit/sec
+negotiated speed:  16 GBit/sec
+OS device name:    /dev/cfg/c6
+----
+
+
+== 列出所有對應至主機的LUN
+
+您可以擷取對應至主機的所有 LUN 清單。
+
+[source, cli]
+----
+# sanlun lun show -p -v all
+----
+* 輸出範例 *
+
+[listing]
+----
+
+                    ONTAP Path: data_vserver:/vol1/lun1
+                           LUN: 1
+                      LUN Size: 10g
+                   Host Device: /dev/rdsk/c0t600A0980383044485A3F4E694E4F775Ad0s2
+                          Mode: C
+            Multipath Provider: Sun Microsystems
+              Multipath Policy: Native
+
+----
+
+
+== 列出從特定SVM/中對應至主機的所有LUN、列出對應至主機之特定LUN的所有屬性
+
+您可以從特定 SVM 擷取對應至主機的所有 LUN 清單。
+
+[source, cli]
+----
+# sanlun lun show -p -v sanboot_unix`
+----
+* 輸出範例 *
+
+[listing]
+----
+ONTAP Path: sanboot_unix:/vol/sol_boot/sanboot_lun
+                           LUN: 0
+                      LUN Size: 180.0g
+
+----
+
+
+== 依主機裝置檔案名稱列出 ONTAP LUN 屬性
+
+您可以透過指定主機裝置檔案名稱來擷取所有 ONTAP LUN 屬性的清單。
+
+[source, cli]
+----
+# sanlun lun show all
+----
+* 輸出範例 *
+
+[listing]
+----
+controller(7mode/E-Series)/                                         device
+vserver(cDOT/FlashRay)       lun-pathname                           filename
+---------------------------------------------------------------------------------------------------------------
+sanboot_unix                 /vol/sol_193_boot/chatsol_193_sanboot /dev/rdsk/c0t600A098038304437522B4E694E4A3043d0s2
+
+host adapter    protocol lun size   product
+---------------------------------------------
+qlc3            FCP      180.0g     cDOT
+----

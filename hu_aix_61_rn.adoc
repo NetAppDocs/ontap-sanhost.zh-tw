@@ -78,18 +78,6 @@ link:https://mysupport.netapp.com/site/["NetApp線上錯誤"] 提供大多數已
 * FCP - AIX
 
 
-
-
-== 關於SAN主機組態文件
-
-SAN主機公用程式的文件包含在中 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機組態ONTAP"] 文件。整個SAN主機組態文件都是累積性的、涵蓋所有目前的SAN主機版本。ONTAP各版本之間的任何功能差異都會記錄在上下文中。
-
-
-
-== 何處可找到產品文件及其他資訊
-
-您可以存取所有NetApp產品的文件、並在NetApp公司網站的「產品文件」頁面上找到其他產品資訊資源、例如技術報告和白皮書。
-
 .相關資訊
 *設定及管理ONTAP 您的資料不一樣儲存系統*
 

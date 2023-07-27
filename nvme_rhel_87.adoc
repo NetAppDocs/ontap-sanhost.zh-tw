@@ -465,7 +465,7 @@ NSID  UUID                                   Size
 
 == 已知問題
 
-採用 ONTAP 版本的 RHEL 8.7 NVMe 主機組態有下列已知問題：
+採用 ONTAP 的 RHEL 8.7 NVMe 主機組態有下列已知問題：
 
 [cols="10,30,30,10"]
 |===

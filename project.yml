@@ -23,24 +23,32 @@ sidebar:
         url: "/hu_aix_61_rn.html"
       - title: 安裝AIX Hu 6.1
         url: "/hu_aix_61.html"
+      - title: 命令參考範例
+        url: "/hu_aix_61_cmd.html"
     - title: HP-UX主機公用程式
       entries:
       - title: 版本資訊
         url: "/hu_hpux_60_rn.html"
       - title: 安裝HP-UX HU 6.0
         url: "/hu_hpux_60.html"
+      - title: 命令參考範例
+        url: "/hu_hpux_60_cmd.html"
     - title: Linux統一化主機公用程式
       entries:
       - title: 版本資訊
         url: "/hu_luhu_71_rn.html"
       - title: 安裝Luhu 7.1
         url: "/hu_luhu_71.html"
+      - title: 命令參考範例
+        url: "/hu_luhu_71_cmd.html"
     - title: Solaris主機公用程式
       entries:
       - title: 版本資訊
         url: "/hu_solaris_62_rn.html"
       - title: 安裝Solaris Hu 6.2
         url: "/hu_solaris_62.html"
+      - title: 命令參考範例
+        url: "/hu_solaris_62_cmd.html"
     - title: Windows統一化主機公用程式
       entries:
       - title: 版本資訊

@@ -19,72 +19,22 @@ summary: Linux Unified Host Utilities 7.1版本資訊
 
 
 [role="lead"]
-本版本資訊文件包含Linux Unified Host Utilities 7.1版本的最新資訊、包括已知問題與限制、任何重要注意事項、新功能及增強功能的更新。本文也說明自主機公用程式發行後可能發現的任何問題。
+版本資訊說明新功能與增強功能、已知問題與限制、以及使用 ONTAP 儲存系統設定及管理特定主機的重要注意事項。
+
+如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
 
 
 
-== 關於Linux Unified Host Utilities 7.1版本
+== 新增功能
 
-Linux Unified Host Utilities支援多種Linux作業系統。Host Utilities可讓您將Linux主機連線至NetApp儲存系統。
+Linux 主機公用程式 7.1 版本包含下列新功能與增強功能：
 
-Linux Unified Host Utilities 7.1繼續支援下列版本的Linux：
-
-* Red Hat Enterprise Linux
-* SUSE Linux Enterprise Server
-* Oracle Linux
-* Oracle VM
-* Citrix XenServer
-* Veritas
-
-
-
-NOTE: 如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
-
-主機公用程式軟體提供32位元和64位元.rpm檔案。您可以從下載適用於主機架構的正確.rpm檔案、以及文件 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^]。
-
-如需安裝與設定的相關指示、請參閱 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_luhu_71.html["《Linux Unified Host Utilities 7.1安裝指南》"]。
-
-
-
-== 7.1版的新功能
-
-Linux主機公用程式現在稱為_Linux Unified Host Utilities、因為它支援執行SANtricity 支援的NetApp E系列儲存系統、AFF 以及執行FAS 不完整功能的支援功能。ONTAP
-
+* Linux 主機公用程式現在稱為 Linux 統一主機公用程式、因為它支援執行 SANtricity 的 NetApp E 系列儲存系統、以及執行 ONTAP 的 AFF 、 FAS 和 ASA 系統。
++
 
 NOTE: 本文提及的任何主機公用程式或Linux主機公用程式、都是指Linux Unified Host Utilities。
 
-* 此版本的Linux Unified Host Utilities可支援調整套件、以設定伺服器設定檔、並改善Red Hat Enterprise Linux 6和7主機的I/O效能。
-* Linux Unified Host Utilities 7.1繼續支援下列版本：
-+
-** Red Hat Enterprise Linux
-** SUSE Linux Enterprise Server
-** Oracle Linux
-** Oracle VM
-** Citrix XenServer
-** Veritas
-
-
-* Red Hat Enterprise Linux 6和7現在有一個經過調整的套件、其中包含「調整的-adm'命令、可根據環境在主機上設定不同的伺服器設定檔。
-+
-** 這包括用於使用企業儲存陣列LUN之組態的企業儲存設定檔。您也可以將Red Hat Enterprise Linux的虛擬客體設定檔用作客體虛擬機器。使用這些調校的套件、ONTAP 可顯著改善效能和延遲。
-
-
-
-
-
-NOTE: NetApp會繼續與Host Utilities合作、在初次發行後新增功能支援。如需支援功能及新增功能的最新資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
-
-
-
-== 新功能與增強功能
-
-發行說明會在產品版本之間更新、以取得新資訊。
-
-
-
-=== 7.1增強功能
-
-* 此版本支援下列項目：
+* 現在支援下列作業系統：
 +
 ** SUSE Linux Enterprise Server 15系列
 ** Oracle VM 3.2系列
@@ -92,72 +42,39 @@ NOTE: NetApp會繼續與Host Utilities合作、在初次發行後新增功能支
 ** Red Hat Enterprise Linux 6和7系列
 ** SUSE Linux Enterprise Server 11 SP4
 ** KVM和Xen、RHEV 6.4和6.5
-** Citrix XenServer參數
+** Citrix XenServer
 
 
-* 新增對Emulex和QLogic 32 Gb光纖通道介面卡的支援。
-* 修復了在SLS12SP1、OL7.2、RHEL7.2和RHEL 6.8中的「ianlun LUN show -p Getting SIGABRT」。
-* 支援Red Hat Linux 6.8、Oracle Linux 6.8、XenServer 7.0、Oracle VM 3.3系列及Oracle VM 3.4系列作業系統。
+* 在 Red Hat Enterprise Linux （ RHEL ） 6 和 RHEL 7 主機上、現在支援用於設定伺服器設定檔的調整套件。您可以使用 `tuned-adm` 根據環境設定不同設定檔的命令。  例如、您也可以將虛擬來賓設定檔作為來賓虛擬機器、並可將企業儲存設定檔用於使用企業儲存陣列 LUN 的組態。  使用這些經過調整的套件、可改善 ONTAP 的處理量和延遲。
+* 增加了 Broadcom Emulex 和 Marvell Qlogic 對 32 Gb 光纖通道適配器的支持。
 
+
+
+NOTE: NetApp會繼續與Host Utilities合作、在初次發行後新增功能支援。如需支援功能及新增功能的最新資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
+
+
+
+== 已在此版本中修正
+
+執行時發生間歇性主機作業系統故障問題 `sanlun lun show -p` 在 SLES12SP1 、 OL7.2 、 RHEL7.2 及 RHEL 6.8 中的命令在此版本中已修正。
 
 
 
 == 已知問題與限制
 
-[cols="10, 30"]
+Linux 主機公用程式 7.1 版本有下列已知問題和限制。
+
+[cols="10, 30, 30"]
 |===
-| NetApp錯誤ID | 說明 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| 1457017 | 「anlun」安裝會發出與「libdevmapper.so」和「libnl.so」程式庫相關的警告訊息。這些警告不會影響到「暫停」套件的功能。 
+| 1457017 | 「anlun」安裝會發出與「libdevmapper.so」和「libnl.so」程式庫相關的警告訊息。這些警告不會影響到「暫停」套件的功能。 | 當您在 SAN 主機上執行 Linux Unified Host Utilities CLI 命令「 sanlun FCP show adapter -v 」時、命令會失敗、並顯示錯誤訊息、顯示主機匯流排介面卡（ HBA ）探索所需的程式庫相依性不可為
+位於：
+
+[root@hostname~]# sanlun FCP show adapter -v
+無法找到 /usr/lib64/libHBAAPI.so 程式庫
+確定安裝程式庫的套件已安裝並載入
+請參閱公開報告 1508554 。 
 |===
-link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。
-
-您可能想要使用的一些關鍵字組合和錯誤類型包括：
-
-* FCP - Linux
-* iSCSI–Linux
-
-
-請參閱 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機組態文件ONTAP"] 如需主機作業系統設定與組態的詳細資訊、
-
-
-
-== 關於SAN主機組態文件
-
-SAN主機公用程式的文件包含在中 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機組態文件ONTAP"]。整個SAN主機組態文件都是累積性的、涵蓋所有目前的SAN主機版本。ONTAP各版本之間的任何功能差異都會記錄在上下文中。
-
-
-
-=== 其他資訊
-
-
-
-==== 使用與Linux核心搭售的驅動程式時、建議使用的預設值
-
-當您設定使用Linux核心隨附的原生內建驅動程式的FC環境時、可以使用驅動程式的預設值。在使用iSCSI解決方案軟體的iSCSI環境中、您需要根據所使用的作業系統版本、手動設定某些建議的值。
-
-
-
-== 何處可找到產品文件及其他資訊
-
-您可以存取所有NetApp產品的文件、並在NetApp公司網站的「產品文件」頁面上找到其他產品資訊資源、例如技術報告和白皮書。
-
-.相關資訊
-*設定及管理ONTAP 您的資料不一樣儲存系統*
-
-* 。 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["《軟體設定指南》ONTAP"^] 適用於ONTAP 您的版本的
-* 。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["《SAN管理指南》ONTAP"^] 適用於ONTAP 您的版本的
-* 。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明 ONTAP"^] 適用於ONTAP 您的版本的
-
-
-*設定及管理E系列儲存系統*
-
-* 適用於您的傳輸協定的《適用於Windows Express的《Data Storage Manager組態與資源配置指南》SANtricity
-* 《適用於您作業系統、傳輸協定及版本的《支援系統的支援與資源配置快速指南》。SANtricity SANtricity
-* 適用於您的版本的《關於您的版本的》的《關於本產品的軟件安裝參考資料》（英文）SANtricity SANtricity 。
-* 適用於您的版本的《支援您的版本》的《支援資料管理程式多重路徑驅動程式指南》。SANtricity SANtricity
-* 適用於您的版本的《關於您的版次的《》《》《》。SANtricity SANtricity
-
-
-請參閱 link:https://docs.netapp.com/us-en/e-series/index.html["E系列文件"^] 以尋找SANtricity 有關的文件。
+link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。

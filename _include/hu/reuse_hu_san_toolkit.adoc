@@ -7,7 +7,7 @@
 .範例
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
-[listing]
+[source, cli]
 ----
 # sanlun lun show all
 ----

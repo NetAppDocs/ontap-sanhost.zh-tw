@@ -405,7 +405,7 @@ NSID    UUID                                   Size
 
 == 已知問題
 
-OL 8.5 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：
+OL 8.5 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：
 
 [cols=""20"]
 |===

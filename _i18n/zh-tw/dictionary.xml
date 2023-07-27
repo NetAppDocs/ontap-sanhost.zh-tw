@@ -304,7 +304,6 @@
   <block id="7ba6633ca0b968c950d64584fba1ce6c" category="admonition">若要設定Oracle Linux 8.2 RedHat Enterprise核心（RHCK）、請使用 <block ref="4fa0e58c0abf395a1bcef392b352f5ab" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.2。</block>
   <block id="810d931656eab0e7389d9a7b04b05ea6" category="paragraph">Oracle Linux 8.2沒有已知問題。</block>
   <block id="64017e4fce264fae779ea6ffb9022691" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="840d5abfe44b15b4222ea5c534ce82a9" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.2。</block>
-  <block id="79e721357e358d77c4700c25c863fc37" category="doc">SAN主機組態ONTAP</block>
   <block id="a76193f5d9397d9c49ca283a20ccf649" category="inline-link-macro">SAN管理指南</block>
   <block id="8cb9ee34636093f5ba25008ebc7b7287" category="inline-link-macro">SAN組態指南</block>
   <block id="99d5775ff67d3ebcdc6e872f0bb0e7bd" category="summary">說明如何搭配ONTAP 使用Oracle Linux 6.10搭配使用功能</block>
@@ -525,7 +524,6 @@
   <block id="98baefaf33f7b1a7340fecca79b121d7" category="section-title">列出所有對應至主機的LUN</block>
   <block id="db8b5cb66e41a6692e5280271b55feb6" category="section-title">列出從特定SVM對應至主機的所有LUN</block>
   <block id="475c20ed4a6682ddf4e29696ef0600f4" category="section-title">列出對應至主機之特定LUN的所有屬性</block>
-  <block id="7b9797972142cfc5839e6afb2cfe2e15" category="section-title">依ONTAP 主機裝置檔案名稱列出LUN屬性</block>
   <block id="e562a7759abbf518b77dba4c6bf7b87d" category="section-title">列出附加至主機的所有SVM目標LIF WWPN</block>
   <block id="b0825624074d948cc02dab7178882abe" category="summary">說明如何搭配ONTAP 使用CentOS 8.1搭配使用功能</block>
   <block id="2cc89810a4025d52a6eccc82f2fdfc91" category="paragraph">對於CentOS 8.1、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.1是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
@@ -741,7 +739,6 @@
   <block id="f32d48cf755668783343d18d81af5662" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.0。</block>
   <block id="1669e5f0b1148e1054b39b7a819b7fdb" category="summary">說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用</block>
   <block id="07bbb49e67f00330a23f48abec1ddfeb" category="doc">AIX主機公用程式6.1</block>
-  <block id="e11da9afe91d381489a365c86cc614ab" category="section-title">先決條件</block>
   <block id="baadc517f232b835410bb5a5975c2d71" category="paragraph">AIX主機公用程式是NetApp主機軟體、可在IBM AIX主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</block>
   <block id="d87eaccfcc7f1ce59c39e647ad0ee108" category="admonition">在AIX和PowerVM/VIOS OS版本上均支援SAN工具套件。</block>
   <block id="3377da1c4bfbeb041c695fd90b5b51f8" category="section-title">安裝AIX主機公用程式</block>
@@ -1231,7 +1228,6 @@
   <block id="6a2c85eca0b58ae9120cd4aa738a6949" category="paragraph">對於CentOS 7.5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.5是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
   <block id="13875804930272cb7e31a51605d09c65" category="doc">Solaris Host Utilities 6.2</block>
   <block id="8f3b9d0cc42d20c0623a5f0990c4181e" category="paragraph">Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</block>
-  <block id="ad13fbfcd593d66a0a805929eb221e19" category="section-title">安裝Solaris主機公用程式</block>
   <block id="03b4fa4e47ce5a6711a2ad9d886d63b4" category="paragraph">Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。主要主機公用程式環境包括：</block>
   <block id="4dae86ccd354e19dab3d36ea3289ddf9" category="list-text">原生作業系統搭配MPxIO、搭配使用SPARC處理器或x8/64處理器的系統光纖通道（FC）或iSCSI傳輸協定。</block>
   <block id="bcbce11571c35a16833e1cad61fe922b" category="list-text">在使用SPARC處理器的系統上搭配FC或iSCSI傳輸協定的Veritas動態多重路徑（DMP）、以及在使用x8/64處理器的系統上搭配iSCSI傳輸協定。</block>
@@ -1314,21 +1310,10 @@
   <block id="78d3960bdb072ec713e8a4ab4adcd520" category="cell">13456222</block>
   <block id="e782dc99ec8290da5a63ec5e81465380" category="cell">使用OS原生命令、在使用AA/pport的Solaris主機上回報異常路徑</block>
   <block id="87b607e68d04a531a2558265117f94cb" category="cell">Solaris 11.4 with ASA 介紹不穩定的路徑報告問題</block>
-  <block id="87adc74f7e5083adf88fa77a4e7aaa7b" category="doc">Linux Unified Host Utilities 7.1</block>
-  <block id="67d2c540b82f607f8c9d3201f2309ec6" category="list-text">您必須在廠商的網站上安裝所提供的HBA管理套件。</block>
-  <block id="d361b7136a02633fc7c5b4ea205655d8" category="paragraph">管理軟體可讓SAN工具套件命令收集FC HBA的相關資訊、例如WWPN。若要使sanlun FCP show介面卡正常運作、請確定已安裝下列套件：</block>
-  <block id="a12eee609318f789b110fe7492bac976" category="list-text">QLogic HBA–QConvertgeConsole CLI</block>
-  <block id="59b271fe18b45209cf86bc956dfb5f7e" category="list-text">Emulex HBA - OneCommand Manager核心應用程式CLI</block>
-  <block id="5ab8738b15e4372e4fe9670449a5b820" category="list-text">Brocade HBA–Brocade命令公用程式CLI</block>
   <block id="ffdedbe1187a1ddb0d5c60a0ac382630" category="paragraph">Linux Unified Host Utilities是NetApp主機軟體、可在Linux主機上提供命令列工具套件。</block>
-  <block id="00c00a19ea488ceb63e99f408a6b6118" category="admonition">此工具套件適用於Host Utilities的所有組態和傳輸協定。因此部分內容會套用至某個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。</block>
   <block id="7f239a97a66cea4e3bb767698099b430" category="admonition">Citrix XenServer、Oracle VM和Red Hat Enterprise Virtualization Hypervisor不支援SAN工具套件。</block>
-  <block id="6332394e52d860951e446b20a9580794" category="section-title">安裝Linux Unified Host Utilities</block>
   <block id="97b1d501c6990b34b9d8e6c6a3bd4c72" category="section-title">列出ONTAP 將特定LUN對應至主機的SVM身分識別</block>
   <block id="ccf6dcaf9d267935d140bb63387e1b16" category="section-title">列出ONTAP 特定SVM目標LIF WWPN在主機上看到的LUN</block>
-  <block id="6bf77654a8e211c90c63557c6541b3a2" category="section-title">注意檔案</block>
-  <block id="d67213454856023fc9b29996cb21f0d6" category="inline-link-macro">Linux統一化主機公用程式通知檔案</block>
-  <block id="c38f9cb37e7246171df1cd59fb277c46" category="paragraph"><block ref="c38f9cb37e7246171df1cd59fb277c46" category="inline-link-macro-rx"></block></block>
   <block id="35b02f73091aee148a7882de0f04e927" category="summary">說明如何使用PowerVM vSCSI來探索及設定LUN</block>
   <block id="e7b99aed376c0edd4afb2f1d954d21c4" category="doc">（PowerVM vSCSI）探索及設定LUN</block>
   <block id="5e149a9cdf98621e9194824d142239bc" category="paragraph">當您使用PowerVM vSCSI和VIO伺服器時、必須使用padmin登入和適當的命令來設定和探索LUN。</block>
@@ -2005,53 +1990,23 @@
   <block id="5d90071a09878a695a26d84f9a4f073b" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="b5087b96e856dc400373808e0f627382" category="inline-link-macro-rx"></block> 相關Red Hat Enterprise Linux版本文件中的一節。</block>
   <block id="870d3ab5f8bca6f13651e1aa38ee6783" category="summary">Linux Unified Host Utilities 7.1版本資訊</block>
   <block id="7a14880cd1144b4db863930b81a2f16e" category="doc">Linux Unified Host Utilities 7.1版本說明</block>
-  <block id="ac5c0d1e2c9f556405ba5d0ebcee7448" category="paragraph">本版本資訊文件包含Linux Unified Host Utilities 7.1版本的最新資訊、包括已知問題與限制、任何重要注意事項、新功能及增強功能的更新。本文也說明自主機公用程式發行後可能發現的任何問題。</block>
-  <block id="114f5567a26fcd42b3a2049490c5f4b2" category="section-title">關於Linux Unified Host Utilities 7.1版本</block>
-  <block id="fcb3d433efb9ae3f476517ca8e33cd39" category="paragraph">Linux Unified Host Utilities支援多種Linux作業系統。Host Utilities可讓您將Linux主機連線至NetApp儲存系統。</block>
-  <block id="2c4f9a2d7ffae41716c3bea741995926" category="paragraph">Linux Unified Host Utilities 7.1繼續支援下列版本的Linux：</block>
   <block id="c73bbd3786350b0a8d3577d82afdf489" category="list-text">Red Hat Enterprise Linux</block>
   <block id="4ae0b3e9c82d7212e106b8d937d888f9" category="list-text">SUSE Linux Enterprise Server</block>
   <block id="f777d0936a10c30e434b6808f6124eaa" category="list-text">Oracle VM</block>
   <block id="12d3f37fc10bb62fe3297b7457e90417" category="list-text">Citrix XenServer</block>
   <block id="6c670cc4f12f5e52c8291d35c3932068" category="admonition">如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 <block ref="454ffc53fb26d285d765b8fbe8c25a5d" category="inline-link-macro-rx"></block>。</block>
-  <block id="fb30f31b8baeae42f69695791942e3a3" category="paragraph">主機公用程式軟體提供32位元和64位元.rpm檔案。您可以從下載適用於主機架構的正確.rpm檔案、以及文件 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block>。</block>
-  <block id="838cc8ab1454bd7f8f1150dacfe96313" category="inline-link-macro">《Linux Unified Host Utilities 7.1安裝指南》</block>
-  <block id="cbdbfecfc2f9103a31c93551a8ca2169" category="paragraph">如需安裝與設定的相關指示、請參閱 <block ref="060c9cd2a0a348a800de9ed8d9bd6071" category="inline-link-macro-rx"></block>。</block>
-  <block id="43ec90f5f7e8651a9ba069c9d5119a36" category="paragraph">Linux主機公用程式現在稱為_Linux Unified Host Utilities、因為它支援執行SANtricity 支援的NetApp E系列儲存系統、AFF 以及執行FAS 不完整功能的支援功能。ONTAP</block>
   <block id="3401add29441e486a87e080c062d2319" category="admonition">本文提及的任何主機公用程式或Linux主機公用程式、都是指Linux Unified Host Utilities。</block>
-  <block id="4209f01684e986e98bd7db997f06ed37" category="list-text">此版本的Linux Unified Host Utilities可支援調整套件、以設定伺服器設定檔、並改善Red Hat Enterprise Linux 6和7主機的I/O效能。</block>
-  <block id="bf82089ceffc1db6d2dda7875edaa5e4" category="list-text">Linux Unified Host Utilities 7.1繼續支援下列版本：</block>
-  <block id="3a1e716823ca631a43c0c3de405a1e4b" category="list-text">Red Hat Enterprise Linux 6和7現在有一個經過調整的套件、其中包含「調整的-adm'命令、可根據環境在主機上設定不同的伺服器設定檔。</block>
-  <block id="30b4768014d8a013f1f593b8afe6fb38" category="list-text">這包括用於使用企業儲存陣列LUN之組態的企業儲存設定檔。您也可以將Red Hat Enterprise Linux的虛擬客體設定檔用作客體虛擬機器。使用這些調校的套件、ONTAP 可顯著改善效能和延遲。</block>
   <block id="df9acd1db1992fc307ada4549840fbbd" category="admonition">NetApp會繼續與Host Utilities合作、在初次發行後新增功能支援。如需支援功能及新增功能的最新資訊、請參閱 <block ref="454ffc53fb26d285d765b8fbe8c25a5d" category="inline-link-macro-rx"></block>。</block>
-  <block id="94648c6bfe4e5f155249afe8baa0af7c" category="section-title">新功能與增強功能</block>
   <block id="4cdb57a14ff056cba74062a20d5038e4" category="paragraph">發行說明會在產品版本之間更新、以取得新資訊。</block>
-  <block id="98f0e8f6ac68ca9ce5c40038e9c315fc" category="section-title">7.1增強功能</block>
-  <block id="a3ccaa134ff70292247596c1510e2f49" category="list-text">此版本支援下列項目：</block>
   <block id="9085058ee40c6aea4b4062d815f10796" category="list-text">SUSE Linux Enterprise Server 15系列</block>
   <block id="9644255060b40cdfcd8ea1615fe043fa" category="list-text">Oracle VM 3.2系列</block>
   <block id="5658a750ca0f24bc92094b686b6258d0" category="list-text">Oracle Linux 6和7系列</block>
   <block id="d216058d64b318d5b9cf23cae02c1ab3" category="list-text">Red Hat Enterprise Linux 6和7系列</block>
   <block id="bb45e555ad5e8fd7b39ad7055ae2fee5" category="list-text">SUSE Linux Enterprise Server 11 SP4</block>
   <block id="5f8af70f22329002dbdbc795c806cfc6" category="list-text">KVM和Xen、RHEV 6.4和6.5</block>
-  <block id="49a50d4f58561eda25bfce1e3b33701a" category="list-text">Citrix XenServer參數</block>
-  <block id="e3084fdb2d5ea6f0f2ce41358fd37dbd" category="list-text">新增對Emulex和QLogic 32 Gb光纖通道介面卡的支援。</block>
-  <block id="931f0d754b7a3bfa5cb9a801cdf5a87c" category="list-text">修復了在SLS12SP1、OL7.2、RHEL7.2和RHEL 6.8中的「ianlun LUN show -p Getting SIGABRT」。</block>
-  <block id="de1ff84cb81890d47939fb29d21e29d4" category="list-text">支援Red Hat Linux 6.8、Oracle Linux 6.8、XenServer 7.0、Oracle VM 3.3系列及Oracle VM 3.4系列作業系統。</block>
   <block id="2813f127dc58929fb553bc32684c2e46" category="section-title">已知問題與限制</block>
   <block id="8b777dc32f2f743eb513fca0bfd52348" category="cell">1457017</block>
   <block id="0078173d6c66e3e11217e80e4ecc1d1b" category="cell">「anlun」安裝會發出與「libdevmapper.so」和「libnl.so」程式庫相關的警告訊息。這些警告不會影響到「暫停」套件的功能。</block>
-  <block id="fa43a065e595f68c9747ec1c332db0fe" category="paragraph"><block ref="830162a7c9ab7fc626354bdc7e06a36f" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。</block>
-  <block id="25fca6d5f6b8d10f692a7f66ee2eee3c" category="paragraph">您可能想要使用的一些關鍵字組合和錯誤類型包括：</block>
-  <block id="c47c6ba2c86eeee1e865b8ee90c66641" category="list-text">FCP - Linux</block>
-  <block id="6dd1573a0335bb03fdc0c8231d802e5a" category="list-text">iSCSI–Linux</block>
-  <block id="cd0071277804a942902cc16cb5e9cda4" category="inline-link-macro">SAN主機組態文件ONTAP</block>
-  <block id="5787cd6f0fbd05d03decbef0348d1b18" category="paragraph">請參閱 <block ref="bb9994c78007f3d6549ad9b3eb7dd244" category="inline-link-macro-rx"></block> 如需主機作業系統設定與組態的詳細資訊、</block>
-  <block id="398a7031b2f8b7650a0d5fa0fd16f3f8" category="section-title">關於SAN主機組態文件</block>
-  <block id="04dc63ffa7a6d95f3385a8886f05dc01" category="paragraph">SAN主機公用程式的文件包含在中 <block ref="bb9994c78007f3d6549ad9b3eb7dd244" category="inline-link-macro-rx"></block>。整個SAN主機組態文件都是累積性的、涵蓋所有目前的SAN主機版本。ONTAP各版本之間的任何功能差異都會記錄在上下文中。</block>
-  <block id="0f68b904e33d9ac04605aecc958bcf52" category="section-title">其他資訊</block>
-  <block id="45f46864d42785de56264eca6e97bee1" category="section-title">使用與Linux核心搭售的驅動程式時、建議使用的預設值</block>
-  <block id="987c26774efa908312fb01ff50e7e858" category="paragraph">當您設定使用Linux核心隨附的原生內建驅動程式的FC環境時、可以使用驅動程式的預設值。在使用iSCSI解決方案軟體的iSCSI環境中、您需要根據所使用的作業系統版本、手動設定某些建議的值。</block>
   <block id="7431f7a183aa9cfe2910bb761205485d" category="section-title">何處可找到產品文件及其他資訊</block>
   <block id="c5079a4f9245d0085178c5ad194bac89" category="paragraph">您可以存取所有NetApp產品的文件、並在NetApp公司網站的「產品文件」頁面上找到其他產品資訊資源、例如技術報告和白皮書。</block>
   <block id="3ff27b1e3325a6e4ca7c06c3dec9d13c" category="paragraph">*設定及管理ONTAP 您的資料不一樣儲存系統*</block>
@@ -2065,7 +2020,6 @@
   <block id="027a98b335c07e30bf607b1f1bca9a1f" category="list-text">適用於您的傳輸協定的《適用於Windows Express的《Data Storage Manager組態與資源配置指南》SANtricity</block>
   <block id="1dd312da5024844045e50a58abaf9db6" category="list-text">《適用於您作業系統、傳輸協定及版本的《支援系統的支援與資源配置快速指南》。SANtricity SANtricity</block>
   <block id="353be7c67f0bea9221f8808465816d0c" category="list-text">適用於您的版本的《關於您的版本的》的《關於本產品的軟件安裝參考資料》（英文）SANtricity SANtricity 。</block>
-  <block id="adacfb21d59059a5b9d11b1957fbacb1" category="list-text">適用於您的版本的《支援您的版本》的《支援資料管理程式多重路徑驅動程式指南》。SANtricity SANtricity</block>
   <block id="eb6dfbdfc2c6cfdacfb27a9630c40334" category="list-text">適用於您的版本的《關於您的版次的《》《》《》。SANtricity SANtricity</block>
   <block id="5f93f381aa8df330451fa5b834f54def" category="inline-link-macro">E系列文件</block>
   <block id="2c0074fce84282581b2b52e56eacf78e" category="sidebar">安裝Luhu 7.1</block>
@@ -2118,7 +2072,6 @@
   <block id="f83b431a86f1d264a4fc51c9a667a1ee" category="paragraph"><block ref="2f247b6bc715dd3b3f556a7c1dea26c9" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：</block>
   <block id="31dade612c24301b89dad4a9747ed73e" category="list-text">FCP一般：顯示與特定主機無關的FC和HBA錯誤。</block>
   <block id="09244b95824d6e702b6eaab2034bdeec" category="list-text">FCP - AIX</block>
-  <block id="bba7946c172f683f15783fc909c9d5cf" category="paragraph">SAN主機公用程式的文件包含在中 <block ref="257925f1258b094e61a79b35ac8d3a5c" category="inline-link-macro-rx"></block> 文件。整個SAN主機組態文件都是累積性的、涵蓋所有目前的SAN主機版本。ONTAP各版本之間的任何功能差異都會記錄在上下文中。</block>
   <block id="e01ab2a4280a36b99ef1be4dac2123ef" category="inline-link-macro">《SAN管理指南》ONTAP</block>
   <block id="b90eb3e688d069ada30157d4030b66f5" category="inline-link-macro">支援的Fibre Channel SAN拓撲</block>
   <block id="a1976a5397f63f5caa13a0e86733d543" category="list-text"><block ref="a1976a5397f63f5caa13a0e86733d543" category="inline-link-macro-rx"></block></block>
@@ -2129,7 +2082,6 @@
   <block id="98d83a607473e5d6dab1096f6758273a" category="paragraph">RHEL 8.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
   <block id="9b402891c0d38b9c654dcfa36df9d722" category="sidebar">8.6.</block>
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">AIX主機公用程式6.1版本資訊</block>
-  <block id="b46a43d1dd4c2f14b94228f8a8b1e193" category="paragraph">本文件提供ONTAP 有關Citrix XenServer 7系列OS版本（含FC、FCoE和iSCSI傳輸協定）的VMware SAN主機組態設定指南。</block>
   <block id="c03432d938277a67cb7c8ce5d783b2ca" category="paragraph">下列範例顯示ONTAP 所有四個主動/最佳化路徑之用、正確輸出的列舉之一：</block>
   <block id="c1326fec4f12ec093296d507d6b6e33a" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.6.</block>
   <block id="fa491ee178ddf6e96992dad027671112" category="paragraph">對於Oracle Linux（OL）8.6"/etc/multipath.conf "檔案必須存在、但您不需要對該檔案進行特定變更。OL 8.6是使用所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
@@ -2221,8 +2173,6 @@
   <block id="c7c7e4d1fc8a47f946a88914900694c3" category="list-text">HP-UX 11iv2</block>
   <block id="4feac8845db3a6b1f4e4ead570b6b3ad" category="list-text">HP-UX 11iv3</block>
   <block id="7a1ba2e6d3a8198d5626f5d4e55d2293" category="paragraph">HP-UX 6.0版本沒有已知問題。</block>
-  <block id="24fd1012a719e6b6977b3715ecf0b77d" category="inline-link-macro">SAN主機組態文件。ONTAP</block>
-  <block id="7ab7d878b8d563f012f51b55009390ab" category="paragraph">SAN主機公用程式的文件包含在中 <block ref="63739903ee7032df0e31764cc24a819c" category="inline-link-macro-rx"></block> 此功能為累積性的《SAN主機組態文件》ONTAP 、涵蓋所有目前的SAN主機版本。各版本之間的任何功能差異都會記錄在上下文中。</block>
   <block id="5f5628241e19b1175cc4bdd9c398f5b7" category="inline-link-macro">適用於您的版本的《軟件安裝指南》ONTAP ONTAP</block>
   <block id="3b0fe6f7d254eb266d210040bae111f5" category="list-text">。 <block ref="18f02cc408dbe2e94ae9ae202c089ef8" category="inline-link-macro-rx"></block></block>
   <block id="29ecce87abc03f76c20d3fe564e26dbe" category="inline-link-macro">適用您版本的《SAN管理指南》ONTAP ONTAP</block>
@@ -2379,7 +2329,6 @@
   <block id="7dac0335f353ff4aea15e7349355818e" category="paragraph">例如、您可以設定內部部署ONTAP 的不支援儲存設備、以連線至內部部署的SAN主機、或連線至SAN雲端用戶端。您也可以設定 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 或 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block> 連線至內部部署SAN主機或連線至SAN雲端用戶端。</block>
   <block id="6889073c7d1502d89a41a22f7b933a57" category="paragraph">本發行說明文件包含Solaris Host Utilities 6.2的最新資訊、包括已知問題、限制、ONTAP 設定及管理您的不二儲存系統的更新。</block>
   <block id="94ed2eb93c1ea841359ebf631638ec66" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
-  <block id="a667026321ffb956d941d648c0ad659f" category="paragraph">每個Linux配送的RPM套件「libhbaapi」和「libhBalinux」應安裝在主機作業系統上。</block>
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">在此範例中、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如、</block>
   <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：</block>
@@ -2393,7 +2342,6 @@
   <block id="30f60d67f457bb040dffde52197a54da" category="paragraph-title">相關資訊</block>
   <block id="0330f3d77dc0535c34a5f7d97ee8d6a7" category="paragraph-title">Oracle Linux 7.1 UEK R3組態</block>
   <block id="c4243d3bfe77762a42bf710ef09d7a49" category="paragraph-title">Oracle Linux 7.1 UEK R4組態</block>
-  <block id="41984fe104ed2a03ac98e13699db0858" category="section-title">7.1版的新功能</block>
   <block id="f76dacb09cf26865aa39e565e340c25b" category="paragraph-title">Oracle Linux 7.2 UEK R3組態</block>
   <block id="214edbb0ed79a899577c5689a76a98e3" category="paragraph-title">Oracle Linux 7.2 UEK R4組態</block>
   <block id="563bea0904ae52572ef481dbaa30e7b6" category="paragraph">無需直接在中新增任何內容<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。</block>
@@ -2863,7 +2811,6 @@
   <block id="5a3b86e99232b3604afe4db20db45884" category="cell">當使用 vNVMe 介面卡的 Linux VM 遇到長時間的 All Paths Down （ APD ）視窗時、就會發生 I/O 錯誤</block>
   <block id="9c72461f3069d27216e1faab60848be8" category="paragraph">執行 vSphere 8.x 及更新版本、並使用虛擬 NVMe （ vNVMe ）介面卡的 Linux VM 會發生 I/O 錯誤、因為根據預設、 vNVMe 重試作業會停用。為了避免在所有路徑停機（ APD ）或大量 I/O 負載期間、在執行舊版核心的 Linux VM 上造成中斷、 VMware 推出了可調整的「 VSCSIDisableNvmeRetry 」來停用 vNVMe 重試作業。</block>
   <block id="03d0e633810a3de10e61ce29a7d4abb0" category="cell">檢查並修正主機架構中的任何網路問題。如果這沒有幫助、請升級至可修正此問題的修補程式。</block>
-  <block id="d9dd0dcd952b59a8a387ef9beb4c00f2" category="paragraph">請參閱 <block ref="655b517a7a97afe4ca5d1c4eeafd2bfe" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
   <block id="dad160104969c39365dd2cd4c98dd300" category="inline-link-macro">TR-4400</block>
   <block id="a36f49fe4436012bee1d9977a9ab9b95" category="paragraph">如需資源配置與管理vVols的詳細資訊、請參閱ONTAP VMware vSphere的VMware工具文件及 <block ref="ec1f030f0caddb932644a46761f74630" category="inline-link-macro-rx"></block> 和 <block ref="bcecf0e9ae9f2444b66065a431138ac6" category="inline-link-macro-rx"></block>。</block>
   <block id="ec28bcc44a923317b69c457e0afb81a2" category="summary">您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 VMware vSphere 8.x 版本設定 ONTAP SAN 主機設定。</block>
@@ -3318,48 +3265,113 @@
   <block id="069c43556e66148f1f1eeabd7e9e7872" category="sidebar">AIX主機公用程式</block>
   <block id="2cac689df6b99782e23a143c9bfa2346" category="sidebar">HP-UX主機公用程式</block>
   <block id="a4d5754af636a6318ee2ffcd80c52e27" category="sidebar">Linux統一化主機公用程式</block>
-  <block id="289d4a224c51f2aeb418b081093d4d1e" category="sidebar">Solaris主機公用程式</block>
   <block id="8557e53cdfdd197b67dd8b986e602bf0" category="paragraph">您可以將 ONTAP SAN 主機組態設定用於 Veritas Infoscale Storage Foundation 7 系列版本、適用於採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RHHCK ）平台。</block>
-  <block id="2748559fa3f480a739ce5c8aa1fb9f04" category="paragraph">Oracle Linux 9.2 with NetApp ONTAP 版本有下列已知問題：</block>
   <block id="1bbb67631847a06bbd9b2e9dafec2134" category="section-title">安裝 Solaris 主機公用程式</block>
-  <block id="3b6d73c1a990f96b5a1195998cefcf0a" category="paragraph">含 ONTAP 版本的 ESXi 7.x 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="7d2ac39702ab406c53e1e589396dc20a" category="paragraph">您可以在執行 Windows Server 2019 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定 ONTAP 為目標。</block>
   <block id="3f20da7f97c0948dba60855f74d8feb3" category="paragraph">您可以在執行 SUSE Linux Enterprise Server 15 SP1 和 ONTAP 的主機上、設定 NVMe over Fibre Channel （ NVMe / FC ）作為目標。</block>
   <block id="c783ac9d690ea6f6744d8edf596a145a" category="list-text">NVMe - CLI套件中包含原生的NVMe / FC自動連線指令碼。您可以在SLES15 SP1上使用原生的內建lfc驅動程式。</block>
   <block id="c5572eca1bd94cf7d7a382167c292395" category="paragraph">= 已知問題</block>
   <block id="04e8d5a4c40a30787e3a35e62dfd0c1e" category="paragraph">設定適用於 NVMe / FC 的 lpfc 驅動程式。</block>
   <block id="9f988f6d1200dcd570b84c8116f6eecd" category="paragraph">您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 Citrix Hypervisor 8 系列 OS 版本設定 ONTAP SAN 主機組態設定。</block>
-  <block id="58778ead591330ae1dd8f24f2549fc34" category="paragraph">OL 8.4 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
-  <block id="7b3bf1d8eef841f0a31f40eb5d332ced" category="paragraph">您可以在執行 Windows Server 2012 R2 和 ONTAP 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
-  <block id="838ed30bf9830d174974818ad89ac4c7" category="paragraph">採用 ONTAP 版本的 RHEL 8.6 的 NVMe 主機組態有下列已知問題：</block>
   <block id="e62de6043f25aae2915aa8c10fbaec9d" category="cell"><block ref="e62de6043f25aae2915aa8c10fbaec9d" category="inline-link-macro-rx"></block></block>
   <block id="fad1bada1216764738043e879ec198a9" category="paragraph">= 已知問題
 沒有已知問題。</block>
-  <block id="c29b12d2cc17f9149a97f1cf82a6c263" category="paragraph">ONTAP 版本 OL 8.6 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="f5c1b43cd99bf5053de182854bd7e76a" category="paragraph">採用 ONTAP 版本的 RHEL 9.1 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="1341add2fe573f7064d22ce6afde8495" category="paragraph">您可以在執行 Windows Server 2016 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定 ONTAP 為目標。</block>
   <block id="6dbaaee7c23e43374599aa43c101fa0b" category="paragraph">RHEL 8.7 沒有已知問題。</block>
   <block id="0ea1561176c96894fb977d38bd38f871" category="section-title">為 Broadcom NVMe / FC 啟用 1MB I/O 大小</block>
   <block id="624e2520b17b79e6e7312aaab546e064" category="section-title">為 Broadcom NVMe / FC 啟用 1MB I/O 大小</block>
-  <block id="794c839c1ce38d3e3fe9ddbfd7d3ee62" category="paragraph">採用 ONTAP 版本的 RHEL 9.0 的 NVMe 主機組態有下列已知問題：</block>
   <block id="7ed61b389d995a259f689087e9ac7cbf" category="paragraph">RHEL 8.8 沒有已知問題。</block>
-  <block id="0fcb153a09cf9f735fd10ea86aa03c38" category="paragraph">您可以在執行 Windows Server 2022 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定 ONTAP 為目標。</block>
-  <block id="eeb65ac9a4f35e659e92b61cc21d24b5" category="paragraph">採用 ONTAP 版本的 RHEL 8.7 NVMe 主機組態有下列已知問題：</block>
   <block id="a597507af40f2b893bf64299ba506a89" category="doc">使用 Veritas Storage Foundation 6 for Linux with ONTAP</block>
   <block id="f1ae093ec47cacaea6fabc35758d35f7" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、為採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RCK 型）平台、提供 Veritas Storage Foundation 6 系列版本。</block>
-  <block id="7766164b38459bfd3947f7747d94760a" category="paragraph">您可以使用 ONTAP SAN 主機組態設定來設定 vSphere 6.5.x 和 6.7.x 版本搭配 FC 、 FCoE 和 iSCSI 通訊協定。</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="doc">疑難排解</block>
   <block id="e1cd8c01047ab9aa65fc1c931ccdb0a8" category="paragraph">針對 RHEL 、 OL 和 SLES 主機的任何 NVMe 故障進行疑難排解之前、請先確認您執行的組態符合互通性對照表工具（ IMT ）規格、然後繼續後續步驟、以偵錯任何主機端問題。</block>
   <block id="4a446daa2697df931fbab571c023baef" category="admonition">疑難排解指示不適用於 AIX 、 Windows 和 ESXi 主機。</block>
   <block id="96050aafb2fca1409b0f952e7597fd11" category="paragraph">NVMe / FC 沒有類似於的特定 qla2xxx 記錄<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 驅動程式：請改為設定一般 qla2xxx 記錄層級。</block>
   <block id="0659d428df833a806e29e65e632d380a" category="inline-link-macro">NetApp支援</block>
   <block id="b3303f1e3e1d5672f6b839c968637989" category="paragraph">如果您仍面臨問題、請收集下列檔案和命令輸出及聯絡人 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 進一步分類：</block>
-  <block id="678a8f2b559ba91fc985c5641c2d8f28" category="paragraph">適用於 ONTAP 版本的 Oracle Linux 9.0 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="b9e735e8617edf1ba79d42cb4c76dd1b" category="paragraph">OL 8.5 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
-  <block id="78186bcc2bcf3016d00a067d67064dea" category="paragraph">ONTAP 版本 OL 8.3 的 NVMe 主機組態有下列已知問題：</block>
   <block id="8e2fe53ccb05734b777fbcc2363d25ab" category="paragraph">您可以將 vSphere 7.x 版本的 ONTAP SAN 主機組態設定與 FC 、 FCoE 和 iSCSI 通訊協定一起使用。</block>
-  <block id="bb8697c974d608376ec4f0aa538c9a50" category="paragraph">適用於 AIX 與 ONTAP 版本的 NVMe / FC 主機組態有下列已知問題：</block>
   <block id="d9a42f0deac96b98dbebf2e560cd7f5c" category="paragraph">在疑難排解任何 NVMe / FC 故障之前、請確認您執行的組態符合互通性對照表工具（ IMT ）規格。如果您仍面臨問題、請聯絡 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 進一步分類。</block>
   <block id="3a4b11723a00030809010d89daf7ebe2" category="paragraph">您可以將 ONTAP SAN 主機組態設定用於 Veritas Infoscale Storage Foundation 8 系列版本、適用於採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RHHCK 型）平台。</block>
-  <block id="eaf39d9dce68a53c6bc9882062e6b8ac" category="paragraph">ESXi 8.x 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
+  <block id="4a09c73fa303eedb14779e29343fb862" category="paragraph">您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 Citrix XenServer 7 系列作業系統版本設定 ONTAP SAN 主機組態設定。</block>
+  <block id="699ba12cc1ac820e7a663632b3cd6500" category="doc">Solaris 6.2 命令參考</block>
+  <block id="0dfb15ad6e48119187bdf68b2798b551" category="paragraph">您可以使用 Solaris 主機公用程式 6.2 範例命令參照、使用主機公用程式工具進行端點對端點 NetApp 儲存組態驗證。</block>
+  <block id="16739062558f135a2a67b7745e31e80d" category="paragraph">您可以擷取對應至主機的所有主機啟動器清單。</block>
+  <block id="416012ceac18a0ac6c16db45563c9298" category="paragraph">您可以擷取對應至主機的所有 LUN 清單。</block>
+  <block id="34f24f66e929234e4a25705afbec0a62" category="paragraph">您可以從特定 SVM 擷取對應至主機的所有 LUN 清單。</block>
+  <block id="5fa98009978b8534f94887b150f76e94" category="section-title">依主機裝置檔案名稱列出 ONTAP LUN 屬性</block>
+  <block id="bd9053d2f5cfa60e3884b5bf2dcdc78f" category="paragraph">您可以透過指定主機裝置檔案名稱來擷取所有 ONTAP LUN 屬性的清單。</block>
+  <block id="51b13e2ba8873a4272d5a6e2a0ed4515" category="paragraph">Oracle Linux 9.2 with ONTAP 有下列已知問題：</block>
+  <block id="8d4478de8c42ac77a687fe1b9da495db" category="paragraph">使用 ONTAP 的 ESXi 7.x 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="34eb69c2ca284db87777cb75cdcf0dd9" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2019 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
+  <block id="07e49dbbfe229f5428866384db02e329" category="paragraph">版本資訊說明新功能與增強功能、已知問題與限制、以及使用 ONTAP 儲存系統設定及管理特定主機的重要注意事項。</block>
+  <block id="91770f038cd944a1d3b9b347edeb2b10" category="section-title">新增功能</block>
+  <block id="47851fc857cb6267d67c526211828e1e" category="paragraph">Linux 主機公用程式 7.1 版本包含下列新功能與增強功能：</block>
+  <block id="92d4f2c8b053dc173575e4ac46223415" category="list-text">Linux 主機公用程式現在稱為 Linux 統一主機公用程式、因為它支援執行 SANtricity 的 NetApp E 系列儲存系統、以及執行 ONTAP 的 AFF 、 FAS 和 ASA 系統。</block>
+  <block id="640086d83a51b4fd5839f3bf24d824ea" category="list-text">現在支援下列作業系統：</block>
+  <block id="c7756454768a1c1d608d1a4ac749006d" category="list-text">在 Red Hat Enterprise Linux （ RHEL ） 6 和 RHEL 7 主機上、現在支援用於設定伺服器設定檔的調整套件。您可以使用<block ref="44559c6617511944fd997c63b107ee6b" prefix=" " category="inline-code"></block> 根據環境設定不同設定檔的命令。  例如、您也可以將虛擬來賓設定檔作為來賓虛擬機器、並可將企業儲存設定檔用於使用企業儲存陣列 LUN 的組態。  使用這些經過調整的套件、可改善 ONTAP 的處理量和延遲。</block>
+  <block id="d047bdc1dea99bd9c686408f783b1571" category="list-text">增加了 Broadcom Emulex 和 Marvell Qlogic 對 32 Gb 光纖通道適配器的支持。</block>
+  <block id="7636f503a3339c628c780594076ebb17" category="section-title">已在此版本中修正</block>
+  <block id="977dc544e187df2c36b93ee4767972aa" category="paragraph">執行時發生間歇性主機作業系統故障問題<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> 在 SLES12SP1 、 OL7.2 、 RHEL7.2 及 RHEL 6.8 中的命令在此版本中已修正。</block>
+  <block id="d2eefe458609a5477d08446697ea1261" category="paragraph">Linux 主機公用程式 7.1 版本有下列已知問題和限制。</block>
+  <block id="bb49904ee226b5b028402a9c2c228bf2" category="cell">當您在 SAN 主機上執行 Linux Unified Host Utilities CLI 命令「 sanlun FCP show adapter -v 」時、命令會失敗、並顯示錯誤訊息、顯示主機匯流排介面卡（ HBA ）探索所需的程式庫相依性不可為
+位於：
+
+[root@hostname~]# sanlun FCP show adapter -v
+無法找到 /usr/lib64/libHBAAPI.so 程式庫
+確定安裝程式庫的套件已安裝並載入
+請參閱公開報告 1508554 。</block>
+  <block id="7d21aae7a58430ed491d0dcc91fdc835" category="paragraph">OL 8.4 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="9de20e72ce939c2312bbc9e7045ded44" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2012 R2 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
+  <block id="e7183ec32fe608cc18cd79de6aab8c7f" category="inline-link-macro">ONTAP SAN 組態</block>
+  <block id="cc6e8a4a2f07710826a02b4f65f6a5e1" category="list-text">。 <block ref="485c36565f137f93d02f76d27f04f03a" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
+  <block id="0b164430bc41bc5bbfb75f5976b0512b" category="list-text">。 <block ref="655b517a7a97afe4ca5d1c4eeafd2bfe" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
+  <block id="9139a77e42fad6b63368eea822f35757" category="paragraph">採用 ONTAP 的 RHEL 8.6 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="13dea42e38aa7f2230bd74fcabf6b0e8" category="paragraph">OL 8.6 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="4036ce7f5249110346ac2f0ee1325460" category="paragraph">採用 ONTAP 的 RHEL 9.1 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="e3a71b9db068cf6781abb11924ac42ee" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2016 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
+  <block id="4b77bef763b0a08b9a3c110c9751ca31" category="paragraph">您可以使用 AIX 主機公用程式 6.1 命令參考、使用主機公用程式工具來進行 NetApp 儲存組態的端點對端點驗證。</block>
+  <block id="2007c4c5bd8a037f1d8e640cb7e961c0" category="paragraph">您可以擷取對應至主機的主機啟動器清單。</block>
+  <block id="0f72498039f4dd70eff202dff74b269e" category="paragraph">您可以從指定的 SVM 擷取對應至主機的所有 LUN 清單。</block>
+  <block id="f7f35aac075a8552952158a8b905355f" category="paragraph">您可以擷取對應至主機之指定 LUN 的所有屬性清單。</block>
+  <block id="25883c6c721d98b3c3502375f5c20f24" category="paragraph">您可以透過指定主機裝置檔案名稱來擷取 ONTAP LUN 屬性清單。</block>
+  <block id="80d8d00dcd94a7fcd829f2d6c8b653c6" category="paragraph">您可以擷取附加至主機的所有 SVM 目標 LIF WWPN 清單。</block>
+  <block id="2f12dfeb4a5bed92ee267747f7900ab5" category="doc">Linux Unified Host Utilities 7.1 命令參照</block>
+  <block id="f411129ea6b2f79a27e85ad2a3ae2631" category="paragraph">您可以使用 Linux Unified Host Utilities 7.1 範例命令參考、使用主機公用程式工具來進行端點對端點 NetApp 儲存組態驗證。</block>
+  <block id="91850f3f0f263bdc6419d0b75872055e" category="paragraph">您可以從特定儲存 VM （ SVM ）擷取對應至主機的所有 LUN 清單。</block>
+  <block id="13e387e56dad32828893527e0d3a3105" category="paragraph">您可以擷取 ONTAP SVM 身分識別清單、將特定 LUN 對應至清單。</block>
+  <block id="e1cd7b537be6453e906049c111d7b248" category="paragraph">您可以依主機裝置檔案名稱擷取 ONTAP LUN 屬性清單。</block>
+  <block id="364c9974898b89845661be07a4997db2" category="paragraph">您可以擷取指定 SVM 目標 LIF WWPN 在主機上所注意到的 ONTAP LUN 清單。</block>
+  <block id="e214de5ea0b1a8eb765598cf4b80a404" category="summary">您可以為 NVMe over Fabrics （ NVMe of ）傳輸協定設定特定 SAN 主機。</block>
+  <block id="b27a9cd7f027cd14587ddd1e70ef495c" category="paragraph">HP-UX Unified Host Utilities 可協助您管理連接至 HP-UX 主機的 NetApp ONTAP 儲存設備。</block>
+  <block id="d69b9e8da5c44e4373c2c6a01013adc0" category="paragraph">Solaris 統一化主機公用程式可協助您管理附加至 Solaris 主機的 NetApp ONTAP 儲存設備。</block>
+  <block id="b1199565b654a20a5acee144d68ae4cb" category="paragraph">採用 ONTAP 的 RHEL 9.0 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="b6351e6ceb9609fde0ff665d6ec8e551" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2022 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
+  <block id="71451af1b87baede129f9469cc138039" category="paragraph">採用 ONTAP 的 RHEL 8.7 NVMe 主機組態有下列已知問題：</block>
+  <block id="b60765d8f92876a00ce6e78cf806ab00" category="paragraph">AIX 統一主機公用程式可協助您管理連接至 AIX 主機的 NetApp ONTAP 儲存設備。</block>
+  <block id="5196c04a99b765f6b853ef816161d88a" category="paragraph">您可以使用 ONTAP SAN 主機組態設定來設定 vSphere 6.5.x 和 6.7.x 版本搭配 FC 、 FCoE 和 iSCSI 通訊協定。</block>
+  <block id="adb402e65bdeaf3ca526f0f9c14f1f04" category="doc">HP-UX Host Utilities 6.0 命令參照</block>
+  <block id="e765b5786377ea3106b7ae795937e648" category="paragraph">您可以使用 HP-UX Unified Host Utilities 6.0 範例命令參照、使用主機公用程式工具來進行端點對端點 NetApp 儲存組態驗證。</block>
+  <block id="826d62634f2ee7ee2980c91f852daad7" category="paragraph">您可以從特定 SVM 擷取對應至主機的所有 LUN 清單。</block>
+  <block id="f32d1eb76cb18a9746960f090055b17f" category="paragraph">您可以使用指定的主機裝置檔名來擷取 ONTAP LUN 屬性清單。</block>
+  <block id="844ceca32955aae871407702dd7263d9" category="paragraph">適用於 ONTAP 的 Oracle Linux 9.0 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="9b55f0ca59df9237a11b8ead77f876a0" category="paragraph">OL 8.5 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="dc102edbfb2920d2ab25f6e459027828" category="paragraph">OL 8.3 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="d699daec8de3b69e6a41a8c5e1e7f44e" category="doc">安裝 Linux Unified Host Utilities 7.1</block>
+  <block id="2dc8fc387550a2ccc1bb2000d960f6b9" category="paragraph">Linux 統一化主機公用程式可協助您管理連接至 Linux 主機的 NetApp ONTAP 儲存設備。NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</block>
+  <block id="87bdc01fa1c36611ae8a26730cf85e17" category="paragraph">支援下列 Linux 套裝作業系統：</block>
+  <block id="658ff13533a5ae3caeee521c2a5cc5b2" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 在32位元或64位元.rpm檔案中。</block>
+  <block id="43483b029ef264a410a7bccd99e5f66a" category="list-text">為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。</block>
+  <block id="22faa027e7ce368aea785de25ef0414c" category="paragraph">您可以使用<block ref="77ab0bbf377853176c70e55d32dcb81a" category="inline-link-rx"></block> 以驗證組態。</block>
+  <block id="878062d004d819fd9c7baf0a053ff24e" category="list-text">您必須安裝廠商支援網站上提供的主機匯流排介面卡（ HBA ）管理套件。</block>
+  <block id="b7123b538e611cba221b58efc57ba250" category="paragraph">管理軟體可讓 SAN 工具組命令收集 FC HBA 的相關資訊、例如其 WWPN 。適用於<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block> 命令若要運作、請確認下列套件已正確安裝：</block>
+  <block id="06919499a296a3872634bc2ad7d0def2" category="list-text">Marvell QLogic HBA – QConverteConsole CLI</block>
+  <block id="521b9a44f33e48269d6566132ae69b97" category="list-text">Broadcom Emulex HBA - OneCommand Manager 核心應用程式 CLI</block>
+  <block id="23d57c4eccbbcc97c1436c372ff2c351" category="list-text">Marvell Brocade HBA – Brocade Command Utility CLI</block>
+  <block id="36b0297a3927e6ee76842f1712737154" category="list-text">每個 Linux 發行套件可用的 RPM 套件「 libhbaapi 」和「 libhbalinux 」應安裝在主機作業系統上。</block>
+  <block id="dc0fab98e84d9813bdf2f1747fa94a9f" category="admonition">Linux Unified Host Utilities 軟體不支援 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ）主機傳輸協定。</block>
+  <block id="e18f4db9c000cdc92c0a6f5ae79b46d4" category="paragraph">若為舊版 Linux 主機公用程式、請移至安裝主機公用程式軟體的目錄、然後輸入 uninstall 命令以移除已安裝的套件。</block>
+  <block id="5f8061f11c889bcebe7dd76c785f75a7" category="list-text">從下載32位元或64位元Linux Unified Host Utilities軟體套件 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 到您的主機。</block>
+  <block id="88e9fff2ac8cc531b067dfa25e8e2e8c" category="section-title">Linux 核心的建議驅動程式設定</block>
+  <block id="684209c8b964ee194fb302d1403a0fc3" category="paragraph">當您設定 FC 環境時、若使用與 Linux 核心搭售的原生收件匣驅動程式、則可以使用驅動程式的預設值。</block>
+  <block id="368bcd2118dd63e80fb399c6feb8f7ec" category="paragraph">適用於 AIX 與 ONTAP 的 NVMe / FC 主機組態有下列已知問題：</block>
+  <block id="b666f8343a2e41c88c8766775c8dec12" category="paragraph">ESXi 8.x 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="c134d5805f93afa1db7c6399465d2bd8" category="sidebar">Solaris主機公用程式</block>
 </blocks>

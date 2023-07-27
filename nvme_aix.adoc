@@ -319,7 +319,7 @@ hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9
 
 == 已知問題
 
-適用於 AIX 與 ONTAP 版本的 NVMe / FC 主機組態有下列已知問題：
+適用於 AIX 與 ONTAP 的 NVMe / FC 主機組態有下列已知問題：
 
 [cols="10,30,30"]
 |===

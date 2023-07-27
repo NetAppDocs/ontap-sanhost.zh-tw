@@ -47,7 +47,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 .範例
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
-[listing]
+[source, cli]
 ----
 # sanlun lun show all
 ----

@@ -395,7 +395,7 @@ Device      Vserver         Namespace Path             NSID UUID                
 
 == 已知問題
 
-ONTAP 版本 OL 8.3 的 NVMe 主機組態有下列已知問題：
+OL 8.3 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：
 
 [cols="20, 20, 50, 20"]
 |===

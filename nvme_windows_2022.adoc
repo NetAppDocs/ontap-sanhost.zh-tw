@@ -19,7 +19,7 @@ summary: 適用於Windows Server 2022的NVMe / FC主機組態、ONTAP 含功能�
 
 
 [role="lead"]
-您可以在執行 Windows Server 2022 的主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定 ONTAP 為目標。
+您可以使用 ONTAP 做為目標、在執行 Windows Server 2022 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。
 
 適用於Windows Server 2022的NVMe 9.7或更新版本支援NVMe / FC ONTAP 。
 

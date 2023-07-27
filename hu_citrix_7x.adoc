@@ -19,7 +19,7 @@ summary: 說明如何搭配ONTAP 使用Citrix XenServer 7.x與VMware
 
 
 [role="lead"]
-本文件提供ONTAP 有關Citrix XenServer 7系列OS版本（含FC、FCoE和iSCSI傳輸協定）的VMware SAN主機組態設定指南。
+您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 Citrix XenServer 7 系列作業系統版本設定 ONTAP SAN 主機組態設定。
 
 
 
