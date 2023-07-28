@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: hu_luhu_71_rn.html 
-keywords: host utilities, linux, 7.1, netapp, ontap, release, notes 
+keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
 summary: Linux Unified Host Utilities 7.1版本資訊 
 ---
 = Linux Unified Host Utilities 7.1版本說明
@@ -45,8 +45,8 @@ NOTE: 本文提及的任何主機公用程式或Linux主機公用程式、都是
 ** Citrix XenServer
 
 
-* 在 Red Hat Enterprise Linux （ RHEL ） 6 和 RHEL 7 主機上、現在支援用於設定伺服器設定檔的調整套件。您可以使用 `tuned-adm` 根據環境設定不同設定檔的命令。  例如、您也可以將虛擬來賓設定檔作為來賓虛擬機器、並可將企業儲存設定檔用於使用企業儲存陣列 LUN 的組態。  使用這些經過調整的套件、可改善 ONTAP 的處理量和延遲。
-* 增加了 Broadcom Emulex 和 Marvell Qlogic 對 32 Gb 光纖通道適配器的支持。
+* 在 Red Hat Enterprise Linux （ RHEL ） 6 和 RHEL 7 主機上、現在支援用於設定伺服器設定檔的調整套件。您可以使用 `tuned-adm` 根據環境設定不同設定檔的命令。例如、您也可以將虛擬來賓設定檔作為來賓虛擬機器、並可將企業儲存設定檔用於使用企業儲存陣列 LUN 的組態。使用這些經過調整的套件、可改善 ONTAP 的處理量和延遲。
+* 增加了 Broadcom Emulex 和 Marvell Qlogic 對 32GB FC 適配器的支持。
 
 
 

@@ -2162,7 +2162,6 @@
   <block id="e8db03fc399918672bed8132e0d8ea35" category="list-text">。 <block ref="0f33c30ae119203ebbfd38575ad3015e" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
   <block id="230a02b4afeea5b0d97c6a68a6530da3" category="summary">HPUX主機公用程式6.0版本資訊</block>
   <block id="e16c4360565a75371ee1b578b4c1ecca" category="doc">HP-UX Host Utilities 6.0版本說明</block>
-  <block id="928dee6fba9a0c4ccb1b167e31071cc0" category="paragraph">本版本資訊文件包含HP-UX Host Utilities 6.0版本的最新資訊、包括已知問題、限制、以及ONTAP 設定及管理您的更新。當有更多有關使用HP-UX主機公用程式的新資訊可供使用時、版本資訊文件即會更新。</block>
   <block id="02f8eb4aa3c5b1158e37fd1a9c849ca8" category="section-title">關於HP-UX Host Utilities 6.0版本</block>
   <block id="18691c1295f4b1c26d2e8a9a5b67cfb9" category="paragraph">HP-UX主機公用程式支援多種HP-UX環境和多種傳輸協定。HP-UX主機公用程式支援下列環境：</block>
   <block id="8017a7ef798d9749aaed2e77fcebed98" category="list-text">原生MPIO</block>
@@ -2272,7 +2271,6 @@
   <block id="ab5c1cc33879491a00632f6478216936" category="paragraph">您的SAN主機和ONTAP 支援功能可存放在內部部署、雲端或兩者。</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="inline-link-macro">Cloud Volumes ONTAP</block>
   <block id="18cf072964a583150dd247485ba75b92" category="inline-link-macro">Amazon FSX for ONTAP Sf</block>
-  <block id="bd4300690dfdbe14b72c16ede45c8a40" category="paragraph">正確的組態對於最佳效能和成功的容錯移轉非常重要。</block>
   <block id="5206f5e3d376aae380267b11c8d7e8a0" category="sidebar">本內容針對發佈內容、提供如何設定連接ONTAP 到NetApp儲存設備的SAN用戶端的相關指引。SAN用戶端和ONTAP 功能不全的儲存設備可以位於內部部署或雲端。</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">開始使用</block>
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">更多資源</block>
@@ -2316,7 +2314,6 @@
   <block id="7b4c9d36bd8121e0d136897711d66090" category="sidebar">安裝Wuhu 7.1</block>
   <block id="1f87ccc57172166c30629890b2884f0e" category="paragraph">您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="1bad318175e7aa1eb67e6db2256bb9b1" category="paragraph">系統會將擷取的軟體放在您解壓縮儲存庫檔案的目錄中。</block>
-  <block id="5bd6f64a8cbf5643612affb8bd552a8d" category="paragraph">本版本說明文件包含AIX Host Utilities 6.1版本的最新資訊、包括已知問題、限制、ONTAP 設定及管理您的一套更新。</block>
   <block id="39b3dd6edf4819881415b4ccbfcf4d58" category="paragraph">對於Oracle Linux 7.1 UEK R4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.1是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="36889db7961eacd91f01477a29a2c5ea" category="list-text">確認的輸出<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block> 命令以確保設定完成。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="3ad269cd9c25c5c028bf155f768f0618" category="paragraph">根據預設、當沒有LUN可用的路徑時、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 <block ref="682b92f396ad2229bd62e99c5a518610" category="inline-link-macro-rx"></block></block>
@@ -2327,7 +2324,6 @@
   <block id="488ee7d410bfc05042cf79417f62b731" category="paragraph">本內容提供主機和版本專屬的最佳實務做法、可快速設定連接ONTAP 到靜態儲存設備的SAN主機。</block>
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">在雲端環境中、主機通常稱為用戶端。此內容中的所有主機專屬資訊也適用於雲端用戶端。</block>
   <block id="7dac0335f353ff4aea15e7349355818e" category="paragraph">例如、您可以設定內部部署ONTAP 的不支援儲存設備、以連線至內部部署的SAN主機、或連線至SAN雲端用戶端。您也可以設定 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 或 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block> 連線至內部部署SAN主機或連線至SAN雲端用戶端。</block>
-  <block id="6889073c7d1502d89a41a22f7b933a57" category="paragraph">本發行說明文件包含Solaris Host Utilities 6.2的最新資訊、包括已知問題、限制、ONTAP 設定及管理您的不二儲存系統的更新。</block>
   <block id="94ed2eb93c1ea841359ebf631638ec66" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">在此範例中、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如、</block>
@@ -2603,7 +2599,6 @@
   <block id="6faca8b2572cd22ef1b619e4be0a8165" category="paragraph">NVMe / TCP 沒有自動連線功能。因此、如果某個路徑發生故障、且在 10 分鐘的預設逾時期間內未恢復、則 NVMe / TCP 無法自動重新連線。若要避免逾時、您應該將容錯移轉事件的重試期間設為至少 30 分鐘。</block>
   <block id="ffb6c4a21213679507c7941f550bd2c7" category="summary">Windows Unified Host Utilities 版本資訊</block>
   <block id="51372fd44786d9688cfe76623106730b" category="doc">Windows Unified Host Utilities 版本資訊</block>
-  <block id="8f7c8b6697ec49deeadb7167cc83ec7d" category="paragraph">本版本資訊文件包含 Windows Unified Host Utilities 7.2 和 7.1 版本的最新資訊、包括新功能、增強功能和已知問題的更新。當Windows主機公用程式的新使用資訊可供使用時、即會更新文件。</block>
   <block id="d203490d9623c1e2d75f42f5f678e00f" category="section-title">關於 Windows Unified Host Utilities</block>
   <block id="c58bbb489cf9a676efa84ccbf8f2d95f" category="paragraph">Windows Unified Host Utilities 持續支援下列版本的 Windows ：</block>
   <block id="d01454be7f3c4cdc6a05c67e9f6dd9a9" category="list-text">Windows Unified Host Utilities 7.2 支援 NVMe / FC 驅動程式參數設定、以及新廠商卡的錯誤修正。</block>
@@ -3301,13 +3296,10 @@
   <block id="51b13e2ba8873a4272d5a6e2a0ed4515" category="paragraph">Oracle Linux 9.2 with ONTAP 有下列已知問題：</block>
   <block id="8d4478de8c42ac77a687fe1b9da495db" category="paragraph">使用 ONTAP 的 ESXi 7.x 的 NVMe 主機組態有下列已知問題：</block>
   <block id="34eb69c2ca284db87777cb75cdcf0dd9" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2019 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
-  <block id="07e49dbbfe229f5428866384db02e329" category="paragraph">版本資訊說明新功能與增強功能、已知問題與限制、以及使用 ONTAP 儲存系統設定及管理特定主機的重要注意事項。</block>
   <block id="91770f038cd944a1d3b9b347edeb2b10" category="section-title">新增功能</block>
   <block id="47851fc857cb6267d67c526211828e1e" category="paragraph">Linux 主機公用程式 7.1 版本包含下列新功能與增強功能：</block>
   <block id="92d4f2c8b053dc173575e4ac46223415" category="list-text">Linux 主機公用程式現在稱為 Linux 統一主機公用程式、因為它支援執行 SANtricity 的 NetApp E 系列儲存系統、以及執行 ONTAP 的 AFF 、 FAS 和 ASA 系統。</block>
   <block id="640086d83a51b4fd5839f3bf24d824ea" category="list-text">現在支援下列作業系統：</block>
-  <block id="c7756454768a1c1d608d1a4ac749006d" category="list-text">在 Red Hat Enterprise Linux （ RHEL ） 6 和 RHEL 7 主機上、現在支援用於設定伺服器設定檔的調整套件。您可以使用<block ref="44559c6617511944fd997c63b107ee6b" prefix=" " category="inline-code"></block> 根據環境設定不同設定檔的命令。  例如、您也可以將虛擬來賓設定檔作為來賓虛擬機器、並可將企業儲存設定檔用於使用企業儲存陣列 LUN 的組態。  使用這些經過調整的套件、可改善 ONTAP 的處理量和延遲。</block>
-  <block id="d047bdc1dea99bd9c686408f783b1571" category="list-text">增加了 Broadcom Emulex 和 Marvell Qlogic 對 32 Gb 光纖通道適配器的支持。</block>
   <block id="7636f503a3339c628c780594076ebb17" category="section-title">已在此版本中修正</block>
   <block id="977dc544e187df2c36b93ee4767972aa" category="paragraph">執行時發生間歇性主機作業系統故障問題<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> 在 SLES12SP1 、 OL7.2 、 RHEL7.2 及 RHEL 6.8 中的命令在此版本中已修正。</block>
   <block id="d2eefe458609a5477d08446697ea1261" category="paragraph">Linux 主機公用程式 7.1 版本有下列已知問題和限制。</block>
@@ -3374,4 +3366,12 @@
   <block id="368bcd2118dd63e80fb399c6feb8f7ec" category="paragraph">適用於 AIX 與 ONTAP 的 NVMe / FC 主機組態有下列已知問題：</block>
   <block id="b666f8343a2e41c88c8766775c8dec12" category="paragraph">ESXi 8.x 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
   <block id="c134d5805f93afa1db7c6399465d2bd8" category="sidebar">Solaris主機公用程式</block>
+  <block id="1e1ac2f92ca06b1f068f6aa6c61883c0" category="paragraph">版本資訊說明新功能與增強功能、已知問題與限制、以及使用 ONTAP 儲存系統設定及管理特定主機的重要注意事項。</block>
+  <block id="2ad9563dae62baefb397a0b93e22f08a" category="list-text">在 Red Hat Enterprise Linux （ RHEL ） 6 和 RHEL 7 主機上、現在支援用於設定伺服器設定檔的調整套件。您可以使用<block ref="44559c6617511944fd997c63b107ee6b" prefix=" " category="inline-code"></block> 根據環境設定不同設定檔的命令。例如、您也可以將虛擬來賓設定檔作為來賓虛擬機器、並可將企業儲存設定檔用於使用企業儲存陣列 LUN 的組態。使用這些經過調整的套件、可改善 ONTAP 的處理量和延遲。</block>
+  <block id="b91c8d257cb2ab1f821c4201c4d98d12" category="list-text">增加了 Broadcom Emulex 和 Marvell Qlogic 對 32GB FC 適配器的支持。</block>
+  <block id="f6a506796011f5db21cf0cc405fcd88e" category="paragraph">版本資訊文件包含 HP-UX Host Utilities 6.0 版本的最新資訊、包括已知問題、限制、以及 ONTAP 儲存系統的設定與管理等相關更新。當有更多有關使用HP-UX主機公用程式的新資訊可供使用時、版本資訊文件即會更新。</block>
+  <block id="a26aa7b42e8c5d7d2a6c295dc3421eb4" category="paragraph">正確的組態對於最佳效能和成功的容錯移轉非常重要。</block>
+  <block id="03b35db54926510f82d04231162aa4bc" category="paragraph">發行說明文件包含 Solaris 主機公用程式 6.2 的最新資訊、包括已知問題、限制、設定及管理 ONTAP 儲存系統的更新。</block>
+  <block id="8b98a90c0f8d947a6126ce4314f1d147" category="paragraph">版本資訊文件包含 Windows Unified Host Utilities 7.2 和 7.1 版本的最新資訊、包括新功能、增強功能和已知問題的更新。當Windows主機公用程式的新使用資訊可供使用時、即會更新文件。</block>
+  <block id="83c2a71fbf38a299fb12e6baeabd4505" category="paragraph">版本資訊文件包含有關 AIX 主機公用程式 6.1 版本的最新資訊、包括已知問題、限制、設定及管理 ONTAP 儲存系統的更新。</block>
 </blocks>
