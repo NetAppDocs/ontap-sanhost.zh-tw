@@ -21,7 +21,7 @@ summary: Solaris Host Utilities 6.2版本資訊
 [role="lead"]
 發行說明文件包含 Solaris 主機公用程式 6.2 的最新資訊、包括已知問題、限制、設定及管理 ONTAP 儲存系統的更新。
 
-當提供有關使用Solaris主機公用程式的新資訊時、即會更新版本資訊文件。
+當有關於使用 Solaris 主機公用程式的新資訊可用時、會更新版本說明文件。
 
 
 

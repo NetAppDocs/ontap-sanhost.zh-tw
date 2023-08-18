@@ -2051,7 +2051,6 @@
   <block id="4a77bd6ca1098e847cb75095287cdf8d" category="paragraph">CentOS 7.3沒有已知問題。</block>
   <block id="ebc6dd08dd10ab545441a995fcd41e3f" category="paragraph">CentOS 7.1沒有已知問題。</block>
   <block id="4391e4a69364ebb845d6562846716af4" category="doc">《AIX Host Utilities 6.1發行說明》</block>
-  <block id="ebdfd2288177a34c60438efc134f52c4" category="paragraph">當使用AIX主機公用程式的新資訊可供使用時、版本資訊文件會更新。</block>
   <block id="cfbc0c9386472f86132990683d16796f" category="section-title">關於AIX Host Utilities 6.1版本</block>
   <block id="f418c08cd071f42a28a07d007dd30c34" category="paragraph">AIX主機公用程式可讓您將AIX主機連線至NetApp儲存設備。AIX主機公用程式支援多種環境、以及FC、FCoE和iSCSI傳輸協定。支援的環境包括AIX MPIO（原生作業系統）和PowerVM。</block>
   <block id="66c2d1ced882bffc99d6170e17a232ef" category="paragraph">如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 <block ref="7ce73c7ae176dd6b577d1c14b445f0cd" category="inline-link-macro-rx"></block>。</block>
@@ -2137,7 +2136,6 @@
   <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">建立HP-UX LVM會傳送超過1MB區塊大小的I/O</block>
   <block id="24cc4783034cf857703516141d8cc8ad" category="summary">Solaris Host Utilities 6.2版本資訊</block>
   <block id="07cb401e35e41c1ea4ba568ba75b0261" category="doc">Solaris Host Utilities 6.2版本說明</block>
-  <block id="a8d190b8be84e8cfdb8b2df1b04cb957" category="paragraph">當提供有關使用Solaris主機公用程式的新資訊時、即會更新版本資訊文件。</block>
   <block id="83abaefac7375849eeb586ba637a2d22" category="section-title">關於Solaris Host Utilities 6.2版本</block>
   <block id="d64c00d8393bc6d797e2fd2eb038c7f6" category="paragraph">Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。</block>
   <block id="5a5633c19126b79400042b56b8dcdf4a" category="paragraph">主要主機公用程式環境包括：</block>
@@ -3374,4 +3372,31 @@
   <block id="03b35db54926510f82d04231162aa4bc" category="paragraph">發行說明文件包含 Solaris 主機公用程式 6.2 的最新資訊、包括已知問題、限制、設定及管理 ONTAP 儲存系統的更新。</block>
   <block id="8b98a90c0f8d947a6126ce4314f1d147" category="paragraph">版本資訊文件包含 Windows Unified Host Utilities 7.2 和 7.1 版本的最新資訊、包括新功能、增強功能和已知問題的更新。當Windows主機公用程式的新使用資訊可供使用時、即會更新文件。</block>
   <block id="83c2a71fbf38a299fb12e6baeabd4505" category="paragraph">版本資訊文件包含有關 AIX 主機公用程式 6.1 版本的最新資訊、包括已知問題、限制、設定及管理 ONTAP 儲存系統的更新。</block>
+  <block id="d183f649aa9dd1befe9fbbbebb9ce6f3" category="paragraph">在此範例中、我們將決定裝置的 WWID 並新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案：</block>
+  <block id="9befbb0a2a211b5683af5265f22799fb" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block> 是我們需要新增至黑名單的本機 SCSI 磁碟。</block>
+  <block id="8f832cd06827c0d578f135a31564e7cf" category="summary">說明如何搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5</block>
+  <block id="f380df15f54bded5a312678b9e8d1316" category="doc">搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5</block>
+  <block id="36143cd0461c285a2eca19136916ef01" category="paragraph">對於 SUSE Linux Enterprise Server 15 SP5 、請使用<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 15 SP5 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
+  <block id="dc0fc37f340703d773442e3a17af6d7a" category="paragraph">SUSE Linux Enterprise Server 15 SP5 作業系統經過編譯、可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
+  <block id="b25e39830857186678d47588cf34427b" category="paragraph">當使用 AIX 主機公用程式的新資訊可供使用時、版本資訊文件會更新。</block>
+  <block id="9371be445976145cde05ce83e4737332" category="paragraph">當有關於使用 Solaris 主機公用程式的新資訊可用時、會更新版本說明文件。</block>
+  <block id="6927b4ed365e3f3d6b1daf74c1ed53f2" category="summary">適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 的 NVMe 主機組態</block>
+  <block id="cef327de24717c0ad1a3577819070251" category="paragraph">含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server （ SLES ） 15 SP5 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
+  <block id="b1342a2fc9721ae555225a23c38646ee" category="paragraph">下列支援適用於 ONTAP 15 SP5 的 NVMe 主機組態：</block>
+  <block id="adc8ef4a0481c8ef901d03cbd4bf8186" category="list-text">支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。</block>
+  <block id="006918920124fa71bdbcdf36bd28ae8a" category="list-text">不支援NVMe的sanlun。因此、在 SLES15 SP5 主機上、不支援 NVMe 型主機公用程式。您可以仰賴原生 NVMe - CLI 套件中的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
+  <block id="d4e23fcba4bc0b1061b10f6685f457d0" category="list-text">NVMe和SCSI流量都可以在相同的共存主機上執行。因此、對於 SCSI LUN 、您可以為 SCSI mpath 裝置設定 dm-multipath 、而 NVMe 多重路徑則可用於在主機上設定 NVMe 命名空間裝置。</block>
+  <block id="9289ca9c2249e04ae2bff00d83dcc81a" category="paragraph">根據預設、 SLES 15 SP5 已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑。因此、不需要明確的設定。</block>
+  <block id="e19a5cfce66766fef9f35d8014318a0d" category="paragraph">您可以使用下列程序來驗證最低支援的 SLES 15 SP5 軟體版本。</block>
+  <block id="c294ad6ecc5f6261d8e788ca4d8d70e8" category="list-text">確認您已在 SLES15 SP5 維護更新主機上安裝必要的核心和 NVMe CLI 維護更新套件。</block>
+  <block id="5168cf93841071a3e1f60a0f4b0c3d43" category="paragraph">。<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 維護更新套件包含下列項目：</block>
+  <block id="d739ab3b1cb915174aa72612ba6c2a52" category="list-text">*NVMe / FC 自動連線指令碼 * ：當通往命名空間的基礎路徑恢復時、以及在主機重新開機期間、 NVMe / FC 自動重新連線指令碼都需要自動連線指令碼：</block>
+  <block id="dce4a7fd8636104bab20d3ef1ecafee2" category="list-text">* ONTAP udev 規則 * - 新增<block ref="ab775c875d5f89d991a670444dd32ad2" prefix=" " category="inline-code"></block> 驗證 NVMe 多重路徑循環負載平衡器是否依預設套用至所有 ONTAP 命名空間的規則：</block>
+  <block id="de16dfda1a2f3a67b92c3c6961d20447" category="list-text">* 適用於 ONTAP 裝置 * 的 NetApp 外掛程式 - 修改現有的 NetApp 外掛程式、以納入 ONTAP 命名空間。</block>
+  <block id="a0eeee903845ea8eb9c7b13f5d7a9c4a" category="list-text">請檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串at<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="83f602f6ddd60bbecd2701b962883e96" category="paragraph">現有原生收件匣<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 驅動程式是最新版本、與 NVMe / FC 相容。因此、您不需要安裝 lpfc Out-Of-Box （ OOB ）驅動程式。驗證驅動程式版本：</block>
+  <block id="1ebdde2be7f564cea3a55372d3a0f091" category="paragraph">。<block ref="7c21ff5d058ac57f39085c6b934e1ac8" prefix=" " category="inline-code"></block> 預設會啟用支援。較新的 lpfc 驅動程式（包括收件匣和寄件匣）都有<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block> 參數設為 3 、因此您不再需要在中明確設定<block ref="39cb7236e95ada10fc0d69173bd48cdb" prefix=" " category="inline-code"></block> 檔案、然後重新建立<block ref="a35ad41999d0ef4fe38eeb93c6e7076b" prefix=" " category="inline-code"></block>。您可以驗證<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block> 設為<block ref="eccbc87e4b5ce2fe28308fd9f2a7baf3" prefix=" " category="inline-code"></block>：</block>
+  <block id="6823ef6314c55fa0a8e99cebacd9594d" category="list-text">SLES 15 SP5 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
+  <block id="2a7e9b55568d2461dc6a6662ab294d24" category="list-text">確認 SLES 15 SP5 主機上的下列 NVMe / FC 設定：</block>
+  <block id="7027855d0b65fefb5ac52eae93da7ac6" category="sidebar">15 sp5</block>
 </blocks>

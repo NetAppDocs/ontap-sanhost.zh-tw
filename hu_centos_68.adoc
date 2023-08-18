@@ -186,20 +186,23 @@ blacklist {
 +
 更換 `<DevId>` 使用 `WWID` 要排除的裝置字串。
 
-
-
++
 .範例
-在此範例中、 `sda` 是我們需要新增至黑名單的本機SCSI磁碟。
+在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
 
++
 .步驟
-. 執行下列命令來判斷WWID：
+.. 執行下列命令來判斷WWID：
 +
 [listing]
 ----
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
 ----
-. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
++
+`sda` 是我們需要新增至黑名單的本機 SCSI 磁碟。
+
+.. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
 +
 [listing]
 ----
@@ -210,6 +213,8 @@ blacklist {
      devnode "^cciss.*"
 }
 ----
+
+
 
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。

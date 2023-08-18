@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_sles_12SP1.html 
-keywords: host utilities, suse linux enterprise server 12 SP1, suse, linux, 12 SP1, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12 SP1搭配使用功能 
+permalink: hu_sles_15SP5.html 
+keywords: host utilities, suse linux enterprise server 15 sp5, suse, linux, 15 sp5, netapp, ontap 
+summary: 說明如何搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5 
 ---
-= 使用 SUSE Linux Enterprise Server 12 SP1 搭配 ONTAP
+= 搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -69,7 +69,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 == SAN開機
 
 .您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71679;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=84067;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -89,7 +89,7 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 
 == 多重路徑
 
-對於SUSE Linux Enterprise Server 12 SP1、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 12 SP1的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。
+對於 SUSE Linux Enterprise Server 15 SP5 、請使用 `/etc/multipath.conf` 檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 15 SP5 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。
 
 您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
 
@@ -105,14 +105,13 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 [listing]
 ----
 # multipath -ll
-3600a0980383034466b2b4a3775474859 dm-3 NETAPP,LUN C-Mode
-size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-|-+- policy='round-robin 0' prio=50 status=active
-| |- 1:0:8:1  sdb 8:16 active ready running
-| `- 2:0:8:1  sdd 8:48 active ready running
-`-+- policy='round-robin 0' prio=10 status=enabled
-  |- 1:0:9:1  sdc 8:32 active ready running
-  `- 2:0:9:1  sde 8:64 active ready running
+3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 3:0:7:9    sdco 69:192  active ready running
+  |- 3:0:8:9    sddi 71:0    active ready running
+  |- 14:0:8:9   sdjq 65:320  active ready running
+  `- 14:0:7:9   sdiw 8:256   active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
@@ -130,13 +129,13 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 ----
 # multipath -ll
 3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 11:0:1:0 sdj 8:144 active ready running
-| |- 11:0:2:0 sdr 65:16 active ready running
+| |- 3:0:3:0    sdd  8:48    active ready running
+| |- 3:0:4:0    sdx  65:112  active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-|- 11:0:0:0 sdb 8:i6 active ready running
-|- 12:0:0:0 sdz 65:144 active ready running
+  |- 14:0:2:0   sdfk 130:96  active ready running
+  `- 14:0:5:0   sdgz 132:240 active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
@@ -145,7 +144,8 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 
 == 建議設定
 
-SUSE Linux Enterprise Server 12 SP1 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。
+SUSE Linux Enterprise Server 15 SP5 作業系統經過編譯、可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。
+
 。 `multipath.conf` 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：
 
 `touch /etc/multipath.conf`
@@ -207,7 +207,7 @@ blacklist {
 
 下表說明了關鍵 `multipathd` 支援的參數ONTAP 和所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要稍後在中的節能區段加以修正 `multipath.conf` 特別適用於ONTAP 整個LUN的檔案。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應諮詢 NetApp 和 / 或作業系統廠商、以覆寫這些預設值。
 
-[cols="2*"]
+[cols="2"]
 |===
 | 參數 | 設定 
 
@@ -224,13 +224,16 @@ blacklist {
 | fast_io_f故障_tmo | 5. 
 
 
-| 功能 | "3 queue_if_no_path pg_init_retries 50" 
+| 功能 | "2 pg_init_retries 50" 
 
 
 | Flip_on_last刪除 | "是" 
 
 
 | 硬體處理常式 | 「0」 
+
+
+| no_path_retry | 佇列 
 
 
 | path_checker_ | "周" 
@@ -263,25 +266,25 @@ blacklist {
 | 廠商 | NetApp 
 |===
 .範例
-下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「detect_prio'」的值、這些值與ONTAP 不相容於哪些LUN。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
+下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]
 ----
 defaults {
- path_checker readsector0
- detect_prio no
- }
+   path_checker      readsector0
+   no_path_retry      fail
+}
 devices {
- device {
- vendor "NETAPP "
- product "LUN.*"
- path_checker tur
- detect_prio yes
- }
+   device {
+      vendor         "NETAPP  "
+      product         "LUN.*"
+      no_path_retry     queue
+      path_checker      tur
+   }
 }
 ----
 
 
-== 已知問題與限制
+== 已知問題
 
-SUSE Linux Enterprise Server 12 SP1沒有已知問題。
+沒有已知問題。

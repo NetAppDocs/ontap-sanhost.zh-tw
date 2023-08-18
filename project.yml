@@ -300,6 +300,8 @@ sidebar:
       - title: SLES 15
         pdf-filename: sles-15-FCP
         entries:
+        - title: 15 sp5
+          url: "/hu_sles_15SP5.html"
         - title: 15 SP4
           url: "/hu_sles_15SP4.html"
         - title: 15 SP3
@@ -426,6 +428,8 @@ sidebar:
       entries:
       - title: SLES 15
         entries:
+        - title: 15 sp5
+          url: "/nvme_sles15_sp5.html"
         - title: 15 SP4
           url: "/nvme_sles15_sp4.html"
         - title: 15 SP3
