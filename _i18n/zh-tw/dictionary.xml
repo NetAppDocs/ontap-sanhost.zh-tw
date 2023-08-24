@@ -3399,4 +3399,5 @@
   <block id="6823ef6314c55fa0a8e99cebacd9594d" category="list-text">SLES 15 SP5 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
   <block id="2a7e9b55568d2461dc6a6662ab294d24" category="list-text">確認 SLES 15 SP5 主機上的下列 NVMe / FC 設定：</block>
   <block id="7027855d0b65fefb5ac52eae93da7ac6" category="sidebar">15 sp5</block>
+  <block id="94d6233b644ab7d1ba2cc91a93f1ca2a" category="paragraph">如果您打算在相同的 Oracle Linux 8.7 主機上同時執行 NVMe 和 SCSI 流量、 NetApp 建議分別使用內建 NVMe 多重路徑來處理 ONTAP 命名空間、以及將 dm-multipath 用於 ONTAP LUN 。這也表示ONTAP 應在dm-multipaths中列入清單以防止dm-multipaths宣告這些命名空間裝置。您可以新增來完成此作業<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 設定為<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
 </blocks>

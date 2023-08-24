@@ -111,6 +111,22 @@ vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:791c54eb-545d-4ed3-8
 
 NOTE: 如果是 `hostnqn` 字串不相符、您可以使用 `vserver modify` 命令來更新 `hostnqn` 對應 ONTAP 陣列子系統上的字串、以符合 `hostnqn` 字串來源 `/etc/nvme/hostnqn` 在主機上。
 
+. 重新啟動主機。
++
+[NOTE]
+====
+如果您打算在相同的 Oracle Linux 8.7 主機上同時執行 NVMe 和 SCSI 流量、 NetApp 建議分別使用內建 NVMe 多重路徑來處理 ONTAP 命名空間、以及將 dm-multipath 用於 ONTAP LUN 。這也表示ONTAP 應在dm-multipaths中列入清單以防止dm-multipaths宣告這些命名空間裝置。您可以新增來完成此作業 `enable_foreign` 設定為 `/etc/multipath.conf` 檔案：
+
+[listing]
+----
+#cat /etc/multipath.conf
+defaults {
+    enable_foreign  NONE
+}
+----
+執行以重新啟動多路徑精靈 `systemctl restart multipathd` 命令讓新設定生效。
+
+====
 
 
 
