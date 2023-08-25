@@ -3347,7 +3347,6 @@
   <block id="d699daec8de3b69e6a41a8c5e1e7f44e" category="doc">安裝 Linux Unified Host Utilities 7.1</block>
   <block id="2dc8fc387550a2ccc1bb2000d960f6b9" category="paragraph">Linux 統一化主機公用程式可協助您管理連接至 Linux 主機的 NetApp ONTAP 儲存設備。NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</block>
   <block id="87bdc01fa1c36611ae8a26730cf85e17" category="paragraph">支援下列 Linux 套裝作業系統：</block>
-  <block id="658ff13533a5ae3caeee521c2a5cc5b2" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 在32位元或64位元.rpm檔案中。</block>
   <block id="43483b029ef264a410a7bccd99e5f66a" category="list-text">為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。</block>
   <block id="22faa027e7ce368aea785de25ef0414c" category="paragraph">您可以使用<block ref="77ab0bbf377853176c70e55d32dcb81a" category="inline-link-rx"></block> 以驗證組態。</block>
   <block id="878062d004d819fd9c7baf0a053ff24e" category="list-text">您必須安裝廠商支援網站上提供的主機匯流排介面卡（ HBA ）管理套件。</block>
@@ -3358,7 +3357,6 @@
   <block id="36b0297a3927e6ee76842f1712737154" category="list-text">每個 Linux 發行套件可用的 RPM 套件「 libhbaapi 」和「 libhbalinux 」應安裝在主機作業系統上。</block>
   <block id="dc0fab98e84d9813bdf2f1747fa94a9f" category="admonition">Linux Unified Host Utilities 軟體不支援 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ）主機傳輸協定。</block>
   <block id="e18f4db9c000cdc92c0a6f5ae79b46d4" category="paragraph">若為舊版 Linux 主機公用程式、請移至安裝主機公用程式軟體的目錄、然後輸入 uninstall 命令以移除已安裝的套件。</block>
-  <block id="5f8061f11c889bcebe7dd76c785f75a7" category="list-text">從下載32位元或64位元Linux Unified Host Utilities軟體套件 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 到您的主機。</block>
   <block id="88e9fff2ac8cc531b067dfa25e8e2e8c" category="section-title">Linux 核心的建議驅動程式設定</block>
   <block id="684209c8b964ee194fb302d1403a0fc3" category="paragraph">當您設定 FC 環境時、若使用與 Linux 核心搭售的原生收件匣驅動程式、則可以使用驅動程式的預設值。</block>
   <block id="368bcd2118dd63e80fb399c6feb8f7ec" category="paragraph">適用於 AIX 與 ONTAP 的 NVMe / FC 主機組態有下列已知問題：</block>
@@ -3399,5 +3397,8 @@
   <block id="6823ef6314c55fa0a8e99cebacd9594d" category="list-text">SLES 15 SP5 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
   <block id="2a7e9b55568d2461dc6a6662ab294d24" category="list-text">確認 SLES 15 SP5 主機上的下列 NVMe / FC 設定：</block>
   <block id="7027855d0b65fefb5ac52eae93da7ac6" category="sidebar">15 sp5</block>
-  <block id="94d6233b644ab7d1ba2cc91a93f1ca2a" category="paragraph">如果您打算在相同的 Oracle Linux 8.7 主機上同時執行 NVMe 和 SCSI 流量、 NetApp 建議分別使用內建 NVMe 多重路徑來處理 ONTAP 命名空間、以及將 dm-multipath 用於 ONTAP LUN 。這也表示ONTAP 應在dm-multipaths中列入清單以防止dm-multipaths宣告這些命名空間裝置。您可以新增來完成此作業<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 設定為<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
+  <block id="2df02b8065e072b3f4cef52fb022e714" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 在32位元或64位元.rpm檔案中。</block>
+  <block id="ebdad4471cb6942a4f1ef284bb693304" category="list-text">從下載32位元或64位元Linux Unified Host Utilities軟體套件 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 到您的主機。</block>
+  <block id="b0bf0d1d6ab98a1d0403112fc17e274b" category="paragraph">如果您打算在相同的 Oracle Linux 8.7 主機上同時執行 NVMe 和 SCSI 流量、 NetApp 建議分別使用內建 NVMe 多重路徑來處理 ONTAP 命名空間、以及將 dm-multipath 用於 ONTAP LUN 。這也表示ONTAP 應在dm-multipaths中列入清單以防止dm-multipaths宣告這些命名空間裝置。您可以新增來執行此作業<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 設定為<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
+  <block id="83444c1052de64c8564e51742b6d9650" category="paragraph">執行以重新啟動多路徑精靈<block ref="5a8f02947e83d77dcfc767816a70ab96" prefix=" " category="inline-code"></block> 套用新設定的命令。</block>
 </blocks>

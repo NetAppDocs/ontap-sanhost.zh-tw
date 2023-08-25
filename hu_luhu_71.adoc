@@ -31,7 +31,7 @@ Linux 統一化主機公用程式可協助您管理連接至 Linux 主機的 Net
 
 
 .您需要的產品
-NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 在32位元或64位元.rpm檔案中。
+NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 在32位元或64位元.rpm檔案中。
 
 * 為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。
 +
@@ -63,7 +63,7 @@ rpm -e netapp_linux_unified_host_utilities-7-1
 +
 若為舊版 Linux 主機公用程式、請移至安裝主機公用程式軟體的目錄、然後輸入 uninstall 命令以移除已安裝的套件。
 
-. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 到您的主機。
+. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
 . 移至您下載軟體套件的目錄、然後使用下列命令進行安裝：
 +
 [source, cli]
