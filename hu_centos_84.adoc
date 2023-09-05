@@ -22,7 +22,7 @@ summary: 說明如何搭配ONTAP 使用CentOS 8.4搭配使用
 
 == 安裝Linux Unified Host Utilities
 
-NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 在64位元.rpm檔案中。
+NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 在64位元.rpm檔案中。
 
 NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
@@ -30,7 +30,7 @@ NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強
 如果您目前已安裝 Linux Unified Host Utilities 版本、您應該升級或移除該版本、然後使用下列步驟來安裝最新版本。
 
 .步驟
-. 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 到您的主機。
+. 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
 . 安裝軟體套件：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」

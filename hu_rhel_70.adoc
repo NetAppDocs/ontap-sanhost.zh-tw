@@ -22,14 +22,14 @@ summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.0搭配使用�
 
 == 安裝Linux Unified Host Utilities
 
-NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp 支援網站"^] 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 互通性對照表工具"^] 驗證您需要哪一個。
+NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 link:https://mysupport.netapp.com/matrix/#welcome["NetApp 互通性對照表工具"^] 驗證您需要哪一個。
 
 NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 .您需要的產品
 如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。
 
-. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp 支援網站"^] 站台到主機。
+. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 站台到主機。
 . 使用下列命令安裝軟體套件：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」

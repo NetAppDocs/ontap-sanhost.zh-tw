@@ -22,10 +22,10 @@ summary: 說明如何安裝Solaris主機公用程式
 
 == 安裝 Solaris 主機公用程式
 
-您可以從下載包含主機公用程式軟體套件的壓縮檔案 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^]。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。
+您可以從下載包含主機公用程式軟體套件的壓縮檔案 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^]。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。
 
 .步驟
-. 從下載內含主機公用程式的壓縮檔案複本 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^] 到主機上的目錄。
+. 從下載內含主機公用程式的壓縮檔案複本 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^] 到主機上的目錄。
 . 前往內含下載內容的目錄。
 . 擷取檔案。
 +

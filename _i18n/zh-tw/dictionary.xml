@@ -3,9 +3,7 @@
   <block id="8e606d3994d1276c51a72c8493480d0d" category="summary">說明如何搭配ONTAP 使用CentOS 6.4搭配使用</block>
   <block id="9d2169c1c2855b78a7aeaa4f42d27dc7" category="inline-link-macro">NetApp 支援網站</block>
   <block id="9ed4a475dd3705157a9fed8811f63ce2" category="inline-link-macro">NetApp 互通性對照表工具</block>
-  <block id="0fed9cf9730bf6732d4b5c033406917c" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得 <block ref="6669d666f8f453569510bbfca28c3a1e" category="inline-link-macro-rx"></block> 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 <block ref="963ce614f4afebd07b4317928a39d286" category="inline-link-macro-rx"></block> 驗證您需要哪一個。</block>
   <block id="00fc1bf20dbc4f3e92a58dc60bc9ed11" category="paragraph">如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。</block>
-  <block id="53fb5541a1076b0275ddc8379f39602d" category="list-text">從下載32位元或64位元Linux Unified Host Utilities軟體套件 <block ref="6669d666f8f453569510bbfca28c3a1e" category="inline-link-macro-rx"></block> 站台到主機。</block>
   <block id="8c00d982a2880d4d1d69e922c0dcea7c" category="list-text">使用下列命令安裝軟體套件：</block>
   <block id="04a6a4dcd6c76702d2da3ff70e4a7ec8" category="paragraph">「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」</block>
   <block id="b80744314bf569766c44748e7c613ca7" category="section-title">SAN工具套件</block>
@@ -282,8 +280,6 @@
   <block id="cec602aaab3b2957e3f2c033a88821aa" category="paragraph">RHEL 7.3沒有已知問題。</block>
   <block id="61092b92c56a8527051cc09db7ffcf96" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.5搭配使用功能</block>
   <block id="10a8491b4d5d18409c61a4a90c61750b" category="section-title">安裝Linux Unified Host Utilities</block>
-  <block id="f041d7aa93ccef62fcc7abea92526fc2" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block> 在64位元.rpm檔案中。</block>
-  <block id="722c71516edb740dbf949ee9187f7daa" category="list-text">從下載64位元Linux Unified Host Utilities軟體套件<block ref="5d5134ddaf42180d688670ce5e1f032a" category="inline-link-rx"></block> 到您的主機。</block>
   <block id="3f3aace2ffb7262d9561af1516e90d56" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="e902c52a637fd9b5e253806bf7aafa95" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="5297043b43f5cb19511228a79f308d23" category="paragraph">對於Red Hat Enterprise Linux（RHEL）8.5、必須存在/etc/multipath.conf檔案、但您不需要對檔案進行特定變更。RHEL 8.5是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="685ee6c581bc2df3a8910672a2af1ac3" category="paragraph">RHEL 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
@@ -529,7 +525,6 @@
   <block id="2cc89810a4025d52a6eccc82f2fdfc91" category="paragraph">對於CentOS 8.1、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.1是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
   <block id="4ed487db5845a58ae6349ab5f8fcc335" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.1。</block>
   <block id="7466d31b9a4018d8f402bd6f92090e59" category="summary">說明如何安裝Solaris主機公用程式</block>
-  <block id="193e9a3a22ec18786f1a8e1dccfdc4ac" category="list-text">從下載內含主機公用程式的壓縮檔案複本 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block> 到主機上的目錄。</block>
   <block id="c454d997c91275b70f2f0433fad3fe36" category="list-text">前往內含下載內容的目錄。</block>
   <block id="88a1748445927988a69d31c53331a565" category="list-text">擷取檔案。</block>
   <block id="f6e9198a006ec354ae70027fd194c6a2" category="paragraph">「gunzip NetApp_solaris主機公用程式_6_2N20170913_0304_SPARC.Tar.gz」</block>
@@ -778,7 +773,6 @@
   <block id="49f5eedacc16d9fb295ac209c276281f" category="paragraph">在以下範例中、只有一個啟動器連接埠已啟用、並與兩個目標LIF連線、如下面輸出所示：</block>
   <block id="5143c4b425bd02e9b522b5a1f01f39c4" category="paragraph">在上述範例中、兩個命名空間會對應至Oracle Linux 8.1 ANA主機。這可透過四個目標生命期來查看：兩個本機節點生命期、以及兩個其他合作夥伴/遠端節點生命期。此設定顯示主機上每個命名空間的兩個ANA最佳化路徑和兩個ANA不可存取路徑。</block>
   <block id="0960de670071121018c377f3ca40c5e7" category="summary">說明如何搭配ONTAP 使用IBM AIX 7.1搭配使用</block>
-  <block id="9fd30469c1e3a7c262c116e88d7e9274" category="paragraph">您可以從NetApp支援網站下載包含主機公用程式軟體套件的壓縮檔案。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的兩個軟體套件。</block>
   <block id="be3d2421a8f8e1a506cd8ec6140627fb" category="paragraph">「tar -xvf ntit_AIX_host_utilitis_6.1.tar .tgz」</block>
   <block id="6a60f15d3addedaaeee9fbd5c320d06d" category="paragraph">解壓縮檔案時會建立下列目錄：「ntap_AIX_host_utilities _6.1」。此目錄將有下列子目錄之一：MPIO、non-MPIO或SAN_Tool_Kit。</block>
   <block id="40cb79ed451a05fc3cb913a91c474fdc" category="list-text">安裝SAN工具套件：「install p -aXYd /var/tmp/ntip_AIX_host_utilites_6.1/SAN_Tool_Kit NetApp.SAN_toolkit'</block>
@@ -1131,11 +1125,9 @@
   <block id="8eabcd914763b27e42e21afc24ee68ce" category="paragraph">「+nNVMe清單-ns +」命令會列出指定NVMe目標的命名空間、列出連接至主機的命名空間。</block>
   <block id="3a1eadc8d9bb3cf94717f7abc94eae77" category="inline-link">Red Hat Enterprise Linux版本</block>
   <block id="ecd07dd2a42b46fb7e8f73e1e5544962" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱對應的「已知問題」一節<block ref="939c54c506d35e0d0c1ee5e3c74f33dd" category="inline-link-rx"></block> 文件。</block>
-  <block id="afd7ebe87c934a3e70afff3d554de044" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得 <block ref="6669d666f8f453569510bbfca28c3a1e" category="inline-link-macro-rx"></block> 在32位元或64位元.rpm檔案中。</block>
   <block id="c361420559f71f223ab1528978c7f7d3" category="list-text">如果您目前已安裝Linux Unified Host Utilities版本、請使用下列命令將其移除：</block>
   <block id="e373b253d3dda0488582e96b90463674" category="paragraph">「rpm -e netapp_Linux統一化_host_utilities - 7-1」</block>
   <block id="8c0eeca7c70428976293084f983f0af1" category="paragraph">若為舊版的Linux主機公用程式、請前往安裝主機公用程式軟體的目錄、然後輸入「uninstall」命令。</block>
-  <block id="a8f1b63b218bea414f41305d19ffed0c" category="list-text">從下載32位元或64位元Linux Unified Host Utilities軟體套件 <block ref="6669d666f8f453569510bbfca28c3a1e" category="inline-link-macro-rx"></block> 到您的主機。</block>
   <block id="d01163b5f1a458851231ad2885e038b0" category="list-text">移至您下載軟體套件的目錄、然後使用下列命令進行安裝：</block>
   <block id="d47e6034707138c9dbef5d431a5e5151" category="paragraph">「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64。rpm」</block>
   <block id="27117d842bd89e527c563bbabce7e494" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
@@ -1284,7 +1276,6 @@
   <block id="ff657e83469666666bbb5251199b464a" category="cell"><block ref="ff657e83469666666bbb5251199b464a" category="inline-link-macro-rx"></block></block>
   <block id="35a2873560c7df91eb3565c5ce683568" category="summary">說明如何搭配ONTAP 使用CentOS 7.2與功能不全</block>
   <block id="5e264cc9d3c17161fd51d23fc1227896" category="paragraph">對於CentOS 7.2、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.2是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
-  <block id="78dad9d652edc0f2255634fdd6120f93" category="paragraph">您可以從NetApp支援網站下載包含主機公用程式軟體套件的壓縮檔案。取得檔案後、您必須解壓縮檔案、才能取得安裝Host Utilities所需的軟體套件。</block>
   <block id="f814c4c509cfee1aaec985d122ae9223" category="list-text">解壓縮檔案。</block>
   <block id="c21dc92fb61425e1ad5ebfa7842ddfd3" category="list-text">使用「tar xvf」命令來解壓縮檔案。</block>
   <block id="70b7cc349994a5289908b02781aee538" category="paragraph">/`opt/NTAP/SANToolkit /bin/host_config &lt;-setup&gt;&lt;傳輸協定FCP | iscsiSCSI|混合&gt;&lt;-multipathmpxio| dmp | non-noalua][-MCC 60|90|120]</block>
@@ -2273,7 +2264,6 @@
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">NVMeoF RHEL</block>
   <block id="47e2092f9d666fc24b67c7da02de84c7" category="paragraph">Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。我們建議下載並安裝最新的公用程式套件。如需Wuhu組態資訊與說明、請參閱 <block ref="f7fe1c204ed60a7e9dd594c09fd7b1a5" category="inline-link-macro-rx"></block>。</block>
   <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows主機公用程式套件7.1</block>
-  <block id="47806b50157f4c2450dab9085e65bf42" category="list-text">安裝 <block ref="3da09c0cdee3c0d99e3c71a79e706ce0" category="inline-link-macro-rx"></block> 設定FC和NVMe通用的驅動程式參數。</block>
   <block id="a94e97667092f5ff8b67813ccebdb0ca" category="paragraph">主機公用程式支援不同的Windows主機組態、傳輸協定和多路徑選項。如需詳細資訊、請參閱<block ref="b7322bec4509d45107de6de43ca1f517" category="inline-link-rx"></block>。</block>
   <block id="0165fb41a35ddb937948f77394256403" category="inline-link-macro">SAN主機Windows文件</block>
   <block id="6edf97e112927c25a9a1571ba78c02f9" category="list-text">檢查上個別主機所需的修補程式 <block ref="d639dff184f4bf79d87dbc978d26f542" category="inline-link-macro-rx"></block>。</block>
@@ -2397,7 +2387,6 @@
   <block id="3a34596144aee2d13108623781ca1789" category="list-text">從7.0U3c開始、支援ESXi Hypervisor的NVMe/TCP功能。</block>
   <block id="98f0b197b8132a81e5d6da89bc6ded25" category="list-text">從ONTAP 支援的功能部件號為E59.10.1開始、ONTAP 支援的功能為NVMe/TCP。</block>
   <block id="98ffdd0945470204439692dc82dc8d98" category="paragraph">您必須安裝AIX主機公用程式套件、才能搭配使用AIX MPIO搭配NetApp ONTAP 功能儲存設備。</block>
-  <block id="9aab5807a16ac54dff9ec8e124181169" category="paragraph">您可以從 NetApp 支援網站下載包含 Host Utilities 軟體套件的壓縮檔案。取得檔案之後、您必須解壓縮檔案、才能取得安裝主機公用程式所需的兩個軟體套件。</block>
   <block id="191896e66abb860542afaf3bc97289fc" category="section-title">SAN工具套件</block>
   <block id="01281e2990c631b64037834e8b22bd4c" category="cell">rw_timeout（磁碟）</block>
   <block id="a97f41c78bd6ac237cc0a78dbc8e3557" category="section-title">推薦MetroCluster 的設定</block>
@@ -2740,13 +2729,11 @@
   <block id="b16d9e0da8fa9c56e92e63e0ef6c5e31" category="list-text">確認 OL 9.0 主機上的下列 NVMe / FC 設定：</block>
   <block id="d5946da4bef042fd1ecdafbb693027e4" category="paragraph">如果您的組態有問題、詳細記錄可提供疑難排解的必要資訊。</block>
   <block id="d6f0420e884ba06233920f24aeacd0b4" category="sidebar">安裝蕪湖 7.2</block>
-  <block id="c89f54db5376bd3f5d9ade2c6d3362fd" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block>。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。</block>
   <block id="acabba98705eb29393554dc66f1ee4e2" category="paragraph">以下範例解壓縮SPARC系統的檔案。對於x86至64平台、請使用x86/x64套件。</block>
   <block id="c4cad7deef0c16d999553f9114b69a38" category="inline-link">安裝 Solaris 主機公用程式</block>
   <block id="f3fa3c55f6e1d616adca4cc7545092f0" category="paragraph">您可以使用FC傳輸協定設定SAN開機LUN、以便在Solaris MPxIO環境中運作、並執行Solaris Host Utilities。您用來設定SAN開機LUN的方法可能會因Volume Manager和檔案系統而異。請參閱<block ref="b122ff225ade2e6fc15e0025cf78e2d2" category="inline-link-rx"></block> 如需 Solaris MPIO 環境中 SAN Booting LUN 的詳細資訊、請參閱。</block>
   <block id="daa135326b602a4d4c5bd7b55808870a" category="inline-link">Solaris主機支援MetroCluster 考量的功能</block>
   <block id="8f4e34dd626d27db6da17b83e4d7f329" category="cell">Solaris 11.x 'cfgadm -c configuration' 會導致端點對端 Emulex 組態發生 I/O 錯誤</block>
-  <block id="05a2e5d38b7302b051a92c093ea62da1" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案 <block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block>。檔案放好之後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。</block>
   <block id="a387e31363493fb3c0fbdcc0d7458c52" category="list-text">解壓縮檔案。</block>
   <block id="8fe0dc9943c3dbce8070a7613545cb91" category="paragraph">以下範例解壓縮SPARC系統的檔案。對於 x86-64 平台、請使用<block ref="2dea9af09f7e80915b8298deb9ca9b8a" prefix=" " category="inline-code"></block> 套件：</block>
   <block id="db3593f61ef4c56ea67fd06ebc7a6825" category="admonition">所有 SAN 陣列（ ASA ）組態都支援從 ONTAP 9.8 開始、適用於 Solaris 主機。</block>
@@ -3399,7 +3386,6 @@
   <block id="71dc6cab38b813fe8170f94bad66e4ad" category="doc">搭配 ONTAP 使用 Oracle Linux 8.8</block>
   <block id="09f1d704d3c8696d3b1141a3aa4d5588" category="paragraph">對於 Oracle Linux （ OL ） 8.8<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。ol 8.8 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
   <block id="b27760a2802c30e312a502124bce80eb" category="paragraph">OL 8.8 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
-  <block id="fdfc689574cf5fb3fbd6c0bae92a98b2" category="admonition">若要設定 Oracle Linux 8.8 RedHat Enterprise Kernel （ RHCK ）、請使用 <block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux （ RHEL ） 8.8 。</block>
   <block id="04544654bde04401ad396d891040dc76" category="summary">適用於 ONTAP 的 Oracle Linux 8.8 版 NVMe 型主機組態</block>
   <block id="8880cd0c09153e73135dbdcb92bb36e4" category="paragraph">Oracle Linux （ OL ） 8.8 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸、並支援非對稱命名空間存取（ ANA ）。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="0c552ba088ff7c5ec4a148f22c0280af" category="paragraph">下列支援可用於 OL 8.8 搭配 ONTAP 的 NVMe 主機組態：</block>
@@ -3410,13 +3396,32 @@
   <block id="c408ea98ccca45811b56eb64f5019391" category="list-text">在伺服器上安裝 OL 8.8 GA 。安裝完成後、請確認您正在執行指定的 OL 8.8 GA 核心。</block>
   <block id="fb0643787f6e7d41915f40cbd05f4efd" category="list-text">在 Oracle Linux 8.8 主機上、請檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串at<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="74081fa925de7d5872846d0fd3043b7c" category="paragraph">如果您打算在同一部主機上同時執行 NVMe 和 SCSI 流量、 NetApp 建議您在 ONTAP 命名空間和上使用核心內建 NVMe 多重路徑<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 分別用於ONTAP 支援的LUN。這表示 ONTAP 命名空間應排除在外<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 預防<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 並宣告這些命名空間裝置。您可以新增<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 設定為<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
-  <block id="73979e21296f74435168d91cdb68bf33" category="paragraph">執行以重新啟動多路徑常駐程式<block ref="5a8f02947e83d77dcfc767816a70ab96" prefix=" " category="inline-code"></block> 讓新設定生效的命令。</block>
-  <block id="c638ad2f78eb5f9c5e23fc0607165a2a" category="list-text">OL 8.8 GA 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
   <block id="e49a8f55b360ab37cfe1ebe68f1119d5" category="paragraph">OL 8.8 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
-  <block id="856727a5f3e002ef1068c1b1229b19f6" category="cell">Oracle Linux 8.8 NVMe 主機會建立重複的持續探索控制器</block>
   <block id="d345ceafdca15336eee317f7b245574f" category="cell">在 OL 8.8 NVMe 型主機上、持續探索控制器（ PDC ）是透過傳遞建立的<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。對於指定的啟動器目標組合、每次啟動時、只會建立一個 PDC<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。不過、從 OL 8.x 開始、 NVMe 型主機會在每次呼叫時建立重複的 PDF<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項。這會浪費主機和目標上的資源。</block>
   <block id="2757a308d4d1083cccf0f8d499cc92dc" category="paragraph">Oracle Linux 7.9 with ONTAP 版本有下列已知問題：</block>
   <block id="eb1fc035eeba662cf025ce042074e2b4" category="cell">如果您在未執行 SCSI 重新掃描的情況下取消對應或對應 LUN 、可能會導致主機上的資料毀損</block>
-  <block id="a270556d62ee2105297647391a10d53e" category="cell">當您設定時<block ref="08dba88199429f4a52c71e37581877d5" prefix=" " category="inline-code"></block> 多重路徑組態參數為「是」、則當全球識別碼（ WWID ）變更時、會停用對路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。請參閱 <block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
   <block id="e681a3b45989b468533c4b90ee960bf9" category="cell">不適用</block>
+  <block id="8c65801675c655e1c03ed38acabcf2bc" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 <block ref="963ce614f4afebd07b4317928a39d286" category="inline-link-macro-rx"></block> 驗證您需要哪一個。</block>
+  <block id="1c7aecfb08a2b38315b8b5a00561dd76" category="list-text">從下載32位元或64位元Linux Unified Host Utilities軟體套件 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 站台到主機。</block>
+  <block id="eed09ea7076ec2e150d1995b3a1ac37f" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 在64位元.rpm檔案中。</block>
+  <block id="97c7cddc356e6c9a7edda318fd4e3a01" category="list-text">從下載64位元Linux Unified Host Utilities軟體套件<block ref="f3adb37009df4865b12833eb62333f96" category="inline-link-rx"></block> 到您的主機。</block>
+  <block id="937cdc7611a7f50b97c9bc710ff4a761" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案 <block ref="211aeebd084ff2a0f2d3a6667de35200" category="inline-link-macro-rx"></block>。取得檔案之後、您必須解壓縮檔案、才能取得安裝主機公用程式所需的兩個軟體套件。</block>
+  <block id="0a0990c5ca1e9aa6bb4871721a00290c" category="list-text">安裝 <block ref="7e5271dd15da7840bc647fc6451145a6" category="inline-link-macro-rx"></block> 設定FC和NVMe通用的驅動程式參數。</block>
+  <block id="191d7bcb434f24066e6263286c506e07" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案<block ref="64a98ab9b930adade338f7896c6bf819" category="inline-link-rx"></block>。檔案放好之後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。</block>
+  <block id="bba935ec6b4a409a039f2c174658a92b" category="list-text">從下載內含主機公用程式的壓縮檔案複本<block ref="64a98ab9b930adade338f7896c6bf819" category="inline-link-rx"></block> 到主機上的目錄。</block>
+  <block id="203f51559c2ba23f9c255fff4a3d1a69" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案 <block ref="211aeebd084ff2a0f2d3a6667de35200" category="inline-link-macro-rx"></block>。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的兩個軟體套件。</block>
+  <block id="d93f4eaa8e066c5ee8f2b24ebc969b6b" category="paragraph">下列各節提供對應至 ASA 和非 ASA 組態之 LUN 的多重路徑輸出範例。</block>
+  <block id="7acaa68e7aca1f42b54325f5c982b0ff" category="admonition">若要設定 Oracle Linux 8.8 RedHat Enterprise 核心、請使用 <block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux （ RHEL ） 8.8 。</block>
+  <block id="01b8600fd938010d5f121c919a853516" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。當 LUN 對應至 Hypervisor 時、設定 KVM 並不需要變更。</block>
+  <block id="068e34bda638fda5123bf851072fe10d" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block>。取得檔案後、您必須解壓縮檔案、才能取得安裝Host Utilities所需的軟體套件。</block>
+  <block id="aa22d4ac7993fa542c414f5e9723529f" category="list-text">從下載內含主機公用程式的壓縮檔案複本 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block> 到主機上的目錄。</block>
+  <block id="f300fa51589104aa4316232c27dac2e7" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得<block ref="f3adb37009df4865b12833eb62333f96" category="inline-link-rx"></block> 在32位元或64位元.rpm檔案中。</block>
+  <block id="00e3d420b177fcc4637347e27f46043e" category="list-text">從下載 32 位元或 64 位元 Linux Unified Host Utilities 軟體套件 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 到您的主機。</block>
+  <block id="fd26db9aa6db828394d7228c8c9d0e50" category="list-text">NVMe和SCSI流量都可以在相同的共存主機上執行。因此、對於 SCSI LUN 、您可以為 SCSI mpath 裝置設定 dm-multipath 、而您可以使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。</block>
+  <block id="bb6b61821a0d91a27d4798cbc695ecc8" category="paragraph">執行以重新啟動多路徑常駐程式<block ref="5a8f02947e83d77dcfc767816a70ab96" prefix=" " category="inline-code"></block> 命令。這可讓新設定生效。</block>
+  <block id="4e26e8894256ba4335d8dfc15dde00f6" category="list-text">OL 8.8 GA 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
+  <block id="3aad3225f60de4118eb7263a1c0fbb28" category="list-text">確認已啟用核心內建 NVMe 多重路徑：</block>
+  <block id="0433af93410c428ea57c876adfd242d8" category="cell">Oracle Linux 8.8 NVMe 主機會建立重複的 PDF</block>
+  <block id="fd0f0a6b64ca823427a2d1d6062c2102" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案<block ref="64a98ab9b930adade338f7896c6bf819" category="inline-link-rx"></block>。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。</block>
+  <block id="e70f1869df403451e259e10988ea5f80" category="cell">當您設定時<block ref="08dba88199429f4a52c71e37581877d5" prefix=" " category="inline-code"></block> 多重路徑組態參數為「是」、則當全球識別碼（ WWID ）變更時、會停用對路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的 WWID 還原至多重路徑裝置的 WWID 為止。請參閱 <block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
 </blocks>

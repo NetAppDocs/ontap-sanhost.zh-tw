@@ -24,7 +24,7 @@ Oracle Linux （ OL ） 8.8 支援 NVMe over Fabrics （ NVMe over Fabric 、 NV
 下列支援可用於 OL 8.8 搭配 ONTAP 的 NVMe 主機組態：
 
 * 支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生的 NetApp 外掛程式 `nvme-cli` 套件會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
-* NVMe和SCSI流量都可以在相同的共存主機上執行。因此、對於 SCSI LUN 、您可以為 SCSI mpath 裝置設定 dm-multipath 、而 NVMe 多重路徑則可用於在主機上設定 NVMe 命名空間裝置。
+* NVMe和SCSI流量都可以在相同的共存主機上執行。因此、對於 SCSI LUN 、您可以為 SCSI mpath 裝置設定 dm-multipath 、而您可以使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
 * 不支援NVMe的sanlun。因此、 OL 8.8 主機上不支援 NVMe 型主機公用程式。您可以仰賴原生內建的 NetApp 外掛程式 `nvme-cli` 適用於所有 NVMe 傳輸的套件。
 
 
@@ -34,15 +34,13 @@ Oracle Linux （ OL ） 8.8 支援 NVMe over Fabrics （ NVMe over Fabric 、 NV
 
 == 功能
 
-* Oracle Linux 8.8 預設已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。
-
+Oracle Linux 8.8 預設已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。
 
 
 
 == 已知限制
 
-* 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
-
+目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 
@@ -127,7 +125,7 @@ defaults {
   enable_foreign     NONE
 }
 ----
-執行以重新啟動多路徑常駐程式 `systemctl restart multipathd` 讓新設定生效的命令。
+執行以重新啟動多路徑常駐程式 `systemctl restart multipathd` 命令。這可讓新設定生效。
 
 ====
 
@@ -246,7 +244,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 .適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡
 --
 .步驟
-. OL 8.8 GA 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：
+. OL 8.8 GA 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]
 ----
@@ -400,7 +398,7 @@ nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
 您可以使用下列程序來驗證 NVMe 。
 
 .步驟
-. 檢查以下項目、確認已啟用核心內建 NVMe 多重路徑：
+. 確認已啟用核心內建 NVMe 多重路徑：
 +
 [listing]
 ----
@@ -589,5 +587,5 @@ OL 8.8 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
-| 1517321 | Oracle Linux 8.8 NVMe 主機會建立重複的持續探索控制器 | 在 OL 8.8 NVMe 型主機上、持續探索控制器（ PDC ）是透過傳遞建立的 `-p` 選項 `nvme discover` 命令。對於指定的啟動器目標組合、每次啟動時、只會建立一個 PDC `nvme discover` 命令。不過、從 OL 8.x 開始、 NVMe 型主機會在每次呼叫時建立重複的 PDF `nvme discover` 命令 `-p` 選項。這會浪費主機和目標上的資源。 | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118."^] 
+| 1517321 | Oracle Linux 8.8 NVMe 主機會建立重複的 PDF | 在 OL 8.8 NVMe 型主機上、持續探索控制器（ PDC ）是透過傳遞建立的 `-p` 選項 `nvme discover` 命令。對於指定的啟動器目標組合、每次啟動時、只會建立一個 PDC `nvme discover` 命令。不過、從 OL 8.x 開始、 NVMe 型主機會在每次呼叫時建立重複的 PDF `nvme discover` 命令 `-p` 選項。這會浪費主機和目標上的資源。 | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118."^] 
 |===
