@@ -92,13 +92,34 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 
 對於Oracle Linux（OL）8.2、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.2是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。
 
-您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。
-
-以下各節提供LUN對應非ASA角色的多重路徑輸出範例。
+您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
 
 
 
-=== 非ASA組態
+=== 所有 SAN 陣列組態
+
+在 ASA 組態中、通往指定 LUN 的所有路徑均為作用中且最佳化。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
+
+.範例
+下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
+
+[listing]
+----
+# multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi   130:64   active ready running
+  |- 11:0:9:1    sdiy   8:288    active ready running
+  |- 11:0:10:1   sdml   69:464   active ready running
+  |- 11:0:11:1   sdpt   131:304  active ready running
+----
+
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+
+
+
+=== 非 ASA 組態
 
 對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
 
@@ -268,7 +289,7 @@ NOTE: 若要設定Oracle Linux 8.2 RedHat Enterprise核心（RHCK）、請使用
 
 
 
-== 已知問題與限制
+== 已知問題
 
 Oracle Linux 8.2沒有已知問題。
 
