@@ -19,63 +19,26 @@ summary: Solaris Host Utilities 6.2版本資訊
 
 
 [role="lead"]
-發行說明文件包含 Solaris 主機公用程式 6.2 的最新資訊、包括已知問題、限制、設定及管理 ONTAP 儲存系統的更新。
+發行說明說明描述了新的功能和增強功能、目前版本中修正的問題、已知問題和限制、以及與使用 ONTAP 儲存系統設定和管理特定 Solaris 主機相關的重要注意事項。
 
-當有關於使用 Solaris 主機公用程式的新資訊可用時、會更新版本說明文件。
-
-
-
-== 關於Solaris Host Utilities 6.2版本
-
-Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。
-
-主要主機公用程式環境包括：
-
-* 原生作業系統搭配MPxIO、搭配使用SPARC處理器或x8/64處理器的系統光纖通道（FC）或iSCSI傳輸協定。
-* 在使用SPARC處理器的系統上搭配FC或iSCSI傳輸協定的Veritas動態多重路徑（DMP）、以及在使用x8/64處理器的系統上搭配iSCSI傳輸協定。
-
-
-Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從下載壓縮檔案及文件 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^]。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP
-
-
-
-== Solaris Host Utilities 6.2增強功能
-
-發行說明會在產品版本之間更新、以取得新資訊。
-
-Solaris Unified Host Utilities 6.2繼續支援下列版本的Solaris：
-
-* Solaris 11.x系列
-* Solaris 10.x系列
-
+如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=85803;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
 
 
 
 == 已知問題與限制
 
-若要有效率地使用主機公用程式、您應該注意、特定功能的已知問題（例如網路）或主機公用程式不支援的功能（例如特定版本的作業系統）可能會影響效能。
+您應該瞭解下列已知問題和限制、這些問題和限制可能會影響特定主機的效能。
 
 [cols="3"]
 |===
 | 錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1385189["1385189."^] | 在Huk 6.2中需要進行Solaris 11.4 FC驅動程式連結變更 | Solaris 11.4與Huk建議。FC驅動程式繫結會從"sSD（4d）"變更為"sd（4d）"。如Oracle所述、將您在「sSD.conf」中的組態移至「s d.conf」（文件ID 2595926.1）。新安裝的Solaris 11.4系統會有不同的行為、並從11.3版或更低版本升級。 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1385189["1385189."^] | 在Huk 6.2中需要進行Solaris 11.4 FC驅動程式連結變更 | Solaris 11.4 與 Huk 建議：
+FC 驅動程式繫結已從變更 `ssd(4D)` 至 `sd(4D)`。移動您在中的組態 `ssd.conf` 至 `sd.conf` 如 Oracle 所述（文件編號 2595926.1 ）。新安裝的 Solaris 11.4 系統和從 11.3 或更低版本升級的系統的行為會有所不同。 
 |===
 link:https://mysupport.netapp.com/site/["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：
 
-* FCP一般：顯示與特定主機無關的FC和HBA錯誤
-* FCP - Solaris
-
-
-.相關資訊
-*設定及管理ONTAP 您的資料不一樣儲存系統*
-
-* 。 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["《軟體設定指南》ONTAP"^] 適用於ONTAP 您的版本的
-* 。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["《SAN管理指南》ONTAP"^] 適用於ONTAP 您的版本的
-* 。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明 ONTAP"^] 適用於ONTAP 您的版本的
-* link:https://imt.netapp.com/matrix/#welcome["NetApp 互通性對照表"^]
-* link:https://hwu.netapp.com/["Hardware Universe"^] （前身為《系統組態指南》）
-* link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["支援的Fibre Channel SAN拓撲"^]
-* link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61343["設定主機的主機公用程式"^]
+* FCP 一般：顯示與特定主機無關的 FC 和主機匯流排介面卡（ HBA ）錯誤。
+* FCP Solaris
 

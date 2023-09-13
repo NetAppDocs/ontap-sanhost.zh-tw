@@ -4,7 +4,7 @@ permalink: hu_solaris_62.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用 
 ---
-= Solaris Host Utilities 6.2
+= 安裝 Solaris Host Utilities 6.2
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -21,47 +21,30 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 [role="lead"]
 Solaris 統一化主機公用程式可協助您管理附加至 Solaris 主機的 NetApp ONTAP 儲存設備。
 
-
-
-== SAN工具套件
-
-Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
-
-.範例
-在以下範例中、「左LUN show」命令會傳回LUN資訊。
-
-[listing]
-----
-#sanlun lun show all
-controller(7mode)/ device host lun
-vserver(Cmode)                     lun-pathname       filename                                       adapter protocol size mode
------------------------------------------------------------------------------------------------------------------------------------
-data_vserver                     /vol/vol1/lun1     /dev/rdsk/c0t600A098038304437522B4E694E49792Dd0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol0/lun2     /dev/rdsk/c0t600A098038304437522B4E694E497938d0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol2/lun3     /dev/rdsk/c0t600A098038304437522B4E694E497939d0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A098038304437522B4E694E497941d0s2 qlc3   FCP       10g cDOT
-
-
-----
-
-NOTE: 此工具套件適用於Host Utilities的所有組態和傳輸協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。
-
-
-
-== 安裝 Solaris 主機公用程式
-
-Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。主要主機公用程式環境包括：
+Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。主要的主機公用程式環境包括：
 
 * 原生作業系統搭配MPxIO、搭配使用SPARC處理器或x8/64處理器的系統光纖通道（FC）或iSCSI傳輸協定。
-* 在使用SPARC處理器的系統上搭配FC或iSCSI傳輸協定的Veritas動態多重路徑（DMP）、以及在使用x8/64處理器的系統上搭配iSCSI傳輸協定。
+* Veritas Dynamic Multipathing （ DMP ）搭配使用 SPARC 處理器的系統上的 FC 或 iSCSI 傳輸協定、或是使用 x86_64 處理器的系統上的 iSCSI 傳輸協定。
 
 
+Solaris Unified Host Utilities 6.2繼續支援下列版本的Solaris：
 
-NOTE: NetApp Solaris主機公用程式軟體套件可在上取得 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 以壓縮檔案格式提供給處理器。您可以從Support網站下載適用於您環境的Host Utilities軟體套件。
+* Solaris 11.x系列
+* Solaris 10.x系列
+
+
+.您需要的產品
+* 若要確保操作可靠、請確認您的整個 iSCSI 、 FC 或 FCoE 組態均受到支援。
+
+
+您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 以驗證組態。
+
+
+NOTE: NetApp Solaris主機公用程式軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^] 為處理器提供壓縮檔案格式。您可以從Support網站下載適用於您環境的Host Utilities軟體套件。
 
 .步驟
 . 以root身分登入主機。
-. 從下載內含主機公用程式的壓縮檔案複本 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 到主機上的目錄。
+. 從下載內含主機公用程式的壓縮檔案複本 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^] 到主機上的目錄。
 +
 在準備本文件時、壓縮檔案稱為：
 
@@ -71,7 +54,7 @@ NOTE: NetApp Solaris主機公用程式軟體套件可在上取得 link:https://m
 
 
 . 前往內含下載內容的目錄。
-. 使用gunzip命令解壓縮檔案
+. 使用解壓縮檔案 `gunzip` 命令：
 +
 gunzip NetApp_solution_host_utilitutions_6_2_SPARC.tar.gz
 
@@ -111,7 +94,7 @@ drwxr-xr-x   3 root     sys            4 Jul 22  2019 ..
 -r-xr-xr-x   1 root     sys        12266 Sep 13  2017 host_config.1
 -r-xr-xr-x   1 root     sys         9044 Sep 13  2017 sanlun.1
 ----
-. 完成後、您必須使用「/opt/ntap/SANToolkit / bin/host_config」命令來設定環境的主機參數：
+. 完成後、請使用設定環境的主機參數 `/opt/NTAP/SANToolkit/bin/host_config` 命令：
 +
 ** MPxIO
 ** Veritas DMP
@@ -122,3 +105,28 @@ drwxr-xr-x   3 root     sys            4 Jul 22  2019 ..
 《Anlun版本》
 
 
+
+
+
+== SAN工具套件
+
+Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供 `sanlun` 可協助您管理 LUN 和主機匯流排介面卡（ HBA ）的公用程式。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
+
+.範例
+在以下範例中、「左LUN show」命令會傳回LUN資訊。
+
+[listing]
+----
+#sanlun lun show all
+controller(7mode)/ device host lun
+vserver(Cmode)                     lun-pathname       filename                                       adapter protocol size mode
+-----------------------------------------------------------------------------------------------------------------------------------
+data_vserver                     /vol/vol1/lun1     /dev/rdsk/c0t600A098038304437522B4E694E49792Dd0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol0/lun2     /dev/rdsk/c0t600A098038304437522B4E694E497938d0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol2/lun3     /dev/rdsk/c0t600A098038304437522B4E694E497939d0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A098038304437522B4E694E497941d0s2 qlc3   FCP       10g cDOT
+
+
+----
+
+NOTE: 此工具組適用於所有主機公用程式組態和通訊協定。因此、某些工具組內容可能會套用至某個組態、但不會套用至另一個組態。使用未使用的元件不會影響您的系統效能。

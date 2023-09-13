@@ -1210,25 +1210,17 @@
   <block id="62d54f77039c15fe0a65691e9ff3f4c2" category="summary">說明如何搭配ONTAP 使用CentOS 7.5搭配使用</block>
   <block id="253f9a8620f20f372c2bbdf28eec14f4" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="de6f4b59a170663afff37b664d89bb37" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="6a2c85eca0b58ae9120cd4aa738a6949" category="paragraph">對於CentOS 7.5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.5是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
-  <block id="13875804930272cb7e31a51605d09c65" category="doc">Solaris Host Utilities 6.2</block>
-  <block id="8f3b9d0cc42d20c0623a5f0990c4181e" category="paragraph">Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</block>
-  <block id="03b4fa4e47ce5a6711a2ad9d886d63b4" category="paragraph">Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。主要主機公用程式環境包括：</block>
   <block id="4dae86ccd354e19dab3d36ea3289ddf9" category="list-text">原生作業系統搭配MPxIO、搭配使用SPARC處理器或x8/64處理器的系統光纖通道（FC）或iSCSI傳輸協定。</block>
-  <block id="bcbce11571c35a16833e1cad61fe922b" category="list-text">在使用SPARC處理器的系統上搭配FC或iSCSI傳輸協定的Veritas動態多重路徑（DMP）、以及在使用x8/64處理器的系統上搭配iSCSI傳輸協定。</block>
-  <block id="62f9b54c9ec5d04b22835a93b9aa1fa6" category="admonition">NetApp Solaris主機公用程式軟體套件可在上取得 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 以壓縮檔案格式提供給處理器。您可以從Support網站下載適用於您環境的Host Utilities軟體套件。</block>
   <block id="fea59de608f0d3ad102d8ee095187049" category="list-text">以root身分登入主機。</block>
-  <block id="9b81dac243940d3f9c3490234e86754f" category="list-text">從下載內含主機公用程式的壓縮檔案複本 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 到主機上的目錄。</block>
   <block id="b2d33f0e0e850a2d778dfce3637f0b06" category="paragraph">在準備本文件時、壓縮檔案稱為：</block>
   <block id="9957056b4d6f0788b84485f7f408d79d" category="list-text">SPARC CPU：「NetApp_solaris主機公用程式_6_2_SPARC.tar.gz」</block>
   <block id="8b2e8dcabd2803cfffe6d347e740d632" category="list-text">x86/x64 CPU：「netapp_solaris主機公用程式_6_2_amd.tar.gz」</block>
-  <block id="4b9b8c4fa4d1eb96283d16c11c709e8e" category="list-text">使用gunzip命令解壓縮檔案</block>
   <block id="1f2423b6dd7c87600c006dd4fe70055e" category="paragraph">gunzip NetApp_solution_host_utilitutions_6_2_SPARC.tar.gz</block>
   <block id="d35a857c138589666873eef37b70bd9c" category="paragraph">"# tar xvf netapp_solaris主機公用程式_6_2_SPARC.tar</block>
   <block id="963069b30b9e059f13bf53eb0a7cfbfe" category="list-text">將您從tar檔案擷取的套件新增至主機。您可以使用「pkgadd」命令來執行此作業。</block>
   <block id="0c91635f19857d5fe1642e137ecfe86f" category="paragraph">這些套件會新增至「/opt/NTAP/SANToolkit / bin」目錄。以下範例使用「pkgadd（軟體組新增））指令來安裝Solaris安裝套件：</block>
   <block id="e0da89c5b7248a8324e10a5d7c6af64f" category="paragraph">按#鍵</block>
   <block id="230a086a88f004fde1f1d6cfcc3f4f87" category="list-text">使用「pkginfo」命令或「ls - al」命令、確認工具組已成功安裝。</block>
-  <block id="43993f1d866abd26f6850284c50866b3" category="list-text">完成後、您必須使用「/opt/ntap/SANToolkit / bin/host_config」命令來設定環境的主機參數：</block>
   <block id="cdfd79e32ab8a821a843e89d91bdcd8d" category="list-text">MPxIO</block>
   <block id="8ae046464e598978903e62c0c706373c" category="list-text">Veritas DMP</block>
   <block id="a335fa6e5bef06439b229f8adabc7dfe" category="section-title">列出從特定SVM/中對應至主機的所有LUN、列出對應至主機之特定LUN的所有屬性</block>
@@ -1980,7 +1972,6 @@
   <block id="6c670cc4f12f5e52c8291d35c3932068" category="admonition">如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 <block ref="454ffc53fb26d285d765b8fbe8c25a5d" category="inline-link-macro-rx"></block>。</block>
   <block id="3401add29441e486a87e080c062d2319" category="admonition">本文提及的任何主機公用程式或Linux主機公用程式、都是指Linux Unified Host Utilities。</block>
   <block id="df9acd1db1992fc307ada4549840fbbd" category="admonition">NetApp會繼續與Host Utilities合作、在初次發行後新增功能支援。如需支援功能及新增功能的最新資訊、請參閱 <block ref="454ffc53fb26d285d765b8fbe8c25a5d" category="inline-link-macro-rx"></block>。</block>
-  <block id="4cdb57a14ff056cba74062a20d5038e4" category="paragraph">發行說明會在產品版本之間更新、以取得新資訊。</block>
   <block id="9085058ee40c6aea4b4062d815f10796" category="list-text">SUSE Linux Enterprise Server 15系列</block>
   <block id="9644255060b40cdfcd8ea1615fe043fa" category="list-text">Oracle VM 3.2系列</block>
   <block id="5658a750ca0f24bc92094b686b6258d0" category="list-text">Oracle Linux 6和7系列</block>
@@ -2119,21 +2110,14 @@
   <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">建立HP-UX LVM會傳送超過1MB區塊大小的I/O</block>
   <block id="24cc4783034cf857703516141d8cc8ad" category="summary">Solaris Host Utilities 6.2版本資訊</block>
   <block id="07cb401e35e41c1ea4ba568ba75b0261" category="doc">Solaris Host Utilities 6.2版本說明</block>
-  <block id="83abaefac7375849eeb586ba637a2d22" category="section-title">關於Solaris Host Utilities 6.2版本</block>
-  <block id="d64c00d8393bc6d797e2fd2eb038c7f6" category="paragraph">Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。</block>
-  <block id="5a5633c19126b79400042b56b8dcdf4a" category="paragraph">主要主機公用程式環境包括：</block>
   <block id="767f7d3fe0b51453e22e1a752809bb31" category="paragraph">Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從下載壓縮檔案及文件 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block>。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP</block>
-  <block id="fb9cdd561144e3cb503f58cd43dd40d8" category="section-title">Solaris Host Utilities 6.2增強功能</block>
   <block id="52750b526bc4bf2e606bf8c9f028a7dd" category="paragraph">Solaris Unified Host Utilities 6.2繼續支援下列版本的Solaris：</block>
   <block id="238f1d3f645f5f1e553625afd4dc7fb0" category="list-text">Solaris 11.x系列</block>
   <block id="2b8110c907876ccbe7f01756c156e957" category="list-text">Solaris 10.x系列</block>
   <block id="d73ed314065ad31059ac799a62ab4558" category="inline-link-macro">1385189.</block>
   <block id="61699638eccafbea1975db4ccc09e234" category="cell"><block ref="61699638eccafbea1975db4ccc09e234" category="inline-link-macro-rx"></block></block>
   <block id="a86ba0de523aff5743fd70c108891432" category="cell">在Huk 6.2中需要進行Solaris 11.4 FC驅動程式連結變更</block>
-  <block id="675cd835d9ce32e06a4658192745eec8" category="cell">Solaris 11.4與Huk建議。FC驅動程式繫結會從"sSD（4d）"變更為"sd（4d）"。如Oracle所述、將您在「sSD.conf」中的組態移至「s d.conf」（文件ID 2595926.1）。新安裝的Solaris 11.4系統會有不同的行為、並從11.3版或更低版本升級。</block>
   <block id="00dc1b7be02ff53d2291441f5821cfa6" category="paragraph"><block ref="355b22d66d025f6de0a19431aae0f536" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：</block>
-  <block id="5efa35169834b61127329a24175ec34d" category="list-text">FCP一般：顯示與特定主機無關的FC和HBA錯誤</block>
-  <block id="f19106aa57c6316e97d751c16d547b41" category="list-text">FCP - Solaris</block>
   <block id="3c7828b2d190734834ce40e8064c1dac" category="list-text"><block ref="3c7828b2d190734834ce40e8064c1dac" category="inline-link-macro-rx"></block></block>
   <block id="2aa7ada2848fa0738fbfac1114907aa4" category="list-text"><block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> （前身為《系統組態指南》）</block>
   <block id="15b39b3049d63d1b09b2b4d4ddc115a4" category="list-text"><block ref="15b39b3049d63d1b09b2b4d4ddc115a4" category="inline-link-macro-rx"></block></block>
@@ -3263,7 +3247,6 @@
   <block id="d9a42f0deac96b98dbebf2e560cd7f5c" category="paragraph">在疑難排解任何 NVMe / FC 故障之前、請確認您執行的組態符合互通性對照表工具（ IMT ）規格。如果您仍面臨問題、請聯絡 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 進一步分類。</block>
   <block id="3a4b11723a00030809010d89daf7ebe2" category="paragraph">您可以將 ONTAP SAN 主機組態設定用於 Veritas Infoscale Storage Foundation 8 系列版本、適用於採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RHHCK 型）平台。</block>
   <block id="4a09c73fa303eedb14779e29343fb862" category="paragraph">您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 Citrix XenServer 7 系列作業系統版本設定 ONTAP SAN 主機組態設定。</block>
-  <block id="699ba12cc1ac820e7a663632b3cd6500" category="doc">Solaris 6.2 命令參考</block>
   <block id="0dfb15ad6e48119187bdf68b2798b551" category="paragraph">您可以使用 Solaris 主機公用程式 6.2 範例命令參照、使用主機公用程式工具進行端點對端點 NetApp 儲存組態驗證。</block>
   <block id="16739062558f135a2a67b7745e31e80d" category="paragraph">您可以擷取對應至主機的所有主機啟動器清單。</block>
   <block id="416012ceac18a0ac6c16db45563c9298" category="paragraph">您可以擷取對應至主機的所有 LUN 清單。</block>
@@ -3310,7 +3293,6 @@
   <block id="364c9974898b89845661be07a4997db2" category="paragraph">您可以擷取指定 SVM 目標 LIF WWPN 在主機上所注意到的 ONTAP LUN 清單。</block>
   <block id="e214de5ea0b1a8eb765598cf4b80a404" category="summary">您可以為 NVMe over Fabrics （ NVMe of ）傳輸協定設定特定 SAN 主機。</block>
   <block id="b27a9cd7f027cd14587ddd1e70ef495c" category="paragraph">HP-UX Unified Host Utilities 可協助您管理連接至 HP-UX 主機的 NetApp ONTAP 儲存設備。</block>
-  <block id="d69b9e8da5c44e4373c2c6a01013adc0" category="paragraph">Solaris 統一化主機公用程式可協助您管理附加至 Solaris 主機的 NetApp ONTAP 儲存設備。</block>
   <block id="b1199565b654a20a5acee144d68ae4cb" category="paragraph">採用 ONTAP 的 RHEL 9.0 的 NVMe 主機組態有下列已知問題：</block>
   <block id="b6351e6ceb9609fde0ff665d6ec8e551" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2022 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
   <block id="71451af1b87baede129f9469cc138039" category="paragraph">採用 ONTAP 的 RHEL 8.7 NVMe 主機組態有下列已知問題：</block>
@@ -3346,7 +3328,6 @@
   <block id="b91c8d257cb2ab1f821c4201c4d98d12" category="list-text">增加了 Broadcom Emulex 和 Marvell Qlogic 對 32GB FC 適配器的支持。</block>
   <block id="f6a506796011f5db21cf0cc405fcd88e" category="paragraph">版本資訊文件包含 HP-UX Host Utilities 6.0 版本的最新資訊、包括已知問題、限制、以及 ONTAP 儲存系統的設定與管理等相關更新。當有更多有關使用HP-UX主機公用程式的新資訊可供使用時、版本資訊文件即會更新。</block>
   <block id="a26aa7b42e8c5d7d2a6c295dc3421eb4" category="paragraph">正確的組態對於最佳效能和成功的容錯移轉非常重要。</block>
-  <block id="03b35db54926510f82d04231162aa4bc" category="paragraph">發行說明文件包含 Solaris 主機公用程式 6.2 的最新資訊、包括已知問題、限制、設定及管理 ONTAP 儲存系統的更新。</block>
   <block id="8b98a90c0f8d947a6126ce4314f1d147" category="paragraph">版本資訊文件包含 Windows Unified Host Utilities 7.2 和 7.1 版本的最新資訊、包括新功能、增強功能和已知問題的更新。當Windows主機公用程式的新使用資訊可供使用時、即會更新文件。</block>
   <block id="83c2a71fbf38a299fb12e6baeabd4505" category="paragraph">版本資訊文件包含有關 AIX 主機公用程式 6.1 版本的最新資訊、包括已知問題、限制、設定及管理 ONTAP 儲存系統的更新。</block>
   <block id="d183f649aa9dd1befe9fbbbebb9ce6f3" category="paragraph">在此範例中、我們將決定裝置的 WWID 並新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案：</block>
@@ -3356,7 +3337,6 @@
   <block id="36143cd0461c285a2eca19136916ef01" category="paragraph">對於 SUSE Linux Enterprise Server 15 SP5 、請使用<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 15 SP5 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
   <block id="dc0fc37f340703d773442e3a17af6d7a" category="paragraph">SUSE Linux Enterprise Server 15 SP5 作業系統經過編譯、可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="b25e39830857186678d47588cf34427b" category="paragraph">當使用 AIX 主機公用程式的新資訊可供使用時、版本資訊文件會更新。</block>
-  <block id="9371be445976145cde05ce83e4737332" category="paragraph">當有關於使用 Solaris 主機公用程式的新資訊可用時、會更新版本說明文件。</block>
   <block id="6927b4ed365e3f3d6b1daf74c1ed53f2" category="summary">適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 的 NVMe 主機組態</block>
   <block id="cef327de24717c0ad1a3577819070251" category="paragraph">含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server （ SLES ） 15 SP5 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="b1342a2fc9721ae555225a23c38646ee" category="paragraph">下列支援適用於 ONTAP 15 SP5 的 NVMe 主機組態：</block>
@@ -3423,5 +3403,24 @@
   <block id="fd0f0a6b64ca823427a2d1d6062c2102" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案<block ref="64a98ab9b930adade338f7896c6bf819" category="inline-link-rx"></block>。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。</block>
   <block id="e70f1869df403451e259e10988ea5f80" category="cell">當您設定時<block ref="08dba88199429f4a52c71e37581877d5" prefix=" " category="inline-code"></block> 多重路徑組態參數為「是」、則當全球識別碼（ WWID ）變更時、會停用對路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的 WWID 還原至多重路徑裝置的 WWID 為止。請參閱 <block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
   <block id="50f145df2b9dca1b51d6f136b1d6e045" category="section-title">非 ASA 組態</block>
-  <block id="bb515059c478efd249d74e65644dd114" category="paragraph">對於 Red Hat Enterprise Linux （ RHEL ） 8.2<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.2 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
+  <block id="b7c9554b5a606b26e75cd73af53a131c" category="doc">Solaris Host Utilities 6.2 命令參照</block>
+  <block id="07b43aa0311f66ee2b6a281a32883b1f" category="paragraph">發行說明說明描述了新的功能和增強功能、目前版本中修正的問題、已知問題和限制、以及與使用 ONTAP 儲存系統設定和管理特定 Solaris 主機相關的重要注意事項。</block>
+  <block id="d79264094c58a09021a5a2a80dcf4328" category="paragraph">您應該瞭解下列已知問題和限制、這些問題和限制可能會影響特定主機的效能。</block>
+  <block id="7f31ebe6735efb5b2186c87408e0e0f8" category="cell">Solaris 11.4 與 Huk 建議：
+FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" prefix=" " category="inline-code"></block> 至<block ref="200efcf5dbc2c08d7c76deba0c7ecda8" prefix=" " category="inline-code"></block>。移動您在中的組態<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> 至<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> 如 Oracle 所述（文件編號 2595926.1 ）。新安裝的 Solaris 11.4 系統和從 11.3 或更低版本升級的系統的行為會有所不同。</block>
+  <block id="eb5d1a08cb5aa5e6c62dcec6f972d7ef" category="list-text">FCP 一般：顯示與特定主機無關的 FC 和主機匯流排介面卡（ HBA ）錯誤。</block>
+  <block id="f6c2fd3ebbf068920b8c4d046c994e6a" category="list-text">FCP Solaris</block>
+  <block id="82481f4407d05dc717ce43c2341e3316" category="paragraph">對於 Red Hat Enterprise Linux （ RHEL ） 8.2<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.2 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
+  <block id="aba18b63e77de37f7f9427743a3354c1" category="doc">安裝 Solaris Host Utilities 6.2</block>
+  <block id="d29f4dfa68674c60d4b487fde42cc6bf" category="paragraph">Solaris 統一化主機公用程式可協助您管理附加至 Solaris 主機的 NetApp ONTAP 儲存設備。</block>
+  <block id="761ad741349283b6ac92fef56adf129d" category="paragraph">Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。主要的主機公用程式環境包括：</block>
+  <block id="b2996e4a9c3c0535f864240f52e9bcdc" category="list-text">Veritas Dynamic Multipathing （ DMP ）搭配使用 SPARC 處理器的系統上的 FC 或 iSCSI 傳輸協定、或是使用 x86_64 處理器的系統上的 iSCSI 傳輸協定。</block>
+  <block id="5eb7c2756a1b24db0e94e7d1bb2520a1" category="list-text">若要確保操作可靠、請確認您的整個 iSCSI 、 FC 或 FCoE 組態均受到支援。</block>
+  <block id="9e1ea4643210fa4abca0c804c4fe3eec" category="paragraph">您可以使用 <block ref="1c6d071c1749743e8ebf715f1c64c2a1" category="inline-link-macro-rx"></block> 以驗證組態。</block>
+  <block id="94eac4a2ae6f7d86814fd4752877750e" category="admonition">NetApp Solaris主機公用程式軟體套件可在上取得 <block ref="71858c0235496b8ba65e5e8097fdda2a" category="inline-link-macro-rx"></block> 為處理器提供壓縮檔案格式。您可以從Support網站下載適用於您環境的Host Utilities軟體套件。</block>
+  <block id="43202c148f53a3c518890e18ae6998e4" category="list-text">從下載內含主機公用程式的壓縮檔案複本 <block ref="71858c0235496b8ba65e5e8097fdda2a" category="inline-link-macro-rx"></block> 到主機上的目錄。</block>
+  <block id="f01e00e50e3260a96149df0279bca6c7" category="list-text">使用解壓縮檔案<block ref="28c378002cbdc25e8dbf07ffe605f6ac" prefix=" " category="inline-code"></block> 命令：</block>
+  <block id="07e168dcc54f84ac7caf50498cebc4e7" category="list-text">完成後、請使用設定環境的主機參數<block ref="ed10a966011bfd951bc8388936b92fcc" prefix=" " category="inline-code"></block> 命令：</block>
+  <block id="16337c2b0ad3e64aaeb3714d78256deb" category="paragraph">Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 可協助您管理 LUN 和主機匯流排介面卡（ HBA ）的公用程式。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
+  <block id="faf8b03496c6795f0d8ad52fa186087e" category="admonition">此工具組適用於所有主機公用程式組態和通訊協定。因此、某些工具組內容可能會套用至某個組態、但不會套用至另一個組態。使用未使用的元件不會影響您的系統效能。</block>
 </blocks>
