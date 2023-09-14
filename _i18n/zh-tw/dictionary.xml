@@ -504,12 +504,9 @@
   <block id="8d1d1e53a5b8a67ed06ee929fcb68093" category="summary">說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用</block>
   <block id="fcd0175f66a20efc7cd1c6567f9a5578" category="paragraph">在以下範例中、「左LUN show」命令會傳回LUN資訊。</block>
   <block id="df806afef9dae5d43f20297c99fb14ca" category="admonition">此工具套件適用於Host Utilities的所有組態和傳輸協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。</block>
-  <block id="e6836ae92ec45bf946aba470c3ee98e5" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block>。下載檔案之後、您必須先解壓縮檔案、才能安裝。</block>
   <block id="83ea987146445e3a3ff4069f8c0095ac" category="list-text">登入您的主機。</block>
   <block id="dd0ef0f389a16b505e475797a7b752ac" category="list-text">從下載HP-UX主機公用程式檔案「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 到HP-UX主機。</block>
-  <block id="5eaf61000f0f261f2e4793f7e336889a" category="list-text">輸入下列命令、解壓縮「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」檔案：</block>
   <block id="93b6e09e96afb8006209af84f438ca2b" category="paragraph">gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`</block>
-  <block id="2a346f59c525e5728cec25bf9a377f2f" category="list-text">輸入下列命令來安裝軟體：</block>
   <block id="2d903390e509c4d2f6da1a4d0787b5b6" category="paragraph">swinstall /s /depot_path'</block>
   <block id="999cc5e84fec57fdd157e6fdacc5c96a" category="paragraph">「Depot_path」提供進廠檔案的路徑和名稱。</block>
   <block id="e661cef1335457aaa4b6047327cfb656" category="paragraph">「shwinstall」命令會執行安裝指令碼、以驗證HP-UX設定的狀態。如果您的系統符合要求、此指令碼會在「/opt/NetApp/santools/bin」目錄中安裝「sanlun」公用程式和診斷指令碼。</block>
@@ -2016,7 +2013,6 @@
   <block id="ebc6dd08dd10ab545441a995fcd41e3f" category="paragraph">CentOS 7.1沒有已知問題。</block>
   <block id="4391e4a69364ebb845d6562846716af4" category="doc">《AIX Host Utilities 6.1發行說明》</block>
   <block id="66c2d1ced882bffc99d6170e17a232ef" category="paragraph">如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 <block ref="7ce73c7ae176dd6b577d1c14b445f0cd" category="inline-link-macro-rx"></block>。</block>
-  <block id="40289338bc754c0009f5e9a173f6e09a" category="list-text">AIX主機公用程式6.1新增了對舊版AIX主機作業系統中發生的記憶體故障問題的支援。有了AIX Host Utilities 6.1、只有sanlun二進位檔已變更。MPIO和相關的ODM維持不變。</block>
   <block id="31e6a451d2627922bc41740af153d931" category="cell">BugID</block>
   <block id="ce88cf74aded8b7f41efd83d007f21f2" category="inline-link-macro">872113.</block>
   <block id="3a2f9996a60f471edd9edae7099e1d69" category="cell">「anlun LUN show–p」命令可能會在某些版本的AIX主機作業系統上造成記憶體故障</block>
@@ -2026,9 +2022,6 @@
   <block id="cad62af5cd7e448be659302e1eba73b4" category="cell">AIX Hu Sanlun報告HBA速度不正確</block>
   <block id="64c42781be8a2208b9ffdc60d28bc076" category="cell">執行「sanlun FCP show介面卡–v」命令時、會報告sanlun顯示錯誤HBA速度的執行個體。「ianlun FCP show介面卡–v」命令會顯示HBA卡資訊、例如介面卡的支援和協調速度。這似乎只是報告問題。若要識別實際速度、請使用「fcstat fcsx」命令。</block>
   <block id="31dade612c24301b89dad4a9747ed73e" category="list-text">FCP一般：顯示與特定主機無關的FC和HBA錯誤。</block>
-  <block id="b90eb3e688d069ada30157d4030b66f5" category="inline-link-macro">支援的Fibre Channel SAN拓撲</block>
-  <block id="a1976a5397f63f5caa13a0e86733d543" category="list-text"><block ref="a1976a5397f63f5caa13a0e86733d543" category="inline-link-macro-rx"></block></block>
-  <block id="c0965c2d259d63a3e2cbab60c837eaaa" category="inline-link-macro">設定主機的主機公用程式</block>
   <block id="2ee1fba4400a50245e66ef649b54d588" category="sidebar">安裝AIX Hu 6.1</block>
   <block id="b767aaa513fc8b09074940ccea06b212" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.6.</block>
   <block id="be200813e91d3b0e3285391fd2e20825" category="paragraph">若為Red Hat Enterprise Linux（RHEL）8．6、則必須存在/etc/multipath.conf檔案、但您不需要對該檔案進行特定變更。RHEL 8.6是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
@@ -2083,8 +2076,6 @@
   <block id="ce420cebd9b134c2ee33ae6a490c31ba" category="paragraph">如果您打算在同一部RHEL 8.2共存主機上同時執行NVMe和SCSI流量、建議ONTAP 您分別使用核心內建NVMe多重路徑來執行支援資源命名空間、ONTAP 並使用dm-multipath來執行支援資源的LUN。您也應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將「啟用外部」設定新增至/etc/multipath.conf、如下所示。</block>
   <block id="6507882f376544268e31289f84d4ee08" category="doc">HP-UX Host Utilities 6.0</block>
   <block id="0f03ad1ba726a38547e37a072e28a71f" category="paragraph">HP-UX Host Utilities是NetApp主機軟體、可在HP-UX主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</block>
-  <block id="272bb0cd3faf2ede65f3ff18b59a2e04" category="section-title">安裝HP-UX主機公用程式</block>
-  <block id="8d8dc06df50e7cce23a5ef1dbeed7796" category="paragraph">NetApp HP-UX主機公用程式軟體套件可在上取得 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 在壓縮檔案中。</block>
   <block id="c0a1ecccf7e7b3c14696d029be49ed25" category="paragraph">RHEL 8.6.沒有已知問題。</block>
   <block id="dfd9db293eabf1724158b5cc08e4dd12" category="cell">HP-UX 11.31 Host會在ASA 進行功能性設定時、間歇性回報路徑狀態不正確。</block>
   <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">建立HP-UX LVM會傳送超過1MB區塊大小的I/O</block>
@@ -2097,29 +2088,14 @@
   <block id="61699638eccafbea1975db4ccc09e234" category="cell"><block ref="61699638eccafbea1975db4ccc09e234" category="inline-link-macro-rx"></block></block>
   <block id="a86ba0de523aff5743fd70c108891432" category="cell">在Huk 6.2中需要進行Solaris 11.4 FC驅動程式連結變更</block>
   <block id="00dc1b7be02ff53d2291441f5821cfa6" category="paragraph"><block ref="355b22d66d025f6de0a19431aae0f536" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：</block>
-  <block id="3c7828b2d190734834ce40e8064c1dac" category="list-text"><block ref="3c7828b2d190734834ce40e8064c1dac" category="inline-link-macro-rx"></block></block>
-  <block id="2aa7ada2848fa0738fbfac1114907aa4" category="list-text"><block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> （前身為《系統組態指南》）</block>
-  <block id="c52f3cfca61100f76a974648c1c9a180" category="list-text"><block ref="c52f3cfca61100f76a974648c1c9a180" category="inline-link-macro-rx"></block></block>
   <block id="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="cell"><block ref="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="inline-link-macro-rx"></block></block>
   <block id="ba57f19b6b69755c2919b58188582a77" category="cell"><block ref="ba57f19b6b69755c2919b58188582a77" category="inline-link-macro-rx"></block></block>
   <block id="230a02b4afeea5b0d97c6a68a6530da3" category="summary">HPUX主機公用程式6.0版本資訊</block>
   <block id="e16c4360565a75371ee1b578b4c1ecca" category="doc">HP-UX Host Utilities 6.0版本說明</block>
-  <block id="02f8eb4aa3c5b1158e37fd1a9c849ca8" category="section-title">關於HP-UX Host Utilities 6.0版本</block>
-  <block id="18691c1295f4b1c26d2e8a9a5b67cfb9" category="paragraph">HP-UX主機公用程式支援多種HP-UX環境和多種傳輸協定。HP-UX主機公用程式支援下列環境：</block>
   <block id="8017a7ef798d9749aaed2e77fcebed98" category="list-text">原生MPIO</block>
   <block id="4aade2cc63558a9db8aa3c9a6c9639d3" category="list-text">Veritas動態多路徑（DMP）</block>
-  <block id="89d83ddcffe2153b6741a0e85d8548a2" category="admonition">為了立即清楚說明所使用的環境、本文檔有時會針對Veritas DMP環境指定「DMP」、針對HP-UX原生環境指定「MPIO」。在某些情況下、您使用的命令可能會因您使用的驅動程式而有所不同。在這些情況下、會同時指定環境和驅動程式類型。</block>
-  <block id="06cc7f9865c73b00a63121a0f4b0b752" category="section-title">HP-UX Host Utilities 6.0增強功能</block>
-  <block id="8812d57ba4da4daf9e7f43422d05e0a9" category="paragraph">發行說明會在產品版本之間更新、以取得新資訊。HP-UX Host Utilities 6.0繼續支援下列版本：</block>
   <block id="c7c7e4d1fc8a47f946a88914900694c3" category="list-text">HP-UX 11iv2</block>
   <block id="4feac8845db3a6b1f4e4ead570b6b3ad" category="list-text">HP-UX 11iv3</block>
-  <block id="7a1ba2e6d3a8198d5626f5d4e55d2293" category="paragraph">HP-UX 6.0版本沒有已知問題。</block>
-  <block id="5f5628241e19b1175cc4bdd9c398f5b7" category="inline-link-macro">適用於您的版本的《軟件安裝指南》ONTAP ONTAP</block>
-  <block id="3b0fe6f7d254eb266d210040bae111f5" category="list-text">。 <block ref="18f02cc408dbe2e94ae9ae202c089ef8" category="inline-link-macro-rx"></block></block>
-  <block id="29ecce87abc03f76c20d3fe564e26dbe" category="inline-link-macro">適用您版本的《SAN管理指南》ONTAP ONTAP</block>
-  <block id="2895d2b5c5ce91fe3e854c5054f19b62" category="list-text">。 <block ref="13c491dae34255ba8eee5d0f620c1f33" category="inline-link-macro-rx"></block></block>
-  <block id="13d4f4be1ab239d2cd36fb812fad5fc1" category="inline-link-macro">適用於您的版本的更新說明ONTAP ONTAP</block>
-  <block id="d7b5ae94e622a21572fe07c48e20da09" category="list-text">。 <block ref="2ba744c2429cbcfc53bdb0428522a053" category="inline-link-macro-rx"></block></block>
   <block id="60cb9c3f22cf2b74a314e1d7baf48bef" category="paragraph">CentOS 8.4沒有已知問題。</block>
   <block id="032f858f49a253e7a44870c242d0aa5b" category="sidebar">安裝HP-UX HU 6.0</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">版本資訊</block>
@@ -3197,7 +3173,6 @@
   <block id="e0e6cac7910fc81a1b1e43baf3884d5d" category="sidebar">使用 NVMe 設定主機</block>
   <block id="069c43556e66148f1f1eeabd7e9e7872" category="sidebar">AIX主機公用程式</block>
   <block id="2cac689df6b99782e23a143c9bfa2346" category="sidebar">HP-UX主機公用程式</block>
-  <block id="a4d5754af636a6318ee2ffcd80c52e27" category="sidebar">Linux統一化主機公用程式</block>
   <block id="8557e53cdfdd197b67dd8b986e602bf0" category="paragraph">您可以將 ONTAP SAN 主機組態設定用於 Veritas Infoscale Storage Foundation 7 系列版本、適用於採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RHHCK ）平台。</block>
   <block id="1bbb67631847a06bbd9b2e9dafec2134" category="section-title">安裝 Solaris 主機公用程式</block>
   <block id="3f20da7f97c0948dba60855f74d8feb3" category="paragraph">您可以在執行 SUSE Linux Enterprise Server 15 SP1 和 ONTAP 的主機上、設定 NVMe over Fibre Channel （ NVMe / FC ）作為目標。</block>
@@ -3268,7 +3243,6 @@
   <block id="e1cd7b537be6453e906049c111d7b248" category="paragraph">您可以依主機裝置檔案名稱擷取 ONTAP LUN 屬性清單。</block>
   <block id="364c9974898b89845661be07a4997db2" category="paragraph">您可以擷取指定 SVM 目標 LIF WWPN 在主機上所注意到的 ONTAP LUN 清單。</block>
   <block id="e214de5ea0b1a8eb765598cf4b80a404" category="summary">您可以為 NVMe over Fabrics （ NVMe of ）傳輸協定設定特定 SAN 主機。</block>
-  <block id="b27a9cd7f027cd14587ddd1e70ef495c" category="paragraph">HP-UX Unified Host Utilities 可協助您管理連接至 HP-UX 主機的 NetApp ONTAP 儲存設備。</block>
   <block id="b1199565b654a20a5acee144d68ae4cb" category="paragraph">採用 ONTAP 的 RHEL 9.0 的 NVMe 主機組態有下列已知問題：</block>
   <block id="b6351e6ceb9609fde0ff665d6ec8e551" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2022 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
   <block id="71451af1b87baede129f9469cc138039" category="paragraph">採用 ONTAP 的 RHEL 8.7 NVMe 主機組態有下列已知問題：</block>
@@ -3302,7 +3276,6 @@
   <block id="1e1ac2f92ca06b1f068f6aa6c61883c0" category="paragraph">版本資訊說明新功能與增強功能、已知問題與限制、以及使用 ONTAP 儲存系統設定及管理特定主機的重要注意事項。</block>
   <block id="2ad9563dae62baefb397a0b93e22f08a" category="list-text">在 Red Hat Enterprise Linux （ RHEL ） 6 和 RHEL 7 主機上、現在支援用於設定伺服器設定檔的調整套件。您可以使用<block ref="44559c6617511944fd997c63b107ee6b" prefix=" " category="inline-code"></block> 根據環境設定不同設定檔的命令。例如、您也可以將虛擬來賓設定檔作為來賓虛擬機器、並可將企業儲存設定檔用於使用企業儲存陣列 LUN 的組態。使用這些經過調整的套件、可改善 ONTAP 的處理量和延遲。</block>
   <block id="b91c8d257cb2ab1f821c4201c4d98d12" category="list-text">增加了 Broadcom Emulex 和 Marvell Qlogic 對 32GB FC 適配器的支持。</block>
-  <block id="f6a506796011f5db21cf0cc405fcd88e" category="paragraph">版本資訊文件包含 HP-UX Host Utilities 6.0 版本的最新資訊、包括已知問題、限制、以及 ONTAP 儲存系統的設定與管理等相關更新。當有更多有關使用HP-UX主機公用程式的新資訊可供使用時、版本資訊文件即會更新。</block>
   <block id="a26aa7b42e8c5d7d2a6c295dc3421eb4" category="paragraph">正確的組態對於最佳效能和成功的容錯移轉非常重要。</block>
   <block id="8b98a90c0f8d947a6126ce4314f1d147" category="paragraph">版本資訊文件包含 Windows Unified Host Utilities 7.2 和 7.1 版本的最新資訊、包括新功能、增強功能和已知問題的更新。當Windows主機公用程式的新使用資訊可供使用時、即會更新文件。</block>
   <block id="d183f649aa9dd1befe9fbbbebb9ce6f3" category="paragraph">在此範例中、我們將決定裝置的 WWID 並新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案：</block>
@@ -3383,7 +3356,6 @@
   <block id="7f31ebe6735efb5b2186c87408e0e0f8" category="cell">Solaris 11.4 與 Huk 建議：
 FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" prefix=" " category="inline-code"></block> 至<block ref="200efcf5dbc2c08d7c76deba0c7ecda8" prefix=" " category="inline-code"></block>。移動您在中的組態<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> 至<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> 如 Oracle 所述（文件編號 2595926.1 ）。新安裝的 Solaris 11.4 系統和從 11.3 或更低版本升級的系統的行為會有所不同。</block>
   <block id="eb5d1a08cb5aa5e6c62dcec6f972d7ef" category="list-text">FCP 一般：顯示與特定主機無關的 FC 和主機匯流排介面卡（ HBA ）錯誤。</block>
-  <block id="f6c2fd3ebbf068920b8c4d046c994e6a" category="list-text">FCP Solaris</block>
   <block id="82481f4407d05dc717ce43c2341e3316" category="paragraph">對於 Red Hat Enterprise Linux （ RHEL ） 8.2<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.2 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
   <block id="aba18b63e77de37f7f9427743a3354c1" category="doc">安裝 Solaris Host Utilities 6.2</block>
   <block id="d29f4dfa68674c60d4b487fde42cc6bf" category="paragraph">Solaris 統一化主機公用程式可協助您管理附加至 Solaris 主機的 NetApp ONTAP 儲存設備。</block>
@@ -3401,14 +3373,10 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="92636cb01d99cfde50d65355f5255bf8" category="paragraph">您可以使用 AIX 主機公用程式 6.1 範例命令參照、使用主機公用程式工具來進行端點對端點 NetApp 儲存組態驗證。</block>
   <block id="5cbce7f0ea158500dcff175373e3cbcf" category="paragraph">版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 AIX 主機相關的重要注意事項。</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="section-title">新增功能</block>
-  <block id="1a82b73de761a6a59be95bd9d53da872" category="paragraph">AIX 主機公用程式 6.1 版本包含下列新功能與增強功能：</block>
-  <block id="13248c5a515080cbbc3bcbf8a6b0b086" category="list-text">FCP AIX</block>
   <block id="dc5f647593f94c8f6abf309012633912" category="doc">安裝 AIX 主機公用程式 6.1</block>
-  <block id="8967f1758ff8784982c669fc54020cd1" category="paragraph">支援下列通訊協定：</block>
   <block id="6b8f0029ce30f9b4d5fe0def33875511" category="list-text">FC</block>
   <block id="14eae6ee278098bfad4f8a10fd6c1195" category="list-text">FCoE</block>
   <block id="e4e1c13bb0b14f6cb7608cbecea948ef" category="list-text">iSCSI</block>
-  <block id="a44498fdad524a976114bdc646d860cb" category="paragraph">以下是支援的環境：</block>
   <block id="8c39f3d0a1e77e978ada064489abe290" category="list-text">AIX MPIO （原生作業系統）</block>
   <block id="c791b15d48a2be7d8c6a9c0b2badc362" category="list-text">PowerVM</block>
   <block id="f46d29974d2e1fa7b1fb4f55e009f7c2" category="paragraph">如需有關 PowerVM 的詳細資訊、請參閱 IBM PowerVM Live Partition Mobility Red Book 。</block>
@@ -3418,6 +3386,26 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7cfc2a0609811d433edc27220510bde6" category="list-text">前往<block ref="4885f2a79813769d8236c375fd40eeb7" category="inline-link-rx"></block> 並將包含主機公用程式的壓縮檔案下載到主機上的目錄。</block>
   <block id="f8d5aed6f51d94047f74a803aca5670b" category="list-text">解壓縮檔案並解壓縮 SAN 工具套件軟體套件。</block>
   <block id="d7acb320d7561ff28aba5271a650f74e" category="list-text">安裝 SAN 工具套件：</block>
-  <block id="62265376e9c5bff602dc413020e3dbf6" category="paragraph">AIX 主機公用程式是 NetApp 主機軟體、可在 IBM AIX 主機上提供命令列工具組。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 公用程式、可協助您管理 LUN 和 HBA 。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
-  <block id="61fea2801e02db33558a5fdb707a3986" category="admonition">此工具套件適用於Host Utilities的所有組態和傳輸協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。在AIX和PowerVM/VIOS OS版本上均支援SAN工具套件。</block>
+  <block id="d371e5ff58b865f46aa4c65beb73405c" category="paragraph">版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 HP-UX 主機相關的重要注意事項。</block>
+  <block id="3517bcea87b684bd347c95104562d327" category="paragraph">HP-UX Host Utilities 6.0繼續支援下列版本：</block>
+  <block id="a869215e627d2812c817b80130aa7824" category="paragraph">HP-UX 主機公用程式 6.0 版本沒有新功能、增強功能、已知限制或注意事項。</block>
+  <block id="f19106aa57c6316e97d751c16d547b41" category="list-text">FCP - Solaris</block>
+  <block id="7c0e66bb6addd5d99fc9457c74d9f1e5" category="summary">說明如何搭配 ONTAP 使用 HP-UX Unified Host Utilities 6.0</block>
+  <block id="6dea40462e0a36a918cc6ee609a75f0c" category="paragraph">HP-UX 主機公用程式可讓您將 HP-UX 主機連接至 NetApp 儲存設備。</block>
+  <block id="0a6cda4b6b1ee30ff2b1c2e7b1452c79" category="paragraph">HP-UX主機公用程式支援多種HP-UX環境和多種傳輸協定。以下是支援的環境：</block>
+  <block id="466488bfcdd5dd2620fa669f44a082d5" category="admonition">為了指出使用的環境、本文有時會針對 Veritas DMP 環境指定「 DMP 」、對於 HP-UX 原生環境則指定「 MPIO 」。在某些情況下、您使用的命令可能會因您使用的驅動程式而有所不同。在這些情況下、會同時指定環境和驅動程式類型。</block>
+  <block id="db0942d60692ceb816c153d46b6755a4" category="list-text">若要確保操作可靠、請確認您的整個 iSCSI 、 FC 或 FCoE 組態均受到支援。</block>
+  <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">關於這項工作</block>
+  <block id="4b9a66cc328c269b47204207ea997015" category="paragraph">NetApp HP-UX主機公用程式軟體套件可在上取得 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block> 在壓縮檔案中。下載檔案之後、您必須先解壓縮檔案、才能安裝。</block>
+  <block id="89b1d0829beb11befe8cef17a1a88149" category="list-text">登入您的主機。</block>
+  <block id="411f721c4d437c447636df81f300973a" category="list-text">解壓縮<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> 檔案：</block>
+  <block id="685e21144e7e399ef67e8a809cd52a1e" category="list-text">安裝軟體：</block>
+  <block id="9b9e3c5faedc6bf7e489b0030b0ecd14" category="paragraph">AIX 主機公用程式 6.1 版本包含下列新功能與增強功能：</block>
+  <block id="9ce16fbccdcb870f5e9db74a7bb90874" category="list-text">AIX 主機公用程式 6.1 新增對較早版本的 AIX 主機作業系統中發生的記憶體故障問題的支援。有了AIX Host Utilities 6.1、只有sanlun二進位檔已變更。MPIO和相關的ODM維持不變。</block>
+  <block id="09244b95824d6e702b6eaab2034bdeec" category="list-text">FCP - AIX</block>
+  <block id="dd7ff764bddd19a335d884f8e17ede8d" category="paragraph">AIX 主機公用程式支援下列通訊協定：</block>
+  <block id="01cf7b9650b6a23329edafdd13452ac5" category="paragraph">AIX 主機公用程式支援下列環境：</block>
+  <block id="09c2778b4197dd6dcc821c85eaf45906" category="paragraph">AIX 主機公用程式是 NetApp 主機軟體、可在 IBM AIX 主機上提供命令列工具組。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
+  <block id="bdaec84e97380168b375e0f6cc8968bc" category="admonition">此工具組適用於所有主機公用程式組態和通訊協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。在AIX和PowerVM/VIOS OS版本上均支援SAN工具套件。</block>
+  <block id="237e46c87c95b6d72dceaf420c603d90" category="sidebar">Linux統一化主機公用程式</block>
 </blocks>

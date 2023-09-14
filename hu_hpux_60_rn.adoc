@@ -18,45 +18,12 @@ summary: HPUX主機公用程式6.0版本資訊
 :toc-position: content
 
 
-版本資訊文件包含 HP-UX Host Utilities 6.0 版本的最新資訊、包括已知問題、限制、以及 ONTAP 儲存系統的設定與管理等相關更新。當有更多有關使用HP-UX主機公用程式的新資訊可供使用時、版本資訊文件即會更新。
+版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 HP-UX 主機相關的重要注意事項。
 
-
-
-== 關於HP-UX Host Utilities 6.0版本
-
-HP-UX主機公用程式支援多種HP-UX環境和多種傳輸協定。HP-UX主機公用程式支援下列環境：
-
-* 原生MPIO
-* Veritas動態多路徑（DMP）
-
-
-
-NOTE: 為了立即清楚說明所使用的環境、本文檔有時會針對Veritas DMP環境指定「DMP」、針對HP-UX原生環境指定「MPIO」。在某些情況下、您使用的命令可能會因您使用的驅動程式而有所不同。在這些情況下、會同時指定環境和驅動程式類型。
-
-
-
-== HP-UX Host Utilities 6.0增強功能
-
-發行說明會在產品版本之間更新、以取得新資訊。HP-UX Host Utilities 6.0繼續支援下列版本：
+HP-UX Host Utilities 6.0繼續支援下列版本：
 
 * HP-UX 11iv2
 * HP-UX 11iv3
 
 
-
-
-== 已知問題與限制
-
-HP-UX 6.0版本沒有已知問題。
-
-.相關資訊
-*設定及管理ONTAP 您的資料不一樣儲存系統*
-
-* 。 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["適用於您的版本的《軟件安裝指南》ONTAP ONTAP"^]
-* 。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["適用您版本的《SAN管理指南》ONTAP ONTAP"^]
-* 。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["適用於您的版本的更新說明ONTAP ONTAP"^]
-* link:https://imt.netapp.com/matrix/#welcome["NetApp 互通性對照表"^]
-* link:https://hwu.netapp.com/["Hardware Universe"^] （前身為《系統組態指南》）
-* link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["支援的Fibre Channel SAN拓撲"]
-* link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61343["設定主機的主機公用程式"^]
-
+HP-UX 主機公用程式 6.0 版本沒有新功能、增強功能、已知限制或注意事項。

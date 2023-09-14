@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_hpux_60.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用 
+summary: 說明如何搭配 ONTAP 使用 HP-UX Unified Host Utilities 6.0 
 ---
 = HP-UX Host Utilities 6.0
 :toc: macro
@@ -19,7 +19,51 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 
 
 [role="lead"]
-HP-UX Unified Host Utilities 可協助您管理連接至 HP-UX 主機的 NetApp ONTAP 儲存設備。
+HP-UX 主機公用程式可讓您將 HP-UX 主機連接至 NetApp 儲存設備。
+
+HP-UX主機公用程式支援多種HP-UX環境和多種傳輸協定。以下是支援的環境：
+
+* 原生MPIO
+* Veritas動態多路徑（DMP）
+
+
+
+NOTE: 為了指出使用的環境、本文有時會針對 Veritas DMP 環境指定「 DMP 」、對於 HP-UX 原生環境則指定「 MPIO 」。在某些情況下、您使用的命令可能會因您使用的驅動程式而有所不同。在這些情況下、會同時指定環境和驅動程式類型。
+
+.您需要的產品
+* 若要確保操作可靠、請確認您的整個 iSCSI 、 FC 或 FCoE 組態均受到支援。
+
+
+您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 以驗證組態。
+
+.關於這項工作
+NetApp HP-UX主機公用程式軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["NetApp 支援網站"^] 在壓縮檔案中。下載檔案之後、您必須先解壓縮檔案、才能安裝。
+
+.步驟
+. 登入您的主機。
+. 從下載HP-UX主機公用程式檔案「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 到HP-UX主機。
+. 解壓縮 `netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` 檔案：
++
+gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`
+
++
+系統會將擷取的軟體放在您解壓縮儲存庫檔案的目錄中。
+
+. 安裝軟體：
++
+swinstall /s /depot_path'
+
++
+「Depot_path」提供進廠檔案的路徑和名稱。
+
++
+「shwinstall」命令會執行安裝指令碼、以驗證HP-UX設定的狀態。如果您的系統符合要求、此指令碼會在「/opt/NetApp/santools/bin」目錄中安裝「sanlun」公用程式和診斷指令碼。
+
+. 驗證安裝：
++
+《Anlun版本》
+
+
 
 
 
@@ -45,37 +89,3 @@ sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0 
 ----
 
 NOTE: 此工具套件適用於Host Utilities的所有組態和傳輸協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。
-
-
-
-== 安裝HP-UX主機公用程式
-
-NetApp HP-UX主機公用程式軟體套件可在上取得 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 在壓縮檔案中。
-
-您可以從下載包含主機公用程式軟體套件的壓縮檔案 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^]。下載檔案之後、您必須先解壓縮檔案、才能安裝。
-
-.步驟
-. 登入您的主機。
-. 從下載HP-UX主機公用程式檔案「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 到HP-UX主機。
-. 輸入下列命令、解壓縮「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」檔案：
-+
-gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`
-
-+
-系統會將擷取的軟體放在您解壓縮儲存庫檔案的目錄中。
-
-. 輸入下列命令來安裝軟體：
-+
-swinstall /s /depot_path'
-
-+
-「Depot_path」提供進廠檔案的路徑和名稱。
-
-+
-「shwinstall」命令會執行安裝指令碼、以驗證HP-UX設定的狀態。如果您的系統符合要求、此指令碼會在「/opt/NetApp/santools/bin」目錄中安裝「sanlun」公用程式和診斷指令碼。
-
-. 驗證安裝：
-+
-《Anlun版本》
-
-

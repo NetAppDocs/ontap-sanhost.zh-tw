@@ -40,5 +40,5 @@ FC 驅動程式繫結已從變更 `ssd(4D)` 至 `sd(4D)`。移動您在中的組
 link:https://mysupport.netapp.com/site/["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：
 
 * FCP 一般：顯示與特定主機無關的 FC 和主機匯流排介面卡（ HBA ）錯誤。
-* FCP Solaris
+* FCP - Solaris
 
