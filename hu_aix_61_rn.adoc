@@ -19,38 +19,22 @@ summary: AIX主機公用程式6.1版本資訊
 
 
 [role="lead"]
-版本資訊文件包含有關 AIX 主機公用程式 6.1 版本的最新資訊、包括已知問題、限制、設定及管理 ONTAP 儲存系統的更新。
+版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 AIX 主機相關的重要注意事項。
 
-當使用 AIX 主機公用程式的新資訊可供使用時、版本資訊文件會更新。
-
-
-
-== 關於AIX Host Utilities 6.1版本
-
-AIX主機公用程式可讓您將AIX主機連線至NetApp儲存設備。AIX主機公用程式支援多種環境、以及FC、FCoE和iSCSI傳輸協定。支援的環境包括AIX MPIO（原生作業系統）和PowerVM。
-
-[NOTE]
-====
 如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=85803;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
 
-如需更多有關PowerVM功能的資訊、請參閱IBM PowerVM Live分區行動性Red Book（英文）。
-
-====
-Host Utilities軟體會以單一壓縮檔案的形式封裝。您可以從下載壓縮檔案及文件 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^]。《SAN主機組態》提供安裝及設定主機公用程式的指示、以配合您的環境和傳輸協定運作。ONTAP
 
 
-NOTE: 您必須啟用所有FC和FCoE啟動器的動態追蹤功能、才能進行叢集Data ONTAP 式的支援。
+== 新增功能
 
-
-
-== AIX Host Utilities 6.1增強功能
+AIX 主機公用程式 6.1 版本包含下列新功能與增強功能：
 
 * AIX主機公用程式6.1新增了對舊版AIX主機作業系統中發生的記憶體故障問題的支援。有了AIX Host Utilities 6.1、只有sanlun二進位檔已變更。MPIO和相關的ODM維持不變。
 
 
 
 
-== 已修正問題
+== 已在此版本中修正
 
 [cols="3"]
 |===
@@ -63,7 +47,7 @@ NOTE: 您必須啟用所有FC和FCoE啟動器的動態追蹤功能、才能進�
 
 == 已知問題與限制
 
-若要有效率地使用主機公用程式、您應該注意、特定功能的已知問題（例如網路）或主機公用程式不支援的功能（例如特定版本的作業系統）可能會影響效能。
+您應該瞭解下列已知問題和限制、這些問題和限制可能會影響特定主機的效能。
 
 [cols="3"]
 |===
@@ -72,20 +56,8 @@ NOTE: 您必須啟用所有FC和FCoE啟動器的動態追蹤功能、才能進�
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1069147["1069147"^] | AIX Hu Sanlun報告HBA速度不正確 | 執行「sanlun FCP show介面卡–v」命令時、會報告sanlun顯示錯誤HBA速度的執行個體。「ianlun FCP show介面卡–v」命令會顯示HBA卡資訊、例如介面卡的支援和協調速度。這似乎只是報告問題。若要識別實際速度、請使用「fcstat fcsx」命令。 
 |===
-link:https://mysupport.netapp.com/site/["NetApp線上錯誤"] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：
+link:https://mysupport.netapp.com/site/["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：
 
 * FCP一般：顯示與特定主機無關的FC和HBA錯誤。
-* FCP - AIX
-
-
-.相關資訊
-*設定及管理ONTAP 您的資料不一樣儲存系統*
-
-* 。 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["《軟體設定指南》ONTAP"^] 適用於ONTAP 您的版本的
-* 。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["《SAN管理指南》ONTAP"^] 適用於ONTAP 您的版本的
-* 。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明 ONTAP"^] 適用於ONTAP 您的版本的
-* link:https://imt.netapp.com/matrix/#welcome["NetApp 互通性對照表"^]
-* link:https://hwu.netapp.com/["Hardware Universe"^] （前身為《系統組態指南》）
-* link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["支援的Fibre Channel SAN拓撲"^]
-* link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61343["設定主機的主機公用程式"^]
+* FCP AIX
 
