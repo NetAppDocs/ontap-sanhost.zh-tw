@@ -235,7 +235,6 @@
   <block id="3773c551729981917923f39164f9b765" category="paragraph">RHEL 8.1主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行NVMe與SCSI流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="23573be9c7dbe4494659f6a90bc05b8a" category="list-text">NVMe - CLI套件中不提供原生NVMe / FC自動連線指令碼。您可以使用HBA廠商提供的外部自動連線指令碼。</block>
   <block id="1293e1b1ae6bd1e6a01f05541df9ce9f" category="list-text">預設會停用NVMe多重路徑。必須手動啟用。在RHEL 8.1上啟用NVMe/FC一節中提供步驟。</block>
-  <block id="0d683aa46dbb260c50031bd00c3f5e6f" category="list-text">預設不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。在RHEL 8.1上啟用NVMe/FC一節中提供步驟。</block>
   <block id="a0e093a126a5a6ecc36e81f130400025" category="section-title">在RHEL 8.1上啟用NVMe/FC</block>
   <block id="1f66f3a5a69d2cce3c5a6e2c4cee2b1a" category="list-text">在伺服器上安裝Red Hat Enterprise Linux 8.1。</block>
   <block id="091178f03b60ed6adc2d05dbdc73a202" category="list-text">安裝完成後、請確認您執行的是指定的Red Hat Enterprise Linux核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
@@ -451,7 +450,6 @@
   <block id="911e585c5684ba9f5c2b87af879f4a13" category="summary">如何針對RHEL 8.2設定NVMe/FC主機ONTAP 以使用功能</block>
   <block id="1e2ea077f54493b4670fb3cb63e05215" category="doc">適用於RHEL 8.2 ONTAP 的NVMe / FC主機組態（含功能）</block>
   <block id="63de1f29f867ea5090af94f0fe852e73" category="paragraph">適用於RHEL 8.2的NVMe/FC ONTAP 支援在支援於支援的版本9.6或更新版本上。RHEL 8.2主機透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援的組態和版本最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
-  <block id="c6669fd579995b65e30bee38f5da1a94" category="paragraph">對於RHEL 8.2、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。下一節「在RHEL 8.2上啟用NVMe/FC」提供了執行此作業的步驟。</block>
   <block id="fa9e69db74b196178518c663016c3abe" category="section-title">在RHEL 8.2上啟用NVMe/FC</block>
   <block id="797aea72ebbc1431192817ec206cafb4" category="list-text">在伺服器上安裝Red Hat Enterprise Linux 8.2 GA。</block>
   <block id="219a0c52523adf3bd5e0b81ca98a88a1" category="paragraph">如果您使用「yum update /升級」從RHEL 8.1升級至RHEL 8.2、您的「/etc/NVMe / host*」檔案可能會遺失。若要避免檔案遺失、請執行下列步驟：</block>
@@ -689,7 +687,6 @@
   <block id="5116d27ab3c67a2413a9afe024b82a38" category="summary">如何針對RHEL 8.3設定ONTAP NVMe / FC主機以使用功能</block>
   <block id="af59960049c1f2bff52a1746f8d7c912" category="doc">適用於RHEL 8.3的NVMe / FC主機組態（ONTAP 含功能）</block>
   <block id="dffe2b4e459efd8935c7c22b9718180f" category="paragraph">NVMe / FC支援ONTAP 於RHEL 8.3的版本9.6或更新版本。RHEL 8.3主機透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援的組態和版本最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
-  <block id="c7bc96121734b19b104696509562ddf4" category="paragraph">在RHEL 8.3中、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。下一節「在RHEL 8.3上啟用NVMe / FC」提供了執行此作業的步驟。</block>
   <block id="20ef4219f8282a156b90a588df2efcd7" category="section-title">在RHEL 8.3上啟用NVMe / FC</block>
   <block id="23cd3fb20334805933445d4e9e38f375" category="list-text">在伺服器上安裝Red Hat Enterprise Linux 8.3 GA。</block>
   <block id="a5846cf11c0c17a2d80c96a138e56624" category="paragraph">如果您使用「yum update /升級」從RHEL 8.2升級至RHEL 8.3、您的「/etc/NVMe / host*」檔案可能會遺失。若要避免檔案遺失、請執行下列步驟：</block>
@@ -851,10 +848,6 @@
   <block id="1124bd13d48eff16726e09da76f5e2b3" category="doc">適用於RHEL 8.4 ONTAP 的NVMe主機組態、含功能不全</block>
   <block id="c86cc04a60faa82236164aaa2faeb7fd" category="paragraph">採用ANA（非對稱命名空間存取）的RHEL 8.4支援NVMe over Fabric或NVMe（包括NVMe / FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.4和ONTAP 以RHEL為目標使用ANA的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。</block>
   <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">功能</block>
-  <block id="b7474f811791dcc10dc5c4c83cd68ff8" category="list-text">從RHEL 8.2開始、原生的「NVMe -光纖通道自動連線」指令碼會包含在原生的「NVMe - CLI」套件中。您可以仰賴這些原生的自動連線指令碼、而不必安裝外部廠商提供的外接式自動連線指令碼。</block>
-  <block id="1edfd9e2cff717b737df6889a024b9e7" category="list-text">從RHEL 8.2開始、原生的「udev"規則已納入「NVMe - CLI」套件、可針對NVMe多重路徑啟用循環配置資源負載平衡。您不需要再手動建立此規則（如RHEL 8.1所做）。</block>
-  <block id="230e651755d5387d3a7fc2291f07bfec" category="list-text">從RHEL 8.2開始、NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是客戶最常部署的主機組態。因此、對於SCSI、您可以像往常一樣為SCSI LUN設定「dm-multipaths」、以產生「mpath」裝置、而NVMe多重路徑則可用於在主機上設定NVMe多重路徑裝置。</block>
-  <block id="bd89f3a395591c17f8cb7f0aaea6cc0b" category="list-text">從RHEL 8.2開始、原生「NVMe - CLI」套件中的NetApp外掛程式也能顯示ONTAP 有關ONTAP 資訊的詳細資料、以及有關名稱空間的資訊。</block>
   <block id="509e52d19112a7c7188376d101160b4c" category="list-text">對於RHEL 8.4、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
   <block id="dec4201e999d968c719dedcc36a07302" category="inline-link">RHEL 8.4版本資訊</block>
   <block id="260a3557d08efe46355d18910743ceaa" category="list-text">RHEL 8.4上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱<block ref="bb64a8145ae27872979820bfd89ab97b" category="inline-link-rx"></block> 以取得詳細資料。</block>
@@ -1464,7 +1457,6 @@
   <block id="9ecac4a21a7fe6b2f71d8fdffa72bb05" category="list-text">SLES15 SP3支援NVMe/FC及其他傳輸。</block>
   <block id="79b488f9eaea99a6d3f6667b30d733e5" category="list-text">不支援NVMe的sanlun。因此、在SLES15 SP3上、不支援NVMe的Luhu。您可以改用原生NVMe CLI中隨附的NetApp外掛程式來取得相同的功能。這應該適用於所有NVMe傳輸。</block>
   <block id="fcfc5ba070a0675d68aab9fb9f245c43" category="list-text">NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是客戶最常部署的主機組態。因此、對於SCSI而言、您可以像往常一樣為SCSI LUN設定「dm-multipath"、以產生mpath裝置、而NVMe多重路徑則可用於在主機上設定NVMe多重路徑裝置。</block>
-  <block id="1733de5a596dfd8c9179b7f061fe9051" category="paragraph">沒有已知的限制。</block>
   <block id="443e8164d670e55b2388725ef1a0bda5" category="paragraph">核心內建NVMe多重路徑已在SLES主機（例如、SLES15 SP3）上預設啟用。因此、此處不需要其他設定。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得所支援組態的正確詳細資料。</block>
   <block id="83314818bb7c47b391616d0ff767a7de" category="section-title">NVMe啟動器套件</block>
   <block id="abc4d57007eba9b1d8b3f88edac97e68" category="list-text">確認您已在SLES15 SP3 MU主機上安裝必要的核心與NVMe CLI MU套件。</block>
@@ -2075,7 +2067,6 @@
   <block id="e7e8e011c8e0651dc3a6d06305d8279e" category="paragraph">RHEL 8.3沒有已知問題。</block>
   <block id="ce420cebd9b134c2ee33ae6a490c31ba" category="paragraph">如果您打算在同一部RHEL 8.2共存主機上同時執行NVMe和SCSI流量、建議ONTAP 您分別使用核心內建NVMe多重路徑來執行支援資源命名空間、ONTAP 並使用dm-multipath來執行支援資源的LUN。您也應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將「啟用外部」設定新增至/etc/multipath.conf、如下所示。</block>
   <block id="6507882f376544268e31289f84d4ee08" category="doc">HP-UX Host Utilities 6.0</block>
-  <block id="0f03ad1ba726a38547e37a072e28a71f" category="paragraph">HP-UX Host Utilities是NetApp主機軟體、可在HP-UX主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</block>
   <block id="c0a1ecccf7e7b3c14696d029be49ed25" category="paragraph">RHEL 8.6.沒有已知問題。</block>
   <block id="dfd9db293eabf1724158b5cc08e4dd12" category="cell">HP-UX 11.31 Host會在ASA 進行功能性設定時、間歇性回報路徑狀態不正確。</block>
   <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">建立HP-UX LVM會傳送超過1MB區塊大小的I/O</block>
@@ -3387,16 +3378,13 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f8d5aed6f51d94047f74a803aca5670b" category="list-text">解壓縮檔案並解壓縮 SAN 工具套件軟體套件。</block>
   <block id="d7acb320d7561ff28aba5271a650f74e" category="list-text">安裝 SAN 工具套件：</block>
   <block id="d371e5ff58b865f46aa4c65beb73405c" category="paragraph">版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 HP-UX 主機相關的重要注意事項。</block>
-  <block id="3517bcea87b684bd347c95104562d327" category="paragraph">HP-UX Host Utilities 6.0繼續支援下列版本：</block>
   <block id="a869215e627d2812c817b80130aa7824" category="paragraph">HP-UX 主機公用程式 6.0 版本沒有新功能、增強功能、已知限制或注意事項。</block>
   <block id="f19106aa57c6316e97d751c16d547b41" category="list-text">FCP - Solaris</block>
   <block id="7c0e66bb6addd5d99fc9457c74d9f1e5" category="summary">說明如何搭配 ONTAP 使用 HP-UX Unified Host Utilities 6.0</block>
   <block id="6dea40462e0a36a918cc6ee609a75f0c" category="paragraph">HP-UX 主機公用程式可讓您將 HP-UX 主機連接至 NetApp 儲存設備。</block>
-  <block id="0a6cda4b6b1ee30ff2b1c2e7b1452c79" category="paragraph">HP-UX主機公用程式支援多種HP-UX環境和多種傳輸協定。以下是支援的環境：</block>
   <block id="466488bfcdd5dd2620fa669f44a082d5" category="admonition">為了指出使用的環境、本文有時會針對 Veritas DMP 環境指定「 DMP 」、對於 HP-UX 原生環境則指定「 MPIO 」。在某些情況下、您使用的命令可能會因您使用的驅動程式而有所不同。在這些情況下、會同時指定環境和驅動程式類型。</block>
   <block id="db0942d60692ceb816c153d46b6755a4" category="list-text">若要確保操作可靠、請確認您的整個 iSCSI 、 FC 或 FCoE 組態均受到支援。</block>
   <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">關於這項工作</block>
-  <block id="4b9a66cc328c269b47204207ea997015" category="paragraph">NetApp HP-UX主機公用程式軟體套件可在上取得 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block> 在壓縮檔案中。下載檔案之後、您必須先解壓縮檔案、才能安裝。</block>
   <block id="89b1d0829beb11befe8cef17a1a88149" category="list-text">登入您的主機。</block>
   <block id="411f721c4d437c447636df81f300973a" category="list-text">解壓縮<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> 檔案：</block>
   <block id="685e21144e7e399ef67e8a809cd52a1e" category="list-text">安裝軟體：</block>
@@ -3407,5 +3395,14 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="01cf7b9650b6a23329edafdd13452ac5" category="paragraph">AIX 主機公用程式支援下列環境：</block>
   <block id="09c2778b4197dd6dcc821c85eaf45906" category="paragraph">AIX 主機公用程式是 NetApp 主機軟體、可在 IBM AIX 主機上提供命令列工具組。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
   <block id="bdaec84e97380168b375e0f6cc8968bc" category="admonition">此工具組適用於所有主機公用程式組態和通訊協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。在AIX和PowerVM/VIOS OS版本上均支援SAN工具套件。</block>
-  <block id="237e46c87c95b6d72dceaf420c603d90" category="sidebar">Linux統一化主機公用程式</block>
+  <block id="19d92ebb7cd64db05a92ba4d1f8c169a" category="paragraph">HP-UX Host Utilities 6.0 繼續支援下列版本：</block>
+  <block id="aa4b835c1f569c111bb0517546a161b9" category="list-text">對於RHEL 8.2、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="86d2f7a04841036a331f83b9d4f4c8b5" category="list-text">在RHEL 8.3中、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="6dc5c9d254e31b97a6a6ca189c137c1a" category="paragraph">HP-UX 主機公用程式支援多種通訊協定及下列環境：</block>
+  <block id="1d150b0bd2398e740a0840f9f22c0926" category="paragraph">NetApp HP-UX主機公用程式軟體套件可在上取得 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block> 在壓縮檔案中。下載檔案之後、您必須在安裝前將其解壓縮。</block>
+  <block id="f6548a8dc796bca1238a2023b7facffa" category="paragraph">HP-UX Host Utilities是NetApp主機軟體、可在HP-UX主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 可協助您管理 LUN 和主機匯流排介面卡的公用程式。（ HBA ）。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
+  <block id="a1b24514cc1570dc7f2dc2843ef4ced8" category="admonition">此工具組適用於所有主機公用程式組態和通訊協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。</block>
+  <block id="aa07c7ef7fefb6efdf9ed0ebebbac729" category="list-text">預設不會啟用循環配置資源負載平衡。
+您必須撰寫udev,才能啟用此功能。</block>
+  <block id="c8ef204b9a39e596096e42f5bdae91e9" category="sidebar">Linux 統一化主機公用程式</block>
 </blocks>

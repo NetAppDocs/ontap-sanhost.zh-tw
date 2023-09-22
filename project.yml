@@ -33,7 +33,7 @@ sidebar:
         url: "/hu_hpux_60.html"
       - title: 命令參考範例
         url: "/hu_hpux_60_cmd.html"
-    - title: Linux統一化主機公用程式
+    - title: Linux 統一化主機公用程式
       entries:
       - title: 版本資訊
         url: "/hu_luhu_71_rn.html"

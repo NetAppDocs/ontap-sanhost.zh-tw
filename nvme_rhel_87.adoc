@@ -40,6 +40,7 @@ RHEL 8.7除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。�
 
 * 在RHEL 8.7中、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。
 * RHEL 8.7上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱 link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.7_release_notes/index["RHEL 8.7版本說明"^] 以取得詳細資料。
+* 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 

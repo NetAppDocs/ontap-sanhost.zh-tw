@@ -18,10 +18,7 @@ summary: 如何針對RHEL 8.2設定NVMe/FC主機ONTAP 以使用功能
 :toc-position: content
 
 
-
-
-== 支援能力
-
+[role="lead"]
 適用於RHEL 8.2的NVMe/FC ONTAP 支援在支援於支援的版本9.6或更新版本上。RHEL 8.2主機透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。如需支援的組態和版本最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
 
 
@@ -31,7 +28,9 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 == 已知限制
 
-對於RHEL 8.2、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。下一節「在RHEL 8.2上啟用NVMe/FC」提供了執行此作業的步驟。
+* 對於RHEL 8.2、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。
+* 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
+
 
 
 

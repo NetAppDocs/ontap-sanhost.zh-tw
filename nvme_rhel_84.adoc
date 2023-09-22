@@ -19,10 +19,7 @@ summary: 如何針對RHEL 8.4設定NVMe主機ONTAP 以使用功能
 :toc-position: content
 
 
-
-
-== 支援能力
-
+[role="lead"]
 採用ANA（非對稱命名空間存取）的RHEL 8.4支援NVMe over Fabric或NVMe（包括NVMe / FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.4和ONTAP 以RHEL為目標使用ANA的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。
 
 
@@ -30,20 +27,11 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 
 
-== 功能
-
-* 從RHEL 8.2開始、原生的「NVMe -光纖通道自動連線」指令碼會包含在原生的「NVMe - CLI」套件中。您可以仰賴這些原生的自動連線指令碼、而不必安裝外部廠商提供的外接式自動連線指令碼。
-* 從RHEL 8.2開始、原生的「udev"規則已納入「NVMe - CLI」套件、可針對NVMe多重路徑啟用循環配置資源負載平衡。您不需要再手動建立此規則（如RHEL 8.1所做）。
-* 從RHEL 8.2開始、NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是客戶最常部署的主機組態。因此、對於SCSI、您可以像往常一樣為SCSI LUN設定「dm-multipaths」、以產生「mpath」裝置、而NVMe多重路徑則可用於在主機上設定NVMe多重路徑裝置。
-* 從RHEL 8.2開始、原生「NVMe - CLI」套件中的NetApp外掛程式也能顯示ONTAP 有關ONTAP 資訊的詳細資料、以及有關名稱空間的資訊。
-
-
-
-
 == 已知限制
 
 * 對於RHEL 8.4、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。
 * RHEL 8.4上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.4_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.4版本資訊"^] 以取得詳細資料。
+* 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 

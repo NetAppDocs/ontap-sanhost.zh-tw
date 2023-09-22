@@ -18,10 +18,7 @@ summary: 說明如何使用ONTAP 支援功能為RHEL 8.1設定NVMe/FC
 :toc-position: content
 
 
-
-
-== 支援能力
-
+[role="lead"]
 下列版本的RHEL支援在支援下列NVMe 9.6或更新版本的NVMe/FC ONTAP ：
 
 * RHEL 8.1
@@ -38,7 +35,9 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 * NVMe - CLI套件中不提供原生NVMe / FC自動連線指令碼。您可以使用HBA廠商提供的外部自動連線指令碼。
 * 預設會停用NVMe多重路徑。必須手動啟用。在RHEL 8.1上啟用NVMe/FC一節中提供步驟。
-* 預設不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。在RHEL 8.1上啟用NVMe/FC一節中提供步驟。
+* 預設不會啟用循環配置資源負載平衡。
+您必須撰寫udev,才能啟用此功能。
+* 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 

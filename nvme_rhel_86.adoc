@@ -19,10 +19,7 @@ summary: 如何針對RHEL 8.6設定NVMe主機以ONTAP 使用功能
 :toc-position: content
 
 
-
-
-== 支援能力
-
+[role="lead"]
 採用ANA（非對稱命名空間存取）的RHEL 8.6支援NVMe over Fabric或NVMe（包括NVMe / FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.6上使用ANA和ONTAP 以之為目標的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。
 
 
@@ -41,6 +38,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 * 對於RHEL 8.6、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。
 * RHEL 8.6上的NVMe/TCP仍是技術預覽功能、因為仍有開放式問題。請參閱 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.6_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.6版本說明"^] 以取得詳細資料。
+* 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 

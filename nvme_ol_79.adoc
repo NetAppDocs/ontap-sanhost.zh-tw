@@ -34,6 +34,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 * 原生NVMe / FC自動連線指令碼在「NVMe - CLI」套件中無法使用。使用HBA廠商提供的外部自動連線指令碼。
 * 根據預設、NVMe多重路徑中不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。如需在Oracle Linux 7.9上啟用NVMe/FC的步驟、請參閱一節。
 * 不支援NVMe/FC、因此Oracle Linux 7.9不支援Linux Unified Host Utilities（Luhu）NVMe / FC。使用ONTAP NetApp外掛程式隨附於原生NVMe CLI中的支援功能之一、即可取得的支援功能。
+* 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 

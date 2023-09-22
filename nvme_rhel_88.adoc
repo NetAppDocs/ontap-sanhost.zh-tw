@@ -35,6 +35,7 @@ Red Hat Enterprise Linux （ RHEL ） 8.8 搭配非對稱命名空間存取（ A
 
 * RHEL 8.8 NVMe 主機的核心內建 NVMe 多重路徑預設為停用。因此、您需要手動啟用。
 * 在 RHEL 8.8 主機上、 NVMe / TCP 是一項技術預覽功能、因為存在開放式問題。
+* 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 

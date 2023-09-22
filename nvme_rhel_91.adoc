@@ -37,7 +37,7 @@ RHEL 9.1支援NVMe over Fabrics或NVMe（包括NVMe / FC和NVMe / TCP）、並�
 
 == 已知限制
 
-沒有已知的限制。
+目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 

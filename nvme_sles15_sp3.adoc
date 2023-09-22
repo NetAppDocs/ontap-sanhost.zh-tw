@@ -36,7 +36,7 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 
 == 已知限制
 
-沒有已知的限制。
+目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 

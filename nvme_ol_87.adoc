@@ -40,7 +40,7 @@ NVMe over Fabrics （ NVMe of ）（包括 NVMe over Fibre Channel （ NVMe / FC
 
 == 已知限制
 
-沒有已知的限制。
+目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 
