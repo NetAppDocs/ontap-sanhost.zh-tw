@@ -2003,23 +2003,17 @@
   <block id="29cafbf989ec1577f968e04d52752f5e" category="paragraph">RHEL 9.0沒有已知問題。</block>
   <block id="587384a32d909bff27b8405e18d9d7cf" category="summary">如何針對RHEL 9.0設定NVMe主機、ONTAP 並搭配使用功能</block>
   <block id="d5a9179e304fd13ff8268ac2240e3ef4" category="paragraph">RHEL 9.0支援NVMe（包括NVMe / FC和NVMe / TCP）、並具備ONTAP 非對稱命名空間存取（ANA）功能、可在不間斷的儲存容錯移轉（SFO）上執行。ANA是與NVM環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。本文件詳細說明如何在RHEL 9.0上啟用NVMe、並ONTAP 將ANA用作目標的內核NVMe多重路徑。</block>
-  <block id="95369a4b9030e2f901d021df167f021b" category="list-text">從RHEL 9.0開始、NVMe/TCP不再是技術預覽功能（不像RHEL 8）、而是完全支援的企業功能本身。</block>
-  <block id="c1e6aa7090af15f8d8efefa50c5ebbb9" category="list-text">從RHEL 9.0開始、預設會針對NVMe命名空間啟用內核NVMe多重路徑、而不需要明確設定（不像RHEL 8）。</block>
   <block id="140268ba3849abd78f34f907f067407f" category="paragraph">請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 如需支援組態的詳細資訊、請參閱。</block>
   <block id="aa752093cf87ece20a99a98640048b70" category="list-text">安裝完成後、請確認您執行的是指定的RHEL 9.0核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
   <block id="d79792e27890df0330ac43850943e028" category="list-text">安裝「NVMe - CLI」套件。</block>
   <block id="f5b9e6db2b2e5a554b55fd280914f516" category="list-text">在主機上、檢查位於「/etc/nape/hostnqn」的主機NQN字串、並驗證其是否符合ONTAP 位於「the」（子系統）上之對應子系統的主機NQN字串。例如、</block>
   <block id="e842da2108d28a3593f8615a854fc699" category="admonition">如果主機NQN字串不相符、您應該使用「vserver modify」命令來更新對應ONTAP 的NVMe子系統上的主機NQN字串、使其符合主機上的「/etc/nvm/hostnqn」中的主機NQN字串。</block>
-  <block id="bad5d213c95812779e8e7d73fa0f92a4" category="list-text">確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="2a8380564c8c0b5cd202773abd4f94d3" category="list-text">請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="f3eaa9e3e89c370c17729852377aed2f" category="list-text">確認「lffc_enable _FC4_type'」設定為「3」。</block>
   <block id="055436915aa042f3fdf8045e013acbb5" category="list-text">驗證啟動器連接埠是否能夠擷取支援的NVMe / TCP LIF上的探索記錄頁面資料：</block>
   <block id="351f4726c12d45250df101c8bd9578d6" category="list-text">同樣地、請確認其他的NVMe/TCP啟動器目標LIF組合能夠成功擷取探索記錄頁面資料。例如、</block>
   <block id="dc53dad0b533fb8bfe7d6c60ef1fa91e" category="list-text">驗證ONTAP 適當的NVMf設定（例如、設定為「NetApp支援控制器」的模型、以及將「iopolicing」設定為「循環配置資源」的負載平衡）ONTAP 、以正確反映在主機上：</block>
-  <block id="85d648e4cde5d10dc52f7133eae3a296" category="list-text">確認ONTAP 支援的名稱空間能正確反映在主機上。例如（A）、</block>
   <block id="cebb9dfdc378481f9e93e7b505fe4f1d" category="paragraph">範例（b）：</block>
-  <block id="cdb0ca847e914e0c124768ae14142869" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如（A）、</block>
-  <block id="86a8f02d0c1226cbab77460737c32b26" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個不支援的名稱空間裝置的正確值。例如（A）、</block>
   <block id="e3f05e6b08d377aca967243a953ecfb9" category="section-title">常見的NVMe-CLI錯誤和因應措施</block>
   <block id="e7e8e011c8e0651dc3a6d06305d8279e" category="paragraph">RHEL 8.3沒有已知問題。</block>
   <block id="6507882f376544268e31289f84d4ee08" category="doc">HP-UX Host Utilities 6.0</block>
@@ -2215,16 +2209,11 @@
   <block id="309cf24349edc5122d2f31c53280bf27" category="doc">NVMe / FC主機組態、適用於Oracle Linux 8.5 with ONTAP Fisc</block>
   <block id="50d880869dbad54df4986a506d8e811c" category="admonition">您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 和 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>。</block>
   <block id="6f8b8f782bb2e1f5374f4c0c6a78046a" category="paragraph">RHEL 9.1支援NVMe over Fabrics或NVMe（包括NVMe / FC和NVMe / TCP）、並具備非對稱命名空間存取（ANA）、ONTAP 可在不間斷的儲存容錯移轉（SFO）上執行。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。本文件詳細說明如何在使用ANA on RHEL 9.1和ONTAP 以之為目標的內核NVMe多重路徑上啟用NVMe。</block>
-  <block id="5b567ce58b5a293a4e497c0fd053d9d5" category="list-text">RHEL 9.1除了支援NVMe / FC之外、還支援NVMe / TCP。原生的NetApp外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 套件可顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資料。</block>
   <block id="362156721e24ceedbadf34c0abc7e007" category="list-text">RHEL 9.1支援預設啟用的NVMe命名空間內核心NVMe多重路徑、不需要明確設定。</block>
-  <block id="b08367cf0348d2ac07ce7d94bb17f61f" category="list-text">RHEL 9.1支援在特定HBA介面卡的同一主機上使用NVMe和SCSI共存的流量、而不需明確說明<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 防止宣告NVMe命名空間的設定。</block>
   <block id="79d6a4c19ab1815ebac474c0cb176558" category="section-title">啟用核心內建NVMe多重路徑</block>
-  <block id="a2ed8d7465615184444b1bd0263933b1" category="list-text">在伺服器上安裝RHEL 9.1。安裝完成後、請確認您正在執行指定的RHEL 9.1核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
-  <block id="c165a8a0999d73184de84d184b3cfb60" category="list-text">安裝完成後、請確認您正在執行指定的RHEL 9.1核心。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
   <block id="2d012da343e217426e95ab334286ee04" category="list-text">驗證<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 已設定、可讓Marvell介面卡以NVMe / FC啟動器的形式運作、使用下列命令：</block>
   <block id="4b74cb8caf9869d9c39202f5a7c8cd4d" category="list-text">確認其他NVMe / TCP啟動器目標LIF組合可以成功擷取探索記錄頁面資料。例如：</block>
   <block id="7912d4b61044915bf839431d678f055d" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請務必設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 命令、以便在路徑遺失時重試更長時間。例如：</block>
-  <block id="8820bbf46f22897008878290f6060725" category="paragraph">範例（b）</block>
   <block id="0929df0c2d7b307ae019137c488669a8" category="cell">1503468</block>
   <block id="2f8adf6e51ddcf7b0618dad0e63a4144" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> Command會針對特定子系統傳回重複的NVMe控制器清單</block>
   <block id="95a3009a54be763a347295539b3b924d" category="cell">。<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 命令應傳回與特定子系統相關聯的NVMe控制器唯一清單。在RHEL 9.1中<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> Command會針對屬於特定子系統的所有命名空間、傳回NVMe控制器及其各自的ANA狀態。不過、ANA狀態是每個命名空間的屬性、因此如果您列出指定命名空間的子系統命令語法、則最好顯示具有路徑狀態的獨特NVMe控制器項目。</block>
@@ -3409,4 +3398,15 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7012889cc926d9aed72cc4dc0fd4e057" category="doc">適用於 ONTAP 的 RHEL 8.6 的 NVMe 主機組態</block>
   <block id="6a7cb6a9e050e971cb54222db7ae4540" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 8.6 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。在此程序中、您可以使用 RHEL 8.6 上的 ANA 、 ONTAP 作為目標、來啟用內核 NVMe 多重路徑的 NVMe</block>
   <block id="7d2f5cc21497b0cde87934fbd84c0694" category="paragraph">如果您打算在同一部主機上同時執行 NVMe 和 SCSI 共存的流量、 NetApp 建議分別針對 ONTAP 命名空間使用核心內建 NVMe 多重路徑、以及針對 ONTAP LUN 使用 dm-multipath 。這表示ONTAP 應從dm-multipaths中排除支援的對象名稱空間、以避免dm-multipaths宣告這些命名空間裝置。您可以將啟用外部設定新增至、以完成此作業<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
+  <block id="6a19313e8113ac2c1e15410e39bf21fb" category="paragraph">下列支援適用於 ONTAP 的 RHEL 9.1 NVMe 主機組態：</block>
+  <block id="584f126497a11dd74bf631779fe0f1dd" category="paragraph">請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block> 以取得所支援組態的正確詳細資料。</block>
+  <block id="05df89d060e2fb1042048336db58af01" category="list-text">在伺服器上安裝 RHEL 9.1 。</block>
+  <block id="318827c3fa6f890e8dcb7aef7e4f58c8" category="list-text">安裝完成後、請確認您正在執行指定的RHEL 9.1核心。請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block> 以取得最新的支援版本清單。</block>
+  <block id="6ba8f2fd9b26537c1f509d73b5b3c3e8" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。</block>
+  <block id="55475dcd5bcfa96d71d74b2d692fe800" category="list-text">從 RHEL 9.0 開始、 NVMe / TCP 不再是技術預覽功能（與 RHEL 8 不同）、而是完全支援的企業功能本身。</block>
+  <block id="450353fa421bb4ae9174f35ab8787934" category="list-text">從 RHEL 9.0 開始、預設會啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、而不需要明確設定（與 RHEL 8 不同）。</block>
+  <block id="55b8ad94911cefce229b352b5dcdb193" category="list-text">確認您使用的是支援的介面卡。如需支援介面卡的其他詳細資料、請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block>。</block>
+  <block id="f881ebad820aa982c82a8b50a1b39070" category="list-text">確認ONTAP 支援的名稱空間能正確反映在主機上。</block>
+  <block id="e35ada62930c3b590684fb1ae4386cac" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。</block>
+  <block id="051ff3071e673676a5e48635fa7f872b" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個不支援的名稱空間裝置的正確值。</block>
 </blocks>
