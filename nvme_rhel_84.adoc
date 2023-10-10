@@ -20,31 +20,31 @@ summary: 如何針對RHEL 8.4設定NVMe主機ONTAP 以使用功能
 
 
 [role="lead"]
-採用ANA（非對稱命名空間存取）的RHEL 8.4支援NVMe over Fabric或NVMe（包括NVMe / FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.4和ONTAP 以RHEL為目標使用ANA的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。
+Red Hat Enterprise Linux （ RHEL ） 8.4 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。您可以使用 RHEL 8.4 上的 ANA 、以及 ONTAP 做為目標、來啟用內建 NVMe 多重路徑的 NVMe 。
 
 
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+
+== 功能
+
+此版本沒有新功能。
 
 
 
 == 已知限制
 
-* 對於RHEL 8.4、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。
+* 對於 RHEL 8.4 、預設會停用核心內建 NVMe 多重路徑。因此、您需要手動啟用。
 * RHEL 8.4上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.4_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.4版本資訊"^] 以取得詳細資料。
 * 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 
 
-== 組態需求
+== 啟用核心內建NVMe多重路徑
 
-請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得所支援組態的正確詳細資料。
+您可以使用下列程序來啟用核心內建 NVMe 多重路徑。
 
-
-
-== 啟用內核NVMe多重路徑
-
-. 在伺服器上安裝RHEL 8.4 GA。安裝完成後、請確認您執行的是指定的RHEL 8.4 GA核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
+.步驟
+. 在伺服器上安裝RHEL 8.4 GA。
 . 安裝完成後、請確認您執行的是指定的RHEL 8.4核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
 +
 範例：
@@ -101,19 +101,23 @@ defaults {
         enable_foreign     NONE
 }
 ----
+執行「stystemctl restart multipathd」命令重新啟動多路徑精靈、以允許新的設定生效。
+
 ====
-. 執行「stystemctl restart multipathd」命令重新啟動多路徑精靈、以允許新的設定生效。
 
 
 
 
 == 設定NVMe/FC
 
+您可以為 Broadcom / Emulex 或 Marvell/Qlogic 介面卡設定 NVMe / FC 。
 
-
-=== Broadcom / Emulex
-
-. 確認您使用的是支援的介面卡。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援介面卡清單。
+[role="tabbed-block"]
+====
+.Broadcom / Emulex
+--
+.步驟
+. 確認您使用的是支援的介面卡。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援介面卡清單。
 +
 [listing]
 ----
@@ -124,7 +128,7 @@ LPe32002-M2
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援介面卡驅動程式和韌體版本清單。
+. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援介面卡驅動程式和韌體版本清單。
 +
 [listing]
 ----
@@ -134,7 +138,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/module/lpfc/version
 0:12.8.0.5
 ----
-. 確認「lffc_enable _FC4_type]已設定為3
+. 請確認 `lpfc_enable_fc4_type` 設為3。
 +
 [listing]
 ----
@@ -177,38 +181,12 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 
 
+--
+.適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡
+--
+原生收件匣 `qla2xxx` RHEL 8.4 GA 核心中隨附的驅動程式具有最新的修正程式、這些修正程式是 ONTAP 支援的必要條件。
 
-
-==== 啟用1MB I/O大小（選用）
-
-在「識別控制器」資料中、若能報告MDTS（不含資料的傳輸大小）為8、表示I/O要求的最大大小應為1 MB。ONTAP MAX Data不過、若要針對Broadcom NVMe / FC主機發出大小為1 MB的I/O要求、則lfc參數「lffc_sg_seg_cnt"也應該從預設值64增加至256。請依照下列指示操作：
-
-. 在相應的「modf探測lffc.conf」檔案中附加「256」值：
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_sg_seg_cnt=256
-----
-. 執行「dracut -f」命令、然後重新啟動主機。
-. 重新開機後、請檢查對應的「sysfs」值、確認已套用上述設定：
-+
-[listing]
-----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
-----
-+
-現在、Broadcom FC-NVMe主機應該能夠在ONTAP 該名稱空間裝置上傳送高達1MB的I/O要求。
-
-
-
-
-
-=== Marvell / QLogic
-
-RHEL 8.4 GA核心隨附的原生內建「qla2xxx」驅動程式、提供ONTAP 最新的上游修正程式、這些修正程式對於支援支援而言非常重要。
-
+.步驟
 . 使用下列命令、確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]
@@ -226,17 +204,40 @@ QLE2742 FW:v9.06.02 DVR:v10.02.00.104-k
 ----
 
 
+--
+====
+
+
+=== 啟用 1MB I/O （選用）
+
+ONTAP 在識別控制器資料中報告的 MDTS （ MAX Data 傳輸大小）為 8 、表示最大 I/O 要求大小可達 1MB 。不過、若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須增加 `lpfc` 的價值 `lpfc_sg_seg_cnt` 從預設值 64 到 256 。
+
+.步驟
+. 將「lfc_sg_seg_cnt"參數設為256。
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. 執行「dracut -f」命令、然後重新啟動主機。
+. 驗證「lfc_sg_seg_cnt"是否為256。
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+NOTE: 這不適用於 Qlogic NVMe / FC 主機。
+
 
 
 == 設定NVMe/TCP
 
-不像NVMe / FC、NVMe / TCP沒有自動連線功能。這對Linux NVMe/TCP主機有兩大限制：
-
-* *路徑恢復後不自動重新連線* NVMe/TCP無法自動重新連線至恢復路徑、超過路徑中斷後10分鐘的預設「Ctrl-Loss TMO"定時器。
-* *主機開機期間不自動連線* NVMe / TCP也無法在主機開機期間自動連線。
-
-
-您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：
+NVMe / TCP 沒有自動連線功能。因此、如果某個路徑發生故障、且在 10 分鐘的預設逾時期間內未恢復、則 NVMe / TCP 無法自動重新連線。若要避免逾時、您應該將容錯移轉事件的重試期間設為至少 30 分鐘。
 
 .步驟
 . 驗證啟動器連接埠是否可在支援的NVMe/TCP LIF中擷取探索記錄頁面資料：
@@ -300,7 +301,10 @@ sectype: none
 
 == 驗證NVMe
 
-. 檢查下列項目、確認內核NVMe多重路徑確實已啟用：
+您可以使用下列程序來驗證 NVMe 。
+
+.步驟
+. 確認已啟用核心內建 NVMe 多重路徑：
 +
 [listing]
 ----
@@ -321,6 +325,9 @@ round-robin
 ----
 . 確認ONTAP 支援的名稱空間能正確反映在主機上。例如、
 +
+範例（A）：
+
++
 [listing]
 ----
 # nvme list
@@ -333,7 +340,7 @@ Usage                Format         FW Rev
 85.90 GB / 85.90 GB  4 KiB + 0 B    FFFFFFFF
 ----
 +
-另一個範例：
+範例（b）：
 
 +
 [listing]
@@ -349,6 +356,9 @@ Usage                Format         FW Rev
 ----
 . 確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如、
 +
+範例（A）：
+
++
 [listing, subs="+quotes"]
 ----
 # nvme list-subsys /dev/nvme1n1
@@ -360,7 +370,7 @@ nvme-subsys1 - NQN=nqn.1992-08.com.netapp:sn.04ba0732530911ea8e8300a098dfdd91:su
 +- nvme6 fc traddr=nn-0x208100a098dfdd91:pn-0x208300a098dfdd91 host_traddr=nn-0x200000109b579d5f:pn-0x100000109b579d5f live *optimized*
 ----
 +
-另一個範例：
+範例（b）：
 
 +
 [listing, subs="+quotes"]
@@ -379,6 +389,9 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.37ba7d9cbfba11eba35dd039ea165514:su
 ----
 . 驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如、
 +
+範例（A）：
+
++
 [listing]
 ----
 # nvme netapp ontapdevices -o column
@@ -387,7 +400,7 @@ Device       Vserver          Namespace Path
 /dev/nvme1n1 vserver_fcnvme_145 /vol/fcnvme_145_vol_1_0_0/fcnvme_145_ns
 
 NSID  UUID                                   Size
-----  ------------------------------         ------
+-------  ------------------------------     --------------------
 1      23766b68-e261-444e-b378-2e84dbe0e5e1  85.90GB
 
 
@@ -408,7 +421,7 @@ NSID  UUID                                   Size
 }
 ----
 +
-另一個範例：
+範例（b）：
 
 +
 [listing]
@@ -419,7 +432,7 @@ Device       Vserver          Namespace Path
 /dev/nvme0n1 vs_tcp_114       /vol/tcpnvme_114_1_0_1/tcpnvme_114_ns
 
 NSID  UUID                                   Size
-----  ------------------------------         ------
+-------  ------------------------------         ---------------
 1      a6aee036-e12f-4b07-8e79-4d38a9165686  85.90GB
 
 
@@ -440,9 +453,10 @@ NSID  UUID                                   Size
 
 }
 ----
-+
-= 已知問題
 
 
+
+
+== 已知問題
 
 沒有已知問題。

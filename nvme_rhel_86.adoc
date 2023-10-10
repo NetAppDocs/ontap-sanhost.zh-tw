@@ -4,7 +4,7 @@ permalink: nvme_rhel_86.html
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: 如何針對RHEL 8.6設定NVMe主機以ONTAP 使用功能 
 ---
-= 適用於RHEL 8.6的NVMe主機組態（ONTAP 含功能性）
+= 適用於 ONTAP 的 RHEL 8.6 的 NVMe 主機組態
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,10 +20,9 @@ summary: 如何針對RHEL 8.6設定NVMe主機以ONTAP 使用功能
 
 
 [role="lead"]
-採用ANA（非對稱命名空間存取）的RHEL 8.6支援NVMe over Fabric或NVMe（包括NVMe / FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需在RHEL 8.6上使用ANA和ONTAP 以之為目標的內核NVMe多重路徑啟用NVMe的詳細資料、請參閱此處。
+Red Hat Enterprise Linux （ RHEL ） 8.6 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。在此程序中、您可以使用 RHEL 8.6 上的 ANA 、 ONTAP 作為目標、來啟用內核 NVMe 多重路徑的 NVMe
 
-
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得所支援組態的正確詳細資料。
 
 
 
@@ -43,14 +42,11 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 
 
-== 組態需求
-
-請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得所支援組態的正確詳細資料。
-
-
-
 == 啟用內核NVMe多重路徑
 
+您可以使用下列程序來啟用核心內建 NVMe 多重路徑。
+
+.步驟
 . 在伺服器上安裝RHEL 8.6。安裝完成後、請確認您執行的是指定的RHEL 8.6核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
 . 安裝完成後、請確認您執行的是指定的RHEL 8.6核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
 +
@@ -99,7 +95,7 @@ NOTE: 如果主機NQN字串不相符、您應該使用「vserver modify」命令
 +
 [NOTE]
 ====
-如果您打算在同一部主機上同時執行NVMe與SCSI共存的流量、建議您分別使用核心內建NVMe多重路徑ONTAP 來執行支援的名稱空間、ONTAP 以及針對支援的LUN執行dm多重路徑。這表示ONTAP 應從dm-multipaths中排除支援的對象名稱空間、以避免dm-multipaths宣告這些命名空間裝置。您可以將啟用外部設定新增至「/etc/multipath.conf」檔案來完成此作業：
+如果您打算在同一部主機上同時執行 NVMe 和 SCSI 共存的流量、 NetApp 建議分別針對 ONTAP 命名空間使用核心內建 NVMe 多重路徑、以及針對 ONTAP LUN 使用 dm-multipath 。這表示ONTAP 應從dm-multipaths中排除支援的對象名稱空間、以避免dm-multipaths宣告這些命名空間裝置。您可以將啟用外部設定新增至、以完成此作業 `/etc/multipath.conf` 檔案：
 
 [listing]
 ----
@@ -108,18 +104,22 @@ defaults {
         enable_foreign     NONE
 }
 ----
+執行「stystemctl restart multipathd」命令重新啟動多路徑精靈、以允許新的設定生效。
+
 ====
-. 執行「stystemctl restart multipathd」命令重新啟動多路徑精靈、以允許新的設定生效。
 
 
 
 
 == 設定NVMe/FC
 
+您可以為 Broadcom / Emulex 或 Marvell/Qlogic 介面卡設定 NVMe / FC 。
 
-
-=== Broadcom / Emulex
-
+[role="tabbed-block"]
+====
+.Broadcom / Emulex
+--
+.步驟
 . 確認您使用的是支援的介面卡。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援介面卡清單。
 +
 [listing]
@@ -187,39 +187,13 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 
 
-
-
-==== 啟用1MB I/O大小（選用）
-
-在「識別控制器」資料中、若能報告MDTS（不含資料的傳輸大小）為8、表示I/O要求的最大大小應為1 MB。ONTAP MAX Data不過、若要針對Broadcom NVMe / FC主機發出大小為1 MB的I/O要求、則lfc參數「lffc_sg_seg_cnt"也應該從預設值64增加至256。請依照下列指示操作：
-
-. 在相應的「modf探測lffc.conf」檔案中附加「256」值：
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_sg_seg_cnt=256
-----
-. 執行「dracut -f」命令、然後重新啟動主機。
-. 重新開機後、請檢查對應的「sysfs」值、確認已套用上述設定：
-+
-[listing]
-----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
-----
-+
-現在、Broadcom FC-NVMe主機應該能夠在ONTAP 該名稱空間裝置上傳送高達1MB的I/O要求。
-
-
-
-
-
-=== Marvell / QLogic
-
+--
+.適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡
+--
 RHEL 8.6核心隨附的原生內建「qla2xxx」驅動程式有最新的上游修正程式、這些修正程式對於ONTAP 支援不支援而言非常重要。
 
-. 使用下列命令、確認您執行的是支援的介面卡驅動程式和韌體版本：
+.步驟
+. 確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]
 ----
@@ -236,17 +210,40 @@ QLE2742 FW:v9.06.02 DVR:v10.02.00.200-k
 ----
 
 
+--
+====
+
+
+=== 啟用 1MB I/O （選用）
+
+ONTAP 在識別控制器資料中報告的 MDTS （ MAX Data 傳輸大小）為 8 、表示最大 I/O 要求大小可達 1MB 。不過、若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須增加 `lpfc` 的價值 `lpfc_sg_seg_cnt` 從預設值 64 到 256 。
+
+.步驟
+. 將「lfc_sg_seg_cnt"參數設為256。
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. 執行「dracut -f」命令、然後重新啟動主機。
+. 驗證「lfc_sg_seg_cnt"是否為256。
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+NOTE: 這不適用於 Qlogic NVMe / FC 主機。
+
 
 
 == 設定NVMe/TCP
 
-不像NVMe / FC、NVMe / TCP沒有自動連線功能。這對Linux NVMe/TCP主機有兩大限制：
-
-* *路徑恢復後不自動重新連線* NVMe/TCP無法自動重新連線至恢復路徑、超過路徑中斷後10分鐘的預設「Ctrl-Loss TMO"定時器。
-* *主機開機期間不自動連線* NVMe / TCP也無法在主機開機期間自動連線。
-
-
-您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：
+NVMe / TCP 沒有自動連線功能。因此、如果某個路徑發生故障、且在 10 分鐘的預設逾時期間內未恢復、則 NVMe / TCP 無法自動重新連線。若要避免逾時、您應該將容錯移轉事件的重試期間設為至少 30 分鐘。
 
 .步驟
 . 驗證啟動器連接埠是否可在支援的NVMe/TCP LIF中擷取探索記錄頁面資料：
@@ -311,7 +308,10 @@ sectype: none
 
 == 驗證NVMe
 
-. 檢查下列項目、確認內核NVMe多重路徑確實已啟用：
+您可以使用下列程序來驗證 NVMe 。
+
+.步驟
+. 確認已啟用核心內建 NVMe 多重路徑：
 +
 [listing]
 ----

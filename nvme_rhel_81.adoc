@@ -4,7 +4,7 @@ permalink: nvme_rhel_81.html
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: 說明如何使用ONTAP 支援功能為RHEL 8.1設定NVMe/FC 
 ---
-= 適用於RHEL 8.1的NVMe / FC主機組態、ONTAP 含功能更新
+= 適用於 ONTAP 的 RHEL 8.1 的 NVMe / FC 主機組態
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,60 +19,59 @@ summary: 說明如何使用ONTAP 支援功能為RHEL 8.1設定NVMe/FC
 
 
 [role="lead"]
-下列版本的RHEL支援在支援下列NVMe 9.6或更新版本的NVMe/FC ONTAP ：
+適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的 ONTAP 9.6 或更新版本支援 NVMe / FC 。RHEL 8.1 主機可透過相同的 FC 啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。
 
-* RHEL 8.1
-
-
-RHEL 8.1主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行NVMe與SCSI流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
-
-
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援組態清單。
 
 
 
 == 已知限制
 
-* NVMe - CLI套件中不提供原生NVMe / FC自動連線指令碼。您可以使用HBA廠商提供的外部自動連線指令碼。
-* 預設會停用NVMe多重路徑。必須手動啟用。在RHEL 8.1上啟用NVMe/FC一節中提供步驟。
-* 預設不會啟用循環配置資源負載平衡。
-您必須撰寫udev,才能啟用此功能。
+* 原生 NVMe / FC 自動連線指令碼在中無法使用 `nvme-cli` 套件：您可以使用主機匯流排介面卡（ HBA ）廠商提供的外部自動連線指令碼。
+* NVMe 多重路徑預設為停用。因此、您需要手動啟用。
+* 預設不會啟用循環配置資源負載平衡。您可以撰寫來啟用此功能 `udev` 規則。
 * 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 
 
-== 在RHEL 8.1上啟用NVMe/FC
+== 啟用NVMe/FC
 
+您可以使用下列程序來啟用 NVMe / FC 。
+
+.步驟
 . 在伺服器上安裝Red Hat Enterprise Linux 8.1。
-. 安裝完成後、請確認您執行的是指定的Red Hat Enterprise Linux核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
+. 安裝完成後、請確認您正在執行指定的 RHEL 核心：
 +
 [listing]
 ----
 # uname -r
 4.18.0-147.el8.x86_64
 ----
-. 安裝NVMe-CLI/1.8.1-3.el8套件。
++
+請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援版本清單。
+
+. 安裝 `nvme-cli-1.8.1-3.el8` 套件：
 +
 [listing]
 ----
 # rpm -qa|grep nvme-cli
 nvme-cli-1.8.1-3.el8.x86_64
 ----
-. 啟用核心內建NVMe多重路徑。
+. 啟用核心內建NVMe多重路徑：
 +
 [listing]
 ----
 # grubby –args=nvme_core.multipath=Y –update-kernel /boot/vmlinuz-4.18.0-147.el8.x86_64
 ----
-. 將下列字串新增為/lib/udev/racts.d/71-nvme-iopolicy-netapp-ONTAP.rules的獨立udevy規則。這可為NVMe多重路徑啟用循環配置資源負載平衡。
+. 將下列字串新增為另一個位於的 udev 規則 `/lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules`。這可為 NVMe 多重路徑啟用循環負載平衡：
 +
 [listing]
 ----
 # Enable round-robin for NetApp ONTAP
 ACTION==”add”, SUBSYSTEM==”nvme-subsystem”, ATTR{model}==”NetApp ONTAP Controller”, ATTR{iopolicy}=”round-robin
 ----
-. 在RHEL 8.1主機上、檢查/etc/np/hostnqn上的主機NQN字串、並確認其符合ONTAP 位於該等子系統上對應子系統的主機NQN字串。
+. 在 RHEL 8.1 主機上、檢查主機 NQN 字串位於 `/etc/nvme/hostnqn` 並確認它符合 ONTAP 陣列上對應子系統的主機 NQN 字串：
 +
 [listing]
 ----
@@ -90,7 +89,7 @@ nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
 ----
 +
 
-NOTE: 如果主機NQN字串不相符、您應該使用vserver modify命令來更新對應ONTAP 的BIOS陣列子系統上的主機NQN字串、以符合主機上/etc/nvme/hostnqn的主機NQN字串。
+NOTE: 如果主機 NQN 字串不相符、請使用 `vserver modify` 用於更新對應 ONTAP 陣列子系統上主機 NQN 字串的命令、以符合的主機 NQN 字串 `/etc/nvme/hostnqn` 在主機上。
 
 . 重新啟動主機。
 
@@ -99,7 +98,10 @@ NOTE: 如果主機NQN字串不相符、您應該使用vserver modify命令來更
 
 == 設定適用於NVMe / FC的Broadcom FC介面卡
 
-. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱《NetApp互通性對照表》。
+您可以使用下列程序來設定 Broadcom FC 介面卡。
+
+.步驟
+. 確認您使用的是支援的介面卡。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援介面卡清單。
 +
 [listing]
 ----
@@ -114,7 +116,7 @@ LPe32002-M2
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. 複製並安裝Broadcom lfit outbox驅動程式和自動連線指令碼。
+. 複製並安裝 Broadcom lpfc 外盒驅動程式和自動連線指令碼：
 +
 [listing]
 ----
@@ -124,10 +126,10 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
 +
 
-NOTE: 作業系統隨附的原生驅動程式稱為內建驅動程式。如果您下載外包驅動程式（作業系統版本未隨附的驅動程式）、下載內容中會包含自動連線指令碼、並應在驅動程式安裝程序中安裝。
+NOTE: 與作業系統搭售的原生驅動程式稱為收件匣驅動程式。如果您下載的是外箱驅動程式（作業系統版本未隨附的驅動程式）、則下載中會包含自動連線指令碼、並應作為驅動程式安裝程序的一部分進行安裝。
 
 . 重新啟動主機。
-. 請確認您使用的是建議的Broadcom lfit韌體、outbox驅動程式和自動連線套件版本。
+. 確認您使用的是推薦的 Broadcom lpfc 韌體、外箱驅動程式和自動連線套件版本：
 +
 [listing]
 ----
@@ -147,14 +149,14 @@ NOTE: 作業系統隨附的原生驅動程式稱為內建驅動程式。如果�
 # rpm -qa | grep nvmefc
 nvmefc-connect-12.6.61.0-1.noarch
 ----
-. 確認lfc_enable _FC4_type已設定為3。
+. 請確認 `lpfc_enable_fc4_type` 設為 3 ：
 +
 [listing]
 ----
 # cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
 3
 ----
-. 驗證啟動器連接埠是否已啟動並正在執行。
+. 驗證啟動器連接埠是否已啟動並正在執行：
 +
 [listing]
 ----
@@ -169,7 +171,7 @@ nvmefc-connect-12.6.61.0-1.noarch
 Online
 Online
 ----
-. 確認NVMe / FC啟動器連接埠已啟用、正在執行、而且能夠查看目標LIF。
+. 確認 NVMe / FC 啟動器連接埠已啟用、正在執行、而且您可以看到目標生命：
 +
 [listing]
 ----
@@ -186,8 +188,38 @@ NVME Statistics
 
 
 
+== 啟用Broadcom NVMe / FC的1MB I/O大小
+
+ONTAP 在識別控制器資料中報告的 MDTS （ MAX Data 傳輸大小）為 8 、表示最大 I/O 要求大小可達 1MB 。不過、若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須增加 `lpfc` 的價值 `lpfc_sg_seg_cnt` 從預設值 64 到 256 。
+
+.步驟
+. 將「lfc_sg_seg_cnt"參數設為256。
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. 執行「dracut -f」命令、然後重新啟動主機。
+. 驗證「lfc_sg_seg_cnt"是否為256。
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+NOTE: 這不適用於 Qlogic NVMe / FC 主機。
+
+
+
 == 驗證NVMe/FC
 
+您可以使用下列程序來驗證 NVMe / FC 。
+
+.步驟
 . 驗證下列NVMe / FC設定。
 +
 [listing]
@@ -254,61 +286,5 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
          "Namespace_Size" : 13107200
     }
 ]
-----
-
-
-
-
-== 啟用Broadcom NVMe / FC的1MB I/O大小
-
-ONTAP 在識別控制器資料中報告的 MDTS （ MAX Data 傳輸大小）為 8 、表示最大 I/O 要求大小可達 1MB 。不過、若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須增加 `lpfc` 的價值 `lpfc_sg_seg_cnt` 從預設值 64 到 256 。
-
-.步驟
-. 將「lfc_sg_seg_cnt"參數設為256。
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_sg_seg_cnt=256
-----
-. 執行「dracut -f」命令、然後重新啟動主機。
-. 驗證「lfc_sg_seg_cnt"是否為256。
-+
-[listing]
-----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
-----
-
-
-
-NOTE: 這不適用於 Qlogic NVMe / FC 主機。
-
-
-
-== lffc詳細記錄
-
-設定適用於 NVMe / FC 的 lpfc 驅動程式。
-
-.步驟
-. 設定 `lpfc_log_verbose` 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。
-+
-[listing]
-----
-#define LOG_NVME 0x00100000 /* NVME general events. */
-#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
-#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
-#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
-----
-. 設定值之後、請執行 `dracut-f` 命令並重新啟動主機。
-. 驗證設定。
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_log_verbose=0xf00083
-
-# cat /sys/module/lpfc/parameters/lpfc_log_verbose
-15728771
 ----
 
