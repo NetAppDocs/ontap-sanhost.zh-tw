@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 15搭配使�
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將以 ONTAP 為目標的 SUSE Linux Enterprise Server 15 設定為目標。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -286,7 +289,9 @@ devices {
 ----
 
 
-== 已知問題與限制
+== 已知問題
+
+SLES 15 搭配 ONTAP 版本有下列已知問題：
 
 [cols="4*"]
 |===

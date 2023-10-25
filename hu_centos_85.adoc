@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用CentOS 8.5搭配使用
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 CentOS 8.5 設定為 ONTAP 作為目標。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -293,6 +296,6 @@ devices {
 
 
 
-== 已知問題與限制
+== 已知問題
 
-CentOS 8.5沒有已知問題。
+使用 ONTAP 版本的 CentOS 8.5 沒有已知問題。

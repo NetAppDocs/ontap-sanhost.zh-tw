@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.3搭配使用�
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 7.3 與 ONTAP 設定為目標。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -292,6 +295,6 @@ devices {
 
 
 
-== 已知問題與限制
+== 已知問題
 
-RHEL 7.3沒有已知問題。
+RHEL 7.3 搭配 ONTAP 版本並無已知問題。

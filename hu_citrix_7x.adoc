@@ -247,6 +247,6 @@ NOTE: Citrix XenServer建議針對所有Linux和Windows型客體VM使用Citrix V
 
 
 
-== 已知問題與限制
+== 已知問題
 
-沒有已知的問題和限制。
+使用 ONTAP 版本的 Citrix XenServer 沒有已知問題。

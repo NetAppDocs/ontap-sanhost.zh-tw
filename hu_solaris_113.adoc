@@ -18,6 +18,9 @@ summary: 說明如何安裝Solaris主機公用程式
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 Solaris 11.3 設定為 ONTAP 作為目標。
+
 
 
 == 安裝 Solaris 主機公用程式
@@ -248,7 +251,9 @@ NOTE: 之後 `scsi-vhci-failover-override` 已套用、 `conf` 已新增至 `svl
 
 
 
-== 已知問題與限制
+== 已知問題
+
+Solaris 11.3 with ONTAP 版本有下列已知問題：
 
 [cols="4*"]
 |===

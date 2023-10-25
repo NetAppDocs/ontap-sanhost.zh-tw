@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用Oracle Linux 7.6搭配使用
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標、以設定 Oracle Linux 7.6 。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -255,7 +258,9 @@ NOTE: 若要設定Oracle Linux 7.6 RedHat Enterprise核心（RHCK）、請使用
 
 
 
-== 已知問題與限制
+== 已知問題
+
+Oracle Linux 7.6 with ONTAP 版本有下列已知問題：
 
 [cols="4*"]
 |===

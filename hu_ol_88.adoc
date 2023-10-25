@@ -18,6 +18,9 @@ summary: 說明如何搭配 ONTAP 使用 Oracle Linux 8.8
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.8 與 ONTAP 設定為目標。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -295,4 +298,4 @@ NOTE: 若要設定 Oracle Linux 8.8 RedHat Enterprise 核心、請使用 link:hu
 
 == 已知問題
 
-沒有已知問題。
+使用 ONTAP 版本的 Oracle Linux 8.8 沒有已知問題。

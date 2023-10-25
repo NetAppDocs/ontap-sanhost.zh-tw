@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 IBM AIX 7.2 和 / 或 PowerVM （ VIOS 3.1 ）與 ONTAP 設定為目標。
+
 
 
 == 安裝 AIX/VIOS 主機公用程式
@@ -226,7 +229,9 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 
 
-== 已知問題與限制
+== 已知問題
+
+IBM AIX 7.2 和 / 或 PowerVM （ VIOS 3.1 ）搭配 ONTAP 版本、有下列已知問題：
 
 [cols="4*"]
 |===

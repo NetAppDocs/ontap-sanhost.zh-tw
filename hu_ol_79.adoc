@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用Oracle Linux 7.9與功能
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.9 與 ONTAP 設定為目標。
+
 
 
 == 安裝Linux Unified Host Utilities

@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用CentOS 8.0搭配使用功能
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 CentOS 8.0 與 ONTAP 設定為目標。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -291,6 +294,6 @@ devices {
 
 
 
-== 已知問題與限制
+== 已知問題
 
 如需CentOS（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_80.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）8.0。

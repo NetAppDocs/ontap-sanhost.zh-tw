@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用Oracle Linux 8.3搭配使用功能
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 8.3 。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -291,9 +294,9 @@ NOTE: 若要設定Oracle Linux 8.3 Red Hat Enterprise核心（RHCK）、請使�
 
 
 
-== 已知問題與限制
+== 已知問題
 
-Oracle Linux 8.3沒有已知問題。
+使用 ONTAP 版本的 Oracle Linux 8.3 沒有已知問題。
 
 
 NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_83.html#known-problems-and-limitations["已知問題"] 相關Red Hat Enterprise Linux版本文件中的一節。

@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.6.
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 9.0 與 ONTAP 設定為目標。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -293,6 +296,6 @@ devices {
 
 
 
-== 已知問題與限制
+== 已知問題
 
-RHEL 9.0沒有已知問題。
+在 ONTAP 版本中、 RHEL 9.0 沒有已知問題。

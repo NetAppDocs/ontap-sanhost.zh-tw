@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將具有 ONTAP 的 HP-UX 11i v3 設定為目標。
+
 
 
 == 安裝 HP-UX 主機公用程式
@@ -168,7 +171,9 @@ up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
 |===
 
 
-== 已知問題與限制
+== 已知問題
+
+採用 ONTAP 版本的 HP-UX 11i v3 有下列已知問題：
 
 [cols="4*"]
 |===

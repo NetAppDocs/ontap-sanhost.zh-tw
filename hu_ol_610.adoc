@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用Oracle Linux 6.10搭配使用功能
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 6.10 與 ONTAP 設定為目標。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -265,9 +268,9 @@ NOTE: 若要設定Oracle Linux 6.10 RedHat Enterprise核心（RHCK）、請使�
 
 
 
-== 已知問題與限制
+== 已知問題
 
-Oracle 6.10沒有已知問題。
+ONTAP 版本的 Oracle Linux 6.10 沒有已知問題。
 
 
 NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_610.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）6.10。

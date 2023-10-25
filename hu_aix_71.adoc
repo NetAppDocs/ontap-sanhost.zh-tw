@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.1搭配使用
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 IBM AIX 7.1 與 ONTAP 設定為目標。
+
 
 
 == 安裝 AIX 主機公用程式
@@ -223,6 +226,6 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 
 
-== 已知問題與限制
+== 已知問題
 
-沒有已知的問題和限制。
+沒有已知問題。

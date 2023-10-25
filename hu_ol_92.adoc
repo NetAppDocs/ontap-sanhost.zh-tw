@@ -18,6 +18,9 @@ summary: 說明如何搭配 ONTAP 使用 Oracle Linux 9.2
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 9.2 設定為 ONTAP 作為目標。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -295,7 +298,7 @@ NOTE: 若要設定 Oracle Linux 9.2 RedHat Enterprise Kernel （ RHCK ）、請�
 
 == 已知問題
 
-Oracle Linux 9.2 with ONTAP 有下列已知問題：
+Oracle Linux 9.2 with ONTAP 版本有下列已知問題：
 
 [cols="10,30,30,10"]
 |===

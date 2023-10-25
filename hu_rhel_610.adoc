@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 6.10搭配使用
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 6.10 設定為 ONTAP 作為目標。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -304,6 +307,6 @@ devices {
 
 
 
-== 已知問題與限制
+== 已知問題
 
-RHEL 6.10沒有已知問題。
+在 ONTAP 版本中、 RHEL 6.10 沒有已知問題。

@@ -267,6 +267,6 @@ NOTE: 如需Veritas的所有其他特定設定、請參閱標準Veritas Infoscal
 
 
 
-== 已知問題與限制
+== 已知問題
 
-沒有已知的問題和限制。
+Veritas Storage Foundation 6 for Linux with ONTAP 版本並無已知問題。

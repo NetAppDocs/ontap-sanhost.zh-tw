@@ -282,4 +282,4 @@ NOTE: 如需Veritas的所有其他特定設定、請參閱標準Veritas Infoscal
 
 == 已知問題
 
-沒有已知問題。
+Veritas Infoscale 7 for Linux with ONTAP 版本並無已知問題。

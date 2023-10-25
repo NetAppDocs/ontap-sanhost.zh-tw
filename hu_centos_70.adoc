@@ -18,6 +18,9 @@ summary: 說明如何搭配ONTAP 使用CentOS 7.0搭配使用功能
 :toc-position: content
 
 
+[role="lead"]
+您可以使用 ONTAP SAN 主機組態設定、將 CentOS 7.0 與 ONTAP 設定為目標。
+
 
 
 == 安裝Linux Unified Host Utilities
@@ -291,6 +294,6 @@ devices {
 
 
 
-== 已知問題與限制
+== 已知問題
 
-CentOS 7.0沒有已知問題。
+CentOS 7.0 with ONTAP 版本沒有已知問題。

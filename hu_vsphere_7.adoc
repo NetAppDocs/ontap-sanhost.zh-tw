@@ -329,7 +329,7 @@ naa.600a098038304731783f506670553355
 
 == 已知問題
 
-沒有已知問題。
+ONTAP 版本的 VMware vSphere 7.x 沒有已知問題。
 
 .相關資訊
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]
