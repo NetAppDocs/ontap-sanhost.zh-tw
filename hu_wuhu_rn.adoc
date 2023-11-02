@@ -19,29 +19,13 @@ summary: Windows Unified Host Utilities 版本資訊
 
 
 [role="lead"]
-版本資訊文件包含 Windows Unified Host Utilities 7.2 和 7.1 版本的最新資訊、包括新功能、增強功能和已知問題的更新。當Windows主機公用程式的新使用資訊可供使用時、即會更新文件。
+版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 Windows 主機相關的重要注意事項。
+
+如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
 
 
 
-== 關於 Windows Unified Host Utilities
-
-Windows Unified Host Utilities可讓您將Windows主機電腦連線至NetApp儲存系統。Windows Unified Host Utilities包含一個安裝程式、可設定所需的Windows登錄和HBA值。
-
-Windows Unified Host Utilities 持續支援下列版本的 Windows ：
-
-* Windows 2012
-* Windows 2012R2
-* Windows 2016
-* Windows 2019
-* Windows 2022
-
-
-
-NOTE: NetApp可在主機公用程式軟體版本之間提供額外元件。如需系統需求的最新資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
-
-
-
-== 功能
+== 新增功能
 
 * Windows Unified Host Utilities 7.2 支援 NVMe / FC 驅動程式參數設定、以及新廠商卡的錯誤修正。
 * Windows Unified Host Utilities 7.1支援E系列儲存系統、ONTAP 支援支援更新版本的功能、以及增強的iSCSI逾時功能、可加快容錯移轉速度。
@@ -49,68 +33,21 @@ NOTE: NetApp可在主機公用程式軟體版本之間提供額外元件。如�
 
 
 
-== 重要注意事項
-
-在部署最新版的Windows主機公用程式之前、您必須先閱讀可用的資訊、以協助識別及解決可能影響系統運作的問題。
-
-如需個別錯誤的詳細資訊、以及探索其他與錯誤相關的工具、請參閱 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^]。
-
-
-
-=== 安裝所需的修補程式
-
-為了確保 Windows Unified Host Utilities 安裝或升級成功、您需要安裝特定的 Windows Hotfix 。有些即時修復程式是Windows更新的元件。
-
-請參閱 link:hu_wuhu_72.html["Windows主機公用程式文件"] 以滿足您的特定組態熱修復需求。
-
-
-
 == 已知問題與限制
 
-在 7.1 版本中已找出一些非預期和潛在的非預期行為、以及在某些情況下避免這些行為的因應措施。
+您應該瞭解下列已知問題和限制、這些問題和限制可能會影響特定主機的效能。Windows Unified Host Utilities 7.1 版本中已識別出一些非預期和潛在的非預期行為、以及避免這些行為的因應措施。
 
 [cols="30, 30, 20"]
 |===
 | 標題 | 說明 | 因應措施 
 
 
-| 執行 `linux_gos_timeout-install.sh` 在執行Red Hat Enterprise Linux或SUSE Linux Enterprise Server的Hyper-V客體上、不再需要指令碼 | 您不再需要執行 `linux_gos_timeout-install.sh` 指令碼、用於變更Red Hat Enterprise Linux 5、Red Hat Enterprise Linux 6或SUSE Linux Enterprise Server 11 Hyper-V來賓作業系統上的磁碟逾時、因為使用的是預設的逾時設定。。 `linux_gos_timeout-install.sh` 先前版本的主機公用程式所包含的指令碼、不再包含在Windows Unified Host Utilities中。Windows Unified Host Utilities 7.1會使用預設的磁碟逾時設定。 | 不適用 
+| 執行 `linux_gos_timeout-install.sh` 在執行Red Hat Enterprise Linux或SUSE Linux Enterprise Server的Hyper-V客體上、不再需要指令碼 | 您不再需要執行 `linux_gos_timeout-install.sh` 指令碼、用於變更Red Hat Enterprise Linux 5、Red Hat Enterprise Linux 6或SUSE Linux Enterprise Server 11 Hyper-V來賓作業系統上的磁碟逾時、因為使用的是預設的逾時設定。。 `linux_gos_timeout-install.sh` 舊版主機公用程式所包含的指令碼不再包含在 Windows Unified Host Utilities 7.1 版本中。Windows Unified Host Utilities 7.1會使用預設的磁碟逾時設定。 | 不適用 
 
 
-| iSCSI工作階段在重新開機後、不會以混合式的IPv4和IPv6重新連線 | 在多重路徑I/O（MPIO）組態中、或是每個工作階段（MCS）有多個連線（同時具有IPv4和IPv6端點）組態中、某些iSCSI工作階段可能會在重新啟動Windows主機後無法重新連線。 | 若要確認所有 iSCSI 路徑在重新開機後都會傳回、請使用所有的 IPv4 端點或所有 IPv6 。請勿混用IPV4和IPV6。 
+| iSCSI工作階段在重新開機後、不會以混合式的IPv4和IPv6重新連線 | 在多重路徑I/O（MPIO）組態中、或是每個工作階段（MCS）有多個連線（同時具有IPv4和IPv6端點）組態中、某些iSCSI工作階段可能會在重新啟動Windows主機後無法重新連線。 | 使用所有的 IPv4 端點或 IPv6 端點。請勿混用IPV4和IPV6。 
 
 
-| iSCSI軟體開機不支援MCS | 使用iSCSI軟體開機搭配iSCSI時、每個工作階段有多個連線（MCS）、iSCSI開機前置連線無法受到保護。這可能導致從開機LUN中斷連線、導致主機當機。 | Microsoft不支援將MCS用於iSCSI軟體開機主機。使用MPIO作為高可用度解決方案。請注意、不支援混合使用MPIO和MCS。 
+| iSCSI軟體開機不支援MCS | 當使用 iSCSI 軟體開機搭配 iSCSI 每個工作階段多個連線（ MCS ）時、 iSCSI 開機前導連線將無法受到保護。這可能會導致從開機 LUN 中斷連線、導致主機系統中斷。 | Microsoft不支援將MCS用於iSCSI軟體開機主機。使用MPIO作為高可用度解決方案。請注意、不支援混合使用MPIO和MCS。 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。
-
-
-
-== 關於 SAN 主機組態文件
-
-SAN 主機公用程式的文件包含在中 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["ONTAP SAN 主機組態文件"]。ONTAP SAN 主機組態文件是累積性的、涵蓋所有目前的 SAN 主機版本。各版本之間的任何功能差異都會記錄在上下文中。
-
-
-
-== 何處可找到產品文件及其他資訊
-
-您可以存取所有NetApp產品的文件、並在NetApp公司網站的「產品文件」頁面上找到其他產品資訊資源、例如技術報告和白皮書。
-
-.相關資訊
-*設定及管理ONTAP 您的資料不一樣儲存系統*
-
-* 。 link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["《軟體設定指南》ONTAP"^] 適用於ONTAP 您的版本的
-* 。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["《SAN管理指南》ONTAP"^] 適用於ONTAP 您的版本的
-* 。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明 ONTAP"^] 適用於ONTAP 您的版本的
-
-
-*設定及管理E系列儲存系統*
-
-* 適用於您的傳輸協定的《適用於Windows Express的《Data Storage Manager組態與資源配置指南》SANtricity
-* 《適用於您作業系統、傳輸協定及版本的《支援系統的支援與資源配置快速指南》。SANtricity SANtricity
-* 適用於您的版本的《關於您的版本的》的《關於本產品的軟件安裝參考資料》（英文）SANtricity SANtricity 。
-* SANtricity Storage Manager 多重路徑驅動程式指南、專為您的 SANtricity 版本所提供。
-* 適用於您的版本的《關於您的版次的《》《》《》。SANtricity SANtricity
-
-
-請參閱 link:https://docs.netapp.com/us-en/e-series-family/["E系列文件"^] 以尋找SANtricity 有關的文件。

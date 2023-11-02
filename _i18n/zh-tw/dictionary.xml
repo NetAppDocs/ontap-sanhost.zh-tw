@@ -1885,20 +1885,10 @@
   <block id="2813f127dc58929fb553bc32684c2e46" category="section-title">已知問題與限制</block>
   <block id="8b777dc32f2f743eb513fca0bfd52348" category="cell">1457017</block>
   <block id="0078173d6c66e3e11217e80e4ecc1d1b" category="cell">「anlun」安裝會發出與「libdevmapper.so」和「libnl.so」程式庫相關的警告訊息。這些警告不會影響到「暫停」套件的功能。</block>
-  <block id="7431f7a183aa9cfe2910bb761205485d" category="section-title">何處可找到產品文件及其他資訊</block>
-  <block id="c5079a4f9245d0085178c5ad194bac89" category="paragraph">您可以存取所有NetApp產品的文件、並在NetApp公司網站的「產品文件」頁面上找到其他產品資訊資源、例如技術報告和白皮書。</block>
-  <block id="3ff27b1e3325a6e4ca7c06c3dec9d13c" category="paragraph">*設定及管理ONTAP 您的資料不一樣儲存系統*</block>
-  <block id="86236b49ff131485c2b4de4baab79770" category="inline-link-macro">《軟體設定指南》ONTAP</block>
-  <block id="5bfadca807c3aa6dc047b074d813aff4" category="list-text">。 <block ref="eb97e344065e5b8076466213afb4528b" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
   <block id="e14a95309ebbad9203e12ea129172d1e" category="inline-link-macro">《SAN管理指南》ONTAP</block>
   <block id="0088ffe866af761d6d172abf73c2504c" category="list-text">。 <block ref="dcbc5977eb4eae232288be25155552fa" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
   <block id="626a7cbe056796bcb1c158b143866230" category="inline-link-macro">發行說明 ONTAP</block>
   <block id="a60d936499718f3c1e7b5ddddae45c91" category="list-text">。 <block ref="6991a2ee8a93b15fb816a46b15ea0677" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
-  <block id="77fcedc082e9efc45f62c54e77698ccc" category="paragraph">*設定及管理E系列儲存系統*</block>
-  <block id="027a98b335c07e30bf607b1f1bca9a1f" category="list-text">適用於您的傳輸協定的《適用於Windows Express的《Data Storage Manager組態與資源配置指南》SANtricity</block>
-  <block id="1dd312da5024844045e50a58abaf9db6" category="list-text">《適用於您作業系統、傳輸協定及版本的《支援系統的支援與資源配置快速指南》。SANtricity SANtricity</block>
-  <block id="353be7c67f0bea9221f8808465816d0c" category="list-text">適用於您的版本的《關於您的版本的》的《關於本產品的軟件安裝參考資料》（英文）SANtricity SANtricity 。</block>
-  <block id="eb6dfbdfc2c6cfdacfb27a9630c40334" category="list-text">適用於您的版本的《關於您的版次的《》《》《》。SANtricity SANtricity</block>
   <block id="5f93f381aa8df330451fa5b834f54def" category="inline-link-macro">E系列文件</block>
   <block id="2c0074fce84282581b2b52e56eacf78e" category="sidebar">安裝Luhu 7.1</block>
   <block id="3e88abad927ef9520e50cf89d3f1ddf7" category="paragraph">您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。</block>
@@ -2087,26 +2077,12 @@
   <block id="125c89a36748abb41fb38e89f5009ec9" category="inline-link-macro">使用Windows Server 2022 ONTAP 搭配使用</block>
   <block id="eff83cf87307f9f0c4cf876914031ade" category="inline-link-macro">安裝Windows修補程式</block>
   <block id="74c96d3ba2305a0f126dc2494f4cd977" category="admonition"><block ref="c6686e038b760393cddd662d474b7627" category="inline-link-macro-rx"></block> 提供相關指示 <block ref="9dcc96c7a1b888cfbb8ae39c864be341" category="inline-link-macro-rx"></block> 適用於Windows伺服器2022。請參閱「主機組態」類別中的Windows文件、以尋找舊版Windows伺服器的相關修補程式資訊。</block>
-  <block id="34eb6bacd27b9f225e7ca9de29f4668b" category="paragraph">Windows Unified Host Utilities可讓您將Windows主機電腦連線至NetApp儲存系統。Windows Unified Host Utilities包含一個安裝程式、可設定所需的Windows登錄和HBA值。</block>
-  <block id="8e81245b7f02b8484320ddb3e4b13c18" category="list-text">Windows 2012</block>
-  <block id="1347f9ce905795bee095e16712f81913" category="list-text">Windows 2012R2</block>
-  <block id="4083fee85864d55c66d5e0b21a7928b3" category="list-text">Windows 2016</block>
-  <block id="0a412bceaa4a8d671231ab04d2e0296e" category="list-text">Windows 2019</block>
-  <block id="3ffd22c07b48a1c76b76f941ad1cad96" category="list-text">Windows 2022</block>
-  <block id="f30ac79774ac72cad690c3f814efd2fa" category="admonition">NetApp可在主機公用程式軟體版本之間提供額外元件。如需系統需求的最新資訊、請參閱 <block ref="454ffc53fb26d285d765b8fbe8c25a5d" category="inline-link-macro-rx"></block>。</block>
   <block id="ff71b00ca4f59efb041754af8a3c5633" category="paragraph">Windows Unified Host Utilities 7.1支援E系列儲存系統、ONTAP 支援支援更新版本的功能、以及增強的iSCSI逾時功能、可加快容錯移轉速度。</block>
-  <block id="2f7c358042ffb7d37991aff648b1cb3d" category="section-title">重要注意事項</block>
-  <block id="aacc0d256c74ef3a06a601980b807a0e" category="paragraph">在部署最新版的Windows主機公用程式之前、您必須先閱讀可用的資訊、以協助識別及解決可能影響系統運作的問題。</block>
-  <block id="7cd36e8f4d329b5cfafec87711c36cbd" category="paragraph">如需個別錯誤的詳細資訊、以及探索其他與錯誤相關的工具、請參閱 <block ref="06c8d471f4d0311b3446a94e54fc8a82" category="inline-link-macro-rx"></block>。</block>
-  <block id="14604b92d34df545c8df1df02158a241" category="section-title">安裝所需的修補程式</block>
-  <block id="f00aa3de5284bd6ffc1c6eb440a68428" category="inline-link-macro">Windows主機公用程式文件</block>
   <block id="95dc0391ce7b396d7dd5622284e8fc3e" category="section-title">已知問題</block>
   <block id="56659c18435d50a38e076a58b32163a4" category="cell">執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 在執行Red Hat Enterprise Linux或SUSE Linux Enterprise Server的Hyper-V客體上、不再需要指令碼</block>
-  <block id="ea42119311b1ebffaae8c2a3d60d8cfd" category="cell">您不再需要執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 指令碼、用於變更Red Hat Enterprise Linux 5、Red Hat Enterprise Linux 6或SUSE Linux Enterprise Server 11 Hyper-V來賓作業系統上的磁碟逾時、因為使用的是預設的逾時設定。。<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 先前版本的主機公用程式所包含的指令碼、不再包含在Windows Unified Host Utilities中。Windows Unified Host Utilities 7.1會使用預設的磁碟逾時設定。</block>
   <block id="e91b41f5f9d74fcfaa3733fe1534d7c8" category="cell">iSCSI工作階段在重新開機後、不會以混合式的IPv4和IPv6重新連線</block>
   <block id="03a5ef9a07e32294246c302f24714cba" category="cell">在多重路徑I/O（MPIO）組態中、或是每個工作階段（MCS）有多個連線（同時具有IPv4和IPv6端點）組態中、某些iSCSI工作階段可能會在重新啟動Windows主機後無法重新連線。</block>
   <block id="9ffe40d778f0a3ffe9e1f6de2a49fb40" category="cell">iSCSI軟體開機不支援MCS</block>
-  <block id="63f871187249b3071dc36a54982c1e17" category="cell">使用iSCSI軟體開機搭配iSCSI時、每個工作階段有多個連線（MCS）、iSCSI開機前置連線無法受到保護。這可能導致從開機LUN中斷連線、導致主機當機。</block>
   <block id="a77cd68a790d44f2359fe8a4dd45b1dc" category="cell">Microsoft不支援將MCS用於iSCSI軟體開機主機。使用MPIO作為高可用度解決方案。請注意、不支援混合使用MPIO和MCS。</block>
   <block id="05aa4f4bc5b51efef2c52f4fb2ddc55f" category="paragraph"><block ref="06c8d471f4d0311b3446a94e54fc8a82" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。</block>
   <block id="748753e893fd2f6b904a298d120af491" category="sidebar">Windows統一化主機公用程式</block>
@@ -2378,18 +2354,8 @@
   <block id="6faca8b2572cd22ef1b619e4be0a8165" category="paragraph">NVMe / TCP 沒有自動連線功能。因此、如果某個路徑發生故障、且在 10 分鐘的預設逾時期間內未恢復、則 NVMe / TCP 無法自動重新連線。若要避免逾時、您應該將容錯移轉事件的重試期間設為至少 30 分鐘。</block>
   <block id="ffb6c4a21213679507c7941f550bd2c7" category="summary">Windows Unified Host Utilities 版本資訊</block>
   <block id="51372fd44786d9688cfe76623106730b" category="doc">Windows Unified Host Utilities 版本資訊</block>
-  <block id="d203490d9623c1e2d75f42f5f678e00f" category="section-title">關於 Windows Unified Host Utilities</block>
-  <block id="c58bbb489cf9a676efa84ccbf8f2d95f" category="paragraph">Windows Unified Host Utilities 持續支援下列版本的 Windows ：</block>
   <block id="d01454be7f3c4cdc6a05c67e9f6dd9a9" category="list-text">Windows Unified Host Utilities 7.2 支援 NVMe / FC 驅動程式參數設定、以及新廠商卡的錯誤修正。</block>
-  <block id="187b2c71236e059ed6f664dc1411522d" category="paragraph">為了確保 Windows Unified Host Utilities 安裝或升級成功、您需要安裝特定的 Windows Hotfix 。有些即時修復程式是Windows更新的元件。</block>
-  <block id="9644563034c132befaa37ffb45768f62" category="paragraph">請參閱 <block ref="b3cd2c632efe322584e2546723e4258f" category="inline-link-macro-rx"></block> 以滿足您的特定組態熱修復需求。</block>
-  <block id="93ce7e3cf1064757d340e99f7eaeb042" category="paragraph">在 7.1 版本中已找出一些非預期和潛在的非預期行為、以及在某些情況下避免這些行為的因應措施。</block>
   <block id="6136261711c49bf0e8e1dcb22a2c524f" category="cell">不適用</block>
-  <block id="644434a661679638ee73920a1fe05471" category="cell">若要確認所有 iSCSI 路徑在重新開機後都會傳回、請使用所有的 IPv4 端點或所有 IPv6 。請勿混用IPV4和IPV6。</block>
-  <block id="0208bd845202f1393154775e9ceb1968" category="section-title">關於 SAN 主機組態文件</block>
-  <block id="dc4ae5e39f966feaee538e0bac3d396d" category="inline-link-macro">ONTAP SAN 主機組態文件</block>
-  <block id="fea53c4695433409c2501af776af21c3" category="paragraph">SAN 主機公用程式的文件包含在中 <block ref="83855932909dca92603efe77cb42c173" category="inline-link-macro-rx"></block>。ONTAP SAN 主機組態文件是累積性的、涵蓋所有目前的 SAN 主機版本。各版本之間的任何功能差異都會記錄在上下文中。</block>
-  <block id="b941110e14a54d454e0dea4fa380b5b9" category="list-text">SANtricity Storage Manager 多重路徑驅動程式指南、專為您的 SANtricity 版本所提供。</block>
   <block id="54ed56ff6f53cace0a89cfd9c793d498" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。</block>
   <block id="e0a63b6c7b84f763f3ca8d8b86db69b8" category="summary">Windows 統一化主機公用程式包含一個安裝程式、可設定所需的 Windows 登錄和 HBA 參數、讓 Windows 主機正確處理 NetApp ONTAP 和 E 系列平台的儲存系統行為。</block>
   <block id="e16334a1a12d2e212a82720b2f25b627" category="doc">Windows Unified Host Utilities 7.2</block>
@@ -2534,7 +2500,6 @@
   <block id="8f4e34dd626d27db6da17b83e4d7f329" category="cell">Solaris 11.x 'cfgadm -c configuration' 會導致端點對端 Emulex 組態發生 I/O 錯誤</block>
   <block id="a387e31363493fb3c0fbdcc0d7458c52" category="list-text">解壓縮檔案。</block>
   <block id="8fe0dc9943c3dbce8070a7613545cb91" category="paragraph">以下範例解壓縮SPARC系統的檔案。對於 x86-64 平台、請使用<block ref="2dea9af09f7e80915b8298deb9ca9b8a" prefix=" " category="inline-code"></block> 套件：</block>
-  <block id="a15ed55b009e93df31791bff39016875" category="paragraph">請參閱 <block ref="a39850964251401babb6e797f9dd15c1" category="inline-link-macro-rx"></block> 以尋找SANtricity 有關的文件。</block>
   <block id="ec1f030f0caddb932644a46761f74630" category="list-text"><block ref="ec1f030f0caddb932644a46761f74630" category="inline-link-macro-rx"></block></block>
   <block id="e0ace13bee28a678ec04ad1b076b4b00" category="admonition">您必須部署ONTAP VMware vSphere的支援功能、才能啟用VASA Provider。VASA Provider 將為您管理所有的 igroup 設定、因此無需在 vVols 環境中建立或管理 iGroups 。</block>
   <block id="a2093eec2c1b326b4a76efce454cc95a" category="paragraph">如需資源配置與管理vVols的詳細資訊、請參閱ONTAP VMware vSphere的VMware工具文件及<block ref="fc9815e7b1405959c49ad47e9a23e3a5" category="inline-link-rx"></block> 和 <block ref="a74613d919ef64732e37564f6282a452" category="inline-link-macro-rx"></block></block>
@@ -3124,7 +3089,6 @@
   <block id="2ad9563dae62baefb397a0b93e22f08a" category="list-text">在 Red Hat Enterprise Linux （ RHEL ） 6 和 RHEL 7 主機上、現在支援用於設定伺服器設定檔的調整套件。您可以使用<block ref="44559c6617511944fd997c63b107ee6b" prefix=" " category="inline-code"></block> 根據環境設定不同設定檔的命令。例如、您也可以將虛擬來賓設定檔作為來賓虛擬機器、並可將企業儲存設定檔用於使用企業儲存陣列 LUN 的組態。使用這些經過調整的套件、可改善 ONTAP 的處理量和延遲。</block>
   <block id="b91c8d257cb2ab1f821c4201c4d98d12" category="list-text">增加了 Broadcom Emulex 和 Marvell Qlogic 對 32GB FC 適配器的支持。</block>
   <block id="a26aa7b42e8c5d7d2a6c295dc3421eb4" category="paragraph">正確的組態對於最佳效能和成功的容錯移轉非常重要。</block>
-  <block id="8b98a90c0f8d947a6126ce4314f1d147" category="paragraph">版本資訊文件包含 Windows Unified Host Utilities 7.2 和 7.1 版本的最新資訊、包括新功能、增強功能和已知問題的更新。當Windows主機公用程式的新使用資訊可供使用時、即會更新文件。</block>
   <block id="d183f649aa9dd1befe9fbbbebb9ce6f3" category="paragraph">在此範例中、我們將決定裝置的 WWID 並新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案：</block>
   <block id="9befbb0a2a211b5683af5265f22799fb" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block> 是我們需要新增至黑名單的本機 SCSI 磁碟。</block>
   <block id="8f832cd06827c0d578f135a31564e7cf" category="summary">說明如何搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5</block>
@@ -3580,4 +3544,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f0602fb611da233f60bc957edbba1033" category="sidebar">安裝 SAN 主機公用程式</block>
   <block id="a4d5754af636a6318ee2ffcd80c52e27" category="sidebar">Linux統一化主機公用程式</block>
   <block id="289d4a224c51f2aeb418b081093d4d1e" category="sidebar">Solaris主機公用程式</block>
+  <block id="9338e945bac01c9e32a8c2af440cac72" category="paragraph">版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 Windows 主機相關的重要注意事項。</block>
+  <block id="d2fedb92befc8dc2e258f7e604f48c11" category="paragraph">您應該瞭解下列已知問題和限制、這些問題和限制可能會影響特定主機的效能。Windows Unified Host Utilities 7.1 版本中已識別出一些非預期和潛在的非預期行為、以及避免這些行為的因應措施。</block>
+  <block id="4f87354ce94dcb67a9c01f1fd7b4ea2c" category="cell">您不再需要執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 指令碼、用於變更Red Hat Enterprise Linux 5、Red Hat Enterprise Linux 6或SUSE Linux Enterprise Server 11 Hyper-V來賓作業系統上的磁碟逾時、因為使用的是預設的逾時設定。。<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 舊版主機公用程式所包含的指令碼不再包含在 Windows Unified Host Utilities 7.1 版本中。Windows Unified Host Utilities 7.1會使用預設的磁碟逾時設定。</block>
+  <block id="58bd1409abe12b095d09bb31094aafa1" category="cell">使用所有的 IPv4 端點或 IPv6 端點。請勿混用IPV4和IPV6。</block>
+  <block id="3efca860156d5ad3cdf93f3fcef9b74c" category="cell">當使用 iSCSI 軟體開機搭配 iSCSI 每個工作階段多個連線（ MCS ）時、 iSCSI 開機前導連線將無法受到保護。這可能會導致從開機 LUN 中斷連線、導致主機系統中斷。</block>
 </blocks>
