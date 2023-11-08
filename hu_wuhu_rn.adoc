@@ -48,6 +48,6 @@ summary: Windows Unified Host Utilities 版本資訊
 | iSCSI工作階段在重新開機後、不會以混合式的IPv4和IPv6重新連線 | 在多重路徑I/O（MPIO）組態中、或是每個工作階段（MCS）有多個連線（同時具有IPv4和IPv6端點）組態中、某些iSCSI工作階段可能會在重新啟動Windows主機後無法重新連線。 | 使用所有的 IPv4 端點或 IPv6 端點。請勿混用IPV4和IPV6。 
 
 
-| iSCSI軟體開機不支援MCS | 當使用 iSCSI 軟體開機搭配 iSCSI 每個工作階段多個連線（ MCS ）時、 iSCSI 開機前導連線將無法受到保護。這可能會導致從開機 LUN 中斷連線、導致主機系統中斷。 | Microsoft不支援將MCS用於iSCSI軟體開機主機。使用MPIO作為高可用度解決方案。請注意、不支援混合使用MPIO和MCS。 
+| iSCSI 軟體開機不支援每秒多個連線（ MCS ） | 在 iSCSI MCS 上使用 iSCSI 軟體開機時、無法保護 iSCSI 開機前導連線。這可能會導致與開機 LUN 的連線中斷、並導致主機系統中斷。 | Microsoft不支援將MCS用於iSCSI軟體開機主機。使用MPIO作為高可用度解決方案。請注意、不支援混合使用MPIO和MCS。 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。

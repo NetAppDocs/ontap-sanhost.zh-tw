@@ -10,7 +10,7 @@
 
 [cols="20, 20, 50"]
 |===
-| 「NVMe - CLI」顯示錯誤 | 可能原因 | 因應措施 
+| 錯誤訊息 | 可能原因 | 因應措施 
 
 
 | 「寫入/dev/NVMe架構失敗：無效的引數」 | 語法不正確 | 請確認您使用的語法正確 `nvme discover`、 `nvme connect`和 `nvme connect-all` 命令。 

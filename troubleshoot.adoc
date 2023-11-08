@@ -53,11 +53,9 @@ NOTE: 疑難排解指示不適用於 AIX 、 Windows 和 ESXi 主機。
 +
 [listing]
 ----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_log_verbose=0xf00083
+# cat /etc/modprobe.d/lpfc.conf options lpfc lpfc_log_verbose=0xf00083
 
-# cat /sys/module/lpfc/parameters/lpfc_log_verbose
-15728771
+# cat /sys/module/lpfc/parameters/lpfc_log_verbose 15728771
 ----
 
 
@@ -68,12 +66,19 @@ NVMe / FC 沒有類似於的特定 qla2xxx 記錄 `lpfc` 驅動程式：請改�
 
 .步驟
 . 將「ql2xextend_error_logging=x1e400000」值附加至對應的「modf探測qla2xxx conf」檔案。
-. 執行「dracut -f」命令重新建立「initramfs」、然後重新啟動主機。
-. 重新開機後、請確認已套用詳細記錄、如下所示：
+. 執行 `dracut -f` 命令、然後重新啟動主機。
+. 重新開機後、請確認已啟用詳細資訊記錄：
 +
 [listing]
 ----
 # cat /etc/modprobe.d/qla2xxx.conf
+----
++
+輸出範例：
+
++
+[listing]
+----
 options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 # cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
 507510784
@@ -90,7 +95,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 
 [cols="20, 20, 50"]
 |===
-| 「NVMe - CLI」顯示錯誤 | 可能原因 | 因應措施 
+| 錯誤訊息 | 可能原因 | 因應措施 
 
 
 | 「寫入/dev/NVMe架構失敗：無效的引數」 | 語法不正確 | 請確認您使用的語法正確 `nvme discover`、 `nvme connect`和 `nvme connect-all` 命令。 

@@ -33,7 +33,6 @@
   <block id="21a58bdeaf70327c6f6f5fd597b24fa3" category="section-title">建議設定</block>
   <block id="c5b0e8703af1ccb56a53d3ccc87f83ac" category="paragraph">CentOS 6.4作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。</block>
   <block id="639757de418f2423907f2b63fbc1458b" category="paragraph">第一次建立此檔案時、可能需要啟用及啟動多重路徑服務。</block>
-  <block id="6e7eef95f0e9ee9b717340ce72d65e5b" category="paragraph">不需要直接將任何內容新增至「多重路徑.conf」檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。</block>
   <block id="36da0e0b56843a1256e96e81029390fa" category="paragraph">您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。</block>
   <block id="4d70a817ac85626aff88bbc73d0a2deb" category="list-text">執行下列命令來判斷WWID：</block>
   <block id="ff73d7e0f0c6051bbd80575105bb1cb1" category="list-text">將此WWID新增至「/etc/multipath.conf」中的黑名單節：</block>
@@ -840,9 +839,6 @@
   <block id="a4301741972a8d72156639b6c35de92e" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如、</block>
   <block id="231cf4c70d866b616c21baddaeed0696" category="section-title">疑難排解</block>
   <block id="0199c49af15b1997cf6d2ddd0ea8adf4" category="list-text">將「ql2xextend_error_logging=x1e400000」值附加至對應的「modf探測qla2xxx conf」檔案。</block>
-  <block id="5d14823339a99ad173c461c5934c7795" category="list-text">執行「dracut -f」命令重新建立「initramfs」、然後重新啟動主機。</block>
-  <block id="18c1ce7cd10cb855d9571af493e60d2f" category="list-text">重新開機後、請確認已套用詳細記錄、如下所示：</block>
-  <block id="bd578ecd5b4e2ae0680ca3e17e20ed2a" category="cell">「NVMe - CLI」顯示錯誤</block>
   <block id="e8a5a7214d896558232c2e63f40a05c2" category="cell">可能原因</block>
   <block id="7aebfa1e2291377e040de92d7f7f335f" category="cell">因應措施</block>
   <block id="37ea58a1ef8410b6d6bf6ec383fdb9bb" category="cell">「寫入/dev/NVMe架構失敗：無效的引數」</block>
@@ -1891,7 +1887,6 @@
   <block id="a60d936499718f3c1e7b5ddddae45c91" category="list-text">。 <block ref="6991a2ee8a93b15fb816a46b15ea0677" category="inline-link-macro-rx"></block> 適用於ONTAP 您的版本的</block>
   <block id="5f93f381aa8df330451fa5b834f54def" category="inline-link-macro">E系列文件</block>
   <block id="2c0074fce84282581b2b52e56eacf78e" category="sidebar">安裝Luhu 7.1</block>
-  <block id="3e88abad927ef9520e50cf89d3f1ddf7" category="paragraph">您應該隨時檢查您的「/etc/multipath.conf」檔案是否有舊版設定、尤其是在預設值區段、這可能會覆寫預設設定。</block>
   <block id="51f210eb8bfa53321744e9dca7258c87" category="paragraph">Oracle Linux 8.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
   <block id="60f09d4774647857c92f5a51f6de2354" category="paragraph">Oracle Linux 8.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
   <block id="ffe5b32185032e3b293e94d4a0232f34" category="paragraph">Oracle Linux 8.2作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
@@ -2010,31 +2005,9 @@
   <block id="75d2257ae841105f67aa7e6940b3fccb" category="list-text">若要列出NVMe命名空間的路徑數目、請使用下列命令：</block>
   <block id="aaf285a33d84d021ddb3cf7d93395617" category="paragraph">對於SUSE Linux Enterprise Server 15 SP4、必須存在「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。SUSE Linux Enterprise Server 15 SP4的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="3dfda629d29a9eff997fc21c726b36da" category="paragraph">SUSE Linux Enterprise Server 15 SP4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本的顯示和非ASA組態、正確設定所有組態參數。</block>
-  <block id="bdb5443c5dd9643367f9496b5fb35d08" category="paragraph">要啟動多重路徑精靈、必須存在「multiPath.conf」檔案、但您可以使用「Touch /etc/multipath.conf」命令來建立空白的零位元組檔案</block>
-  <block id="a96d8f77801154cf5d51080e06fa3215" category="paragraph">將「&lt;DevID&gt;」取代為您要排除的裝置的「WWID」字串。使用下列命令來判斷「WWID」：</block>
   <block id="9d29c9f01ddee621ba147e8ccc4bc7b0" category="list-text">執行下列命令來判斷「WWID」：</block>
-  <block id="e97b2c87e2a473e6975fd85e7af8bc02" category="list-text">將此「WWID」新增至「/etc/multipath.conf」中的黑名單節：</block>
-  <block id="588664bdfe3aca23316ad7f26a08e2a5" category="paragraph">下表顯示ONTAP 了適用於整個過程的關鍵多路徑參數、以及所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要在稍後的「多重路徑.conf」中修正這些參數、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</block>
   <block id="cf79be42f6c9a2f2225f202bfec080c2" category="sidebar">15 SP4</block>
   <block id="8da61845fa1ac07e5d54097fe9d2a4cb" category="summary">說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterprise Server 15 SP4的NVMe/FC</block>
-  <block id="8eb74debb51b4f25feba23cb4c810b37" category="doc">適用於SUSE Linux Enterprise Server 15 SP4及ONTAP 支援功能的NVMe主機組態</block>
-  <block id="c75db19ac5a0dcb194a365e12ad2a6df" category="paragraph">採用ANA（非對稱命名空間存取）的SUSE Linux Enterprise Server 15 SP4（SLES15 SP4）支援NVMe over Fabric或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需啟用NVMe的詳細資料、請ONTAP 參閱此處以ANA on SLES15 SP4和以之為目標的內核NVMe多重路徑。</block>
-  <block id="6bf6f26e72e1a43152386a3d529598cb" category="list-text">SLES15 SP4支援NVMe / FC及其他傳輸。</block>
-  <block id="142ea2bd2623f2c2d64d9ef53c347b24" category="list-text">NVMe不支援「anlun」。因此、在SLES15 SP4上、不會支援NVMe的Luhu。您可以改用原生「NVMe - CLI」隨附的NetApp外掛程式。這應該適用於所有NVMe傳輸。</block>
-  <block id="10bc893eed35189e5092c4f181aedb5e" category="list-text">NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是通常部署的主機組態。因此、對於SCSI而言、您可以像往常一樣為SCSI LUN設定「dm-multipath"、以產生mpath裝置、而NVMe多重路徑則可用於在主機上設定NVMe多重路徑裝置。</block>
-  <block id="4b148e1d7f44cff075101f1edbc6a9fe" category="paragraph">請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得所支援組態的正確詳細資料。</block>
-  <block id="b545ab3ca975cd0517fdd21a1729e795" category="paragraph">核心內建NVMe多重路徑已在SLES主機（例如、SLES15 SP4）上預設啟用。因此、此處不需要其他設定。請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block> 以取得所支援組態的正確詳細資料。</block>
-  <block id="4933033127862860b194cbe455635310" category="list-text">請確認您已在SLES15 SP4 MU主機上安裝必要的核心和「NVMe-CLI」維護更新（MU）套件。</block>
-  <block id="c5887937b5b23714e6333cc2805b4864" category="list-text">檢查主機上的「hostnqn」字串（位於「/etc/nexe/hostnqn」）、並確保其與ONTAP 「hostnqn」字串正確相符、以對應於該等子系統的「hostnqn」字串。例如、</block>
-  <block id="d9f4f7d9a9eb182e8b8863d6c183e841" category="paragraph">視主機上使用的FC介面卡而定、繼續執行下列步驟。</block>
-  <block id="75870a630c07f219a37133dad55f104f" category="paragraph">較新的lpfcc驅動程式（包括收件匣和發件匣）已將「lffc_enable _FC4_type]預設值設為3、因此您不再需要在「/etc/modprofile.d/lffc.conf」中明確設定、然後重新建立「initrd」。預設已啟用「lfit NVMe」支援：</block>
-  <block id="32ecb9890aed827558c7cd1a318fda14" category="paragraph">現有的原生原生lffc驅動程式已經是最新的、且與NVMe/FC相容。因此、您不需要安裝隨裝即用（OOB）的lfit驅動程式。</block>
-  <block id="ce48d43c1e6c7a418733e722925a43b8" category="list-text">確認NVMe / FC啟動器連接埠已啟用、而且您可以看到目標連接埠、而且所有連接埠都已啟動並正在執行。在此範例中、只會啟用一個啟動器連接埠、並與輸出中所示的兩個目標LIF連線：</block>
-  <block id="bc1eafdc5546c34f6a9034570437fcc0" category="list-text">執行dracut -f命令、然後重新啟動主機。</block>
-  <block id="61efa8d63e1b266809e1e79422fed58f" category="paragraph">較新版本的SLES15 SP4 MU核心隨附的原生內建qla2xxx驅動程式、具有最新的上游修正程式、是ONTAP 支援此功能不可或缺的要素。</block>
-  <block id="859c1dcdb0decd8fe22f184abe2b92f7" category="list-text">路徑恢復後、不會自動重新連線、因為在路徑關閉後的10分鐘內、預設的「Ctrl-Loss - TMO"定時器無法自動重新連線至恢復的路徑。</block>
-  <block id="1077e8ad3542ff8af32bed26b6b21ee8" category="list-text">在主機開機期間、不會自動連線NVMe / TCP、也無法在主機開機期間自動連線。</block>
-  <block id="b2edbac4a48e893081ffbe4cda9a7dec" category="list-text">驗證ONTAP 個別ONTAP 的各個還原命名空間是否適當反映在主機上的NVMe設定（例如、設定為NetApp支援資源控制器的模型、以及將負載平衡iopolicy設定為循環配置資源）：</block>
   <block id="0882578f9915da36a8ab5c612728ad30" category="paragraph">範例（A）：</block>
   <block id="806707e47ee8fe684a6d5e5b0898539a" category="sidebar">NVMeF OL</block>
   <block id="0b6a095cb9010243600ae8c7163d4eab" category="summary">適用於Windows Server 2022的NVMe / FC主機組態、ONTAP 含功能更新</block>
@@ -2082,7 +2055,6 @@
   <block id="56659c18435d50a38e076a58b32163a4" category="cell">執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 在執行Red Hat Enterprise Linux或SUSE Linux Enterprise Server的Hyper-V客體上、不再需要指令碼</block>
   <block id="e91b41f5f9d74fcfaa3733fe1534d7c8" category="cell">iSCSI工作階段在重新開機後、不會以混合式的IPv4和IPv6重新連線</block>
   <block id="03a5ef9a07e32294246c302f24714cba" category="cell">在多重路徑I/O（MPIO）組態中、或是每個工作階段（MCS）有多個連線（同時具有IPv4和IPv6端點）組態中、某些iSCSI工作階段可能會在重新啟動Windows主機後無法重新連線。</block>
-  <block id="9ffe40d778f0a3ffe9e1f6de2a49fb40" category="cell">iSCSI軟體開機不支援MCS</block>
   <block id="a77cd68a790d44f2359fe8a4dd45b1dc" category="cell">Microsoft不支援將MCS用於iSCSI軟體開機主機。使用MPIO作為高可用度解決方案。請注意、不支援混合使用MPIO和MCS。</block>
   <block id="05aa4f4bc5b51efef2c52f4fb2ddc55f" category="paragraph"><block ref="06c8d471f4d0311b3446a94e54fc8a82" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。</block>
   <block id="748753e893fd2f6b904a298d120af491" category="sidebar">Windows統一化主機公用程式</block>
@@ -2103,7 +2075,6 @@
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">在此範例中、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如、</block>
   <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：</block>
-  <block id="9ac1e2761e536d1b08b677a24976cad9" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可設定至-l 1800）<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 如此一來、當路徑遺失時、它會重試更長時間。例如、</block>
   <block id="1272c37c0c38bd618d6d76d763f54041" category="paragraph">在此範例中、Citrix Hypervisor 8.x、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
   <block id="1de6caecfe16b961f2f1c858579203f0" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時重試較長時間。例如：</block>
   <block id="557c4124a10a18982aa7103d5c4f8b02" category="paragraph">在本例中、Citrix XenServer 7.x、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
@@ -3548,5 +3519,74 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d2fedb92befc8dc2e258f7e604f48c11" category="paragraph">您應該瞭解下列已知問題和限制、這些問題和限制可能會影響特定主機的效能。Windows Unified Host Utilities 7.1 版本中已識別出一些非預期和潛在的非預期行為、以及避免這些行為的因應措施。</block>
   <block id="4f87354ce94dcb67a9c01f1fd7b4ea2c" category="cell">您不再需要執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 指令碼、用於變更Red Hat Enterprise Linux 5、Red Hat Enterprise Linux 6或SUSE Linux Enterprise Server 11 Hyper-V來賓作業系統上的磁碟逾時、因為使用的是預設的逾時設定。。<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 舊版主機公用程式所包含的指令碼不再包含在 Windows Unified Host Utilities 7.1 版本中。Windows Unified Host Utilities 7.1會使用預設的磁碟逾時設定。</block>
   <block id="58bd1409abe12b095d09bb31094aafa1" category="cell">使用所有的 IPv4 端點或 IPv6 端點。請勿混用IPV4和IPV6。</block>
-  <block id="3efca860156d5ad3cdf93f3fcef9b74c" category="cell">當使用 iSCSI 軟體開機搭配 iSCSI 每個工作階段多個連線（ MCS ）時、 iSCSI 開機前導連線將無法受到保護。這可能會導致從開機 LUN 中斷連線、導致主機系統中斷。</block>
+  <block id="194918718b492bb08c4ceb2c1063575c" category="paragraph">。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
+  <block id="80b3dcca095ff047032f5421282d56f0" category="paragraph">更換<block ref="2f7ac3c5a9070e3fa18615d7bf03ce76" prefix=" " category="inline-code"></block> 使用<block ref="7f82ca1acc93bec0dcd43c7f37ce4512" prefix=" " category="inline-code"></block> 要排除的裝置字串。請使用下列命令來判斷<block ref="7f82ca1acc93bec0dcd43c7f37ce4512" prefix=" " category="inline-code"></block>：</block>
+  <block id="b76bbd9898d442ee1f504e1dbfcd8bb1" category="list-text">新增<block ref="7f82ca1acc93bec0dcd43c7f37ce4512" prefix=" " category="inline-code"></block> 中黑名單的值<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
+  <block id="3b839ec0f9be7e06670afc4a1a40f03f" category="paragraph">下表顯示ONTAP 了適用於整個過程的關鍵多路徑參數、以及所需的值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要稍後在中的節段加以修正<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 適用於 ONTAP LUN 。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</block>
+  <block id="b257f5893979fe648d54dcf693a4e4cb" category="paragraph">下列範例說明如何修正被覆寫的預設值。在此案例中<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案定義的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 和<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> 與ONTAP 不兼容的如果無法移除這些參數、因為其他 SAN 陣列仍連接至主機、則可改為針對具有裝置區段的 ONTAP LUN 進行修正。</block>
+  <block id="11bc52330473c77af7c9af92d91670d8" category="doc">適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP4 的 NVMe 主機組態</block>
+  <block id="1e0824a41921c35ae75109745c612112" category="paragraph">含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server （ SLES ） 15 SP4 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FCP 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
+  <block id="4cf7fe92c394fa4fc2b1bf18982c0e2a" category="paragraph">下列支援適用於 ONTAP 15 SP4 的 NVMe 主機組態：</block>
+  <block id="6a3b837c447567576db8a7b274129d75" category="list-text">支援 NVMe 安全頻內驗證</block>
+  <block id="9a92ce4e989d773249e020a05ba01fda" category="list-text">使用獨特的探索 NQN 支援持續探索控制器（ PDC ）</block>
+  <block id="23a3dd6969f2fd3146cb091b83b4ac09" category="list-text">NVMe 不支援 sanlun 。因此、在 SLES15 SP5 主機上、無法為 NVMe 提供主機公用程式支援。您可以仰賴原生 NVMe - CLI 套件中的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
+  <block id="77539abf8642dd04b00f6fdcfa4b1b88" category="paragraph">您可以為 Broadcom / Emulex FC 介面卡或 Marvell/Qlogic FC 介面卡設定 NVMe / FC 。</block>
+  <block id="8a747e40f001b558841e011caff1be9d" category="list-text">確認您使用的是建議的介面卡機型：</block>
+  <block id="98e60d5165e4e32dd13ecc867cd3fe85" category="list-text">驗證介面卡型號說明：</block>
+  <block id="77f11940400c51d3757e984a0832fa8c" category="list-text">確認您使用的是建議的 Emulex 主機匯流排介面卡（ HBA ）韌體版本：</block>
+  <block id="e316d8e318452be8fb3f411a5b75740a" category="list-text">確認您使用的是建議的 lpfc 驅動程式版本：</block>
+  <block id="4cd8a0ed1af264c4d308453d188bf895" category="list-text">確認您可以檢視啟動器連接埠：</block>
+  <block id="ed1d503af7b244498872a4e8f68ad0ea" category="list-text">驗證啟動器連接埠是否在線上：</block>
+  <block id="ff477f85b2409de7be48c00555d051c9" category="list-text">確認已啟用 NVMe / FC 啟動器連接埠、且目標連接埠可見：</block>
+  <block id="7e0cbf28ccc89995c1daf32f5daedd02" category="paragraph">在此範例中、會啟用一個啟動器連接埠、並與兩個目標生命體連線。</block>
+  <block id="e86acb5227ff2edf84308d3a10d6883d" category="list-text">SLES 15 SP4 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
+  <block id="77c96566e3c78688f34abe91700ea32c" category="list-text">確認<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 參數設為 1 ：</block>
+  <block id="0c1b72e395c1933da2da0ebb8f7fe9a0" category="section-title">啟用 NVMe 服務</block>
+  <block id="59888b5268cc13974726c98a3d894d8d" category="paragraph">您可以使用下列程序來啟用 NVMe 服務。</block>
+  <block id="f409d4c6497d1c2cec5c498fdcdaf32f" category="paragraph">中包含兩個 NVMe / FC 開機服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 不過、套件（ _only_ ）<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 可在系統開機期間啟動； <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 未啟用。因此、您需要手動啟用<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 以在系統開機期間啟動。</block>
+  <block id="404c9db3810293328aa6b6e3e3d75b2f" category="list-text">啟用<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>：</block>
+  <block id="46bb931cbfa3a27a99c1f1877eeee986" category="list-text">請確認<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 和<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 系統開機後正在執行：</block>
+  <block id="baada05b728885e319c5403cda805aab" category="paragraph">您可以使用下列程序來設定 NVMe / TCP 。</block>
+  <block id="5f4f678aad12f1e93623021404b1cd76" category="list-text">確認所有其他的 NVMe / TCP 啟動器目標 LIF 組合都能成功擷取探索記錄頁面資料：</block>
+  <block id="99c66119d6b08daedeeade4ea3314f28" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨所有節點支援的 NVMe / TCP 啟動器目標生命體執行命令：</block>
+  <block id="8b1603b35e6819621dc1f0cc444c575f" category="admonition">NetApp 建議您設定<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block> 選項<block ref="6bb61e3b7bce0931da574d19d1d82c88" prefix=" " category="inline-code"></block> 如此一來、一旦路徑遺失、 NVMe / TCP 啟動器就會嘗試無限期重新連線。</block>
+  <block id="06de15d425458e9e7eaf5908bf68638b" category="list-text">確認主機具有適用於 ONTAP NVMe 命名空間的正確控制器機型：</block>
+  <block id="f82da621d58f05378174a2c3b797cc33" category="list-text">確認個別 ONTAP NVMe I/O 控制器的 NVMe I/O 原則：</block>
+  <block id="fcb5bee63d6460f40e0f810d9b88ff19" category="list-text">確認主機可以看到 ONTAP 命名空間：</block>
+  <block id="051e7c8fe85493aa4fca34ecb724d7f5" category="paragraph"><block ref="7ee98ee108f160c92a9c1dd2307ab6a5" prefix="" category="inline-code"></block></block>
+  <block id="462943f55eaa51bdddde8bbb7361ad5a" category="paragraph"><block ref="bef03e474ce211e47fcb917ac4b0601e" prefix="" category="inline-code"></block></block>
+  <block id="80782d927009a28ba6444564924d02eb" category="section-title">探索增強功能</block>
+  <block id="859f68c87f883fa78618600b15339105" category="paragraph">從 ONTAP 9.11.1 開始、您可以使用下列程序、為 SLES 15 SP4 主機建立持續探索控制器（ PDC ）。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除案例、以及探索記錄頁面資料的變更。</block>
+  <block id="d48ddf14c1b8a3a92106ad1a14d18258" category="list-text">確認探索記錄頁面資料可用、並可透過啟動器連接埠和目標 LIF 組合擷取：</block>
+  <block id="4b251899b86291ee2ea3a4ec31bd27d2" category="list-text">建立探索子系統的 PDC ：</block>
+  <block id="cc9b331553f2bcc4120c4d935ac45124" category="list-text">從 ONTAP 控制器、確認已建立 PDC ：</block>
+  <block id="808ef0d960a275630df5320d10b4e17a" category="section-title">設定安全的頻內驗證</block>
+  <block id="e2c8ace04a879a9e25c44c01e276ca44" category="paragraph">從 ONTAP 9.12.1 開始、在您的 SLES 15 SP4 主機和 ONTAP 控制器之間、透過 NVMe / TCP 和 NVMe / FC 支援安全的頻內驗證。</block>
+  <block id="73fd59b3c9a3572b90f709cc5c917c78" category="paragraph">若要設定安全驗證、每個主機或控制器都必須與相關聯<block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block> 金鑰、這是 NVMe 主機或控制器的 NQN 組合、以及管理員設定的驗證密碼。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。</block>
+  <block id="563237c884bab6356a13da886807f1d9" category="paragraph">您可以使用 CLI 或組態 JSON 檔案來設定安全的頻內驗證。如果您需要為不同的子系統指定不同的 dhchap 金鑰、則必須使用組態 JSON 檔案。</block>
+  <block id="91af5705f16502125e8b2187e64202c0" category="open-title">CLI</block>
+  <block id="130ea6273a6f2f8dd4847cd415a8dce1" category="list-text">取得主機 NQN ：</block>
+  <block id="ba350b7d92692b61c2a6def18ee16927" category="list-text">為 SLES15 SP4 主機產生 dhchap 金鑰：</block>
+  <block id="23edd95065130b4cb5f75361f442edd0" category="paragraph">+
+在下列範例中、會產生一個隨機的 dhchap 金鑰、其中 HMAC 設為 3 （ SHA-512 ）。</block>
+  <block id="be970af96a2d347df16aa0902707d220" category="list-text">在 ONTAP 控制器上、新增主機並指定兩個 dhchap 金鑰：</block>
+  <block id="6250c5a6dfbdfa6456828e5c1fe8d570" category="list-text">主機支援兩種驗證方法：單向和雙向。在主機上、連線至 ONTAP 控制器、並根據所選的驗證方法指定 dhchap 金鑰：</block>
+  <block id="fc4c8739f30c2752c3c17a6352aa09b4" category="list-text">驗證<block ref="696f58758da9e4474854ee0c48e9a3ec" prefix=" " category="inline-code"></block> 命令驗證主機和控制器 dhchap 金鑰：</block>
+  <block id="fce0c40fc78df8eaae6a5d537031d2e9" category="list-text">驗證主機 dhchap 金鑰：</block>
+  <block id="96bd6c4f8486135e67ea7768ebfd660b" category="paragraph">* 單向組態的輸出範例： *</block>
+  <block id="053fe6a5806392c2d3f3d0b9560aef43" category="list-text">驗證控制器 dhchap 按鍵：</block>
+  <block id="84ea3979460de46128b29ddab7d89cd0" category="paragraph">* 雙向組態輸出範例： *</block>
+  <block id="a6c9e3a7671c1fd9d7328c3be5d107b5" category="open-title">Json 檔案</block>
+  <block id="e8bdd625277829c32849608bfaaf1041" category="paragraph">您可以使用<block ref="2be2042afe5d55c4305aa3ff91b1ff5f" prefix=" " category="inline-code"></block> 使用檔案<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> ONTAP 控制器組態上有多個 NVMe 子系統可用時的命令。</block>
+  <block id="be0bd4d71e13a5ad44e756862b63fb17" category="inline-link-macro">介紹手冊頁ONTAP</block>
+  <block id="32c203213cf44e803bc3c227bd240164" category="paragraph">您可以使用產生 JSON 檔案<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> 選項。請參閱 <block ref="4d8de0f1b018ca27a073061938808cb9" category="inline-link-macro-rx"></block> 以取得更多語法選項。</block>
+  <block id="7be934ce8b58f4891a1f5bec99cfea5f" category="list-text">設定Json檔案：</block>
+  <block id="76dfba31c261b7600a97b27a404095b4" category="list-text">使用組態 JSON 檔案連線至 ONTAP 控制器：</block>
+  <block id="fbcde6a9a9bc69bb6785a0b0a3403428" category="list-text">確認已為每個子系統的個別控制器啟用 dhchap 機密：</block>
+  <block id="8b298a30ff335320eb3dc5fa82948392" category="paragraph">在 ONTAP 版本中、 SLES 15 SP4 並無已知問題。</block>
+  <block id="e20cbb947afcf84cf58de1358ee1068d" category="cell">錯誤訊息</block>
+  <block id="8cfe2b11255c36622bc84e4bd2dfb53c" category="list-text">執行<block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block> 命令、然後重新啟動主機。</block>
+  <block id="9688ec84efd5b1cb7c885e598b6ebf4a" category="list-text">重新開機後、請確認已啟用詳細資訊記錄：</block>
+  <block id="684c45496e08c180fd6b056747c6d7e6" category="cell">iSCSI 軟體開機不支援每秒多個連線（ MCS ）</block>
+  <block id="a22d253913fa8deba78982e6393df807" category="cell">在 iSCSI MCS 上使用 iSCSI 軟體開機時、無法保護 iSCSI 開機前導連線。這可能會導致與開機 LUN 的連線中斷、並導致主機系統中斷。</block>
 </blocks>
