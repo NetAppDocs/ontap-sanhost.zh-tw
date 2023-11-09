@@ -3578,8 +3578,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="84ea3979460de46128b29ddab7d89cd0" category="paragraph">* 雙向組態輸出範例： *</block>
   <block id="a6c9e3a7671c1fd9d7328c3be5d107b5" category="open-title">Json 檔案</block>
   <block id="e8bdd625277829c32849608bfaaf1041" category="paragraph">您可以使用<block ref="2be2042afe5d55c4305aa3ff91b1ff5f" prefix=" " category="inline-code"></block> 使用檔案<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> ONTAP 控制器組態上有多個 NVMe 子系統可用時的命令。</block>
-  <block id="be0bd4d71e13a5ad44e756862b63fb17" category="inline-link-macro">介紹手冊頁ONTAP</block>
-  <block id="32c203213cf44e803bc3c227bd240164" category="paragraph">您可以使用產生 JSON 檔案<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> 選項。請參閱 <block ref="4d8de0f1b018ca27a073061938808cb9" category="inline-link-macro-rx"></block> 以取得更多語法選項。</block>
   <block id="7be934ce8b58f4891a1f5bec99cfea5f" category="list-text">設定Json檔案：</block>
   <block id="76dfba31c261b7600a97b27a404095b4" category="list-text">使用組態 JSON 檔案連線至 ONTAP 控制器：</block>
   <block id="fbcde6a9a9bc69bb6785a0b0a3403428" category="list-text">確認已為每個子系統的個別控制器啟用 dhchap 機密：</block>
@@ -3589,4 +3587,5 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9688ec84efd5b1cb7c885e598b6ebf4a" category="list-text">重新開機後、請確認已啟用詳細資訊記錄：</block>
   <block id="684c45496e08c180fd6b056747c6d7e6" category="cell">iSCSI 軟體開機不支援每秒多個連線（ MCS ）</block>
   <block id="a22d253913fa8deba78982e6393df807" category="cell">在 iSCSI MCS 上使用 iSCSI 軟體開機時、無法保護 iSCSI 開機前導連線。這可能會導致與開機 LUN 的連線中斷、並導致主機系統中斷。</block>
+  <block id="86891fa05c8b78ad9621085c8abc1fb4" category="paragraph">您可以使用產生 JSON 檔案<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> 選項。如需更多語法選項、請參閱 NVMe CONNECT ALL 手冊頁。</block>
 </blocks>
