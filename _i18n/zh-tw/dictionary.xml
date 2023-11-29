@@ -116,7 +116,6 @@
   <block id="7fbd0449d14b878cf9b9ba9434075a41" category="paragraph">如果您選擇使用SAN開機、您的組態必須支援SAN開機。您可以使用NetApp互通性對照表工具來驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="e6b99fad9f3e47e4b52f44d0b0dac069" category="list-text">確認有多個可用路徑。請記住、只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。</block>
   <block id="03ed98061513afaf0a716e8d7756931a" category="list-text">在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。</block>
-  <block id="34fbc6aa2d83f69c8f3d03faf01392c7" category="section-title">安裝Windows修補程式</block>
   <block id="c812232f894e468682a433753368a4f5" category="paragraph">我們建議在伺服器上安裝*最新的累計更新*。</block>
   <block id="880b9ba9933b6e3ce087d9412e66470b" category="inline-link-macro">Microsoft Update目錄2012 R2</block>
   <block id="0732474ba551155a9a0983a068b65a4e" category="admonition">前往 <block ref="c91fa8395bb99838be8ab4e7b48666cc" category="inline-link-macro-rx"></block> 網站、取得並安裝適用於您Windows版本的必要Windows修補程式。</block>
@@ -124,8 +123,6 @@
   <block id="623e88bd2085eeb3f49a2784ec97654e" category="admonition">部分修補程式無法直接下載。在這些情況下、您需要向Microsoft支援人員索取特定的修補程式。</block>
   <block id="5a3b43f9090be87b411af7ac82adcb38" category="list-text">依照Microsoft提供的指示安裝修補程式。</block>
   <block id="56dd1899b4280d897ff6670fb0968e02" category="admonition">許多修補程式都需要重新開機Windows主機、但您可以選擇等待重新開機主機、直到安裝或升級Host Utilities為止。</block>
-  <block id="36b258cf83367d27741cf0be3d246eca" category="section-title">安裝Windows Unified Host Utilities</block>
-  <block id="ba490f365e20da97a23546cfe0da8569" category="inline-link-macro">Wuhu 7.1文件</block>
   <block id="d25621141f24193488d8ea2276c47e01" category="paragraph">如果您的Windows主機有多個儲存系統路徑、則必須安裝MPIO軟體並設定多重路徑。如果沒有MPIO軟體、作業系統可能會將每個路徑視為獨立的磁碟、進而導致資料毀損。MPIO軟體為所有路徑的作業系統提供單一磁碟、而裝置專屬模組（DSM）則負責管理路徑容錯移轉。</block>
   <block id="a0e497cbff11ff2d61625663418c3fc8" category="paragraph">在Windows系統上、任何MPIO解決方案的兩個主要元件為DSM和Windows MPIO。在Hyper-V虛擬機器中執行的Windows XP或Windows Vista不支援MPIO。</block>
   <block id="60bdc643bd0e4fed0f4a29dbcd77bc2b" category="admonition">當您選取MPIO支援時、Windows Unified Host Utilities會啟用Windows Server 2012 R2隨附的MPIO功能。</block>
@@ -149,7 +146,6 @@
   <block id="a432483f271039135d89450152b7c2cd" category="paragraph">您可以在ONTAP NetApp社群下載《NetApp PowerShell Toolkit》。您必須將「DataONTAP.Zip」檔案解壓縮至環境變數「%PSModulePath%」所指定的位置（或使用「Install.ps1」指令碼為您執行）。安裝完成後、請使用「How－NAHelp」Cmdlet取得Cmdlet的說明。</block>
   <block id="1390f52cfb4ccd4f9cbdcd7bcdb075a9" category="paragraph">PowerShell工具套件僅支援含MBR-類型分割區的固定大小VHD檔案。不支援使用Windows動態磁碟或GPT分割的VHD。此外、PowerShell Toolkit需要4 GB的最小分割區大小。較小的分割區無法正確對齊。</block>
   <block id="1104f990ade81e5b4d644288a54cf49a" category="admonition">對於在VHD上使用Grub開機載入程式的Linux虛擬機器、您必須在執行PowerShell Toolkit之後更新開機組態。</block>
-  <block id="f4f9ad21012cf66e650af6b1058ce16b" category="section-title">使用PowerShell工具套件修正MBbr對齊後、重新安裝適用於Linux客體的Grub</block>
   <block id="b9ef2c298abb1a6d04513bf9fee94dda" category="paragraph">在磁碟上執行「mbralign」、以使用Grub開機載入程式、在Linux客體作業系統上使用PowerShell Toolkit修正MBR-對齊之後、您必須重新安裝Grub、以確保客體作業系統能正確開機。</block>
   <block id="a6e4f0d5cc29281e962b33fc7c84286f" category="paragraph">PowerShell Toolkit Cmdlet已完成虛擬機器的VHD檔案。本主題僅適用於使用Grub開機載入程式和「ystemRescueCd」的Linux客體作業系統。</block>
   <block id="972f2c4ba9001b48966c37ef2a152dc0" category="list-text">掛載安裝CD磁碟1的ISO映像、以取得適用於虛擬機器的正確Linux版本。</block>
@@ -178,8 +174,6 @@
   <block id="74802e20676d4776b1eea0dca80bcb9a" category="paragraph">若為QLogic Fibre Channel HBA：</block>
   <block id="08a7801aadb2d395506d0735d17dcf62" category="cell">LinkDownTimeDOut</block>
   <block id="f9c8e6ceed8ad8db75740e78e48a6236" category="cell">PortDownRetryCount</block>
-  <block id="881b9c4cb273bade29a78089e1cf6ee9" category="inline-link-macro">Windows 7.1主機公用程式安裝指南</block>
-  <block id="c5fac7adc428bbd803e2710cafe09003" category="admonition">Windows Unified Host Utility會設定這些值。如需詳細的建議設定、請參閱 <block ref="53418a54750628f8c611b4cd8982473c" category="inline-link-macro-rx"></block>。</block>
   <block id="482723983a4f2af954e36ff41e567451" category="section-title">已知限制</block>
   <block id="6a1bc9ef2b246f475f3565d08b0f7fff" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.8搭配使用功能</block>
   <block id="e6134970e8d5973c94d66165bc3ebc13" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="5564eab34da8df006dd99a2c2ee21d68" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -2042,7 +2036,6 @@
   <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">設定SAN主機和雲端用戶端</block>
   <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">總覽</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">NVMeoF RHEL</block>
-  <block id="47e2092f9d666fc24b67c7da02de84c7" category="paragraph">Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。我們建議下載並安裝最新的公用程式套件。如需Wuhu組態資訊與說明、請參閱 <block ref="f7fe1c204ed60a7e9dd594c09fd7b1a5" category="inline-link-macro-rx"></block>。</block>
   <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows主機公用程式套件7.1</block>
   <block id="a94e97667092f5ff8b67813ccebdb0ca" category="paragraph">主機公用程式支援不同的Windows主機組態、傳輸協定和多路徑選項。如需詳細資訊、請參閱<block ref="b7322bec4509d45107de6de43ca1f517" category="inline-link-rx"></block>。</block>
   <block id="0165fb41a35ddb937948f77394256403" category="inline-link-macro">SAN主機Windows文件</block>
@@ -3488,8 +3481,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0b3c2391c446a11bbd0c66a38ea6904b" category="paragraph">CentOS 7.6 with ONTAP 版本有下列已知問題：</block>
   <block id="cdf4bf81cf3ee1a54f731160152019cf" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.2 與 ONTAP 設定為目標。</block>
   <block id="12816f6cc6e072d421258f60c7368dd0" category="paragraph">使用 ONTAP 版本的 Oracle Linux 7.2 沒有已知問題。</block>
-  <block id="1fed0d1f2feda6954357b22995ac7bd0" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Windows Server 2022 設定為 ONTAP 作為目標。
-= 作業系統開機</block>
   <block id="7145b773c01d1ea2262969c3644747a0" category="paragraph">使用 ONTAP 版本的 Windows Server 2022 沒有已知問題。</block>
   <block id="57175c72c9ec2223e90f7a6f933b0c1b" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標、以設定 Oracle Linux 7.6 。</block>
   <block id="a2ad6d83a8574c572c9a8b9c0652127e" category="paragraph">Oracle Linux 7.6 with ONTAP 版本有下列已知問題：</block>
@@ -3585,7 +3576,15 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e20cbb947afcf84cf58de1358ee1068d" category="cell">錯誤訊息</block>
   <block id="8cfe2b11255c36622bc84e4bd2dfb53c" category="list-text">執行<block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block> 命令、然後重新啟動主機。</block>
   <block id="9688ec84efd5b1cb7c885e598b6ebf4a" category="list-text">重新開機後、請確認已啟用詳細資訊記錄：</block>
-  <block id="684c45496e08c180fd6b056747c6d7e6" category="cell">iSCSI 軟體開機不支援每秒多個連線（ MCS ）</block>
   <block id="a22d253913fa8deba78982e6393df807" category="cell">在 iSCSI MCS 上使用 iSCSI 軟體開機時、無法保護 iSCSI 開機前導連線。這可能會導致與開機 LUN 的連線中斷、並導致主機系統中斷。</block>
   <block id="86891fa05c8b78ad9621085c8abc1fb4" category="paragraph">您可以使用產生 JSON 檔案<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> 選項。如需更多語法選項、請參閱 NVMe CONNECT ALL 手冊頁。</block>
+  <block id="0ecfee1e5b63a34e0c870ad349ab2d79" category="section-title">安裝 Windows Hotfix</block>
+  <block id="fa5be5c2e2b86b59c46b48b7021f967f" category="section-title">安裝 Windows Unified Host Utilities</block>
+  <block id="7f0107becb6328e412aa5e8712724378" category="inline-link-macro">Windows Unified Host Utilities 文件</block>
+  <block id="b4c9abb2b32b490ded389f27627f9510" category="paragraph">Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。NetApp 建議您下載並安裝最新的公用程式套件。如需蕪湖組態資訊與說明、請參閱 <block ref="b25c56f0835abca42f2574922a5bff40" category="inline-link-macro-rx"></block> 並選取 Windows Unified Host Utilities 版本的安裝程序。</block>
+  <block id="f00aa3de5284bd6ffc1c6eb440a68428" category="inline-link-macro">Windows主機公用程式文件</block>
+  <block id="fc51d3fbe5dd41d133c1f25388a68493" category="admonition">Windows Unified Host Utility會設定這些值。如需詳細的建議設定、請參閱 <block ref="1035103116c48a69520d80b6269bd2d8" category="inline-link-macro-rx"></block> 並選取 Windows Unified Host Utilities 版本的安裝程序。</block>
+  <block id="cffc00678708e63d08b03d05ada52624" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Windows Server 2022 設定為 ONTAP 作為目標。</block>
+  <block id="6f49a4f8a77775eb655aad7d40795d50" category="section-title">使用 PowerShell Toolkit 修正 MBR 對齊之後、重新安裝適用於 Linux 來賓作業系統的 GRUB</block>
+  <block id="29bdde7506503e06e915420031c09cbf" category="cell">iSCSI 軟體開機不支援每個工作階段多個連線（ MCS ）</block>
 </blocks>

@@ -44,7 +44,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 
 
-== 安裝Windows修補程式
+== 安裝 Windows Hotfix
 
 我們建議在伺服器上安裝*最新的累計更新*。
 
@@ -65,9 +65,9 @@ TIP: 許多修補程式都需要重新開機Windows主機、但您可以選擇�
 
 
 
-== 安裝Windows Unified Host Utilities
+== 安裝 Windows Unified Host Utilities
 
-Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。我們建議下載並安裝最新的公用程式套件。如需Wuhu組態資訊與說明、請參閱 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71.html["Wuhu 7.1文件"]。
+Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。NetApp 建議您下載並安裝最新的公用程式套件。如需蕪湖組態資訊與說明、請參閱 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows Unified Host Utilities 文件"] 並選取 Windows Unified Host Utilities 版本的安裝程序。
 
 
 
@@ -135,7 +135,7 @@ NOTE: 對於在VHD上使用Grub開機載入程式的Linux虛擬機器、您必�
 
 
 
-=== 使用PowerShell工具套件修正MBbr對齊後、重新安裝適用於Linux客體的Grub
+=== 使用 PowerShell Toolkit 修正 MBR 對齊之後、重新安裝適用於 Linux 來賓作業系統的 GRUB
 
 在磁碟上執行「mbralign」、以使用Grub開機載入程式、在Linux客體作業系統上使用PowerShell Toolkit修正MBR-對齊之後、您必須重新安裝Grub、以確保客體作業系統能正確開機。
 
@@ -211,7 +211,7 @@ Linux救援會關閉、然後重新開機。
 | PortDownRetryCount | 10. 
 |===
 
-NOTE: Windows Unified Host Utility會設定這些值。如需詳細的建議設定、請參閱 link:https://library.netapp.com/ecmdocs/ECMLP2789202/html/index.html["Windows 7.1主機公用程式安裝指南"^]。
+NOTE: Windows Unified Host Utility會設定這些值。如需詳細的建議設定、請參閱 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"] 並選取 Windows Unified Host Utilities 版本的安裝程序。
 
 
 
