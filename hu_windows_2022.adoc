@@ -43,7 +43,7 @@ summary: 搭配ONTAP 使用Windows Server 2022搭配使用
 
 == 安裝 Windows Hotfix
 
-我們建議在伺服器上安裝*最新的累計更新*。
+NetApp 建議在伺服器上安裝 * 最新的累計更新 * 。
 
 
 NOTE: 前往 link:https://www.catalog.update.microsoft.com/Search.aspx?q=update%20%22windows%20server%202022%22["Microsoft Update目錄2022"^] 網站、取得並安裝適用於您Windows版本的必要Windows修補程式。

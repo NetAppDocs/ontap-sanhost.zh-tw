@@ -46,7 +46,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 == 安裝 Windows Hotfix
 
-我們建議在伺服器上安裝*最新的累計更新*。
+NetApp 建議在伺服器上安裝 * 最新的累計更新 * 。
 
 
 NOTE: 前往 link:https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2016["Microsoft Update目錄2016"^] 網站、取得並安裝適用於您Windows版本的必要Windows修補程式。

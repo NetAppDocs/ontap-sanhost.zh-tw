@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: nvme_rhel_91.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何針對RHEL 8.7設定NVMe主機、ONTAP 並搭配使用功能 
+summary: 如何使用 ONTAP 設定適用於 RHEL 9.1 的 NVMe 主機 
 ---
 = 適用於 ONTAP 的 RHEL 9.1 的 NVMe 主機組態
 :toc: macro
