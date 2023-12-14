@@ -19,7 +19,7 @@ summary: 說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 8.9
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 8.9 與 ONTAP 設定為目標。
+您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux （ RHEL ） 8.9 設定為 ONTAP 作為目標。
 
 
 
@@ -91,7 +91,7 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 
 == 多重路徑
 
-對於 Red Hat Enterprise Linux （ RHEL ） 8.9 `/etc/multipath.conf` 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.9 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。
+對於 RHEL 8.9 `/etc/multipath.conf` 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.9 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。
 
 您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
 
@@ -146,7 +146,7 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 
 == 建議設定
 
-RHEL 8.9 作業系統是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。
+RHEL 8.9 作業系統可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。
 
 。 `multipath.conf` 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：
 

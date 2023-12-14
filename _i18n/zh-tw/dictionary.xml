@@ -3613,9 +3613,23 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7391a7cd9aaad0e97cd0084d95a4c0fd" category="sidebar">9.3.</block>
   <block id="9bc6d3e09829b4f5254ca05574123571" category="summary">說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 8.9</block>
   <block id="07401b9dd6cd70fd46911f32946adf00" category="doc">將 Red Hat Enterprise Linux 8.9 與 ONTAP 搭配使用</block>
-  <block id="e501d2dbdb42de58f02c1f3abfe2b8a1" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 8.9 與 ONTAP 設定為目標。</block>
-  <block id="ae6778e372ba1bd8a8b15c0befa78706" category="paragraph">對於 Red Hat Enterprise Linux （ RHEL ） 8.9<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.9 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
-  <block id="b0ba321d68fcbee6d08cb969c6dee835" category="paragraph">RHEL 8.9 作業系統是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="51856bc21ee60e0edd3d375bda86c100" category="paragraph">RHEL 8.9 沒有已知問題。</block>
   <block id="4407c95e5daa7102b34d0879e4eb12ed" category="sidebar">8.9</block>
+  <block id="e4cc2fc31e52d967b132cdb20604920c" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux （ RHEL ） 8.9 設定為 ONTAP 作為目標。</block>
+  <block id="58dd0e1ebbd63a74eeec446438f07176" category="paragraph">對於 RHEL 8.9<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.9 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
+  <block id="f82568d65ed8e2b4327f5865560fd156" category="paragraph">RHEL 8.9 作業系統可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
+  <block id="b434464d1a1076f0912b586e6f0da437" category="summary">如何使用 ONTAP 設定適用於 RHEL 8.9 的 NVMe 主機</block>
+  <block id="77cb6ce6b5771f472e998f91b24df1d8" category="doc">適用於 ONTAP 的 RHEL 8.9 的 NVMe 主機組態</block>
+  <block id="34c678313217e1652ad03feef8847586" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 8.9 搭配非對稱命名空間存取（ ANA ）、可支援 NVMe over Fabrics （ NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
+  <block id="da90c6502b166b990e4597540fab45f1" category="paragraph">下列支援適用於 ONTAP 的 RHEL 8.9 NVMe 主機組態：</block>
+  <block id="9acbcdf236a131602c43133c826c1cf0" category="list-text">根據預設、 RHEL 8.9 NVMe 主機的核心內建 NVMe 多重路徑會停用。因此、您需要手動啟用。</block>
+  <block id="9cc30a8ae74eb53c08ef6662a46c13ff" category="list-text">在 RHEL 8.9 主機上、 NVMe / TCP 是一項技術預覽功能、因為存在開放式問題。</block>
+  <block id="9122912f58fa882044fcab72507c8ee9" category="paragraph">您可以使用下列程序來啟用核心內建多重路徑。</block>
+  <block id="581fd0f922f7530dd86eaa5a01ad9dff" category="list-text">在主機伺服器上安裝 RHEL 8.9 。</block>
+  <block id="8a1c0f590b55b233cc831d3edab5e663" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 8.9 核心：</block>
+  <block id="868c750d60086f65688792e47ff303d5" category="paragraph">如果您打算在同一部主機上同時執行 NVMe 和 SCSI 共存的流量、 NetApp 建議分別針對 ONTAP 命名空間使用核心內建 NVMe 多重路徑、以及針對 ONTAP LUN 使用 dm-multipath 。這應該會從 dm-multipath 中排除 ONTAP 命名空間、並防止 dm-multipath 宣告這些命名空間裝置。您可以新增來執行此作業<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 設定為<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
+  <block id="3f655d42055c3b04ef4e22af7af58b9a" category="list-text">RHEL 8.9 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
+  <block id="fb117390ac885fd422b6653159fac30e" category="paragraph">採用 ONTAP 版本的 RHEL 8.9 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="c6f6aa643de410a6ea50d0b32d115bbb" category="cell">RHEL 8.9 NVMe 主機會建立重複的持續探索控制器</block>
+  <block id="e46afea398abac288711eb6774571ab9" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。  不過、如果您在 NVMe 主機上執行 Red Hat Enterprise Linux （ RHEL ） 8.9 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。</block>
 </blocks>
