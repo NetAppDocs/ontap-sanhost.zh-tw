@@ -3611,4 +3611,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="af1363e13388a6153d5ee5e31361b059" category="list-text">確認其他的 NVMe / TCP 啟動器目標 LIF 組合能夠成功擷取探索記錄頁面資料：</block>
   <block id="4d2ccda8ed0dd9cdf2d1d56f266ef18c" category="paragraph">使用 ONTAP 版本的 RHEL 9.3 的 NVMe 主機組態沒有已知問題。</block>
   <block id="7391a7cd9aaad0e97cd0084d95a4c0fd" category="sidebar">9.3.</block>
+  <block id="9bc6d3e09829b4f5254ca05574123571" category="summary">說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 8.9</block>
+  <block id="07401b9dd6cd70fd46911f32946adf00" category="doc">將 Red Hat Enterprise Linux 8.9 與 ONTAP 搭配使用</block>
+  <block id="e501d2dbdb42de58f02c1f3abfe2b8a1" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 8.9 與 ONTAP 設定為目標。</block>
+  <block id="ae6778e372ba1bd8a8b15c0befa78706" category="paragraph">對於 Red Hat Enterprise Linux （ RHEL ） 8.9<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.9 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
+  <block id="b0ba321d68fcbee6d08cb969c6dee835" category="paragraph">RHEL 8.9 作業系統是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
+  <block id="51856bc21ee60e0edd3d375bda86c100" category="paragraph">RHEL 8.9 沒有已知問題。</block>
+  <block id="4407c95e5daa7102b34d0879e4eb12ed" category="sidebar">8.9</block>
 </blocks>
