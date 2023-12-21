@@ -5,17 +5,14 @@ keywords: nvme, linux, rhel, red hat, enterprise
 summary: 說明如何使用ONTAP 支援功能為RHEL 8.1設定NVMe/FC 
 ---
 = 適用於 ONTAP 的 RHEL 8.1 的 NVMe / FC 主機組態
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

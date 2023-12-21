@@ -5,17 +5,14 @@ keywords: nvme, linux, oracle, 8.3
 summary: 以VMware為例、針對Oracle Linux 8.3設定VME/FC主機組態ONTAP 
 ---
 = 適用於Oracle Linux 8.3的NVMe / FC主機組態（ONTAP 含功能性）
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 

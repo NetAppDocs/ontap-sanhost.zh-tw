@@ -5,17 +5,14 @@ keywords: host utilities, solaris, 113, netapp, ontap
 summary: 說明如何安裝Solaris主機公用程式 
 ---
 = 將 Solaris 11.3 與 ONTAP 搭配使用
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

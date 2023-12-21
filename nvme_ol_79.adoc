@@ -5,17 +5,14 @@ keywords: nvme, linux, oracle, 7.9
 summary: 以VMware為例、設定Oracle Linux 7.9的VME/FC主機組態ONTAP 
 ---
 = 適用於Oracle Linux 7.9的NVMe / FC主機組態（ONTAP 含功能）
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 

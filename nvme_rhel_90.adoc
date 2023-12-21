@@ -5,18 +5,15 @@ keywords: nvme, linux, rhel, red hat, enterprise
 summary: 如何針對RHEL 9.0設定NVMe主機、ONTAP 並搭配使用功能 
 ---
 = 適用於 ONTAP 的 RHEL 9.0 的 NVMe 主機組態
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
 :source-highlighter: highlighter.js
-:toc-position: content
 
 
 [role="lead"]

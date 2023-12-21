@@ -5,17 +5,14 @@ keywords: host utilities, veritas, infoscale, 7, netapp, ontap, sanhost, iscsi, 
 summary: 提供ONTAP Veritas Infoscale 7系列版本的VMware SAN主機組態設定指引 
 ---
 = 使用 Veritas Infoscale 7 for Linux with ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

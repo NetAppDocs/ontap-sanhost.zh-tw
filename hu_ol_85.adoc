@@ -5,17 +5,14 @@ keywords: host utilities, oracle, linux, 8.5, netapp, ontap
 summary: 說明如何搭配ONTAP 使用Oracle Linux 8.5搭配使用 
 ---
 = 搭配 ONTAP 使用 Oracle Linux 8.5
-:toc: macro
 :hardbreaks:
 :toclevels: 1P
 :allow-uri-read: 
-:toc: 
 :toclevels: 1P
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

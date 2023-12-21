@@ -5,17 +5,14 @@ keywords: nvme, linux, suse, sles, 15, sp2, server, enterprise
 summary: 說明如何針對SUSE Linux Enterprise Server 15 SP2 ONTAP 搭配使用介紹功能的NVMe / FC進行設定 
 ---
 = 適用於SUSE Linux Enterprise Server 15 SP2 with ONTAP ESS.的NVMe/FC主機組態
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

@@ -5,17 +5,14 @@ keywords: nvme, esxi, ontap, nvme/fc, hypervisor
 summary: 說明如何使用ONTAP VMware設定適用於ESXi 7.x的NVMe 
 ---
 = 適用於ESXi 7.x的NVMe主機組態、ONTAP 含功能不全
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 

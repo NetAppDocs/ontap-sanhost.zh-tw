@@ -5,17 +5,14 @@ keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracl
 summary: 本內容提供特定於發佈的指引、說明如何設定連接Cloud Volumes ONTAP 至下列項目的雲端用戶端ONTAP ：針對連接至內部部署ONTAP 的更新儲存設備的介面和SAN主機、設定連接至原地更新儲存設備的Amazon FSX和Amazon FSX。 
 ---
 = SAN主機組態總覽
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 本內容提供主機和版本專屬的最佳實務做法、可快速設定連接ONTAP 到靜態儲存設備的SAN主機。

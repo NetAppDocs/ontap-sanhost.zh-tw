@@ -5,17 +5,14 @@ keywords: host utilities, oracle, linux, 6.8, netapp, ontap
 summary: 說明如何搭配ONTAP 使用Oracle Linux 6.8 with介紹 
 ---
 = 搭配 ONTAP 使用 Oracle Linux 6.8
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

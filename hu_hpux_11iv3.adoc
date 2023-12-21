@@ -5,17 +5,14 @@ keywords: host utilities, hp_ux, 11iv3, netapp, ontap
 summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用 
 ---
 = 使用適用於 ONTAP 的 HP-UX 11i v3
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

@@ -5,17 +5,14 @@ keywords: nvme, esxi, ontap, nvme/fc, hypervisor
 summary: 您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe over Fabrics （ NVMe of ）作為目標。 
 ---
 = 適用於 ESXi 8.x 與 ONTAP 的 NVMe 主機組態
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

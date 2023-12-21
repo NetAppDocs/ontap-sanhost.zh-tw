@@ -5,17 +5,14 @@ keywords: host utilities, suse linux enterprise server 12 SP3, suse, linux, 12 S
 summary: 說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12 SP3搭配使用 
 ---
 = 使用 SUSE Linux Enterprise Server 12 SP3 搭配 ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

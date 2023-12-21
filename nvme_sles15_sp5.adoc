@@ -5,17 +5,14 @@ keywords: nvme, NVMe-oF, Host, SUSE Linux Enterprise Server 15 SP5, ONTAP
 summary: 適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 的 NVMe 主機組態 
 ---
 = 適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 的 NVMe 主機組態
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

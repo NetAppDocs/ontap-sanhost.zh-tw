@@ -5,17 +5,14 @@ keywords: nvme, linux, rhel, red hat, enterprise, aix, ontap
 summary: 如何使用 ONTAP 設定適用於 AIX 的 NVMe / FC 主機 
 ---
 = 適用於 AIX 與 ONTAP 的 NVMe / FC 主機組態
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

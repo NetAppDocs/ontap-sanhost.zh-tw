@@ -5,17 +5,14 @@ keywords: host utilities, centos, linux, 7.2, netapp, ontap
 summary: 說明如何搭配ONTAP 使用CentOS 7.2與功能不全 
 ---
 = 將 CentOS 7.2 搭配 ONTAP 使用
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

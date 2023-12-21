@@ -5,17 +5,14 @@ keywords: nvme, windows, enterprise
 summary: 適用於Windows Server 2022的NVMe / FC主機組態、ONTAP 含功能更新 
 ---
 = 適用於Windows Server 2022的NVMe / FC主機組態、ONTAP 含功能更新
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

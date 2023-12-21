@@ -5,17 +5,14 @@ keywords: host utilities, aix, netapp, ontap, configure, discover, configuring, 
 summary: 說明如何使用AIX探索及設定LUN 
 ---
 = （不含PowerVM的AIX MPIO）使用AIX探索及設定LUN
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

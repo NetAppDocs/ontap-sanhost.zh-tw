@@ -5,17 +5,14 @@ keywords: host utilities, red hat, rhel, linux, 7.3, netapp, ontap
 summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.3搭配使用功能 
 ---
 = 使用 Red Hat Enterprise Linux 7.3 搭配 ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

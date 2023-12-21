@@ -5,18 +5,15 @@ keywords: nvme, linux, suse, sles, 15, sp4, server, enterprise
 summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterprise Server 15 SP4的NVMe/FC 
 ---
 = 適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP4 的 NVMe 主機組態
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
 :source-highlighter: highlighter.js
-:toc-position: content
 
 
 [role="lead"]

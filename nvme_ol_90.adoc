@@ -5,17 +5,14 @@ keywords:
 summary:  
 ---
 = 適用於 ONTAP 的 Oracle Linux 9.0 的 NVMe / FC 主機組態
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

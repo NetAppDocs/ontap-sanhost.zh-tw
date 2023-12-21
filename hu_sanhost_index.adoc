@@ -5,17 +5,14 @@ keywords:
 summary:  
 ---
 = 總覽
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 探索 SAN 主機公用程式版本的最新資訊、並存取主機組態的安裝程序。

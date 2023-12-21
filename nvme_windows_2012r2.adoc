@@ -5,17 +5,14 @@ keywords: nvme, windows, enterprise
 summary: 適用於Windows Server 2012 R2 ONTAP 的NVMe / FC主機組態搭配使用 
 ---
 = 適用於Windows Server 2012 R2 ONTAP 的NVMe / FC主機組態搭配使用
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

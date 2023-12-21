@@ -5,17 +5,14 @@ keywords: host utilities, red hat, rhel, linux, 8.2, netapp, ontap
 summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.2搭配使用功能 
 ---
 = 將 Red Hat Enterprise Linux 8.2 與 ONTAP 搭配使用
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

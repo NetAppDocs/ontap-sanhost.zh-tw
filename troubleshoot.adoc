@@ -5,17 +5,14 @@ keywords: host utilities, veritas, infoscale, 8.x, netapp, ontap, vmware, vspehe
 summary: 您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 VMware vSphere 8.x 版本設定 ONTAP SAN 主機設定。 
 ---
 = 疑難排解
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

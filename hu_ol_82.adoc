@@ -5,17 +5,14 @@ keywords: host utilities, oracle, linux, 8.2, netapp, ontap
 summary: 說明如何搭配ONTAP 使用Oracle Linux 8.2搭配使用功能 
 ---
 = 將 Oracle Linux 8.2 與 ONTAP 搭配使用
-:toc: macro
 :hardbreaks:
 :toclevels: 1P
 :allow-uri-read: 
-:toc: 
 :toclevels: 1P
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

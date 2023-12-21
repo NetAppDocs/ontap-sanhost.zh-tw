@@ -5,17 +5,14 @@ keywords: host utilities, red hat, rhel, linux, 9.2, netapp, ontap, rhel
 summary: 說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 9.2 
 ---
 = 搭配 ONTAP 使用 Red Hat Enterprise Linux 9.2
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

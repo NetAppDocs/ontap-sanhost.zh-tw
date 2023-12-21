@@ -5,17 +5,14 @@ keywords: host utilities, citrix, XenServer, 7 series, netapp, ontap, san, boot
 summary: 說明如何搭配ONTAP 使用Citrix XenServer 7.x與VMware 
 ---
 = 將 Citrix XenServer 搭配 ONTAP 使用
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]
