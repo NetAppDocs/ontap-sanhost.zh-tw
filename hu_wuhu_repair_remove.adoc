@@ -1,0 +1,57 @@
+---
+sidebar: sidebar 
+permalink: hu_wuhu_repair_remove.html 
+keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
+summary: Windows Unified Host Utilities包含一個安裝程式、可設定所需的Windows登錄和HBA參數、讓Windows主機正確處理適用於NetApp ONTAP ®及E系列平台的儲存系統行為。 
+---
+= 修復並移除 Windows Unified Host Utilities
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+您可以使用主機公用程式安裝程式的 * 修復 * 選項來更新主機匯流排介面卡（ HBA ）和 Windows 登錄設定。您也可以透過互動方式或從 Windows 命令列完全移除主機公用程式。
+
+[role="tabbed-block"]
+====
+.以互動方式修復或移除
+--
+「修復」 * 選項會使用所需的設定來更新 Windows 登錄和 FC HBA 。您也可以完全移除主機公用程式。
+
+.步驟
+. 開啟 Windows * 程式與功能 * （ Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 和 Windows 2022 ）。
+. 選擇* NetApp Windows Unified Host Utilities *。
+. 選取 * 變更 * 。
+. 視需要選取 * 修復 * 或 * 移除 * 。
+. 請依照畫面上的指示操作。
+
+
+--
+.從命令列修復或移除
+--
+「修復」 * 選項會使用所需的設定來更新 Windows 登錄和 FC HBA 。您也可以從Windows命令列中完全移除主機公用程式。
+
+.步驟
+. 在Windows命令列上輸入下列命令、以修復Windows主機公用程式：
++
+`msiexec /f installer.msi [/quiet]`
+
++
+** /f'修復安裝。
+** 「installer.msi」是系統上Windows主機公用程式安裝程式的名稱。
+** 「/Quiet」會隱藏所有意見反應、並在命令完成時自動重新啟動系統、而不會出現提示。
+
+
+
+
+--
+====

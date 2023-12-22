@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: hu_wuhu_upgrade.html 
+keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
+summary: Windows Unified Host Utilities包含一個安裝程式、可設定所需的Windows登錄和HBA參數、讓Windows主機正確處理適用於NetApp ONTAP ®及E系列平台的儲存系統行為。 
+---
+= 升級 Windows Unified Host Utilities
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+新的主機公用程式安裝套件必須位於Windows主機可存取的路徑中。依照互動式安裝 Host Utilities 或從 Windows 命令列安裝 Host Utilities 的指示來升級安裝套件。
+
+[role="tabbed-block"]
+====
+.互動式升級
+--
+若要以互動方式升級主機公用程式軟體套件、您必須執行主機公用程式安裝程式、並遵循提示進行。
+
+.步驟
+. 變更至您下載執行檔的目錄。
+. 執行執行檔、並依照畫面上的指示進行。
+. 出現提示時、重新啟動Windows主機。
+. 重新開機完成後、請檢查主機公用程式版本：
++
+.. 開啟*控制台*。
+.. 前往*程式與功能*、並查看主機公用程式版本。
+
+
+
+
+--
+.從命令列升級
+--
+您可以在 Windows 命令提示字元中輸入適當的命令、以執行新主機公用程式的無訊息（無人值守）升級。
+
+.步驟
+. 在 Windows 命令提示字元中輸入下列命令：
++
+「Msiexec /i installer.msi /quiet多重路徑=｛0 | 1｝[InstallalDIR=inst_path]」
+
++
+** `installer` 為的名稱 `.msi` 適用於您 CPU 架構的檔案。
+** 多重路徑會指定是否安裝MPIO支援。允許的值為「 0 」表示「否」、「 1 」表示「是」。
+** 「inst_path」是安裝主機公用程式檔案的路徑。預設路徑為「C:\Program Files\NetApp\Windows Host Utilities」。
+
+
+
+
+
+NOTE: 若要查看記錄和其他功能的標準 Microsoft Installer （ MSI ）選項、請輸入 `msiexec /help` 在 Windows 命令提示字元下。例如、 `msiexec /i install.msi /quiet /l*v <install.log> LOGVERBOSE=1` 命令會顯示記錄資訊。
+
+安裝完成後、系統會自動重新開機。
+
+--
+====

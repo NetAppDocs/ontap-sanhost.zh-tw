@@ -270,8 +270,6 @@
   <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="paragraph">範例</block>
   <block id="7ba6633ca0b968c950d64584fba1ce6c" category="admonition">若要設定Oracle Linux 8.2 RedHat Enterprise核心（RHCK）、請使用 <block ref="4fa0e58c0abf395a1bcef392b352f5ab" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.2。</block>
   <block id="64017e4fce264fae779ea6ffb9022691" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="840d5abfe44b15b4222ea5c534ce82a9" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）8.2。</block>
-  <block id="a76193f5d9397d9c49ca283a20ccf649" category="inline-link-macro">SAN管理指南</block>
-  <block id="8cb9ee34636093f5ba25008ebc7b7287" category="inline-link-macro">SAN組態指南</block>
   <block id="99d5775ff67d3ebcdc6e872f0bb0e7bd" category="summary">說明如何搭配ONTAP 使用Oracle Linux 6.10搭配使用功能</block>
   <block id="31df1b3be5d57ead2772d8f24d7f3661" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="0c6007e6b6b7d891a61a3130a6b08c13" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="3b3051e9028e74cd5ada27ca8f32e352" category="paragraph">對於Oracle Linux 6.10、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.10是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
@@ -830,7 +828,6 @@
   <block id="cb7e37c4b617b6aeee210c14100c98d5" category="paragraph">另一個範例：</block>
   <block id="726d293820a3b92756d72e370482b755" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如、</block>
   <block id="a4301741972a8d72156639b6c35de92e" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如、</block>
-  <block id="231cf4c70d866b616c21baddaeed0696" category="section-title">疑難排解</block>
   <block id="0199c49af15b1997cf6d2ddd0ea8adf4" category="list-text">將「ql2xextend_error_logging=x1e400000」值附加至對應的「modf探測qla2xxx conf」檔案。</block>
   <block id="e8a5a7214d896558232c2e63f40a05c2" category="cell">可能原因</block>
   <block id="7aebfa1e2291377e040de92d7f7f335f" category="cell">因應措施</block>
@@ -1414,10 +1411,6 @@
   <block id="4229df34b7c87f8ff6267a879dfeabd5" category="cell">在SFO故障和直接I/O期間、查看VIOS 3.1.1.10的I/O問題</block>
   <block id="6e2bd974030ad99179fd5896ca5f2b92" category="cell">在VIOS 3.1.1 IO故障時、NPIV用戶端磁碟可能會出現故障、而NPIV用戶端磁碟則以16/32GB FC介面卡為後盾。此外、「vfchost」驅動程式可能會進入停止處理用戶端I/O要求的狀態。套用IBM APAR J22290 IBM APAR J23222即可修正此問題。</block>
   <block id="d7b453b4900f18089bb8c7a53ea15e98" category="summary">Windows Unified Host Utilities包含一個安裝程式、可設定所需的Windows登錄和HBA參數、讓Windows主機正確處理適用於NetApp ONTAP ®及E系列平台的儲存系統行為。</block>
-  <block id="e683b28420e1e87e2aac3f60c35415ee" category="doc">Windows Unified Host Utilities 7.1</block>
-  <block id="ec95eac776092e95211deff10c247905" category="section-title">什麼是Windows主機公用程式</block>
-  <block id="012fc5e7b5d12476063fc551039a602b" category="paragraph">Windows Unified Host Utilities內含安裝程式、可設定所需的Windows登錄和主機匯流排介面卡（HBA）參數、讓Windows主機正確處理NetApp ONTAP 的儲存系統行為、以利NetApp的更新和E系列平台。</block>
-  <block id="8c01160fc148a3b3ea07eac8a6f91840" category="paragraph">安裝Host Utilities軟體時、安裝程式會設定所需的Windows登錄和主機匯流排介面卡（HBA）參數。</block>
   <block id="d350f9964b658ccb5399ae6c7b4e75b4" category="paragraph">下列程式和檔案會安裝在Windows主機電腦上。預設目錄為「C:\Program Files\NetApp\Windows Host Utilities」。</block>
   <block id="95c50c7cc68e399ac5540898dfd06820" category="cell">方案</block>
   <block id="261addf78c7b2c961032b3dd08ba0b1f" category="cell">目的</block>
@@ -1427,89 +1420,35 @@
   <block id="dbc044c0fb6f7e335a20801bfc0f48d4" category="cell">由安裝程式用來設定HBA參數。</block>
   <block id="e76ee25d273df2d7635b388feab260ba" category="cell">「\NetAppQCLI/fcconfig.ini`」</block>
   <block id="eeca789d03a65dbfd928a28fa9ca3aab" category="cell">「\NetAppQCLI/*。*」</block>
-  <block id="cd3fbde67436c3c16afa2f63ebc17946" category="cell">由安裝程式用來設定QLogic Fibre Channel HBA參數。</block>
   <block id="271e95bb5110c34300c9e4e30ad2991d" category="cell">「an版本」</block>
-  <block id="ab595e8644eb54589f5d769321b11cc4" category="cell">顯示主機公用程式和光纖通道HBA的版本。</block>
-  <block id="86d6299bc9dab5266c5f61d0a0769264" category="section-title">主機公用程式支援的組態</block>
   <block id="c0a6e0dc55b98c30081b044a2713737b" category="section-title">驗證您的主機和儲存系統組態</block>
   <block id="700f2514d3d4cc2ed02cb06d8b922b2d" category="paragraph">安裝主機公用程式之前、您必須先確認主機公用程式版本是否支援主機和儲存系統組態、以便正確安裝軟體。</block>
   <block id="84d4097a38ff264dfaf97e1cec24b529" category="list-text">檢查中支援的組態<block ref="49d81d143d5c8b402603532056154481" category="inline-link-rx"></block>。</block>
   <block id="29cd26a0b6469ed25fabeac1805eb8a6" category="list-text">新增iSCSI或FCP授權、然後啟動目標服務。</block>
-  <block id="185e819968cd77ce618663a3c7abd72d" category="paragraph">光纖通道和iSCSI傳輸協定不需要使用SANtricity ENetApp Storage Manager的E系列儲存系統授權。</block>
   <block id="dafd8a261adaf4e33c8e8c74baa71755" category="list-text">驗證纜線</block>
-  <block id="15ced0ef88b79c27417b95cc4a6474e1" category="inline-link">E系列硬體佈線指南</block>
-  <block id="cafd168860d065bea642129c676fb74b" category="paragraph">請參閱<block ref="2744dab6503b7f979c6d72cc92b97ead" category="inline-link-rx"></block> 適用於ONTAP 您的版本的<block ref="7643eb4b4270eeecb6e78fb73c2b55ef" category="inline-link-rx"></block> 以取得詳細的纜線和組態資訊。</block>
   <block id="96e0cae7407a65fe53018dd9c13dbbe7" category="section-title">設定FC HBA和交換器</block>
-  <block id="2e008f03754d21e3e30e89cf876e8ee9" category="paragraph">安裝並設定一或多個支援的光纖通道主機匯流排介面卡（HBA）、以供光纖通道連線至儲存系統。</block>
-  <block id="e587941559542f4bb52a631692177820" category="paragraph">Windows主機公用程式安裝程式會設定所需的Fibre Channel HBA設定。</block>
-  <block id="c3d598ac12a38035761ac67dd2d3b26c" category="admonition">請勿手動變更HBA設定。</block>
-  <block id="ecf59f8212801769d724cbb802cb7561" category="list-text">根據HBA廠商提供的指示、安裝一或多個支援的光纖通道主機匯流排介面卡（HBA）。</block>
   <block id="e7577cd6836843159bd5123f9ac4ec5b" category="list-text">取得支援的HBA驅動程式和管理公用程式、並依照HBA廠商提供的指示進行安裝。</block>
-  <block id="3e91c57c67e020fa2082b3156c291656" category="list-text">將HBA連接至光纖通道交換器或直接連接至儲存系統。</block>
-  <block id="da5fa056b637a7c594dc5b4948883a78" category="list-text">根據您的Fibre Channel交換器說明文件、在Fibre Channel交換器上建立區域。</block>
-  <block id="8ba8e9600aa5fe1856a6c832a6ffbf24" category="list-text">如需使用此功能、請將交換器分區為WWPN。ONTAP請務必使用LIF的WWPN、而非儲存控制器上的實體連接埠。如需詳細資訊、請參閱<block ref="2744dab6503b7f979c6d72cc92b97ead" category="inline-link-rx"></block>。</block>
   <block id="b60c7a8315c7b9d353b5fda462709b16" category="section-title">安裝主機公用程式</block>
   <block id="cba7a46b47ee782d37f614612d6714bf" category="paragraph">安裝程式會安裝Host Utilities套件、並設定Windows登錄和HBA設定。</block>
   <block id="e7d199a440305344018a3dcee24603f3" category="paragraph">您必須指定在安裝Windows Unified Host Utilities軟體套件時、是否要納入多重路徑支援。安裝程式會提示您選擇下列選項。您也可以從Windows命令提示字元執行無訊息（無人值守）安裝。</block>
   <block id="76969a36155d2f41fc6cc3bd3faff244" category="list-title">多重路徑支援</block>
-  <block id="dc383c9589c53093cde4432d5696127b" category="list-text">如果從Windows主機或虛擬機器到儲存系統有多個路徑、請選擇MPIO。</block>
-  <block id="fbd31ea3fdae76c6a359637b72bf307f" category="list-text">如果您使用單一路徑來通往儲存系統、請選擇「不」MPIO。</block>
-  <block id="10ec3af27fbabd40ad7f78d2ae382eab" category="list-text">MPIO選項不適用於Windows XP和Windows Vista系統；這些來賓作業系統不支援多重路徑I/O。</block>
-  <block id="2bda8bdf9c148a3475b6419dbef7b61e" category="list-text">對於Hyper-V來賓作業系統、如果您選擇多重路徑支援、則原始（傳遞）磁碟不會出現在來賓作業系統中。您可以使用原始磁碟、也可以使用MPIO、但不能在客體作業系統中同時使用這兩種磁碟。</block>
-  <block id="96d192942ad7d0399b1d3c052048858e" category="section-title">以互動方式安裝主機公用程式</block>
   <block id="7adf526813192a4918ba930c993f4b28" category="paragraph">若要以互動方式安裝主機公用程式軟體套件、您必須執行主機公用程式安裝程式、然後依照提示進行。</block>
-  <block id="c59a9f651efe466b52d6d9b22a24e7e3" category="list-text">從下載執行檔<block ref="3725c06f412bedb14ffd610de312875d" category="inline-link-rx"></block>。</block>
   <block id="df776515e4da3918278817418cdc66da" category="list-text">切換到您下載執行檔的目錄。</block>
   <block id="b7257ab94652805de6957d07e5e43772" category="list-text">執行「NetApp_windows_host_utilities」7.1_x64檔案、然後依照畫面上的指示操作。</block>
   <block id="257dcf2363da5a069ec4e8bae654f70b" category="list-text">出現提示時、重新啟動Windows主機。</block>
-  <block id="b9f1aba85711fc915cd6550e3ca2e6e7" category="section-title">從命令列安裝主機公用程式</block>
-  <block id="a2436a786307cd54318e85b5df862902" category="list-text">您可以在Windows命令提示字元中輸入適當的命令、以執行Host Utilities的無訊息（無人值守）安裝。</block>
-  <block id="75c7a353b83869ae4b4cb9f9fb69e5e6" category="list-text">主機公用程式安裝套件必須位於Windows主機可存取的路徑中。</block>
-  <block id="2239414c285fcd71ad8b61a344213951" category="list-text">請依照以互動方式安裝Host Utilities的指示、以取得安裝套件。</block>
   <block id="9b76f3f887602b99202856f7dccbdae9" category="list-text">安裝完成後、系統會自動重新開機。</block>
   <block id="bc0d066b39cdd08b4a6f1bd3b3724612" category="list-text">在Windows命令提示字元中輸入下列命令：</block>
   <block id="eb9c3c759bfa111a0f1d2e469d521073" category="paragraph">「Msiexec /i installer.msi /quiet多重路徑=｛0 | 1｝[InstallalDIR=inst_path]」</block>
-  <block id="65ebcf2c43da305d0a2363063307e578" category="list-text">其中安裝程式是CPU架構的「.msis」檔案名稱；</block>
-  <block id="5f14b300c5e18c32b0b38aa5bf839405" category="list-text">多重路徑會指定是否安裝MPIO支援。允許的值為0表示否、1表示是</block>
   <block id="d2be6501ceb690ba78b41107c58d6583" category="list-text">「inst_path」是安裝主機公用程式檔案的路徑。預設路徑為「C:\Program Files\NetApp\Windows Host Utilities」。</block>
-  <block id="890a07d387ffd294a936bcac066a8ae6" category="admonition">若要查看標準的Microsoft Installer（MSI）記錄和其他功能選項、請在Windows命令提示字元中輸入「msiexec /help」。例如：「Msiexec /i install.msi /quiet /l* v &lt;install.log&gt; LOVGERBOSE=1」</block>
-  <block id="07ee9e83df0d4150e93a9ee4baf057dc" category="section-title">升級主機公用程式</block>
-  <block id="7bb379db3ee977ec330c6d5473d7840e" category="paragraph">新的主機公用程式安裝套件必須位於Windows主機可存取的路徑中。請依照以互動方式安裝Host Utilities的指示、以取得安裝套件。</block>
-  <block id="30274a5c03a68dfb0e3da27a1cd33fa4" category="section-title">以互動方式升級主機公用程式</block>
   <block id="1190124555424f6326b153d14c7adeb6" category="list-text">執行執行檔、並依照畫面上的指示進行。</block>
-  <block id="2504be0abfa0e38f5e8ec8a80a553f1c" category="list-text">重新開機後檢查主機公用程式版本：</block>
   <block id="66781c83be9419c35d019947ae0068ec" category="list-text">開啟*控制台*。</block>
   <block id="cebe6c0d66495ac766f2ce01667acc64" category="list-text">前往*程式與功能*、並查看主機公用程式版本。</block>
-  <block id="dd50cfcc5c296046208fa46e968e0119" category="section-title">從命令列升級主機公用程式</block>
-  <block id="c80764d9771483d83514d497263d6330" category="paragraph">您可以在Windows命令提示字元中輸入適當的命令、以執行新主機公用程式的無訊息（無人值守）安裝。新主機公用程式安裝套件必須位於Windows主機可存取的路徑中。請依照以互動方式安裝Host Utilities的指示、以取得安裝套件。</block>
-  <block id="bcc399c91db54844c3b376842a4f3c86" category="list-text">其中「installer」是CPU架構的「. msi」檔案名稱。</block>
-  <block id="71a1238a2a3eb2842a1147f88470407a" category="section-title">修復及移除Windows主機公用程式</block>
-  <block id="c178dcdfca17ddc357e6800e5e2c4673" category="paragraph">您可以使用Host Utilities安裝程式的「修復」選項來更新HBA和Windows登錄設定。您可以以互動方式或從Windows命令列中、完全移除主機公用程式。</block>
-  <block id="7ec91814b4b8031452953e60444fdac1" category="section-title">以互動方式修復或移除Windows主機公用程式</block>
-  <block id="7c92b3f845b88c515561fb27069fe2b1" category="paragraph">「修復」選項會以所需的設定更新Windows登錄和Fibre Channel HBA。您也可以完全移除主機公用程式。</block>
-  <block id="711138f720855df955713474378ff64f" category="list-text">開啟Windows *程式與功能*（Windows Server 2012 R2、Windows Server 2016、Windows Server 2019）。</block>
   <block id="48f1bd432df23e2412cf8104e6fde4be" category="list-text">選擇* NetApp Windows Unified Host Utilities *。</block>
-  <block id="e825f597d53c4a593117f3470853a08a" category="list-text">按一下 * 變更 * 。</block>
-  <block id="f0b103058dcb98efdefadbb3e8f5dac1" category="list-text">視需要按一下「*修復*」或「*移除*」。</block>
   <block id="dfeda2d1e42f7611b114b2bfaff373fc" category="list-text">請依照畫面上的指示操作。</block>
-  <block id="e4ab25c62c74b247f110cc0ddf4a7128" category="section-title">從命令列修復或移除Windows主機公用程式</block>
-  <block id="b3feb76448a84d7100b57e2a2f35a0ee" category="paragraph">「修復」選項會以所需的設定更新Windows登錄和Fibre Channel HBA。您也可以從Windows命令列中完全移除主機公用程式。</block>
   <block id="15ad01350a70108c16a55f92e8c91669" category="list-text">在Windows命令列上輸入下列命令、以修復Windows主機公用程式：</block>
-  <block id="f2826ecf8f19cfb5deadf4b1e5ad291b" category="paragraph">「Msiexec｛/uninstall |/f] installer.msi（/qualid]）」</block>
-  <block id="9c4f8efeaa804092faa67574641a372f" category="list-text">「/uninstall」完全移除主機公用程式。</block>
   <block id="b831ff65280897d43b6fac3e31e0604b" category="list-text">/f'修復安裝。</block>
   <block id="915015ac4efada43b59e22b377a82ed1" category="list-text">「installer.msi」是系統上Windows主機公用程式安裝程式的名稱。</block>
   <block id="7e0565a4a74302c8f7e2cd160825c07a" category="list-text">「/Quiet」會隱藏所有意見反應、並在命令完成時自動重新啟動系統、而不會出現提示。</block>
-  <block id="9f547b1f13fcbcc85c2bfac948ab22c5" category="section-title">主機公用程式使用的設定總覽</block>
-  <block id="de88a28104c34c8d8e951a1209f75c65" category="paragraph">Host Utilities需要特定的登錄和參數設定、以確保Windows主機正確處理儲存系統行為。</block>
-  <block id="fc1eab103910f76963711300b7186f19" category="paragraph">Windows主機公用程式會設定影響Windows主機回應延遲或遺失資料的參數。已選取特定值、以確保Windows主機正確處理儲存系統中某個控制器容錯移轉至其合作夥伴控制器等事件。</block>
-  <block id="0b0e389de02e676e0e3de42cd501cd45" category="paragraph">並非所有的值都適用於DSM for SANtricity 現象儲存管理程式、不過、主機公用程式設定的值與DSM for SANtricity the DHCP Storage Manager設定的值若有任何重疊、都不會造成衝突。光纖通道和iSCSI主機匯流排介面卡（HBA）也必須設定參數、以確保最佳效能並成功處理儲存系統事件。</block>
-  <block id="fe9fb808c16f5a907b39b3548539522a" category="paragraph">Windows Unified Host Utilities隨附的安裝程式會將Windows和Fibre Channel HBA參數設定為支援的值。</block>
-  <block id="3c70b56c859d8d696bc319cfcf9d537b" category="admonition">您必須手動設定iSCSI HBA參數。</block>
-  <block id="4439527eb132f126a735a94659a5f9c4" category="paragraph">安裝程式會根據您在執行安裝程式時是否指定多重路徑I/O（MPIO）支援、設定不同的值。</block>
-  <block id="f0488f9e8cf9f3d88891f4c8d91b05b9" category="paragraph">除非技術支援人員指示您變更這些值、否則請勿變更這些值。</block>
-  <block id="598fbdd2730aa9cfacca22281fafa520" category="section-title">由Windows Unified Host Utilities設定的登錄值</block>
-  <block id="7017566a83f86bbba07ccd8fd518746f" category="paragraph">Windows Unified Host Utilities安裝程式會根據您在安裝期間所做的選擇、自動設定登錄值。您應該注意這些登錄值、作業系統版本。下列值由Windows Unified Host Utilities安裝程式設定。除非另有說明、否則所有值均為十進位。HKLM是HKEY_LOCAL_MACHINE的縮寫。</block>
   <block id="e5e8913907553117e947ccc75671f941" category="cell">登錄機碼</block>
   <block id="2f13ada49ba30a3f17abc7ff1c610656" category="cell">設定時</block>
   <block id="353a3cc2e6698fc1eca7603cde3ca48e" category="cell">HKLM\system\System\CurrentControlSet\Services \msdsm\參\Parameters \DsmMaximumRetryTimeDingStateTransition</block>
@@ -1558,39 +1497,13 @@
   <block id="42dde1eb61f6c2638c5d044047417179" category="cell">HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval</block>
   <block id="46a467f98c686e7e623f63c2bcb194ea" category="cell">當您的伺服器僅適用於Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時</block>
   <block id="c57dcf0db9f722653d2df0250b192c2f" category="inline-link">Microsoft文件</block>
-  <block id="d77815b1cf8addecd8d2fb23c9878c4a" category="paragraph">請參閱<block ref="cc2304a59b5feaeebd0c5646fd22caf0" category="inline-link-rx"></block> 以取得登錄參數詳細資料。</block>
   <block id="820c80a71d25737a6640c8135c800297" category="section-title">由Windows主機公用程式設定的FC HBA值</block>
-  <block id="9f76dab9681402d9cca8872103fdd39b" category="paragraph">在使用Fibre Channel的系統上、Host Utilities安裝程式會設定Emulex和QLogic FC HBA所需的逾時值。對於Emulex Fibre Channel HBA、安裝程式會在選取MPIO時設定下列參數：</block>
-  <block id="fcadb00a391febcf36774dc51d9e5b31" category="paragraph">對於Emulex Fibre Channel HBA、安裝程式會在未選取MPIO時設定下列參數：</block>
-  <block id="b2fb637fc5bd6712cb8f8bc692619e84" category="paragraph">若為QLogic Fibre Channel HBA、安裝程式會在選取MPIO時設定下列參數：</block>
-  <block id="52e0c2835b567aeec0c16ec67a2c5b79" category="paragraph">若為QLogic Fibre Channel HBA、安裝程式會在未選取MPIO時設定下列參數：</block>
-  <block id="db9c6223eee8c0b14343e2e99a36dcd1" category="admonition">參數名稱可能會因程式而稍有不同。例如、在QLogic QConvertgeConsole程式中、此參數會顯示為「Link down timeout（連結中斷逾時）」。主機公用程式「fcconfig.ini`檔案」會根據是否指定MPIO、將此參數顯示為「LinkDownTimeOut」或「PioLinkDownTimeOut」。但是、所有這些名稱都是指相同的HBA參數。</block>
   <block id="8f0fd19a2d99e6260c0b4e6513b7638c" category="inline-link">Emulex</block>
   <block id="bf37856a0dcc40508065787e2d49c8c3" category="inline-link">QLogic</block>
-  <block id="489cce922da01c521eefedb275b4f00b" category="paragraph">請參閱<block ref="6d63c8366c015331075fa86de38975e8" category="inline-link-rx"></block> 或<block ref="4399df604c07a452cc084d95811dafae" category="inline-link-rx"></block> 網站以深入瞭解逾時參數。</block>
-  <block id="2c288505019ef3576beff6f1a1c6a2f6" category="paragraph">本節說明Windows主機公用程式的一般疑難排解技巧。請務必查看最新版本說明、以瞭解已知問題與解決方案。</block>
-  <block id="2ddc4523fe736e4292509794836285a1" category="list-title">找出可能的互通性問題的不同領域</block>
-  <block id="963c33401c4acd634e6aee5648e2b28c" category="list-text">若要識別潛在的互通性問題、您必須確認Host Utilities是否支援主機作業系統軟體、主機硬體、ONTAP 整套軟體和儲存系統硬體的組合。</block>
-  <block id="e33fd839bd8799bfd9fb194c91913514" category="list-text">您必須查看互通性對照表。</block>
-  <block id="cb28bb27663be73e539138ce392b354b" category="list-text">您必須驗證iSCSI組態是否正確。</block>
-  <block id="214caa08b8ceb9d3ca15f7aa93d2c33e" category="list-text">如果iSCSI LUN在重新開機後無法使用、您必須確認目標在Microsoft iSCSI啟動器GUI的「持續目標」索引標籤上列為持續性目標。</block>
-  <block id="e8197b03c53adb4c255babbea70b0dbb" category="list-text">如果使用LUN的應用程式在啟動時顯示錯誤、您必須確認應用程式已設定為依賴iSCSI服務。</block>
-  <block id="7cfb60f9be60bdb510439f18ec6998be" category="list-text">對於連接至執行ONTAP 效能不全的儲存控制器的Fibre Channel路徑、您必須確認FC交換器已使用目標生命體的WWPN進行分區、而非使用節點上實體連接埠的WWPN。</block>
-  <block id="1ecdb3fa7b640490717a296d259753d7" category="inline-link">Windows主機公用程式版本資訊</block>
-  <block id="0b10f822d26382a922afd1635db5de2d" category="list-text">您必須檢閱中的疑難排解資訊<block ref="766939a89871d4c04af2f6ac1ab2650b" category="inline-link-rx"></block> 適用於ONTAP 您的版本的</block>
-  <block id="e96e50bb8a7d5f2a62a9ad0cd0c6527c" category="inline-link">線上錯誤</block>
-  <block id="9083840fa5bcf62c5684d884151ab69b" category="list-text">您必須搜尋<block ref="9f91bb070a65615e92f64b6a068e1d9d" category="inline-link-rx"></block> 針對最近發現的問題。</block>
-  <block id="5ffc88b316abd29a91a8fb106f64fd57" category="list-text">在「進階搜尋」下的「錯誤類型」欄位中、您應該選取「iSCSI - Windows」、然後按一下「執行」。您應該重複搜尋錯誤類型FCP -Windows。</block>
-  <block id="ced4243fdbfe6d3a74734c24ffd00df8" category="list-text">您必須收集系統的相關資訊。</block>
   <block id="7ecf9ab560fece14bab7a58f25439b02" category="list-text">記錄顯示在主機或儲存系統主控台上的任何錯誤訊息。</block>
   <block id="68cbf857d8485f03797edab4de291207" category="list-text">收集主機與儲存系統記錄檔。</block>
   <block id="99685cd1c95ee76b57460b7e546cb7eb" category="list-text">請在問題出現之前、記錄問題的症狀、以及對主機或儲存系統所做的任何變更。</block>
-  <block id="bd68ec6c51cae2556d9fd0a47c25a261" category="list-text">如果您無法解決問題、請聯絡NetApp技術支援部門。</block>
-  <block id="6f4e4d9fbe846fd8bf7decf7dcffbd63" category="inline-link">NetApp文件</block>
   <block id="69893000f4da30e1e42922cbcf8dac0e" category="inline-link">NetApp線上錯誤</block>
-  <block id="3809aec0d76653aef580fe5a05c2ceea" category="paragraph"><block ref="b1540a3ec25c7d8277b499a1cc1d920b" category="inline-link-rx"></block>
-<block ref="37fb4b1646680720393f2c3367174dbe" category="inline-link-rx"></block>
-<block ref="787134229d52d08fef0caa9611cbbc06" category="inline-link-rx"></block></block>
   <block id="46795771824c20823fe2d0312b584a17" category="section-title">瞭解主機公用程式對FC HBA驅動程式設定所做的變更</block>
   <block id="39aea57d05192500d96bea0e7cf2f41c" category="paragraph">在FC系統上安裝所需的Emulex或QLogic HBA驅動程式時、會檢查並在某些情況下修改數個參數。</block>
   <block id="b65e3a71c2c6298818d74981c3e3d216" category="paragraph">如果偵測到MS DSM for Windows MPIO、Host Utilities會設定下列參數的值：</block>
@@ -1600,8 +1513,6 @@
   <block id="7b89c0aff4542bf5f5ea1fc402d480ec" category="list-text">HBA廠商</block>
   <block id="ae16ed955084b1c877e3a933f4fbfdc3" category="list-text">是否使用多重路徑軟體（MPIO）</block>
   <block id="75dc39fa847b274e3577c0b41c12ca55" category="paragraph">您可以執行Windows主機公用程式安裝程式的「修復」選項來修正HBA設定。</block>
-  <block id="afe3961340d8bd7d749848a97e031049" category="section-title">驗證FC系統上的Emulex HBA驅動程式設定</block>
-  <block id="4a85dbbf9a9bc0625df7f37ec97b9783" category="paragraph">如果您使用的是Fibre Channel系統、則必須驗證Emulex HBA驅動程式設定。HBA上的每個連接埠都必須有這些設定。</block>
   <block id="c6e28ac86a9fffeb9329e96a567e805d" category="list-text">開放OnCommand 式軟件開發經理。</block>
   <block id="97c9736a45363b1ba4f09672230268a7" category="list-text">從清單中選取適當的HBA、然後按一下「*驅動程式參數*」索引標籤。</block>
   <block id="3773b996b3769cafbcfc5f1ecd7c953c" category="paragraph">隨即顯示驅動程式參數。</block>
@@ -1611,18 +1522,11 @@
   <block id="ccced21e51a721c50f51f6c3f3036790" category="list-text">如果您不使用MPIO軟體、請確定您擁有下列驅動程式設定：</block>
   <block id="730d30c215230d17c52d7e401e2064f9" category="list-text">LinkTimeDOut - 30</block>
   <block id="22548d7cd420698e76efb8e7d13153d9" category="list-text">NodeTimeOut - 120</block>
-  <block id="884960c052ad072d600fae7dc861c0c6" category="section-title">驗證FC系統上的QLogic HBA驅動程式設定</block>
-  <block id="3767a34ee23bead3aa4d693d624cb2f4" category="paragraph">在FC系統上、您需要驗證QLogic HBA驅動程式設定。HBA上的每個連接埠都必須有這些設定。</block>
   <block id="447ad67efb25e2f13e7339e054e28117" category="list-text">開啟「QConvertgeConsole」、然後按一下工具列上的「* Connect *」。</block>
-  <block id="f28b4049315bc495c21ad547c3409030" category="paragraph">「連線到主機」對話方塊隨即出現。</block>
-  <block id="518a90c2bb0d9c12d36c28f38fcae755" category="list-text">從清單中選取適當的主機、然後按一下「*連線*」。</block>
   <block id="8f994f7e0cf2a8fe9128d4b922dac2c8" category="paragraph">HBA清單會出現在FC HBA窗格中。</block>
-  <block id="76352d7f5b2348d9bb5e5a1059a29540" category="list-text">從清單中選取適當的HBA連接埠、然後按一下*設定*索引標籤。</block>
   <block id="c045ad99424e9ebd83c3e6363c3f2dcd" category="list-text">從「*選取設定*」區段中選取「*進階HBA連接埠設定*」。</block>
-  <block id="e09b93f385fa0409f263a7fd81ad0fa0" category="list-text">如果您使用的是MPIO軟體、請確定您擁有下列驅動程式設定：</block>
   <block id="24a364002d65bca169e77468efd585e8" category="list-text">連結中斷逾時（連結至）- 1.</block>
   <block id="32b426d292728e3b54d4487c435db8bc" category="list-text">連接埠停機重試計數（portnrrc）- 10</block>
-  <block id="cfeb5c5e90199d0ce83f16c370632d48" category="list-text">如果您不使用MPIO軟體、請確定您擁有下列驅動程式設定：</block>
   <block id="64e869d9ef872c0eb27623237f739ca1" category="list-text">連結中斷逾時（連結至）- 30</block>
   <block id="c41a9d8b262cc81ee865acdfb4ddd138" category="list-text">連接埠停機重試計數（portnrrc）- 120</block>
   <block id="c11d050c295bbaf2511d25fa05b61010" category="summary">說明如何搭配ONTAP 使用CentOS 6.5搭配使用功能</block>
@@ -2036,12 +1940,10 @@
   <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">總覽</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">NVMeoF RHEL</block>
   <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows主機公用程式套件7.1</block>
-  <block id="a94e97667092f5ff8b67813ccebdb0ca" category="paragraph">主機公用程式支援不同的Windows主機組態、傳輸協定和多路徑選項。如需詳細資訊、請參閱<block ref="b7322bec4509d45107de6de43ca1f517" category="inline-link-rx"></block>。</block>
   <block id="0165fb41a35ddb937948f77394256403" category="inline-link-macro">SAN主機Windows文件</block>
   <block id="6edf97e112927c25a9a1571ba78c02f9" category="list-text">檢查上個別主機所需的修補程式 <block ref="d639dff184f4bf79d87dbc978d26f542" category="inline-link-macro-rx"></block>。</block>
   <block id="125c89a36748abb41fb38e89f5009ec9" category="inline-link-macro">使用Windows Server 2022 ONTAP 搭配使用</block>
   <block id="eff83cf87307f9f0c4cf876914031ade" category="inline-link-macro">安裝Windows修補程式</block>
-  <block id="74c96d3ba2305a0f126dc2494f4cd977" category="admonition"><block ref="c6686e038b760393cddd662d474b7627" category="inline-link-macro-rx"></block> 提供相關指示 <block ref="9dcc96c7a1b888cfbb8ae39c864be341" category="inline-link-macro-rx"></block> 適用於Windows伺服器2022。請參閱「主機組態」類別中的Windows文件、以尋找舊版Windows伺服器的相關修補程式資訊。</block>
   <block id="ff71b00ca4f59efb041754af8a3c5633" category="paragraph">Windows Unified Host Utilities 7.1支援E系列儲存系統、ONTAP 支援支援更新版本的功能、以及增強的iSCSI逾時功能、可加快容錯移轉速度。</block>
   <block id="95dc0391ce7b396d7dd5622284e8fc3e" category="section-title">已知問題</block>
   <block id="56659c18435d50a38e076a58b32163a4" category="cell">執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 在執行Red Hat Enterprise Linux或SUSE Linux Enterprise Server的Hyper-V客體上、不再需要指令碼</block>
@@ -2059,7 +1961,6 @@
   <block id="eae76491b6011f6e80494775aea500b6" category="paragraph">對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑均為「主動/最佳化」、這表示它們由控制器提供服務、而I/O則會傳送至所有作用中路徑。</block>
   <block id="3012ce3908219f8e726469f86858ac26" category="paragraph">對於AIX、路徑控制模組（PCM）負責控制多個路徑。PCM是儲存設備廠商提供的程式碼、可處理路徑管理。這項功能會在主機公用程式安裝過程中安裝及啟用。</block>
   <block id="f5188f0db18a0455b279280c37baccd9" category="list-text">解壓縮檔案。您可以使用<block ref="310cb972d0a51b72a4a64dd98fcc2fb1" prefix=" " category="inline-code"></block> 執行此作業的命令。</block>
-  <block id="5c3a15590c180da4d9be3de55cf1bab9" category="list-text">您必須檢閱 <block ref="a681b254fb67a8552286997361f8b0b5" category="inline-link-macro-rx"></block> 檢查已知問題。版本資訊中包含已知問題與限制的清單。</block>
   <block id="488ee7d410bfc05042cf79417f62b731" category="paragraph">本內容提供主機和版本專屬的最佳實務做法、可快速設定連接ONTAP 到靜態儲存設備的SAN主機。</block>
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">在雲端環境中、主機通常稱為用戶端。此內容中的所有主機專屬資訊也適用於雲端用戶端。</block>
   <block id="7dac0335f353ff4aea15e7349355818e" category="paragraph">例如、您可以設定內部部署ONTAP 的不支援儲存設備、以連線至內部部署的SAN主機、或連線至SAN雲端用戶端。您也可以設定 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 或 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block> 連線至內部部署SAN主機或連線至SAN雲端用戶端。</block>
@@ -2321,73 +2222,42 @@
   <block id="6136261711c49bf0e8e1dcb22a2c524f" category="cell">不適用</block>
   <block id="54ed56ff6f53cace0a89cfd9c793d498" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。</block>
   <block id="e0a63b6c7b84f763f3ca8d8b86db69b8" category="summary">Windows 統一化主機公用程式包含一個安裝程式、可設定所需的 Windows 登錄和 HBA 參數、讓 Windows 主機正確處理 NetApp ONTAP 和 E 系列平台的儲存系統行為。</block>
-  <block id="e16334a1a12d2e212a82720b2f25b627" category="doc">Windows Unified Host Utilities 7.2</block>
-  <block id="bf992d142295c3f916496b43e9f9214e" category="section-title">關於 Windows 主機公用程式</block>
-  <block id="687417943a50896db12493e5be2c9b9b" category="paragraph">安裝主機公用程式軟體時、安裝程式會設定所需的 Windows 登錄和 HBA 參數。</block>
   <block id="c49c2dee17bca0bb7b37e30a531ae56e" category="cell">由安裝程式用來設定 HBA 參數。</block>
   <block id="f5defee9801990370925a9ccd31788ad" category="cell">由安裝程式用來設定 QLogic FC HBA 參數。</block>
-  <block id="d91dac2c9abeb731a52319f9efc23629" category="cell">顯示主機公用程式和 FC HBA 的版本。</block>
-  <block id="5fbcabcdd84fb8e2f5059270ea278ad2" category="section-title">主機公用程式支援的組態</block>
   <block id="65cb3823b1f2e6effb713e0e4a1bd9ad" category="paragraph">主機公用程式支援不同的 Windows 主機組態、通訊協定和多重路徑選項。如需詳細資訊、請參閱<block ref="b7322bec4509d45107de6de43ca1f517" category="inline-link-rx"></block>。</block>
   <block id="9fcbcdbeea37a1a8ad23a828ca91c86a" category="paragraph">安裝主機公用程式之前、您必須確認主機公用程式版本支援您的主機和儲存系統組態、以便軟體正確安裝。</block>
   <block id="89e195072eeda22ac68214bd5cc1d3d3" category="list-text">檢查中個別主機所需的 Hotfix <block ref="d639dff184f4bf79d87dbc978d26f542" category="inline-link-macro-rx"></block>。</block>
-  <block id="e7b5ad699758870edfc729c51b8d4159" category="admonition"><block ref="c6686e038b760393cddd662d474b7627" category="inline-link-macro-rx"></block> 提供相關指示 <block ref="9dcc96c7a1b888cfbb8ae39c864be341" category="inline-link-macro-rx"></block> 適用於Windows伺服器2022。請參閱主機組態類別中的 Windows 文件、以尋找舊版 Windows 伺服器的相關 Hotfix 資訊。</block>
   <block id="73b31c947a3410697404c243abccb0a9" category="list-text">新增 iSCSI 、 FCP 或 NVMe 授權、然後啟動目標服務。</block>
-  <block id="d320f5630f19d74bd4cc742e3ca321b4" category="paragraph">FC 和 iSCSI 通訊協定不需要在使用 SANtricity Storage Manager 的 E 系列儲存系統上取得授權。</block>
   <block id="81ee8e268d38a0f551a09391349eb7e8" category="list-text">驗證您的纜線。</block>
-  <block id="38c21e8822223cb4ca9d54c6f4c3611a" category="paragraph">請參閱<block ref="2744dab6503b7f979c6d72cc92b97ead" category="inline-link-rx"></block> 適用於您的 ONTAP 版本或<block ref="7643eb4b4270eeecb6e78fb73c2b55ef" category="inline-link-rx"></block> 以取得詳細的纜線和組態資訊。</block>
   <block id="13a35740db616914415ddb6560382197" category="paragraph">安裝及設定一或多個支援的 FC 主機匯流排介面卡（ HBA ）、以便 FC 連線至儲存系統。</block>
   <block id="9344ffde548e9d70a4b29be53b8e26e2" category="paragraph">Windows 主機公用程式安裝程式會設定所需的 FC HBA 設定。</block>
   <block id="4b8c039dd4660acb0f6e21d254cb3b98" category="admonition">請勿手動變更 HBA 設定。</block>
   <block id="e39cb80b142163e54c640c83ecc5d01e" category="list-text">根據 HBA 廠商提供的指示、安裝一或多個支援的 FC HBA 。</block>
   <block id="fb7917fb59bbf5feb25cde56255eac9b" category="list-text">將 HBA 連接至 FC 交換器或直接連接至儲存系統。</block>
   <block id="7d59a002d18e102238560890262dd7aa" category="list-text">根據 FC 交換器文件、在 FC 交換器上建立區域。</block>
-  <block id="2fc996629a6ab64ac6c90cebb1107b93" category="list-text">對於 ONTAP 、請將交換器分區為 WWPN 。請務必使用邏輯介面（生命體）的 WWPN 、而非儲存控制器上實體連接埠的 WWPN 。如需詳細資訊、請參閱<block ref="2744dab6503b7f979c6d72cc92b97ead" category="inline-link-rx"></block>。</block>
-  <block id="dc426c0fac7c970eb6b3f6511a6b85e0" category="section-title">安裝主機公用程式</block>
   <block id="e259dc332081900e09ae64bb30f92e32" category="paragraph">安裝程式會安裝主機公用程式套件、並設定 Windows 登錄和 HBA 設定。</block>
   <block id="866fa2359d7ad59c93fb614264ed0272" category="paragraph">您必須指定在安裝Windows Unified Host Utilities軟體套件時、是否要納入多重路徑支援。安裝程式會提示您輸入下列選項。您也可以從Windows命令提示字元執行無訊息（無人值守）安裝。</block>
   <block id="bfd571d97235244ed80f9e84e97a6321" category="list-text">選擇<block ref="7e6c7f4878b6fa562299bd45be030c4d" prefix=" " category="inline-code"></block> 如果從 Windows 主機或虛擬機器到儲存系統有多條路徑、</block>
   <block id="f807ad88f120e8684d7b6c94877e6b20" category="list-text">選擇<block ref="05a53d8897c19d9bbe9f619ff72b4e4c" prefix=" " category="inline-code"></block> 僅當您使用單一路徑通往儲存系統時。</block>
   <block id="c4cc9a722ff8e1ed0833619ef0e5f229" category="paragraph">MPIO選項不適用於Windows XP和Windows Vista系統；這些來賓作業系統不支援多重路徑I/O。對於Hyper-V來賓作業系統、如果您選擇多重路徑支援、則原始（傳遞）磁碟不會出現在來賓作業系統中。您可以使用原始磁碟、也可以使用MPIO、但不能在客體作業系統中同時使用這兩種磁碟。</block>
-  <block id="4dd4537522359458ffa514bcd000690e" category="open-title">以互動方式安裝主機公用程式</block>
-  <block id="a21f061514d3a36fc30c15677e397054" category="paragraph">若要以互動方式安裝主機公用程式軟體套件、您必須執行主機公用程式安裝程式、並遵循提示進行。</block>
-  <block id="e2a9efcd9c174411d9f1ef6871040f84" category="list-text">從下載執行檔<block ref="3725c06f412bedb14ffd610de312875d" category="inline-link-rx"></block>。</block>
   <block id="3e6f910e12e900bd943596229d20a57c" category="list-text">變更至您下載執行檔的目錄。</block>
   <block id="8f58654caf81def4218920c9f5f1249d" category="list-text">執行<block ref="666a58b79b7c5f32b47778f50efb858a" prefix=" " category="inline-code"></block> 請歸檔並遵循畫面上的指示。</block>
-  <block id="83981471cdabdbc146ea7a8c6238cf75" category="open-title">從命令列安裝主機公用程式</block>
-  <block id="ec44a89201daf20eec353fa5c747fb02" category="paragraph">您可以在 Windows 命令提示字元中輸入適當的命令、以執行主機公用程式的無訊息（無人值守）安裝。主機公用程式安裝套件必須位於 Windows 主機可存取的路徑中。</block>
-  <block id="7a2a3b3507648586174225acebb3b5dc" category="paragraph">依照互動式安裝主機公用程式的指示、取得安裝套件。安裝完成後、系統會自動重新開機。</block>
   <block id="687ee4ca71b619c0890fbfe4a4c7d451" category="list-text">在 Windows 命令提示字元中輸入下列命令：</block>
   <block id="36802f99ce8dfda135d0de1e6028852d" category="list-text"><block ref="97384261b8bbf966df16e5ad509922db" prefix="" category="inline-code"></block> 為的名稱<block ref="a59ffcba1df1ef37d432a025861b3faa" prefix=" " category="inline-code"></block> 適用於您 CPU 架構的檔案。</block>
   <block id="ee6e37793aacac38d4a72b87cc79245b" category="list-text">多重路徑會指定是否安裝MPIO支援。允許的值為「 0 」表示「否」、「 1 」表示「是」。</block>
   <block id="a79ffa64d980ff29dc5e206e765b10ec" category="list-text"><block ref="77aba25bd6944f410468261f134561d8" prefix="" category="inline-code"></block> 是安裝主機公用程式檔案的路徑。預設路徑為<block ref="9506fd228b6346c1147a8734f926d1ca" prefix=" " category="inline-code"></block>。</block>
   <block id="d0d9af2a572791f3904a39e2af6baf53" category="admonition">若要查看記錄和其他功能的標準 Microsoft Installer （ MSI ）選項、請輸入<block ref="bd4935bc0a796a66582bc993cc9000a8" prefix=" " category="inline-code"></block> 在 Windows 命令提示字元下。例如、<block ref="6456408f2074fe8bb9a5d7b28d02ce64" prefix=" " category="inline-code"></block> 命令會顯示記錄資訊。</block>
-  <block id="f47c6699509e0f7d4d4337f4356a227c" category="section-title">升級主機公用程式</block>
-  <block id="fd97e21fc1530e0abc30de069bcc2143" category="paragraph">新的主機公用程式安裝套件必須位於 Windows 主機可存取的路徑中。依照互動式安裝主機公用程式的指示進行、以升級安裝套件。</block>
-  <block id="7760651891217095eae3c92d22b896df" category="open-title">以互動方式升級主機公用程式</block>
-  <block id="5c5b09f2cbedebe8575cfe25d47349d8" category="paragraph">若要以互動方式升級主機公用程式軟體套件、您必須執行主機公用程式安裝程式、並遵循提示進行。</block>
   <block id="b63e6cfbd0eb99cc3190a15929880e7f" category="list-text">重新開機完成後、請檢查主機公用程式版本：</block>
-  <block id="e3d93990a62daee604e4cf877c6c4993" category="open-title">從命令列升級主機公用程式</block>
-  <block id="10969cc47bfa880d5fc5c87884b1dc30" category="paragraph">您可以在 Windows 命令提示字元中輸入適當的命令、以執行新主機公用程式的無訊息（無人值守）升級。</block>
-  <block id="826bd1b0dab297296c4443f8b2e946e4" category="paragraph">新的主機公用程式安裝套件必須位於 Windows 主機可存取的路徑中。依照互動式安裝主機公用程式的指示來升級安裝套件。</block>
-  <block id="5bd371b303a08f10ed03a43a40df6b03" category="section-title">修復和移除 Windows 主機公用程式</block>
-  <block id="6bf4a855dae212485859ff2576e07054" category="paragraph">您可以使用主機公用程式安裝程式的 * 修復 * 選項來更新 HBA 和 Windows 登錄設定。您可以完全以互動方式或從 Windows 命令列移除主機公用程式。</block>
-  <block id="93b5055fbbe30ec750a7ab26a93b318e" category="paragraph">「修復」 * 選項會使用所需的設定來更新 Windows 登錄和 FC HBA 。您也可以完全移除主機公用程式。</block>
   <block id="0ca827b324b67329c1c236782d79cacc" category="list-text">開啟 Windows * 程式與功能 * （ Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 和 Windows 2022 ）。</block>
   <block id="b3d12894d56e85cc742cb855ce388cdf" category="list-text">選取 * 變更 * 。</block>
   <block id="26f9e6294b1a61ed4692d275ee8885e0" category="list-text">視需要選取 * 修復 * 或 * 移除 * 。</block>
-  <block id="82b6d32feddfdd2b0fc76735a6967d7c" category="paragraph">「修復」 * 選項會使用所需的設定來更新 Windows 登錄和 FC HBA 。您也可以從 Windows 命令列完全移除主機公用程式。</block>
   <block id="94a94a8b5598d1408e7f05c414e5448e" category="paragraph"><block ref="c69b668814799cdb3112acfe57f08268" prefix="" category="inline-code"></block></block>
-  <block id="709b0bb4f4a1cc25ad1b836294ca6807" category="section-title">主機公用程式使用的設定總覽</block>
-  <block id="bc5d161ab8aa9afbd3bbeb1bbf2c4a69" category="paragraph">主機公用程式需要特定的登錄和參數設定、以驗證 Windows 主機是否正確處理儲存系統行為。</block>
   <block id="555c94ad53e123ccc406674df5fbc0ba" category="paragraph">Windows 主機公用程式會設定影響 Windows 主機回應延遲或資料遺失的參數。已選取特定值來驗證 Windows 主機是否能正確處理事件、例如將儲存系統中的一個控制器容錯移轉至其合作夥伴控制器。</block>
-  <block id="7847471254b7024522ca9188bb514dbd" category="paragraph">並非所有值都適用於 SANtricity Storage Manager 的 DSM ；不過、主機公用程式設定的值與 SANtricity Storage Manager 的 DSM 設定的值重疊、並不會造成衝突。</block>
   <block id="5db0ac001d15414764c966da33036c9d" category="paragraph">FC 、 NVMe / FC 和 iSCSI HBA 也有必須設定的參數、以確保最佳效能並成功處理儲存系統事件。</block>
   <block id="3bf07cbff19a99480bdce90c703c8e9f" category="paragraph">Windows Unified Host Utilities 隨附的安裝程式會將 Windows 、 FC 和 NVMe / FC HBA 參數設定為支援的值。</block>
   <block id="fb08e9e706df430eb21a77dc77a7e2cf" category="paragraph">您必須手動設定 iSCSI HBA 參數。</block>
   <block id="c1e8ef143152f7638fd948a6d0e2c8cf" category="paragraph">安裝程式會根據您在執行安裝程式時是否指定多重路徑 I/O （ MPIO ）支援來設定不同的值。</block>
   <block id="465b2902aa0a85286a62262c644df1eb" category="paragraph">Windows Unified Host Utilities 安裝程式會根據您在安裝期間所做的選擇、自動設定登錄值。您應該知道這些登錄值和作業系統版本。</block>
-  <block id="36ae847cba1971456385c021c9984d8d" category="paragraph">下列值由Windows Unified Host Utilities安裝程式設定。除非另有說明、否則所有值都是十進位值。</block>
   <block id="c372bc249b31090fc161de15de7b7603" category="admonition">HKLM 是的縮寫<block ref="86565cb5d05fc56046ceb32627a70264" prefix=" " category="inline-code"></block>。</block>
   <block id="8e66c3776f07026b09cf93b7a7ef7b65" category="cell">指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 和 Windows 2019 、或 Windows Server 2022</block>
   <block id="6393c224d437438785810287f79cf4dc" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\msdssm\Parameters \DsmimumStateTransitionTime</block>
@@ -2412,44 +2282,18 @@
   <block id="0e8c3d4c6738d32b9e7adc30abf79b8b" category="cell">指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022</block>
   <block id="2faabf4d68e773f3251eae7f2305fe39" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\RetryInterval</block>
   <block id="a3b50b6fbb714e581e6f560a62661a92" category="cell">HKLM\SYSTEM\CurrentControlSet\Services \disk\TimeOutValue</block>
-  <block id="8a8e30a4ab02564b077b278944672310" category="paragraph">如需登錄參數詳細資料、請參閱 Microsoft 文件。</block>
   <block id="c5a575f6523964e8855617a1937db583" category="section-title">NVMe 參數</block>
-  <block id="d22fc0165a5c3eca98e19ae31967880d" category="paragraph">下列 NVMe Emulex 驅動程式參數會在安裝蕪湖 7.2 時更新：</block>
-  <block id="85aa63fc541854fb2abe422c49702905" category="paragraph">在使用 FC 的系統上、主機公用程式安裝程式會設定 Emulex 和 QLogic FC HBA 所需的逾時值。</block>
   <block id="ed248deb33450195d58919cecd0cf8cd" category="paragraph">對於 Emulex FC HBA 、安裝程式會設定下列參數：</block>
   <block id="9e4350dab47d06fcefddc77af0b6f8d1" category="open-title">選取 MPIO 時</block>
   <block id="536375f82ece755d7a4d732fb8cec7d5" category="open-title">未選取 MPIO 時</block>
-  <block id="88db364807adcc50e3c03e4e7c2eb386" category="paragraph">對於 QLogic FC HBA 、安裝程式會設定下列參數：</block>
-  <block id="a555af6c2ab524633e49e1dcb603ae7e" category="admonition">參數名稱可能會因程式而稍有不同。例如、在 QLogic QConverteConsole 程式中、參數會顯示為<block ref="b554d47c6702123b3a28a3e04ed39621" prefix=" " category="inline-code"></block>。主機公用程式<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " category="inline-code"></block> 檔案會將此參數顯示為兩者之一<block ref="08a7801aadb2d395506d0735d17dcf62" prefix=" " category="inline-code"></block> 或<block ref="e29ad18354768c222941f5de52fd92c9" prefix=" " category="inline-code"></block>，視是否指定 MPIO 而定。但是、所有這些名稱都是指相同的HBA參數。</block>
-  <block id="2e66392a88d831a402be353bc920a518" category="paragraph">如需逾時參數的詳細資訊、請參閱 Emulex 或 QLogic 網站。</block>
   <block id="d44823dfcaf9a36c6905c94020b32d0c" category="paragraph">您可以使用 Windows 主機公用程式的一般疑難排解技術。請務必查看最新版本資訊、以瞭解已知問題和解決方案。</block>
-  <block id="1cd5f8fc8fccdee6601bcfa59ac7ffc6" category="section-title">找出可能的互通性問題的不同領域</block>
-  <block id="b6c48579004671ee22279856fb71dab5" category="list-text">若要識別潛在的互通性問題、您必須確認主機公用程式支援主機作業系統軟體、主機硬體、 ONTAP 軟體和儲存系統硬體的組合。</block>
-  <block id="07730eb42a1b6611ad4e7526b3b436ea" category="list-text">您必須檢查<block ref="49d81d143d5c8b402603532056154481" category="inline-link-rx"></block>。</block>
-  <block id="0eb8fab0fe90f725fb66f520417b650a" category="list-text">如果 iSCSI LUN 在重新開機後無法使用、您必須在 Microsoft iSCSI 啟動器 GUI 的 * 持續目標 * 索引標籤上、確認目標已列為持續性。</block>
-  <block id="c6bbad3c6302e6925fe6d05c4b5efee8" category="list-text">對於執行 ONTAP 的儲存控制器的 FC 路徑、您必須使用目標生命體的 WWPN 、而非節點上實體連接埠的 WWPN 、來確認 FC 交換器已分區。</block>
-  <block id="31b77c42007f5d1f93845008f4c3175f" category="list-text">您必須檢閱 <block ref="4c890781eefb0f9510fc720fd0ec49d1" category="inline-link-macro-rx"></block> 讓 Windows 主機公用程式檢查已知問題。版本資訊包含已知問題與限制清單。</block>
-  <block id="92d417425dbb738cb3e4eba57aef49ff" category="list-text">您必須檢閱《 SAN 管理指南》中有關 ONTAP 版本的疑難排解資訊。</block>
-  <block id="f41e4e09f74e4a7cf95204a91b79df95" category="list-text">您必須搜尋<block ref="04daf00c3b5bc166fd02128d9bfd3254" category="inline-link-rx"></block> 針對最近發現的問題。</block>
-  <block id="4d7881ab8aa5050bb9573094fe2f95c0" category="list-text">在「進階搜尋」下的「錯誤類型」欄位中、您應該選取 *iSCSI - Windows* 、然後選取 *Go* 。您應該重複搜尋錯誤類型 *FCP -Windows* 。</block>
   <block id="f1ce082f6baf3c653cdd07d94a942859" category="list-text">如果您無法解決問題、請聯絡 NetApp 技術支援以取得協助。</block>
-  <block id="c3d47869a76e955332ba2b0f3cccd2af" category="section-title">瞭解主機公用程式對 FC HBA 驅動程式設定的變更</block>
-  <block id="d28652d97331916e958c37fdf5a92eb0" category="paragraph">在 FC 系統上安裝所需的 Emulex 或 QLogic HBA 驅動程式時、會檢查數個參數、並在某些情況下進行修改。</block>
-  <block id="c0c442cb69c71dfe2d07c0789efc3f03" category="paragraph">主機公用程式會設定下列參數的值：</block>
-  <block id="0553f32745284fa4828ce7949795cd37" category="list-text">LinkTimeOut –定義在實體連結中斷後、主機連接埠在恢復 I/O 作業之前、等待的時間長度（以秒為單位）。</block>
-  <block id="b1f08394fd9a32ef645acd7199625b08" category="list-text">NodeTimeOut –定義主機連接埠識別目標裝置連線中斷之前的時間長度（以秒為單位）。</block>
-  <block id="b45c7c6b1232538bda9da85ec2d04a51" category="paragraph">疑難排解 HBA 問題時、請確認這些設定的值正確無誤。正確的值取決於兩個因素：</block>
-  <block id="f9b384762b72588d8ad77ae5874d3219" category="list-text">無論您使用的是 MPIO</block>
-  <block id="db9ec1fe747a375c7922c20e69ff10d4" category="paragraph">您可以執行 Windows 主機公用程式安裝程式的 * 修復 * 選項來修正 HBA 設定。</block>
   <block id="c4eaf2c23ca480676f7c2aa5de3dd0d9" category="paragraph">如果您有 FC 系統、則必須驗證 Emulex HBA 驅動程式設定。HBA上的每個連接埠都必須有這些設定。</block>
-  <block id="623dcbddc542817cdcdf36e9ce6846ce" category="list-text">從列表中選擇適當的 HBA ，然後選擇 *Driver Parameters* 選項卡。</block>
   <block id="4a99bdb63932aafd9744169779509cbd" category="list-text">如果您使用的是 MPIO 軟體、請確認您擁有下列驅動程式設定：</block>
   <block id="579c9fc7f5445251e4c921b4038daf35" category="list-text">如果您未使用 MPIO 軟體、請確認您擁有下列驅動程式設定：</block>
   <block id="33734848c89e0010e37bbee4665af9fe" category="paragraph">在 FC 系統上、您必須驗證 QLogic HBA 驅動程式設定。HBA上的每個連接埠都必須有這些設定。</block>
-  <block id="d36746d8149fbda72e2e4e6b5a18add7" category="list-text">開啟 QConverteConsole 、然後選取工具列上的 * Connect* 。</block>
   <block id="51cf8280ca9efd5addc2361e7896683a" category="paragraph">此時將出現 * 連接到主機 * 對話框。</block>
   <block id="aa7727ed2b2358b5b8ad2c6d53503461" category="list-text">從清單中選取適當的主機、然後選取 * 連線 * 。</block>
-  <block id="0093760881cba248167162bb7aeb2eb1" category="paragraph">HBA 清單會出現在 FC HBA 窗格中。</block>
   <block id="e0b360169e2cdbdac7033694bbace11d" category="list-text">從清單中選取適當的 HBA 連接埠、然後選取 * 設定 * 索引標籤。</block>
   <block id="9426dab96aaf9dbe8455a8f0a746e9e0" category="paragraph">Oracle Linux （ OL ） 9.0 支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe / FC 和其他傳輸、並提供非對稱命名空間存取（ ANA ）。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="e8527179c7a82afe982bb277c810e816" category="list-text">在伺服器上安裝 OL 9.0 GA 。安裝完成後、請確認您正在執行指定的 OL 9.0 GA 核心。</block>
@@ -3031,7 +2875,6 @@
   <block id="9b55f0ca59df9237a11b8ead77f876a0" category="paragraph">OL 8.5 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
   <block id="dc102edbfb2920d2ab25f6e459027828" category="paragraph">OL 8.3 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
   <block id="d699daec8de3b69e6a41a8c5e1e7f44e" category="doc">安裝 Linux Unified Host Utilities 7.1</block>
-  <block id="2dc8fc387550a2ccc1bb2000d960f6b9" category="paragraph">Linux 統一化主機公用程式可協助您管理連接至 Linux 主機的 NetApp ONTAP 儲存設備。NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</block>
   <block id="87bdc01fa1c36611ae8a26730cf85e17" category="paragraph">支援下列 Linux 套裝作業系統：</block>
   <block id="43483b029ef264a410a7bccd99e5f66a" category="list-text">為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。</block>
   <block id="22faa027e7ce368aea785de25ef0414c" category="paragraph">您可以使用<block ref="77ab0bbf377853176c70e55d32dcb81a" category="inline-link-rx"></block> 以驗證組態。</block>
@@ -3632,4 +3475,84 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="fb117390ac885fd422b6653159fac30e" category="paragraph">採用 ONTAP 版本的 RHEL 8.9 的 NVMe 主機組態有下列已知問題：</block>
   <block id="c6f6aa643de410a6ea50d0b32d115bbb" category="cell">RHEL 8.9 NVMe 主機會建立重複的持續探索控制器</block>
   <block id="e46afea398abac288711eb6774571ab9" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。  不過、如果您在 NVMe 主機上執行 Red Hat Enterprise Linux （ RHEL ） 8.9 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="6ef5abb9f31c43a816096f9d7c056047" category="doc">安裝 Windows Unified Host Utilities 7.1</block>
+  <block id="bbeb8434b17681d6dbf3026f6e29f372" category="paragraph">Windows 整合式主機公用程式（ Wuhu ）可讓您將 Windows 主機電腦連線至 NetApp 儲存系統。</block>
+  <block id="40b9450ad7b7f20686fb1965486a8a69" category="paragraph">Windows Unified Host Utilities 支援下列版本的 Windows ：</block>
+  <block id="3ffd22c07b48a1c76b76f941ad1cad96" category="list-text">Windows 2022</block>
+  <block id="0a412bceaa4a8d671231ab04d2e0296e" category="list-text">Windows 2019</block>
+  <block id="4083fee85864d55c66d5e0b21a7928b3" category="list-text">Windows 2016</block>
+  <block id="1347f9ce905795bee095e16712f81913" category="list-text">Windows 2012R2</block>
+  <block id="8e81245b7f02b8484320ddb3e4b13c18" category="list-text">Windows 2012</block>
+  <block id="4419f51a2ac7f6b9c1bd93593be4d121" category="paragraph">Windows Unified Host Utilities 包含一個安裝程式、可設定所需的 Windows 登錄和主機匯流排介面卡（ HBA ）參數、讓 Windows 主機能夠正確處理 NetApp ONTAP 和 E 系列平台的儲存系統行為。</block>
+  <block id="9193921426de0bc2750872e53ac8b696" category="paragraph">安裝 Host Utilities 軟體時、安裝程式會設定所需的 Windows 登錄和主機匯流排介面卡（ HBA ）參數。</block>
+  <block id="fef580c9fa53238fe6c716f723de316d" category="cell">由安裝程式用來設定 QLogic FC HBA 參數。</block>
+  <block id="84fea991fbe5f206bc68a262753c59b8" category="cell">顯示主機公用程式和 FC HBA 的版本。</block>
+  <block id="3107aacf7c3b2c3cd5c065b8a0b22f8d" category="paragraph">主機公用程式支援不同的 Windows 主機組態、通訊協定和多重路徑選項。請參閱<block ref="b7322bec4509d45107de6de43ca1f517" category="inline-link-rx"></block> 以取得最新的支援組態清單。</block>
+  <block id="6c8b96accd87b84aaf295fbc85931b98" category="section-title">驗證您的主機和儲存系統組態</block>
+  <block id="48e099120e81dc142f9f2b406ffa722e" category="admonition">。 <block ref="c6686e038b760393cddd662d474b7627" category="inline-link-macro-rx"></block> 文件提供相關指示 <block ref="9dcc96c7a1b888cfbb8ae39c864be341" category="inline-link-macro-rx"></block> 適用於Windows伺服器2022。請參閱主機組態類別中的 Windows 文件、以尋找舊版 Windows 伺服器的相關 Hotfix 資訊。</block>
+  <block id="08d8bdc537be4d932c64f646f257bd25" category="admonition">FC 和 iSCSI 通訊協定不需要在使用 SANtricity Storage Manager 的 E 系列儲存系統上取得授權。</block>
+  <block id="121d9e4993fb92968420c9621abc9dd8" category="inline-link">SAN組態參考</block>
+  <block id="2c7d2356b0521019a46eea80f92f6f1c" category="inline-link">E 系列硬體纜線</block>
+  <block id="541dc2c4cce7432b74096ae69ddf1a85" category="paragraph">請參閱<block ref="357ba997d0a8a18a99ca5e02e5517da8" category="inline-link-rx"></block> 您的 ONTAP 或版本說明文件<block ref="26553adff4f26a19f59b3650cacba36a" category="inline-link-rx"></block> 以取得詳細的纜線和組態資訊。</block>
+  <block id="31b2def1299d492b1cd5779b1070d33a" category="paragraph">安裝及設定一或多個支援的 FC 主機匯流排介面卡（ HBA ）、以便 FC 連線至儲存系統。</block>
+  <block id="d60a2c41ded26e1f4a1aa30b6db0c387" category="list-text">對於 ONTAP 、請依全球連接埠名稱（ WWPN ）將交換器分區。請務必使用LIF的WWPN、而非儲存控制器上的實體連接埠。請參閱<block ref="357ba997d0a8a18a99ca5e02e5517da8" category="inline-link-rx"></block> 如需詳細資訊、請參閱文件。</block>
+  <block id="8cd18bd21f513f9eeb3cfc7390203152" category="paragraph">您可以互動或使用命令列來安裝主機公用程式。新的主機公用程式安裝套件必須位於Windows主機可存取的路徑中。依照互動式或從 Windows 命令列安裝主機公用程式的指示進行。</block>
+  <block id="c17616d368d28c1edf680ec62f0e421b" category="open-title">以互動方式安裝</block>
+  <block id="8e7c93768bc8764f83f75bb5a16e0ca5" category="list-text">從下載執行檔<block ref="f3adb37009df4865b12833eb62333f96" category="inline-link-rx"></block>。</block>
+  <block id="6c5c119a5139192390b8cb6c21fb8dcf" category="open-title">從命令列安裝</block>
+  <block id="06af8074f737406f18b168880bc18cde" category="paragraph">您可以在Windows命令提示字元中輸入適當的命令、以執行Host Utilities的無訊息（無人值守）安裝。安裝完成後、系統會自動重新開機。</block>
+  <block id="7222611ed0dd77e1a47947ebb0c6f464" category="list-text"><block ref="97384261b8bbf966df16e5ad509922db" prefix="" category="inline-code"></block> 為的名稱<block ref="a59ffcba1df1ef37d432a025861b3faa" prefix=" " category="inline-code"></block> 適用於您 CPU 架構的檔案</block>
+  <block id="1f225cc70c1913ebae181994650e842d" category="list-text">多重路徑會指定是否安裝MPIO支援。允許的值為「 0 」表示「否」、「 1 」表示「是」</block>
+  <block id="ec71fae6f9fa532fe372207312f571d8" category="admonition">若要查看記錄和其他功能的標準 Microsoft Installer （ MSI ）選項、請輸入<block ref="bd4935bc0a796a66582bc993cc9000a8" prefix=" " category="inline-code"></block> 在 Windows 命令提示字元下。例如， 'msiexec /i install.msi /quiet /l*v &lt;install.log&gt; LOGVERBEOS=1` 命令會顯示記錄資訊。</block>
+  <block id="4fa5fc3c596578566d33ed376e9fffff" category="doc">修復並移除 Windows Unified Host Utilities</block>
+  <block id="4230d1dfaa85a029e812b25830590cc0" category="paragraph">您可以使用主機公用程式安裝程式的 * 修復 * 選項來更新主機匯流排介面卡（ HBA ）和 Windows 登錄設定。您也可以透過互動方式或從 Windows 命令列完全移除主機公用程式。</block>
+  <block id="bbed9b0aaa3a1a1cd177ee186481b047" category="open-title">以互動方式修復或移除</block>
+  <block id="a3e9d53f8f11529d50d594a337d4e4d9" category="paragraph">「修復」 * 選項會使用所需的設定來更新 Windows 登錄和 FC HBA 。您也可以完全移除主機公用程式。</block>
+  <block id="e7368a3c56ed3bd3690bf32de6178b5b" category="open-title">從命令列修復或移除</block>
+  <block id="171e5bed3872e5833fd3c7142e99a667" category="paragraph">「修復」 * 選項會使用所需的設定來更新 Windows 登錄和 FC HBA 。您也可以從Windows命令列中完全移除主機公用程式。</block>
+  <block id="8d5b965d848c3511b6147a5d6289faed" category="paragraph">Linux 統一化主機公用程式（ Luhu ）可協助您管理連接至 Linux 主機的 NetApp ONTAP 儲存設備。NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</block>
+  <block id="995e42565e2251295e12ee37ddc82cce" category="doc">升級 Windows Unified Host Utilities</block>
+  <block id="245a6b2df3cb685a695a381d483ba40d" category="paragraph">新的主機公用程式安裝套件必須位於Windows主機可存取的路徑中。依照互動式安裝 Host Utilities 或從 Windows 命令列安裝 Host Utilities 的指示來升級安裝套件。</block>
+  <block id="db37fb7e457a3b733ec8ef5ba4a25713" category="open-title">互動式升級</block>
+  <block id="c03b329ecb758f902d293e99a8086829" category="paragraph">若要以互動方式升級主機公用程式軟體套件、您必須執行主機公用程式安裝程式、並遵循提示進行。</block>
+  <block id="21b350b5fde7f3053058607393f757ac" category="open-title">從命令列升級</block>
+  <block id="391b5ca12e573c4d1332370fbaab9d4e" category="paragraph">您可以在 Windows 命令提示字元中輸入適當的命令、以執行新主機公用程式的無訊息（無人值守）升級。</block>
+  <block id="dc74f5eb03c3113fad5c9b879668495c" category="doc">安裝 Windows Unified Host Utilities 7.2</block>
+  <block id="3f9c9c4afea13f3b16d1f2950ca162be" category="paragraph">安裝 Host Utilities 軟體時、安裝程式會設定所需的 Windows 登錄和 HBA 參數。</block>
+  <block id="d68e70a05422785591f04d86b1f5ee5d" category="list-text">對於 ONTAP 、請將交換器分區為 WWPN 。請務必使用邏輯介面（生命體）的 WWPN 、而非儲存控制器上實體連接埠的 WWPN 。請參閱<block ref="357ba997d0a8a18a99ca5e02e5517da8" category="inline-link-rx"></block> 如需詳細資訊、請參閱文件。</block>
+  <block id="4912b52bc35ade407e0109d32cbab9a9" category="paragraph">若要以互動方式安裝主機公用程式軟體套件、您必須執行主機公用程式安裝程式、然後依照提示進行。</block>
+  <block id="acb27d93aa7c09a525ba321fc8ad9335" category="list-text">從下載執行檔<block ref="e706d81f12852294f886f762be3d50cf" category="inline-link-rx"></block>。</block>
+  <block id="e6253fb9c4ac03208ed8af84f6c491ee" category="paragraph">您可以在 Windows 命令提示字元中輸入適當的命令、以執行主機公用程式的無訊息（無人值守）安裝。安裝完成後、系統會自動重新開機。</block>
+  <block id="8d010f0d824cf2c759055f7b1535798c" category="paragraph">以下是您可針對潛在互通性問題進行調查的不同領域清單：</block>
+  <block id="471633752adfb8fb0558219046b30c3e" category="list-text">若要識別潛在的互通性問題、請確認主機公用程式支援主機作業系統軟體、主機硬體、 ONTAP 軟體和儲存系統硬體的組合。請參閱<block ref="49d81d143d5c8b402603532056154481" category="inline-link-rx"></block> 以取得更多資訊。</block>
+  <block id="6c82adba34c201b82705a6e225583d90" category="list-text">確認您擁有正確的 iSCSI 組態。</block>
+  <block id="19a031e0fa3422264d4fec4d803ed843" category="list-text">如果 iSCSI LUN 在重新開機後無法使用、請確認目標列在 Microsoft iSCSI 啟動器 GUI 的 * 持續目標 * 索引標籤上為持續。</block>
+  <block id="6e0a13c6eeae1f037f2762cbd27979a0" category="list-text">如果使用 LUN 的應用程式在啟動時顯示錯誤、請確認應用程式已設定為依賴 iSCSI 服務。</block>
+  <block id="1702de941bdd613bb18556c7456ad11b" category="list-text">對於執行 ONTAP 的儲存控制器的 FC 路徑、請確認 FC 交換器已使用目標生命體的 WWPN 進行分區、而非節點上實體連接埠的 WWPN 。</block>
+  <block id="5c8ae9ca98d43a90f1ef22306659a9df" category="list-text">檢閱 <block ref="4c890781eefb0f9510fc720fd0ec49d1" category="inline-link-macro-rx"></block> 讓 Windows 主機公用程式檢查已知問題。版本資訊包含已知問題與限制清單。</block>
+  <block id="22114ce437e92737e2a0d575329d0d86" category="list-text">檢閱 SAN 管理指南中適用於您 ONTAP 版本的疑難排解資訊。</block>
+  <block id="39a8fcfc2fec9eb3c35083b0b8a2cae4" category="list-text">搜尋<block ref="04daf00c3b5bc166fd02128d9bfd3254" category="inline-link-rx"></block> 針對最近發現的問題。</block>
+  <block id="9273ec471c4dd705bc01abe70b167469" category="list-text">在「進階搜尋」下的「錯誤類型」欄位中、選取 *iSCSI - Windows* 、然後選取 *Go* 。您應該重複搜尋錯誤類型 *FCP -Windows* 。</block>
+  <block id="1a959178e792ae0c668c4f3a0bd45c65" category="list-text">收集有關您系統的資訊。</block>
+  <block id="518879a09a758cd95e10ccda1b2ef7a8" category="doc">設定登錄設定</block>
+  <block id="ef127e2524262f219434d09112047ee0" category="paragraph">主機公用程式需要特定的登錄和參數設定、以驗證 Windows 主機是否正確處理儲存系統行為。</block>
+  <block id="c4cba2c44d214df950c2b380f4f1f8ee" category="paragraph">並非所有值都適用於 Storage Manager 的裝置專用模組（ DSM ）、但主機公用程式設定的值與 SANtricity for SANtricity Storage Manager 設定的值重疊、並不會造成衝突。</block>
+  <block id="4d09d39f1117fe865350d705a1213cc7" category="admonition">除非 NetApp 技術支援人員指示您變更這些值、否則您不應變更這些值。</block>
+  <block id="0d81c30022f030c1aa209289c238f39f" category="section-title">Windows Unified Host Utilities 7.2 設定的登錄值</block>
+  <block id="e9f1ca9edb486788243eea907377845d" category="paragraph">下列值由Windows Unified Host Utilities安裝程式設定。除非另有說明、否則所有值都是十進位的。</block>
+  <block id="cbfed0f971ab1c4ab5581053aa28b4ef" category="paragraph">安裝 Windows Unified Host Utilities 7.2 時、會更新下列 NVMe Emulex 驅動程式參數：</block>
+  <block id="bd7e5a5c67a5a61132b48a3ef5819fcb" category="section-title">Windows Unified Host Utilities 7.1 設定的登錄值</block>
+  <block id="695f26f405ddcdd50927dc7ec07fdf09" category="paragraph">Windows Unified Host Utilities安裝程式會根據您在安裝期間所做的選擇、自動設定登錄值。您應該注意這些登錄值、作業系統版本。</block>
+  <block id="342337a1a3e12ab51889ff34180441de" category="paragraph">下列值由Windows Unified Host Utilities安裝程式設定。除非另有說明、否則所有值都是十進位的。</block>
+  <block id="40bb1ea4c1bbc484f41a531e80ddb519" category="admonition"><block ref="c6d731b2e6e90d0e19df48cb3d9d7498" prefix="" category="inline-code"></block> 為的縮寫<block ref="86565cb5d05fc56046ceb32627a70264" prefix=" " category="inline-code"></block>。</block>
+  <block id="a624f3024f6945790c5f3a01e38649bf" category="paragraph">請參閱<block ref="cc2304a59b5feaeebd0c5646fd22caf0" category="inline-link-rx"></block> 以取得登錄參數詳細資料。</block>
+  <block id="d7b45eaf5a2c22cb7c622ea9675a6f32" category="paragraph">在使用 FC 的系統上、 Host Utilities 安裝程式會設定 Emulex 和 QLogic FC HBA 所需的逾時值。</block>
+  <block id="940a1e5f8e791b017d34ecf8b0cd3de3" category="paragraph">對於 QLogic Fibre Channel HBA 、安裝程式會設定下列參數：</block>
+  <block id="b182eae32a0022889eab1f98a5ba3a49" category="admonition">參數名稱可能會因程式而稍有不同。
+例如、在 QLogic QConverteConsole 程式中、參數會顯示為<block ref="b554d47c6702123b3a28a3e04ed39621" prefix=" " category="inline-code"></block>。
+主機公用程式<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " category="inline-code"></block> 檔案會將此參數顯示為兩者之一<block ref="08a7801aadb2d395506d0735d17dcf62" prefix=" " category="inline-code"></block> 或<block ref="e29ad18354768c222941f5de52fd92c9" prefix=" " category="inline-code"></block>，視是否指定 MPIO 而定。但是、所有這些名稱都是指相同的HBA參數。請參閱<block ref="6d63c8366c015331075fa86de38975e8" category="inline-link-rx"></block> 或<block ref="4399df604c07a452cc084d95811dafae" category="inline-link-rx"></block> 以深入瞭解逾時參數。</block>
+  <block id="670b555082101cc3b01786f63d7cfe63" category="open-title">Emulex HBA 驅動程式</block>
+  <block id="9d7f686c283e7f060d447a80713ba1cc" category="open-title">QLogic HBA 驅動程式</block>
+  <block id="af36a24915f9684eb097c2a342d018d9" category="sidebar">升級蕪湖</block>
+  <block id="e0e7d7dbabff4e65a87fb4e85bffb751" category="sidebar">修理及移除蕪湖</block>
 </blocks>

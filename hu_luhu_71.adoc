@@ -16,7 +16,7 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 
 
 [role="lead"]
-Linux 統一化主機公用程式可協助您管理連接至 Linux 主機的 NetApp ONTAP 儲存設備。NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+Linux 統一化主機公用程式（ Luhu ）可協助您管理連接至 Linux 主機的 NetApp ONTAP 儲存設備。NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 支援下列 Linux 套裝作業系統：
 

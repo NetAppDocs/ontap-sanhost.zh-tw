@@ -57,6 +57,14 @@ sidebar:
         url: "/hu_wuhu_72.html"
       - title: 安裝Wuhu 7.1
         url: "/hu_wuhu_71.html"
+      - title: 升級蕪湖
+        url: "/hu_wuhu_upgrade.html"
+      - title: 修理及移除蕪湖
+        url: "/hu_wuhu_repair_remove.html"
+      - title: 設定登錄設定
+        url: "/hu_wuhu_hba_settings.html"
+      - title: 疑難排解
+        url: "/hu_wuhu_troubleshoot.html"
   - title: 使用 FCP 和 iSCSI 設定主機
     entries:
     - title: 總覽
