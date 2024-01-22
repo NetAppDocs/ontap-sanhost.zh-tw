@@ -249,8 +249,6 @@ NOTE: 這不適用於 Qlogic NVMe / FC 主機。
 
 === 啟用 NVMe 服務
 
-您可以使用下列程序來啟用 NVMe 服務。
-
 中包含兩個 NVMe / FC 開機服務 `nvme-cli` 不過、套件（ _only_ ） `nvmefc-boot-connections.service` 可在系統開機期間啟動；  `nvmf-autoconnect.service` 未啟用。因此、您需要手動啟用 `nvmf-autoconnect.service` 以在系統開機期間啟動。
 
 .步驟
@@ -568,7 +566,7 @@ Device           Vserver                   Namespace Path                       
 
 
 
-== 探索增強功能
+== 建立持續探索控制器
 
 從 ONTAP 9.11.1 開始、您可以使用下列程序、為 SLES 15 SP4 主機建立持續探索控制器（ PDC ）。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除案例、以及探索記錄頁面資料的變更。
 

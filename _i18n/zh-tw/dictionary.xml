@@ -2900,24 +2900,7 @@
   <block id="f380df15f54bded5a312678b9e8d1316" category="doc">搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5</block>
   <block id="36143cd0461c285a2eca19136916ef01" category="paragraph">對於 SUSE Linux Enterprise Server 15 SP5 、請使用<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 15 SP5 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
   <block id="dc0fc37f340703d773442e3a17af6d7a" category="paragraph">SUSE Linux Enterprise Server 15 SP5 作業系統經過編譯、可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
-  <block id="6927b4ed365e3f3d6b1daf74c1ed53f2" category="summary">適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 的 NVMe 主機組態</block>
-  <block id="cef327de24717c0ad1a3577819070251" category="paragraph">含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server （ SLES ） 15 SP5 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="b1342a2fc9721ae555225a23c38646ee" category="paragraph">下列支援適用於 ONTAP 15 SP5 的 NVMe 主機組態：</block>
-  <block id="adc8ef4a0481c8ef901d03cbd4bf8186" category="list-text">支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。</block>
-  <block id="006918920124fa71bdbcdf36bd28ae8a" category="list-text">不支援NVMe的sanlun。因此、在 SLES15 SP5 主機上、不支援 NVMe 型主機公用程式。您可以仰賴原生 NVMe - CLI 套件中的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
-  <block id="d4e23fcba4bc0b1061b10f6685f457d0" category="list-text">NVMe和SCSI流量都可以在相同的共存主機上執行。因此、對於 SCSI LUN 、您可以為 SCSI mpath 裝置設定 dm-multipath 、而 NVMe 多重路徑則可用於在主機上設定 NVMe 命名空間裝置。</block>
-  <block id="9289ca9c2249e04ae2bff00d83dcc81a" category="paragraph">根據預設、 SLES 15 SP5 已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑。因此、不需要明確的設定。</block>
-  <block id="e19a5cfce66766fef9f35d8014318a0d" category="paragraph">您可以使用下列程序來驗證最低支援的 SLES 15 SP5 軟體版本。</block>
-  <block id="c294ad6ecc5f6261d8e788ca4d8d70e8" category="list-text">確認您已在 SLES15 SP5 維護更新主機上安裝必要的核心和 NVMe CLI 維護更新套件。</block>
-  <block id="5168cf93841071a3e1f60a0f4b0c3d43" category="paragraph">。<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 維護更新套件包含下列項目：</block>
-  <block id="d739ab3b1cb915174aa72612ba6c2a52" category="list-text">*NVMe / FC 自動連線指令碼 * ：當通往命名空間的基礎路徑恢復時、以及在主機重新開機期間、 NVMe / FC 自動重新連線指令碼都需要自動連線指令碼：</block>
-  <block id="dce4a7fd8636104bab20d3ef1ecafee2" category="list-text">* ONTAP udev 規則 * - 新增<block ref="ab775c875d5f89d991a670444dd32ad2" prefix=" " category="inline-code"></block> 驗證 NVMe 多重路徑循環負載平衡器是否依預設套用至所有 ONTAP 命名空間的規則：</block>
-  <block id="de16dfda1a2f3a67b92c3c6961d20447" category="list-text">* 適用於 ONTAP 裝置 * 的 NetApp 外掛程式 - 修改現有的 NetApp 外掛程式、以納入 ONTAP 命名空間。</block>
-  <block id="a0eeee903845ea8eb9c7b13f5d7a9c4a" category="list-text">請檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串at<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
-  <block id="83f602f6ddd60bbecd2701b962883e96" category="paragraph">現有原生收件匣<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 驅動程式是最新版本、與 NVMe / FC 相容。因此、您不需要安裝 lpfc Out-Of-Box （ OOB ）驅動程式。驗證驅動程式版本：</block>
-  <block id="1ebdde2be7f564cea3a55372d3a0f091" category="paragraph">。<block ref="7c21ff5d058ac57f39085c6b934e1ac8" prefix=" " category="inline-code"></block> 預設會啟用支援。較新的 lpfc 驅動程式（包括收件匣和寄件匣）都有<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block> 參數設為 3 、因此您不再需要在中明確設定<block ref="39cb7236e95ada10fc0d69173bd48cdb" prefix=" " category="inline-code"></block> 檔案、然後重新建立<block ref="a35ad41999d0ef4fe38eeb93c6e7076b" prefix=" " category="inline-code"></block>。您可以驗證<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block> 設為<block ref="eccbc87e4b5ce2fe28308fd9f2a7baf3" prefix=" " category="inline-code"></block>：</block>
-  <block id="6823ef6314c55fa0a8e99cebacd9594d" category="list-text">SLES 15 SP5 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
-  <block id="2a7e9b55568d2461dc6a6662ab294d24" category="list-text">確認 SLES 15 SP5 主機上的下列 NVMe / FC 設定：</block>
   <block id="7027855d0b65fefb5ac52eae93da7ac6" category="sidebar">15 sp5</block>
   <block id="2df02b8065e072b3f4cef52fb022e714" category="paragraph">NetApp Linux Unified Host Utilities軟體套件可在上取得 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 在32位元或64位元.rpm檔案中。</block>
   <block id="ebdad4471cb6942a4f1ef284bb693304" category="list-text">從下載32位元或64位元Linux Unified Host Utilities軟體套件 <block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> 到您的主機。</block>
@@ -3374,7 +3357,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e86acb5227ff2edf84308d3a10d6883d" category="list-text">SLES 15 SP4 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
   <block id="77c96566e3c78688f34abe91700ea32c" category="list-text">確認<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 參數設為 1 ：</block>
   <block id="0c1b72e395c1933da2da0ebb8f7fe9a0" category="section-title">啟用 NVMe 服務</block>
-  <block id="59888b5268cc13974726c98a3d894d8d" category="paragraph">您可以使用下列程序來啟用 NVMe 服務。</block>
   <block id="f409d4c6497d1c2cec5c498fdcdaf32f" category="paragraph">中包含兩個 NVMe / FC 開機服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 不過、套件（ _only_ ）<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 可在系統開機期間啟動； <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 未啟用。因此、您需要手動啟用<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 以在系統開機期間啟動。</block>
   <block id="404c9db3810293328aa6b6e3e3d75b2f" category="list-text">啟用<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>：</block>
   <block id="46bb931cbfa3a27a99c1f1877eeee986" category="list-text">請確認<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 和<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 系統開機後正在執行：</block>
@@ -3387,7 +3369,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="fcb5bee63d6460f40e0f810d9b88ff19" category="list-text">確認主機可以看到 ONTAP 命名空間：</block>
   <block id="051e7c8fe85493aa4fca34ecb724d7f5" category="paragraph"><block ref="7ee98ee108f160c92a9c1dd2307ab6a5" prefix="" category="inline-code"></block></block>
   <block id="462943f55eaa51bdddde8bbb7361ad5a" category="paragraph"><block ref="bef03e474ce211e47fcb917ac4b0601e" prefix="" category="inline-code"></block></block>
-  <block id="80782d927009a28ba6444564924d02eb" category="section-title">探索增強功能</block>
   <block id="859f68c87f883fa78618600b15339105" category="paragraph">從 ONTAP 9.11.1 開始、您可以使用下列程序、為 SLES 15 SP4 主機建立持續探索控制器（ PDC ）。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除案例、以及探索記錄頁面資料的變更。</block>
   <block id="d48ddf14c1b8a3a92106ad1a14d18258" category="list-text">確認探索記錄頁面資料可用、並可透過啟動器連接埠和目標 LIF 組合擷取：</block>
   <block id="4b251899b86291ee2ea3a4ec31bd27d2" category="list-text">建立探索子系統的 PDC ：</block>
@@ -3555,4 +3536,16 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9d7f686c283e7f060d447a80713ba1cc" category="open-title">QLogic HBA 驅動程式</block>
   <block id="af36a24915f9684eb097c2a342d018d9" category="sidebar">升級蕪湖</block>
   <block id="e0e7d7dbabff4e65a87fb4e85bffb751" category="sidebar">修理及移除蕪湖</block>
+  <block id="00076810353f5bc14e56852d5c38ee2b" category="summary">說明如何為採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 設定 NVMe / FC</block>
+  <block id="d1af0bdf73ee6058c3b3b0742832aa5a" category="doc">適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 的 NVMe 主機組態</block>
+  <block id="cb73cea439c20b7597b7672eb9a21cf0" category="paragraph">含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server （ SLES ） 15 SP5 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FCP 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
+  <block id="8f37bd5d440c7ad40a8829ec7ebe9f0f" category="list-text">沒有<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 支援 NVMe 。因此、在 SLES 15 SP5 主機上、無法為 NVMe 提供主機公用程式支援。您可以仰賴原生 NVMe - CLI 套件中的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
+  <block id="4bd5bd4d2b1b5b4d45d52aa3025e20d9" category="paragraph">您可以為 Broadcom / Emulex FC 或 Marvell/Qlogic FC 介面卡設定 NVMe / FC 。</block>
+  <block id="3f001d09022cef2ff7195d40a2cb9d34" category="list-text">SLES 15 SP5 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
+  <block id="5d672db52f749787478547eba4ca55f3" category="section-title">建立持續探索控制器</block>
+  <block id="2941f59619cf11f5bd13e11152c6a563" category="paragraph">從 ONTAP 9.11.1 開始、您可以使用下列程序、為 SLES 15 SP5 主機建立持續探索控制器（ PDC ）。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除案例、以及探索記錄頁面資料的變更。</block>
+  <block id="16733f7022b95afa90a2e27cc617f456" category="paragraph">從 ONTAP 9.12.1 開始、在 SLES 15 SP5 主機和 ONTAP 控制器之間、透過 NVMe / TCP 和 NVMe / FC 支援安全頻內驗證。</block>
+  <block id="6a96fe80380b5c7c7a686cbebfad76d9" category="list-text">為 SLES15 SP5 主機產生 dhchap 金鑰：</block>
+  <block id="d3e220182499e43aeadc8bda16bcb3db" category="paragraph">在下列範例中、會產生一個隨機的 dhchap 金鑰、其中 HMAC 設為 3 （ SHA-512 ）。</block>
+  <block id="bd8e8f9aa877bbf46ba78e30655f8fcb" category="paragraph">在 ONTAP 版本中、 SLES 15 SP5 沒有已知問題。</block>
 </blocks>
