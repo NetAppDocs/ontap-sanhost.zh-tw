@@ -3548,4 +3548,14 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="6a96fe80380b5c7c7a686cbebfad76d9" category="list-text">為 SLES15 SP5 主機產生 dhchap 金鑰：</block>
   <block id="d3e220182499e43aeadc8bda16bcb3db" category="paragraph">在下列範例中、會產生一個隨機的 dhchap 金鑰、其中 HMAC 設為 3 （ SHA-512 ）。</block>
   <block id="bd8e8f9aa877bbf46ba78e30655f8fcb" category="paragraph">在 ONTAP 版本中、 SLES 15 SP5 沒有已知問題。</block>
+  <block id="4ac1d0cb33ca920ad318b5108ad35c83" category="summary">說明如何搭配 ONTAP 使用 Ubuntu 20.04</block>
+  <block id="884709522224b2e2f9861c09fe418c9f" category="doc">搭配 ONTAP 使用 Ubuntu 20.04</block>
+  <block id="c47bdeb8aa6e7dfdadec0c481e4a21ce" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標。</block>
+  <block id="b93c5ef5e73d23bb7f86e491eeee988e" category="admonition">Ubuntu 20.04 作業系統無法使用 NetApp Linux Unified Host Utilities 軟體套件。</block>
+  <block id="17ce72ad1f5e6eaa8a603ac974a06f2d" category="paragraph">對於 Ubuntu 20.04<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。Ubuntu 20.04 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
+  <block id="cb22bc47f0f8e662ab604bbcbf236866" category="paragraph">Ubuntu 20.04 作業系統是為了辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
+  <block id="47310b4ac9536318d7bb35ce155bbc39" category="paragraph">使用 ONTAP 版本的 Ubuntu 20.04 沒有已知問題。</block>
+  <block id="3d945423f8e9496c429a5d8c65b4604f" category="sidebar">Ubuntu</block>
+  <block id="4ecf3c9493d36f3a582a25b68e645741" category="sidebar">Ubuntu - FCP</block>
+  <block id="7cd95c816f8a04ff858a857e3e5a484d" category="sidebar">20.04</block>
 </blocks>
