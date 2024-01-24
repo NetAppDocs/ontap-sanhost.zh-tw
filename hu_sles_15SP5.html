@@ -1,0 +1,4862 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head class="at-element-marker">
+  <title>搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_sles_15SP5.html" />
+	<meta property="og:description" content="說明如何搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-tw/ontap-sanhost/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="說明如何搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5">
+  <meta name="keywords" content=" host utilities, suse linux enterprise server 15 sp5, suse, linux, 15 sp5, netapp, ontap"><!-- Icons -->
+  <link rel="icon" href="/zh-tw/ontap-sanhost/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-sanhost/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/zh-tw/ontap-sanhost/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-tw/ontap-sanhost/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_sles_15SP5.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/ontap-sanhost/hu_sles_15SP5.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_sles_15SP5.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/ontap-sanhost/hu_sles_15SP5.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_sles_15SP5.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_sles_15SP5.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_sles_15SP5.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/ontap-sanhost/hu_sles_15SP5.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/ontap-sanhost/hu_sles_15SP5.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/ontap-sanhost/hu_sles_15SP5.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/ontap-sanhost/hu_sles_15SP5.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/zh-tw/ontap-sanhost/js/na-search.js'></script><script src='/zh-tw/ontap-sanhost/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/zh-tw/ontap-sanhost/js/custom-dropdown.js'></script>
+  <script src='/zh-tw/ontap-sanhost/js/FileSaver.min.js'></script>
+  <script src='/zh-tw/ontap-sanhost/js/jszip-utils.min.js'></script>
+  <script src='/zh-tw/ontap-sanhost/js/jszip.min.js'></script><script src='/zh-tw/ontap-sanhost/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/zh-tw/ontap-sanhost/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/tw">
+                <image id="ie-header-logo" src="/zh-tw/ontap-sanhost/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/support-and-training/documentation/">文件</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/zh-tw/ontap-sanhost/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">繁體中文</span>
+                    <img src="/zh-tw/ontap-sanhost/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/zh-tw/ontap-sanhost/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_sles_15SP5.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_sles_15SP5.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_sles_15SP5.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_sles_15SP5.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_sles_15SP5.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/ontap-sanhost/hu_sles_15SP5.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/ontap-sanhost/hu_sles_15SP5.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/ontap-sanhost/hu_sles_15SP5.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/ontap-sanhost/hu_sles_15SP5.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/zh-tw/ontap-sanhost/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">所有 NetApp</span>
+                    <img src="/zh-tw/ontap-sanhost/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/zh-tw/ontap-sanhost/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">支援</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">知識庫</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">訓練</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/zh-tw/ontap-sanhost/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/zh-tw/ontap-sanhost/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">所有文件</a>
+    </li>
+    
+    
+
+    
+    <li class="">
+      <a href="https://docs.netapp.com/zh-tw/ontap-family/">
+        ONTAP
+      </a>
+    </li>
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/zh-tw/ontap-sanhost/">-->
+      SAN hosts and cloud clients
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/zh-tw/ontap-sanhost/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/zh-tw/ontap-sanhost/search.html" 
+        data-type="widget"
+        data-placeholder="搜尋說明文件"
+        data-no-results-found="找不到 {query} 的結果"
+        data-did-you-mean="搜尋 {suggestion}。"
+        data-no-results-found-did-you-mean="找不到 {query} 的結果。您的意思是 {suggestion} 嗎？"
+        data-results-found="找到 {hitCount} 個結果"
+        data-error-message="發生錯誤。請再試一次。"
+        data-error-reset="重設搜尋"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="設定SAN主機和雲端用戶端"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/zh-tw/ontap-sanhost/index.html">
+        設定SAN主機和雲端用戶端
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="總覽"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/overview.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/zh-tw/ontap-sanhost/overview.html">
+        總覽
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="安裝 SAN 主機公用程式"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 安裝 SAN 主機公用程式</div>-->
+         安裝 SAN 主機公用程式
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="總覽"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sanhost_index.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-sanhost/hu_sanhost_index.html">
+        總覽
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AIX主機公用程式"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> AIX主機公用程式</div>-->
+         AIX主機公用程式
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="版本資訊"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_aix_61_rn.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_aix_61_rn.html">
+        版本資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="安裝AIX Hu 6.1"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_aix_61.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_aix_61.html">
+        安裝AIX Hu 6.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="命令參考範例"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_aix_61_cmd.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_aix_61_cmd.html">
+        命令參考範例
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HP-UX主機公用程式"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> HP-UX主機公用程式</div>-->
+         HP-UX主機公用程式
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="版本資訊"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_hpux_60_rn.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_hpux_60_rn.html">
+        版本資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="安裝HP-UX HU 6.0"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_hpux_60.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_hpux_60.html">
+        安裝HP-UX HU 6.0
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="命令參考範例"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_hpux_60_cmd.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_hpux_60_cmd.html">
+        命令參考範例
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Linux統一化主機公用程式"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Linux統一化主機公用程式</div>-->
+         Linux統一化主機公用程式
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="版本資訊"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_luhu_71_rn.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_luhu_71_rn.html">
+        版本資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="安裝Luhu 7.1"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_luhu_71.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_luhu_71.html">
+        安裝Luhu 7.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="命令參考範例"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_luhu_71_cmd.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_luhu_71_cmd.html">
+        命令參考範例
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Solaris主機公用程式"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Solaris主機公用程式</div>-->
+         Solaris主機公用程式
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="版本資訊"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_solaris_62_rn.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_solaris_62_rn.html">
+        版本資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="安裝Solaris Hu 6.2"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_solaris_62.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_solaris_62.html">
+        安裝Solaris Hu 6.2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="命令參考範例"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_solaris_62_cmd.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_solaris_62_cmd.html">
+        命令參考範例
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Windows統一化主機公用程式"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Windows統一化主機公用程式</div>-->
+         Windows統一化主機公用程式
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="版本資訊"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_wuhu_71_rn.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_wuhu_71_rn.html">
+        版本資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="安裝蕪湖 7.2"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_wuhu_72.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_wuhu_72.html">
+        安裝蕪湖 7.2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="安裝Wuhu 7.1"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_wuhu_71.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_wuhu_71.html">
+        安裝Wuhu 7.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="升級蕪湖"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_wuhu_upgrade.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_wuhu_upgrade.html">
+        升級蕪湖
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="修理及移除蕪湖"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_wuhu_repair_remove.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_wuhu_repair_remove.html">
+        修理及移除蕪湖
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="設定登錄設定"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_wuhu_hba_settings.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_wuhu_hba_settings.html">
+        設定登錄設定
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="疑難排解"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_wuhu_troubleshoot.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_wuhu_troubleshoot.html">
+        疑難排解
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用 FCP 和 iSCSI 設定主機"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 使用 FCP 和 iSCSI 設定主機</div>-->
+         使用 FCP 和 iSCSI 設定主機
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="總覽"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_fcp_scsi_index.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-sanhost/hu_fcp_scsi_index.html">
+        總覽
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AIX與PowerVM/VIOS"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> AIX與PowerVM/VIOS</div>-->
+         AIX與PowerVM/VIOS
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.2/3.1"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_aix_72.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_aix_72.html">
+        7.2/3.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.1."
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_aix_71.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_aix_71.html">
+        7.1.
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="CentOS"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> CentOS</div>-->
+         CentOS
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="版本資訊"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_asm_release_notes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_centos_asm_release_notes.html">
+        版本資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="CentOS 8."
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> CentOS 8.</div>-->
+         CentOS 8.
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_85.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_85.html">
+        8.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_84.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_84.html">
+        8.4.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.3"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_83.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_83.html">
+        8.3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.2"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_82.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_82.html">
+        8.2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_81.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_81.html">
+        8.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.0"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_80.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_80.html">
+        8.0
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="CentOS 7."
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> CentOS 7.</div>-->
+         CentOS 7.
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.9"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_79.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_79.html">
+        7.9
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.8%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_78.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_78.html">
+        7.8%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.7.7."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_77.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_77.html">
+        7.7.7.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.6.7."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_76.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_76.html">
+        7.6.7.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_75.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_75.html">
+        7.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_74.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_74.html">
+        7.4.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.3."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_73.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_73.html">
+        7.3.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.2"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_72.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_72.html">
+        7.2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.1."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_71.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_71.html">
+        7.1.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.0"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_70.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_70.html">
+        7.0
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="CentOS 6."
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> CentOS 6.</div>-->
+         CentOS 6.
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.10."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_610.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_610.html">
+        6.10.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.9"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_69.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_69.html">
+        6.9
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.8%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_68.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_68.html">
+        6.8%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.7"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_67.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_67.html">
+        6.7
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.6.6."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_66.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_66.html">
+        6.6.6.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_65.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_65.html">
+        6.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_centos_64.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_centos_64.html">
+        6.4.
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Citrix"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Citrix</div>-->
+         Citrix
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hypervisor 8."
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_citrix_8x.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_citrix_8x.html">
+        Hypervisor 8.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="XenServer 7"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_citrix_7x.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_citrix_7x.html">
+        XenServer 7
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ESXi"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ESXi</div>-->
+         ESXi
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware vSphere 8."
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_vsphere_8.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_vsphere_8.html">
+        VMware vSphere 8.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware vSphere 7"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_vsphere_7.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_vsphere_7.html">
+        VMware vSphere 7
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware vSphere 6.5與6.7"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_vsphere_6.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_vsphere_6.html">
+        VMware vSphere 6.5與6.7
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HP-UX"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> HP-UX</div>-->
+         HP-UX
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="11i v3"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_hpux_11iv3.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_hpux_11iv3.html">
+        11i v3
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="OA-FCP"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Oracle Linux</div>-->
+         Oracle Linux
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="版本資訊"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_asm_release_notes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_ol_asm_release_notes.html">
+        版本資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ol 9."
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ol 9.</div>-->
+         ol 9.
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.2."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_92.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_92.html">
+        9.2.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_91.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_91.html">
+        9.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.0"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_90.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_90.html">
+        9.0
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ol-8-FCP"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ol 8.</div>-->
+         ol 8.
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.8.8"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_88.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_88.html">
+        8.8.8
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.7%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_87.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_87.html">
+        8.7%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.6."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_86.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_86.html">
+        8.6.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_85.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_85.html">
+        8.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_84.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_84.html">
+        8.4.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.3"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_83.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_83.html">
+        8.3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.2"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_82.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_82.html">
+        8.2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_81.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_81.html">
+        8.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.0"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_80.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_80.html">
+        8.0
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ol-7-FCP"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ol 7.</div>-->
+         ol 7.
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.9"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_79.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_79.html">
+        7.9
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.8%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_78.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_78.html">
+        7.8%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.7.7."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_77.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_77.html">
+        7.7.7.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.6.7."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_76.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_76.html">
+        7.6.7.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_75.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_75.html">
+        7.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_74.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_74.html">
+        7.4.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.3."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_73.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_73.html">
+        7.3.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.2"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_72.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_72.html">
+        7.2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.1."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_71.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_71.html">
+        7.1.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.0"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_70.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_70.html">
+        7.0
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ol-6-FCP"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ol 6.</div>-->
+         ol 6.
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.10."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_610.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_610.html">
+        6.10.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.9"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_69.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_69.html">
+        6.9
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.8%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_68.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_68.html">
+        6.8%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.7"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_67.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_67.html">
+        6.7
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.6.6."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_66.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_66.html">
+        6.6.6.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_65.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_65.html">
+        6.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ol_64.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_ol_64.html">
+        6.4.
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="RHEL"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> RHEL</div>-->
+         RHEL
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="版本資訊"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_asm_release_notes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_rhel_asm_release_notes.html">
+        版本資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="RHEL-9-FCP"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> RHEL 9</div>-->
+         RHEL 9
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.3."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_93.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_93.html">
+        9.3.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.2."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_92.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_92.html">
+        9.2.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_91.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_91.html">
+        9.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.0"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_90.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_90.html">
+        9.0
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="RHEL-8-FCP"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> RHEL 8</div>-->
+         RHEL 8
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.9"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_89.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_89.html">
+        8.9
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.8.8"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_88.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_88.html">
+        8.8.8
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.7%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_87.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_87.html">
+        8.7%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.6."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_86.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_86.html">
+        8.6.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_85.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_85.html">
+        8.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_84.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_84.html">
+        8.4.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.3"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_83.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_83.html">
+        8.3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.2"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_82.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_82.html">
+        8.2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_81.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_81.html">
+        8.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.0"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_80.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_80.html">
+        8.0
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="RHEL-7-FCP"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> RHEL 7</div>-->
+         RHEL 7
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.9"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_79.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_79.html">
+        7.9
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.8%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_78.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_78.html">
+        7.8%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.7.7."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_77.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_77.html">
+        7.7.7.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.6.7."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_76.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_76.html">
+        7.6.7.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_75.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_75.html">
+        7.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_74.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_74.html">
+        7.4.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.3."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_73.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_73.html">
+        7.3.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.2"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_72.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_72.html">
+        7.2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.1."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_71.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_71.html">
+        7.1.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.0"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_70.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_70.html">
+        7.0
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="RHEL-6-FCP"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> RHEL 6</div>-->
+         RHEL 6
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.10."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_610.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_610.html">
+        6.10.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.9"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_69.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_69.html">
+        6.9
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.8%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_68.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_68.html">
+        6.8%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.7"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_67.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_67.html">
+        6.7
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.6.6."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_66.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_66.html">
+        6.6.6.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_65.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_65.html">
+        6.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="6.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_rhel_64.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_rhel_64.html">
+        6.4.
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Solaris"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Solaris</div>-->
+         Solaris
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="11.4"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_solaris_114.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_solaris_114.html">
+        11.4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="11.3"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_solaris_113.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_solaris_113.html">
+        11.3
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SLES"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> SLES</div>-->
+         SLES
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="版本資訊"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_asm_release_notes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_sles_asm_release_notes.html">
+        版本資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="sles-15-FCP"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> SLES 15</div>-->
+         SLES 15
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15 sp5"
+      data-li-level="4#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_15SP5.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_15SP5.html">
+        15 sp5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15 SP4"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_15SP4.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_15SP4.html">
+        15 SP4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15 SP3"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_15SP3.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_15SP3.html">
+        15 SP3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15 SP2"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_15SP2.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_15SP2.html">
+        15 SP2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15 SP1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_15SP1.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_15SP1.html">
+        15 SP1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_15.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_15.html">
+        15
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SLES 12"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> SLES 12</div>-->
+         SLES 12
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="12 SP 5."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_12SP5.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_12SP5.html">
+        12 SP 5.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="12 SP 4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_12SP4.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_12SP4.html">
+        12 SP 4.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="12 SP 3."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_12SP3.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_12SP3.html">
+        12 SP 3.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="12 SP 2."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_12SP2.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_12SP2.html">
+        12 SP 2.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="12 SP 1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_12SP1.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_12SP1.html">
+        12 SP 1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="12."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_sles_12.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/hu_sles_12.html">
+        12.
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ubuntu - FCP"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Ubuntu</div>-->
+         Ubuntu
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="20.04"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_ubuntu_2004.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_ubuntu_2004.html">
+        20.04
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Veritas"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Veritas</div>-->
+         Veritas
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Infoscale 8."
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_veritas_8x.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_veritas_8x.html">
+        Infoscale 8.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Infoscale 7."
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_veritas_7x.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_veritas_7x.html">
+        Infoscale 7.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="儲存基礎6."
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_veritas_6x.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_veritas_6x.html">
+        儲存基礎6.
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Windows -FCP"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Windows</div>-->
+         Windows
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="2022年"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_windows_2022.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_windows_2022.html">
+        2022年
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="2019年"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_windows_2019.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_windows_2019.html">
+        2019年
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="2016年"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_windows_2016.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_windows_2016.html">
+        2016年
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="2012 R2"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_windows_2012r2.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/hu_windows_2012r2.html">
+        2012 R2
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用 NVMe 設定主機"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 使用 NVMe 設定主機</div>-->
+         使用 NVMe 設定主機
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="總覽"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/hu_nvme_index.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-sanhost/hu_nvme_index.html">
+        總覽
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AIX"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_aix.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-sanhost/nvme_aix.html">
+        AIX
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NVMeoF ESXi"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ESXi</div>-->
+         ESXi
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware vSphere 8."
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_esxi_8.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/nvme_esxi_8.html">
+        VMware vSphere 8.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware vSphere 7"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_esxi_7.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/nvme_esxi_7.html">
+        VMware vSphere 7
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Oracle Linux"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Oracle Linux</div>-->
+         Oracle Linux
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NVMeF OL"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ol 9.</div>-->
+         ol 9.
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.2."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_92.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_92.html">
+        9.2.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_91.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_91.html">
+        9.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.0"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_90.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_90.html">
+        9.0
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NVMeF OL"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ol 8.</div>-->
+         ol 8.
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.8.8"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_88.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_88.html">
+        8.8.8
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.7%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_87.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_87.html">
+        8.7%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.6."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_86.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_86.html">
+        8.6.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_85.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_85.html">
+        8.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_84.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_84.html">
+        8.4.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.3"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_83.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_83.html">
+        8.3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.2"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_82.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_82.html">
+        8.2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_81.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_81.html">
+        8.1
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ol 7."
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ol 7.</div>-->
+         ol 7.
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.9"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_79.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_79.html">
+        7.9
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.8%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_78.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_78.html">
+        7.8%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="7.7.7."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_ol_77.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_ol_77.html">
+        7.7.7.
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NVMeoF RHEL"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> RHEL</div>-->
+         RHEL
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="RHEL 9"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> RHEL 9</div>-->
+         RHEL 9
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.3."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_93.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_93.html">
+        9.3.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.2."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_92.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_92.html">
+        9.2.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_91.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_91.html">
+        9.1
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.0"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_90.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_90.html">
+        9.0
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="RHEL 8"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> RHEL 8</div>-->
+         RHEL 8
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.9"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_89.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_89.html">
+        8.9
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.8.8"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_88.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_88.html">
+        8.8.8
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.7%"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_87.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_87.html">
+        8.7%
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.6."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_86.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_86.html">
+        8.6.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_85.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_85.html">
+        8.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.4."
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_84.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_84.html">
+        8.4.
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.3"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_83.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_83.html">
+        8.3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.2"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_82.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_82.html">
+        8.2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_rhel_81.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_rhel_81.html">
+        8.1
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NVMeoF SLES"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> SLES</div>-->
+         SLES
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SLES 15"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> SLES 15</div>-->
+         SLES 15
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15 sp5"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_sles15_sp5.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_sles15_sp5.html">
+        15 sp5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15 SP4"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_sles15_sp4.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_sles15_sp4.html">
+        15 SP4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15 SP3"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_sles15_sp3.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_sles15_sp3.html">
+        15 SP3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15 SP2"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_sles15_sp2.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_sles15_sp2.html">
+        15 SP2
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="15 SP1"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_sles15_sp1.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/zh-tw/ontap-sanhost/nvme_sles15_sp1.html">
+        15 SP1
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Windows"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-sanhost/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-sanhost/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Windows</div>-->
+         Windows
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="2022年"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_windows_2022.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/nvme_windows_2022.html">
+        2022年
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="2019年"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_windows_2019.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/nvme_windows_2019.html">
+        2019年
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="2016年"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_windows_2016.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/nvme_windows_2016.html">
+        2016年
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="2012 R2"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/nvme_windows_2012r2.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/zh-tw/ontap-sanhost/nvme_windows_2012r2.html">
+        2012 R2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="疑難排解"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/troubleshoot.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-sanhost/troubleshoot.html">
+        疑難排解
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="法律聲明"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/hu_sles_15SP5.html" 
+      dale-entry-url="/legal_notice.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/zh-tw/ontap-sanhost/legal_notice.html">
+        法律聲明
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/zh-tw/ontap-sanhost"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/zh-tw/ontap-sanhost"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/zh-tw/ontap-sanhost/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> 本繁體中文版使用機器翻譯，譯文僅供參考，若與英文版本牴觸，應以英文版本為準。 </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2023-12-21 17:54:30 +0000">12/21/2023</time>
+        
+    
+    
+        <span>貢獻者
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/zh-tw/ontap-sanhost/images/discuss-sm.svg" alt="" class="github-icon" />建議變更</span>
+        <img src="/zh-tw/ontap-sanhost/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/zh-tw/ontap-sanhost/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost.zh-tw/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/zh-tw/ontap-sanhost/hu_sles_15SP5.html&page-title=搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5" class="page-nav-contribute-link" role="button">請求文件變更</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_sles_15SP5.adoc" class="page-nav-contribute-link" role="button">編輯本頁</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >瞭解如何貢獻</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/zh-tw/ontap-sanhost/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/zh-tw/ontap-sanhost/pdfs/fullsite-sidebar/SAN主機和雲端用戶端.pdf" >
+                    <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>此文件 PDF 的網站</a>
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/安裝_SAN_主機公用程式.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            安裝 SAN 主機公用程式
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/AIX主機公用程式.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            AIX主機公用程式
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/HP_UX主機公用程式.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            HP-UX主機公用程式
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Linux統一化主機公用程式.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Linux統一化主機公用程式
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Solaris主機公用程式.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Solaris主機公用程式
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Windows統一化主機公用程式.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Windows統一化主機公用程式
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/使用_FCP_和_iSCSI_設定主機.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            使用 FCP 和 iSCSI 設定主機
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/AIX與PowerVM_VIOS.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            AIX與PowerVM/VIOS
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/CentOS.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            CentOS
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/CentOS_8_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            CentOS 8.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/CentOS_7_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            CentOS 7.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/CentOS_6_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            CentOS 6.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Citrix.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Citrix
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/ESXi.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ESXi
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/HP_UX.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            HP-UX
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/OA_FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Oracle Linux
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/ol_9_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ol 9.
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/ol_8_FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ol 8.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/ol_7_FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ol 7.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/ol_6_FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ol 6.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            RHEL
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL_9_FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            RHEL 9
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL_8_FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            RHEL 8
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL_7_FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            RHEL 7
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL_6_FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            RHEL 6
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Solaris.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Solaris
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/SLES.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            SLES
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/sles_15_FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            SLES 15
+          </a>
+          
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/SLES_12.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            SLES 12
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Ubuntu___FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Ubuntu
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Veritas.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Veritas
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Windows__FCP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Windows
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/使用_NVMe_設定主機.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            使用 NVMe 設定主機
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/NVMeoF_ESXi.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ESXi
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Oracle_Linux.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Oracle Linux
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/NVMeF_OL.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ol 9.
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/NVMeF_OL.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ol 8.
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/ol_7_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ol 7.
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/NVMeoF_RHEL.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            RHEL
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL_9.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            RHEL 9
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/RHEL_8.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            RHEL 8
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/NVMeoF_SLES.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            SLES
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/SLES_15.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            SLES 15
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-sanhost/pdfs/sidebar/Windows.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-sanhost/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Windows
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/zh-tw/ontap-sanhost/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>個別的 PDF 文件集合<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>您可以使用 ONTAP SAN 主機組態設定、將 SUSE Linux Enterprise Server 15 SP5 設定為目標 ONTAP 。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="安裝linux-unified-host-utilities">安裝Linux Unified Host Utilities</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NetApp Linux Unified Host Utilities軟體套件可在上取得 <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads" target="_blank" rel="noopener">"NetApp 支援網站"</a> 在32位元和64位元的.rpm檔案中。如果您不知道哪一個檔案適合您的組態、請使用 <a href="https://mysupport.netapp.com/matrix/#welcome" target="_blank" rel="noopener">"NetApp 互通性對照表工具"</a> 驗證您需要哪一個。</p>
+</div>
+<div class="paragraph">
+<p>NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</p>
+</div>
+<div class="paragraph">
+<div class="title">您需要的產品</div>
+<p>如果您目前安裝的是Linux Unified Host Utilities版本、您應該將其升級或移除、然後使用下列步驟來安裝最新版本。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>從下載32位元或64位元Linux Unified Host Utilities軟體套件 <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads" target="_blank" rel="noopener">"NetApp 支援網站"</a> 站台到主機。</p>
+</li>
+<li>
+<p>使用下列命令安裝軟體套件：</p>
+<div class="paragraph">
+<p>「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="註">
+</td>
+<td class="content">
+您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html" target="_blank" rel="noopener">"Cloud Volumes ONTAP"</a> 和 <a href="https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html" target="_blank" rel="noopener">"Amazon FSX for ONTAP Sf"</a>。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="san工具套件">SAN工具套件</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。</p>
+</div>
+<div class="paragraph">
+<div class="title">範例</div>
+<p>在以下範例中、「左LUN show」命令會傳回LUN資訊。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cli" data-lang="cli"># sanlun lun show all</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>輸出範例：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>controller(7mode/E-Series)/            device     host               lun
+vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
+-------------------------------------------------------------------------
+data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="san開機">SAN開機</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">您需要的產品</div>
+<p>如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=84067;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp 互通性對照表工具"</a> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步驟</div>
+<ol class="arabic">
+<li>
+<p>將SAN開機LUN對應至主機。</p>
+</li>
+<li>
+<p>確認有多個路徑可供使用。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="註">
+</td>
+<td class="content">
+在主機作業系統啟動並在路徑上執行後、就會有多個路徑可供使用。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。</p>
+<div class="paragraph">
+<p>如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。</p>
+</div>
+</li>
+<li>
+<p>重新啟動主機、確認開機成功。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="多重路徑">多重路徑</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>對於 SUSE Linux Enterprise Server 15 SP5 、請使用 <code>/etc/multipath.conf</code> 檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 15 SP5 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</p>
+</div>
+<div class="paragraph">
+<p>您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。</p>
+</div>
+<div class="sect2">
+<h3 id="所有-san-陣列組態">所有 SAN 陣列組態</h3>
+<div class="paragraph">
+<p>在所有 SAN 陣列（ ASA ）組態中、通往指定 LUN 的所有路徑均為作用中且最佳化。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。</p>
+</div>
+<div class="paragraph">
+<div class="title">範例</div>
+<p>下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># multipath -ll
+3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 3:0:7:9    sdco 69:192  active ready running
+  |- 3:0:8:9    sddi 71:0    active ready running
+  |- 14:0:8:9   sdjq 65:320  active ready running
+  `- 14:0:7:9   sdiw 8:256   active ready running</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="註">
+</td>
+<td class="content">
+請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="非-asa-組態">非 ASA 組態</h3>
+<div class="paragraph">
+<p>對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</p>
+</div>
+<div class="paragraph">
+<div class="title">範例</div>
+<p>下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># multipath -ll
+3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 3:0:3:0    sdd  8:48    active ready running
+| |- 3:0:4:0    sdx  65:112  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 14:0:2:0   sdfk 130:96  active ready running
+  `- 14:0:5:0   sdgz 132:240 active ready running</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="註">
+</td>
+<td class="content">
+請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="建議設定">建議設定</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SUSE Linux Enterprise Server 15 SP5 作業系統經過編譯、可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</p>
+</div>
+<div class="paragraph">
+<p>。 <code>multipath.conf</code> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</p>
+</div>
+<div class="paragraph">
+<p><code>touch /etc/multipath.conf</code></p>
+</div>
+<div class="paragraph">
+<p>第一次建立此檔案時、您可能需要啟用和啟動多重路徑服務：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># systemctl enable multipathd
+# systemctl start multipathd</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>無需直接在中新增任何內容 <code>multipath.conf</code> 檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。</p>
+</li>
+<li>
+<p>若要排除不想要的裝置、請將下列語法新增至 <code>multipath.conf</code> 檔案。</p>
+<div class="listingblock">
+<div class="content">
+<pre>blacklist {
+        wwid &lt;DevId&gt;
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>更換 <code>&lt;DevId&gt;</code> 使用 <code>WWID</code> 要排除的裝置字串。</p>
+</div>
+<div class="paragraph">
+<div class="title">範例</div>
+<p>在此範例中、我們將決定裝置的 WWID 並新增至 <code>multipath.conf</code> 檔案：</p>
+</div>
+<div class="olist loweralpha">
+<div class="title">步驟</div>
+<ol class="loweralpha" type="a">
+<li>
+<p>執行下列命令來判斷WWID：</p>
+<div class="listingblock">
+<div class="content">
+<pre># /lib/udev/scsi_id -gud /dev/sda
+360030057024d0730239134810c0cb833</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>sda</code> 是我們需要新增至黑名單的本機 SCSI 磁碟。</p>
+</div>
+</li>
+<li>
+<p>新增 <code>WWID</code> 至中的黑名單 <code>/etc/multipath.conf</code>：</p>
+<div class="listingblock">
+<div class="content">
+<pre>blacklist {
+     wwid   360030057024d0730239134810c0cb833
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>您應該隨時檢查 <code>/etc/multipath.conf</code> 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。</p>
+</div>
+<div class="paragraph">
+<p>下表說明了關鍵 <code>multipathd</code> 支援的參數ONTAP 和所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要稍後在中的節能區段加以修正 <code>multipath.conf</code> 特別適用於ONTAP 整個LUN的檔案。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應諮詢 NetApp 和 / 或作業系統廠商、以覆寫這些預設值。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">參數</th>
+<th class="tableblock halign-left valign-top">設定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DETECT（偵測）_prio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是的</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">開發損失_tmo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"無限遠"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">容錯回復</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">立即</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fast_io_f故障_tmo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">功能</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"2 pg_init_retries 50"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flip_on_last刪除</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"是"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">硬體處理常式</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「0」</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no_path_retry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">佇列</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path_checker_</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"周"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path_grouping_policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"群組by_prio"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path_selector</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"服務時間0"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Polling_時間 間隔</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">優先</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「NetApp」ONTAP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">產品</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LUN.*</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Retain附加的硬體處理常式</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是的</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RR_weight</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"統一"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">使用者易記名稱</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">廠商</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<div class="title">範例</div>
+<p>下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>defaults {
+   path_checker      readsector0
+   no_path_retry      fail
+}
+devices {
+   device {
+      vendor         "NETAPP  "
+      product         "LUN.*"
+      no_path_retry     queue
+      path_checker      tur
+   }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="已知問題">已知問題</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>使用 ONTAP 版本的 SUSE Linux Enterprise Server 15 SP5 沒有已知問題。</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/zh-tw/ontap-sanhost/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/zh-tw/ontap-sanhost/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">在本頁</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">使用條款</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">隱私權政策</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie 政策</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie 設定</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">傳送有關本網頁的意見反應</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-tw/ontap-sanhost/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-tw/ontap-sanhost/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-tw/ontap-sanhost/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-tw/ontap-sanhost/js/ie-tabbed-blocks.js'></script>
+    <script src='/zh-tw/ontap-sanhost/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
