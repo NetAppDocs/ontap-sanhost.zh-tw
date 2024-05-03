@@ -1961,9 +1961,7 @@
   <block id="eae76491b6011f6e80494775aea500b6" category="paragraph">對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑均為「主動/最佳化」、這表示它們由控制器提供服務、而I/O則會傳送至所有作用中路徑。</block>
   <block id="3012ce3908219f8e726469f86858ac26" category="paragraph">對於AIX、路徑控制模組（PCM）負責控制多個路徑。PCM是儲存設備廠商提供的程式碼、可處理路徑管理。這項功能會在主機公用程式安裝過程中安裝及啟用。</block>
   <block id="f5188f0db18a0455b279280c37baccd9" category="list-text">解壓縮檔案。您可以使用<block ref="310cb972d0a51b72a4a64dd98fcc2fb1" prefix=" " category="inline-code"></block> 執行此作業的命令。</block>
-  <block id="488ee7d410bfc05042cf79417f62b731" category="paragraph">本內容提供主機和版本專屬的最佳實務做法、可快速設定連接ONTAP 到靜態儲存設備的SAN主機。</block>
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">在雲端環境中、主機通常稱為用戶端。此內容中的所有主機專屬資訊也適用於雲端用戶端。</block>
-  <block id="7dac0335f353ff4aea15e7349355818e" category="paragraph">例如、您可以設定內部部署ONTAP 的不支援儲存設備、以連線至內部部署的SAN主機、或連線至SAN雲端用戶端。您也可以設定 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 或 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block> 連線至內部部署SAN主機或連線至SAN雲端用戶端。</block>
   <block id="94ed2eb93c1ea841359ebf631638ec66" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">在此範例中、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如、</block>
@@ -2799,12 +2797,9 @@
   <block id="1bbb67631847a06bbd9b2e9dafec2134" category="section-title">安裝 Solaris 主機公用程式</block>
   <block id="3f20da7f97c0948dba60855f74d8feb3" category="paragraph">您可以在執行 SUSE Linux Enterprise Server 15 SP1 和 ONTAP 的主機上、設定 NVMe over Fibre Channel （ NVMe / FC ）作為目標。</block>
   <block id="c783ac9d690ea6f6744d8edf596a145a" category="list-text">NVMe - CLI套件中包含原生的NVMe / FC自動連線指令碼。您可以在SLES15 SP1上使用原生的內建lfc驅動程式。</block>
-  <block id="c5572eca1bd94cf7d7a382167c292395" category="paragraph">= 已知問題</block>
   <block id="04e8d5a4c40a30787e3a35e62dfd0c1e" category="paragraph">設定適用於 NVMe / FC 的 lpfc 驅動程式。</block>
   <block id="9f988f6d1200dcd570b84c8116f6eecd" category="paragraph">您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 Citrix Hypervisor 8 系列 OS 版本設定 ONTAP SAN 主機組態設定。</block>
   <block id="e62de6043f25aae2915aa8c10fbaec9d" category="cell"><block ref="e62de6043f25aae2915aa8c10fbaec9d" category="inline-link-macro-rx"></block></block>
-  <block id="fad1bada1216764738043e879ec198a9" category="paragraph">= 已知問題
-沒有已知問題。</block>
   <block id="0ea1561176c96894fb977d38bd38f871" category="section-title">為 Broadcom NVMe / FC 啟用 1MB I/O 大小</block>
   <block id="624e2520b17b79e6e7312aaab546e064" category="section-title">為 Broadcom NVMe / FC 啟用 1MB I/O 大小</block>
   <block id="a597507af40f2b893bf64299ba506a89" category="doc">使用 Veritas Storage Foundation 6 for Linux with ONTAP</block>
@@ -2893,7 +2888,6 @@
   <block id="1e1ac2f92ca06b1f068f6aa6c61883c0" category="paragraph">版本資訊說明新功能與增強功能、已知問題與限制、以及使用 ONTAP 儲存系統設定及管理特定主機的重要注意事項。</block>
   <block id="2ad9563dae62baefb397a0b93e22f08a" category="list-text">在 Red Hat Enterprise Linux （ RHEL ） 6 和 RHEL 7 主機上、現在支援用於設定伺服器設定檔的調整套件。您可以使用<block ref="44559c6617511944fd997c63b107ee6b" prefix=" " category="inline-code"></block> 根據環境設定不同設定檔的命令。例如、您也可以將虛擬來賓設定檔作為來賓虛擬機器、並可將企業儲存設定檔用於使用企業儲存陣列 LUN 的組態。使用這些經過調整的套件、可改善 ONTAP 的處理量和延遲。</block>
   <block id="b91c8d257cb2ab1f821c4201c4d98d12" category="list-text">增加了 Broadcom Emulex 和 Marvell Qlogic 對 32GB FC 適配器的支持。</block>
-  <block id="a26aa7b42e8c5d7d2a6c295dc3421eb4" category="paragraph">正確的組態對於最佳效能和成功的容錯移轉非常重要。</block>
   <block id="d183f649aa9dd1befe9fbbbebb9ce6f3" category="paragraph">在此範例中、我們將決定裝置的 WWID 並新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案：</block>
   <block id="9befbb0a2a211b5683af5265f22799fb" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block> 是我們需要新增至黑名單的本機 SCSI 磁碟。</block>
   <block id="8f832cd06827c0d578f135a31564e7cf" category="summary">說明如何搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP5</block>
@@ -3585,4 +3579,10 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="a98f12afd377cfff4657909446bff74a" category="cell">RHEL 17811.</block>
   <block id="e764fe6b8f8825a307a87cedbef45678" category="sidebar">22.04</block>
   <block id="829d28d8727a4d458f1c35bda30f5ad7" category="sidebar">NVMeoF Ubuntu</block>
+  <block id="d501883fc1a9d1cf58d8ed37251b1790" category="paragraph">SAN 主機應設定為多重路徑、並設定特定參數和設定、以確保能正確操作 ONTAP LUN 。  主機組態會因主機作業系統和傳輸協定而異。  正確的組態對於最佳效能和成功的容錯移轉非常重要。</block>
+  <block id="4bf5914eea4e83599fedc33e6b112c24" category="paragraph">您應該將 SAN 主機設定為使用 NetApp SAN 主機公用程式。SAN 主機公用程式可協助您管理及監控 LUN 和主機匯流排介面卡（ HBA ）。例如、您可以使用 SAN 主機公用程式來擷取對應至主機的所有 LUN 清單、或查看對應至主機之特定 LUN 的所有屬性清單。如果您遇到需要協助的問題、 NetApp 客戶支援也可以使用 SAN 主機公用程式來收集組態的相關資訊。</block>
+  <block id="4606950536e67c2685627ee972feac57" category="paragraph">NetApp 建議您使用 SAN 主機公用程式軟體（如果 SAN 主機有可用的軟體）。</block>
+  <block id="f76b486098082341b739c343f962d5d9" category="paragraph">如果 SAN 組態支援此功能、您也可以將主機設定為使用 SAN 開機、以簡化部署並提升擴充性。使用 SAN 開機、您可以將多部新伺服器連線至 SAN 、並設定適當的開機設定、來部署這些伺服器。如此一來、就不再需要在每部伺服器上個別安裝作業系統、進而節省時間。</block>
+  <block id="4d82a1ec1af02725042c8c785564ee7a" category="inline-link-macro">Amazon FSX for NetApp ONTAP 產品</block>
+  <block id="cbd5bf3ac18c40540e157027878d3965" category="paragraph">例如、您可以設定內部部署 ONTAP 儲存設備、以連線至內部部署 SAN 主機或 SAN 雲端用戶端。您也可以設定在雲端環境上執行的儲存服務、例如 <block ref="54a9edfbbcc641d603aea65a27251f05" category="inline-link-macro-rx"></block> 或 <block ref="32496c00ec9be403fcfaf96fbaeed4b1" category="inline-link-macro-rx"></block> 連線至內部部署 SAN 主機或 SAN 雲端用戶端。</block>
 </blocks>
