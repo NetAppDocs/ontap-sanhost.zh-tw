@@ -21,7 +21,7 @@ Red Hat Enterprise Linux （ RHEL ） 9.4 搭配非對稱命名空間存取（ A
 
 下列支援適用於 ONTAP 的 RHEL 9.4 NVMe 主機組態：
 
-* 支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生 NVMe - CLI 套件中的 NetApp 外掛程式會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
+* 支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生的 NetApp 外掛程式 `nvme-cli` 套件會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
 * 在指定主機匯流排介面卡（ HBA ）上的同一主機上使用 NVMe 和 SCSI 共存流量、而不使用明確的 dm-multipath 設定、以避免使用 NVMe 命名空間。
 
 
@@ -296,7 +296,7 @@ NOTE: 這不適用於 Qlogic NVMe / FC 主機。
 
 == 設定NVMe/TCP
 
-NVMe / TCP 沒有自動連線功能。因此、我們需要手動執行 NVMe / TCP 連線或全部連線功能、才能探索 NVMe / TCP 子系統和命名空間。
+NVMe / TCP 沒有自動連線功能。因此、您必須手動執行 NVMe / TCP 連線或全部連線功能、才能探索 NVMe / TCP 子系統和命名空間。
 
 您可以使用下列程序來設定 NVMe / TCP 。
 
@@ -446,7 +446,7 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 
 
 
-NOTE: 從 RHEL 9.4 開始、是 NVMe / TCP 的預設設定 `ctrl_loss_tmo` 逾時已關閉、這表示重試次數沒有限制（無限期重試）。因此、您不需要手動設定特定的 `ctrl_loss_tmo` 使用 NVMe 連線或 NVMe 連線全部命令（選項 -l ）時的逾時時間。在這種預設行為下、如果路徑故障、則 NVMe / TCP 控制器不會發生逾時、而且會無限期地保持連線。
+NOTE: 從 RHEL 9.4 開始、是 NVMe / TCP 的預設設定 `ctrl_loss_tmo` 逾時已關閉、這表示重試次數沒有限制（無限期重試）。因此、您不需要手動設定特定的 `ctrl_loss_tmo` 使用時的逾時時間 `nvme connect` 或 `nvme connect-all` 命令（選項 -l ）。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。
 
 
 

@@ -331,5 +331,5 @@ ONTAP 版本的 VMware vSphere 7.x 沒有已知問題。
 .相關資訊
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]
 * link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
-* link:https://kb.vmware.com/s/article/83370["NetApp ONTAP 功能搭配NetApp SnapMirror營運不中斷（SMBC）與VMware vSphere Metro儲存叢集（VMSC）"^]
+* link:https://kb.vmware.com/s/article/83370["NetApp ONTAP 搭配 NetApp SnapMirror 與 VMware vSphere Metro Storage 叢集（ VMSC ）進行主動同步"^]
 

@@ -72,6 +72,6 @@ Linux 主機公用程式 7.1 版本有下列已知問題和限制。
 [root@hostname~]# sanlun FCP show adapter -v
 無法找到 /usr/lib64/libHBAAPI.so 程式庫
 確定安裝程式庫的套件已安裝並載入
-請參閱公開報告 1508554 。 
+請參閱 NetApp 線上錯誤 - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^]。 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。

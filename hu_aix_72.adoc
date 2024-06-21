@@ -216,13 +216,13 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 
 
-== 支援SM至BC的AIX
+== AIX 支援 SnapMirror 主動同步
 
-從ONTAP 《支援》版本的《支援》（從《支援》版本的版本起）開始、《支援AIX》（SMBC）在AIX組態下、主要叢集是「作用中」叢集。
+從 ONTAP 9.11.1 開始、 SnapMirror 主動同步支援 AIX 。在AIX組態下、主要叢集是「作用中」叢集。
 
 在AIX組態中、容錯移轉會中斷運作。每次容錯移轉時、您都必須在主機上執行重新掃描、才能恢復I/O作業。
 
-若要設定適用於SM至BC的AIX、請參閱知識庫文章 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["如何設定AIX主機以實現SnapMirror營運不中斷（SMBC）"^]。
+若要設定 AIX for SnapMirror 主動同步、請參閱知識庫文章 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["如何設定用於 SnapMirror 主動同步的 AIX 主機"^]。
 
 
 
@@ -235,11 +235,11 @@ IBM AIX 7.2 和 / 或 PowerVM （ VIOS 3.1 ）搭配 ONTAP 版本、有下列已
 | NetApp錯誤ID | 標題 | 說明 | 合作夥伴ID 
 
 
-| 1416221. | 在儲存容錯移轉期間、AIX 7200-05-01在虛擬iSCSI磁碟（VIOS 3.1.1.x）上發生I/O中斷 | 在透過VIOS 3.1.1.x對應的虛擬iSCSI磁碟上、在AIX 7.2 TL5主機上執行儲存容錯移轉作業時、可能會發生I/O中斷根據預設、VIOC上虛擬iSCSI磁碟（hdisk）的「rw_timeout」值將為45秒。如果在儲存容錯移轉期間發生超過45秒的I/O延遲、可能會發生I/O故障。若要避免這種情況、請參閱Burt中提及的因應措施。根據IBM、在套用APAR - IJ34739（即將推出的版本）之後、我們可以使用「chdev'命令來動態變更rw_timeout值。 | 不適用 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1416221["1416221."^] | 在儲存容錯移轉期間、AIX 7200-05-01在虛擬iSCSI磁碟（VIOS 3.1.1.x）上發生I/O中斷 | 在透過VIOS 3.1.1.x對應的虛擬iSCSI磁碟上、在AIX 7.2 TL5主機上執行儲存容錯移轉作業時、可能會發生I/O中斷根據預設、VIOC上虛擬iSCSI磁碟（hdisk）的「rw_timeout」值將為45秒。如果在儲存容錯移轉期間發生超過45秒的I/O延遲、可能會發生I/O故障。若要避免這種情況、請參閱Burt中提及的因應措施。根據IBM、在套用APAR - IJ34739（即將推出的版本）之後、我們可以使用「chdev'命令來動態變更rw_timeout值。 | 不適用 
 
 
-| 1414700 | 在儲存容錯移轉期間、AIX 7.2 TL04在虛擬iSCSI磁碟（VIOS 3.1.1.x）上發生I/O中斷 | 在透過VIOS 3.1.1.x對應的虛擬iSCSI磁碟上、在AIX 7.2 TL4主機上執行儲存容錯移轉作業時、可能會發生I/O中斷根據預設、VOC上vSCSI介面卡的「rw_timeout」值為45秒。如果在儲存容錯移轉期間發生超過45秒的I/O延遲、可能會發生I/O故障。若要避免這種情況、請參閱Burt中提及的因應措施。 | 不適用 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1414700["1414700"^] | 在儲存容錯移轉期間、AIX 7.2 TL04在虛擬iSCSI磁碟（VIOS 3.1.1.x）上發生I/O中斷 | 在透過VIOS 3.1.1.x對應的虛擬iSCSI磁碟上、在AIX 7.2 TL4主機上執行儲存容錯移轉作業時、可能會發生I/O中斷根據預設、VOC上vSCSI介面卡的「rw_timeout」值為45秒。如果在儲存容錯移轉期間發生超過45秒的I/O延遲、可能會發生I/O故障。若要避免這種情況、請參閱Burt中提及的因應措施。 | 不適用 
 
 
-| 1307653. | 在SFO故障和直接I/O期間、查看VIOS 3.1.1.10的I/O問題 | 在VIOS 3.1.1 IO故障時、NPIV用戶端磁碟可能會出現故障、而NPIV用戶端磁碟則以16/32GB FC介面卡為後盾。此外、「vfchost」驅動程式可能會進入停止處理用戶端I/O要求的狀態。套用IBM APAR J22290 IBM APAR J23222即可修正此問題。 | 不適用 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653."^] | 在SFO故障和直接I/O期間、查看VIOS 3.1.1.10的I/O問題 | 在VIOS 3.1.1 IO故障時、NPIV用戶端磁碟可能會出現故障、而NPIV用戶端磁碟則以16/32GB FC介面卡為後盾。此外、「vfchost」驅動程式可能會進入停止處理用戶端I/O要求的狀態。套用IBM APAR J22290 IBM APAR J23222即可修正此問題。 | 不適用 
 |===

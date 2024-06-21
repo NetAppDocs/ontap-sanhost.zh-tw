@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_rhel_89.html 
+permalink: nvme_rhel_810.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何使用 ONTAP 設定適用於 RHEL 8.9 的 NVMe 主機 
+summary: 如何使用 ONTAP 設定適用於 RHEL 8.10 的 NVMe 主機 
 ---
-= 適用於 ONTAP 的 RHEL 8.9 的 NVMe 主機組態
+= 適用於 ONTAP 的 RHEL 8.10 NVMe 主機組態
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -17,11 +17,11 @@ summary: 如何使用 ONTAP 設定適用於 RHEL 8.9 的 NVMe 主機
 
 
 [role="lead"]
-Red Hat Enterprise Linux （ RHEL ） 8.9 搭配非對稱命名空間存取（ ANA ）、可支援 NVMe over Fabrics （ NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。
+Red Hat Enterprise Linux （ RHEL ） 8.10 搭配非對稱命名空間存取（ ANA ）支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。
 
-下列支援適用於 ONTAP 的 RHEL 8.9 NVMe 主機組態：
+下列支援適用於 ONTAP 的 RHEL 8.10 NVMe 主機組態：
 
-* 支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生 NVMe - CLI 套件中的 NetApp 外掛程式會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
+* 支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生的 NetApp 外掛程式 `nvme-cli` 套件會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
 
 
 如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
@@ -30,8 +30,8 @@ Red Hat Enterprise Linux （ RHEL ） 8.9 搭配非對稱命名空間存取（ A
 
 == 已知限制
 
-* 根據預設、 RHEL 8.9 NVMe 主機的核心內建 NVMe 多重路徑會停用。因此、您需要手動啟用。
-* 在 RHEL 8.9 主機上、 NVMe / TCP 是一項技術預覽功能、因為存在開放式問題。
+* RHEL 8.10 NVMe 主機的核心內建 NVMe 多重路徑預設為停用。因此、您需要手動啟用。
+* 在 RHEL 8.10 主機上、 NVMe / TCP 是一項技術預覽功能、因為存在開放式問題。
 * 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
@@ -42,8 +42,8 @@ Red Hat Enterprise Linux （ RHEL ） 8.9 搭配非對稱命名空間存取（ A
 您可以使用下列程序來啟用核心內建多重路徑。
 
 .步驟
-. 在主機伺服器上安裝 RHEL 8.9 。
-. 安裝完成後、請確認您正在執行指定的 RHEL 8.9 核心：
+. 在主機伺服器上安裝 RHEL 8.10 。
+. 安裝完成後、請確認您正在執行指定的 RHEL 8.10 核心：
 +
 [listing]
 ----
@@ -55,9 +55,9 @@ Red Hat Enterprise Linux （ RHEL ） 8.9 搭配非對稱命名空間存取（ A
 +
 [listing]
 ----
-4.18.0-513.5.1.el8_9.x86_64
+4.18.0-553.el8_10.x86_64
 ----
-. 安裝 NVMe CLI 套件：
+. 安裝「NVMe-CLI（NVMe - CLI）套件：
 +
 [listing]
 ----
@@ -71,11 +71,15 @@ rpm -qa|grep nvme-cli
 ----
 nvme-cli-1.16-9.el8.x86_64
 ----
-. 啟用核心內建 NVMe 多重路徑：
+. 啟用核心內建NVMe多重路徑：
++
+* 範例 *
+
 +
 [listing]
 ----
-# grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-513.5.1.el8_9.x86_64
+# grubby --args=nvme_core.multipath=Y --update-kernel
+/boot/vmlinuz-4.18.0-553.el8_10.x86_64
 ----
 . 在主機上、檢查主機的 NQN 字串 `/etc/nvme/hostnqn`：
 +
@@ -105,7 +109,7 @@ nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3410-8035-b8c04f4c5132
 ----
 Vserver     Subsystem       Host NQN
 ----------- --------------- ----------------------------------------------------------
-vs_nvme101 rhel_101_QLe2772    nqn.2014-08.org.nvmexpress: uuid:4c4c4544-0032-3410-8035-b8c04f4c5132
+vs_25_2742 rhel_101_QLe2772    nqn.2014-08.org.nvmexpress:uuid:546399fc-160f-11e5-89aa-98be942440ca
 ----
 +
 
@@ -171,8 +175,8 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 [listing]
 ----
 # cat /sys/class/scsi_host/host*/fwrev
-14.2.539.16, sli-4:2:c
-14.2.539.16, sli-4:2:c
+14.2.539.21, sli-4:2:c
+14.2.539.21, sli-4:2:c
 ----
 +
 [listing]
@@ -211,26 +215,29 @@ Online
 # cat /sys/class/scsi_host/host*/nvme_info
 NVME Initiator Enabled
 XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc0 WWPN x10000090fae0ec88 WWNN x20000090fae0ec88 DID x0a1300 *ONLINE*
-NVME RPORT       WWPN x2049d039ea36a105 WWNN x2048d039ea36a105 DID x0a0c0a *TARGET DISCSRVC ONLINE*
+NVME LPORT lpfc0 WWPN x100000109bf044b1 WWNN x200000109bf044b1 DID x022a00 ONLINE
+NVME RPORT       WWPN x211ad039eaa7dfc8 WWNN x2119d039eaa7dfc8 DID x021302 TARGET DISCSRVC ONLINE
+NVME RPORT       WWPN x211cd039eaa7dfc8 WWNN x2119d039eaa7dfc8 DID x020b02 TARGET DISCSRVC ONLINE
+
 NVME Statistics
-LS: Xmt 0000000024 Cmpl 0000000024 Abort 00000000
-LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 00000000000001aa Issue 00000000000001ab OutIO 0000000000000001
-        abort 00000002 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 00000002 Err 00000003
+LS: Xmt 00000001ff Cmpl 00000001ff Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 0000000001330ec7 Issue 0000000001330ec9 OutIO 0000000000000002
+        abort 00000330 noxri 00000000 nondlp 0000000b qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000354 Err 00000361
+
 NVME Initiator Enabled
 XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc1 WWPN x10000090fae0ec89 WWNN x20000090fae0ec89 DID x0a1200 *ONLINE*
-NVME RPORT       WWPN x204ad039ea36a105 WWNN x2048d039ea36a105 DID x0a080a *TARGET DISCSRVC ONLINE*
+NVME LPORT lpfc1 WWPN x100000109bf044b2 WWNN x200000109bf044b2 DID x021b00 ONLINE
+NVME RPORT       WWPN x211bd039eaa7dfc8 WWNN x2119d039eaa7dfc8 DID x022902 TARGET DISCSRVC ONLINE
+NVME RPORT       WWPN x211dd039eaa7dfc8 WWNN x2119d039eaa7dfc8 DID x020102 TARGET DISCSRVC ONLINE
+
 NVME Statistics
-LS: Xmt 0000000024 Cmpl 0000000024 Abort 00000000
-LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 00000000000001ac Issue 00000000000001ad OutIO 0000000000000001
-        abort 00000002 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 00000002 Err 00000003
-
-
+LS: Xmt 00000001ff Cmpl 00000001ff Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 00000000012ec220 Issue 00000000012ec222 OutIO 0000000000000002
+        abort 0000033b noxri 00000000 nondlp 00000085 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000368 Err 00000382
 
 ----
 
@@ -239,7 +246,7 @@ FCP CMPL: xb 00000002 Err 00000003
 .適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡
 --
 .步驟
-. RHEL 8.9 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正。確認您執行的是支援的介面卡驅動程式和韌體版本：
+. RHEL 8.10 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正。確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]
 ----
@@ -311,7 +318,7 @@ nvme discover -t tcp -w host-traddr -a traddr
 +
 [listing]
 ----
-# nvme discover -t tcp -w 192.168.111.79 -a 192.168.111.14 -l 1800
+# nvme discover -t tcp -w 192.168.2.31 -a 192.168.2.25
 
 Discovery Log Number of Records 8, Generation counter 18
 =====Discovery Log Entry 0======
@@ -321,8 +328,8 @@ subtype: unrecognized
 treq:    not specified.
 portid:  0
 trsvcid: 8009
-subnqn:  nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b: discovery
-traddr:  192.168.211.15
+subnqn:  nqn.1992-08.com.netapp:sn.a1b2b785b9de11ee8e7fd039ea9e8ae9:discovery: discovery
+traddr:  192.168.1.25
 sectype: none
 =====Discovery Log Entry 1======
 trtype:  tcp
@@ -331,10 +338,9 @@ subtype: unrecognized
 treq:    not specified.
 portid:  1
 trsvcid: 8009
-subnqn:  nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b: discovery
-traddr:  192.168.111.15
+subnqn:  nqn.1992-08.com.netapp:sn.a1b2b785b9de11ee8e7fd039ea9e8ae9:discovery
+traddr:  192.168.2.26
 sectype: none ..........
-
 
 ----
 . 確認其他的 NVMe / TCP 啟動器目標 LIF 組合可以成功擷取探索記錄頁面資料：
@@ -349,10 +355,10 @@ nvme discover -t tcp -w host-traddr -a traddr
 +
 [listing]
 ----
-# nvme	discover	-t   tcp    -w	192.168.111.79   -a	192.168.111.14
-# nvme	discover	-t   tcp    -w	192.168.111.79   -a	192.168.111.15
-# nvme	discover	-t   tcp    -w	192.168.211.79   -a	192.168.211.14
-# nvme	discover	-t   tcp    -w	192.168.211.79   -a	192.168.211.15
+# nvme  discover  -t  tcp  -w 192.168.2.31  -a 192.168.2.25
+# nvme  discover  -t  tcp  -w 192.168.1.31  -a 192.168.1.24
+# nvme  discover  -t  tcp  -w 192.168.2.31  -a 192.168.2.26
+# nvme  discover  -t  tcp  -w 192.168.1.31  -a 192.168.1.25
 
 
 ----
@@ -368,11 +374,10 @@ nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
 +
 [listing]
 ----
-# nvme	connect-all	-t	tcp	-w	192.168.111.79	-a	192.168.111.14	-l	1800
-# nvme	connect-all	-t	tcp	-w	192.168.111.79	-a	192.168.111.15	-l	1800
-# nvme	connect-all	-t	tcp	-w	192.168.211.79	-a	192.168.211.14	-l	1800
-# nvme	connect-all	-t	tcp	-w	192.168.211.79	-a	192.168.211.15	-l	1800
-
+# nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25	-l 1800
+# nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.24	-l 1800
+# nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.26	-l 1800
+# nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.25	-l 1800
 
 ----
 
@@ -420,7 +425,7 @@ round-robin
 ----
 Node         SN                   Model
 ---------------------------------------------------------
-/dev/nvme0n1 81Gx7NSiKSQqAAAAAAAB	NetApp ONTAP Controller
+/dev/nvme0n1 81K1ABVnkwbNAAAAAAAB	NetApp ONTAP Controller
 
 
 Namespace Usage    Format             FW             Rev
@@ -435,17 +440,19 @@ Namespace Usage    Format             FW             Rev
 --
 [listing]
 ----
-# nvme list-subsys /dev/nvme3n1
+# nvme list-subsys /dev/nvme0n1
 ----
 * 輸出範例： *
 
 [listing, subs="+quotes"]
 ----
-nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.8e501f8ebafa11ec9b99d039ea359e4b:subsystem.rhel_163_Qle2742
-+- nvme0 *fc* traddr=nn-0x204dd039ea36a105:pn-0x2050d039ea36a105 host_traddr=nn-0x20000024ff7f4994:pn-0x21000024ff7f4994 *live non-optimized*
-+- nvme1 *fc* traddr=nn-0x204dd039ea36a105:pn-0x2050d039ea36a105 host_traddr=nn-0x20000024ff7f4994:pn-0x21000024ff7f4994 *live non-optimized*
-+- nvme2 *fc* traddr=nn-0x204dd039ea36a105:pn-0x204fd039ea36a105 host_traddr=nn-0x20000024ff7f4995:pn-0x21000024ff7f4995 *live optimized*
-+- nvme3 *fc* traddr=nn-0x204dd039ea36a105:pn-0x204ed039ea36a105 host_traddr=nn-0x20000024ff7f4994:pn-0x21000024ff7f4994 *live optimized*
+nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.0cd9ee0dc0ec11ee8e7fd039ea9e8ae9:subsystem.nvme
+\
+ +- nvme1 fc traddr=nn-0x2005d039eaa7dfc8:pn-0x2086d039eaa7dfc8 host_traddr=nn-0x20000024ff752e6d:pn-0x21000024ff752e6d live *non-optimized*
+ +- nvme2 fc traddr=nn-0x2005d039eaa7dfc8:pn-0x2016d039eaa7dfc8 host_traddr=nn-0x20000024ff752e6c:pn-0x21000024ff752e6c live *optimized*
+ +- nvme3 fc traddr=nn-0x2005d039eaa7dfc8:pn-0x2081d039eaa7dfc8 host_traddr=nn-0x20000024ff752e6c:pn-0x21000024ff752e6c live *non-optimized*
+ +- nvme4 fc traddr=nn-0x2005d039eaa7dfc8:pn-0x2087d039eaa7dfc8 host_traddr=nn-0x20000024ff752e6d:pn-0x21000024ff752e6d live *optimized*
+
 
 ----
 --
@@ -459,11 +466,12 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.8e501f8ebafa11ec9b99d039ea359e4b:su
 
 [listing, subs="+quotes"]
 ----
-nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:subsystem.rhel_tcp_165\
-+- nvme0 *tcp* traddr=192.168.111.15 trsvcid=4420 host_traddr=192.168.111.79 *live non-optimized*
-+- nvme1 *tcp* traddr=192.168.111.14 trsvcid=4420 host_traddr=192.168.111.79 *live optimized*
-+- nvme2 *tcp* traddr=192.168.211.15 trsvcid=4420 host_traddr=192.168.211.79 *live non-optimized*
-+- nvme3 *tcp* traddr=192.168.211.14 trsvcid=4420 host_traddr=192.168.211.79 *live optimized*
+nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.a1b2b785b9de11ee8e7fd039ea9e8ae9:subsystem.nvme_tcp_1
+\
+ +- nvme0 tcp traddr=192.168.2.26 trsvcid=4420 host_traddr=192.168.2.31 live *non-optimized*
+ +- nvme1 tcp traddr=192.168.2.25 trsvcid=4420 host_traddr=192.168.2.31 live *optimized*
+ +- nvme2 tcp traddr=192.168.1.25 trsvcid=4420 host_traddr=192.168.1.31 live *non-optimized*
+ +- nvme3 tcp traddr=192.168.1.24 trsvcid=4420 host_traddr=192.168.1.31 live *optimized*
 
 ----
 --
@@ -482,14 +490,15 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.154a5833c78c11ecb069d039ea359e4b:su
 
 [listing]
 ----
-Device        Vserver   Namespace Path
------------------------ ------------------------------
-/dev/nvme0n1 vs_tcp79           /vol/vol1/ns
+Device        Vserver       Namespace Path
+-----------------------------------------------------
+/dev/nvme0n1  tcpiscsi_129  /vol/tcpnvme_1_0_0/tcpnvme_ns
+
 
 
 NSID       UUID                                   Size
 ------------------------------------------------------------
-1          aa197984-3f62-4a80-97de-e89436360cec	21.47GB
+1          05c2c351-5d7f-41d7-9bd8-1a56c	        21.47GB
 ----
 --
 .JSON
@@ -503,19 +512,18 @@ NSID       UUID                                   Size
 [listing]
 ----
 {
-  "ONTAPdevices”: [
+  "ONTAPdevices": [
     {
-      "Device”: "/dev/nvme0n1",
-      "Vserver”: "vs_tcp79",
-      "Namespace Path”: "/vol/vol1/ns",
-      "NSID”: 1,
-      "UUID”: "aa197984-3f62-4a80-97de-e89436360cec",
-      "Size”: "21.47GB",
-      "LBA_Data_Size”: 4096,
+      "Device": "/dev/nvme0n1",
+      "Vserver": "tcpiscsi_129",
+      "Namespace Path”: /vol/tcpnvme_1_0_0/tcpnvme_ns ",
+      "NSID": 1,
+      "UUID": " 05c2c351-5d7f-41d7-9bd8-1a56c160c80b ",
+      "Size2: "21.47GB",
+      "LBA_Data_Size": 4096,
       "Namespace Size" : 5242880
     },
-]
-
+  ]
 }
 
 
@@ -528,12 +536,12 @@ NSID       UUID                                   Size
 
 == 已知問題
 
-採用 ONTAP 版本的 RHEL 8.9 的 NVMe 主機組態有下列已知問題：
+採用 ONTAP 的 RHEL 8.10 NVMe 主機組態有下列已知問題：
 
 [cols="10,30,30,10"]
 |===
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 8.9 NVMe 主機會建立重複的持續探索控制器 | 在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。  不過、如果您在 NVMe 主機上執行 Red Hat Enterprise Linux （ RHEL ） 8.9 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。 | 2087000 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 8.10 NVMe 主機會建立重複的持續探索控制器 | 在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。  不過、如果您在 NVMe 主機上執行 Red Hat Enterprise Linux （ RHEL ） 8.10 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。 | 2087000 
 |===

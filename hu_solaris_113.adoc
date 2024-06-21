@@ -214,12 +214,12 @@ NOTE: 可在各種版本的Solaris上取得Oracle錯誤15824910的修補程式�
 
 
 
-== SnapMirror營運不中斷的建議設定
+== SnapMirror 主動同步的建議設定
 
-為了驗證當SnapMirror營運不中斷（SM至BC）環境中發生非計畫性站台容錯移轉切換時、Solaris用戶端應用程式是否不中斷營運、您必須在Solaris 11.3主機上設定下列設定。此設定會覆寫容錯移轉模組 `f_tpgs` 防止執行偵測到衝突的程式碼路徑。
+為了驗證在 SnapMirror 主動式同步環境中發生非計畫性站台容錯移轉切換時、 Solaris 用戶端應用程式不會中斷運作、您必須在 Solaris 11.3 主機上設定下列設定。此設定會覆寫容錯移轉模組 `f_tpgs` 防止執行偵測到衝突的程式碼路徑。
 
 
-NOTE: 從ONTAP 0到9、9.1開始、SM到BC設定組態在Solaris 11.3主機中受到支援。
+NOTE: 從 9.9.1 開始、 ONTAP 11.3 主機支援 SnapMirror 主動式同步設定組態。
 
 依照指示設定置換參數：
 
@@ -244,7 +244,8 @@ svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 
 
 
-NOTE: 之後 `scsi-vhci-failover-override` 已套用、 `conf` 已新增至 `svl_fops_name`。如需其他資訊及預設設定的建議變更、請參閱NetApp知識庫文章 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris主機支援SnapMirror營運不中斷（SMBC）組態中的建議設定"^]。
+NOTE: 之後 `scsi-vhci-failover-override` 已套用、 `conf` 已新增至 `svl_fops_name`。
+如需其他資訊及預設設定的建議變更、請參閱NetApp知識庫文章 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris 主機支援 SnapMirror 主動式同步組態中的建議設定"^]。
 
 
 
@@ -257,8 +258,8 @@ Solaris 11.3 with ONTAP 版本有下列已知問題：
 | NetApp錯誤ID | 標題 | 說明 | Oracle ID 
 
 
-| 1366780 | x86架構上的Emulex 32G HBA在GB期間發生Solaris LIF問題 | 適用於x86_64平台上的Emulex韌體12.6.x版及更新版本 | SR 3-24746803021 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1366780["1366780"^] | x86架構上的Emulex 32G HBA在GB期間發生Solaris LIF問題 | 適用於x86_64平台上的Emulex韌體12.6.x版及更新版本 | SR 3-24746803021 
 
 
-| 1368957 | Solaris 11.x 'cfgadm -c configuration' 會導致端點對端 Emulex 組態發生 I/O 錯誤 | 執行中 `cfgadm -c configure` 在 Emulex 端點對端組態上、會導致 I/O 錯誤。ONTAP 9.5P17 、 9.6P14 、 9.7P13 和 9.8P2 中已修正此問題 | 不適用 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1368957["1368957"^] | Solaris 11.x 'cfgadm -c configuration' 會導致端點對端 Emulex 組態發生 I/O 錯誤 | 執行中 `cfgadm -c configure` 在 Emulex 端點對端組態上、會導致 I/O 錯誤。ONTAP 9.5P17 、 9.6P14 、 9.7P13 和 9.8P2 中已修正此問題 | 不適用 
 |===

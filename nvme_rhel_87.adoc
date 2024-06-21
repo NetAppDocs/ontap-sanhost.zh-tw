@@ -66,9 +66,13 @@ nvme-cli-1.16-5.el8.x86_64
 ----
 . 啟用核心內建NVMe多重路徑：
 +
+* 範例 *
+
++
 [listing]
 ----
-# grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-425.3.1.el8.x86_64
+# grubby --args=nvme_core.multipath=Y --update-kernel
+/boot/vmlinuz-4.18.0-425.3.1.el8.x86_64
 ----
 . 在主機上、檢查位於「/etc/nape/hostnqn」的主機NQN字串、並驗證其是否符合ONTAP 位於「the」（子系統）上之對應子系統的主機NQN字串。範例：
 +

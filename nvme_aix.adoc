@@ -28,7 +28,7 @@ summary: 如何使用 ONTAP 設定適用於 AIX 的 NVMe / FC 主機
 
 .您需要的產品
 * 確認您擁有 32 GB FC Emulex 介面卡（ EN1A 、 EN1B 、 EN1L 、 EN1M ）或 64 GB FC 介面卡（ EN1N 、 EN1P ）、以及介面卡韌體 12.4.257.30 及更新版本。
-* 如果您有 MetroCluster 組態、 NetApp 建議您變更 AIX NVMe / FC 預設 APD （ All Path Down ）時間、以支援 MetroCluster 非計畫性切換事件、以避免 AIX 作業系統強制縮短 I/O 逾時。如需更多資訊及建議的預設設定變更、請參閱公開報告 1553249 。
+* 如果您有 MetroCluster 組態、 NetApp 建議您變更 AIX NVMe / FC 預設 APD （ All Path Down ）時間、以支援 MetroCluster 非計畫性切換事件、以避免 AIX 作業系統強制縮短 I/O 逾時。如需更多資訊和建議的預設設定變更、請參閱 NetApp 線上錯誤資訊 - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1553249["1553249)"^]。
 * 根據預設、 AIX 主機作業系統的非對稱命名空間存取轉換逾時（ ANATT ）值為 30 秒。IBM 提供一項臨時修復（ iFix ）、可將 ANATT 值上限設為 60 秒；您需要從 IBM 網站安裝 iFix 、以確保所有 ONTAP 工作流程不會中斷營運。
 +
 
@@ -323,16 +323,16 @@ hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9
 | Burt ID | 標題 | 說明 
 
 
-| 1553249) | 要修改的 AIX NVMe / FC 預設 APD 時間、以支援 MCC 非計畫性切換事件 | 根據預設、 AIX 作業系統會針對 NVMe / FC 使用 20 秒的 All path Down （ APD ）逾時值。  然而、 ONTAP MetroCluster 自動非計畫性切換（ AUSO ）和 tiebreaker 啟動的切換工作流程、可能會比 APD 逾時時間長一點、導致 I/O 錯誤。 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1553249["1553249)"^] | 要修改的 AIX NVMe / FC 預設 APD 時間、以支援 MCC 非計畫性切換事件 | 根據預設、 AIX 作業系統會針對 NVMe / FC 使用 20 秒的 All path Down （ APD ）逾時值。  然而、 ONTAP MetroCluster 自動非計畫性切換（ AUSO ）和 tiebreaker 啟動的切換工作流程、可能會比 APD 逾時時間長一點、導致 I/O 錯誤。 
 
 
-| 1546017. | AIX NVMe / FC CAP ANATT 為 60s 、而非 ONTAP 所宣傳的 120s | ONTAP 在控制器識別中通告 ANA （非對稱式命名空間存取）轉換逾時時間為 120 秒。目前、透過 iFix 、 AIX 會從控制器識別讀取 ANA 轉換逾時、但如果超過該限制、則有效地將其鎖定至 60 秒。 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1546017["1546017."^] | AIX NVMe / FC CAP ANATT 為 60s 、而非 ONTAP 所宣傳的 120s | ONTAP 在控制器識別中通告 ANA （非對稱式命名空間存取）轉換逾時時間為 120 秒。目前、透過 iFix 、 AIX 會從控制器識別讀取 ANA 轉換逾時、但如果超過該限制、則有效地將其鎖定至 60 秒。 
 
 
-| 1541386 | AAIX NVMe / FC 在 ANATT 到期後符合 EIO | 對於任何儲存容錯移轉（ SFO ）事件、如果 ANA （非對稱式命名空間存取）轉換超過指定路徑上的 ANA 轉換逾時上限、則 AIX NVMe / FC 主機會失敗、並出現 I/O 錯誤、儘管命名空間有其他可用的健全路徑。 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1541386["1541386"^] | AAIX NVMe / FC 在 ANATT 到期後符合 EIO | 對於任何儲存容錯移轉（ SFO ）事件、如果 ANA （非對稱式命名空間存取）轉換超過指定路徑上的 ANA 轉換逾時上限、則 AIX NVMe / FC 主機會失敗、並出現 I/O 錯誤、儘管命名空間有其他可用的健全路徑。 
 
 
-| 1541380 | AIX NVMe / FC 會等待半 / 全 ANATT 過期、然後在 ANA AEN 之後恢復 I/O | IBM AIX NVMe / FC 不支援 ONTAP 發佈的部分非同步通知（ AENs ）。這種低於最佳的全日空處理將導致 SFO 作業期間的效能不佳。 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1541380["1541380"^] | AIX NVMe / FC 會等待半 / 全 ANATT 過期、然後在 ANA AEN 之後恢復 I/O | IBM AIX NVMe / FC 不支援 ONTAP 發佈的部分非同步通知（ AENs ）。這種低於最佳的全日空處理將導致 SFO 作業期間的效能不佳。 
 |===
 
 

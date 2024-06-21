@@ -358,10 +358,10 @@ nvme discover -t tcp -w host-traddr -a traddr
 +
 [listing]
 ----
-# nvme	discovery	-t   tcp    -w	192.168.111.79   -a	192.168.111.14
-# nvme	discovery	-t   tcp    -w	192.168.111.79   -a	192.168.111.15
-# nvme	discovery	-t   tcp    -w	192.168.211.79   -a	192.168.211.14
-# nvme	discovery	-t   tcp    -w	192.168.211.79   -a	192.168.211.15
+# nvme	discover	-t   tcp    -w	192.168.111.79   -a	192.168.111.14
+# nvme	discover	-t   tcp    -w	192.168.111.79   -a	192.168.111.15
+# nvme	discover	-t   tcp    -w	192.168.211.79   -a	192.168.211.14
+# nvme	discover	-t   tcp    -w	192.168.211.79   -a	192.168.211.15
 ----
 . 執行 `nvme connect-all` 跨所有節點支援的 NVMe / TCP 啟動器目標生命週期執行命令、並將控制器遺失逾時週期設為至少 30 分鐘或 1800 秒：
 +

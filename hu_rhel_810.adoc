@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_93.html 
-keywords: host utilities, red hat, rhel, linux, 9.3, netapp, ontap, rhel 
-summary: 說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 9.3 
+permalink: hu_rhel_810.html 
+keywords: host utilities, red hat, rhel, linux, 8.10, netapp, ontap, rhel 
+summary: 說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 8.10 
 ---
-= 搭配 ONTAP 使用 Red Hat Enterprise Linux 9.3
+= 搭配 ONTAP 使用 Red Hat Enterprise Linux 8.10
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 9.3
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 9.3 設定為 ONTAP 作為目標。
+您可以使用 ONTAP SAN 主機組態設定來設定 Red Hat Enterprise Linux （ RHEL ） 8.10 、並將 ONTAP 設定為目標。
 
 
 
@@ -41,32 +41,34 @@ NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強
 
 == SAN 工具套件
 
-當您安裝 NetApp 主機公用程式套件時、工具套件會自動安裝。此套件提供 `sanlun` 公用程式、可協助您管理 LUN 和 HBA 。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
+當您安裝 NetApp 主機公用程式套件時、工具套件會自動安裝。此套件提供 `sanlun` 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
 
+.範例
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
-
-[source, cli]
-----
-# sanlun lun show all
-----
-* 輸出範例： *
 
 [listing]
 ----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
-------------------------------------------------------------------------------------
-vs_147_32glpe	         /vol/vol1/lun	 /dev/sdb	Host11  FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol1/lun	 /dev/sdx	Host11  FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol2/lun	 /dev/sdbt  host12 FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol2/lun	 /dev/sdax	host12  FCP        10g	cDOT
+# sanlun lun show all
+----
+輸出範例：
+
+[listing]
+----
+controller(7mode/E-Series)/                               device       host                  lun
+vserver(cDOT/FlashRay)     lun-pathname                   filename     adapter    protocol   size    product
+---------------------------------------------------------------------------------------------------------------
+vs_25_2742                 /vol/fc_vol_1_0/dynamic_lun   /dev/sdh      host9      FCP        10g     cDOT
+vs_25_2742                 /vol/fc_vol_1_1/dynamic_lun   /dev/sdb      host9      FCP        10g     cDOT
+vs_25_2742                 /vol/fc_vol_1_3/dynamic_lun   /dev/sdg      host9      FCP        10g     cDOT
+vs_25_2742                 /vol/fc_vol_1_4/dynamic_lun   /dev/sdt      host9      FCP        10g     cDOT
+
 ----
 
 
 == SAN開機
 
 .您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否支援您的作業系統、 HBA 、 HBA 韌體和 HBA 開機 BIOS 、以及 ONTAP 版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -86,7 +88,7 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 
 == 多重路徑
 
-對於 Red Hat Enterprise Linux （ RHEL ） 9.3 `/etc/multipath.conf` 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 9.3 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。
+對於 RHEL 8.10 `/etc/multipath.conf` 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.10 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。
 
 您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
 
@@ -102,13 +104,13 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 [listing]
 ----
 # multipath -ll
-3600a098038314359725d516c69733471 dm-22 NETAPP,LUN C-Mode
+3600a098038314778375d53694b536e53 dm-16 NETAPP, LUN C-Mode
 size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:3:0  sdau 66:224 active ready running
-  |- 12:0:4:0  sdco 69:192 active ready running
-  |- 12:0:0:0  sdav 66:240 active ready running
-  `- 11:0:2:0  sdat 66:208 active ready running
+  |- 14:0:0:0   sda  8:0    active ready running
+  |- 15:0:8:0   sdcf 69:48  active ready running
+  |- 15:0:0:0   sdaq 66:160 active ready running
+  `- 14:0:9:0   sdv  65:80  active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
@@ -125,15 +127,14 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 [listing]
 ----
 # multipath -ll
-3600a0980383149783224544d334a644d dm-10 NETAPP,LUN C-Mode
-size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+3600a098038314837352453694b542f4a dm-0 NETAPP,LUN C-Mode
+size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 12:0:0:18 sdbj 67:208 active ready running
-| `- 11:0:1:18 sdan 66:112 active ready running
+| |- 14:0:3:0 sdbk 67:224 active ready running
+| `- 15:0:2:0 sdbl 67:240 active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:0:18 sdt  65:48  active ready running
-  `- 12:0:3:18 sdcf 69:48  active ready running
-
+  |- 14:0:0:0 sda  8:0    active ready running
+  `- 15:0:1:0 sdv  65:80  active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
@@ -142,7 +143,7 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 
 == 建議設定
 
-RHEL 9.3 作業系統的編譯是為了辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。
+RHEL 8.10 作業系統可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。
 
 。 `multipath.conf` 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：
 
@@ -292,15 +293,4 @@ devices {
 
 == 已知問題
 
-採用 ONTAP 版本的 RHEL 9.3 有下列已知問題：
-
-[cols="20, 20, 50,20"]
-|===
-| NetApp錯誤ID | 標題 | 說明 | JIRA ID 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux 主機公用程式 CLI 需要額外的程式庫套件相依性、才能支援 Emulex 主機匯流排介面卡（ HBA ）介面卡探索 | 在 RHEL 9.x 中、 NetApp Linux SAN 主機公用程式 CLI `sanlun fcp show adapter -v` 由於找不到支援 Emulex 主機匯流排介面卡（ HBA ）探索的程式庫套件相依性、因此失敗。 | 不適用 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1593771["1593771"^] | Red Hat Enterprise Linux 9.3 QLogic SAN 主機在儲存移動性作業期間會遺失部分多重路徑 | 在 ONTAP 儲存控制器接管作業期間、預期有一半的多重路徑會關閉或切換至容錯移轉模式、然後在恢復工作流程期間恢復至完整路徑數。不過、在 Red Hat Enterprise Linux （ RHEL ） 9.3 QLogic 主機上、儲存容錯移轉恢復恢復作業之後、只能恢復部分多重路徑。 | RHEL 17811. 
-|===
+RHEL 8.10 沒有已知問題。

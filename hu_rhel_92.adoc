@@ -301,8 +301,8 @@ RHEL 9.2 with ONTAP 版本有下列已知問題：
 | NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
-| 1508554 | NetApp Linux主機公用程式CLI需要額外的程式庫套件相依性、才能支援Emulex HBA介面卡探索 | 在 RHEL 9.2 中、 NetApp Linux SAN 主機公用程式 CLI `sanlun fcp show adapter -v` 失敗、因為找不到支援HBA探索的程式庫套件相依性。 | 不適用 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux主機公用程式CLI需要額外的程式庫套件相依性、才能支援Emulex HBA介面卡探索 | 在 RHEL 9.2 中、 NetApp Linux SAN 主機公用程式 CLI `sanlun fcp show adapter -v` 失敗、因為找不到支援HBA探索的程式庫套件相依性。 | 不適用 
 
 
-| 1537359 | 使用 Emulex HBA 開機的 Red Hat Linux 9.2 SAN 主機會遇到停滯的工作、導致核心中斷 | 在儲存設備容錯移轉恢復作業期間、使用 Emulex 主機匯流排介面卡（ HBA ）啟動的 Red Hat Linux 9.2 SAN 主機、會遇到導致核心中斷的停滯工作。核心中斷會導致作業系統重新開機、如果發生 `kdump` 設定後、它會產生 `vmcore` 檔案位於 `/var/crash/` 目錄。此問題正與一起進行分類 `lpfc` 驅動程式、但無法一致地複製。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=2173947["2173947"^] 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1537359["1537359"^] | 使用 Emulex HBA 開機的 Red Hat Linux 9.2 SAN 主機會遇到停滯的工作、導致核心中斷 | 在儲存設備容錯移轉恢復作業期間、使用 Emulex 主機匯流排介面卡（ HBA ）啟動的 Red Hat Linux 9.2 SAN 主機、會遇到導致核心中斷的停滯工作。核心中斷會導致作業系統重新開機、如果發生 `kdump` 設定後、它會產生 `vmcore` 檔案位於 `/var/crash/` 目錄。此問題正與一起進行分類 `lpfc` 驅動程式、但無法一致地複製。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=2173947["2173947"^] 
 |===
