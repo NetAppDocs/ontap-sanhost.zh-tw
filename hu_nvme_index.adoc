@@ -15,4 +15,5 @@ summary: 您可以為 NVMe over Fabrics （ NVMe of ）傳輸協定設定特定 
 :imagesdir: ./media/
 
 
+[role="lead"]
 您可以針對 NVMe over Fabrics （ NVMe of ）傳輸協定（包括 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ））設定特定 SAN 主機、並以 ONTAP 作為目標。根據您的主機作業系統和 ONTAP 版本、您可以在主機上設定和驗證 NVMe / FC 或 NVMe / TCP 傳輸協定、或兩者。

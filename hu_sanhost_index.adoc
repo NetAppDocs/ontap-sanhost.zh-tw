@@ -15,6 +15,7 @@ summary:
 :imagesdir: ./media/
 
 
+[role="lead"]
 探索 SAN 主機公用程式版本的最新資訊、並存取主機組態的安裝程序。
 
 

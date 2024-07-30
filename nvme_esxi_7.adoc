@@ -15,6 +15,9 @@ summary: 說明如何使用ONTAP VMware設定適用於ESXi 7.x的NVMe
 :imagesdir: ./media/
 
 
+[role="lead"]
+您可以在執行 ESXi 7.x 和 ONTAP 的啟動器主機上設定 NVMe over Fabrics （ NVMe of ）作為目標。
+
 
 
 == 支援能力

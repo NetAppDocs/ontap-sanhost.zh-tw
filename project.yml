@@ -491,7 +491,7 @@ sidebar:
     - title: 疑難排解
       url: "/troubleshoot.html"
   - title: 法律聲明
-    url: "/legal_notice.html"
+    url: "/legal_notices.html"
 product-family:
   name: ONTAP
   repo: ontap-family

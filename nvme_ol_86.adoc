@@ -15,6 +15,9 @@ summary:
 :imagesdir: ./media/
 
 
+[role="lead"]
+您可以在執行 Oracle Linux 8.6 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。
+
 
 
 == 支援能力

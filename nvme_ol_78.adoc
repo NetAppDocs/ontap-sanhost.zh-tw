@@ -15,6 +15,9 @@ summary: 使用VMware技術設定適用於Oracle Linux 7.8的VME/FC主機組態O
 :imagesdir: ./media/
 
 
+[role="lead"]
+您可以在執行 Oracle Linux 7.8 和 ONTAP 的啟動器主機上、設定 NVMe over Fibre Channel （ NVMe / FC ）作為目標。
+
 
 
 == 支援能力

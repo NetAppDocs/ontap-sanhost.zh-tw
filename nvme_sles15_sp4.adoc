@@ -13,7 +13,6 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 
 
 [role="lead"]

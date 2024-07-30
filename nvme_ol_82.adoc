@@ -15,6 +15,9 @@ summary: 以VMware為例、針對Oracle Linux 8.2設定VME/FC主機組態ONTAP
 :imagesdir: ./media/
 
 
+[role="lead"]
+您可以在執行 Oracle Linux 8.2 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。
+
 
 
 == 支援能力

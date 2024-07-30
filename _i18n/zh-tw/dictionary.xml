@@ -132,10 +132,7 @@
   <block id="502fbd3ccf57633c65ae1692b6d1a9e4" category="paragraph">優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。</block>
   <block id="9a5314b1a306337a06216b7efd89d414" category="admonition">未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="098ea71f2042c61bc1f4527ee7d06503" category="paragraph">下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。</block>
-  <block id="8f2eee8da6df59eb11ac9371e3b986f6" category="image-alt">非asa</block>
   <block id="7a0a3a29c4e371b5125adb49cae3a738" category="section-title">所有SAN陣列組態</block>
-  <block id="e1c9ad969fa62c5a5a7b128c39c401d9" category="paragraph">對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑都是主動/最佳化的；也就是由控制器提供服務、並在所有作用中路徑上傳送I/O。</block>
-  <block id="457391c9c82bfdcbb4947278c0401e41" category="image-alt">ASA</block>
   <block id="6aa0ace12fc074a16fce7ea7a0a32c67" category="admonition">請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。</block>
   <block id="c9bbd6792eac761da84ef7d035e5b41c" category="section-title">Hyper-V VHD需要對齊才能獲得最佳效能</block>
   <block id="b5db8e140c9b8a986547e3b2766d1acf" category="paragraph">如果磁碟分割的資料區塊邊界與基礎LUN的區塊邊界不一致、則儲存系統通常必須針對每個作業系統區塊的讀取或寫入、完成兩個區塊的讀取或寫入。因對齊錯誤而產生的額外區塊讀取和寫入、可能會造成嚴重的效能問題。</block>
@@ -185,7 +182,6 @@
   <block id="72f35134635c6ac882f97d9681c93120" category="paragraph">對於SUSE Linux Enterprise Server 12 SP3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 12 SP3的所有設定都已經過編譯、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="2d42bb9d7307ce616ea0bcece7fd8556" category="cell">"2 pg_init_retries 50"</block>
   <block id="faa333743d9719ffabaef492f9d3addf" category="inline-link-macro">108955</block>
-  <block id="6d83a402d5f48246e4a8aa47a51d84af" category="cell"><block ref="09d0a792ca32715872125a5125deab57" category="inline-link-macro-rx"></block></block>
   <block id="0474958a1d6d3dac5a2d4f89aa906f00" category="cell">在儲存容錯移轉作業期間、在採用Emulex LPe16002 16GB FC的核心版本SLES12 SP3上觀察到核心中斷</block>
   <block id="e473d01bdff0fd380180c07445efe5f1" category="cell">在使用Emulex LPe16002 HBA的核心版本SLES12 SP3上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會提示重新開機作業系統、進而導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以調查vmcore檔案中的故障原因。範例：在觀察到的案例中、核心中斷是在模組「lfc_SLI_ringtxcmpl_plip+51」中觀察到、並記錄在vmcore檔案中–例外RIP：lfc_SLI_ringtxcmpl_plut+51。重新啟動主機作業系統並重新啟動應用程式、即可在核心中斷後恢復作業系統。</block>
   <block id="2355ee326a65b78534c760ffc28282b3" category="inline-link-macro">1042847</block>
@@ -2692,7 +2688,6 @@
   <block id="2018120e064c044d2251a465311b51c2" category="doc">搭配 ONTAP 使用 SUSE Linux Enterprise Server 15 SP4</block>
   <block id="4acb27c024b3567bf9590979213b7333" category="doc">將 Red Hat Enterprise Linux 8.6 與 ONTAP 搭配使用</block>
   <block id="3efbcda09300e864ffdf03f9735d8517" category="doc">搭配 ONTAP 使用 Red Hat Enterprise Linux 8.7</block>
-  <block id="1a9652dbabd1fe583283db59098e884a" category="paragraph">您可以將某些 SAN 主機設定為 FCP 或 iSCSI 、並將 ONTAP 設定為目標。首先安裝相關的作業系統主機公用程式套件（包括 SAN 工具套件）、然後驗證 NetApp ONTAP LUN 的多重路徑設定。</block>
   <block id="b70f79f7541968cba061dec5df01b8ba" category="doc">將 CentOS 8.4 搭配 ONTAP 使用</block>
   <block id="1f7d8244b764d5a7c149c4cbfad4c873" category="paragraph">您可以針對 NVMe over Fabrics （ NVMe of ）傳輸協定（包括 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ））設定特定 SAN 主機、並以 ONTAP 作為目標。根據您的主機作業系統和 ONTAP 版本、您可以在主機上設定和驗證 NVMe / FC 或 NVMe / TCP 傳輸協定、或兩者。</block>
   <block id="2b6cce58629e8dff15245e88ef1d8db6" category="doc">搭配 ONTAP 使用 SUSE Linux Enterprise Server 12 SP4</block>
@@ -2791,7 +2786,6 @@
   <block id="0659d428df833a806e29e65e632d380a" category="inline-link-macro">NetApp支援</block>
   <block id="b3303f1e3e1d5672f6b839c968637989" category="paragraph">如果您仍面臨問題、請收集下列檔案和命令輸出及聯絡人 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 進一步分類：</block>
   <block id="8e2fe53ccb05734b777fbcc2363d25ab" category="paragraph">您可以將 vSphere 7.x 版本的 ONTAP SAN 主機組態設定與 FC 、 FCoE 和 iSCSI 通訊協定一起使用。</block>
-  <block id="d9a42f0deac96b98dbebf2e560cd7f5c" category="paragraph">在疑難排解任何 NVMe / FC 故障之前、請確認您執行的組態符合互通性對照表工具（ IMT ）規格。如果您仍面臨問題、請聯絡 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 進一步分類。</block>
   <block id="3a4b11723a00030809010d89daf7ebe2" category="paragraph">您可以將 ONTAP SAN 主機組態設定用於 Veritas Infoscale Storage Foundation 8 系列版本、適用於採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RHHCK 型）平台。</block>
   <block id="4a09c73fa303eedb14779e29343fb862" category="paragraph">您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 Citrix XenServer 7 系列作業系統版本設定 ONTAP SAN 主機組態設定。</block>
   <block id="0dfb15ad6e48119187bdf68b2798b551" category="paragraph">您可以使用 Solaris 主機公用程式 6.2 範例命令參照、使用主機公用程式工具進行端點對端點 NetApp 儲存組態驗證。</block>
@@ -3648,4 +3642,20 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0705687e23a55c98a49a67821189d6b8" category="admonition">之後<block ref="ce0493257bc72d9f3741350d87a14b7d" prefix=" " category="inline-code"></block> 已套用、<block ref="3a8e4c06e471595f6eb262bb9b5582d9" prefix=" " category="inline-code"></block> 已新增至<block ref="552db9f221945d76c9e04206b850f3bc" prefix=" " category="inline-code"></block>。
 如需其他資訊及預設設定的建議變更、請參閱NetApp知識庫文章<block ref="38eefb55aea51664f737ddbdc6c85594" category="inline-link-rx"></block>。</block>
   <block id="24ae7542f38ef52be0ec1f780221fd23" category="sidebar">8.10.</block>
+  <block id="116d55b793d97066c1d9e8d10b5f4cf9" category="paragraph">對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑都是主動/最佳化的；也就是由控制器提供服務、並在所有作用中路徑上傳送I/O。</block>
+  <block id="e0838e6ee58912186f2b21f886daa80d" category="image-alt">具有主動 / 最佳化路徑的 ONTAP LUN 螢幕擷取畫面</block>
+  <block id="d485a78eda6522675d5ac87291b0f93b" category="image-alt">具有兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑的 ONTAP LUN 螢幕擷取畫面</block>
+  <block id="c562be7af2a3a19ec7e17ebb8a3eeb49" category="paragraph">您可以將某些 SAN 主機設定為 FCP 或 iSCSI 、並將 ONTAP 設定為目標。首先安裝相關的作業系統主機公用程式套件、其中包括 SAN 工具套件。然後驗證 NetApp ONTAP LUN 的多重路徑設定。</block>
+  <block id="2c88ec62d1d721428e4602e651219de8" category="cell"><block ref="70d91751d74c1680862a2be7b819ad17" category="inline-link-macro-rx"></block></block>
+  <block id="064b7e55844a47b2141de66819277d1d" category="paragraph">在疑難排解任何 NVMe / FC 故障之前、請確認您執行的組態符合互通性對照表工具（ IMT ）規格。如果您仍面臨問題、請聯絡 <block ref="ea2f4052f3eaf8e0d09bdf7668185025" category="inline-link-macro-rx"></block> 以進一步分類。</block>
+  <block id="efc0d0203167a4accd82de64fa1b2a96" category="paragraph">您可以在執行 ESXi 7.x 和 ONTAP 的啟動器主機上設定 NVMe over Fabrics （ NVMe of ）作為目標。</block>
+  <block id="c4da6ff30732307baf77258e8de32da5" category="paragraph">您可以在執行 Oracle Linux 7.7 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
+  <block id="9de6120ac9f396086f7930cb4e65e361" category="paragraph">您可以在執行 Oracle Linux 7.8 和 ONTAP 的啟動器主機上、設定 NVMe over Fibre Channel （ NVMe / FC ）作為目標。</block>
+  <block id="2141c16de580bae376b1049a6457379b" category="paragraph">您可以在執行 Oracle Linux 7.9 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
+  <block id="9533c57da615314e9588d7a35f505896" category="paragraph">您可以在執行 Oracle Linux 8.1 和 ONTAP 的啟動器主機上、設定 NVMe over Fibre Channel （ NVMe / FC ）作為目標。</block>
+  <block id="0a5ca905765e1a02ca40ef37c84a9154" category="paragraph">您可以在執行 Oracle Linux 8.2 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
+  <block id="07e593b59695dd79c5c59a654408d2b1" category="paragraph">您可以在執行 Oracle Linux 8.3 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
+  <block id="3524a0cbde7d5a506bfeb1822866a92b" category="paragraph">您可以在執行 Oracle Linux 8.4 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
+  <block id="a8927346ef72516041053a51c124299c" category="paragraph">您可以在執行 Oracle Linux 8.5 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
+  <block id="02c6431ec6bbc359f494834894f54864" category="paragraph">您可以在執行 Oracle Linux 8.6 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
 </blocks>

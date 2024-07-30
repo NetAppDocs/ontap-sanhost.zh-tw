@@ -1,5 +1,5 @@
 ---
-permalink: legal_notice.html 
+permalink: legal-notices.html 
 sidebar: sidebar 
 keywords: legal, notices, copyright, trademarks, patents 
 summary: 法律聲明提供版權聲明、商標、專利等存取權限。 
@@ -8,6 +8,7 @@ summary: 法律聲明提供版權聲明、商標、專利等存取權限。
 :allow-uri-read: 
 
 
+[role="lead"]
 法律聲明提供版權聲明、商標、專利等存取權限。
 
 

@@ -13,7 +13,6 @@ summary: 如何使用 ONTAP 設定 Ubuntu 22.04 的 NVMe 主機
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 
 
 [role="lead"]

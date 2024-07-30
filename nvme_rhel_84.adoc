@@ -13,7 +13,6 @@ summary: 如何針對RHEL 8.4設定NVMe主機ONTAP 以使用功能
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 
 
 [role="lead"]

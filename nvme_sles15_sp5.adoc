@@ -15,7 +15,6 @@ summary: 說明如何為採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 設
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 :toc-position: content
 
 

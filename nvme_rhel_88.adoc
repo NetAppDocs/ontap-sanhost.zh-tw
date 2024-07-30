@@ -13,7 +13,6 @@ summary: 如何使用 ONTAP 設定適用於 RHEL 8.8 的 NVMe 主機
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 
 
 [role="lead"]
