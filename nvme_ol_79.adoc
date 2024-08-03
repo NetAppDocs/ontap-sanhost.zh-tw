@@ -22,7 +22,7 @@ summary: 以VMware為例、設定Oracle Linux 7.9的VME/FC主機組態ONTAP
 
 == 支援能力
 
-Oracle Linux 7.9支援ONTAP NVMe或更新版本的NVMe/FC。Oracle Linux 7.9主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+Oracle Linux 7.9.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 7.9 主機可透過相同的光纖通道（ FC ）啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。如需支援組態的最新清單，請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
 
 
 NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。

@@ -678,7 +678,6 @@
   <block id="41e7560cde89e1cd58f68637cb85187c" category="summary">說明如何搭配ONTAP 使用CentOS 7.6搭配使用</block>
   <block id="063981d5e2e841e661249aba9ca9682a" category="summary">以VMware為例、針對Oracle Linux 8.1設定VME/FC主機組態ONTAP</block>
   <block id="ab5f40e0204a9868aebbaee0226f0547" category="doc">適用於Oracle Linux 8.1的NVMe / FC主機組態（ONTAP 含功能更新）</block>
-  <block id="f58813ca14ecba2def986836fee74fc0" category="paragraph">Oracle Linux 8.1支援NVMe/FC ONTAP 、支援用在支援的版本為32、6或更新版本。Oracle Linux 8.1主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請注意、Broadcom啟動器可透過相同的FC介面卡連接埠、同時處理NVMe/FC和FCP流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="77835a1b9432b93fd521ab9f863d3c08" category="list-text">NVMe - CLI套件中不提供原生NVMe / FC自動連線指令碼。使用HBA廠商提供的外部自動連線指令碼。</block>
   <block id="42824b1aefd5f24b6dcc64364263ea75" category="list-text">根據預設、NVMe多重路徑中不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。在Oracle Linux 8.1上啟用NVMe/FC一節中提供步驟。</block>
   <block id="dd1236487335da312131092e529f99af" category="list-text">不支援NVMe/FC、因此Oracle Linux 8.1不支援Linux Unified Host Utilities（Luhu）NVMe / FC。使用ONTAP NetApp外掛程式隨附於原生NVMe CLI中的支援功能之一、即可取得的支援功能。</block>
@@ -753,7 +752,6 @@
   <block id="4872a64c8bfb39aee94e3643229c1575" category="admonition">若要設定Oracle Linux 7.9 RedHat Enterprise核心（RHCK）、請使用 <block ref="44610b841747038fd655ebbf0a88f02e" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）7.9。</block>
   <block id="5fc5720a1a04d98fd8788b6a94e31e4e" category="summary">使用VMware技術設定適用於Oracle Linux 7.8的VME/FC主機組態ONTAP 、並提供範例</block>
   <block id="62eef3d72485420aaef57ae6f4135044" category="doc">適用於Oracle Linux 7.8的NVMe / FC主機組態、ONTAP 含功能</block>
-  <block id="806bc64df06f53e39492ea141c1547ac" category="paragraph">Oracle Linux 7.8的支援在支援NVMe 9.6或更新版本上。ONTAPOracle Linux 7.8主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請注意、Broadcom啟動器可透過相同的FC介面卡連接埠、同時處理NVMe/FC和FCP流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="cddebb777dcce0d200e1342fa6f70131" category="list-text">根據預設、NVMe多重路徑中不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。在Oracle Linux 7.8上啟用NVMe/FC一節中提供步驟。</block>
   <block id="c3283cf60ecf7c97f753acd8d8735312" category="list-text">不支援NVMe/FC、因此Oracle Linux 7.8不支援Linux Unified Host Utilities（Luhu）NVMe / FC。使用ONTAP NetApp外掛程式隨附於原生NVMe CLI中的支援功能之一、即可取得的支援功能。</block>
   <block id="ea05ffc0f6f8f227481ba6edf37099d6" category="section-title">啟用NVMe/FC</block>
@@ -764,10 +762,6 @@
   <block id="aec81109cc90f6dcce296e00814fd999" category="paragraph">在上述範例中、兩個命名空間會對應至Oracle Linux 7.8 ANA主機。這可透過四個目標生命期來查看：兩個本機節點生命期、以及兩個其他合作夥伴/遠端節點生命期。此設定顯示主機上每個命名空間的兩個ANA最佳化路徑和兩個ANA不可存取路徑。</block>
   <block id="5be7338acb62c4947afb236f2acac6f7" category="summary">說明如何使用ONTAP 支援功能來設定Oracle Linux 7.7的NVMe/FC</block>
   <block id="eb40a1520d522d20939a9321ce7560a9" category="doc">適用於Oracle Linux 7.7的NVMe / FC主機組態（ONTAP 含功能）</block>
-  <block id="440dd386d307a6307c7ea4b97237db4b" category="paragraph">下列Oracle Linux版本的NVMe/FC支援ONTAP 在支援下列版本的支援中使用</block>
-  <block id="c433a0a97578fca4897042ceac31a2c1" category="list-text">ol 7.7</block>
-  <block id="2e53ec06e83c9a95dd9bd79e6e91794d" category="paragraph">ol 7.7主機可透過相同的光纖通道啟動器介面卡連接埠同時執行NVMe和SCSI流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。</block>
-  <block id="2ccdf4b56d3a99d20857e20e044bf1ca" category="paragraph">如需支援組態的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="6d02bb87c6003e111f060b4c7c94d2dd" category="list-text">NVMe - CLI套件中不提供原生NVMe / FC自動連線指令碼。您可以使用HBA廠商提供的外部自動連線指令碼。</block>
   <block id="dc69820103be29718e2c8cd51f522a8d" category="list-text">預設不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。在OL 7.7上啟用NVMe/FC一節中提供步驟。</block>
   <block id="94cd205e440aaaa92c530c6ab9af2238" category="section-title">在OL 7.7上啟用NVMe</block>
@@ -1217,7 +1211,6 @@
   <block id="f5bd1c87a82329c908a6a69f3a08446a" category="paragraph">RHEL 7.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
   <block id="ce33fe68519e0e2d14428572a71c7569" category="summary">以VMware為例、針對Oracle Linux 8.2設定VME/FC主機組態ONTAP</block>
   <block id="89d62bb3e0891fdc6a601122dddc0440" category="doc">適用於Oracle Linux 8.2（ONTAP 含擴充功能）的NVMe/FC主機組態</block>
-  <block id="2a0a4348e3cfffb7106ae13ae6827b6d" category="paragraph">Oracle Linux 8.2支援NVMe / FC ONTAP 、不適用於支援更新版本9.6。Oracle Linux 8.2主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe/FC和FCP流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="444ce06dcc32d405185ecb72eb5ab7a2" category="list-text">在伺服器上安裝Oracle Linux 8.2。</block>
   <block id="4aab3393d576bcf2907352ae44a0a440" category="list-text">升級NVMe-CLI套件。原生的NVMe-CLI套件包含NVMe / FC自動連線指令碼ONTAP 、即支援NVMe多重路徑循環負載平衡的《支援循環使用資源的evin規則》、以及ONTAP 適用於各種名稱空間的NetApp外掛程式。</block>
   <block id="f66be2d78c31b4dcc20cc20c3d56d86f" category="list-text">在Oracle Linux 8.2主機上、檢查/etc/np/hostnqn上的主機NQN字串、並確認其符合ONTAP 位於該等子系統上對應子系統的主機NQN字串。</block>
@@ -1527,7 +1520,6 @@
   <block id="e79780a12540c43b1147fb9232479dc4" category="paragraph">如需CentOS（Red Hat相容核心）已知問題、請參閱 <block ref="0158dc1052dab85818a92b1a427c95b7" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.5。</block>
   <block id="a57fd33007e3d579c230eadee6c70cda" category="summary">以VMware為例、設定Oracle Linux 7.9的VME/FC主機組態ONTAP</block>
   <block id="ed635118a854903a3b0358da07cc869e" category="doc">適用於Oracle Linux 7.9的NVMe / FC主機組態（ONTAP 含功能）</block>
-  <block id="2d3e43ea7c8c91fc0a78b6056554ec91" category="paragraph">Oracle Linux 7.9支援ONTAP NVMe或更新版本的NVMe/FC。Oracle Linux 7.9主機可透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。如需支援組態的最新清單、請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="a636ca8cde3102effb73bcff59dece16" category="list-text">原生NVMe / FC自動連線指令碼在「NVMe - CLI」套件中無法使用。使用HBA廠商提供的外部自動連線指令碼。</block>
   <block id="9195b1ff49ab8ce4810203a23cb03425" category="list-text">根據預設、NVMe多重路徑中不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。如需在Oracle Linux 7.9上啟用NVMe/FC的步驟、請參閱一節。</block>
   <block id="78f6b6d7760fddd70fbadef88b92f437" category="list-text">不支援NVMe/FC、因此Oracle Linux 7.9不支援Linux Unified Host Utilities（Luhu）NVMe / FC。使用ONTAP NetApp外掛程式隨附於原生NVMe CLI中的支援功能之一、即可取得的支援功能。</block>
@@ -3658,4 +3650,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3524a0cbde7d5a506bfeb1822866a92b" category="paragraph">您可以在執行 Oracle Linux 8.4 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
   <block id="a8927346ef72516041053a51c124299c" category="paragraph">您可以在執行 Oracle Linux 8.5 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
   <block id="02c6431ec6bbc359f494834894f54864" category="paragraph">您可以在執行 Oracle Linux 8.6 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
+  <block id="e0f444df4d09ca4bac7740b334576417" category="paragraph">Oracle Linux 7.7.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。OL 7.7 主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。如需支援組態的最新清單，請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
+  <block id="63db33459f77eb2c95a1561fe621056d" category="paragraph">Oracle Linux 7.8.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 7.8 主機可以透過相同的光纖通道（ FC ）啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。請注意、Broadcom啟動器可透過相同的FC介面卡連接埠、同時處理NVMe/FC和FCP流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。如需支援組態的最新清單，請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
+  <block id="0287d772e7f840b433f088e2f28bd6f8" category="paragraph">Oracle Linux 7.9.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 7.9 主機可透過相同的光纖通道（ FC ）啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。如需支援組態的最新清單，請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
+  <block id="3d5c89a6c37ed7f3e12ef6c9b1698314" category="paragraph">Oracle Linux 8.1.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 8.1 主機可以透過相同的光纖通道（ FC ）啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。請注意、Broadcom啟動器可透過相同的FC介面卡連接埠、同時處理NVMe/FC和FCP流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。如需支援組態的最新清單，請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
+  <block id="f8f5ef83021f80cd31f5163ddb8f3cd7" category="paragraph">Oracle Linux 8.2.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 8.2 主機可透過相同的光纖通道（ FC ）啟動器介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。如需支援組態的最新清單，請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
 </blocks>
