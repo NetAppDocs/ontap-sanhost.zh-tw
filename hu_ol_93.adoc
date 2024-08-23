@@ -1,14 +1,14 @@
 ---
 sidebar: sidebar 
-permalink: hu_ol_81.html 
-keywords: host utilities, oracle, linux, 8.1, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用Oracle Linux 8.1搭配使用功能 
+permalink: hu_ol_93.html 
+keywords: host utilities, oracle, linux, 9.3, netapp, ontap 
+summary: 說明如何搭配 ONTAP 使用 Oracle Linux 9.3 
 ---
-= 搭配 ONTAP 使用 Oracle Linux 8.1
+= 搭配 ONTAP 使用 Oracle Linux 9.3
 :hardbreaks:
-:toclevels: 1
+:toclevels: 1P
 :allow-uri-read: 
-:toclevels: 1
+:toclevels: 1P
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -16,7 +16,7 @@ summary: 說明如何搭配ONTAP 使用Oracle Linux 8.1搭配使用功能
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.1 與 ONTAP 設定為目標。
+您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 9.3 與 ONTAP 設定為目標。
 
 
 
@@ -38,18 +38,14 @@ NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強
 
 
 
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
-
-
 
 == SAN工具套件
 
-當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
+當您安裝 NetApp 主機公用程式套件時、工具套件會自動安裝。此套件提供 `sanlun` 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
 
-.範例
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
-[source, cli]
+[listing]
 ----
 # sanlun lun show all
 ----
@@ -60,10 +56,11 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
 -------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
+vs_175_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       10g  cDOT
+vs_175_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       10g  cDOT
+vs_175_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       10g  cDOT
+vs_175_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       10g  cDOT
+
 ----
 
 
@@ -90,12 +87,20 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 
 == 多重路徑
 
-對於Oracle Linux 8.1、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 8.1的所有設定都經過編譯、可辨識及正確管理ONTAP 各種LUN。
+若為 OL 9.3 、 `/etc/multipath.conf`檔案必須存在、但您不需要對檔案進行特定變更。ol 9.3 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。
 
-您可以使用 `multipath -ll` 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。
+
+下列各節提供對應至 ASA 和非 ASA 組態之 LUN 的多重路徑輸出範例。
+
+
+
+=== 所有 SAN 陣列組態
+
+在所有 SAN 陣列（ ASA ）組態中、通往指定 LUN 的所有路徑均為作用中且最佳化。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
 
 .範例
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
+下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
 
 [listing]
 ----
@@ -103,11 +108,34 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
 size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 16:0:6:35 sdwb 69:624 active ready running
-| |- 16:0:5:35 sdun 66:752 active ready running
-|-+- policy='service-time 0' prio=10 status=enabled
-|- 15:0:0:35 sdaj 66:48 active ready running
-|- 15:0:1:35 sdbx 68:176 active ready running
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
+----
+
+NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+
+
+
+=== 非 ASA 組態
+
+對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。
+
+.範例
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+
+[listing]
+----
+# multipath -ll
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
 ----
 
 NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
@@ -116,7 +144,7 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 
 == 建議設定
 
-Oracle Linux 8.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。
+Oracle Linux 9.3 作業系統可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。
 
 。 `multipath.conf` 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：
 
@@ -187,7 +215,7 @@ blacklist {
 | DETECT（偵測）_prio | 是的 
 
 
-| 開發損失_tmo | "無限遠" 
+| 開發損失_tmo | 無限 
 
 
 | 容錯回復 | 立即 
@@ -196,31 +224,31 @@ blacklist {
 | fast_io_f故障_tmo | 5. 
 
 
-| 功能 | "2 pg_init_retries 50" 
+| 功能 | 2 pg_init_retries 50 
 
 
-| Flip_on_last刪除 | "是" 
+| Flip_on_last刪除 | 是的 
 
 
-| 硬體處理常式 | 「0」 
+| 硬體處理常式 | 0 
 
 
 | no_path_retry | 佇列 
 
 
-| path_checker_ | "周" 
+| path_checker_ | Tur 
 
 
-| path_grouping_policy | "群組by_prio" 
+| path_grouping_policy | 群組_by_prio 
 
 
-| path_selector | "服務時間0" 
+| path_selector | 服務時間0 
 
 
 | Polling_時間 間隔 | 5. 
 
 
-| 優先 | 「NetApp」ONTAP 
+| 優先 | ONTAP 
 
 
 | 產品 | LUN.* 
@@ -229,7 +257,7 @@ blacklist {
 | Retain附加的硬體處理常式 | 是的 
 
 
-| RR_weight | "統一" 
+| RR_weight | 統一 
 
 
 | 使用者易記名稱 | 否 
@@ -238,7 +266,7 @@ blacklist {
 | 廠商 | NetApp 
 |===
 .範例
-下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
+下列範例示範如何修正覆寫的預設值。在此案例中 `multipath.conf` 檔案定義的值 `path_checker` 和 `no_path_retry` 與ONTAP 不兼容的如果因為其他SAN陣列仍連接至主機而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]
 ----
@@ -256,13 +284,32 @@ devices {
 }
 ----
 
-NOTE: 若要設定 Oracle Linux 8.1 Red Hat Enterprise 核心（ RCK ）、請使用link:hu_rhel_81.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的。
+NOTE: 若要設定 Oracle Linux 9.3 Red Hat Enterprise 核心（ RHCK ）、請使用link:hu_rhel_91.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 9.3 的。
+
+
+
+== KVM 設定
+
+您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
 
 
 
 == 已知問題
 
-使用 ONTAP 版本的 Oracle Linux 8.1 沒有已知問題。
+Oracle Linux 9.3 with ONTAP 版本有下列已知問題：
+
+[cols="10,30,30,10"]
+|===
+| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
 
 
-NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_81.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）8.1。
+| https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1508554["1508554"^] | 使用 Emulex HBA 的 SAN LUN 公用程式需要從程式庫套件中取得符號連結  a| 
+當您在 SAN 主機上執行 Linux Unified Host Utilities CLI 命令「 sanlun FCP show adapter -v 」時、命令會失敗、並顯示錯誤訊息、顯示無法找到主機匯流排介面卡（ HBA ）探索所需的程式庫相依性：
+
+[listing]
+----
+[root@hostname ~]# sanlun fcp show adapter -v
+Unable to locate /usr/lib64/libHBAAPI.so library
+Make sure the package installing the library is installed & loaded
+----| 不適用 
+|===

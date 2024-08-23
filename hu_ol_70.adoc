@@ -263,7 +263,7 @@ devices {
 }
 ----
 
-NOTE: 若要設定Oracle Linux 7.0 RedHat Enterprise核心（RHCK）、請使用 link:hu_rhel_70.html#recommended-settings["建議設定"] 適用於Red Hat Enterprise Linux（RHEL）7.0。
+NOTE: 若要設定 Oracle Linux 7.0 Red Hat Enterprise 核心（ RHHCK ）、請使用 link:hu_rhel_70.html#recommended-settings["建議設定"]for Red Hat Enterprise Linux （ RHEL ） 7.0 。
 
 
 

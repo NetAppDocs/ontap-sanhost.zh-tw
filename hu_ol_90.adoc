@@ -283,7 +283,7 @@ devices {
 }
 ----
 
-NOTE: 若要設定 Oracle Linux 9.0 RedHat Enterprise Kernel （ RHCK ）、請使用 link:hu_rhel_86.html#recommended-settings["建議設定"] 適用於 Red Hat Enterprise Linux （ RHEL ） 9.0 。
+NOTE: 若要設定 Oracle Linux 9.0 Red Hat Enterprise 核心（ RCK ）、請使用link:hu_rhel_86.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 9.0 的。
 
 
 

@@ -261,7 +261,7 @@ devices {
 }
 ----
 
-NOTE: 若要設定Oracle Linux 6.6 RedHat Enterprise核心（RHCK）、請使用 link:hu_rhel_66.html#recommended-settings["建議設定"] 適用於Red Hat Enterprise Linux（RHEL）6.6。
+NOTE: 若要設定 Oracle Linux 6.6 Red Hat Enterprise 核心（ RCK ）、請使用link:hu_rhel_66.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 6.6 的。
 
 
 

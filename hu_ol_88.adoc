@@ -283,7 +283,7 @@ devices {
 }
 ----
 
-NOTE: 若要設定 Oracle Linux 8.8 RedHat Enterprise 核心、請使用 link:hu_rhel_88.html#recommended-settings["建議設定"] 適用於 Red Hat Enterprise Linux （ RHEL ） 8.8 。
+NOTE: 若要設定 Oracle Linux 8.8 Red Hat Enterprise 核心、請使用link:hu_rhel_88.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.8 的。
 
 
 
