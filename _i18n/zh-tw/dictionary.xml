@@ -3653,13 +3653,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="2026d2310fc2424795c036d93b9ede10" category="admonition">若要設定 Oracle Linux 8.8 Red Hat Enterprise 核心、請使用<block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.8 的。</block>
   <block id="d95c2403b93ac14ffcf47c8e500ca18b" category="admonition">若要設定 Oracle Linux 9.0 Red Hat Enterprise 核心（ RCK ）、請使用<block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.0 的。</block>
   <block id="189ec3cd54035d4865dbc8a0c4501bad" category="admonition">若要設定 Oracle Linux 9.1 Red Hat Enterprise 核心（ RCK ）、請使用<block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.1 的。</block>
-  <block id="7c6866a085937d8df414ddef9a2dc72d" category="admonition">若要設定 Oracle Linux 9.2 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.2 的。</block>
   <block id="a83d1438dc3047a6938e3c9a7a2eea6b" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.3</block>
   <block id="3fca70163c38ce3aeaad83b1acb54703" category="doc">搭配 ONTAP 使用 Oracle Linux 9.3</block>
   <block id="a210d69f837ecbdbf71f84e8f39fc01b" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 9.3 與 ONTAP 設定為目標。</block>
   <block id="209ea84b7e9da962ac8d3949bbfc88d4" category="paragraph">若為 OL 9.3 、<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案必須存在、但您不需要對檔案進行特定變更。ol 9.3 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
   <block id="cb9ab58d378e13ff5ba784ea2111ac56" category="paragraph">Oracle Linux 9.3 作業系統可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
-  <block id="3d446a4b508a9ee5d15723930e489fe7" category="admonition">若要設定 Oracle Linux 9.3 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.3 的。</block>
   <block id="553920b0052a46c8b10be33add5e61aa" category="paragraph">Oracle Linux 9.3 with ONTAP 版本有下列已知問題：</block>
   <block id="3cdcb189cf0f4cfba9e074ca26cec233" category="paragraph">Oracle Linux 7.7.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 7.7 主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。如需支援組態的最新清單，請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="0e02571623de208737c8c59f0ee774bb" category="summary">適用於 ONTAP 的 Oracle Linux 9.3 版 NVMe 型主機組態</block>
@@ -3675,4 +3673,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="6015ee0c3c4dbc37f534783a65239e72" category="example-title">顯示範例</block>
   <block id="84b0dce03a1f0b594addcb101eab6c2c" category="list-text">確認 OL 9.3 主機上的下列 NVMe / FC 設定：</block>
   <block id="0f184640fa014a23c70b94529da4bca4" category="paragraph">ONTAP 版本的 Oracle Linux 9.3 沒有已知問題。</block>
+  <block id="42fbeb17f790bf6d3c9744236968cf00" category="admonition">若要設定 Oracle Linux 9.2 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="5ab13879c64fa7edac23d51636b59ed3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.2 的。</block>
+  <block id="4099fbc5685a209f2d831acd40be70be" category="admonition">若要設定 Oracle Linux 9.3 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="aa2da13d93f93b231e31aba556996ce9" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.3 的。</block>
 </blocks>
