@@ -274,7 +274,7 @@ devices {
 }
 ----
 
-NOTE: 若要設定 Oracle Linux 8.9 RedHat Enterprise 核心、請使用link:hu_rhel_88.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。
+NOTE: 若要設定 Oracle Linux 8.9 RedHat Enterprise 核心、請使用link:hu_rhel_89.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。
 
 
 

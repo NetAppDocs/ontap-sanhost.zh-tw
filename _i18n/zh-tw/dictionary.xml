@@ -3640,7 +3640,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="dcf21194ace1cd7a19e5742d5b41364d" category="paragraph">對於 Oracle Linux （ OL ） 8.9 、<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案必須存在。您不需要對此檔案進行變更、因為 Oracle Linux 8.9 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
   <block id="ee71c3aec581b41b036dbef689b7884a" category="admonition">單一 LUN 不應需要四條以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。</block>
   <block id="fa7b015244e235f53eacd30d6fd87f64" category="paragraph">Oracle Linux 8.9 OS 是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態設定正確的組態參數而編譯。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
-  <block id="c838fc33f29d97a9d7592ccc9576eea1" category="admonition">若要設定 Oracle Linux 8.9 RedHat Enterprise 核心、請使用<block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。</block>
   <block id="2df37fd98bd7f04cdf8ebbea351923d5" category="paragraph">ONTAP 版本的 Oracle Linux 8.9 沒有已知問題。</block>
   <block id="5daec9db4313ccd1b2792d3cf7c32475" category="paragraph">SUSE Linux Enterprise Server 12 作業系統經過編譯、可辨識 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
   <block id="b9c5f65d82eeb0c89b6cdd2f97ac474a" category="paragraph">SUSE Linux Enterprise Server 12 SP1 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
@@ -3673,4 +3672,5 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f7c286fb287f187b00b4cae6b506a3e6" category="paragraph">Oracle Linux 8.9 NVMe 主機會建立重複的 PDF</block>
   <block id="7eb74ae68650bec7b2e7e925779ef3f0" category="paragraph">在 Oracle Linux 8.9 NVMe 主機上、持續探索控制器（ PDC ）是透過將<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block>選項傳遞至<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令來建立。對於給定的 initiator 目標組合、<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令的每次執行都會建立一個 PDC 。不過、從 Oracle Linux 8.x 開始、 NVMe 主機會建立複本。這會浪費主機和目標上的資源。</block>
   <block id="dd18a4327ac3c05d3a1b1b1a4512a436" category="example-title">顯示輸出範例：</block>
+  <block id="8ea7d65541343d381b99affa2d1c6996" category="admonition">若要設定 Oracle Linux 8.9 RedHat Enterprise 核心、請使用<block ref="ce7483c182b39cf5b993c406b0ed7268" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。</block>
 </blocks>
