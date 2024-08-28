@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_ol_92.html 
-keywords: host utilities, oracle, linux, 9.2, netapp, ontap 
-summary: 說明如何搭配 ONTAP 使用 Oracle Linux 9.2 
+permalink: hu_ol_89.html 
+keywords: host utilities, oracle, linux, 8.9, netapp, ontap 
+summary: 說明如何搭配 ONTAP 使用 Oracle Linux 8.9 
 ---
-= 將 Oracle Linux 9.2 與 ONTAP 搭配使用
+= 搭配 ONTAP 使用 Oracle Linux 8.9
 :hardbreaks:
 :toclevels: 1P
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 說明如何搭配 ONTAP 使用 Oracle Linux 9.2
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 9.2 設定為 ONTAP 作為目標。
+您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.9 與 ONTAP 設定為目標。
 
 
 
@@ -52,20 +52,20 @@ NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強
 .輸出範例：
 [listing]
 ----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
--------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       80.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       80.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       80.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       80.0g  cDOT
+controller(7mode/E-Series)/              device     host               lun
+vserver(cDOT/FlashRay)  lun-pathname     filename   adapter  protocol  size   Product
+-------------------------------------------------------------------------------------
+data_vserver            /vol/vol1/lun1   /dev/sdb   host16   FCP       80.0g  cDOT
+data_vserver            /vol/vol1/lun1   /dev/sdc   host15   FCP       80.0g  cDOT
+data_vserver            /vol/vol2/lun2   /dev/sdd   host16   FCP       80.0g  cDOT
+data_vserver            /vol/vol2/lun2   /dev/sde   host15   FCP       80.0g  cDOT
 ----
 
 
 == SAN開機
 
 .您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+您的組態支援 SAN 開機。請參閱、link:https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]確認您的作業系統、 HBA 、 HBA 韌體、 HBA 開機 BIOS 和 ONTAP 版本均受到支援。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -85,7 +85,7 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 
 == 多重路徑
 
-對於 OL 9.2 `/etc/multipath.conf` 檔案必須存在、但您不需要對檔案進行特定變更。OL 9.2 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。
+對於 Oracle Linux （ OL ） 8.9 、 `/etc/multipath.conf`檔案必須存在。您不需要對此檔案進行變更、因為 Oracle Linux 8.9 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。
 
 您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。
 
@@ -112,7 +112,7 @@ size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   |- 12:0:1:6   sdgp 132:80  active ready running
 ----
 
-NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+NOTE: 單一 LUN 不應需要四條以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
 
 
 
@@ -142,7 +142,7 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 
 == 建議設定
 
-Oracle Linux 9.2 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。
+Oracle Linux 8.9 OS 是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態設定正確的組態參數而編譯。您可以使用下列建議設定、進一步最佳化主機組態的效能。
 
 該 `multipath.conf`檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：
 
@@ -274,32 +274,16 @@ devices {
 }
 ----
 
-NOTE: 若要設定 Oracle Linux 9.2 Red Hat Enterprise 核心（ RHCK ）、請使用link:hu_rhel_92.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 9.2 的。
+NOTE: 若要設定 Oracle Linux 8.9 RedHat Enterprise 核心、請使用link:hu_rhel_88.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。
 
 
 
 == KVM 設定
 
-您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
+您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。當 LUN 對應至 Hypervisor 時、設定 KVM 並不需要變更。
 
 
 
 == 已知問題
 
-Oracle Linux 9.2 with ONTAP 版本有下列已知問題：
-
-[cols="10,30,30,10"]
-|===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
-
-
-| https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1508554["1508554"^] | 使用 Emulex HBA 的 SAN LUN 公用程式需要從程式庫套件中取得符號連結  a| 
-當您在 SAN 主機上執行 Linux Unified Host Utilities CLI 命令「 sanlun FCP show adapter -v 」時、命令會失敗、並顯示錯誤訊息、顯示無法找到主機匯流排介面卡（ HBA ）探索所需的程式庫相依性：
-
-[listing]
-----
-[root@hostname ~]# sanlun fcp show adapter -v
-Unable to locate /usr/lib64/libHBAAPI.so library
-Make sure the package installing the library is installed & loaded
-----| 不適用 
-|===
+ONTAP 版本的 Oracle Linux 8.9 沒有已知問題。

@@ -28,7 +28,6 @@
   <block id="0ad7491bc01531fcac211e10a0f8a9a0" category="paragraph">下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：</block>
   <block id="aa89a86e36a09e87ac1e23a259c8d26c" category="admonition">請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。</block>
   <block id="56dcd6f4fc148f38b926523ede2073aa" category="section-title">非ASA組態</block>
-  <block id="d77810c832bfd20ceec8a3c51f948767" category="paragraph">對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="5fedfc5a04eb29a4d6e049f629f9d9b2" category="paragraph">下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：</block>
   <block id="21a58bdeaf70327c6f6f5fd597b24fa3" category="section-title">建議設定</block>
   <block id="c5b0e8703af1ccb56a53d3ccc87f83ac" category="paragraph">CentOS 6.4作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。</block>
@@ -130,7 +129,6 @@
   <block id="62400040936d82d99ac08dd73758a123" category="paragraph">對於非ASA組態、應該有兩組具有不同優先順序的路徑。</block>
   <block id="052d14b0f88c518cfcaa937d0cd9cd22" category="paragraph">優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。</block>
   <block id="502fbd3ccf57633c65ae1692b6d1a9e4" category="paragraph">優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。</block>
-  <block id="9a5314b1a306337a06216b7efd89d414" category="admonition">未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="098ea71f2042c61bc1f4527ee7d06503" category="paragraph">下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。</block>
   <block id="7a0a3a29c4e371b5125adb49cae3a738" category="section-title">所有SAN陣列組態</block>
   <block id="6aa0ace12fc074a16fce7ea7a0a32c67" category="admonition">請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。</block>
@@ -227,9 +225,7 @@
   <block id="d58a6348af94cbfcbf65485358c4a07d" category="list-text">驗證全日空路徑的狀態。</block>
   <block id="61713dcee5b85916fbe59e04b45b37d0" category="list-text">驗證NetApp外掛ONTAP 程式是否適用於各種不實裝置。</block>
   <block id="bb145463d4b33f8a2c6719372c1e8d1d" category="section-title">啟用Broadcom NVMe / FC的1MB I/O大小</block>
-  <block id="b2c535b12eae5c28a532e07cea962627" category="list-text">將「lfc_sg_seg_cnt"參數設為256。</block>
   <block id="d73152e7a2f3eb9fac20bc98a1ee9686" category="list-text">執行「dracut -f」命令、然後重新啟動主機。</block>
-  <block id="681e25842821aed88b9536b9cde94730" category="list-text">驗證「lfc_sg_seg_cnt"是否為256。</block>
   <block id="abdf9c787f0ce3f5d12b402c6e131791" category="section-title">lffc詳細記錄</block>
   <block id="a2e4546887c7d826529e2c2bc558c869" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.1搭配使用</block>
   <block id="409809eafe9ba8af313e70c545a2b09f" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="65858e88d5a37b29d5e945cdcd520db6" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
@@ -275,7 +271,6 @@
   <block id="614673c0b1eeb91e8ffc86cde6faa93b" category="paragraph">由於與整合式多重路徑管理架構不相容、Citrix建議您使用Citrix XenCenter應用程式來管理儲存組態。如果需要手動查詢Device Mapper表的狀態、或在系統上列出作用中的裝置對應器多重路徑節點、您可以使用「/sbin/mpathutils STATUS」命令來驗證ONTAP 您的還原LUN設定。如需詳細資訊、請參閱Citrix XenServer的標準廠商文件。</block>
   <block id="9fc86c956b59ea355d470ac30580447a" category="paragraph">Citrix XenServer 7.x OS是以辨識及正確管理ONTAP VMware LUN所需的所有設定所編譯。對於Citrix XenServer 7.x、必須存在空白的零位元組「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。</block>
   <block id="410267f88a5f79f5d40838a8e7a35e62" category="paragraph">從* XenCenter Management Portal/*啟用主機多重路徑服務、並確認多重路徑服務已啟用並正在執行。</block>
-  <block id="cd96c3aa1c1e2627c438d2fe6fda056c" category="paragraph">除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要將內容附加到/etc/multipath.conf檔案。您可以將下列語法新增至「multiPath.conf」檔案、以排除不需要的裝置。</block>
   <block id="b00ab7c17a141468a5921157cdf11ec3" category="admonition">將*取代為您要排除之裝置的WWID字串。</block>
   <block id="ec8b35f300ba884a5dff762db20c0a35" category="paragraph">請使用「$multipathd show config」命令來參考多重路徑參數執行時間組態。您應該一律檢查執行中的組態、查看可能會覆寫預設設定的舊版設定、尤其是在預設值區段。</block>
   <block id="aea5fd959632948a3225c2ddd5323d43" category="paragraph">下表顯示ONTAP 適用於整個過程的關鍵*多路徑d*參數、以及所需的值。如果主機連接至其他廠商的LUN、且任一參數被覆寫、則需要在*多重路徑.conf *中的稍後儲存區加以修正、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。下列預設值僅應在諮詢NetApp和/或作業系統廠商、且必須完全瞭解其影響時予以覆寫。</block>
@@ -1013,7 +1008,6 @@
   <block id="8c0eeca7c70428976293084f983f0af1" category="paragraph">若為舊版的Linux主機公用程式、請前往安裝主機公用程式軟體的目錄、然後輸入「uninstall」命令。</block>
   <block id="d01163b5f1a458851231ad2885e038b0" category="list-text">移至您下載軟體套件的目錄、然後使用下列命令進行安裝：</block>
   <block id="d47e6034707138c9dbef5d431a5e5151" category="paragraph">「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64。rpm」</block>
-  <block id="27117d842bd89e527c563bbabce7e494" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="199f02bdbc224d2c63b2ecdb586ffdec" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.4搭配使用功能</block>
   <block id="cd1096d4eecda656e5c9911606fb0c35" category="paragraph">對於Red Hat Enterprise Linux（RHEL）8.4、必須存在/etc/multipath.conf檔案、但您不需要對檔案進行特定變更。RHEL 8.4的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="0c1a2fa6a162d103bd725793b80bb571" category="paragraph">RHEL 8.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
@@ -1022,7 +1016,6 @@
   <block id="d6001c34c29bb04684b5c07f3b8c9209" category="section-title">All SAN Array（ASA 整個SAN陣列）組態</block>
   <block id="15e8bfaa3c1b932b597dedce3820fa11" category="paragraph">下列範例顯示ONTAP 使用四個主動/最佳化路徑之「列舉LUN」的正確輸出：</block>
   <block id="dfdecabe17f4f61a0c5b353fdc3dfeef" category="paragraph">Citrix Hypervisor 8.x OS是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。對於Citrix Hypervisor 8.x、必須存在空白的零位元組「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。</block>
-  <block id="4d9e4d5a080304464911deeebee0a0b3" category="paragraph">除非您有不想由多重路徑管理的裝置、或您有覆寫預設值的現有設定、否則不需要將內容附加到/etc/multipath.conf檔案。您可以將下列語法新增至多重路徑.conf檔案、以排除不需要的裝置。</block>
   <block id="891983ab249dd51fa02a51e1da92fd57" category="admonition">Citrix Hypervisor建議針對所有Linux和Windows型客體VM使用Citrix VM工具、以進行支援的組態。</block>
   <block id="39f11cb747dafe51ae2cd54386744d96" category="cell">Citrix Tracker ID</block>
   <block id="37a4830e2093543aff3053de0d030043" category="inline-link-macro">1242343</block>
@@ -1905,16 +1898,12 @@
   <block id="05aa4f4bc5b51efef2c52f4fb2ddc55f" category="paragraph"><block ref="06c8d471f4d0311b3446a94e54fc8a82" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。</block>
   <block id="748753e893fd2f6b904a298d120af491" category="sidebar">Windows統一化主機公用程式</block>
   <block id="7b4c9d36bd8121e0d136897711d66090" category="sidebar">安裝Wuhu 7.1</block>
-  <block id="1f87ccc57172166c30629890b2884f0e" category="paragraph">您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="1bad318175e7aa1eb67e6db2256bb9b1" category="paragraph">系統會將擷取的軟體放在您解壓縮儲存庫檔案的目錄中。</block>
-  <block id="39b3dd6edf4819881415b4ccbfcf4d58" category="paragraph">對於Oracle Linux 7.1 UEK R4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.1是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
-  <block id="36889db7961eacd91f01477a29a2c5ea" category="list-text">確認的輸出<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block> 命令以確保設定完成。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> 命令以驗證ONTAP 您的LUN的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="3ad269cd9c25c5c028bf155f768f0618" category="paragraph">根據預設、當沒有LUN可用的路徑時、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 <block ref="682b92f396ad2229bd62e99c5a518610" category="inline-link-macro-rx"></block></block>
   <block id="eae76491b6011f6e80494775aea500b6" category="paragraph">對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑均為「主動/最佳化」、這表示它們由控制器提供服務、而I/O則會傳送至所有作用中路徑。</block>
   <block id="3012ce3908219f8e726469f86858ac26" category="paragraph">對於AIX、路徑控制模組（PCM）負責控制多個路徑。PCM是儲存設備廠商提供的程式碼、可處理路徑管理。這項功能會在主機公用程式安裝過程中安裝及啟用。</block>
   <block id="f5188f0db18a0455b279280c37baccd9" category="list-text">解壓縮檔案。您可以使用<block ref="310cb972d0a51b72a4a64dd98fcc2fb1" prefix=" " category="inline-code"></block> 執行此作業的命令。</block>
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">在雲端環境中、主機通常稱為用戶端。此內容中的所有主機專屬資訊也適用於雲端用戶端。</block>
-  <block id="94ed2eb93c1ea841359ebf631638ec66" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="3972a4868b0682bd7aa086e3f90df6a5" category="paragraph">在此範例中、<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block> 是我們需要新增至黑名單的本機SCSI磁碟。</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如、</block>
   <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：</block>
@@ -1928,7 +1917,6 @@
   <block id="c4243d3bfe77762a42bf710ef09d7a49" category="paragraph-title">Oracle Linux 7.1 UEK R4組態</block>
   <block id="f76dacb09cf26865aa39e565e340c25b" category="paragraph-title">Oracle Linux 7.2 UEK R3組態</block>
   <block id="214edbb0ed79a899577c5689a76a98e3" category="paragraph-title">Oracle Linux 7.2 UEK R4組態</block>
-  <block id="563bea0904ae52572ef481dbaa30e7b6" category="paragraph">無需直接在中新增任何內容<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案、除非您有不想由多重路徑管理的裝置、或是現有的設定會覆寫預設值。</block>
   <block id="98a246e1f1b81f16a2ceb0cc274c4da8" category="summary">如何針對RHEL 8.7設定NVMe主機、ONTAP 並搭配使用功能</block>
   <block id="a3492942cb4c45f8a31e3e3845c9f04a" category="paragraph">RHEL 8.7除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。原生NVMe CLI套件中的NetApp外掛程式能夠顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資訊。</block>
   <block id="0e15c36dca614df066cc960ea227ce1c" category="list-text">在RHEL 8.7中、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
@@ -2395,12 +2383,10 @@
   <block id="f2e04893e244d58e7312b018d7c330cd" category="admonition">在主機作業系統啟動並在路徑上執行後、就會有多個路徑可供使用。</block>
   <block id="159e1cf7b9f0c43c83e2d3d06cfe2786" category="list-text">重新啟動主機、確認開機成功。</block>
   <block id="ddd1090ee13f345d376753ed7188e15e" category="section-title">所有 SAN 陣列組態</block>
-  <block id="e7110b576f4777e8b343b6406c8d4267" category="paragraph">對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。未最佳化的路徑只有在沒有可用的最佳化路徑時才會使用。</block>
   <block id="8f9d6e3424d24a4eceeb55656ad594c9" category="paragraph">自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
   <block id="b8aace167dae62ec049916430a97c733" category="paragraph">NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</block>
   <block id="d72f84b2b8b1587fe9b792507fec3ba3" category="paragraph">如果您目前已安裝 Linux Unified Host Utilities 版本、您應該升級或移除該版本、然後使用下列步驟來安裝最新版本。</block>
   <block id="3b8031b77b02d24160100543956f1809" category="list-text">安裝軟體套件：</block>
-  <block id="c2cf4076df2fdb507736cb2d40b34172" category="paragraph">ONTAP 在識別控制器資料中報告的 MDTS （ MAX Data 傳輸大小）為 8 、表示最大 I/O 要求大小可達 1MB 。不過、若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須增加<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 的價值<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> 從預設值 64 到 256 。</block>
   <block id="479c56a6c2e71cd83eb8b7b82e7309de" category="admonition">這不適用於 Qlogic NVMe / FC 主機。</block>
   <block id="98d5ba10607d84ac10d9c3ea5eee402b" category="list-text">無需直接在中新增任何內容<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 除非您有不想要多重路徑管理的裝置、或現有的設定會覆寫預設值、否則請勿使用檔案。</block>
   <block id="e960448316bedab459bbbe74933b507d" category="list-text">將 &lt;DevId&gt; 取代為您要排除的裝置 WWID 字串：</block>
@@ -2438,68 +2424,16 @@
   <block id="0ecd11c1d7a287401d148a23bbd7a2f8" category="open-title">JSON</block>
   <block id="942bc9ba97662019cbc2b7e41f8381db" category="paragraph">ONTAP 版本 OL 8.7 的 NVMe 主機組態有下列已知問題：</block>
   <block id="4d85197b1029241623e97a28c5823630" category="cell">Oracle Linux 8.7 NVMe 型主機會建立重複的持續探索控制器</block>
-  <block id="07ad87616fe3ef97097ef4a56610ba36" category="cell">在 OL 8.7 NVMe 型主機上、持續探索控制器（ PDC ）是透過傳遞建立的<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。對於指定的啟動器目標組合、每次啟動時、只會建立一個 PDC<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。不過、從 OL 8.x 開始、 NVMe 型主機會在每次呼叫時建立重複的 PDF<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項。這會浪費主機和目標上的資源。</block>
   <block id="564a7e3459c5ede626fd0f47cac71ff3" category="list-text">OL 9.0 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
   <block id="a3bfd4755428917359c01fd362495acc" category="paragraph">。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
   <block id="e30c75b0dc59992b638dfe73b8bf5597" category="paragraph"><block ref="307e748c432594fde04ec1d02c6808e4" prefix="" category="inline-code"></block></block>
-  <block id="cf0c07eb31e8fda788f0ed252dc6975a" category="paragraph">第一次建立此檔案時、您可能需要啟用和啟動多重路徑服務：</block>
-  <block id="d076fede057f77e9c8eadb6ea9148d99" category="list-text">若要排除不想要的裝置、請將下列語法新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案。</block>
-  <block id="1fd87989e1c095d26f07886e23108895" category="paragraph">更換<block ref="2f7ac3c5a9070e3fa18615d7bf03ce76" prefix=" " category="inline-code"></block> 使用<block ref="7f82ca1acc93bec0dcd43c7f37ce4512" prefix=" " category="inline-code"></block> 要排除的裝置字串。</block>
   <block id="390aba4e671b0fd367d546b4f0fedeba" category="list-text">新增<block ref="7f82ca1acc93bec0dcd43c7f37ce4512" prefix=" " category="inline-code"></block> 至中的黑名單<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>：</block>
   <block id="e60ab2432e10a11e164b359dce018f99" category="paragraph">您應該隨時檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。</block>
-  <block id="85857b8756a465fa84e2c7124fcda4e5" category="paragraph">下表說明了關鍵<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> 支援的參數ONTAP 和所需的值。如果某個主機連接到其他廠商的LUN、且其中任何參數都被覆寫、則需要稍後在中的節能區段加以修正<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 特別適用於ONTAP 整個LUN的檔案。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應諮詢 NetApp 和 / 或作業系統廠商、以覆寫這些預設值。</block>
-  <block id="edbf0b156fa9598ccf5c30f50c851ac9" category="paragraph">CentOS 7.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="ad45be88e30130dd9932ef3308a98ddf" category="paragraph">SUSE Linux Enterprise Server 12 SP5作業系統已經過編譯、可辨識ONTAP 出各種LUN、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="d75cad0e10fec8218230dfd86583b04c" category="paragraph">Oracle Linux 7.2 作業系統是為了識別 ONTAP LUN 、並自動正確設定所有組態參數而編譯。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
   <block id="01234d496872a7212e40f734e3bbf802" category="paragraph">當您安裝 NetApp 主機公用程式套件時、工具套件會自動安裝。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 公用程式、可協助您管理 LUN 和 HBA 。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
-  <block id="d386d72f0b2981069101247e93061896" category="paragraph">SUSE Linux Enterprise Server 15 SP1 作業系統經過編譯、可辨識 ONTAP LUN 、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="4c4e0f6def4c3c31e4359ea022f05c66" category="paragraph">Oracle Linux 7.9 OS 是為了識別 ONTAP LUN 、並自動正確設定所有組態參數而編譯。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="ddba7ab8e622cf1db0fb972476c91c57" category="paragraph">SUSE Linux Enterprise Server 12 SP2 作業系統經過編譯、可辨識 ONTAP LUN 、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="cb93be0045ac47445d9781e9dc6f592b" category="paragraph">Oracle Linux 7.6 作業系統是為了識別 ONTAP LUN 、並自動正確設定所有組態參數而編譯。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="c876744381120355738591a0b4bb4f8c" category="paragraph">SUSE Linux Enterprise Server 12作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="5ae3dd4e20ae06edeec75ac35eb0eabe" category="paragraph">CentOS 7.7作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動為ASA 各種版本的支援和非ASA組態設定正確的所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="a9a30443d5c61af840622798585ed189" category="paragraph">CentOS 8.2作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="1a2a2644be89b0c14a60162bcf90d1bc" category="paragraph">Oracle Linux 7.8 作業系統會編譯為識別 ONTAP LUN 、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
   <block id="bacdf39f0efa87d2ae29c5033809e6f3" category="paragraph"><block ref="307e748c432594fde04ec1d02c6808e4" prefix="" category="inline-code"></block>。</block>
   <block id="2e12f8ec511dd4a7bc1f7bf40fbe48aa" category="list-text">您可以將下列語法新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 要排除不需要的裝置的檔案：</block>
   <block id="cb92646723384142b732079acc35b146" category="list-text">將此 WWID 新增至中的「黑名單」區段<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>：</block>
-  <block id="6ddc55ace9e5ea32cb1e8a71353842bd" category="paragraph">下表說明了關鍵<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> 支援的參數ONTAP 和所需的值。如果主機已從其他廠商連接至 LUN 、而且這些參數中的任何一個都會被覆寫、則必須在中的稍後方例項加以修正<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 特別適用於ONTAP 整個LUN的檔案。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、您才應諮詢 NetApp 和 / 或作業系統廠商、以覆寫這些預設值。</block>
-  <block id="1486b2c0465a7a3e69804c44e8bc6881" category="paragraph">CentOS 7.6作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本設定正確的所有組態參數、以利執行各種版本的更新和非ASA組態設定。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="d25dfb29f5943151635be4743deec208" category="paragraph">CentOS 7.2 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="04b6e652b2bb452fe8cd6ca30041ec1b" category="paragraph">Oracle Linux 7.4 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="1d8d4969ca6b2f0931e4784b04752571" category="paragraph">CentOS 7.9 OS 是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="a95f33dc5653e3955d576a7efbf72f24" category="paragraph">SUSE Linux Enterprise Server 12 SP1 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="68ead0f2317cf898478d97cfdf699ef8" category="paragraph">SUSE Linux Enterprise Server 15 作業系統經過編譯、可辨識 ONTAP LUN 、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="25c979c9105366dabca7ce42b6dbdd5b" category="paragraph">CentOS 7.5 作業系統是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="bdb9182f58ee6f1a68c716548c63053e" category="paragraph">Oracle Linux 7.5 作業系統是為了識別 ONTAP LUN 、並自動正確設定所有組態參數而編譯。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="d45cbf3d4daa66554801bb2584790c01" category="paragraph">Oracle Linux 7.7 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="060cf1688c558dfe1e0cc194f0a504d0" category="paragraph">CentOS 8.0 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
   <block id="e776ce1a028be18cf4525ba991156302" category="paragraph">RHEL 8.7作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並針對ASA 各種不適用的ASA組態、自動正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
-  <block id="fe07fe53f205e5781a50331c8fcc3c4e" category="paragraph">CentOS 8.1 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="1abda550c3f2e968f7df0bf98e8e641d" category="paragraph">CentOS 7.3 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
   <block id="1884b884b7b96b6bbd38816a3a457356" category="summary">說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 9.2</block>
   <block id="446e05826da92a5188d43c8d744fbccf" category="section-title">SAN 工具套件</block>
   <block id="a14bcd21a2868e61c289bb84b4f00fd7" category="paragraph">對於 Red Hat Enterprise Linux （ RHEL ） 9.2<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 9.2 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
@@ -2525,20 +2459,6 @@
   <block id="18b65bc41e8c8da147a70b70eb89f63f" category="paragraph">您可以使用下列程序來驗證 NVMe 。</block>
   <block id="8872970684e912db5d3cedce11e8f59c" category="list-text">確認已啟用核心內建 NVMe 多重路徑：</block>
   <block id="f61222023dff7dff4f1f07b6593dfa16" category="list-text">驗證個別 ONTAP 命名空間的適當 NVMe 設定（例如、模型設定為 NetApp ONTAP 控制器、負載平衡 iopolicing 設定為循環）是否正確反映在主機上：</block>
-  <block id="4d41372cd2a11681d8228d7a88034c6a" category="paragraph">CentOS 7.4作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="d0bce44026a6709bbfa23c6b7e47cc3b" category="paragraph">SUSE Linux Enterprise Server 12 SP3 作業系統經過編譯、可辨識 ONTAP LUN 、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="829d2c771cf1ae94cf77efebf3fdeb60" category="paragraph">SUSE Linux Enterprise Server 12 SP4作業系統經過編譯、可辨識ONTAP 出各種LUN、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="d25601f41b94cf619e8ea2c0ab14de17" category="paragraph">CentOS 8.3作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="0a0768ae6a237dc83dc7cd51926a51d4" category="paragraph">CentOS 7.0 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="fafb27543a3f8957d3f26b782d10388f" category="paragraph">CentOS 7.8 作業系統會經過編譯以識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
-  <block id="fa084ae8b2dbc6a95f37460eeee74436" category="paragraph">Oracle Linux 7.3 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。
-。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：</block>
   <block id="43784ec2c1aaa42346ed96f22c8410b6" category="sidebar">9.2.</block>
   <block id="30c9201611d0a0e2f87585a1866fa4bd" category="doc">適用於 ONTAP 的 Oracle Linux 9.1 的 NVMe 主機組態</block>
   <block id="de83b7a38e0f01ada520a571da1c0ae7" category="paragraph">下列支援適用於 OL 9.1 搭配 ONTAP 的 NVMe 主機組態：</block>
@@ -2847,7 +2767,6 @@
   <block id="fb0643787f6e7d41915f40cbd05f4efd" category="list-text">在 Oracle Linux 8.8 主機上、請檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串at<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="74081fa925de7d5872846d0fd3043b7c" category="paragraph">如果您打算在同一部主機上同時執行 NVMe 和 SCSI 流量、 NetApp 建議您在 ONTAP 命名空間和上使用核心內建 NVMe 多重路徑<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 分別用於ONTAP 支援的LUN。這表示 ONTAP 命名空間應排除在外<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 預防<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block> 並宣告這些命名空間裝置。您可以新增<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 設定為<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
   <block id="e49a8f55b360ab37cfe1ebe68f1119d5" category="paragraph">OL 8.8 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
-  <block id="d345ceafdca15336eee317f7b245574f" category="cell">在 OL 8.8 NVMe 型主機上、持續探索控制器（ PDC ）是透過傳遞建立的<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。對於指定的啟動器目標組合、每次啟動時、只會建立一個 PDC<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令。不過、從 OL 8.x 開始、 NVMe 型主機會在每次呼叫時建立重複的 PDF<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block> 命令<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block> 選項。這會浪費主機和目標上的資源。</block>
   <block id="2757a308d4d1083cccf0f8d499cc92dc" category="paragraph">Oracle Linux 7.9 with ONTAP 版本有下列已知問題：</block>
   <block id="eb1fc035eeba662cf025ce042074e2b4" category="cell">如果您在未執行 SCSI 重新掃描的情況下取消對應或對應 LUN 、可能會導致主機上的資料毀損</block>
   <block id="e681a3b45989b468533c4b90ee960bf9" category="cell">不適用</block>
@@ -3261,7 +3180,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="194918718b492bb08c4ceb2c1063575c" category="paragraph">。<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案必須存在、多重路徑常駐程式才能啟動、但您可以使用下列命令來建立空的零位元組檔案：<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
   <block id="80b3dcca095ff047032f5421282d56f0" category="paragraph">更換<block ref="2f7ac3c5a9070e3fa18615d7bf03ce76" prefix=" " category="inline-code"></block> 使用<block ref="7f82ca1acc93bec0dcd43c7f37ce4512" prefix=" " category="inline-code"></block> 要排除的裝置字串。請使用下列命令來判斷<block ref="7f82ca1acc93bec0dcd43c7f37ce4512" prefix=" " category="inline-code"></block>：</block>
   <block id="b76bbd9898d442ee1f504e1dbfcd8bb1" category="list-text">新增<block ref="7f82ca1acc93bec0dcd43c7f37ce4512" prefix=" " category="inline-code"></block> 中黑名單的值<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
-  <block id="3b839ec0f9be7e06670afc4a1a40f03f" category="paragraph">下表顯示ONTAP 了適用於整個過程的關鍵多路徑參數、以及所需的值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要稍後在中的節段加以修正<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 適用於 ONTAP LUN 。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、才應在諮詢NetApp和/或作業系統廠商的意見下覆寫這些預設值。</block>
   <block id="b257f5893979fe648d54dcf693a4e4cb" category="paragraph">下列範例說明如何修正被覆寫的預設值。在此案例中<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案定義的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 和<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> 與ONTAP 不兼容的如果無法移除這些參數、因為其他 SAN 陣列仍連接至主機、則可改為針對具有裝置區段的 ONTAP LUN 進行修正。</block>
   <block id="11bc52330473c77af7c9af92d91670d8" category="doc">適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP4 的 NVMe 主機組態</block>
   <block id="1e0824a41921c35ae75109745c612112" category="paragraph">含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server （ SLES ） 15 SP4 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FCP 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
@@ -3675,4 +3593,84 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0f184640fa014a23c70b94529da4bca4" category="paragraph">ONTAP 版本的 Oracle Linux 9.3 沒有已知問題。</block>
   <block id="42fbeb17f790bf6d3c9744236968cf00" category="admonition">若要設定 Oracle Linux 9.2 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="5ab13879c64fa7edac23d51636b59ed3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.2 的。</block>
   <block id="4099fbc5685a209f2d831acd40be70be" category="admonition">若要設定 Oracle Linux 9.3 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="aa2da13d93f93b231e31aba556996ce9" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.3 的。</block>
+  <block id="5cf1d1f6d95b6f33a53785c2b8968543" category="paragraph">對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="89028382351a67fa94b0007ca3430735" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="4799f5cc43477bfa829d8bf18c120f65" category="paragraph">該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="26adbe58d014b17e22edee324b7c14d8" category="paragraph">第一次建立<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：</block>
+  <block id="43f6f503ccaee7e4dd2b34ad0a4d7ef5" category="paragraph"><block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要直接將任何項目新增至檔案。若要排除不想要的裝置、請<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 &lt;DevId&gt; ：</block>
+  <block id="9be8f861c4242e3e0691ad61694073a0" category="paragraph">下表說明<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。</block>
+  <block id="959d703d9e0cc46608970f776d39cee8" category="paragraph">下表說明<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。</block>
+  <block id="f4db575c389511be5cb287f3760fe673" category="paragraph">ONTAP 會在識別控制器資料中報告 8 的 MDTS （ MAX Data 傳輸大小）。這表示最大 I/O 要求大小最多可達 1MB 。若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須將<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block><block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數值從預設值 64 增加至 256 。</block>
+  <block id="524b08ad750352e65f141bb6a45404ad" category="list-text">將<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數設定為 256 ：</block>
+  <block id="ed01a5029bce78f038174f31df740f89" category="list-text">執行<block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block>命令、然後重新啟動主機：</block>
+  <block id="3130175d0e970c2fe403eca33806ba0f" category="list-text">確認<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>為 256 ：</block>
+  <block id="032f906dd9faf121059404519f7da75d" category="admonition">非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="ee227d3a1852592cb484550c6a7d76a5" category="paragraph">CentOS 7.0 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="a691017dd52fcde62a62166a111a44b0" category="paragraph">CentOS 7.1 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="c9d50fea83dcc4ac5b855f91ac9645f2" category="paragraph">CentOS 7.2 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="d25a7193170bb26a573af6859c54d07e" category="paragraph">CentOS 7.3 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="92910dc1bd3ee6dedbf6e2abf57c04ef" category="paragraph">CentOS 7.4 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="e889c0f4c36b9bd7bf8cb529fd8cb889" category="paragraph">CentOS 7.5 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="b4a636d77248ded7eddaef37cebef67e" category="paragraph">CentOS 7.6 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="396d451cda3f8bece75a66ee116c24cf" category="paragraph">CentOS 7.7 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="3c78812ec59c50fa4070bce198a6c817" category="paragraph">CentOS 7.8 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="ba5077bb065ad41eee10b11a22664f73" category="paragraph">CentOS 7.9 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="043546a65a4d758110971a816fdbd9d0" category="paragraph">CentOS 8.0 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="a6881a4e1a1c23d051381128b045f033" category="paragraph">CentOS 8.1 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="3a0d0f762c75870f1bdaf3891361f4af" category="paragraph">您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="cb032ffd0bd3308732de42df23937d8e" category="paragraph">CentOS 8.2作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="2f0fc0ab1d3a4c8bb70398a91c1b46e6" category="paragraph">CentOS 8.3 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="4e6815a5eaf606ab0b37b61763f811c3" category="paragraph"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要將內容附加至檔案。您可以在<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案中新增下列語法、以排除不需要的裝置。</block>
+  <block id="ad39807c4c11f0cfd86419e91fc59088" category="paragraph">對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="f2d86a1e1d50cd6070c7ed2e2ac2a324" category="paragraph"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要將內容附加至檔案。您可以將下列語法新增至多重路徑.conf檔案、以排除不需要的裝置。</block>
+  <block id="b730d18bf6ba9c6603406ac07609286f" category="list-text">驗證<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>命令的輸出以確保設定完成。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="2e28170e3c8113f27d7a0779e0b11903" category="paragraph">對於Oracle Linux 7.1 UEK R4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.1的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、這表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="e0f41ec581093d7124bdd2c0a3d3a19e" category="paragraph">Oracle Linux 7.2 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="b1543caa078e0d881d55b6523d61b379" category="paragraph">Oracle Linux 7.3 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="d02ef8a8e8ebc0bddf6decdf28f82417" category="paragraph">Oracle Linux 7.4 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="187aa2331c2340e8b041a8118922fd66" category="paragraph">Oracle Linux 7.5 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="ea557bbd023a2e714a52a891b28c6e9d" category="paragraph">Oracle Linux 7.6 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="4242bd03681073206573d868f8975fe1" category="paragraph">Oracle Linux 7.7 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="f843e0f2d567cab0a174ae5abb1007c7" category="paragraph">Oracle Linux 7.8 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="bb71dc201102ce50e78598a31fa7ec16" category="paragraph">Oracle Linux 7.9 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="8d3d223fd7a6303b1d21d5a6d2ff42cf" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.9</block>
+  <block id="82ccd7f4292a5fcdb3c91b2dac42a0ee" category="doc">搭配 ONTAP 使用 Oracle Linux 8.9</block>
+  <block id="18b1f91c51b933e6287d49ea6806740e" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.9 與 ONTAP 設定為目標。</block>
+  <block id="09163e096a651dfe9b819525d83f5e24" category="paragraph">您的組態支援 SAN 開機。請參閱、<block ref="e6f1d72f4eb45ad3af66c651a6a8a1b4" category="inline-link-macro-rx"></block>確認您的作業系統、 HBA 、 HBA 韌體、 HBA 開機 BIOS 和 ONTAP 版本均受到支援。</block>
+  <block id="dcf21194ace1cd7a19e5742d5b41364d" category="paragraph">對於 Oracle Linux （ OL ） 8.9 、<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案必須存在。您不需要對此檔案進行變更、因為 Oracle Linux 8.9 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
+  <block id="ee71c3aec581b41b036dbef689b7884a" category="admonition">單一 LUN 不應需要四條以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。</block>
+  <block id="fa7b015244e235f53eacd30d6fd87f64" category="paragraph">Oracle Linux 8.9 OS 是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態設定正確的組態參數而編譯。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
+  <block id="c838fc33f29d97a9d7592ccc9576eea1" category="admonition">若要設定 Oracle Linux 8.9 RedHat Enterprise 核心、請使用<block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。</block>
+  <block id="2df37fd98bd7f04cdf8ebbea351923d5" category="paragraph">ONTAP 版本的 Oracle Linux 8.9 沒有已知問題。</block>
+  <block id="5daec9db4313ccd1b2792d3cf7c32475" category="paragraph">SUSE Linux Enterprise Server 12 作業系統經過編譯、可辨識 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="b9c5f65d82eeb0c89b6cdd2f97ac474a" category="paragraph">SUSE Linux Enterprise Server 12 SP1 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="3728182bce0e0599bf96cfd3dddef484" category="paragraph">SUSE Linux Enterprise Server 12 SP2 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="c570f72a7ccb045e23a1d0b387480dee" category="paragraph">SUSE Linux Enterprise Server 12 SP3 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="352d83c2564652006ff54ba45d19f2a8" category="paragraph">SUSE Linux Enterprise Server 12 SP4 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="ddb57442af445e89d1fd9fa2bf228fc1" category="paragraph">SUSE Linux Enterprise Server 12 SP5 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="f5540ce79d1f5c8dcb0bdf24b24eb02f" category="paragraph">SUSE Linux Enterprise Server 15 作業系統經過編譯、可辨識 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="bd976f7b26e5e347b3c169e387230c2c" category="paragraph">SUSE Linux Enterprise Server 15 SP1 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
+  <block id="c4b3ab6170ecbae144a10ab1bb6e45a9" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="fd4330b9644e1d448dea61dfd1b2b367" category="paragraph"><block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要直接將任何項目新增至檔案。</block>
+  <block id="00d5139ac2479e412b88e1fd317373d3" category="paragraph">下表顯示ONTAP 了適用於整個過程的關鍵多路徑參數、以及所需的值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>適用於 ONTAP LUN 的後續節段中加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。</block>
+  <block id="f1a95ec0fb91ac168edabfe7bbb45e77" category="cell">在 OL 8.7 NVMe 型主機上、持續探索控制器（ PDC ）是透過將<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block>選項傳遞給<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令來建立的。對於給定的 initiator 目標組合、<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令的每次執行都會建立一個 PDC 。不過、從 OL 8.x 開始、 NVMe 主機會建立重複的 PDF 。這會浪費主機和目標上的資源。</block>
+  <block id="af4c7af55d02fc4883b224fec0b52ae7" category="cell">在 OL 8.8 NVMe 型主機上、持續探索控制器（ PDC ）是透過將<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block>選項傳遞給<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令來建立的。對於給定的 initiator 目標組合、<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令的每次執行都會建立一個 PDC 。不過、從 OL 8.x 開始、 NVMe 主機會建立重複的 PDF 。這會浪費主機和目標上的資源。</block>
+  <block id="6d322292fb24619a726c13d055b40ab0" category="summary">適用於 ONTAP 的 Oracle Linux 8.9 版 NVMe 型主機組態</block>
+  <block id="a7fab33264601dba0da8fc6800137477" category="paragraph">含非對稱命名空間存取（ ANA ）的 Oracle Linux 8.9 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
+  <block id="4d8c72e364a13b27a8c6ef6ed8383c8d" category="paragraph">以下支援適用於 ONTAP 的 Oracle Linux 8.9 的 NVMe 主機組態：</block>
+  <block id="f52866deb88251003c82fe28b07fe253" category="list-text">支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套件中的 NetApp 外掛程式會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。</block>
+  <block id="065e56d7f500528b2ebf1bc93bd33d93" category="list-text">NVMe和SCSI流量都可以在相同的共存主機上執行。因此、您可以為 SCSI LUN 設定 SCSI mpath 裝置的 dm-multipath 、而您可以使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。</block>
+  <block id="5681ca777f3abafe80823417b4bf2991" category="list-text">不支援NVMe的sanlun。因此、 Oracle Linux 8.9 主機上不支援 NVMe 型主機公用程式。您可以仰賴原生<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套件中隨附的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
+  <block id="b753e76b4bd79ecda9ec89ae16128134" category="paragraph">Oracle Linux 8.9 預設為 NVMe 命名空間啟用核心內建 NVMe 多重路徑、因此不需要明確的設定。</block>
+  <block id="d3486a1fd420cdd946d675eed6b0cc6f" category="paragraph">驗證最低支援的 Oracle Linux 8.9 軟體版本。</block>
+  <block id="5a61fc6313b04e5ea34dd86779cf9598" category="list-text">在伺服器上安裝 Oracle Linux 8.9 GA 。安裝完成後、請確認您正在執行指定的 Oracle Linux 8.9 GA 核心：</block>
+  <block id="3853f839d3cdc7a7ab2d26c39f242079" category="list-text">在 Oracle Linux 8.9 主機上，<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>請檢查<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>以下網址的字串：</block>
+  <block id="8a72b3e88c545cbd34a9834cf6212a2b" category="paragraph">為 Broadcom / Emulex 介面卡或 Marvell/Qlogic 介面卡設定 NVMe / FC 。</block>
+  <block id="b2a24ec59c85868d273bf3147777df1e" category="list-text">Oracle Linux 8.9 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
+  <block id="673ef6cfd90abefe0182063139fcac53" category="paragraph">NVMe / TCP 沒有自動連線功能。因此、如果某個路徑發生故障、且在 10 分鐘的預設逾時期間內未恢復、則 NVMe / TCP 無法自動重新連線。為了避免發生這種情況、您應該使用下列程序來設定儲存容錯移轉事件的重試期間。</block>
+  <block id="fda6806f5068796f7eabff558c7b4b8a" category="paragraph">適用於 ONTAP 版本的 Oracle Linux 8.9 的 NVMe 主機組態有下列已知問題：</block>
+  <block id="ac391a39aff48483ed4104b4c763d051" category="paragraph"><block ref="ac391a39aff48483ed4104b4c763d051" category="inline-link-macro-rx"></block></block>
+  <block id="f7c286fb287f187b00b4cae6b506a3e6" category="paragraph">Oracle Linux 8.9 NVMe 主機會建立重複的 PDF</block>
+  <block id="7eb74ae68650bec7b2e7e925779ef3f0" category="paragraph">在 Oracle Linux 8.9 NVMe 主機上、持續探索控制器（ PDC ）是透過將<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block>選項傳遞至<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令來建立。對於給定的 initiator 目標組合、<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令的每次執行都會建立一個 PDC 。不過、從 Oracle Linux 8.x 開始、 NVMe 主機會建立複本。這會浪費主機和目標上的資源。</block>
+  <block id="dd18a4327ac3c05d3a1b1b1a4512a436" category="example-title">顯示輸出範例：</block>
 </blocks>
