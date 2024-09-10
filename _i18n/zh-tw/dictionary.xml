@@ -661,7 +661,6 @@
   <block id="ee3c9604966f68c69c5d81299e5c5913" category="paragraph">解壓縮檔案時會建立下列目錄：「ntap_AIX_host_utilities _6.1」。此目錄將有下列子目錄之一：MPIO、non-MPIO或SAN_Tool_Kit。</block>
   <block id="7479ee4eaf5b0a177d10a5a42ff8dc26" category="list-text">安裝AIX MPIO：</block>
   <block id="4a74fae0987c7a6283e4b1f5c07e2bf2" category="paragraph">「installp -aXYd /var/tmp_ntit_aix_host_utilities_6.1/MPIO netapp.MPIO主機公用程式套件」</block>
-  <block id="8eeb8a6e3eaad8d96cb67c508c74079e" category="paragraph">「installp -aXYd /var/tmp/ntip_AIX_host_utilites_6.1/SAN_Tool_Kit NetApp.SAN_toolitu'</block>
   <block id="41e7560cde89e1cd58f68637cb85187c" category="summary">說明如何搭配ONTAP 使用CentOS 7.6搭配使用</block>
   <block id="063981d5e2e841e661249aba9ca9682a" category="summary">以VMware為例、針對Oracle Linux 8.1設定VME/FC主機組態ONTAP</block>
   <block id="ab5f40e0204a9868aebbaee0226f0547" category="doc">適用於Oracle Linux 8.1的NVMe / FC主機組態（ONTAP 含功能更新）</block>
@@ -1755,12 +1754,7 @@
   <block id="432a6b98702aceeda0bf1a325e31bcf4" category="inline-link-macro">NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損</block>
   <block id="0317854ad5c788fd489e5dfe652c06cd" category="cell">當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 <block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>。</block>
   <block id="382b0f5185773fa0f67a8ed8056c7759" category="cell">不適用</block>
-  <block id="4391e4a69364ebb845d6562846716af4" category="doc">《AIX Host Utilities 6.1發行說明》</block>
   <block id="66c2d1ced882bffc99d6170e17a232ef" category="paragraph">如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 <block ref="7ce73c7ae176dd6b577d1c14b445f0cd" category="inline-link-macro-rx"></block>。</block>
-  <block id="31e6a451d2627922bc41740af153d931" category="cell">BugID</block>
-  <block id="ce88cf74aded8b7f41efd83d007f21f2" category="inline-link-macro">872113.</block>
-  <block id="3a2f9996a60f471edd9edae7099e1d69" category="cell">「anlun LUN show–p」命令可能會在某些版本的AIX主機作業系統上造成記憶體故障</block>
-  <block id="74aed4fe3d0a3c89158ce037c3d1305f" category="cell">在執行「lanlun LUN show -p」命令時、會報告AIX coredump的間歇執行個體。Sanlun的「LUN show -p」選項提供主機上所有探索LUN的多重路徑資訊。它會排列此資訊、以顯示來源於哪個SCSI裝置的LUN、路徑狀態（主要或次要）及其他詳細資料。但是、在執行「lanlun LUN show -p」命令的部分AIX主機上、可能會導致記憶體故障。只有當您使用「-p」選項執行sanlun命令時、才會發生此問題。</block>
   <block id="b066ca6122c9857ad1ee3a44f18cc5e7" category="cell">錯誤ID</block>
   <block id="31a061fd71807c34f31d154d95c10691" category="inline-link-macro">1069147</block>
   <block id="cad62af5cd7e448be659302e1eba73b4" category="cell">AIX Hu Sanlun報告HBA速度不正確</block>
@@ -1806,7 +1800,6 @@
   <block id="61699638eccafbea1975db4ccc09e234" category="cell"><block ref="61699638eccafbea1975db4ccc09e234" category="inline-link-macro-rx"></block></block>
   <block id="a86ba0de523aff5743fd70c108891432" category="cell">在Huk 6.2中需要進行Solaris 11.4 FC驅動程式連結變更</block>
   <block id="00dc1b7be02ff53d2291441f5821cfa6" category="paragraph"><block ref="355b22d66d025f6de0a19431aae0f536" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：</block>
-  <block id="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="cell"><block ref="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="inline-link-macro-rx"></block></block>
   <block id="ba57f19b6b69755c2919b58188582a77" category="cell"><block ref="ba57f19b6b69755c2919b58188582a77" category="inline-link-macro-rx"></block></block>
   <block id="230a02b4afeea5b0d97c6a68a6530da3" category="summary">HPUX主機公用程式6.0版本資訊</block>
   <block id="e16c4360565a75371ee1b578b4c1ecca" category="doc">HP-UX Host Utilities 6.0版本說明</block>
@@ -2811,8 +2804,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="07e168dcc54f84ac7caf50498cebc4e7" category="list-text">完成後、請使用設定環境的主機參數<block ref="ed10a966011bfd951bc8388936b92fcc" prefix=" " category="inline-code"></block> 命令：</block>
   <block id="16337c2b0ad3e64aaeb3714d78256deb" category="paragraph">Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 可協助您管理 LUN 和主機匯流排介面卡（ HBA ）的公用程式。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
   <block id="faf8b03496c6795f0d8ad52fa186087e" category="admonition">此工具組適用於所有主機公用程式組態和通訊協定。因此、某些工具組內容可能會套用至某個組態、但不會套用至另一個組態。使用未使用的元件不會影響您的系統效能。</block>
-  <block id="96dedac61a50b89c04ee6770a7a5300b" category="doc">AIX 主機公用程式 6.1 範例命令參照</block>
-  <block id="92636cb01d99cfde50d65355f5255bf8" category="paragraph">您可以使用 AIX 主機公用程式 6.1 範例命令參照、使用主機公用程式工具來進行端點對端點 NetApp 儲存組態驗證。</block>
   <block id="5cbce7f0ea158500dcff175373e3cbcf" category="paragraph">版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 AIX 主機相關的重要注意事項。</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="section-title">新增功能</block>
   <block id="dc5f647593f94c8f6abf309012633912" category="doc">安裝 AIX 主機公用程式 6.1</block>
@@ -2839,7 +2830,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="89b1d0829beb11befe8cef17a1a88149" category="list-text">登入您的主機。</block>
   <block id="411f721c4d437c447636df81f300973a" category="list-text">解壓縮<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> 檔案：</block>
   <block id="685e21144e7e399ef67e8a809cd52a1e" category="list-text">安裝軟體：</block>
-  <block id="9b9e3c5faedc6bf7e489b0030b0ecd14" category="paragraph">AIX 主機公用程式 6.1 版本包含下列新功能與增強功能：</block>
   <block id="9ce16fbccdcb870f5e9db74a7bb90874" category="list-text">AIX 主機公用程式 6.1 新增對較早版本的 AIX 主機作業系統中發生的記憶體故障問題的支援。有了AIX Host Utilities 6.1、只有sanlun二進位檔已變更。MPIO和相關的ODM維持不變。</block>
   <block id="09244b95824d6e702b6eaab2034bdeec" category="list-text">FCP - AIX</block>
   <block id="dd7ff764bddd19a335d884f8e17ede8d" category="paragraph">AIX 主機公用程式支援下列通訊協定：</block>
@@ -3673,4 +3663,31 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7eb74ae68650bec7b2e7e925779ef3f0" category="paragraph">在 Oracle Linux 8.9 NVMe 主機上、持續探索控制器（ PDC ）是透過將<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block>選項傳遞至<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令來建立。對於給定的 initiator 目標組合、<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令的每次執行都會建立一個 PDC 。不過、從 Oracle Linux 8.x 開始、 NVMe 主機會建立複本。這會浪費主機和目標上的資源。</block>
   <block id="dd18a4327ac3c05d3a1b1b1a4512a436" category="example-title">顯示輸出範例：</block>
   <block id="8ea7d65541343d381b99affa2d1c6996" category="admonition">若要設定 Oracle Linux 8.9 RedHat Enterprise 核心、請使用<block ref="ce7483c182b39cf5b993c406b0ed7268" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。</block>
+  <block id="1f74246c73996c337fbedc14cd7d21b9" category="doc">安裝 AIX 主機公用程式 7.0</block>
+  <block id="135b308ed83c53f1516b7c754566d1c4" category="list-title">開始之前</block>
+  <block id="46a8afec081a24bad40f6f988c628fb2" category="admonition">NetApp AIX 主機公用程式軟體套件<block ref="6197019285627f055449b196a622ffa6" category="inline-link-macro-rx"></block>位於壓縮的 tar.gz 檔案中。在 NetApp ONTAP 儲存設備上使用 AIX MPIO 時、您必須安裝 AIX 主機公用程式套件。</block>
+  <block id="bf901697b7694abb028baf6a3b45caa8" category="list-text">在 PowerVM 主機上、以 * padmin* 身分登入<block ref="cf9ef914abc1d1025acbd5649d68a228" prefix=" " category="inline-code"></block>、然後輸入命令成為 root 使用者。</block>
+  <block id="30c4a481d5eebab4d7ecb692852fdad1" category="list-text">移至、<block ref="5d5134ddaf42180d688670ce5e1f032a" category="inline-link-rx"></block>並將包含主機公用程式的壓縮檔案下載至主機上的目錄。</block>
+  <block id="7515d24f2cf1755d908ccd75d4806228" category="list-text">解壓縮檔案並解壓縮 SAN 工具套件軟體套件：</block>
+  <block id="a4a53a1d716fd706dc0d6653df07cd18" category="paragraph"><block ref="02ae515861e4e233362298f11cb9eef3" prefix="" category="inline-code"></block></block>
+  <block id="dfeb26940493cf0ca07dfbf198c98918" category="paragraph">解壓縮檔案時會建立下列目錄：<block ref="666ee7336e2d1a70fa06a334c624dce0" prefix=" " category="inline-code"></block>。此目錄包含下列子目錄之一： MPIO 、 non-MPIO 或 SAN_Tool_Kit 。</block>
+  <block id="08170d10720c0fb899ec695d4fd53f4a" category="paragraph"><block ref="7e3b57f2b8eff456c048316a5f27fc1d" prefix="" category="inline-code"></block></block>
+  <block id="22a14cf4ef45ee9f25f03a618ea09c46" category="paragraph"><block ref="14f22fae2f403239ed46b211fb187db3" prefix="" category="inline-code"></block></block>
+  <block id="37d2266123768f5396b4ff9de84d7309" category="paragraph"><block ref="7c440fefdeae703ef22d0311a240c394" prefix="" category="inline-code"></block></block>
+  <block id="71083863a948571a8f27335105fd6269" category="list-text">確認軟體版本：</block>
+  <block id="ee5391998decf3a96f0ec776cd7144f8" category="paragraph"><block ref="cb12b459974e296c2b38e4550b0070ec" prefix="" category="inline-code"></block></block>
+  <block id="d2f9b679b0ea3abf86a0ab4680ede362" category="list-text"><block ref="ce7e54a230e7d7f6125c862b6201f954" prefix=" " category="inline-code"></block>執行下列命令、確認 SCSI unmap 參數已新增至 ODM ：</block>
+  <block id="fc1dfe9e042d640c93dd3ca2a623b1e0" category="paragraph"><block ref="e7e95bf0f273e8940acbc8851eb5f38c" prefix="" category="inline-code"></block></block>
+  <block id="fd97cc14c798a5c29ed1aaf2730bbfe8" category="paragraph"><block ref="185d689a67393760fd6cc0f2c7d17397" prefix="" category="inline-code"></block></block>
+  <block id="4adfcf90c09aefd4b667d59ecc9550b8" category="paragraph"><block ref="674742143cb6833db13557df8b74e907" prefix="" category="inline-code"></block></block>
+  <block id="2504b7fd70ceee9322fd9fd5d4125de3" category="paragraph"><block ref="d95cdff732bcf199b913111f1b5e8c83" prefix="" category="inline-code"></block></block>
+  <block id="73869e9dce2321ce472003939ab8f2f4" category="paragraph"><block ref="c12f7b93eb294749d1961ad2bc96c48f" prefix="" category="inline-code"></block></block>
+  <block id="c840ca4bf83155ee16a93c9782fc3726" category="summary">您可以使用 AIX 主機公用程式範例命令參考、使用主機公用程式工具來進行端點對端點驗證 NetApp 儲存組態。</block>
+  <block id="3611c3cc68b4ecac8bc30e2c032ad3dc" category="doc">AIX 主機公用程式範例命令參考</block>
+  <block id="8bcfee74cc2c8be35dd3adbc80bfb29a" category="doc">AIX 主機公用程式發行說明</block>
+  <block id="b30c926bc7c2c631e70c112178610786" category="paragraph">最新版的 AIX 主機公用程式包含下列新功能和增強功能：</block>
+  <block id="6919ca52878e24946a6a73aa37f083ee" category="list-text">AIX 主機公用程式 7.0 支援 AIX 主機作業系統上的 SCSI 取消對應。藉助 AIX 主機實用程序 7.0 ， SCSI 精簡配置功能可與 AIX 和 FC 設備的 NetApp LUN 無縫配合使用。</block>
+  <block id="cf66257c19e5d30697f97afd2fd4245c" category="cell">NetApp ONTAP iSCSI LUN 的 SCSI 取消對應支援</block>
+  <block id="6f60d2b701807f15296111f9ab2ce1c3" category="cell">AIX 主機公用程式 7.0 僅支援 FC 裝置的 SCSI 取消對應功能。此版本不支援 iSCSI 裝置的 SCSI 取消對應。</block>
+  <block id="c10866775dae5d5cea46cbcd3d083ef2" category="sidebar">安裝AIX Hu 7.0</block>
 </blocks>

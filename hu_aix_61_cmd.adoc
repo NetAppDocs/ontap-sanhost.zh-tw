@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu_aix_61_cmd.html 
-keywords: host utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
-summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用 
+keywords: host utilities, aix, powervm, vios, 3.1, 7.2, 7.0, netapp, ontap 
+summary: 您可以使用 AIX 主機公用程式範例命令參考、使用主機公用程式工具來進行端點對端點驗證 NetApp 儲存組態。 
 ---
-= AIX 主機公用程式 6.1 範例命令參照
+= AIX 主機公用程式範例命令參考
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 
 
 [role="lead"]
-您可以使用 AIX 主機公用程式 6.1 範例命令參照、使用主機公用程式工具來進行端點對端點 NetApp 儲存組態驗證。
+您可以使用 AIX 主機公用程式範例命令參考、使用主機公用程式工具來進行端點對端點驗證 NetApp 儲存組態。
 
 
 
