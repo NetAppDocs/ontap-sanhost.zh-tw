@@ -168,7 +168,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -196,7 +196,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -280,22 +280,22 @@ devices {
 
 SLES 15 SP3 with ONTAP 版本有下列已知問題：
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089555["108955"^] | 在儲存容錯移轉作業期間、在採用Emulex LPe16002 16GB FC的核心版本SLES12 SP3上觀察到核心中斷 | 在使用Emulex LPe16002 HBA的核心版本SLES12 SP3上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會提示重新開機作業系統、進而導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以調查vmcore檔案中的故障原因。範例：在觀察到的案例中、核心中斷是在模組「lfc_SLI_ringtxcmpl_plip+51」中觀察到、並記錄在vmcore檔案中–例外RIP：lfc_SLI_ringtxcmpl_plut+51。重新啟動主機作業系統並重新啟動應用程式、即可在核心中斷後恢復作業系統。 | link:http://bugzilla.suse.com/show_bug.cgi?id=1042847["1042847"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089555["108955"^] | 在儲存容錯移轉作業期間、在採用Emulex LPe16002 16GB FC的核心版本SLES12 SP3上觀察到核心中斷 | 在使用Emulex LPe16002 HBA的核心版本SLES12 SP3上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會提示重新開機作業系統、進而導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以調查vmcore檔案中的故障原因。範例：在觀察到的案例中、核心中斷是在模組「lfc_SLI_ringtxcmpl_plip+51」中觀察到、並記錄在vmcore檔案中–例外RIP：lfc_SLI_ringtxcmpl_plut+51。重新啟動主機作業系統並重新啟動應用程式、即可在核心中斷後恢復作業系統。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089561["108561"^] | 在儲存容錯移轉作業期間、在採用Emulex LPe32002 32GB FC的核心版本SLES12 SP3上觀察到核心中斷 | 在使用Emulex LPe32002 HBA的核心版本SLES12 SP3上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會提示重新開機作業系統、進而導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以調查vmcore檔案中的故障原因。範例：在觀察到的案例中、核心中斷是在模組「lfc_SLI_faure_hbq+76」中觀察到、並記錄在vmcore檔案中–例外RIP：lfc_SLI_faure_hbq+76。重新啟動主機作業系統並重新啟動應用程式、即可在核心中斷後恢復作業系統。 | link:http://bugzilla.suse.com/show_bug.cgi?id=1042807["1042807."^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089561["108561"^] | 在儲存容錯移轉作業期間、在採用Emulex LPe32002 32GB FC的核心版本SLES12 SP3上觀察到核心中斷 | 在使用Emulex LPe32002 HBA的核心版本SLES12 SP3上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會提示重新開機作業系統、進而導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以調查vmcore檔案中的故障原因。範例：在觀察到的案例中、核心中斷是在模組「lfc_SLI_faure_hbq+76」中觀察到、並記錄在vmcore檔案中–例外RIP：lfc_SLI_faure_hbq+76。重新啟動主機作業系統並重新啟動應用程式、即可在核心中斷後恢復作業系統。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117248["1117248"^] | 在執行儲存容錯移轉作業期間、使用QLogic QLE2562 8GB FC的SLES12SP3發生核心中斷 | 在使用QLogic QLE2562 HBA的Sles12sp3核心（kernel-default-4.4.2-6.3.1）上執行儲存容錯移轉作業期間、由於核心中發生恐慌、導致核心中斷。核心毀損會導致作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心異常會在/var/crash /目錄下產生vmcore檔案。當核心異常時、可以使用vmcore檔案來瞭解故障原因。範例：在這種情況下、會在「blk_finish _request +89」模組中看到這種恐慌。它會以下列字串登入vmcore檔案：「例外RIP：blk_fine_request + 289」。核心中斷之後、您可以重新啟動主機作業系統來恢復作業系統。您可以視需要重新啟動應用程式。 | link:http://bugzilla.suse.com/show_bug.cgi?id=1062496["10642496"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117248["1117248"^] | 在執行儲存容錯移轉作業期間、使用QLogic QLE2562 8GB FC的SLES12SP3發生核心中斷 | 在使用QLogic QLE2562 HBA的Sles12sp3核心（kernel-default-4.4.2-6.3.1）上執行儲存容錯移轉作業期間、由於核心中發生恐慌、導致核心中斷。核心毀損會導致作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心異常會在/var/crash /目錄下產生vmcore檔案。當核心異常時、可以使用vmcore檔案來瞭解故障原因。範例：在這種情況下、會在「blk_finish _request +89」模組中看到這種恐慌。它會以下列字串登入vmcore檔案：「例外RIP：blk_fine_request + 289」。核心中斷之後、您可以重新啟動主機作業系統來恢復作業系統。您可以視需要重新啟動應用程式。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117261["1117261.."^] | 在執行儲存容錯移轉作業期間、使用QLogic QLE2662 16GB FC的SLES12SP3發生核心中斷 | 使用QLogic QLE2662 HBA在Sles12sp3核心（kernel-default-4.4.82至6.3.1）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。vmcore檔案可用來瞭解故障原因。範例：在此情況下、模組「未知或無效位址」中觀察到核心中斷、並以下列字串登入vmcore檔案：例外RIP：未知或無效位址。核心中斷之後、可重新啟動主機作業系統、並視需要重新啟動應用程式、藉此恢復作業系統。 | link:http://bugzilla.suse.com/show_bug.cgi?id=1062508["1062508"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117261["1117261.."^] | 在執行儲存容錯移轉作業期間、使用QLogic QLE2662 16GB FC的SLES12SP3發生核心中斷 | 使用QLogic QLE2662 HBA在Sles12sp3核心（kernel-default-4.4.82至6.3.1）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。vmcore檔案可用來瞭解故障原因。範例：在此情況下、模組「未知或無效位址」中觀察到核心中斷、並以下列字串登入vmcore檔案：例外RIP：未知或無效位址。核心中斷之後、可重新啟動主機作業系統、並視需要重新啟動應用程式、藉此恢復作業系統。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117274["1117274.."^] | 在執行儲存容錯移轉作業期間、使用Emulex LPe16002 16GB FC的SLES12SP3發生核心中斷 | 在使用Emulex LPe16002 HBA的Sles12sp3核心（kernel-default-4.4.4.87-3.1）上執行儲存容錯移轉作業期間、您可能會發現核心中斷。這會提示作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。vmcore檔案可用來瞭解故障原因。範例：在這種情況下、模組「raw_sin_lock_irqsost+30」中觀察到核心中斷、並以下列字串登入vmcore檔案：–例外RIP：_raw_sin_lock_irqsost+30。核心中斷之後、可重新啟動主機作業系統、並視需要重新啟動應用程式、藉此恢復作業系統。 | link:http://bugzilla.suse.com/show_bug.cgi?id=1062514["1062514"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117274["1117274.."^] | 在執行儲存容錯移轉作業期間、使用Emulex LPe16002 16GB FC的SLES12SP3發生核心中斷 | 在使用Emulex LPe16002 HBA的Sles12sp3核心（kernel-default-4.4.4.87-3.1）上執行儲存容錯移轉作業期間、您可能會發現核心中斷。這會提示作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。vmcore檔案可用來瞭解故障原因。範例：在這種情況下、模組「raw_sin_lock_irqsost+30」中觀察到核心中斷、並以下列字串登入vmcore檔案：–例外RIP：_raw_sin_lock_irqsost+30。核心中斷之後、可重新啟動主機作業系統、並視需要重新啟動應用程式、藉此恢復作業系統。 
 |===

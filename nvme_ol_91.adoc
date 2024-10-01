@@ -554,11 +554,11 @@ OL 9.1 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：
 
 [cols=""20"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| 1536937 | `nvme list-subsys` 命令會列印子系統的重複 NVMe 控制器 | 。 `nvme list-subsys` 命令應傳回與指定子系統相關聯的 NVMe 控制器唯一清單。在 Oracle Linux 9.1 中 `nvme list-subsys` 命令會針對屬於指定子系統的所有命名空間、傳回具有各自非對稱命名空間存取（ ANA ）狀態的 NVMe 控制器。不過、如果您列出指定命名空間的子系統命令語法、則以路徑狀態顯示唯一的 NVMe 控制器項目會很有用、因為 ANA 狀態是每個命名空間的屬性。 | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=17998["17998"^] 
+| 1536937 | `nvme list-subsys` 命令會列印子系統的重複 NVMe 控制器 | 。 `nvme list-subsys` 命令應傳回與指定子系統相關聯的 NVMe 控制器唯一清單。在 Oracle Linux 9.1 中 `nvme list-subsys` 命令會針對屬於指定子系統的所有命名空間、傳回具有各自非對稱命名空間存取（ ANA ）狀態的 NVMe 控制器。不過、如果您列出指定命名空間的子系統命令語法、則以路徑狀態顯示唯一的 NVMe 控制器項目會很有用、因為 ANA 狀態是每個命名空間的屬性。 
 
 
-| 1539101 | Oracle Linux 9.1 NVMe 主機無法建立持續探索控制器 | 在 Oracle Linux 9.1 NVMe 主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、應針對每個啟動器目標組合建立一個 PDC 。不過、如果您在 NVMe 主機上執行 Oracle Linux 9.1 、則在建立時、 PDC 會失敗 `nvme discover -p` 命令即會執行。 | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18196["18196"^] 
+| 1539101 | Oracle Linux 9.1 NVMe 主機無法建立持續探索控制器 | 在 Oracle Linux 9.1 NVMe 主機上、您可以使用 `nvme discover -p` 建立持續探索控制器（PD）的命令。使用此命令時、應針對每個啟動器目標組合建立一個 PDC 。不過、如果您在 NVMe 主機上執行 Oracle Linux 9.1 、則在建立時、 PDC 會失敗 `nvme discover -p` 命令即會執行。 
 |===

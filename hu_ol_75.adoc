@@ -138,7 +138,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -166,7 +166,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -250,13 +250,13 @@ NOTE: 若要設定 Oracle Linux 7.5 Red Hat Enterprise 核心（ RHCK ）、請�
 
 Oracle Linux 7.5 with ONTAP 版本有下列已知問題：
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]。 | 不適用 
+| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1177239["1177239"^] | 在儲存容錯移轉作業期間、利用QLogic QLE2672 16G FC觀察到OL7.5發生核心中斷 | 在使用核心4.1.12-112.16.4.el7uek.x86_64和QLogic QLE2672 HBA的Oracle Linux 7（OL7.5）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示重新開機作業系統、導致應用程式中斷。如果設定kdump、核心中斷會在/var/crash /目錄中建立vmcore檔案。這種中斷可以在模組「kmem_cache _alloc+118」中觀察、此模組會記錄在vmcore檔案中、並以字串「例外RIP：kmem_cache _alloc+118」來識別。 核心中斷之後、您可以重新啟動主機作業系統並重新啟動應用程式來恢復。 |  
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1177239["1177239"^] | 在儲存容錯移轉作業期間、利用QLogic QLE2672 16G FC觀察到OL7.5發生核心中斷 | 在使用核心4.1.12-112.16.4.el7uek.x86_64和QLogic QLE2672 HBA的Oracle Linux 7（OL7.5）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示重新開機作業系統、導致應用程式中斷。如果設定kdump、核心中斷會在/var/crash /目錄中建立vmcore檔案。這種中斷可以在模組「kmem_cache _alloc+118」中觀察、此模組會記錄在vmcore檔案中、並以字串「例外RIP：kmem_cache _alloc+118」來識別。 核心中斷之後、您可以重新啟動主機作業系統並重新啟動應用程式來恢復。 
 |===

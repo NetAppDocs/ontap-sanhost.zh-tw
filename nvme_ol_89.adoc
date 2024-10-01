@@ -579,7 +579,7 @@ NSID     UUID                                   Size
 
 適用於 ONTAP 版本的 Oracle Linux 8.9 的 NVMe 主機組態有下列已知問題：
 
-[cols="1a, 2a, 6a, 1a, options="]
+[cols="1a,4a,4a, options="]
 |===
 
 
@@ -589,8 +589,6 @@ NetApp錯誤ID
 標題
  a| 
 說明
- a| 
-Bugzilla ID
 
 
 
@@ -600,7 +598,5 @@ link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1517321["1
 Oracle Linux 8.9 NVMe 主機會建立重複的 PDF
  a| 
 在 Oracle Linux 8.9 NVMe 主機上、持續探索控制器（ PDC ）是透過將 `-p`選項傳遞至 `nvme discover`命令來建立。對於給定的 initiator 目標組合、 `nvme discover`命令的每次執行都會建立一個 PDC 。不過、從 Oracle Linux 8.x 開始、 NVMe 主機會建立複本。這會浪費主機和目標上的資源。
- a| 
-https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118."^]
 
 |===

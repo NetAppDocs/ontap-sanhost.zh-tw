@@ -181,7 +181,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -209,7 +209,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -300,16 +300,16 @@ devices {
 
 採用 ONTAP 版本的 RHEL 6.6 有下列已知問題：
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=863878["863878"^] | 儲存設備故障時、RHEL 6U6主機發生核心當機 | 您可能會在儲存設備/架構期間看到RHEL 6U6主機上的核心當機。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1158363["1158363"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=863878["863878"^] | 儲存設備故障時、RHEL 6U6主機發生核心當機 | 您可能會在儲存設備/架構期間看到RHEL 6U6主機上的核心當機。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=852674["1076584"^] | 在RHEL 6U4儲存設備故障期間、QLogic 16G FC（QLE2672）主機的IO停滯時間可達300秒 | 在儲存設備/光纖故障期間、您可能會發現QLogic 16G FC（QLE2672）主機上的IO停滯達300秒。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1135962["113562."^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=852674["1076584"^] | 在RHEL 6U4儲存設備故障期間、QLogic 16G FC（QLE2672）主機的IO停滯時間可達300秒 | 在儲存設備/光纖故障期間、您可能會發現QLogic 16G FC（QLE2672）主機上的IO停滯達300秒。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=795684["795684"^] | RHEL6 U5 Multpathd在執行模式和儲存容錯移轉故障作業時、錯誤地將多重路徑對應群組在一起 | 在LUN隨需移動作業期間、您可能會發現LUN上的路徑分組不正確、以及儲存設備故障。在LUN移動作業期間、多重路徑優先順序將會變更、而且多重路徑因為儲存故障而導致裝置故障、無法重新載入裝置表格。這會導致不正確的路徑群組。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1151020["1151020"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=795684["795684"^] | RHEL6 U5 Multpathd在執行模式和儲存容錯移轉故障作業時、錯誤地將多重路徑對應群組在一起 | 在LUN隨需移動作業期間、您可能會發現LUN上的路徑分組不正確、以及儲存設備故障。在LUN移動作業期間、多重路徑優先順序將會變更、而且多重路徑因為儲存故障而導致裝置故障、無法重新載入裝置表格。這會導致不正確的路徑群組。 
 |===

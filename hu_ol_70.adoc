@@ -151,7 +151,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -179,7 +179,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -263,25 +263,25 @@ NOTE: 若要設定 Oracle Linux 7.0 Red Hat Enterprise 核心（ RHHCK ）、請
 
 Oracle Linux 7.0 with ONTAP 版本有下列已知問題：
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901558["901558"^] | OL7.0：由於Emulex 8G（LPe12002）主機上的OL 7.0 UEK r3U5 Beta上出現「RSCN Timeout（RSCN逾時）」錯誤、因此主機失去通往LUN的所有路徑並當機 | 您可能會發現Emulex 8G（LPe12002）主機當機、而且在使用I/O進行儲存容錯移轉作業期間、I/O中斷的情形很大您可能會看到路徑未恢復、這是RSCN逾時的結果、因為主機會遺失所有路徑並當機。很可能會發生此問題。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=14898["1498"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901558["901558"^] | OL7.0：由於Emulex 8G（LPe12002）主機上的OL 7.0 UEK r3U5 Beta上出現「RSCN Timeout（RSCN逾時）」錯誤、因此主機失去通往LUN的所有路徑並當機 | 您可能會發現Emulex 8G（LPe12002）主機當機、而且在使用I/O進行儲存容錯移轉作業期間、I/O中斷的情形很大您可能會看到路徑未恢復、這是RSCN逾時的結果、因為主機會遺失所有路徑並當機。很可能會發生此問題。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901557["901557"^] | OL 7.0：在使用IO進行儲存容錯移轉作業期間、QLogic 8G FC（QLE2562）SAN主機發生高IO中斷 | 在使用IO進行儲存容錯移轉作業期間、您可能會發現QLogic 8G FC（QLE2562）主機的IO中斷時間過長。當主機上的IO中斷時、會中止並重新設定裝置的資訊清單。發生IO中斷的可能性很高。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=14894["148994年"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901557["901557"^] | OL 7.0：在使用IO進行儲存容錯移轉作業期間、QLogic 8G FC（QLE2562）SAN主機發生高IO中斷 | 在使用IO進行儲存容錯移轉作業期間、您可能會發現QLogic 8G FC（QLE2562）主機的IO中斷時間過長。當主機上的IO中斷時、會中止並重新設定裝置的資訊清單。發生IO中斷的可能性很高。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894766["894766"^] | OL7.0：Dracut無法在UEKR3U5 Alpha的initramfs中包含SCSI_DH_alua.ko模組 | 即使在核心命令列中新增參數「rloaddriver=scsi_dd_alua」並建立Dracut之後、SCSI_DH_alua模組也可能無法載入。因此、並未依建議啟用ALUA來使用NetApp LUN。 | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14860["14860年"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894766["894766"^] | OL7.0：Dracut無法在UEKR3U5 Alpha的initramfs中包含SCSI_DH_alua.ko模組 | 即使在核心命令列中新增參數「rloaddriver=scsi_dd_alua」並建立Dracut之後、SCSI_DH_alua模組也可能無法載入。因此、並未依建議啟用ALUA來使用NetApp LUN。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894796["894796"^] | 雖然在OL 7.0 OS安裝期間登入成功、但anacondo仍會顯示iSCSI登入失敗訊息 | 安裝OL 7.0時、anaconda安裝畫面會顯示iSCSI登入多個目標IP失敗、但iSCSI登入成功。anaconda顯示下列錯誤訊息：「節點登入失敗」您只會在選取多個目標IP進行iSCSI登入時才會看到此錯誤。您可以按一下「確定」按鈕、繼續安裝作業系統。此錯誤不會妨礙iSCSI或OL 7.0 OS安裝。 | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14870["14870"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894796["894796"^] | 雖然在OL 7.0 OS安裝期間登入成功、但anacondo仍會顯示iSCSI登入失敗訊息 | 安裝OL 7.0時、anaconda安裝畫面會顯示iSCSI登入多個目標IP失敗、但iSCSI登入成功。anaconda顯示下列錯誤訊息：「節點登入失敗」您只會在選取多個目標IP進行iSCSI登入時才會看到此錯誤。您可以按一下「確定」按鈕、繼續安裝作業系統。此錯誤不會妨礙iSCSI或OL 7.0 OS安裝。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894771["894771."^] | OL7.0：Anacondo不會在核心cmd行中新增bootdev*引數、以設定iSCSI SANboot OS安裝的IP位址 | Anaconda不會在核心命令列中新增bootdev*引數、您可在iSCSI多重路徑LUN上安裝OL 7.0 OS期間、於其中設定IPV4位址。因此、在OL 7.0開機期間、您無法將IP位址指派給任何設定為與儲存子系統建立iSCSI工作階段的乙太網路介面。由於未建立iSCSI工作階段、因此在作業系統開機時不會發現根LUN、因此作業系統開機失敗。 | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14871["14871"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894771["894771."^] | OL7.0：Anacondo不會在核心cmd行中新增bootdev*引數、以設定iSCSI SANboot OS安裝的IP位址 | Anaconda不會在核心命令列中新增bootdev*引數、您可在iSCSI多重路徑LUN上安裝OL 7.0 OS期間、於其中設定IPV4位址。因此、在OL 7.0開機期間、您無法將IP位址指派給任何設定為與儲存子系統建立iSCSI工作階段的乙太網路介面。由於未建立iSCSI工作階段、因此在作業系統開機時不會發現根LUN、因此作業系統開機失敗。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=916501["916501"^] | 在IO的儲存容錯移轉作業期間、觀察到QLogic 10G FCoE（QLE8152）主機核心當機 | 您可能會看到10G FCoE邏輯（QLE8152）主機上的邏輯驅動程式模組發生核心當機。當機發生於IO的儲存容錯移轉作業期間。發生這種當機的可能性很高、導致主機的IO中斷時間更長。 | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=15019["15019"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=916501["916501"^] | 在IO的儲存容錯移轉作業期間、觀察到QLogic 10G FCoE（QLE8152）主機核心當機 | 您可能會看到10G FCoE邏輯（QLE8152）主機上的邏輯驅動程式模組發生核心當機。當機發生於IO的儲存容錯移轉作業期間。發生這種當機的可能性很高、導致主機的IO中斷時間更長。 
 |===

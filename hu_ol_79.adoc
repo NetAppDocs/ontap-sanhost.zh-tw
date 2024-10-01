@@ -169,7 +169,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -197,7 +197,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -281,10 +281,10 @@ NOTE: 若要設定 Oracle Linux 7.9 Red Hat Enterprise 核心（ RHCK ）、請�
 
 Oracle Linux 7.9 with ONTAP 版本有下列已知問題：
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| 1440718 | 如果您在未執行 SCSI 重新掃描的情況下取消對應或對應 LUN 、可能會導致主機上的資料毀損 | 當您設定時 `disable_changed_wwids` 多重路徑組態參數為「是」、則當全球識別碼（ WWID ）變更時、會停用對路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的 WWID 還原至多重路徑裝置的 WWID 為止。請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^] 以取得更多資訊。 | 不適用 
+| 1440718 | 如果您在未執行 SCSI 重新掃描的情況下取消對應或對應 LUN 、可能會導致主機上的資料毀損 | 當您設定時 `disable_changed_wwids` 多重路徑組態參數為「是」、則當全球識別碼（ WWID ）變更時、會停用對路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的 WWID 還原至多重路徑裝置的 WWID 為止。請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^] 以取得更多資訊。 
 |===

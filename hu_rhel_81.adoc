@@ -170,7 +170,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -198,7 +198,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -289,16 +289,16 @@ devices {
 
 含 ONTAP 版本的 RHEL 8.1 有下列已知問題：
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275843["1275843"^] | 在儲存容錯移轉作業期間、使用QLogic QLE2672 16GB FC HBA的Red Hat Enterprise Linux 8.1可能會發生核心中斷 | 使用QLogic QLE2672 Fibre Channel（FC）主機匯流排介面卡（HBA）在Red Hat Enterprise Linux 8.1核心上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會導致Red Hat Enterprise Linux 8.1重新開機、導致應用程式中斷。如果已啟用kdump機制、核心中斷會產生位於/var/crash /目錄中的vmcore檔案。您可以檢查vmcore檔案以判斷造成中斷的原因。使用QLogic QLE2672 HBA事件進行儲存容錯移轉會影響「kmem_cache _alloc+131」模組。您可以在vmcore檔案中找出事件、方法是找出下列字串：「[例外RIP：kmem_cache _alloc+131]"核心中斷後、重新啟動主機作業系統並恢復作業系統。然後重新啟動應用程式 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1760819["1760819"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275843["1275843"^] | 在儲存容錯移轉作業期間、使用QLogic QLE2672 16GB FC HBA的Red Hat Enterprise Linux 8.1可能會發生核心中斷 | 使用QLogic QLE2672 Fibre Channel（FC）主機匯流排介面卡（HBA）在Red Hat Enterprise Linux 8.1核心上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會導致Red Hat Enterprise Linux 8.1重新開機、導致應用程式中斷。如果已啟用kdump機制、核心中斷會產生位於/var/crash /目錄中的vmcore檔案。您可以檢查vmcore檔案以判斷造成中斷的原因。使用QLogic QLE2672 HBA事件進行儲存容錯移轉會影響「kmem_cache _alloc+131」模組。您可以在vmcore檔案中找出事件、方法是找出下列字串：「[例外RIP：kmem_cache _alloc+131]"核心中斷後、重新啟動主機作業系統並恢復作業系統。然後重新啟動應用程式 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275838["1275838"^] | 在儲存容錯移轉作業期間、使用QLogic QLE2742 32GB FC HBA的Red Hat Enterprise Linux 8.1會發生核心中斷 | 使用QLogic QLE2742 Fibre Channel（FC）主機匯流排介面卡（HBA）在Red Hat Enterprise Linux 8.1核心上執行儲存容錯移轉作業時、會發生核心中斷。核心中斷會導致Red Hat Enterprise Linux 8.1重新開機、導致應用程式中斷。如果已啟用kdump機制、核心中斷會產生位於/var/crash /目錄中的vmcore檔案。您可以檢查vmcore檔案、判斷造成中斷的原因。使用QLogic QLE2742 HBA事件進行儲存容錯移轉會影響「kmem_cache _alloc+131」模組。您可以在vmcore檔案中找出事件、方法是找出下列字串：「[例外RIP：kmem_cache _alloc+131]"核心中斷後、重新啟動主機作業系統並恢復作業系統。然後重新啟動應用程式。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1744082["1744082."^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275838["1275838"^] | 在儲存容錯移轉作業期間、使用QLogic QLE2742 32GB FC HBA的Red Hat Enterprise Linux 8.1會發生核心中斷 | 使用QLogic QLE2742 Fibre Channel（FC）主機匯流排介面卡（HBA）在Red Hat Enterprise Linux 8.1核心上執行儲存容錯移轉作業時、會發生核心中斷。核心中斷會導致Red Hat Enterprise Linux 8.1重新開機、導致應用程式中斷。如果已啟用kdump機制、核心中斷會產生位於/var/crash /目錄中的vmcore檔案。您可以檢查vmcore檔案、判斷造成中斷的原因。使用QLogic QLE2742 HBA事件進行儲存容錯移轉會影響「kmem_cache _alloc+131」模組。您可以在vmcore檔案中找出事件、方法是找出下列字串：「[例外RIP：kmem_cache _alloc+131]"核心中斷後、重新啟動主機作業系統並恢復作業系統。然後重新啟動應用程式。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1266250["1266250"^] | 在iSCSI SAN LUN上安裝Red Hat Enterprise Linux 8.1時、無法登入多個路徑 | 在iSCSI SAN LUN多重路徑裝置上安裝Red Hat Enterprise Linux 8.1期間、您無法登入多個路徑。無法在多重路徑iSCSI裝置上安裝、而且SAN開機裝置上未啟用多重路徑服務。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1758504["1758504"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1266250["1266250"^] | 在iSCSI SAN LUN上安裝Red Hat Enterprise Linux 8.1時、無法登入多個路徑 | 在iSCSI SAN LUN多重路徑裝置上安裝Red Hat Enterprise Linux 8.1期間、您無法登入多個路徑。無法在多重路徑iSCSI裝置上安裝、而且SAN開機裝置上未啟用多重路徑服務。 
 |===

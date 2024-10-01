@@ -167,7 +167,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -195,7 +195,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -288,9 +288,9 @@ NOTE: 若要設定 Oracle Linux 9.1 Red Hat Enterprise 核心（ RCK ）、請�
 
 Oracle Linux 9.1 with NetApp ONTAP 版本有下列已知問題：
 
-[cols="10,30,30,10"]
+[cols="20,40,40"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
 | https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1508554["1508554"^] | 使用 Emulex HBA 的 SAN LUN 公用程式需要從程式庫套件中取得符號連結  a| 
@@ -301,5 +301,5 @@ Oracle Linux 9.1 with NetApp ONTAP 版本有下列已知問題：
 [root@hostname ~]# sanlun fcp show adapter -v
 Unable to locate /usr/lib64/libHBAAPI.so library
 Make sure the package installing the library is installed & loaded
-----| 不適用 
+----
 |===

@@ -181,7 +181,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -209,7 +209,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -300,13 +300,13 @@ devices {
 
 採用 ONTAP 版本的 RHEL 6.9 有下列已知問題：
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1067272["1067272"^] | 在儲存容錯移轉作業期間、Emulex LPe32002主機上的遠端連接埠狀態可能處於「封鎖」狀態 | 在儲存容錯移轉作業期間、使用LPe32002介面卡的RHEL 6.9主機上的特定遠端連接埠狀態可能會進入「封鎖」狀態。由於儲存節點當機時、邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設定為「封鎖」狀態。但是、當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠狀態預期為「線上」。但在某些情況下、遠端連接埠仍處於「封鎖」狀態。此狀態會在多重路徑層的LUN上顯示為「故障」。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1427496["427496"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1067272["1067272"^] | 在儲存容錯移轉作業期間、Emulex LPe32002主機上的遠端連接埠狀態可能處於「封鎖」狀態 | 在儲存容錯移轉作業期間、使用LPe32002介面卡的RHEL 6.9主機上的特定遠端連接埠狀態可能會進入「封鎖」狀態。由於儲存節點當機時、邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設定為「封鎖」狀態。但是、當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠狀態預期為「線上」。但在某些情況下、遠端連接埠仍處於「封鎖」狀態。此狀態會在多重路徑層的LUN上顯示為「故障」。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1076584["1076584"^] | 在儲存容錯移轉作業期間、Red Hat Enterprise Linux 6.9 QLogic QE8362 HBA會發生韌體傾印 | 在使用QLogic QLE8362主機匯流排介面卡（HBA）的Red Hat Enterprise Linux（RHEL）6.9主機上執行儲存容錯移轉作業時、可能會發生韌體傾印。韌體傾印可能會在主機上顯示為I/O中斷、持續時間長達1200秒。介面卡完成卸載韌體核心之後、I/O作業會恢復正常。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/messages檔案中會顯示下列訊息：kernel：qla2xxx [0000:0c:00.3]-d001:3：韌體傾印已儲存至暫存緩衝區（3/ffffc90018b01000）、傾印狀態旗標（0x3f） | link:https://bugzilla.redhat.com/show_bug.cgi?id=1438711["1438711"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1076584["1076584"^] | 在儲存容錯移轉作業期間、Red Hat Enterprise Linux 6.9 QLogic QE8362 HBA會發生韌體傾印 | 在使用QLogic QLE8362主機匯流排介面卡（HBA）的Red Hat Enterprise Linux（RHEL）6.9主機上執行儲存容錯移轉作業時、可能會發生韌體傾印。韌體傾印可能會在主機上顯示為I/O中斷、持續時間長達1200秒。介面卡完成卸載韌體核心之後、I/O作業會恢復正常。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/messages檔案中會顯示下列訊息：kernel：qla2xxx [0000:0c:00.3]-d001:3：韌體傾印已儲存至暫存緩衝區（3/ffffc90018b01000）、傾印狀態旗標（0x3f） 
 |===

@@ -43,7 +43,7 @@ AIX 主機公用程式支援下列環境：
 
 
 
-NOTE: NetApp AIX 主機公用程式軟體套件link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^]位於壓縮的 tar.gz 檔案中。在 NetApp ONTAP 儲存設備上使用 AIX MPIO 時、您必須安裝 AIX 主機公用程式套件。
+NOTE: NetApp AIX 主機公用程式軟體套件link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp 支援網站"^]位於壓縮的 tar.gz 檔案中。在 NetApp ONTAP 儲存設備上使用 AIX MPIO 時、您必須安裝 AIX 主機公用程式套件。
 
 .步驟
 . 登入您的主機。
@@ -52,7 +52,7 @@ NOTE: NetApp AIX 主機公用程式軟體套件link:https://mysupport.netapp.com
 ** 在 PowerVM 主機上、以 * padmin* 身分登入 `oem_setup_env`、然後輸入命令成為 root 使用者。
 
 
-. 移至、 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp 支援網站"^]並將包含主機公用程式的壓縮檔案下載至主機上的目錄。
+. 移至、 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp 支援網站"^]並將包含主機公用程式的壓縮檔案下載至主機上的目錄。
 . 前往內含下載內容的目錄。
 . 解壓縮檔案並解壓縮 SAN 工具套件軟體套件：
 +

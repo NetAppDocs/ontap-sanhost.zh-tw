@@ -169,7 +169,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -197,7 +197,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -288,25 +288,25 @@ devices {
 
 採用 ONTAP 版本的 RHEL 8.0 有下列已知問題：
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1238719["1238719"^] | 在儲存容錯移轉作業期間、使用QLogic QLE2672 16GB FC在RHEL8上造成核心中斷 | 在使用QLogic QLE2672主機匯流排介面卡（HBA）的Red Hat Enterprise Linux（RHEL）8核心上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會導致作業系統重新開機。重新開機會導致應用程式中斷、並在設定kdump的情況下、在/var/crash /目錄下產生vmcore檔案。使用vmcore檔案來識別故障原因。在這種情況下、中斷是在「kmem_cache _alloc+160」模組中。它會以下列字串登入vmcore檔案：「[exception RIP：kmem_cache _alloc+160]」。重新啟動主機作業系統以恢復作業系統、然後重新啟動應用程式。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1710009["1710009"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1238719["1238719"^] | 在儲存容錯移轉作業期間、使用QLogic QLE2672 16GB FC在RHEL8上造成核心中斷 | 在使用QLogic QLE2672主機匯流排介面卡（HBA）的Red Hat Enterprise Linux（RHEL）8核心上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會導致作業系統重新開機。重新開機會導致應用程式中斷、並在設定kdump的情況下、在/var/crash /目錄下產生vmcore檔案。使用vmcore檔案來識別故障原因。在這種情況下、中斷是在「kmem_cache _alloc+160」模組中。它會以下列字串登入vmcore檔案：「[exception RIP：kmem_cache _alloc+160]」。重新啟動主機作業系統以恢復作業系統、然後重新啟動應用程式。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1226783["1226783"^] | 當所有光纖通道（FC）主機匯流排介面卡（HBA）上對應超過204個SCSI裝置時、RHEL8 OS會開機至「緊急模式」 | 如果在作業系統重新開機程序期間、某個主機已對應超過204個SCSI裝置、RHEL8 OS將無法開機至「正常模式」並進入「緊急模式」。這會導致大多數主機服務無法使用。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1690356["1690356"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1226783["1226783"^] | 當所有光纖通道（FC）主機匯流排介面卡（HBA）上對應超過204個SCSI裝置時、RHEL8 OS會開機至「緊急模式」 | 如果在作業系統重新開機程序期間、某個主機已對應超過204個SCSI裝置、RHEL8 OS將無法開機至「正常模式」並進入「緊急模式」。這會導致大多數主機服務無法使用。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1230882["1230882"^] | 在RHEL8安裝期間、在iSCSI多重路徑裝置上建立分割區是不可行的。 | 在RHEL 8安裝期間、iSCSI SAN LUN多重路徑裝置未列在磁碟選擇中。因此、SAN開機裝置上未啟用多重路徑服務。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1709995["1709995"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1230882["1230882"^] | 在RHEL8安裝期間、在iSCSI多重路徑裝置上建立分割區是不可行的。 | 在RHEL 8安裝期間、iSCSI SAN LUN多重路徑裝置未列在磁碟選擇中。因此、SAN開機裝置上未啟用多重路徑服務。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1235998["1235998"^] | 「rescan-scsi-bus.sh -A」命令掃描的裝置不超過328個 | 如果Red Hat Enterprise Linux 8主機對應的SCSI裝置超過328個、則主機OS命令「rescan-scsi-bus.sh -A」僅會掃描328個裝置。主機不會發現任何剩餘的對應裝置。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1709995["1709995"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1235998["1235998"^] | 「rescan-scsi-bus.sh -A」命令掃描的裝置不超過328個 | 如果Red Hat Enterprise Linux 8主機對應的SCSI裝置超過328個、則主機OS命令「rescan-scsi-bus.sh -A」僅會掃描328個裝置。主機不會發現任何剩餘的對應裝置。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231087["1231087"^] | 在儲存容錯移轉作業期間、利用Emulex LPe16002 16GB FC將遠端連接埠傳輸至RHEL8的封鎖狀態 | 在儲存容錯移轉作業期間、利用Emulex LPe16002 16GB Fibre Channel（FC）將遠端連接埠傳輸至RHEL8的封鎖狀態。當儲存節點恢復至最佳狀態時、LIF也會啟動、遠端連接埠狀態應顯示為「online（線上）」。有時遠端連接埠狀態可能會繼續顯示為「封鎖」或「不存在」。此狀態可能會導致多重路徑層上LUN的「故障」路徑 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1702005["1702005年"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231087["1231087"^] | 在儲存容錯移轉作業期間、利用Emulex LPe16002 16GB FC將遠端連接埠傳輸至RHEL8的封鎖狀態 | 在儲存容錯移轉作業期間、利用Emulex LPe16002 16GB Fibre Channel（FC）將遠端連接埠傳輸至RHEL8的封鎖狀態。當儲存節點恢復至最佳狀態時、LIF也會啟動、遠端連接埠狀態應顯示為「online（線上）」。有時遠端連接埠狀態可能會繼續顯示為「封鎖」或「不存在」。此狀態可能會導致多重路徑層上LUN的「故障」路徑 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231098["1231098"^] | 在儲存容錯移轉作業期間、利用Emulex LPe32002 32GB FC將遠端連接埠傳輸至RHEL8的封鎖狀態 | 在儲存容錯移轉作業期間、利用Emulex LPe32002 32GBFibre Channel（FC）將遠端連接埠傳輸至RHEL8的封鎖狀態。當儲存節點恢復至最佳狀態時、LIF也會啟動、遠端連接埠狀態應顯示為「online（線上）」。有時遠端連接埠狀態可能會繼續顯示為「封鎖」或「不存在」。此狀態可能會導致多重路徑層上LUN的「故障」路徑。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1705573["1705573"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231098["1231098"^] | 在儲存容錯移轉作業期間、利用Emulex LPe32002 32GB FC將遠端連接埠傳輸至RHEL8的封鎖狀態 | 在儲存容錯移轉作業期間、利用Emulex LPe32002 32GBFibre Channel（FC）將遠端連接埠傳輸至RHEL8的封鎖狀態。當儲存節點恢復至最佳狀態時、LIF也會啟動、遠端連接埠狀態應顯示為「online（線上）」。有時遠端連接埠狀態可能會繼續顯示為「封鎖」或「不存在」。此狀態可能會導致多重路徑層上LUN的「故障」路徑。 
 |===

@@ -507,4 +507,9 @@ NSID       UUID                                   Size
 
 == 已知問題
 
-在含 ONTAP 版本的 Ubuntu 22.04 中、 NVMe 主機組態並無已知問題。
+含 ONTAP 版本的 Ubuntu 22.04 的 NVMe 主機組態有下列已知問題：
+
+[cols="15,20,50,15"]
+|===
+| NetApp錯誤ID | 標題 | 說明 | CONTAPEXT-2037 
+|===

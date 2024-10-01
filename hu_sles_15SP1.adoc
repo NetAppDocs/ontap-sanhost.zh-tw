@@ -168,7 +168,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -196,7 +196,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -281,10 +281,10 @@ devices {
 
 SLES 15 SP1 with ONTAP 版本有下列已知問題：
 
-[cols="4"]
+[cols="3"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246622["12466222"^] | 在儲存容錯移轉作業期間、透過Emulex LPe12002 8GB FC將遠端連接埠傳輸至使用者在SLES15SP1上的封鎖狀態。 | 在執行儲存容錯移轉作業期間、透過Emulex LPe12002 8GB Fibre Channel（FC）將遠端連接埠傳輸至使用者在SLES15SP1上的封鎖狀態。當儲存節點恢復至最佳狀態時、LIF也會啟動、遠端連接埠狀態應顯示為「online（線上）」。 有時遠端連接埠狀態可能會繼續顯示為「封鎖」或「不存在」。 此狀態可能會導致多重路徑層LUN的「故障」路徑、以及這些LUN的I/O中斷。您可以根據下列範例命令來檢查遠端連接埠的詳細資料：--cat/sys/class/fc_host/host*/設備/rport*/ fc_remote_ports/rport*/連接埠名稱cat/sys/class/fc_host/host*/設備/rport*/ fc_remote_ports/rport*/連接埠*/連接埠狀態- | link:https://bugzilla.suse.com/show_bug.cgi?id=1139137["1139137."^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246622["12466222"^] | 在儲存容錯移轉作業期間、透過Emulex LPe12002 8GB FC將遠端連接埠傳輸至使用者在SLES15SP1上的封鎖狀態。 | 在執行儲存容錯移轉作業期間、透過Emulex LPe12002 8GB Fibre Channel（FC）將遠端連接埠傳輸至使用者在SLES15SP1上的封鎖狀態。當儲存節點恢復至最佳狀態時、LIF也會啟動、遠端連接埠狀態應顯示為「online（線上）」。 有時遠端連接埠狀態可能會繼續顯示為「封鎖」或「不存在」。 此狀態可能會導致多重路徑層LUN的「故障」路徑、以及這些LUN的I/O中斷。您可以根據下列範例命令來檢查遠端連接埠的詳細資料：--cat/sys/class/fc_host/host*/設備/rport*/ fc_remote_ports/rport*/連接埠名稱cat/sys/class/fc_host/host*/設備/rport*/ fc_remote_ports/rport*/連接埠*/連接埠狀態- 
 |===

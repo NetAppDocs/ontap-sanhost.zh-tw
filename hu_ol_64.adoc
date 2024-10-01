@@ -182,7 +182,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -269,21 +269,21 @@ NOTE: 若要設定 Oracle Linux 6.4 Red Hat Enterprise 核心（ RCK ）、請�
 
 Oracle Linux 6.4 with ONTAP 版本有下列已知問題：
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=713555["713555"^] | 在OL6.4和OL5.9上會顯示QLogic介面卡重設、在控制器故障（例如接管/恢復、重新開機）上顯示UEK2 | 當控制器發生故障時（例如接管、恢復和重新開機）、使用UEK2（kernel-uek-2.6.39至400.171.el6uek）或使用UEK2（kernel-uek-2.6.39 400.171.el5uek）的OOL5.9主機（例如、接管、恢復和重新開機）、可在OOL6.4主機上看到QLogic介面卡重設。這些重設是間歇性的。當這些介面卡重設發生時、可能會發生長時間的I/O中斷（有時甚至超過10分鐘）、直到介面卡重設成功、而且路徑的狀態會由dm-multipath.在/var/log/Messages中、當此錯誤發生時、會看到類似下列的訊息：kernel：qla2xxx [0000:11:00.0]-8018:0：介面卡重設核發的nexus=0：2：13。這是在OOL6.4上的核心版本：kernel-uek-2.6.39-400.171.el6uek on OL5.9：kernel-uek-2.6.39-400.171.el5uek中觀察到的 | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=13999["13999"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=713555["713555"^] | 在OL6.4和OL5.9上會顯示QLogic介面卡重設、在控制器故障（例如接管/恢復、重新開機）上顯示UEK2 | 當控制器發生故障時（例如接管、恢復和重新開機）、使用UEK2（kernel-uek-2.6.39至400.171.el6uek）或使用UEK2（kernel-uek-2.6.39 400.171.el5uek）的OOL5.9主機（例如、接管、恢復和重新開機）、可在OOL6.4主機上看到QLogic介面卡重設。這些重設是間歇性的。當這些介面卡重設發生時、可能會發生長時間的I/O中斷（有時甚至超過10分鐘）、直到介面卡重設成功、而且路徑的狀態會由dm-multipath.在/var/log/Messages中、當此錯誤發生時、會看到類似下列的訊息：kernel：qla2xxx [0000:11:00.0]-8018:0：介面卡重設核發的nexus=0：2：13。這是在OOL6.4上的核心版本：kernel-uek-2.6.39-400.171.el6uek on OL5.9：kernel-uek-2.6.39-400.171.el5uek中觀察到的 
 
 
-| link:htthttps://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=715217["715217"^] | 使用UEK2的OL6.4或OL5.9主機路徑恢復延遲、可能會導致控制器或網路故障延遲I/O恢復 | 當控制器故障（儲存容錯移轉或恢復、重新開機等）或光纖網路故障（FC連接埠停用或啟用）發生於Oracle Linux 6.4或Oracle Linux 5.9主機搭配UEK2核心時、DM-Multifpath的路徑恢復需要很長時間（4分鐘）。至10分鐘）。有時、在路徑恢復至作用中狀態期間、也會看到下列lffc驅動程式錯誤：核心：SD 0：0：8：3：[ldps]結果：hostbyte=did_errors driverbyte=driver_OK、因為在故障事件期間路徑恢復延遲、I/O恢復也會延遲。ol 6.4版本：device-mapper-1.02.77-9.el6設備映射器-multipath-0.4.9-64.0.1.el6 kernel-uek-2.6.39-400.171.el6uek OL 5.9版本：設備對應器-1.02.77-9.el5設備對應器-multipath-0.4.9-64.0.1.el5-2.6-4uek .5e.ek核心.5k | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14001["14001.."^] 
+| link:htthttps://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=715217["715217"^] | 使用UEK2的OL6.4或OL5.9主機路徑恢復延遲、可能會導致控制器或網路故障延遲I/O恢復 | 當控制器故障（儲存容錯移轉或恢復、重新開機等）或光纖網路故障（FC連接埠停用或啟用）發生於Oracle Linux 6.4或Oracle Linux 5.9主機搭配UEK2核心時、DM-Multifpath的路徑恢復需要很長時間（4分鐘）。至10分鐘）。有時、在路徑恢復至作用中狀態期間、也會看到下列lffc驅動程式錯誤：核心：SD 0：0：8：3：[ldps]結果：hostbyte=did_errors driverbyte=driver_OK、因為在故障事件期間路徑恢復延遲、I/O恢復也會延遲。ol 6.4版本：device-mapper-1.02.77-9.el6設備映射器-multipath-0.4.9-64.0.1.el6 kernel-uek-2.6.39-400.171.el6uek OL 5.9版本：設備對應器-1.02.77-9.el5設備對應器-multipath-0.4.9-64.0.1.el5-2.6-4uek .5e.ek核心.5k 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=709911["709911"^] | 使用UEK2核心的OL6.4和OL5.9 iSCSI上的DM多重路徑、在儲存設備故障後需要很長時間才能更新LUN路徑狀態 | 在執行Oracle Linux 6 Update 4和Oracle Linux 5 Update 9 iSCSI及Unbreakable Enterprise Kernel Release 2（UEK2）的系統上、發生儲存故障事件時、DM多重路徑（DMP）需要約15分鐘才能更新裝置對應程式（DM）裝置（LUN）的路徑狀態、這是一項問題。如果您在此時間間隔內執行「multipath-ll」命令、則該DM裝置（LUN）的路徑狀態會顯示為「執行中的容錯移轉」。路徑狀態最終會更新為「作用中的就緒執行中」。 此問題出現於下列版本：Oracle Linux 6 Update 4：UEK2核心：2.6.39-400.171.el6uek.x86_64多重路徑：device-mapper-multipath-0.4.9-64.0.1.el6.x86_64 iSCSI：iscsiscs-initiator -utils-6.2.0.873-2.1.1.el6.x86_64 net_utils.urok2-64.64urok2-640.64urok2-udor.5urokor.5net.64kor.64urok.64urok.64urok.64urok.5u.64urok.64k.64_64urok.urok.v mite-64urok.64urok.urok.64urokore.5urok.v 64uro | link:http://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=13984["13984."^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=709911["709911"^] | 使用UEK2核心的OL6.4和OL5.9 iSCSI上的DM多重路徑、在儲存設備故障後需要很長時間才能更新LUN路徑狀態 | 在執行Oracle Linux 6 Update 4和Oracle Linux 5 Update 9 iSCSI及Unbreakable Enterprise Kernel Release 2（UEK2）的系統上、發生儲存故障事件時、DM多重路徑（DMP）需要約15分鐘才能更新裝置對應程式（DM）裝置（LUN）的路徑狀態、這是一項問題。如果您在此時間間隔內執行「multipath-ll」命令、則該DM裝置（LUN）的路徑狀態會顯示為「執行中的容錯移轉」。路徑狀態最終會更新為「作用中的就緒執行中」。 此問題出現於下列版本：Oracle Linux 6 Update 4：UEK2核心：2.6.39-400.171.el6uek.x86_64多重路徑：device-mapper-multipath-0.4.9-64.0.1.el6.x86_64 iSCSI：iscsiscs-initiator -utils-6.2.0.873-2.1.1.el6.x86_64 net_utils.urok2-64.64urok2-640.64urok2-udor.5urokor.5net.64kor.64urok.64urok.64urok.64urok.5u.64urok.64k.64_64urok.urok.v mite-64urok.64urok.urok.64urokore.5urok.v 64uro 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=739909["739909"^] | 在使用UEK2的OL6.x和OL5.x主機發生FC故障之後、SG_IO ioctl系統呼叫在dm-multipaths裝置上失敗 | 在使用UEK2核心的Oracle Linux 6.x主機和使用UEK2核心的Oracle Linux 5.x主機上、發現問題。多重路徑裝置上的sg_*命令會在發生光纖故障之後失敗、並顯示EAGAIN錯誤代碼（errno）、使作用中路徑群組中的所有路徑都關閉。僅當多重路徑裝置沒有I/O發生時、才會出現此問題。以下為範例：# sg_inq -v /dev/mapper/3600a098041764937303f436c75337370查詢cdb：12 00 00 24 00 ioctl（SG_IO v3）失敗、作業系統（errno）= 11查詢：通過OS錯誤：資源暫時無法使用HDIO_Get_iocl:身分識別失敗 資源暫時無法使用[11]在/dev/mapper/3600a098041764937303f436c75337370 #上、SCSI查詢和擷取ATA資訊都失敗。此問題發生的原因是、當DM-Multipath裝置上沒有I/O時、ioctl（）呼叫期間不會啟動路徑群組切換至其他作用中群組。以下版本的kernel-uek和device-mapper-multipaths套件出現此問題：OL6.4版本：kernel-uek-2.6.39-400.171.el6uek設備-mapper-multipath-0.4.9-64.0.1.el6 OL5.9版本：kernel-uek-2.6.39-400.171.el5uek設備-640.4.0.4-multipathmapper.5. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14082["14082"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=739909["739909"^] | 在使用UEK2的OL6.x和OL5.x主機發生FC故障之後、SG_IO ioctl系統呼叫在dm-multipaths裝置上失敗 | 在使用UEK2核心的Oracle Linux 6.x主機和使用UEK2核心的Oracle Linux 5.x主機上、發現問題。多重路徑裝置上的sg_*命令會在發生光纖故障之後失敗、並顯示EAGAIN錯誤代碼（errno）、使作用中路徑群組中的所有路徑都關閉。僅當多重路徑裝置沒有I/O發生時、才會出現此問題。以下為範例：# sg_inq -v /dev/mapper/3600a098041764937303f436c75337370查詢cdb：12 00 00 24 00 ioctl（SG_IO v3）失敗、作業系統（errno）= 11查詢：通過OS錯誤：資源暫時無法使用HDIO_Get_iocl:身分識別失敗 資源暫時無法使用[11]在/dev/mapper/3600a098041764937303f436c75337370 #上、SCSI查詢和擷取ATA資訊都失敗。此問題發生的原因是、當DM-Multipath裝置上沒有I/O時、ioctl（）呼叫期間不會啟動路徑群組切換至其他作用中群組。以下版本的kernel-uek和device-mapper-multipaths套件出現此問題：OL6.4版本：kernel-uek-2.6.39-400.171.el6uek設備-mapper-multipath-0.4.9-64.0.1.el6 OL5.9版本：kernel-uek-2.6.39-400.171.el5uek設備-640.4.0.4-multipathmapper.5. 
 |===
 
 NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_64.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）6.4。

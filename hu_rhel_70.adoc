@@ -169,7 +169,7 @@ blacklist {
 }
 ----
 .範例
-在此範例中、我們將決定裝置的 WWID 並新增至 `multipath.conf` 檔案：
+以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
 . 執行下列命令來判斷WWID：
@@ -197,7 +197,7 @@ blacklist {
 
 您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===
@@ -288,34 +288,34 @@ devices {
 
 採用 ONTAP 版本的 RHEL 7.0 具有下列已知問題：
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=844417["844417"^] | 在儲存容錯移轉作業的I/O期間、Emulex 16G FC（LPe16002B-M6）主機當機 | 您可能會發現16G FC Emulex（LPe16002B-M6）主機在執行儲存容錯移轉作業時當機。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1131393["1131393"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=844417["844417"^] | 在儲存容錯移轉作業的I/O期間、Emulex 16G FC（LPe16002B-M6）主機當機 | 您可能會發現16G FC Emulex（LPe16002B-M6）主機在執行儲存容錯移轉作業時當機。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=811587["811587"^] | 在儲存容錯移轉作業的I/O期間、Emulex 16G FC（LPe16002B-M6）主機當機 | 您可能會發現16G FC Emulex（LPe16002B-M6）主機在執行儲存容錯移轉作業時當機。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1079735["109735"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=811587["811587"^] | 在儲存容錯移轉作業的I/O期間、Emulex 16G FC（LPe16002B-M6）主機當機 | 您可能會發現16G FC Emulex（LPe16002B-M6）主機在執行儲存容錯移轉作業時當機。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=803071["803071"^] | 在儲存容錯移轉作業的I/O期間、Emulex 16G FC（LPe16002B-M6）主機當機 | 您可能會發現16G FC Emulex（LPe16002B-M6）主機在執行儲存容錯移轉作業時當機。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1067895["1037895"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=803071["803071"^] | 在儲存容錯移轉作業的I/O期間、Emulex 16G FC（LPe16002B-M6）主機當機 | 您可能會發現16G FC Emulex（LPe16002B-M6）主機在執行儲存容錯移轉作業時當機。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=820163["820163."^] | 在執行儲存容錯移轉作業的I/O期間、觀察到QLogic主機當機或路徑故障 | 在執行儲存容錯移轉作業的I/O期間、您可能會看到QLogic主機發生當機或路徑故障。在這類情況下、您可能會看到下列訊息：「發生信箱cmd逾時、字串=x54、MB[0]=x54和儲存至暫存緩衝區的韌體傾印」、這些訊息會導致主機掛起/路徑故障。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1090378["1090378."^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=820163["820163."^] | 在執行儲存容錯移轉作業的I/O期間、觀察到QLogic主機當機或路徑故障 | 在執行儲存容錯移轉作業的I/O期間、您可能會看到QLogic主機發生當機或路徑故障。在這類情況下、您可能會看到下列訊息：「發生信箱cmd逾時、字串=x54、MB[0]=x54和儲存至暫存緩衝區的韌體傾印」、這些訊息會導致主機掛起/路徑故障。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799323["799323"^] | 在執行儲存容錯移轉作業的I/O期間、發現Emulex FCoE（OCe102-FX-D）主機當機或路徑故障 | 在執行儲存容錯移轉作業的I/O期間、您可能會發現Emulex 10G FCoE主機（OCe102-FX-D）發生主機當機或路徑故障。在這種情況下、您可能會看到下列訊息：「驅動程式的緩衝資源池是空的、IO佔線和SCSI層I/O中止要求狀態」、這些訊息會導致主機掛起/路徑故障。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1061755["1011755"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799323["799323"^] | 在執行儲存容錯移轉作業的I/O期間、發現Emulex FCoE（OCe102-FX-D）主機當機或路徑故障 | 在執行儲存容錯移轉作業的I/O期間、您可能會發現Emulex 10G FCoE主機（OCe102-FX-D）發生主機當機或路徑故障。在這種情況下、您可能會看到下列訊息：「驅動程式的緩衝資源池是空的、IO佔線和SCSI層I/O中止要求狀態」、這些訊息會導致主機掛起/路徑故障。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=849212["849212"^] | 在執行儲存容錯移轉作業的I/O期間、會觀察到Emulex 16G FC（LPe16002B-M6）主機當機或路徑故障 | 在執行儲存容錯移轉作業的I/O期間、您可能會看到Emulex 16G FC（LPe16002B-M6）主機發生主機當機或路徑故障。在此情況下、您可能會看到下列訊息：「RSCN Timeout Data和iotag x1301 is out of range：Max iotag」（RSCN逾時資料和iotag x1301超出範圍：最大iotag）訊息、導致主機掛起/路徑故障 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1109274["1109274"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=849212["849212"^] | 在執行儲存容錯移轉作業的I/O期間、會觀察到Emulex 16G FC（LPe16002B-M6）主機當機或路徑故障 | 在執行儲存容錯移轉作業的I/O期間、您可能會看到Emulex 16G FC（LPe16002B-M6）主機發生主機當機或路徑故障。在此情況下、您可能會看到下列訊息：「RSCN Timeout Data和iotag x1301 is out of range：Max iotag」（RSCN逾時資料和iotag x1301超出範圍：最大iotag）訊息、導致主機掛起/路徑故障 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836800["81800"^] | 雖然在RHEL 7.0 OS安裝期間登入成功、但anacondo仍會顯示iSCSI登入失敗訊息 | 當您在iSCSI多重路徑LUN上安裝root（/）時、會在核心命令列中指定乙太網路介面的IP位址、以便在iSCSI服務啟動之前指派IP位址。不過、在開機期間、磁碟機無法在iSCSI服務啟動之前、將IP位址指派給所有的乙太網路連接埠。這會導致在沒有IP位址的介面上iSCSI登入失敗。您會看到iSCSI服務嘗試多次登入、這會導致作業系統開機時間延遲。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1114966["11149666"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836800["81800"^] | 雖然在RHEL 7.0 OS安裝期間登入成功、但anacondo仍會顯示iSCSI登入失敗訊息 | 當您在iSCSI多重路徑LUN上安裝root（/）時、會在核心命令列中指定乙太網路介面的IP位址、以便在iSCSI服務啟動之前指派IP位址。不過、在開機期間、磁碟機無法在iSCSI服務啟動之前、將IP位址指派給所有的乙太網路連接埠。這會導致在沒有IP位址的介面上iSCSI登入失敗。您會看到iSCSI服務嘗試多次登入、這會導致作業系統開機時間延遲。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836875["83675"^] | 在啟動安裝在iSCSI多重路徑LUN上的RHEL 7.0作業系統時、並不一定會指派IP位址 | 安裝RHEL 7.0時、anaconda安裝畫面會顯示iSCSI登入多個目標IP失敗、但iSCSI登入成功。anaconda顯示下列錯誤訊息：「Node Login Failed（節點登入失敗）」您只會在選取多個目標IP進行iSCSI登入時才會看到此錯誤。您可以按一下「確定」按鈕、繼續安裝作業系統。此錯誤不會妨礙iSCSI或RHEL 7.0作業系統的安裝。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1114820["11148.2"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836875["83675"^] | 在啟動安裝在iSCSI多重路徑LUN上的RHEL 7.0作業系統時、並不一定會指派IP位址 | 安裝RHEL 7.0時、anaconda安裝畫面會顯示iSCSI登入多個目標IP失敗、但iSCSI登入成功。anaconda顯示下列錯誤訊息：「Node Login Failed（節點登入失敗）」您只會在選取多個目標IP進行iSCSI登入時才會看到此錯誤。您可以按一下「確定」按鈕、繼續安裝作業系統。此錯誤不會妨礙iSCSI或RHEL 7.0作業系統的安裝。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836657["836657"^] | anacondon不會在核心cmd行中新增bootdev*引數、以設定安裝在iSCSI多重路徑LUN上之RHEL 7.0 OS的IP位址 | Anaconda不會在核心命令列中新增bootdev*引數、您可在iSCSI多重路徑LUN上安裝RHEL 7.0 OS期間、於其中設定IPV4位址。這可防止在RHEL 7.0開機期間、將IP位址指派給任何設定為與儲存子系統建立iSCSI工作階段的乙太網路介面。由於未建立iSCSI工作階段、因此在作業系統開機時不會發現根LUN、因此作業系統開機失敗。 | link:https://bugzilla.redhat.com/show_bug.cgi?id=1114464["1114464"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836657["836657"^] | anacondon不會在核心cmd行中新增bootdev*引數、以設定安裝在iSCSI多重路徑LUN上之RHEL 7.0 OS的IP位址 | Anaconda不會在核心命令列中新增bootdev*引數、您可在iSCSI多重路徑LUN上安裝RHEL 7.0 OS期間、於其中設定IPV4位址。這可防止在RHEL 7.0開機期間、將IP位址指派給任何設定為與儲存子系統建立iSCSI工作階段的乙太網路介面。由於未建立iSCSI工作階段、因此在作業系統開機時不會發現根LUN、因此作業系統開機失敗。 
 |===

@@ -572,8 +572,8 @@ ONTAP 版本 OL 8.7 的 NVMe 主機組態有下列已知問題：
 
 [cols=""20"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | Bugzilla ID 
+| NetApp錯誤ID | 標題 | 說明 
 
 
-| 1517321 | Oracle Linux 8.7 NVMe 型主機會建立重複的持續探索控制器 | 在 OL 8.7 NVMe 型主機上、持續探索控制器（ PDC ）是透過將 `-p`選項傳遞給 `nvme discover`命令來建立的。對於給定的 initiator 目標組合、 `nvme discover`命令的每次執行都會建立一個 PDC 。不過、從 OL 8.x 開始、 NVMe 主機會建立重複的 PDF 。這會浪費主機和目標上的資源。 | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118."^] 
+| 1517321 | Oracle Linux 8.7 NVMe 型主機會建立重複的持續探索控制器 | 在 OL 8.7 NVMe 型主機上、持續探索控制器（ PDC ）是透過將 `-p`選項傳遞給 `nvme discover`命令來建立的。對於給定的 initiator 目標組合、 `nvme discover`命令的每次執行都會建立一個 PDC 。不過、從 OL 8.x 開始、 NVMe 主機會建立重複的 PDF 。這會浪費主機和目標上的資源。 
 |===
