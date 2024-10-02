@@ -3544,4 +3544,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="95fdb97b04811943bd6001978d618d31" category="list-text">移至、<block ref="97bc3f4ff245555de180ca8882444906" category="inline-link-rx"></block>並將包含主機公用程式的壓縮檔案下載至主機上的目錄。</block>
   <block id="0142c1c78731d2b44a6976490ee04599" category="paragraph">含 ONTAP 版本的 Ubuntu 22.04 的 NVMe 主機組態有下列已知問題：</block>
   <block id="364053ddb08791e86bba8694da89f153" category="cell">CONTAPEXT-2037</block>
+  <block id="e53d231580138a5c74d1783c30057235" category="cell">Ubuntu 22.04 NVMe 主機會建立重複的持續探索控制器</block>
+  <block id="f7529407d6b5167c4740699e83603d32" category="cell">在 NVMe 主機上、您可以使用「 NVMe 探索 -p 」命令來建立持續探索控制器（ LC ）。此命令只能為每個啟動器目標組合建立一個 PDC 。不過、如果您在 NVMe 主機上執行 Ubuntu 22.04 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。</block>
 </blocks>

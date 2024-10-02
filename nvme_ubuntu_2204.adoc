@@ -509,7 +509,10 @@ NSID       UUID                                   Size
 
 含 ONTAP 版本的 Ubuntu 22.04 的 NVMe 主機組態有下列已知問題：
 
-[cols="15,20,50,15"]
+[cols="20,20,60"]
 |===
-| NetApp錯誤ID | 標題 | 說明 | CONTAPEXT-2037 
+| NetApp錯誤ID | 標題 | 說明 
+
+
+| CONTAPEXT-2037 | Ubuntu 22.04 NVMe 主機會建立重複的持續探索控制器 | 在 NVMe 主機上、您可以使用「 NVMe 探索 -p 」命令來建立持續探索控制器（ LC ）。此命令只能為每個啟動器目標組合建立一個 PDC 。不過、如果您在 NVMe 主機上執行 Ubuntu 22.04 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。 
 |===
