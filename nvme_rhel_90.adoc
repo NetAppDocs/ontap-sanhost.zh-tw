@@ -16,7 +16,7 @@ summary: 如何針對RHEL 9.0設定NVMe主機、ONTAP 並搭配使用功能
 
 
 [role="lead"]
-RHEL 9.0支援NVMe（包括NVMe / FC和NVMe / TCP）、並具備ONTAP 非對稱命名空間存取（ANA）功能、可在不間斷的儲存容錯移轉（SFO）上執行。ANA是與NVM環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。本文件詳細說明如何在RHEL 9.0上啟用NVMe、並ONTAP 將ANA用作目標的內核NVMe多重路徑。
+RHEL 9.0支援NVMe（包括NVMe / FC和NVMe / TCP）、並具備ONTAP 非對稱命名空間存取（ANA）功能、可在不間斷的儲存容錯移轉（SFO）上執行。ANA是與NVM環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。使用此程序、您可以使用 RHEL 9.0 上的 ANA 和 ONTAP 作為目標、來啟用內核心 NVMe 多重路徑的 NVMe 。
 
 如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
 
@@ -176,7 +176,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 --
 .Marvell / QLogic
 --
-RHEL 9.0 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式、是 ONTAP 支援的關鍵。
+RHEL 9.0 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。
 
 .步驟
 . 確認您執行的是支援的介面卡驅動程式和韌體版本：

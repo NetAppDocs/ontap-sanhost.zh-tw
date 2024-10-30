@@ -19,9 +19,9 @@ summary: 說明如何為採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 設
 
 
 [role="lead"]
-含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server （ SLES ） 15 SP5 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FCP 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。
+含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server 15 SP5 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FCP 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。
 
-下列支援適用於 ONTAP 15 SP5 的 NVMe 主機組態：
+以下支援適用於採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 的 NVMe 主機組態：
 
 * NVMe和SCSI流量都可以在相同的共存主機上執行。因此、對於 SCSI LUN 、您可以為 SCSI mpath 裝置設定 dm-multipath 、而您可以使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
 * 支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生的 NetApp 外掛程式 `nvme-cli` 套件會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
@@ -42,7 +42,7 @@ summary: 說明如何為採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 設
 == 已知限制
 
 * 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
-* 沒有 `sanlun` 支援 NVMe 。因此、在 SLES 15 SP5 主機上、無法為 NVMe 提供主機公用程式支援。您可以仰賴原生 NVMe - CLI 套件中的 NetApp 外掛程式來執行所有 NVMe 傳輸。
+* NVMe 不 `sanlun`支援。因此、在 SUSE Linux Enterprise Server 15 SP5 主機上、 NVMe 無法使用主機公用程式支援。您可以使用原生 NVMe CLI 套件中的 NetApp 外掛程式來傳輸所有 NVMe 傳輸。
 
 
 
@@ -156,7 +156,7 @@ cat /sys/class/scsi_host/host*/nvme_info
 * 輸出範例 * ：
 
 +
-在此範例中、會啟用一個啟動器連接埠、並與兩個目標生命體連線。
+在以下範例中、會啟用一個啟動器連接埠、並與兩個目標生命體連線。
 
 +
 [listing, subs="+quotes"]
@@ -200,8 +200,10 @@ FCP CMPL: xb 0000159d Err 000135c3
 --
 .Marvell / QLogic
 --
+SUSE Linux Enterprise Server 15 SP5 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。
+
 .步驟
-. SLES 15 SP5 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：
+. 確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]
 ----
@@ -586,7 +588,7 @@ Device           Vserver                   Namespace Path                       
 
 == 建立持續探索控制器
 
-從 ONTAP 9.11.1 開始、您可以使用下列程序、為 SLES 15 SP5 主機建立持續探索控制器（ PDC ）。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除案例、以及探索記錄頁面資料的變更。
+從 ONTAP 9 。 11.1 開始、您可以為 SUSE Linux Enterprise Server 15 SP5 主機建立持續探索控制器（ PDC ）。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除案例、以及探索記錄頁面資料的變更。
 
 .步驟
 . 確認探索記錄頁面資料可用、並可透過啟動器連接埠和目標 LIF 組合擷取：
@@ -820,7 +822,7 @@ Vserver UUID: 48391d66-c0a6-11ec-aaa5-d039ea165514
 
 == 設定安全的頻內驗證
 
-從 ONTAP 9.12.1 開始、在 SLES 15 SP5 主機和 ONTAP 控制器之間、透過 NVMe / TCP 和 NVMe / FC 支援安全頻內驗證。
+從 ONTAP 9 。 12.1 開始、在您的 SUSE Linux Enterprise Server 15 SP5 主機和 ONTAP 控制器之間、透過 NVMe / TCP 和 NVMe / FC 支援安全頻內驗證。
 
 若要設定安全驗證、每個主機或控制器都必須與相關聯 `DH-HMAC-CHAP` 金鑰、這是 NVMe 主機或控制器的 NQN 組合、以及管理員設定的驗證密碼。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
 
@@ -837,7 +839,7 @@ Vserver UUID: 48391d66-c0a6-11ec-aaa5-d039ea165514
 ----
 cat /etc/nvme/hostnqn
 ----
-. 為 SLES15 SP5 主機產生 dhchap 金鑰：
+. 為 SUSE Linux Enterprise Server 15 SP5 主機產生 dhchap 金鑰：
 +
 [listing]
 ----
@@ -1042,4 +1044,4 @@ DHHC-
 
 == 已知問題
 
-在 ONTAP 版本中、 SLES 15 SP5 沒有已知問題。
+使用 ONTAP 版本的 SUSE Linux Enterprise Server 15 SP5 沒有已知問題。

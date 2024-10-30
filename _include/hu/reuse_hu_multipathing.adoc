@@ -2,4 +2,6 @@
 :allow-uri-read: 
 
 
-您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。以下各節提供LUN對應ASA 至不支援ASA角色的多重路徑輸出範例。
+您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。
+
+下列各節提供對應至 ASA 和非 ASA 角色之 LUN 的多重路徑輸出範例。

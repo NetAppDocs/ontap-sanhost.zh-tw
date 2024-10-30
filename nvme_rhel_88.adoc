@@ -237,17 +237,21 @@ FCP CMPL: xb 00000821 Err 00012fcd
 --
 .適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡
 --
+RHEL 8.8 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正。這些修正對於 ONTAP 支援至關重要。
+
 .步驟
-. RHEL 8.8 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新上游修正。確認您執行的是支援的介面卡驅動程式和韌體版本：
+確認您執行的是支援的介面卡驅動程式和韌體版本：
+
 +
+
 [listing]
 ----
 # cat /sys/class/fc_host/host*/symbolic_name
 ----
-+
-* 輸出範例 *
++ * 輸出範例 *
 
 +
+
 [listing]
 ----
 QLE2772 FW:v9.10.11 DVR:v10.02.07.900-k-debug

@@ -13,7 +13,7 @@
 # chkconfig multipathd on
 # /etc/init.d/multipathd start
 ----
- `multipath.conf`除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要直接將任何項目新增至檔案。若要排除不想要的裝置、請 `multipath.conf`將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> ：
+除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要直接將任何項目新增至 `multipath.conf`檔案。若要排除不想要的裝置、請 `multipath.conf`將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> ：
 
 [listing]
 ----
@@ -28,7 +28,7 @@ blacklist {
 以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
-. 執行下列命令來判斷WWID：
+. 判斷 WWID ：
 +
 [listing]
 ----
@@ -36,7 +36,7 @@ blacklist {
 360030057024d0730239134810c0cb833
 ----
 +
-`sda` 是我們需要新增至黑名單的本機 SCSI 磁碟。
+`sda`是您要新增至黑名單的本機 SCSI 磁碟。
 
 . 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
 +

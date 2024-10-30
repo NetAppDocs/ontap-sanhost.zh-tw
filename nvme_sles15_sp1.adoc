@@ -18,16 +18,16 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 [role="lead"]
 您可以在執行 SUSE Linux Enterprise Server 15 SP1 和 ONTAP 的主機上、設定 NVMe over Fibre Channel （ NVMe / FC ）作為目標。
 
-下列版本的SLES支援NVMe或FC ONTAP ：
+適用於下列版本的 SUSE Linux Enterprise Server 的 ONTAP 9 6 或更新版本支援 NVMe / FC ：
 
-* SLES15 SP1
+* SUSE Linux Enterprise Server 15 SP1
 +
-SLES15 SP1主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行NVMe/FC和FCP流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。
+SUSE Linux Enterprise Server 15 SP1 主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。
 
 +
 如需支援的組態與版本最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
 
-* NVMe - CLI套件中包含原生的NVMe / FC自動連線指令碼。您可以在SLES15 SP1上使用原生的內建lfc驅動程式。
+* NVMe - CLI套件中包含原生的NVMe / FC自動連線指令碼。您可以在 SUSE Linux Enterprise Server 15 SP1 上使用原生收件匣 lpfc 驅動程式。
 
 
 
@@ -38,12 +38,12 @@ SLES15 SP1主機可透過相同的光纖通道啟動器介面卡連接埠、同�
 
 
 
-== 在SLES15 SP1上啟用NVMe/FC
+== 在 SUSE Linux Enterprise Server 15 SP1 上啟用 NVMe / FC
 
-. 升級至建議的SLES15 SP2 MU核心
+. 升級至建議的 SUSE Linux Enterprise Server 15 SP2 MU 核心
 . 升級至建議的NVMe-CLI MU版本。
 +
-此NVMe CLI套件包含原生的NVMe / FC自動連線指令碼、因此您不需要在SLES15 SP1主機上安裝Broadcom提供的外部NVMe / FC自動連線指令碼。此套件也包含ONTAP 啟用NVMe多重路徑循環負載平衡的「支援」（esrose-round-load balancing）規則、ONTAP 以及適用於各種類型的NetApp外掛程式。
+此 NVMe - CLI 套件包含原生的 NVMe / FC 自動連線指令碼、因此您不需要在 SUSE Linux Enterprise Server 15 SP1 主機上安裝 Broadcom 提供的外部 NVMe / FC 自動連線指令碼。此套件也包含ONTAP 啟用NVMe多重路徑循環負載平衡的「支援」（esrose-round-load balancing）規則、ONTAP 以及適用於各種類型的NetApp外掛程式。
 
 +
 [listing]
@@ -51,7 +51,7 @@ SLES15 SP1主機可透過相同的光纖通道啟動器介面卡連接埠、同�
 # rpm -qa | grep nvme-cli
 nvme-cli-1.8.1-6.9.1.x86_64
 ----
-. 在NS15 SP1主機上、檢查位於「/etc/nape/hostnqn」的主機NQN字串、並確認其符合ONTAP 位於該支援陣列上對應子系統的主機NQN字串。例如：
+. 在 SUSE Linux Enterprise Server 15 SP1 主機上、檢查主機 NQN 字串 `/etc/nvme/hostnqn`、並確認它符合 ONTAP 陣列上對應子系統的主機 NQN 字串。例如：
 +
 [listing]
 ----

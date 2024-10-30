@@ -26,8 +26,7 @@ NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysu
 
 NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
-.您需要的產品
-如果您目前已安裝 Linux Unified Host Utilities 版本、您應該升級或移除該版本、然後使用下列步驟來安裝最新版本。
+如果您目前已安裝 Linux Unified Host Utilities 版本、您應該升級或移除該版本、然後依照下列步驟安裝最新版本。
 
 .步驟
 . 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
@@ -120,7 +119,7 @@ NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路�
 
 === 非 ASA 組態
 
-對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為「主動/最佳化」、表示它們是由集合體所在的控制器提供服務。優先順序較低的路徑為作用中、但未最佳化、因為它們是從不同的控制器提供。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
+對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
 
 .範例
 下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
@@ -138,7 +137,7 @@ size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   |- 15:0:1:35 sdbx  68:176  active ready running
 ----
 
-NOTE: 請勿使用過多的路徑來通往單一LUN。不需要超過四個路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+NOTE: 單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
 
 
 
@@ -157,7 +156,7 @@ Oracle Linux 9.3 作業系統可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 
 # chkconfig multipathd on
 # /etc/init.d/multipathd start
 ----
- `multipath.conf`除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要直接將任何項目新增至檔案。若要排除不想要的裝置、請 `multipath.conf`將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> ：
+除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要直接將任何項目新增至 `multipath.conf`檔案。若要排除不想要的裝置、請 `multipath.conf`將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> ：
 
 [listing]
 ----
@@ -172,7 +171,7 @@ blacklist {
 以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
-. 執行下列命令來判斷WWID：
+. 判斷 WWID ：
 +
 [listing]
 ----
@@ -180,7 +179,7 @@ blacklist {
 360030057024d0730239134810c0cb833
 ----
 +
-`sda` 是我們需要新增至黑名單的本機 SCSI 磁碟。
+`sda`是您要新增至黑名單的本機 SCSI 磁碟。
 
 . 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
 +

@@ -44,7 +44,7 @@ summary: 如何針對RHEL 8.3設定ONTAP NVMe / FC主機以使用功能
 . 在伺服器上安裝Red Hat Enterprise Linux 8.3 GA。
 . 如果您要使用從 RHEL 8.2 升級至 RHEL 8.3 `yum update/upgrade` 命令、您的 `/etc/nvme/host*` 檔案可能會遺失。若要避免檔案遺失、請使用下列程序：
 +
-.步驟
+.顯示範例輸出
 [%collapsible]
 ====
 .. 備份您的「/etc/NVMe / host*」檔案。

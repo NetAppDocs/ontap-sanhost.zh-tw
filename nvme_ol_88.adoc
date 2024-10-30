@@ -22,7 +22,7 @@ Oracle Linux （ OL ） 8.8 支援 NVMe over Fabrics （ NVMe over Fabric 、 NV
 
 * 支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生的 NetApp 外掛程式 `nvme-cli` 套件會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
 * NVMe和SCSI流量都可以在相同的共存主機上執行。因此、對於 SCSI LUN 、您可以為 SCSI mpath 裝置設定 dm-multipath 、而您可以使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
-* 不支援NVMe的sanlun。因此、 OL 8.8 主機上不支援 NVMe 型主機公用程式。您可以仰賴原生內建的 NetApp 外掛程式 `nvme-cli` 適用於所有 NVMe 傳輸的套件。
+* 不支援NVMe的sanlun。因此、 OL 8.8 主機上不支援 NVMe 型主機公用程式。您可以使用原生套件中隨附的 NetApp 外掛程式 `nvme-cli`來傳輸所有 NVMe 傳輸。
 
 
 如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
@@ -240,8 +240,10 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 --
 .適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡
 --
+OL 8.8 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。
+
 .步驟
-. OL 8.8 GA 核心隨附的原生收件匣 qla2xxx 驅動程式具有 ONTAP 支援所需的最新修正程式。確認您執行的是支援的介面卡驅動程式和韌體版本：
+. 確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]
 ----

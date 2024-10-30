@@ -16,7 +16,7 @@ summary: 您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 VMware vSphere
 
 
 [role="lead"]
-針對 RHEL 、 OL 和 SLES 主機的任何 NVMe 故障進行疑難排解之前、請先確認您執行的組態符合互通性對照表工具（ IMT ）規格、然後繼續後續步驟、以偵錯任何主機端問題。
+針對 RHEL 、 OL 和 SUSE Linux Enterprise Server 主機的任何 NVMe 故障進行疑難排解之前、請先確認您執行的組態符合互通性對照表工具（ IMT ）規格、然後繼續後續步驟、以偵錯任何主機端問題。
 
 
 NOTE: 疑難排解指示不適用於 AIX 、 Windows 和 ESXi 主機。

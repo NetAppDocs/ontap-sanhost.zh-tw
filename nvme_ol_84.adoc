@@ -32,7 +32,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 == 功能
 
 * Oracle Linux 8.4預設會啟用NVMe名稱區的內核NVMe多重路徑。
-* 搭配Oracle Linux 8.4、 `nvme-fc auto-connect` 指令碼包含在原生中 `nvme-cli` 套件：您可以仰賴這些原生的自動連線指令碼、而非安裝外部廠商提供的外接式自動連線指令碼。
+* 在 Oracle Linux 8.4 中、 `nvme-fc auto-connect`指令碼會包含在原生 `nvme-cli`套件中。您可以使用這些原生自動連線指令碼、而非安裝外部廠商提供的外箱自動連線指令碼。
 * Oracle Linux 8.4是原生的 `udev` 規則是在中提供的一部分 `nvme-cli` 套件、可針對NVMe多重路徑啟用循環資源負載平衡。因此、您不再需要手動建立此規則。
 * 有了Oracle Linux 8.4、NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是通常部署的主機組態。因此、您可以像往常一樣為SCSI LUN設定dm-multipaths、以產生mpath裝置、而NVMe多重路徑則可用來設定NVMe多重路徑裝置（例如、 `/dev/nvmeXnY`）。
 * 使用Oracle Linux 8.4、原生NetApp外掛程式 `nvme-cli` 套件能夠顯示ONTAP 各種細節及ONTAP 功能不完整的命名空間。
@@ -217,8 +217,10 @@ NOTE: 這不適用於 Qlogic NVMe / FC 主機。
 
 == 設定適用於NVMe / FC的Marvell / QLogic FC介面卡
 
+OL 8.4 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。
+
 .步驟
-. 確認您執行的是支援的介面卡驅動程式和韌體版本。OL 8.4 GA核心隨附的原生內建qla2xxx驅動程式、提供ONTAP 最新的上游修正程式、是支援此功能的重要關鍵。
+. 確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]
 ----

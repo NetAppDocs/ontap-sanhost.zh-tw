@@ -53,7 +53,7 @@ NOTE: NetApp會繼續與Host Utilities合作、在初次發行後新增功能支
 
 == 已在此版本中修正
 
-執行時發生間歇性主機作業系統故障問題 `sanlun lun show -p` 在 SLES12SP1 、 OL7.2 、 RHEL7.2 及 RHEL 6.8 中的命令在此版本中已修正。
+在 SUSE Linux Enterprise Server 12 SP1 、 OL 7.2 、 RHEL 7.2 和 RHEL 6.8 中執行命令時、發生間歇性主機作業系統故障問題 `sanlun lun show -p`、在此版本中已修正。
 
 
 

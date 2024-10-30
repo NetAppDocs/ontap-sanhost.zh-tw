@@ -16,7 +16,7 @@ summary: 說明如何針對SUSE Linux Enterprise Server 15 SP2 ONTAP 搭配使�
 
 
 [role="lead"]
-支援NVMe/FC ONTAP 的版本可在支援使用支援支援支援支援支援支援支援支援支援的版本9.6及更新版本（含SLES15 SP2）。SLES15 SP2主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行NVMe/FC和FCP流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。
+ONTAP 9 6 及更高版本支援 NVMe / FC 搭配 SUSE Linux Enterprise Server 15 SP2 。SUSE Linux Enterprise Server 15 SP2 主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。
 
 如需支援的組態與版本最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
 
@@ -31,9 +31,9 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 
 
-== 在SLES15 SP2上啟用NVMe / FC
+== 在 SUSE Linux Enterprise Server 15 SP2 上啟用 NVMe / FC
 
-. 升級至建議的SLES15 SP2 MU核心版本。
+. 升級至建議的 SUSE Linux Enterprise Server 15 SP2 MU 核心版本。
 . 升級原生的NVMe-CLI套件。
 +
 這套原生的NVMe CLI套件包含NVMe / FC自動連線指令碼ONTAP 、即支援NVMe多重路徑循環負載平衡的支援、以及ONTAP NetApp的用於擴充名稱空間的外掛程式。
@@ -44,7 +44,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 # rpm -qa|grep nvme-cli
 nvme-cli-1.10-2.38.x86_64
 ----
-. 在NS15 SP2主機上、檢查位於「/etc/nexe/hostnqn」的主機NQN字串、並驗證其是否與ONTAP 位於該支援陣列上對應子系統的主機NQN字串相符。例如：
+. 在 SUSE Linux Enterprise Server 15 SP2 主機上、檢查主機 NQN 字串 `/etc/nvme/hostnqn`、並確認它符合 ONTAP 陣列上對應子系統的主機 NQN 字串。例如：
 +
 [listing]
 ----

@@ -16,7 +16,7 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 
 
 [role="lead"]
-採用ANA（非對稱命名空間存取）的SUSE Linux Enterprise Server 15 SP3（SLES15 SP3）支援NVMe over Fabric或NVMe（包括NVMe/FC及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。如需啟用NVMe的詳細資料、請ONTAP 參閱此處以ANA on SLS15 SP3和以之為目標的內核NVMe多重路徑。
+SUSE Linux Enterprise Server 15 SP3 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。使用此程序、您可以在 SUSE Linux Enterprise Server 15 SP3 和 ONTAP 上使用 ANA 作為目標、以核心內建 NVMe 多重路徑來啟用 NVMe 。
 
 請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得所支援組態的正確詳細資料。
 
@@ -24,8 +24,8 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 
 == 功能
 
-* SLES15 SP3支援NVMe/FC及其他傳輸。
-* 不支援NVMe的sanlun。因此、在SLES15 SP3上、不支援NVMe的Luhu。您可以改用原生NVMe CLI中隨附的NetApp外掛程式來取得相同的功能。這應該適用於所有NVMe傳輸。
+* SUSE Linux Enterprise Server 15 SP3 支援 NVMe / FC 及其他傳輸。
+* 不支援NVMe的sanlun。因此、 SUSE Linux Enterprise Server 15 SP3 不支援 Luhu NVMe 。您可以使用原生 NVMe CLI 套件中隨附的 NetApp 外掛程式來執行 NVMe 。這應該支援所有 NVMe 傳輸。
 * NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是客戶最常部署的主機組態。因此、對於SCSI而言、您可以像往常一樣為SCSI LUN設定「dm-multipath"、以產生mpath裝置、而NVMe多重路徑則可用於在主機上設定NVMe多重路徑裝置。
 
 
@@ -39,7 +39,7 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 
 == 啟用內核NVMe多重路徑
 
-核心內建NVMe多重路徑已在SLES主機（例如、SLES15 SP3）上預設啟用。因此、此處不需要其他設定。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得所支援組態的正確詳細資料。
+在 SUSE Linux Enterprise Server 主機（例如 SUSE Linux Enterprise Server 15 SP3 ）上、預設已啟用核心內建 NVMe 多重路徑。因此、此處不需要其他設定。如需支援組態的詳細資訊、請參閱link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
 
 
 
@@ -47,7 +47,7 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 
 請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得所支援組態的正確詳細資料。
 
-. 確認您已在SLES15 SP3 MU主機上安裝必要的核心與NVMe CLI MU套件。
+. 確認您已在 SUSE Linux Enterprise Server 15 SP3 MU 主機上安裝必要的核心和 NVMe CLI MU 套件。
 +
 範例：
 
@@ -173,7 +173,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Online
 Online
 ----
-. 確認NVMe / FC啟動器連接埠已啟用、而且您可以看到目標連接埠、而且所有連接埠都已啟動並正在執行。在此範例中、只會啟用1個啟動器連接埠、並與輸出中所示的兩個目標LIF連線：
+. 確認已啟用 NVMe / FC 啟動器連接埠、您可以看到目標連接埠、而且所有連接埠都已啟動並在執行中。+ 在下列範例中、只有一個啟動器連接埠已啟用、並與兩個目標生命體連線：
 +
 [listing, subs="+quotes"]
 ----
@@ -233,7 +233,7 @@ options lpfc lpfc_sg_seg_cnt=256
 
 === Marvell / QLogic
 
-較新版本的SLES15 SP3 MU核心隨附的原生內建qla2xxx驅動程式、具有最新的上游修正程式、是ONTAP 支援此功能不可或缺的要素。
+較新的 SUSE Linux Enterprise Server 15 SP3 MU 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。
 
 . 請確認您執行的是支援的介面卡驅動程式和韌體版本、例如：
 +
