@@ -16,7 +16,7 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 
 
 [role="lead"]
-SUSE Linux Enterprise Server 15 SP3 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。使用此程序、您可以在 SUSE Linux Enterprise Server 15 SP3 和 ONTAP 上使用 ANA 作為目標、以核心內建 NVMe 多重路徑來啟用 NVMe 。
+支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸），適用於含 ANA （非對稱命名空間存取）的 SUSE Linux Enterprise Server 15 SP3 。ANA 是 NVMe 環境中的 ALUA 等效產品，目前是以核心內建 NVMe 多重路徑來實作。使用此程序、您可以在 SUSE Linux Enterprise Server 15 SP3 和 ONTAP 上使用 ANA 作為目標、以核心內建 NVMe 多重路徑來啟用 NVMe 。
 
 請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得所支援組態的正確詳細資料。
 
@@ -25,7 +25,7 @@ SUSE Linux Enterprise Server 15 SP3 搭配 ANA （非對稱命名空間存取）
 == 功能
 
 * SUSE Linux Enterprise Server 15 SP3 支援 NVMe / FC 及其他傳輸。
-* 不支援NVMe的sanlun。因此、 SUSE Linux Enterprise Server 15 SP3 不支援 Luhu NVMe 。您可以使用原生 NVMe CLI 套件中隨附的 NetApp 外掛程式來執行 NVMe 。這應該支援所有 NVMe 傳輸。
+* 不支援NVMe的sanlun。因此、 SUSE Linux Enterprise Server 15 SP3 不支援 Luhu NVMe 。您可以仰賴原生 NVMe - CLI 套件中隨附的 NetApp 外掛程式來執行 NVMe - of 。這應該支援所有 NVMe 傳輸。
 * NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是客戶最常部署的主機組態。因此、對於SCSI而言、您可以像往常一樣為SCSI LUN設定「dm-multipath"、以產生mpath裝置、而NVMe多重路徑則可用於在主機上設定NVMe多重路徑裝置。
 
 

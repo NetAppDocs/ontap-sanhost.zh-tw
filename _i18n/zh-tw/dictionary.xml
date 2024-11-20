@@ -2183,7 +2183,6 @@
   <block id="8f9d6e3424d24a4eceeb55656ad594c9" category="paragraph">自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。大部分關於「不完整」的ASM組態ONTAP 都使用外部備援、這表示資料保護是由外部陣列提供、而ASM不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。請參閱 <block ref="85b4e48fbc653b43bc1d23927e9a43d3" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
   <block id="b8aace167dae62ec049916430a97c733" category="paragraph">NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。</block>
   <block id="3b8031b77b02d24160100543956f1809" category="list-text">安裝軟體套件：</block>
-  <block id="479c56a6c2e71cd83eb8b7b82e7309de" category="admonition">這不適用於 Qlogic NVMe / FC 主機。</block>
   <block id="af1ef0e83aa109eafcb65ba8de6fe152" category="paragraph">您應該隨時檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。</block>
   <block id="6661a67145b2acf190d629ce621384e0" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.7</block>
   <block id="15d47787709114478b06814b72bcf21a" category="paragraph">當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
@@ -2949,7 +2948,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0c1b72e395c1933da2da0ebb8f7fe9a0" category="section-title">啟用 NVMe 服務</block>
   <block id="f409d4c6497d1c2cec5c498fdcdaf32f" category="paragraph">中包含兩個 NVMe / FC 開機服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 不過、套件（ _only_ ）<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 可在系統開機期間啟動； <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 未啟用。因此、您需要手動啟用<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 以在系統開機期間啟動。</block>
   <block id="404c9db3810293328aa6b6e3e3d75b2f" category="list-text">啟用<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>：</block>
-  <block id="46bb931cbfa3a27a99c1f1877eeee986" category="list-text">請確認<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> 和<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> 系統開機後正在執行：</block>
   <block id="baada05b728885e319c5403cda805aab" category="paragraph">您可以使用下列程序來設定 NVMe / TCP 。</block>
   <block id="5f4f678aad12f1e93623021404b1cd76" category="list-text">確認所有其他的 NVMe / TCP 啟動器目標 LIF 組合都能成功擷取探索記錄頁面資料：</block>
   <block id="99c66119d6b08daedeeade4ea3314f28" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨所有節點支援的 NVMe / TCP 啟動器目標生命體執行命令：</block>
@@ -3325,7 +3323,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="26adbe58d014b17e22edee324b7c14d8" category="paragraph">第一次建立<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：</block>
   <block id="f4db575c389511be5cb287f3760fe673" category="paragraph">ONTAP 會在識別控制器資料中報告 8 的 MDTS （ MAX Data 傳輸大小）。這表示最大 I/O 要求大小最多可達 1MB 。若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須將<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block><block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數值從預設值 64 增加至 256 。</block>
   <block id="524b08ad750352e65f141bb6a45404ad" category="list-text">將<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數設定為 256 ：</block>
-  <block id="ed01a5029bce78f038174f31df740f89" category="list-text">執行<block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block>命令、然後重新啟動主機：</block>
   <block id="3130175d0e970c2fe403eca33806ba0f" category="list-text">確認<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>為 256 ：</block>
   <block id="032f906dd9faf121059404519f7da75d" category="admonition">非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="ee227d3a1852592cb484550c6a7d76a5" category="paragraph">CentOS 7.0 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：</block>
@@ -3470,9 +3467,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0a38d80a54a3cbcd404078871c0204bf" category="list-text">在 Oracle Linux 8.6 中、<block ref="dafde1b5ed9f22cccd76aeeb9844345b" prefix=" " category="inline-code"></block>指令碼會包含在原生<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套件中。您可以使用這些原生自動連線指令碼、而非安裝外部廠商提供的外箱自動連線指令碼。</block>
   <block id="a3211afb3015341872009de7e0b5d158" category="paragraph">OL 8.6 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="333871cd4dbfc93b7840c7363d16f061" category="paragraph">OL 8.7 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="e79d90bfa5297bb8fe03b326688ccfc8" category="list-text">不支援NVMe的sanlun。因此、 OL 8.8 主機上不支援 NVMe 型主機公用程式。您可以使用原生套件中隨附的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>來傳輸所有 NVMe 傳輸。</block>
   <block id="bffd2efd5a168522dffda8549974b3a3" category="paragraph">OL 8.8 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="9da555ecc540f1802d50ca5356e908ed" category="list-text">不支援NVMe的sanlun。因此、 Oracle Linux 8.9 主機上不支援 NVMe 型主機公用程式。您可以使用原生套件中隨附的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>來傳輸所有 NVMe 傳輸。</block>
   <block id="e42d3f24f75c5c4d834f1a77be214e1e" category="paragraph">Oracle Linux 8.9 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="161dfc4f5ceae4aff68876597b53feba" category="paragraph">OL 9.0 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="d9a48615491837ccb262ccfb1d3ccf8a" category="paragraph">OL 9.1 GA 核心隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
@@ -3495,7 +3490,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="b9878305790c185df1d9210983c79621" category="paragraph">RHEL 9.2 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="8677aa1aa4fd519ff6f08a97a120426f" category="paragraph">RHEL 9.3 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="35a282ef807a49dea44ebc22c4bd955c" category="paragraph">RHEL 9.4 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新修正。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="e232deac3a024481fdeba697b5eff225" category="paragraph">NVMe / TCP 沒有自動連線功能。因此、您應該使用下列程序、手動執行 NVMe / TCP 連線或全部連線功能、以探索 NVMe / TCP 子系統和命名空間。</block>
   <block id="ffea0a6bb53a365cb75f285c35bf133f" category="admonition">從 RHEL 9.4 開始、 NVMe / TCP 逾時的預設設定<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block>會關閉。這表示重試次數沒有限制（無限期重試）。因此，使用或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項 -l ）時不需要手動配置特定的<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block>超時持續時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。</block>
   <block id="4f8c1ea7997432c2fde7171797279304" category="paragraph">適用於下列版本的 SUSE Linux Enterprise Server 的 ONTAP 9 6 或更新版本支援 NVMe / FC ：</block>
   <block id="473733802c02f67f489689f787461e62" category="list-text">SUSE Linux Enterprise Server 15 SP1</block>
@@ -3509,21 +3503,17 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="136877afba6cd88b56191a2a751f0628" category="section-title">在 SUSE Linux Enterprise Server 15 SP2 上啟用 NVMe / FC</block>
   <block id="8f7715ff1e79f496bd96a4a4d019f5c9" category="list-text">升級至建議的 SUSE Linux Enterprise Server 15 SP2 MU 核心版本。</block>
   <block id="0d4f69103fe09ba1a74e4bfc1677e48b" category="list-text">在 SUSE Linux Enterprise Server 15 SP2 主機上、檢查主機 NQN 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>、並確認它符合 ONTAP 陣列上對應子系統的主機 NQN 字串。例如：</block>
-  <block id="48efe47adfd29031cbc55a4e35854f86" category="paragraph">SUSE Linux Enterprise Server 15 SP3 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。使用此程序、您可以在 SUSE Linux Enterprise Server 15 SP3 和 ONTAP 上使用 ANA 作為目標、以核心內建 NVMe 多重路徑來啟用 NVMe 。</block>
   <block id="85b5dee687ec27bb7434e2a2f34f6a2c" category="list-text">SUSE Linux Enterprise Server 15 SP3 支援 NVMe / FC 及其他傳輸。</block>
-  <block id="79140e4d9a36850c02c85454875bdb86" category="list-text">不支援NVMe的sanlun。因此、 SUSE Linux Enterprise Server 15 SP3 不支援 Luhu NVMe 。您可以使用原生 NVMe CLI 套件中隨附的 NetApp 外掛程式來執行 NVMe 。這應該支援所有 NVMe 傳輸。</block>
   <block id="58d8be76575f18dd68026469768cff2b" category="paragraph">在 SUSE Linux Enterprise Server 主機（例如 SUSE Linux Enterprise Server 15 SP3 ）上、預設已啟用核心內建 NVMe 多重路徑。因此、此處不需要其他設定。如需支援組態的詳細資訊、請參閱<block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="83607d78876cae59bbbe8438f39a9c46" category="list-text">確認您已在 SUSE Linux Enterprise Server 15 SP3 MU 主機上安裝必要的核心和 NVMe CLI MU 套件。</block>
   <block id="bf58389a3d744908447aac64947d78d5" category="list-text">確認已啟用 NVMe / FC 啟動器連接埠、您可以看到目標連接埠、而且所有連接埠都已啟動並在執行中。+ 在下列範例中、只有一個啟動器連接埠已啟用、並與兩個目標生命體連線：</block>
   <block id="400e4d020a821ddba705ebe3abd6eb55" category="paragraph">較新的 SUSE Linux Enterprise Server 15 SP3 MU 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="0d8e7268070dc00652a347fcf8d607cb" category="paragraph">以下支援適用於採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP4 的 NVMe 主機組態：</block>
-  <block id="1b2bba9f174515e4a8da9876e52af630" category="list-text">NVMe 不支援 sanlun 。因此、在 SUSE Linux Enterprise Server 15 SP5 主機上、 NVMe 無法使用主機公用程式支援。您可以使用原生 NVMe CLI 套件中的 NetApp 外掛程式來傳輸所有 NVMe 傳輸。</block>
   <block id="010462c6e848d9dcefb0739b5564e13d" category="paragraph">在以下範例中、會啟用一個啟動器連接埠、並與兩個目標生命體連線。</block>
   <block id="8af7f6f88a6ddca9c68aef2e2af3f841" category="paragraph">SUSE Linux Enterprise Server 15 SP4 核心隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="edd423198390de5fd82f035935f4f5f0" category="paragraph">從 ONTAP 9 。 11.1 開始、您可以為 SUSE Linux Enterprise Server 15 SP4 主機建立持續探索控制器（ PDC ）。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除案例、以及探索記錄頁面資料的變更。</block>
   <block id="03810f18085e1ae7f3de8ef4fb2aa9ad" category="paragraph">從 ONTAP 9 。 12.1 開始、在您的 SUSE Linux Enterprise Server 15 SP4 主機和 ONTAP 控制器之間、透過 NVMe / TCP 和 NVMe / FC 支援安全的頻內驗證。</block>
   <block id="90919d5364999b86c4bec9891be40dd2" category="list-text">為 SUSE Linux Enterprise Server 15 SP4 主機產生 dhchap 金鑰：</block>
-  <block id="9f6df70fce148af3f98f91673f5e78c1" category="paragraph">含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server 15 SP5 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FCP 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="c0218d2d837eb6d7b4777eae58402583" category="paragraph">以下支援適用於採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP5 的 NVMe 主機組態：</block>
   <block id="a63376cc1e65240c1d85028236c83e45" category="list-text">NVMe 不<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>支援。因此、在 SUSE Linux Enterprise Server 15 SP5 主機上、 NVMe 無法使用主機公用程式支援。您可以使用原生 NVMe CLI 套件中的 NetApp 外掛程式來傳輸所有 NVMe 傳輸。</block>
   <block id="bb01c1fe5cdf8e0af1f7f7ed7119c36a" category="paragraph">SUSE Linux Enterprise Server 15 SP5 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
@@ -3547,20 +3537,81 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7d3d6c9fc8d341eaa26d83545052db7b" category="paragraph">使用 ONTAP 版本的 SUSE Linux Enterprise Server 15 SP6 沒有已知問題。</block>
   <block id="ddd05bd427ff935c5fc7e7ee226415f1" category="summary">說明如何為採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP6 設定 NVMe / FC 。</block>
   <block id="d147fb9f4a20a8d22dfe8c5247b12c27" category="doc">適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP6 的 NVMe 主機組態</block>
-  <block id="783e571ac12dafdd120c536c5ff9a840" category="paragraph">含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server 15 SP6 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FCP 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="dbb7e5b9df8e9f022cb88ee582377faf" category="paragraph">以下支援適用於採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP6 的 NVMe 主機組態：</block>
-  <block id="bd7dfb998631c506e571e3486aea8f08" category="list-text">NVMe 不<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>支援。因此、在 SUSE Linux Enterprise Server 15 SP6 主機上、 NVMe 無法使用主機公用程式支援。您可以使用原生套件中隨附的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>來傳輸所有 NVMe 傳輸。</block>
   <block id="8e57eb1e63e4d9e256aa86287e04527a" category="paragraph">SUSE Linux Enterprise Server 15 SP6 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="5d62a04976a77963c75a2f5fec94c3e6" category="admonition">從 SUSE Linux Enterprise Server 15 SP6 開始、 NVMe / TCP 逾時的預設設定<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block>就會關閉。這表示重試次數沒有限制（無限期重試）。因此，使用或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項<block ref="269889131ee4793a82191b78a2eb60e3" prefix=" " category="inline-code"></block>）時，無需手動配置特定的<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block>超時持續時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>。此外、在發生路徑故障時、 NVMe / TCP 控制器不會發生逾時、也不會無限期保持連線。</block>
-  <block id="fe357f1934a08be333f29d7a720da31b" category="paragraph">請使用下列程序來驗證 NVMe 。</block>
-  <block id="46536aadeae5a901d0c4fee2f98a24c8" category="paragraph"><block ref="7ee98ee108f160c92a9c1dd2307ab6a5" prefix="" category="inline-code"></block>* 輸出範例 * ：</block>
-  <block id="13508453bde36604b13a645f53b481d4" category="paragraph"><block ref="bef03e474ce211e47fcb917ac4b0601e" prefix="" category="inline-code"></block>* 輸出範例 * ：</block>
-  <block id="4ce5cb0169ac0842220f13eb7069de90" category="paragraph">從 ONTAP 9 。 11.1 開始、您可以為 SUSE Linux Enterprise Server 15 SP6 主機建立持續探索控制器（ PDC ）。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除案例、以及探索記錄頁面資料的變更。</block>
-  <block id="4a68705fe43b886a6ce4ba26aadfdf1f" category="paragraph">從 ONTAP 9 。 12.1 開始、在您的 SUSE Linux Enterprise Server 15 SP6 主機和 ONTAP 控制器之間、透過 NVMe / TCP 和 NVMe / FC 支援安全頻內驗證。</block>
-  <block id="5dd7e8ba32b3321454a31677ecbace23" category="list-text">為 SUSE Linux Enterprise Server 15 SP6 主機產生 dhchap 金鑰：</block>
-  <block id="a0791d549749003e96f046c67128dc41" category="paragraph">當 ONTAP 控制器組態上有多個 NVMe 子系統可供使用時、您可以搭配命令使用該<block ref="2be2042afe5d55c4305aa3ff91b1ff5f" prefix=" " category="inline-code"></block>檔案<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>。您可以使用<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block>選項來產生 JSON 檔案。如需更多語法選項、請參閱 NVMe Connect All 手冊頁。步驟.設定Json檔案：</block>
-  <block id="a003c33b51a1d4535f37c0e4ff0f0ead" category="paragraph">+ 。顯示範例輸出</block>
-  <block id="a98c59db4379746b91590db622774e28" category="admonition">在上述範例中，<block ref="b4ccff4fcae86dd694df37690970d401" prefix=" " category="inline-code"></block>對應於<block ref="b564e1f3e83c3835c800589da9434401" prefix=" " category="inline-code"></block>，並<block ref="7c5692629f37b2fc3b73d10ecb68180e" prefix=" " category="inline-code"></block>對應至<block ref="c74aa421e1eeec8a71897cfdbf55b4c4" prefix=" " category="inline-code"></block>。。使用組態 JSON 檔案連線至 ONTAP 控制器：</block>
-  <block id="2bc512dabe74e70f47307a2b1b5ff4c4" category="paragraph">+ * 輸出範例 * ：</block>
   <block id="ece05e51adea1b8393f46534993e099e" category="sidebar">15 SP6.</block>
+  <block id="c0cf585b10c1dcbdc84956435ed81a4e" category="admonition">下列步驟不適用於 Qlogic NVMe / FC 主機。</block>
+  <block id="587b796170a9abac4701cd8aa1bb38cb" category="listing-title">輸出範例</block>
+  <block id="8d004d306e9ea55d9ba763c2b1bdeeba" category="list-text">執行<block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block>命令，然後重新啟動主機：</block>
+  <block id="5ef1540d5d4b2b38353f6db29387f1dc" category="paragraph">預期值為 256 。</block>
+  <block id="8b6a5845688d81720a1016c10aa9e843" category="list-text">根據預設，所有新建立的 NVMe 命名空間都會啟用從 ONTAP 9 。 16.1 開始的空間分配。</block>
+  <block id="9ce7ccb7a563810f05fbf6164e2af335" category="section-title">啟用空間分配</block>
+  <block id="81ad1bd3daf2d2592e0b23231ef5c682" category="paragraph">ESXi 8.x 及更新版本支援空間分配。</block>
+  <block id="71593ecd4a2f345a8370df61fb686ae8" category="paragraph">啟用空間分配時，如果命名空間用盡空間， ONTAP 會與主機通訊，表示沒有可用的空間可用於寫入作業；命名空間會保持在線上，並繼續提供讀取作業。當有更多可用空間可用時，寫入作業就會恢復。空間分配也可讓主機執行<block ref="c92fdf55401abf777b4eb053ea6c606b" prefix=" " category="inline-code"></block>（有時稱為<block ref="a32049f307ffa78cf7b4586ac7d98e06" prefix=" " category="inline-code"></block>）作業。取消對應作業可讓主機識別不再需要的資料區塊，因為這些區塊不再包含有效資料。然後、儲存系統就可以取消分配這些資料區塊、以便在其他地方使用這些空間。</block>
+  <block id="87b77f5d21760f2e78b6cef2eb32e5cc" category="inline-link-macro">啟用 ONTAP 儲存系統上的空間分配</block>
+  <block id="a99df67d3f89a1baa57bfcf5c677da6e" category="paragraph"><block ref="39229d8be2166ad80e065c5227b6fd93" category="inline-link-macro-rx"></block>。然後，您應該在 ESXi 主機上執行下列步驟。</block>
+  <block id="31b4aa899c9dd9e850705ce301c77be2" category="list-text">在 ESXi 主機上，確認 DSM 已停用：</block>
+  <block id="664436f4ce3f6d98f6df651147109cff" category="paragraph"><block ref="dc858e51d6de4761e03193e6d9baadfc" prefix="" category="inline-code"></block></block>
+  <block id="0c48e7c4bbc87e64bef6a0afca5676b3" category="paragraph">預期值為 0 。</block>
+  <block id="736e20d43ebb0de5071ca41644488730" category="list-text">啟用 NVMe DSM ：</block>
+  <block id="e63e68670f6caa57aae357d60e7ea92c" category="paragraph"><block ref="5fb81999d6f54088d56d3a83b7e45bb2" prefix="" category="inline-code"></block></block>
+  <block id="c9bec81e64a920c39131bd795dcf5492" category="list-text">確認 DSM 已啟用：</block>
+  <block id="7b4c45ceb018e94a23feffc876757fd9" category="paragraph">預期值為 1 。</block>
+  <block id="f664c687d53cbadf53c910f16307ad27" category="list-text">不支援NVMe的sanlun。因此、 OL 8.8 主機上不支援 NVMe 型主機公用程式。您可以仰賴原生<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套件中隨附的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
+  <block id="5681ca777f3abafe80823417b4bf2991" category="list-text">不支援NVMe的sanlun。因此、 Oracle Linux 8.9 主機上不支援 NVMe 型主機公用程式。您可以仰賴原生<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套件中隨附的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
+  <block id="835146cfecc77bcddbeed80155294c7a" category="paragraph">NVMe / TCP 沒有自動連線功能。您可以改為透過手動執行 NVMe / TCP 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>作業來探索 NVMe / TCP 子系統和命名空間<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block>。</block>
+  <block id="d5c963031ebab3b2bca7a1f55d3518de" category="paragraph">支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸），適用於含 ANA （非對稱命名空間存取）的 SUSE Linux Enterprise Server 15 SP3 。ANA 是 NVMe 環境中的 ALUA 等效產品，目前是以核心內建 NVMe 多重路徑來實作。使用此程序、您可以在 SUSE Linux Enterprise Server 15 SP3 和 ONTAP 上使用 ANA 作為目標、以核心內建 NVMe 多重路徑來啟用 NVMe 。</block>
+  <block id="dbfc330241829f764909c4e2fd6d05a8" category="list-text">不支援NVMe的sanlun。因此、 SUSE Linux Enterprise Server 15 SP3 不支援 Luhu NVMe 。您可以仰賴原生 NVMe - CLI 套件中隨附的 NetApp 外掛程式來執行 NVMe - of 。這應該支援所有 NVMe 傳輸。</block>
+  <block id="300eba3ec960aac99dba9766c398991d" category="list-text">NVMe 不支援 sanlun 。因此、在 SUSE Linux Enterprise Server 15 SP5 主機上、 NVMe 無法使用主機公用程式支援。您可以仰賴原生 NVMe - CLI 套件中的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
+  <block id="160d4596eb5b2d29630ce187c2b4aa3c" category="list-text">驗證<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>系統開機後及<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>是否正在執行：</block>
+  <block id="7414945fbac41316e5d0aad7393f74b9" category="paragraph">含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server 15 SP5 支援 NVMe over Fabrics （ NVMe over Fabrics ）（ NVMe over Fibre Channel ， NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FCP 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
+  <block id="49469b07c93d430dc3e54fe61e9abd10" category="paragraph">含非對稱命名空間存取（ ANA ）的 SUSE Linux Enterprise Server 15 SP6 支援 NVMe over Fabrics （ NVMe over Fabric ， NVMe of ），包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FCP 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
+  <block id="1c6c7aa3050f386e5bf8edffcaf3a543" category="list-text">在同一個共存的主機上執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI 裝置設定 dm-multipath<block ref="9582f77d18d621414e37c3ce239d4688" prefix=" " category="inline-code"></block> ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。</block>
+  <block id="b02cc47bdc380517577bc78954960411" category="list-text">支援 NVMe over TCP （ NVMe / TCP ）和 NVMe / FC 。這讓原生套件中的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>能夠同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。</block>
+  <block id="714ff6bc3ff6c0ece35b4f47d830f9bd" category="list-text">支援 NVMe / TCP 的 TLS 1.3 加密</block>
+  <block id="48e17abfc3f6c9914f377462bce232ac" category="list-text">在 SUSE Linux Enterprise Server 15 SP6 主機上， NetApp<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 主機公用程式不支援 NVMe 型。您可以改用原生套件中的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>來執行所有 NVMe 傳輸。</block>
+  <block id="9ef5b799ce011d54c638a42def1e8725" category="paragraph">您可以為採用 ONTAP 組態的 SUSE Linux Enterprise Server 15 SP6 設定使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 介面卡的 NVMe / FC 。</block>
+  <block id="075601608efdc0f1e8378c136e062dc6" category="paragraph">為 Broadcom / Emulex FC 介面卡設定 NVMe / FC 。</block>
+  <block id="f10d0cce39aa2750ae71108cc93b1371" category="paragraph">為 Marvell/QLogic 介面卡設定 NVMe / FC 。</block>
+  <block id="604dbd1b7d87647f33f14a4f924b3c93" category="section-title">驗證 NVMe 服務</block>
+  <block id="82df088f6ba140ed873ee24f8ff5c346" category="paragraph">從 SUSE Linux Enterprise Server 15 SP6 開始，<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> NVMe / FC 套件隨附的和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>開機服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>會在系統開機期間自動啟用。系統開機完成後，您應該確認開機服務已啟用。</block>
+  <block id="5dc1adc63079845f3cac2caf1db0fa6a" category="list-text">確認<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>已啟用：</block>
+  <block id="f17577127ab2e84c20f714db959353d3" category="paragraph"><block ref="cee298feeb3e213ee36300180a00bd01" prefix="" category="inline-code"></block></block>
+  <block id="a5203704145a9efb5be031a61c0e47e6" category="list-text">確認<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>已啟用：</block>
+  <block id="3c853373f44c095457102f92b570173c" category="paragraph"><block ref="69c22354a230572f55564f96ca4f0aeb" prefix="" category="inline-code"></block></block>
+  <block id="73adc7de0b8ec5250832fc10c3810522" category="paragraph">NVMe / TCP 沒有自動連線功能。您可以改為透過手動執行 NVMe / TCP 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>作業來探索 NVMe / TCP 子系統和命名空間<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block>。</block>
+  <block id="6f6e90e999896f87c906fd2a45c1270c" category="admonition">從 SUSE Linux Enterprise Server 15 SP6 開始、 NVMe / TCP 逾時的預設設定<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block>就會關閉。這表示重試次數沒有限制（無限期重試），而且您不需要在使用或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項<block ref="269889131ee4793a82191b78a2eb60e3" prefix=" " category="inline-code"></block>）時手動設定特定的<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block>逾時時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>。此外、在發生路徑故障時、 NVMe / TCP 控制器不會發生逾時、也不會無限期保持連線。</block>
+  <block id="54fa1b935227c60b90bdcd38d49344ef" category="paragraph">請使用下列程序來驗證具有 ONTAP 組態的 SUSE Linux Enterprise Server 15 SP6 的 NVMe 型。</block>
+  <block id="c5b31fe59f99e4d10f0dca7986c53610" category="paragraph">預期值為「 Y 」。</block>
+  <block id="65f33aa9e048a4ee5a6886f47a845be6" category="paragraph">從 ONTAP 9 。 11.1 開始，您可以為 SUSE Linux Enterprise Server 15 SP6 主機建立持續探索控制器（ PDC ）。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除作業，以及探索記錄頁面資料的變更。</block>
+  <block id="3f5c66ebff3dedbbba01cc8433454c78" category="paragraph">從 ONTAP 9 。 12.1 開始，在 SUSE Linux Enterprise Server 15 SP6 主機和 ONTAP 控制器之間，透過 NVMe / TCP 和 NVMe / FC 支援安全頻內驗證。</block>
+  <block id="3015bfe6dcfb9f46e8339e0b7c1ee3f1" category="paragraph">使用 CLI 設定安全的頻內驗證。</block>
+  <block id="c8ccb805df01f8ade860e946a73e2214" category="list-text">為 SUSE Linux Enterprise Server 15 SP6 主機產生 dhchap 金鑰。</block>
+  <block id="9bb6bb7f0ce3cdd2d8c8f8ca5f438d33" category="paragraph">下列輸出說明<block ref="d7688aca31d2d9a6f7b631fc004ab8a3" prefix=" " category="inline-code"></block>命令參數：</block>
+  <block id="c65c42704db5170625f40433d82919d4" category="example-title">顯示單向組態的輸出範例</block>
+  <block id="e835a444b46a23408ea4f3921d3d467e" category="example-title">顯示雙向組態的輸出範例</block>
+  <block id="4aa464368a6386a95a32e8cae5e30231" category="paragraph">當 ONTAP 控制器組態上有多個 NVMe 子系統可供使用時、您可以搭配命令使用該<block ref="2be2042afe5d55c4305aa3ff91b1ff5f" prefix=" " category="inline-code"></block>檔案<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>。</block>
+  <block id="ec3cc8cd66e88ba73aa637236f68b8e7" category="paragraph">若要產生 JSON 檔案，您可以使用<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block>選項。如需更多語法選項，請參閱 NVMe Connect All 手冊頁。</block>
+  <block id="0cc817fdf178d998506590bcd7f4435a" category="admonition">在上述範例中，<block ref="b4ccff4fcae86dd694df37690970d401" prefix=" " category="inline-code"></block>對應於<block ref="b564e1f3e83c3835c800589da9434401" prefix=" " category="inline-code"></block>，並<block ref="7c5692629f37b2fc3b73d10ecb68180e" prefix=" " category="inline-code"></block>對應至<block ref="c74aa421e1eeec8a71897cfdbf55b4c4" prefix=" " category="inline-code"></block>。</block>
+  <block id="cca9751debdb563a025b1255c382b607" category="section-title">設定傳輸層安全性</block>
+  <block id="6ab36115f46bb64da1b6626f47c3d1a8" category="paragraph">傳輸層安全性（ TLS ）可為 NVMe 主機和 ONTAP 陣列之間的 NVMe 連線提供安全的端對端加密。從 ONTAP 9 。 16.1 開始，您可以使用 CLI 和設定的預先共用金鑰（ PSK ）來設定 TLS 1.3 。</block>
+  <block id="9a8cd16b2c754986b4de5b4a07f17fd0" category="paragraph">您可以在 SUSE Linux Enterprise Server 15 SP6 主機上執行此程序中的步驟，但指定您在 ONTAP 控制器上執行步驟的位置除外。</block>
+  <block id="3b86ef6861ab37460f14c7cca5f2ecf9" category="list-text">檢查主機上是否安裝了以下 ktls-utils ， openssl 和 libopenssl 軟件包：</block>
+  <block id="94af47577475b9842466b2cda14bffae" category="list-text"><block ref="eba606d0a45a6acc38e99cfc11f79ff4" prefix="" category="inline-code"></block></block>
+  <block id="fa09d1fd67990fa52b192b453ee3f411" category="list-text"><block ref="0349a9de91d8d2777180988686f8a790" prefix="" category="inline-code"></block></block>
+  <block id="8e56f9a9cb5971b1d3a66245efd22447" category="list-text">請確認您的設定是否正確<block ref="249576826e2ff72ff374923ff20cddbf" prefix=" " category="inline-code"></block>：</block>
+  <block id="bb29fc4790c7eaf5ae7a9445a08776bf" category="list-text">啟用<block ref="67de54fa2975e1afbfa0e5b44910694e" prefix=" " category="inline-code"></block>以在系統開機時啟動：</block>
+  <block id="edf98b56eb368003a84c3f6e6325bc24" category="list-text">驗證守護程序是否<block ref="67de54fa2975e1afbfa0e5b44910694e" prefix=" " category="inline-code"></block>正在運行：</block>
+  <block id="cc03b98609648131cf98c136c9325ae6" category="list-text">使用產生 TLS PSK<block ref="75260898c7ef0a545e10c9413524db08" prefix=" " category="inline-code"></block> ：</block>
+  <block id="b595664b17c23b9c65800f5f2ee6bd60" category="list-text"><block ref="ff083824b5947cb311fd6336234d2f08" prefix="" category="inline-code"></block></block>
+  <block id="329041f78f097df81a7f8ae854150413" category="list-text"><block ref="f31123afb140e56354d20f4296a62a1a" prefix="" category="inline-code"></block></block>
+  <block id="9a188a453d6f7a4139c805197ffad6d7" category="list-text">在 ONTAP 控制器上，將 TLS PSK 新增至 ONTAP 子系統：</block>
+  <block id="3a6a93137906aeb888c944ff8cd57c5a" category="list-text">將 TLS PSK 插入主機核心金鑰環：</block>
+  <block id="456655754b0c48b034d1fdf59967c5fb" category="admonition">PSK 顯示為「 NVMe1R01 」，因為它使用 TLS 交握演算法的「 identity v1 」。Identity v1 是 ONTAP 唯一支援的版本。</block>
+  <block id="ca320bf6c4ad8f767e85d406ee4fde14" category="list-text">確認 TLS PSK 已正確插入：</block>
+  <block id="17a9f150c8c2ab60092808d0908e820b" category="list-text">使用插入的 TLS PSK 連線至 ONTAP 子系統：</block>
+  <block id="532c0a0166f57d64080032345311e992" category="list-text"><block ref="352b5cd6e4380372116548b2c6dab1a5" prefix="" category="inline-code"></block></block>
+  <block id="798926c594ff5920496900e82fc4f8ee" category="list-text"><block ref="b77dfffb05a37f29ed729db166995be8" prefix="" category="inline-code"></block></block>
+  <block id="8424d580c7f527bd670292899f979c75" category="list-text">新增目標，並驗證 TLS 連線至指定的 ONTAP 子系統：</block>
+  <block id="750e58d680481d7813150837191657cf" category="paragraph"><block ref="f3772228bbdd61b9e99ef34e7e8724df" prefix="" category="inline-code"></block></block>
 </blocks>

@@ -39,7 +39,7 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 == 已知限制
 
 * 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
-* NVMe 不支援 sanlun 。因此、在 SUSE Linux Enterprise Server 15 SP5 主機上、 NVMe 無法使用主機公用程式支援。您可以使用原生 NVMe CLI 套件中的 NetApp 外掛程式來傳輸所有 NVMe 傳輸。
+* NVMe 不支援 sanlun 。因此、在 SUSE Linux Enterprise Server 15 SP5 主機上、 NVMe 無法使用主機公用程式支援。您可以仰賴原生 NVMe - CLI 套件中的 NetApp 外掛程式來執行所有 NVMe 傳輸。
 
 
 
@@ -225,26 +225,33 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 ONTAP 會在識別控制器資料中報告 8 的 MDTS （ MAX Data 傳輸大小）。這表示最大 I/O 要求大小最多可達 1MB 。若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須將 `lpfc` `lpfc_sg_seg_cnt`參數值從預設值 64 增加至 256 。
 
+
+NOTE: 下列步驟不適用於 Qlogic NVMe / FC 主機。
+
 .步驟
 . 將 `lpfc_sg_seg_cnt`參數設定為 256 ：
 +
 [listing]
 ----
-# cat /etc/modprobe.d/lpfc.conf
+cat /etc/modprobe.d/lpfc.conf
+----
++
+.輸出範例
+[listing]
+----
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. 執行 `dracut -f`命令、然後重新啟動主機：
+. 執行 `dracut -f`命令，然後重新啟動主機：
 . 確認 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
++
+預期值為 256 。
 
 
-
-NOTE: 這不適用於 Qlogic NVMe / FC 主機。
 
 
 
@@ -261,7 +268,7 @@ NOTE: 這不適用於 Qlogic NVMe / FC 主機。
 Created symlink /etc/systemd/system/default.target.wants/nvmf-autoconnect.service → /usr/lib/systemd/system/nvmf-autoconnect.service.
 ----
 . 重新啟動主機。
-. 請確認 `nvmf-autoconnect.service` 和 `nvmefc-boot-connections.service` 系統開機後正在執行：
+. 驗證 `nvmf-autoconnect.service`系統開機後及 `nvmefc-boot-connections.service`是否正在執行：
 +
 * 輸出範例： *
 

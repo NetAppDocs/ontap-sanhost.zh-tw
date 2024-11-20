@@ -224,26 +224,33 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
 
 ONTAP 會在識別控制器資料中報告 8 的 MDTS （ MAX Data 傳輸大小）。這表示最大 I/O 要求大小最多可達 1MB 。若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須將 `lpfc` `lpfc_sg_seg_cnt`參數值從預設值 64 增加至 256 。
 
+
+NOTE: 下列步驟不適用於 Qlogic NVMe / FC 主機。
+
 .步驟
 . 將 `lpfc_sg_seg_cnt`參數設定為 256 ：
 +
 [listing]
 ----
-# cat /etc/modprobe.d/lpfc.conf
+cat /etc/modprobe.d/lpfc.conf
+----
++
+.輸出範例
+[listing]
+----
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. 執行 `dracut -f`命令、然後重新啟動主機：
+. 執行 `dracut -f`命令，然後重新啟動主機：
 . 確認 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
++
+預期值為 256 。
 
 
-
-NOTE: 這不適用於 Qlogic NVMe / FC 主機。
 
 
 
