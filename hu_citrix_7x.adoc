@@ -75,7 +75,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 [root@sanhost ~]#
 ----
 
-NOTE: 單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
 
 
 
@@ -100,7 +100,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 [root@sanhost ~]#
 ----
 
-NOTE: 單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
 
 
 

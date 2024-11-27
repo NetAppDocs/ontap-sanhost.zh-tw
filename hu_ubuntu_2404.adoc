@@ -1,32 +1,37 @@
 ---
 sidebar: sidebar 
-permalink: hu_ubuntu_2204.html 
+permalink: hu_ubuntu_2404.html 
 keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu 
-summary: 說明如何搭配 ONTAP 使用 Ubuntu 22.04 
+summary: 說明如何搭配 ONTAP 使用 Ubuntu 24.04 
 ---
-= 搭配 ONTAP 使用 Ubuntu 22.04
+= 搭配 ONTAP 使用 Ubuntu 24.04
+:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
+:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
+:toc-position: content
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標。
+您可以使用 ONTAP SAN 主機組態設定，將 ONTAP 設定為目標。
 
 
-NOTE: NetApp Linux Unified Host Utilities 軟體套件不適用於 Ubuntu 22.04 作業系統。
+NOTE: NetApp Linux Unified Host Utilities 軟體套件不適用於 Ubuntu 24.04 作業系統。
 
 
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。
+
+.開始之前
+使用link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^]驗證是否支援您的 OS ， HBA ， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -46,24 +51,24 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 
 == 多重路徑
 
-對於 Ubuntu 22.04 `/etc/multipath.conf` 檔案必須存在、但您不需要對檔案進行特定變更。Ubuntu 22.04 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。
+對於 Ubuntu 24.04 ， `/etc/multipath.conf`檔案必須存在，但您不需要變更檔案，因為 Ubuntu 24.04 是使用辨識及正確管理 ONTAP LUN 所需的設定進行編譯。
 
-您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。
-
-下列各節提供對應至 ASA 和非 ASA 角色之 LUN 的多重路徑輸出範例。
+對於所有 SAN 陣列（ ASA ）和非 ASA 組態，您可以使用 `multipath -ll`命令來驗證 ONTAP LUN 的設定，如下列範例所示。
 
 
+NOTE: 單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
 
-=== 所有 SAN 陣列組態
 
-在所有 SAN 陣列（ ASA ）組態中、通往指定 LUN 的所有路徑均為作用中且最佳化。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
 
-.範例
-下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
+=== ASA 組態
+
+在 ASA 組態中、通往指定 LUN 的所有路徑均為作用中且最佳化。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
+
+下列範例顯示對應至 ASA 角色之 ONTAP LUN 的正確輸出：
 
 [listing]
 ----
-# multipath -ll
+# # multipath -ll
 3600a098038314559533f524d6c652f62 dm-24 NETAPP,LUN C-Mode
 size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
@@ -71,41 +76,32 @@ size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   |- 11:0:3:13 sdah 66:16  active ready running
   |- 12:0:1:13 sdbc 67:96  active ready running
   `- 12:0:3:13 sdbx 68:176 active ready running
-
 ----
-
-NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
-
 
 
 === 非 ASA 組態
 
 對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
 
-.範例
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+下列範例顯示 ONTAP LUN 的正確輸出，其中有兩個主動 / 最佳化路徑，以及兩個對應至非 ASA 角色的主動 / 非最佳化路徑：
 
 [listing]
 ----
 # multipath -ll
-3600a098038314c4c715d5732674e6141 dm-0 NETAPP,LUN C-Mode
-size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+3600a098038314837352453694b542f4a dm-0 NETAPP,LUN C-Mode
+size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 11:0:1:0 sda 8:0  active ready running
-| `- 12:0:2:0 sdd 8:48 active ready running
+| |- 14:0:3:0 sdbk 67:224 active ready running
+| `- 15:0:2:0 sdbl 67:240 active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:2:0 sdb 8:16 active ready running
-  `- 12:0:1:0 sdc 8:32 active ready running
-
+  |- 14:0:0:0 sda  8:0    active ready running
+  `- 15:0:1:0 sdv  65:80  active ready running
 ----
-
-NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
-
 
 
 == 建議設定
 
-Ubuntu 22.04 作業系統是為了辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。
+Ubuntu 24.04 作業系統是為了辨識 ONTAP LUN ，並針對 ASA 和非 ASA 組態，自動正確設定所有組態參數。此外，您可以使用下列建議設定，進一步最佳化主機組態的效能。
 
 該 `multipath.conf`檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案 `touch /etc/multipath.conf`
 
@@ -213,8 +209,7 @@ blacklist {
 
 | 廠商 | NetApp 
 |===
-.範例
-下列範例說明如何修正被覆寫的預設值。在此案例中 `multipath.conf` 檔案定義的值 `path_checker` 和 `no_path_retry` 與ONTAP 不兼容的如果因為其他SAN陣列仍連接至主機而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
+下列範例說明如何修正被覆寫的預設值。在這種情況下，檔案會 `multipath.conf`定義與 `no_path_retry` ONTAP LUN 不相容的值 `path_checker`。如果因為其他SAN陣列仍連接至主機而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]
 ----
@@ -242,4 +237,4 @@ devices {
 
 == 已知問題
 
-使用 ONTAP 版本的 Ubuntu 22.04 沒有已知問題。
+使用 ONTAP 版本的 Ubuntu 24.04 沒有已知問題。

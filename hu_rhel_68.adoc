@@ -128,7 +128,7 @@ size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 |- 2:0:9:1  sde 8:64 active ready running
 ----
 
-NOTE: 單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
 
 
 
@@ -152,7 +152,7 @@ size=20G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
   `- 2:0:9:1  sde 8:64 active ready running
 ----
 
-NOTE: 單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。
+NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
 
 
 
@@ -160,18 +160,14 @@ NOTE: 單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間
 
 RHEL 6.8作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。
 
-該 `multipath.conf`檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在、您可以使用下列命令來建立空的零位元組檔案：
-
-`touch /etc/multipath.conf`
+該 `multipath.conf`檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案 `touch /etc/multipath.conf`
 
 第一次建立 `multipath.conf`檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：
 
-[listing]
-----
-# chkconfig multipathd on
-# /etc/init.d/multipathd start
-----
-除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要直接將任何項目新增至 `multipath.conf`檔案。若要排除不想要的裝置、請 `multipath.conf`將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> ：
+`# chkconfig multipathd on`
+`# /etc/init.d/multipathd start`
+
+您不需要直接將任何內容新增至 `multipath.conf`檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置、請 `multipath.conf`將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> ：
 
 [listing]
 ----
@@ -182,7 +178,6 @@ blacklist {
         devnode "^cciss.*"
 }
 ----
-.範例
 以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
 
 .步驟
@@ -209,9 +204,9 @@ blacklist {
 ----
 
 
-您應該隨時檢查 `/etc/multipath.conf` 舊版設定的檔案、尤其是在預設值區段中、可能會覆寫預設設定。
+您應該一律檢查 `/etc/multipath.conf`檔案，尤其是在「預設值」區段中，以瞭解可覆寫預設設定的舊版設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 ONTAP LUN 的關鍵 `multipathd`參數及必要設定。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
 [cols="2*"]
 |===

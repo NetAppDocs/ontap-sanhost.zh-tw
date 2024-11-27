@@ -217,7 +217,7 @@ FCP CMPL: xb 0000159d Err 000135c3
 # cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. 執行「dracut -f」命令、然後重新啟動主機。
+. 執行 `dracut -f`命令，然後重新啟動主機。
 . 重新開機後、請檢查對應的Sysfs值、確認已套用上述設定：
 +
 [listing]
