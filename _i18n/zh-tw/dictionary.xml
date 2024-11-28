@@ -3378,7 +3378,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="364053ddb08791e86bba8694da89f153" category="cell">CONTAPEXT-2037</block>
   <block id="e53d231580138a5c74d1783c30057235" category="cell">Ubuntu 22.04 NVMe 主機會建立重複的持續探索控制器</block>
   <block id="f7529407d6b5167c4740699e83603d32" category="cell">在 NVMe 主機上、您可以使用「 NVMe 探索 -p 」命令來建立持續探索控制器（ LC ）。此命令只能為每個啟動器目標組合建立一個 PDC 。不過、如果您在 NVMe 主機上執行 Ubuntu 22.04 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。</block>
-  <block id="ec1fba1237506df59a6228cbfc26fd26" category="admonition">單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。</block>
   <block id="89ee331d6db284677b24c21600e6743e" category="paragraph">如果您目前已安裝 Linux Unified Host Utilities 版本、您應該升級或移除該版本、然後依照下列步驟安裝最新版本。</block>
   <block id="19da5996e127dc42574323b94bce7dc8" category="paragraph">下列各節提供對應至 ASA 和非 ASA 角色之 LUN 的多重路徑輸出範例。</block>
   <block id="22842eddc6851487a56907e9a4c8df95" category="paragraph">對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
@@ -3664,4 +3663,5 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="198ef744f24c6814a980b52a8b628dbd" category="paragraph">在含 ONTAP 版本的 Ubuntu 24.04 中， NVMe 主機組態沒有已知問題。</block>
   <block id="cd5fcfe02b1d4f040fde5ba738d7572a" category="sidebar">24.04</block>
   <block id="4d2491544460a0c7af79b0ca7492e6fd" category="paragraph">您應該一律檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。</block>
+  <block id="d7b408d96809ae22d6292a5e84814c2a" category="admonition">單一 LUN 不應需要四個以上的路徑。超過四條路徑可能會在儲存設備故障期間造成路徑問題。</block>
 </blocks>

@@ -212,9 +212,11 @@ FCP CMPL: xb 00000047 Err 00000075
 
 
 --
-.適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡
+.Marvell / QLogic
 --
 Ubuntu 24.04 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。
+
+為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
 .步驟
 . 確認您執行的是支援的介面卡驅動程式和韌體版本：
@@ -259,7 +261,6 @@ NOTE: 下列步驟不適用於 Qlogic NVMe / FC 主機。
 cat /etc/modprobe.d/lpfc.conf
 ----
 +
-.輸出範例
 [listing]
 ----
 options lpfc lpfc_sg_seg_cnt=256
