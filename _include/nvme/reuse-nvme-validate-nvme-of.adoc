@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+若要支援正確的 ONTAP LUN 作業，請確認核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。

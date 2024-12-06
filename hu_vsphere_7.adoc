@@ -30,7 +30,7 @@ summary: 說明如何使用Veritas Infoscale 7.3 for Linux搭配ONTAP 使用功�
 . 確認有多個路徑可供使用。
 +
 
-NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路徑可供使用。
+NOTE: 在主機作業系統啟動並在路徑上執行之後，就可以使用多個路徑。
 
 . 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
 +

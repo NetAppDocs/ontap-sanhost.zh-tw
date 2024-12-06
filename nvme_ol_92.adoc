@@ -263,7 +263,7 @@ QLE2742 FW:v9.12.00 DVR:v10.02.08.100-k
 
 === 啟用1MB I/O大小（選用）
 
-ONTAP 會在識別控制器資料中報告 8 的 MDTS （ MAX Data 傳輸大小）。這表示最大 I/O 要求大小最多可達 1MB 。若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求、您必須將 `lpfc` `lpfc_sg_seg_cnt`參數值從預設值 64 增加至 256 。
+ONTAP 會在識別控制器資料中報告 8 的 MDTS （ MAX Data 傳輸大小）。這表示最大 I/O 要求大小最多可達 1MB 。若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求，您應該將參數值 `lpfc_sg_seg_cnt`從預設值 64 增加 `lpfc`至 256 。
 
 
 NOTE: 下列步驟不適用於 Qlogic NVMe / FC 主機。

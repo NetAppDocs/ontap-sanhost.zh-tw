@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+您可以將 NVMe 與 ONTAP LUN 搭配使用。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的 ALUA 多重路徑；它是以核心內建 NVMe 多重路徑功能來實作。
