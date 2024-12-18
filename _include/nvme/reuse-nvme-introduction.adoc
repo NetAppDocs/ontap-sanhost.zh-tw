@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-您可以將 NVMe 與 ONTAP LUN 搭配使用。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的 ALUA 多重路徑；它是以核心內建 NVMe 多重路徑功能來實作。
+NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與非對稱命名空間存取（ ANA ）。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取（ ALUA ）多重路徑。ANA 是使用核心內建 NVMe 多重路徑功能來實作。

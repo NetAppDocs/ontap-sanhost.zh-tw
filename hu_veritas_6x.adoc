@@ -22,11 +22,9 @@ summary: 針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態�
 
 == 安裝Linux Unified Host Utilities
 
-NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 在64位元.rpm檔案中。
+您可以從下載 NetApp Linux 統一主機公用程式軟體套件作為 64-bit.rpm 檔案link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]。
 
 NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
-
-如果您目前已安裝 Linux Unified Host Utilities 版本、您應該升級或移除該版本、然後依照下列步驟安裝最新版本。
 
 .步驟
 . 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
@@ -40,7 +38,7 @@ NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強
 
 == SAN工具套件
 
-當您安裝 NetApp 主機公用程式套件時、工具套件會自動安裝。此套件提供 `sanlun` 公用程式、可協助您管理 LUN 和 HBA 。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
+安裝 NetApp 主機公用程式套件會自動安裝工具套件。此套件提供 `sanlun`公用程式，可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。此 `sanlun`命令會傳回有關對應至主機的 LUN ，多重路徑及建立啟動器群組所需的資訊。
 
 .範例
 在下圖中、「show」命令會傳回LUN資訊。
@@ -146,7 +144,7 @@ ARRAY_TYPE  ALUA, A/A
 對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
 
 .範例
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
 
 [listing]
 ----

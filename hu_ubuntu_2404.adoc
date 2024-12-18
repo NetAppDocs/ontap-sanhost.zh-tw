@@ -107,10 +107,12 @@ Ubuntu 24.04 作業系統是為了辨識 ONTAP LUN ，並針對 ASA 和非 ASA �
 
 第一次建立 `multipath.conf`檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：
 
-`# chkconfig multipathd on`
-`# /etc/init.d/multipathd start`
-
-您不需要直接將任何內容新增至 `multipath.conf`檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置、請 `multipath.conf`將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> ：
+[listing]
+----
+# systemctl enable multipathd
+# systemctl start multipathd
+----
+除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要直接將裝置新增至 `multipath.conf`檔案。您可以將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> 、來排除不需要的 `multipath.conf`裝置：
 
 [listing]
 ----
@@ -121,14 +123,18 @@ blacklist {
         devnode "^cciss.*"
 }
 ----
-以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
+在下列範例中，您將決定裝置的 WWID ，並將裝置新增至 `multipath.conf`檔案。
 
 .步驟
 . 判斷 WWID ：
 +
 [listing]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+[listing]
+----
 360030057024d0730239134810c0cb833
 ----
 +
@@ -149,7 +155,7 @@ blacklist {
 
 您應該一律檢查 `/etc/multipath.conf`檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。
 
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在 `multipath.conf`檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、您才應諮詢 NetApp 和 / 或作業系統廠商、以覆寫這些預設值。
 
 [cols="2*"]
 |===

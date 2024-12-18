@@ -119,10 +119,12 @@ Oracle Linux 7.5 作業系統的編譯是為了識別 ONTAP LUN 、並自動正�
 
 第一次建立 `multipath.conf`檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：
 
-`# chkconfig multipathd on`
-`# /etc/init.d/multipathd start`
-
-您不需要直接將任何內容新增至 `multipath.conf`檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置、請 `multipath.conf`將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> ：
+[listing]
+----
+chkconfig multipathd on
+/etc/init.d/multipathd start
+----
+您不需要直接將任何內容新增至 `multipath.conf`檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置，請將下列語法新增至 `multipath.conf`檔案，以您要排除的裝置的全球識別碼（ WWID ）字串取代 <DevId> ：
 
 [listing]
 ----
@@ -140,118 +142,92 @@ blacklist {
 +
 [listing]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+[listing]
+----
+3600a098038314c4a433f5774717a3046
+/lib/udev/scsi_id -gud /dev/sda
+----
++
 360030057024d0730239134810c0cb833
-----
-+
-`sda`是您要新增至黑名單的本機 SCSI 磁碟。
-
-. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
-+
-[listing]
-----
-blacklist {
-     wwid   360030057024d0730239134810c0cb833
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}
-----
 
 
-您應該一律檢查 `/etc/multipath.conf`檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。
-
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
-
-[cols="2*"]
-|===
-| 參數 | 設定 
-
-
-| DETECT（偵測）_prio | 是的 
-
-
-| 開發損失_tmo | "無限遠" 
-
-
-| 容錯回復 | 立即 
-
-
-| fast_io_f故障_tmo | 5. 
-
-
-| 功能 | "3 queue_if_no_path pg_init_retries 50" 
-
-
-| Flip_on_last刪除 | "是" 
-
-
-| 硬體處理常式 | 「0」 
-
-
-| path_checker_ | "周" 
-
-
-| path_grouping_policy | "群組by_prio" 
-
-
-| path_selector | "服務時間0" 
-
-
-| Polling_時間 間隔 | 5. 
-
-
-| 優先 | 「NetApp」ONTAP 
-
-
-| 產品 | LUN.* 
-
-
-| Retain附加的硬體處理常式 | 是的 
-
-
-| RR_weight | "統一" 
-
-
-| 使用者易記名稱 | 否 
-
-
-| 廠商 | NetApp 
-|===
-.範例
-下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「detect_prio'」的值、這些值與ONTAP 不相容於哪些LUN。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]
 ----
-defaults {
- path_checker readsector0
- detect_prio no
- }
-devices {
- device {
- vendor "NETAPP "
- product "LUN.*"
- path_checker tur
- detect_prio yes
- }
-}
++
+`sda` is the local SCSI disk that you want to add to the blacklist.
+
+. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
+[source,cli]
++
+----
+黑名單 { WWID 3600a098038314c4a433f5774717a3046 devnode " ^（ RAM|RAW|REW|FD|MD|dm-|SR|SCD|st)[0-9]*" devnode "^HD[a-z]" devnode "^ccis.*"}
+
+[listing]
 ----
 
-NOTE: 若要設定 Oracle Linux 7.5 Red Hat Enterprise 核心（ RHCK ）、請使用link:hu_rhel_75.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 7.5 的。
+Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
+
+The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
+
+//ONTAPDOC-2578 9-Dec-2024
+//ONTAPDOC-2561 25-Nov-202
 
 
-
-== 已知問題
-
-Oracle Linux 7.5 with ONTAP 版本有下列已知問題：
-
-[cols="3*"]
+[cols=2*,options="header"]
 |===
-| NetApp錯誤ID | 標題 | 說明 
-
-
-| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]。 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1177239["1177239"^] | 在儲存容錯移轉作業期間、利用QLogic QLE2672 16G FC觀察到OL7.5發生核心中斷 | 在使用核心4.1.12-112.16.4.el7uek.x86_64和QLogic QLE2672 HBA的Oracle Linux 7（OL7.5）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示重新開機作業系統、導致應用程式中斷。如果設定kdump、核心中斷會在/var/crash /目錄中建立vmcore檔案。這種中斷可以在模組「kmem_cache _alloc+118」中觀察、此模組會記錄在vmcore檔案中、並以字串「例外RIP：kmem_cache _alloc+118」來識別。 核心中斷之後、您可以重新啟動主機作業系統並重新啟動應用程式來恢復。 
+| Parameter
+| Setting
+| detect_prio | yes
+| dev_loss_tmo | "infinity"
+| failback | immediate
+| fast_io_fail_tmo | 5
+| features | "3 queue_if_no_path pg_init_retries 50"
+| flush_on_last_del | "yes"
+| hardware_handler | "0"
+| path_checker | "tur"
+| path_grouping_policy | "group_by_prio"
+| path_selector | "service-time 0"
+| polling_interval | 5
+| prio | "ontap"
+| product | LUN.*
+| retain_attached_hw_handler | yes
+| rr_weight | "uniform"
+| user_friendly_names | no
+| vendor | NETAPP
 |===
+
+.Example
+
+The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `detect_prio` that are not compatible with ONTAP LUNs.
+If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
+
+----
+預設 { path_checker_readsector0 detect_prio no } 裝置 { device { Vendor "LUN.*" NetApp path_checker" turte_prio yes } }
+
+[listing]
+----
+
+NOTE: To configure Oracle Linux 7.5 Red Hat Enterprise Kernel (RHCK), use the link:hu_rhel_75.html#recommended-settings[recommended settings] for Red Hat Enterprise Linux (RHEL) 7.5.
+
+== Known issues
+
+The Oracle Linux 7.5 with ONTAP release has the following known issues:
+
+[cols=3*,options="header"]
+|===
+| NetApp Bug ID
+| Title
+| Description
+| 1440718 | If you unmap or map a LUN without performing a SCSI rescan, it might lead to data corruption on the host. | When you set the 'disable_changed_wwids' multipath configuration parameter to YES, it disables access to the path device in the event of a WWID change. Multipath will disable access to the path device until the WWID of the path is restored to the WWID of the multipath device. To learn more, see  link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7[NetApp Knowledge Base: The filesystem corruption on iSCSI LUN on the Oracle Linux 7^].
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1177239[1177239^] | Kernel disruption observed on OL7.5 with Qlogic QLE2672 16G FC during storage failover operations |During storage failover operations on Oracle Linux 7 (OL7.5) with kernel 4.1.12-112.16.4.el7uek.x86_64 and the Qlogic QLE2672 HBA, you might observe kernel disruption. This prompts a reboot of the operating system which causes an application disruption.
+If kdump is configured, the kernel disruption creates a vmcore file in the  /var/crash/ directory. This disruption can be observed in the module “kmem_cache_alloc+118,” which is logged in the vmcore file and identified with the string "exception RIP: kmem_cache_alloc+118."
+After a kernel disruption, you can recover by rebooting the host operating system and restarting the application.
+|===
+
+// 2024 SEP 2, ONTAPDOC-2345
+// BURT 1440718, 2022-05-20
+----

@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_88.html 
-keywords: host utilities, red hat, rhel, linux, 8.8, netapp, ontap, rhel 
-summary: 說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 8.8 
+permalink: hu_rhel_95.html 
+keywords: host utilities, red hat, rhel, linux, 9.5, netapp, ontap, rhel 
+summary: 說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 9.5 
 ---
-= 搭配 ONTAP 使用 Red Hat Enterprise Linux 8.8
+= 將 Red Hat Enterprise Linux 9.5 與 ONTAP 搭配使用
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 8.8
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 8.8 與 ONTAP 設定為目標。
+您可以使用 ONTAP SAN 主機組態設定來設定 Red Hat Enterprise Linux （ RHEL ） 9.5 、並將 ONTAP 設定為目標。
 
 
 
@@ -36,33 +36,39 @@ NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強
 
 
 
-== SAN 工具套件
+== 使用 SAN 工具套件
 
-當您安裝 NetApp 主機公用程式套件時、工具套件會自動安裝。此套件提供 `sanlun` 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
+安裝 NetApp 主機公用程式套件會自動安裝工具套件。此套件提供 `sanlun`公用程式，可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。此 `sanlun`命令會傳回有關對應至主機的 LUN ，多重路徑及建立啟動器群組所需的資訊。
 
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
+[source, cli]
+----
+sanlun lun show all
+----
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
-# sanlun lun show all
+controller(7mode/E-Series)/                                  device          host                  lun
+vserver(cDOT/FlashRay)        lun-pathname                   filename        adapter    protocol   size    product
+---------------------------------------------------------------------------------------------------------------
+vs_sanboot                    /vol/vol_2742/lun              /dev/sdch       host17     FCP        180g    cDOT
+vs_coexistence_QLE2742        /vol/fc_vol_2_9/dynamic_lun    /dev/sdcg       host17     FCP        10g     cDOT
+vs_coexistence_QLE2742        /vol/fc_vol_2_8/dynamic_lun    /dev/sdcf       host17     FCP        10g     cDOT
+vs_coexistence_QLE2742        /vol/fc_vol_2_7/dynamic_lun    /dev/sdce       host17     FCP        10g     cDOT
+vs_coexistence_QLE2742        /vol/fc_vol_2_6/dynamic_lun    /dev/sdcd       host17     FCP        10g     cDOT
 ----
-.輸出範例：
-[listing]
-----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
--------------------------------------------------------------------------
-vs_163_32gQlc          /vol/vol1/lun1   /dev/sdb   host14   FCP       10.0g  cDOT
-vs_163_32gQlc          /vol/vol1/lun1   /dev/sdc   host15   FCP       10.0g  cDOT
-vs_163_32gQlc          /vol/vol2/lun2   /dev/sdd   host14   FCP       10.0g  cDOT
-vs_163_32gQlc          /vol/vol2/lun2   /dev/sde   host15   FCP       10.0g  cDOT
-----
+====
 
 
-== SAN開機
+== 啟用 SAN 開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您決定使用SAN開機、則組態必須支援SAN開機。
+
+.開始之前
+使用link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^]驗證是否支援您的 OS ， HBA ， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -80,13 +86,12 @@ NOTE: 在主機作業系統啟動並在路徑上執行之後，就可以使用�
 
 
 
-== 多重路徑
+== 啟用多重路徑
 
-對於 Red Hat Enterprise Linux （ RHEL ） 8.8 `/etc/multipath.conf` 檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.8 會使用辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。
+您可以搭配 RHEL 9.5 使用多重路徑來管理 ONTAP LUN 。若要使用多重路徑， `/etc/multipath.conf`檔案必須存在。如果 `/etc/multipath.conf`檔案不存在，您可以使用 Touch 命令建立空白的零位元組檔案 `/etc/multipath.conf`。您不需要對檔案進行變更 `/etc/multipath.conf`，因為 RHEL 9.5 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。
 
-您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。
 
-下列各節提供對應至 ASA 和非 ASA 角色之 LUN 的多重路徑輸出範例。
+NOTE: 單一 LUN 不應需要四個以上的路徑。超過四條路徑可能會在儲存設備故障期間造成路徑問題。
 
 
 
@@ -97,20 +102,21 @@ NOTE: 在主機作業系統啟動並在路徑上執行之後，就可以使用�
 .範例
 以下範例顯示 ONTAP LUN 的正確輸出。
 
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
-# multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G	features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+multipath -ll
+3600a098038314c4a433f577471797958 dm-2 NETAPP,LUN C-Mode
+size=180G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi  130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288    active ready running
-  |- 11:0:10:1   sdml  69:464   active ready running
-  |- 11:0:11:1   sdpt  131:304  active ready running
+  |- 14:0:0:0  sdc  8:32   active ready running
+  |- 17:0:0:0  sdas 66:192 active ready running
+  |- 14:0:3:0  sdar 66:176 active ready running
+  `- 17:0:3:0  sdch 69:80  active ready running
 ----
-
-NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
-
+====
 
 
 === 非 ASA 組態
@@ -120,27 +126,27 @@ NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，
 .範例
 下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
 
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
-# multipath -ll
-3600a098038314837352453694b542f4a dm-0 NETAPP,LUN C-Mode
-size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+multipath -ll
+3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
+size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 14:0:3:0 sdbk 67:224 active ready running
-| `- 15:0:2:0 sdbl 67:240 active ready running
+| |- 16:0:3:0  sdcg 69:64  active ready running
+| `- 10:0:0:0  sdb  8:16   active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 14:0:0:0 sda  8:0    active ready running
-  `- 15:0:1:0 sdv  65:80  active ready running
-
+  |- 10:0:1:0  sdc  8:32   active ready running
+  `- 16:0:2:0  sdcf 69:48  active ready running
 ----
-
-NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
-
+====
 
 
 == 建議設定
 
-RHEL 8.8 作業系統的編譯是為了辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。
+RHEL 9.5 作業系統是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。
 
 該 `multipath.conf`檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案 `touch /etc/multipath.conf`。
 
@@ -240,7 +246,7 @@ blacklist {
 | 優先 | 「NetApp」ONTAP 
 
 
-| 產品 | LUN.* 
+| 產品 | LUN 
 
 
 | Retain附加的硬體處理常式 | 是的 
@@ -255,8 +261,11 @@ blacklist {
 | 廠商 | NetApp 
 |===
 .範例
-下列範例說明如何修正被覆寫的預設值。在此案例中 `multipath.conf` 檔案定義的值 `path_checker` 和 `no_path_retry` 與ONTAP 不兼容的如果因為其他SAN陣列仍連接至主機而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
+下列範例說明如何修正被覆寫的預設值。在這種情況下，檔案會 `multipath.conf`定義與 `no_path_retry` ONTAP LUN 不相容的值 `path_checker`。如果其他 SAN 陣列仍連接至主機，請使用裝置區段，針對 ONTAP LUN 修正這些參數。
 
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 defaults {
@@ -266,13 +275,14 @@ defaults {
 
 devices {
    device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
+      vendor         "NETAPP"
+      product         "LUN"
       no_path_retry    queue
       path_checker     tur
    }
 }
 ----
+====
 
 
 === 設定 KVM 設定
@@ -283,4 +293,4 @@ devices {
 
 == 已知問題
 
-在 ONTAP 版本中、 RHEL 8.8 沒有已知問題。
+在 ONTAP 版本中、 RHEL 9.5 的 FC 主機組態沒有已知問題。

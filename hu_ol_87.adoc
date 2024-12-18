@@ -22,11 +22,9 @@ summary: 說明如何搭配 ONTAP 使用 Oracle Linux 8.7
 
 == 安裝Linux Unified Host Utilities
 
-NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 在64位元.rpm檔案中。
+您可以從下載 NetApp Linux 統一主機公用程式軟體套件作為 64-bit.rpm 檔案link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]。
 
 NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
-
-如果您目前已安裝 Linux Unified Host Utilities 版本、您應該升級或移除該版本、然後依照下列步驟安裝最新版本。
 
 .步驟
 . 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
@@ -96,10 +94,10 @@ NOTE: 在主機作業系統啟動並在路徑上執行之後，就可以使用�
 
 === 所有 SAN 陣列組態
 
-在所有 SAN 陣列（ ASA ）組態中、通往指定 LUN 的所有路徑均為作用中且最佳化。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
+所有 SAN 陣列（ ASA ）組態都會最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
 
 .範例
-下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
+以下範例顯示 ONTAP LUN 的正確輸出。
 
 [listing]
 ----
@@ -122,7 +120,7 @@ NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，
 對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
 
 .範例
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
 
 [listing]
 ----
@@ -149,10 +147,12 @@ Oracle Linux 8.7 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 
 
 第一次建立 `multipath.conf`檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：
 
-`# chkconfig multipathd on`
-`# /etc/init.d/multipathd start`
-
-您不需要直接將任何內容新增至 `multipath.conf`檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置、請 `multipath.conf`將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> ：
+[listing]
+----
+chkconfig multipathd on
+/etc/init.d/multipathd start
+----
+您不需要直接將任何內容新增至 `multipath.conf`檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置，請將下列語法新增至 `multipath.conf`檔案，以您要排除的裝置的全球識別碼（ WWID ）字串取代 <DevId> ：
 
 [listing]
 ----
@@ -170,116 +170,83 @@ blacklist {
 +
 [listing]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+[listing]
+----
+3600a098038314c4a433f5774717a3046
+/lib/udev/scsi_id -gud /dev/sda
+----
++
 360030057024d0730239134810c0cb833
-----
-+
-`sda`是您要新增至黑名單的本機 SCSI 磁碟。
-
-. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
-+
-[listing]
-----
-blacklist {
-     wwid   360030057024d0730239134810c0cb833
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}
-----
 
 
-您應該一律檢查 `/etc/multipath.conf`檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。
-
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
-
-[cols="2*"]
-|===
-| 參數 | 設定 
-
-
-| DETECT（偵測）_prio | 是的 
-
-
-| 開發損失_tmo | 無限 
-
-
-| 容錯回復 | 立即 
-
-
-| fast_io_f故障_tmo | 5. 
-
-
-| 功能 | 2 pg_init_retries 50 
-
-
-| Flip_on_last刪除 | 是的 
-
-
-| 硬體處理常式 | 0 
-
-
-| no_path_retry | 佇列 
-
-
-| path_checker_ | Tur 
-
-
-| path_grouping_policy | 群組_by_prio 
-
-
-| path_selector | 服務時間0 
-
-
-| Polling_時間 間隔 | 5. 
-
-
-| 優先 | ONTAP 
-
-
-| 產品 | LUN.* 
-
-
-| Retain附加的硬體處理常式 | 是的 
-
-
-| RR_weight | 統一 
-
-
-| 使用者易記名稱 | 否 
-
-
-| 廠商 | NetApp 
-|===
-.範例
-下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]
 ----
-defaults {
- path_checker readsector0
- no_path_retry fail
- }
-devices {
- device {
- vendor "NETAPP "
- product "LUN.*"
- no_path_retry queue
- path_checker tur
- }
-}
++
+`sda` is the local SCSI disk that you want to add to the blacklist.
+
+. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
+[source,cli]
++
+----
+黑名單 { WWID 3600a098038314c4a433f5774717a3046 devnode " ^（ RAM|RAW|REW|FD|MD|dm-|SR|SCD|st)[0-9]*" devnode "^HD[a-z]" devnode "^ccis.*"}
+
+[listing]
 ----
 
-NOTE: 若要設定 Oracle Linux 8.7 Red Hat Enterprise 核心（ RHHCK ）、請使用link:hu_rhel_87.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.7 的。
+Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
+
+The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
+
+//ONTAPDOC-2578 9-Dec-2024
+//ONTAPDOC-2561 25-Nov-202
 
 
+[cols=2*,options="header"]
+|===
+| Parameter
+| Setting
+| detect_prio | yes
+| dev_loss_tmo | infinity
+| failback | immediate
+| fast_io_fail_tmo | 5
+| features | 2 pg_init_retries 50
+| flush_on_last_del | yes
+| hardware_handler | 0
+| no_path_retry | queue
+| path_checker | tur
+| path_grouping_policy | group_by_prio
+| path_selector | service-time 0
+| polling_interval | 5
+| prio | ontap
+| product | LUN.*
+| retain_attached_hw_handler | yes
+| rr_weight | uniform
+| user_friendly_names | no
+| vendor | NETAPP
+|===
 
-== KVM 設定
+.Example
 
-您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。當 LUN 對應至 Hypervisor 時、無需進行任何變更即可設定 KVM 。
+The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `no_path_retry` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
 
+----
+預設 { path_checker_readsector0 no_path_retry fail } 裝置 { 裝置 { 廠商「 NetApp 」產品 "lun.*" no_path_retry queue path_checkur } }
 
+[listing]
+----
 
-== 已知問題
+[NOTE]
+To configure Oracle Linux 8.7 Red Hat Enterprise Kernel (RHCK), use the link:hu_rhel_87.html#recommended-settings[recommended settings] for Red Hat Enterprise Linux (RHEL) 8.7.
 
-使用 ONTAP 版本的 Oracle Linux 8.7 沒有已知問題。
+== KVM settings
+
+You can also use the recommended settings to configure the Kernel-based Virtual Machine (KVM). There are no changes required to configure the KVM as the LUN is mapped to the hypervisor.
+
+== Known issues
+
+There are no known issues for the Oracle Linux 8.7 with ONTAP release.
+----

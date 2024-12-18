@@ -99,10 +99,10 @@ NOTE: 在主機作業系統啟動並在路徑上執行之後，就可以使用�
 
 === 所有 SAN 陣列組態
 
-在所有 SAN 陣列（ ASA ）組態中、通往指定 LUN 的所有路徑均為作用中且最佳化。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
+所有 SAN 陣列（ ASA ）組態都會最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
 
 .範例
-下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：
+以下範例顯示 ONTAP LUN 的正確輸出。
 
 [listing]
 ----
@@ -126,7 +126,7 @@ NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，
 對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
 
 .範例
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
 
 [listing]
 ----
@@ -151,10 +151,12 @@ SUSE Linux Enterprise Server 12 SP3 作業系統的編譯是為了識別 ONTAP L
 
 第一次建立 `multipath.conf`檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：
 
-`# chkconfig multipathd on`
-`# /etc/init.d/multipathd start`
-
-您不需要直接將任何內容新增至 `multipath.conf`檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置、請 `multipath.conf`將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 <DevId> ：
+[listing]
+----
+chkconfig multipathd on
+/etc/init.d/multipathd start
+----
+您不需要直接將任何內容新增至 `multipath.conf`檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置，請將下列語法新增至 `multipath.conf`檔案，以您要排除的裝置的全球識別碼（ WWID ）字串取代 <DevId> ：
 
 [listing]
 ----
@@ -172,127 +174,118 @@ blacklist {
 +
 [listing]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+[listing]
+----
+3600a098038314c4a433f5774717a3046
+/lib/udev/scsi_id -gud /dev/sda
+----
++
 360030057024d0730239134810c0cb833
-----
-+
-`sda`是您要新增至黑名單的本機 SCSI 磁碟。
-
-. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
-+
-[listing]
-----
-blacklist {
-     wwid   360030057024d0730239134810c0cb833
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}
-----
 
 
-您應該一律檢查 `/etc/multipath.conf`檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。
-
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
-
-[cols="2*"]
-|===
-| 參數 | 設定 
-
-
-| DETECT（偵測）_prio | 是的 
-
-
-| 開發損失_tmo | "無限遠" 
-
-
-| 容錯回復 | 立即 
-
-
-| fast_io_f故障_tmo | 5. 
-
-
-| 功能 | "2 pg_init_retries 50" 
-
-
-| Flip_on_last刪除 | "是" 
-
-
-| 硬體處理常式 | 「0」 
-
-
-| no_path_retry | 佇列 
-
-
-| path_checker_ | "周" 
-
-
-| path_grouping_policy | "群組by_prio" 
-
-
-| path_selector | "服務時間0" 
-
-
-| Polling_時間 間隔 | 5. 
-
-
-| 優先 | 「NetApp」ONTAP 
-
-
-| 產品 | LUN.* 
-
-
-| Retain附加的硬體處理常式 | 是的 
-
-
-| RR_weight | "統一" 
-
-
-| 使用者易記名稱 | 否 
-
-
-| 廠商 | NetApp 
-|===
-.範例
-下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]
 ----
-defaults {
- path_checker readsector0
- no_path_retry fail
-}
-devices {
- device {
- vendor "NETAPP "
- product "LUN.*"
- no_path_retry queue
- path_checker tur
- }
-}
++
+`sda` is the local SCSI disk that you want to add to the blacklist.
+
+. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
+[source,cli]
++
+----
+黑名單 { WWID 3600a098038314c4a433f5774717a3046 devnode " ^（ RAM|RAW|REW|FD|MD|dm-|SR|SCD|st)[0-9]*" devnode "^HD[a-z]" devnode "^ccis.*"}
+
+[listing]
 ----
 
+Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
 
-== 已知問題
+The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
 
-SUSE Linux Enterprise Server 15 SP3 with ONTAP 版本有下列已知問題：
+//ONTAPDOC-2578 9-Dec-2024
+//ONTAPDOC-2561 25-Nov-202
 
-[cols="3*"]
+
+[cols=2*,options="header"]
 |===
-| NetApp錯誤ID | 標題 | 說明 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089555["108955"^] | 在儲存容錯移轉作業期間、在採用Emulex LPe16002 16GB FC的核心版本SLES12 SP3上觀察到核心中斷 | 在使用Emulex LPe16002 HBA的核心版本SLES12 SP3上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會提示重新開機作業系統、進而導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以調查vmcore檔案中的故障原因。範例：在觀察到的案例中、核心中斷是在模組「lfc_SLI_ringtxcmpl_plip+51」中觀察到、並記錄在vmcore檔案中–例外RIP：lfc_SLI_ringtxcmpl_plut+51。重新啟動主機作業系統並重新啟動應用程式、即可在核心中斷後恢復作業系統。 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089561["108561"^] | 在儲存容錯移轉作業期間、在採用Emulex LPe32002 32GB FC的核心版本SLES12 SP3上觀察到核心中斷 | 在使用Emulex LPe32002 HBA的核心版本SLES12 SP3上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會提示重新開機作業系統、進而導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以調查vmcore檔案中的故障原因。範例：在觀察到的案例中、核心中斷是在模組「lfc_SLI_faure_hbq+76」中觀察到、並記錄在vmcore檔案中–例外RIP：lfc_SLI_faure_hbq+76。重新啟動主機作業系統並重新啟動應用程式、即可在核心中斷後恢復作業系統。 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117248["1117248"^] | 在執行儲存容錯移轉作業期間、使用QLogic QLE2562 8GB FC的SLES12SP3發生核心中斷 | 在使用QLogic QLE2562 HBA的Sles12sp3核心（kernel-default-4.4.2-6.3.1）上執行儲存容錯移轉作業期間、由於核心中發生恐慌、導致核心中斷。核心毀損會導致作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心異常會在/var/crash /目錄下產生vmcore檔案。當核心異常時、可以使用vmcore檔案來瞭解故障原因。範例：在這種情況下、會在「blk_finish _request +89」模組中看到這種恐慌。它會以下列字串登入vmcore檔案：「例外RIP：blk_fine_request + 289」。核心中斷之後、您可以重新啟動主機作業系統來恢復作業系統。您可以視需要重新啟動應用程式。 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117261["1117261.."^] | 在執行儲存容錯移轉作業期間、使用QLogic QLE2662 16GB FC的SLES12SP3發生核心中斷 | 使用QLogic QLE2662 HBA在Sles12sp3核心（kernel-default-4.4.82至6.3.1）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。vmcore檔案可用來瞭解故障原因。範例：在此情況下、模組「未知或無效位址」中觀察到核心中斷、並以下列字串登入vmcore檔案：例外RIP：未知或無效位址。核心中斷之後、可重新啟動主機作業系統、並視需要重新啟動應用程式、藉此恢復作業系統。 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117274["1117274.."^] | 在執行儲存容錯移轉作業期間、使用Emulex LPe16002 16GB FC的SLES12SP3發生核心中斷 | 在使用Emulex LPe16002 HBA的Sles12sp3核心（kernel-default-4.4.4.87-3.1）上執行儲存容錯移轉作業期間、您可能會發現核心中斷。這會提示作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。vmcore檔案可用來瞭解故障原因。範例：在這種情況下、模組「raw_sin_lock_irqsost+30」中觀察到核心中斷、並以下列字串登入vmcore檔案：–例外RIP：_raw_sin_lock_irqsost+30。核心中斷之後、可重新啟動主機作業系統、並視需要重新啟動應用程式、藉此恢復作業系統。 
+| Parameter
+| Setting
+| detect_prio | yes
+| dev_loss_tmo | "infinity"
+| failback | immediate
+| fast_io_fail_tmo | 5
+| features | "2 pg_init_retries 50"
+| flush_on_last_del | "yes"
+| hardware_handler | "0"
+| no_path_retry | queue
+| path_checker | "tur"
+| path_grouping_policy | "group_by_prio"
+| path_selector | "service-time 0"
+| polling_interval | 5
+| prio | "ontap"
+| product | LUN.*
+| retain_attached_hw_handler | yes
+| rr_weight | "uniform"
+| user_friendly_names | no
+| vendor | NETAPP
 |===
+
+.Example
+
+The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `no_path_retry` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
+
+----
+預設 { path_checker_readsector0 no_path_retry fail } 裝置 { 裝置 { 廠商「 NetApp 」產品 "lun.*" no_path_retry queue path_checkur } }
+
+[listing]
+----
+
+== Known issues
+
+The SUSE Linux Enterprise Server 15 SP3 with ONTAP release has the following known issues:
+
+[cols=3*,options="header"]
+|===
+| NetApp Bug ID
+| Title
+| Description
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089555[1089555^] | Kernel disruption observed on kernel version SLES12 SP3 with Emulex LPe16002 16GB FC during storage failover operation | A kernel disruption might occur during storage failover operations on kernel version SLES12 SP3 with Emulex LPe16002 HBA. The kernel disruption prompts a reboot of the operating system, which in turn causes an application disruption. If the kdump is configured, the kernel disruption generates a vmcore file under /var/crash/directory. You can investigate the cause of the failure in the vmcore file.
+Example:
+In the observed case, the kernel disruption was observed in the module “lpfc_sli_ringtxcmpl_put+51” and is logged in the vmcore file
+– exception RIP: lpfc_sli_ringtxcmpl_put+51.
+
+Recover the operating system after the kernel disruption by rebooting the host operating system and restarting the application.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089561[1089561^] | Kernel disruption observed on kernel version SLES12 SP3 with Emulex LPe32002 32GB FC during storage failover operations | A kernel disruption might occur during storage failover operations on kernel version SLES12 SP3 with Emulex LPe32002 HBA. The kernel disruption prompts a reboot of the operating system, which in turn causes an application disruption. If the kdump is configured, the kernel disruption generates a vmcore file under /var/crash/directory. You can investigate the cause of the failure in the vmcore file.
+Example:
+In the observed case, the kernel disruption was observed in the module
+“lpfc_sli_free_hbq+76” and is logged in the vmcore file
+– exception RIP: lpfc_sli_free_hbq+76.
+
+Recover the operating system after the kernel disruption by rebooting the host operating system and restarting the application.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117248[1117248^] | Kernel disruption observed on SLES12SP3 with QLogic QLE2562 8GB FC during storage failover operations |  During storage failover operations on the Sles12sp3 kernel (kernel-default-4.4.82-6.3.1) with QLogic QLE2562 HBA, the kernel disruption was observed due to a panic in the kernel. The kernel panic leads to a reboot of the operating system, causing an application disruption. The kernel panic generates the vmcore file under the /var/crash/ directory if kdump is configured. Upon the kernel panic, the vmcore file can be used to understand the cause of the failure.
+Example:
+In this case, the panic was observed in the “blk_finish_request+289” module.
+It is logged in the vmcore file with the following string:
+"exception RIP: blk_finish_request+289"
+
+After the kernel disruption, you can recover the operating system  by rebooting the Host OS. You can restart the application as required.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117261[1117261^] | Kernel disruption observed on SLES12SP3 with Qlogic QLE2662 16GB FC during storage failover operations | During storage failover operations on Sles12sp3 kernel (kernel-default-4.4.82-6.3.1) with Qlogic QLE2662 HBA, you might observe kernel disruption. This prompts a reboot of the operating system causing application disruption. The kernel disruption generates a vmcore file under /var/crash/ directory if kdump is configured. The vmcore file can be used to understand the cause of the failure.
+Example:
+In this case the Kernel disruption was observed in the module "unknown or invalid address" and is logged in vmcore file with the following string - exception RIP: unknown or invalid address.
+
+After kernel disruption, the operating system can be recovered by rebooting the host operating system and restarting the application as required.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117274[1117274^] | Kernel disruption observed on SLES12SP3 with Emulex LPe16002 16GB FC during storage failover operations | During storage failover operations on Sles12sp3 kernel (kernel-default-4.4.87-3.1) with Emulex LPe16002 HBA, you might observe kernel disruption. This prompts a reboot of the operating system causing application disruption. The kernel disruption
+generates a vmcore file under the /var/crash/ directory if kdump is configured. The vmcore file can be used to understand the cause
+of the failure.
+Example:
+In this case kernel disruption was observed in the module “raw_spin_lock_irqsave+30” and is logged in the vmcore file with the following string:
+– exception RIP: _raw_spin_lock_irqsave+30.
+
+After kernel disruption, the operating system can be recovered by rebooting the host operating system and restarting the application as required.
+|===
+
+// 2024 SEP 2, ONTAPDOC-2345
+----
