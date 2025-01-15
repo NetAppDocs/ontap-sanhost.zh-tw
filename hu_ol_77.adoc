@@ -148,95 +148,125 @@ blacklist {
 [listing]
 ----
 3600a098038314c4a433f5774717a3046
-/lib/udev/scsi_id -gud /dev/sda
 ----
 +
-360030057024d0730239134810c0cb833
+`sda`是您要新增至黑名單的本機 SCSI 磁碟。
+
+. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
++
+[source, cli]
+----
+blacklist {
+     wwid   3600a098038314c4a433f5774717a3046
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+----
 
 
+請務必檢查 `/etc/multipath.conf`檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。
+
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+
+[cols="2*"]
+|===
+| 參數 | 設定 
+
+
+| DETECT（偵測）_prio | 是的 
+
+
+| 開發損失_tmo | "無限遠" 
+
+
+| 容錯回復 | 立即 
+
+
+| fast_io_f故障_tmo | 5. 
+
+
+| 功能 | "3 queue_if_no_path pg_init_retries 50" 
+
+
+| Flip_on_last刪除 | "是" 
+
+
+| 硬體處理常式 | 「0」 
+
+
+| path_checker_ | "周" 
+
+
+| path_grouping_policy | "群組by_prio" 
+
+
+| path_selector | "服務時間0" 
+
+
+| Polling_時間 間隔 | 5. 
+
+
+| 優先 | 「NetApp」ONTAP 
+
+
+| 產品 | LUN.* 
+
+
+| Retain附加的硬體處理常式 | 是的 
+
+
+| RR_weight | "統一" 
+
+
+| 使用者易記名稱 | 否 
+
+
+| 廠商 | NetApp 
+|===
+.範例
+下列範例說明如何修正被覆寫的預設值。在這種情況下，檔案會 `multipath.conf`定義與 `detect_prio` ONTAP LUN 不相容的值 `path_checker`。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]
 ----
-+
-`sda` is the local SCSI disk that you want to add to the blacklist.
-
-. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
-[source,cli]
-+
+defaults {
+ path_checker readsector0
+ detect_prio no
+ }
+devices {
+ device {
+ vendor "NETAPP "
+ product "LUN.*"
+ path_checker tur
+ detect_prio yes
+ }
+}
 ----
-黑名單 { WWID 3600a098038314c4a433f5774717a3046 devnode " ^（ RAM|RAW|REW|FD|MD|dm-|SR|SCD|st)[0-9]*" devnode "^HD[a-z]" devnode "^ccis.*"}
 
-[listing]
-----
-
-Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
-
-The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
-
-//ONTAPDOC-2578 9-Dec-2024
-//ONTAPDOC-2561 25-Nov-202
+NOTE: 若要設定 Oracle Linux 7.7 Red Hat Enterprise 核心（ RHCK ），請使用link:hu_rhel_77.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 7.7 的。
 
 
-[cols=2*,options="header"]
+
+== 已知問題
+
+Oracle Linux 7.7 with ONTAP 版本有下列已知問題：
+
+[cols="3*"]
 |===
-| Parameter
-| Setting
-| detect_prio | yes
-| dev_loss_tmo | "infinity"
-| failback | immediate
-| fast_io_fail_tmo | 5
-| features | "3 queue_if_no_path pg_init_retries 50"
-| flush_on_last_del | "yes"
-| hardware_handler | "0"
-| path_checker | "tur"
-| path_grouping_policy | "group_by_prio"
-| path_selector | "service-time 0"
-| polling_interval | 5
-| prio | "ontap"
-| product | LUN.*
-| retain_attached_hw_handler | yes
-| rr_weight | "uniform"
-| user_friendly_names | no
-| vendor | NETAPP
+| NetApp錯誤ID | 標題 | 說明 
+
+
+| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]、請參閱。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311575["1311575"^] | 在使用QLogic QLE2672（16G）進行儲存容錯移轉期間、由於讀取/寫入作業而導致IO延遲無法切換至次要路徑 | 在Oracle Linux 7.7核心（5.4.17-2011.0.7.el7uek.x86_64）與QLogic QLE2672 16G HBA的儲存容錯移轉作業期間、I/O作業可能無法透過次要路徑繼續。如果在儲存容錯移轉期間、由於主要路徑遭到封鎖而導致I/O進度停止、則可能無法透過次要路徑繼續I/O作業、導致I/O延遲。只有在主路徑完成儲存容錯移轉還原作業後才會恢復I/O作業。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311576["1311576"^] | 在使用Emulex LPe16002（16G）進行儲存容錯移轉期間、由於讀取/寫入作業無法透過次要路徑切換而導致IO延遲。 | 在Oracle Linux 7.7核心（5.4.17-2011.0.7.el7uek.x86_64）與Emulex LPe16002 16G HBA上執行儲存容錯移轉作業期間、I/O作業可能無法透過次要路徑繼續。如果在儲存容錯移轉期間、由於主要路徑遭到封鎖而導致I/O進度停止、則可能無法透過次要路徑繼續I/O作業、導致I/O延遲。只有在主路徑完成儲存容錯移轉還原作業後才會恢復I/O作業。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246134["1246134-1246134."^] | 觀察到IO延遲、而在使用Emulex LPe16002（16G）進行儲存容錯移轉期間、報告會移至封鎖、不顯示狀態 | 在Oracle Linux 7.6上執行儲存容錯移轉作業時、如果UEK5U2核心執行Emulex LPe16002B-m6 16G光纖通道（FC）主機匯流排介面卡（HBA）、I/O進度可能會因為報告遭到封鎖而停止。儲存容錯移轉作業報告會從「線上」狀態變更為「封鎖」狀態、導致讀取和寫入作業延遲。成功完成作業後、報告將無法返回「線上」狀態、並繼續保持「封鎖」狀態。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327["1246327"^] | 觀察到IO延遲、且Rport在使用QLogic QLE2672（16G）和QLE2742（32G）進行儲存容錯移轉期間移至封鎖、不存在狀態 | 在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行QLogic QLE2672 16G主機和QLE2742 32GB Fibre Channel（FC）主機匯流排介面卡（HBA）、IO進度可能會因為封鎖的連接埠而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online 
 |===
-
-.Example
-
-The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `detect_prio` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
-
-----
-預設 { path_checker_readsector0 detect_prio no } 裝置 { device { Vendor "LUN.*" NetApp path_checker" turte_prio yes } }
-
-[listing]
-----
-
-NOTE: To configure Oracle Linux 7.7 Red Hat Enterprise Kernel (RHCK), use the link:hu_rhel_77.html#recommended-settings[recommended settings] for Red Hat Enterprise Linux (RHEL) 7.7.
-
-== Known issues
-
-The Oracle Linux 7.7 with ONTAP release has the following known issues:
-
-[cols=3*,options="header"]
-|===
-| NetApp Bug ID
-| Title
-| Description
-| 1440718 | If you unmap or map a LUN without performing a SCSI rescan, it might lead to data corruption on the host. | When you set the 'disable_changed_wwids' multipath configuration parameter to YES, it disables access to the path device in the event of a WWID change. Multipath will disable access to the path device until the WWID of the path is restored to the WWID of the multipath device. To learn more, see  link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7[NetApp Knowledge Base: The filesystem corruption on iSCSI LUN on the Oracle Linux 7^].
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311575[1311575^] | IO delays observed due to Read/Write operations failed to switch through secondary paths during storage failover with Qlogic QLE2672(16G) | I/O operations might fail to resume through secondary paths during storage failover operations on Oracle Linux 7.7 kernel (5.4.17-2011.0.7.el7uek.x86_6) with QLogic QLE2672 16G HBA. If I/O progress stops due to blocked primary paths during storage failover, the I/O operation might not resume through secondary paths causing an I/O delay. The I/O operation resumes only after primary paths come online after the completion of the storage failover giveback operation.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311576[1311576^] | IO delays observed due to Read/Write operation failing to switch through secondary paths during storage failover with Emulex LPe16002(16G) | I/O operations might fail to resume through secondary paths during storage failover operations on Oracle Linux 7.7 kernel (5.4.17-2011.0.7.el7uek.x86_6) with Emulex LPe16002 16G HBA. If I/O progress stops due to blocked primary paths during storage failover, the I/O operation might not resume through secondary paths causing an I/O delay. The I/O operation resumes only after primary paths come online after the completion of the storage failover giveback operation.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246134[1246134^] | IO delays observed and reports are moving to blocked, NOT PRESENT state during storage failover with Emulex LPe16002(16G) | During storage failover operations on the Oracle Linux 7.6 with the UEK5U2 kernel running with an Emulex LPe16002B-M6 16G Fibre Channel (FC) host bus adapter (HBA), I/O progress might stop due to reports getting blocked. The storage failover operation reports change from "online" state to "blocked" state, causing a delay in read and write operations. After the operation is completed successfully, the reports fail to move back to "online" state and continue to remain in "blocked" state.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327[1246327^] | IO delays observed and Rports are moving to blocked, NOT PRESENT state during storage failover with Qlogic QLE2672(16G) and QLE2742(32G) | Fibre Channel (FC) remote ports might be blocked on Red Hat Enterprise Linux (RHEL) 7.6 with the QLogic QLE2672 16G host during storage failover operations. Because the logical interfaces go down when a storage node is down, the remote ports set the storage node status to blocked. IO progress might stop due to the blocked ports if you are running both a QLogic QLE2672 16G host and a QLE2742 32GB Fibre Channel (FC) host bus adapter (HBA).
-When the storage node returns to its optimal state, the logical interfaces also come up and the remote ports should be online. However, the remote ports might still be blocked. This blocked state registers as failed faulty to LUNS at the multipath layer. You can verify the state of the remote ports with the following command:
-# cat /sys/class/fc_remote_ports/rport-*/port_stat
-You should see the following output:
-Blocked
-Blocked
-Blocked
-Blocked
-Online
-Online
-|===
-
-// 2024 SEP 2, ONTAPDOC-2345
-// BURT 1440718, 2022-05-20
-----

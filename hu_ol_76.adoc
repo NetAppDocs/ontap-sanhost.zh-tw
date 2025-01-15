@@ -148,108 +148,131 @@ blacklist {
 [listing]
 ----
 3600a098038314c4a433f5774717a3046
-/lib/udev/scsi_id -gud /dev/sda
 ----
 +
-360030057024d0730239134810c0cb833
+`sda`是您要新增至黑名單的本機 SCSI 磁碟。
+
+. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
++
+[source, cli]
+----
+blacklist {
+     wwid   3600a098038314c4a433f5774717a3046
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+----
 
 
+請務必檢查 `/etc/multipath.conf`檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。
+
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+
+[cols="2*"]
+|===
+| 參數 | 設定 
+
+
+| DETECT（偵測）_prio | 是的 
+
+
+| 開發損失_tmo | "無限遠" 
+
+
+| 容錯回復 | 立即 
+
+
+| fast_io_f故障_tmo | 5. 
+
+
+| 功能 | "3 queue_if_no_path pg_init_retries 50" 
+
+
+| Flip_on_last刪除 | "是" 
+
+
+| 硬體處理常式 | 「0」 
+
+
+| path_checker_ | "周" 
+
+
+| path_grouping_policy | "群組by_prio" 
+
+
+| path_selector | "服務時間0" 
+
+
+| Polling_時間 間隔 | 5. 
+
+
+| 優先 | 「NetApp」ONTAP 
+
+
+| 產品 | LUN.* 
+
+
+| Retain附加的硬體處理常式 | 是的 
+
+
+| RR_weight | "統一" 
+
+
+| 使用者易記名稱 | 否 
+
+
+| 廠商 | NetApp 
+|===
+.範例
+下列範例說明如何修正被覆寫的預設值。在這種情況下，檔案會 `multipath.conf`定義與 `detect_prio` ONTAP LUN 不相容的值 `path_checker`。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]
 ----
-+
-`sda` is the local SCSI disk that you want to add to the blacklist.
-
-. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
-[source,cli]
-+
+defaults {
+ path_checker readsector0
+ detect_prio no
+ }
+devices {
+ device {
+ vendor "NETAPP "
+ product "LUN.*"
+ path_checker tur
+ detect_prio yes
+ }
+}
 ----
-黑名單 { WWID 3600a098038314c4a433f5774717a3046 devnode " ^（ RAM|RAW|REW|FD|MD|dm-|SR|SCD|st)[0-9]*" devnode "^HD[a-z]" devnode "^ccis.*"}
 
-[listing]
-----
-
-Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
-
-The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
-
-//ONTAPDOC-2578 9-Dec-2024
-//ONTAPDOC-2561 25-Nov-202
+NOTE: 若要設定 Oracle Linux 7.6 Red Hat Enterprise 核心（ RHCK ），請使用link:hu_rhel_76.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 7.6 的。
 
 
-[cols=2*,options="header"]
+
+== 已知問題
+
+Oracle Linux 7.6 with ONTAP 版本有下列已知問題：
+
+[cols="3*"]
 |===
-| Parameter
-| Setting
-| detect_prio | yes
-| dev_loss_tmo | "infinity"
-| failback | immediate
-| fast_io_fail_tmo | 5
-| features | "3 queue_if_no_path pg_init_retries 50"
-| flush_on_last_del | "yes"
-| hardware_handler | "0"
-| path_checker | "tur"
-| path_grouping_policy | "group_by_prio"
-| path_selector | "service-time 0"
-| polling_interval | 5
-| prio | "ontap"
-| product | LUN.*
-| retain_attached_hw_handler | yes
-| rr_weight | "uniform"
-| user_friendly_names | no
-| vendor | NETAPP
+| NetApp錯誤ID | 標題 | 說明 
+
+
+| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]、請參閱。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1202736["1202736"^] | 由於使用QLogic QLE2742介面卡的OL7U6主機上的遠端連接埠處於「不存在」狀態、因此LUN在主機探索期間可能無法使用 | 在主機探索期間、使用QLogic QLE2742介面卡之OL7U6主機上的光纖通道（FC）遠端連接埠狀態可能會進入「Not Present（不存在）」狀態。狀態為「不存在」的遠端連接埠可能會導致通往LUN的路徑無法使用。在儲存容錯移轉期間、路徑備援可能會減少、並導致I/O中斷。您可以輸入下列命令來檢查遠端連接埠狀態：# cat /sys/class/fc_remise_ports/rport-*/port_state以下是顯示的輸出範例：Online Not Present Online Online 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1204078["1204078"^] | 在儲存容錯移轉作業期間、執行Qlogic（QLE2672）16Gb FC HBA的Oracle Linux 7.6會發生核心中斷 | 在Oracle Linux 7.6搭配QLogic QLE2672 Fibre Channel（FC）主機匯流排介面卡（HBA）的儲存容錯移轉作業期間、核心發生毀損、原因是核心發生恐慌。核心異常會導致Oracle Linux 7.6重新開機、進而導致應用程式中斷。如果已啟用kdump機制、核心異常會產生位於/var/crash /目錄中的vmcore檔案。您可以分析vmcore檔案、判斷造成這種情況的原因。核心中斷之後、您可以重新啟動主機作業系統並恢復作業系統、然後視需要重新啟動任何應用程式。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1204351["1204351"^] | 在儲存容錯移轉作業期間、執行Qlogic（QLE2742）32GB FC HBA的Oracle Linux 7.6可能會發生核心中斷 | 在使用QLogic QLE2742 Fibre Channel（FC）主機匯流排介面卡（HBA）的Oracle Linux 7.6上執行儲存容錯移轉作業時、核心可能會因為核心中的恐慌而造成核心中斷。核心異常會導致Oracle Linux 7.6重新開機、進而導致應用程式中斷。如果已啟用kdump機制、核心異常會產生位於/var/crash /目錄中的vmcore檔案。您可以分析vmcore檔案、判斷造成這種情況的原因。核心中斷之後、您可以重新啟動主機作業系統並恢復作業系統、然後視需要重新啟動任何應用程式。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1204352["1204352"^] | 在儲存容錯移轉作業期間、執行Emulex（LPe32002-M2）32GB FC HBA的Oracle Linux 7.6可能會發生核心中斷 | 在使用Emulex LPe32002 - M2 Fibre Channel（FC）主機匯流排介面卡（HBA）的Oracle Linux 7.6上執行儲存容錯移轉作業時、核心可能會因為核心中的恐慌而造成核心中斷。核心異常會導致Oracle Linux 7.6重新開機、進而導致應用程式中斷。如果已啟用kdump機制、核心異常會產生位於/var/crash /目錄中的vmcore檔案。您可以分析vmcore檔案、判斷造成這種情況的原因。核心中斷之後、您可以重新啟動主機作業系統並恢復作業系統、然後視需要重新啟動任何應用程式。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246134["11246134"^] | 在採用UEK5U2核心的Oracle Linux 7.6上、儲存容錯移轉作業期間、與Emulex LPe16002B-m6 16G FC HBA一起執行時、沒有I/O進度 | 在Oracle Linux 7.6上執行儲存容錯移轉作業時、如果UEK5U2核心執行Emulex LPe16002B-m6 16G光纖通道（FC）主機匯流排介面卡（HBA）、I/O進度可能會因為報告遭到封鎖而停止。儲存容錯移轉作業報告會從「線上」狀態變更為「封鎖」狀態、導致讀取和寫入作業延遲。作業成功完成後、報告將無法返回「線上」狀態、並繼續保持「封鎖」狀態。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327["1246327"^] | 在儲存容錯移轉作業期間、QLogic QLE2672 16G主機上的遠端連接埠狀態遭到封鎖 | 在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行QLogic QLE2672 16G主機和QLE2742 32GB Fibre Channel（FC）主機匯流排介面卡（HBA）、IO進度可能會因為封鎖的連接埠而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online 
 |===
-
-.Example
-
-The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `detect_prio` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
-
-----
-預設 { path_checker_readsector0 detect_prio no } 裝置 { device { Vendor "LUN.*" NetApp path_checker" turte_prio yes } }
-
-[listing]
-----
-
-NOTE: To configure Oracle Linux 7.6 Red Hat Enterprise Kernel (RHCK), use the link:hu_rhel_76.html#recommended-settings[recommended settings] for Red Hat Enterprise Linux (RHEL) 7.6.
-
-== Known issues
-
-The Oracle Linux 7.6 with ONTAP release has the following known issues:
-
-[cols=3*,options="header"]
-|===
-| NetApp Bug ID
-| Title
-| Description
-| 1440718 | If you unmap or map a LUN without performing a SCSI rescan, it might lead to data corruption on the host. | When you set the 'disable_changed_wwids' multipath configuration parameter to YES, it disables access to the path device in the event of a WWID change. Multipath will disable access to the path device until the WWID of the path is restored to the WWID of the multipath device. To learn more, see  link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7[NetApp Knowledge Base: The filesystem corruption on iSCSI LUN on the Oracle Linux 7^].
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1202736[1202736^] | LUNs might not be available during host discovery due to "Not Present" state of remote ports on a OL7U6 host with QLogic QLE2742 adapter |During host discovery, the status of Fibre Channel (FC) remote ports on a OL7U6 host with a QLogic QLE2742 adapter might enter into "Not Present" state. Remote ports with a "Not Present" state might cause paths to LUNs to become unavailable. During storage failover, the path redundancy might be reduced and result in an I/O outage.
-You can check the remote port status by entering the following command:
-# cat /sys/class/fc_remote_ports/rport-*/port_state
-The following is an example of the output that is displayed:
-  Online
-  Online
-  Not Present
-  Online
-  Online
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1204078[1204078^] | Kernel disruption occurs on Oracle Linux 7.6 running with Qlogic(QLE2672) 16GB FC HBA during storage failover operations | During storage failover operations on the Oracle Linux 7.6 with a Qlogic QLE2672 Fibre Channel (FC) host bus adapter (HBA), a kernel disruption occurs due to a panic in the kernel. The kernel panic causes Oracle Linux 7.6 to reboot, which leads to an application disruption.   If the kdump mechanism is enabled, the kernel panic generates a vmcore file located in the /var/crash/ directory. You can analyze the vmcore file to determine the cause of the panic.  After the kernel disruption, you can reboot the host OS and recover the operating system, and then you can restart any applications as required.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1204351[1204351^] | Kernel disruption might occur on Oracle Linux 7.6 running with Qlogic(QLE2742) 32GB FC HBA during storage failover operations | During storage failover operations on the Oracle Linux 7.6 with a Qlogic QLE2742 Fibre Channel (FC) host bus adapter (HBA), a kernel disruption might occur due to a panic in the kernel. The kernel panic causes Oracle Linux 7.6 to reboot, which leads to an application disruption. If the kdump mechanism is enabled, the kernel panic generates a vmcore file located in the /var/crash/ directory. You can analyze the vmcore file to determine the cause of the panic.
-After the kernel disruption, you can reboot the host OS and recover the operating system, and then you can restart any applications as required.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1204352[1204352^] | Kernel disruption might occur on Oracle Linux 7.6 running with Emulex (LPe32002-M2)32GB FC HBA during storage failover operations | During storage failover operations on the Oracle Linux 7.6 with an Emulex LPe32002-M2 Fibre Channel (FC) host bus adapter (HBA), a kernel disruption might occur due to a panic in the kernel. The kernel panic causes Oracle Linux 7.6 to reboot, which leads to an application disruption.
- If the kdump mechanism is enabled, the kernel panic generates a vmcore file located in the /var/crash/ directory. You can analyze the vmcore file to determine the cause of the panic.
-After the kernel disruption, you can reboot the host OS and recover the operating system, and then you can restart any applications as required.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246134[11246134^] | No I/O progress on Oracle Linux 7.6 with UEK5U2 kernel, running with an Emulex LPe16002B-M6 16G FC HBA during storage failover operations | During storage failover operations on the Oracle Linux 7.6 with the UEK5U2 kernel running with an Emulex LPe16002B-M6 16G Fibre Channel (FC) host bus adapter (HBA), I/O progress might stop due to reports getting blocked. The storage failover operation reports change from an "online" state to a "blocked" state, causing a delay in read and write operations. After the operation has completed successfully, the reports fail to move back to an "online" state and continue to remain in a "blocked" state.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327[1246327^] | Remote port status on QLogic QLE2672 16G host blocked during storage failover operations | Fibre Channel (FC) remote ports might be blocked on Red Hat Enterprise Linux (RHEL) 7.6 with the QLogic QLE2672 16G host during storage failover operations. Because the logical interfaces go down when a storage node is down, the remote ports set the storage node status to blocked. IO progress might stop due to the blocked ports if you are running both a QLogic QLE2672 16G host and a QLE2742 32GB Fibre Channel (FC) host bus adapter (HBA).
-When the storage node returns to its optimal state, the logical interfaces also come up and the remote ports should be online. However, the remote ports might still be blocked. This blocked state registers as failed faulty to LUNS at the multipath layer. You can verify the state of the remote ports with the following command:
- # cat /sys/class/fc_remote_ports/rport-*/port_stat
- You should see the following output:
- Blocked
- Blocked
- Blocked
- Blocked
- Online
- Online
-|===
-
-// 2024 SEP 2, ONTAPDOC-2345
-// BURT 1440718, 2022-05-20
-----

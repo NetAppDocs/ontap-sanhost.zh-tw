@@ -181,91 +181,132 @@ blacklist {
 [listing]
 ----
 3600a098038314c4a433f5774717a3046
-/lib/udev/scsi_id -gud /dev/sda
 ----
 +
-360030057024d0730239134810c0cb833
+`sda`是您要新增至黑名單的本機 SCSI 磁碟。
+
+. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
++
+[source, cli]
+----
+blacklist {
+     wwid   3600a098038314c4a433f5774717a3046
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+----
 
 
+請務必檢查 `/etc/multipath.conf`檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。
+
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
+
+[cols="2*"]
+|===
+| 參數 | 設定 
+
+
+| DETECT（偵測）_prio | 是的 
+
+
+| 開發損失_tmo | "無限遠" 
+
+
+| 容錯回復 | 立即 
+
+
+| fast_io_f故障_tmo | 5. 
+
+
+| 功能 | "3 queue_if_no_path pg_init_retries 50" 
+
+
+| Flip_on_last刪除 | "是" 
+
+
+| 硬體處理常式 | 「0」 
+
+
+| no_path_retry | 佇列 
+
+
+| path_checker_ | "周" 
+
+
+| path_grouping_policy | "群組by_prio" 
+
+
+| path_selector | "服務時間0" 
+
+
+| Polling_時間 間隔 | 5. 
+
+
+| 優先 | 「NetApp」ONTAP 
+
+
+| 產品 | LUN.* 
+
+
+| Retain附加的硬體處理常式 | 是的 
+
+
+| RR_weight | "統一" 
+
+
+| 使用者易記名稱 | 否 
+
+
+| 廠商 | NetApp 
+|===
+.範例
+下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]
 ----
-+
-`sda` is the local SCSI disk that you want to add to the blacklist.
+defaults {
+   path_checker      readsector0
+   no_path_retry      fail
+}
 
-. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
-[source,cli]
-+
+devices {
+   device {
+      vendor         "NETAPP  "
+      product         "LUN.*"
+      no_path_retry     queue
+      path_checker      tur
+   }
+}
 ----
-黑名單 { WWID 3600a098038314c4a433f5774717a3046 devnode " ^（ RAM|RAW|REW|FD|MD|dm-|SR|SCD|st)[0-9]*" devnode "^HD[a-z]" devnode "^ccis.*"}
 
-[listing]
-----
 
-Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
+=== 設定 KVM 設定
 
-The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
+您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於 LUN 已對應至 Hypervisor ，因此無需變更即可設定 KVM 。
 
-//ONTAPDOC-2578 9-Dec-2024
-//ONTAPDOC-2561 25-Nov-202
 
-[cols=2*,options="header"]
+
+== 已知問題
+
+採用 ONTAP 版本的 RHEL 7.5 有下列已知問題：
+
+[cols="3*"]
 |===
-| Parameter
-| Setting
-| detect_prio | yes
-| dev_loss_tmo | "infinity"
-| failback | immediate
-| fast_io_fail_tmo | 5
-| features | "3 queue_if_no_path pg_init_retries 50"
-| flush_on_last_del | "yes"
-| hardware_handler | "0"
-| no_path_retry | queue
-| path_checker | "tur"
-| path_grouping_policy | "group_by_prio"
-| path_selector | "service-time 0"
-| polling_interval | 5
-| prio | "ontap"
-| product | LUN.*
-| retain_attached_hw_handler | yes
-| rr_weight | "uniform"
-| user_friendly_names | no
-| vendor | NETAPP
+| NetApp錯誤ID | 標題 | 說明 
+
+
+| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]、請參閱。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1139053["1139053"^] | 在儲存容錯移轉作業期間、使用QLogic QLE2672 16GB FC的RHEL7.5發生核心中斷 | 在使用QLogic QLE2672 16GB光纖通道主機匯流排介面卡的RHEL7U5核心上執行儲存容錯移轉作業時、核心會因為核心中的恐慌而中斷。核心異常會導致RHEL 7.5重新開機、進而導致應用程式中斷。如果已設定kdump、核心異常會在/var/crash /目錄下產生vmcore檔案。vmcore檔案用於瞭解故障原因。在這種情況下、vmcore檔案中記錄的「Get_no_timer_interrupt+440」模組會出現緊急狀況、並顯示下列字串：「[例外RIP：Get_no_timer_interrupt+440]」核心中斷之後、您可以重新啟動主機作業系統、並視需要重新啟動應用程式、以恢復作業系統。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1138536["1138536"^] | 在儲存容錯移轉作業期間、使用QLogic QLE2742 32GB FC的RHEL7U5發生核心中斷 | 在使用QLogic QLE2742 HBA的Red Hat Enterprise Linux（RHEL）RHEL7U5核心上執行儲存容錯移轉作業時、核心會因核心異常而中斷。核心毀損會導致作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心異常會在/var/crash /目錄下產生vmcore檔案。當核心出現問題時、您可以使用vmcore檔案來調查故障原因。以下範例顯示bGet_no_timer_interrips+440b模組中的緊急情況。在vmcore檔案中、系統會以下列字串登入緊急狀況：「[例外RIP：Get_no_timer_interrup+440]」。您可以重新啟動主機作業系統、並視需要重新啟動應用程式、藉此恢復作業系統。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1148090["1148090"^] | 在執行儲存容錯移轉作業期間、RHEL 7.5搭配QLogic QLE2742 32GB FC HBA會發生核心中斷 | 在使用QLogic QLE2742 Fibre Channel（FC）主機匯流排介面卡（HBA）的Red Hat Enterprise Linux（RHEL）7.5核心上執行儲存容錯移轉作業時、核心會因為核心中的恐慌而造成核心中斷。核心異常會導致RHEL 7.5重新開機、進而導致應用程式中斷。如果已啟用kdump機制、核心異常會產生位於/var/crash /目錄中的vmcore檔案。您可以分析vmcore檔案、判斷造成這種情況的原因。在這種情況下、當發生以QLogic QLE2742 HBA事件進行儲存容錯移轉時、「nNative佇列_sin_lock _lipath+464」模組會受到影響。您可以在vmcore檔案中找到事件、方法是找出下列字串：「[例外RIP：nature_enternated_sin_lock_lipath+464]"核心中斷之後、您可以重新開機主機作業系統並還原作業系統、然後視需要重新啟動應用程式。 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1146898["116898"^] | 儲存容錯移轉作業期間、RHEL 7.5與Emulex HBA發生核心中斷 | 在使用Emulex LPe32002 - M2 32-GB FC主機匯流排介面卡（HBA）的Red Hat Enterprise Linux（RHEL）7.5系統上執行儲存容錯移轉作業時、核心會中斷。核心中斷會導致作業系統重新開機、進而導致應用程式中斷。如果您設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以使用vmcore檔案來判斷故障原因。在下列範例中、您可以在「lfc_HBA _clean _txcmplq+3668」模組中看到中斷情形。此中斷會以下列字串記錄在vmcore檔案中：「[例外RIP：lfc_HBA、clean、txcmplq+368]"。核心中斷後、請重新啟動主機作業系統以恢復作業系統。視需要重新啟動應用程式。 
 |===
-
-.Example
-
-The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `no_path_retry` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
-
-----
-預設 { path_checker_readsector0 no_path_retry fail }
-
-裝置 { device { 廠商「 NetApp 」產品 "LUN.*" no_path_retry queue path_checker" }
-
-[listing]
-----
-
-=== Configure KVM settings
-
-You can use the recommended settings to configure Kernel-based Virtual Machine (KVM) as well. There are no changes required to configure KVM because the LUN is mapped to the hypervisor.
-
-//ONTAPDOC-2561 5-Dec-2024
-
-== Known issues
-
-The RHEL 7.5 with ONTAP release has the following known issues:
-
-[cols=3*,options="header"]
-|===
-| NetApp Bug ID
-| Title
-| Description
-| 1440718 | If you unmap or map a LUN without performing a SCSI rescan, it might lead to data corruption on the host. | When you set the 'disable_changed_wwids' multipath configuration parameter to YES, it disables access to the path device in the event of a WWID change. Multipath will disable access to the path device until the WWID of the path is restored to the WWID of the multipath device. To learn more, see  link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7[NetApp Knowledge Base: The filesystem corruption on iSCSI LUN on the Oracle Linux 7^].
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1139053[1139053^] | Kernel disruption occurs on RHEL7.5 with QLogic QLE2672 16GB FC during storage failover operations |During storage failover operations on the RHEL7U5 kernel with QLogic QLE2672 16GB fibre channel host bus adapter, the kernel disruption occurs due to a panic in the kernel. The kernel panic causes RHEL 7.5 to reboot, which leads to an application disruption. The kernel panic generates the vmcore file under the /var/crash/directory if kdump is configured. The vmcore file is used to understand the cause of the failure. In this case, the panic was observed in the “get_next_timer_interrupt+440” module which is logged in the vmcore file with the following string: " [exception RIP: get_next_timer_interrupt+440]" After the kernel disruption, you can recover the operating system by rebooting the host operating system and restarting the application as required.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1138536[1138536^] | Kernel disruption occurs on RHEL7U5 with QLogic QLE2742 32GB FC during storage failover operations | During storage failover operations on the Red Hat Enterprise Linux (RHEL) RHEL7U5 kernel with QLogic QLE2742 HBA, kernel disruption occurs due to a panic in the kernel. The kernel panic leads to a reboot of the operating system, causing an application disruption. The kernel panic generates the vmcore file under the /var/crash/ directory if kdump is configured. When the kernel panics, you can use the vmcore file to investigate the reason for the failure. The following example shows a panic in the bget_next_timer_interrupt+440b module. The panic is logged in the vmcore file with the following string: " [exception RIP: get_next_timer_interrupt+440]" You can recover the operating system by rebooting the host OS and restarting the application as required.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1148090[1148090^] | Kernel disruption occurs on RHEL 7.5 with QLogic QLE2742 32GB FC HBA during storage failover operations | During storage failover operations on the Red Hat Enterprise Linux (RHEL) 7.5 kernel with a QLogic QLE2742 Fibre Channel (FC) host bus adapter (HBA), a kernel disruption occurs due to a panic in the kernel. The kernel panic causes RHEL 7.5 to reboot, which leads to an application disruption. If the kdump mechanism is enabled, the kernel panic generates a vmcore file located in the /var/crash/ directory. You can analyze the vmcore file to determine the cause of the panic.  In this instance, when storage failover with the QLogic QLE2742 HBA event occurs, the "native_queued_spin_lock_slowpath+464" module is affected. You can locate the event in the vmcore file by finding the following string:     " [exception RIP: native_queued_spin_lock_slowpath+464]"  After the kernel disruption, you can reboot the Host OS and recover the operating system, and then you can restart the applications as required.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1146898[1146898^] | Kernel disruption occurs on RHEL 7.5 with Emulex HBAs during storage failover operations | During storage failover operations on a Red Hat Enterprise Linux (RHEL) 7.5 system with Emulex LPe32002-M2 32-GB FC host bus adapters (HBAs), a disruption in the kernel occurs. The kernel disruption causes a reboot of the operating system, which in turn causes an application disruption.  If you configure kdump, the kernel disruption generates the vmcore file under the /var/crash/ directory. You can use the vmcore file to determine the cause of the failure. In the following example, you can see the disruption in the "lpfc_hba_clean_txcmplq+368" module. This disruption is logged in the vmcore file with the following string: " [exception RIP: lpfc_hba_clean_txcmplq+368]" After the kernel disruption, reboot the host OS to recover the operating system. Restart the application as required.
-|===
-
-// 2024 SEP 2, ONTAPDOC-2345
-----

@@ -148,74 +148,111 @@ blacklist {
 [listing]
 ----
 3600a098038314c4a433f5774717a3046
-/lib/udev/scsi_id -gud /dev/sda
 ----
 +
-360030057024d0730239134810c0cb833
+`sda`是您要新增至黑名單的本機 SCSI 磁碟。
 
-
-
-[listing]
-----
+. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
 +
-`sda` is the local SCSI disk that you want to add to the blacklist.
-
-. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
-[source,cli]
-+
+[source, cli]
 ----
-黑名單 { WWID 3600a098038314c4a433f5774717a3046 devnode " ^（ RAM|RAW|REW|FD|MD|dm-|SR|SCD|st)[0-9]*" devnode "^HD[a-z]" devnode "^ccis.*"}
-
-[listing]
+blacklist {
+     wwid   3600a098038314c4a433f5774717a3046
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
 ----
 
-Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
 
-The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
+請務必檢查 `/etc/multipath.conf`檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。
 
-//ONTAPDOC-2578 9-Dec-2024
-//ONTAPDOC-2561 25-Nov-202
+下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
 
-
-[cols=2*,options="header"]
+[cols="2*"]
 |===
-| Parameter
-| Setting
-| detect_prio | yes
-| dev_loss_tmo | "infinity"
-| failback | immediate
-| fast_io_fail_tmo | 5
-| features | "2 pg_init_retries 50"
-| flush_on_last_del | "yes"
-| hardware_handler | "0"
-| no_path_retry | queue
-| path_checker | "tur"
-| path_grouping_policy | "group_by_prio"
-| path_selector | "service-time 0"
-| polling_interval | 5
-| prio | "ontap"
-| product | LUN.*
-| retain_attached_hw_handler | yes
-| rr_weight | "uniform"
-| user_friendly_names | no
-| vendor | NETAPP
+| 參數 | 設定 
+
+
+| DETECT（偵測）_prio | 是的 
+
+
+| 開發損失_tmo | "無限遠" 
+
+
+| 容錯回復 | 立即 
+
+
+| fast_io_f故障_tmo | 5. 
+
+
+| 功能 | "2 pg_init_retries 50" 
+
+
+| Flip_on_last刪除 | "是" 
+
+
+| 硬體處理常式 | 「0」 
+
+
+| no_path_retry | 佇列 
+
+
+| path_checker_ | "周" 
+
+
+| path_grouping_policy | "群組by_prio" 
+
+
+| path_selector | "服務時間0" 
+
+
+| Polling_時間 間隔 | 5. 
+
+
+| 優先 | 「NetApp」ONTAP 
+
+
+| 產品 | LUN.* 
+
+
+| Retain附加的硬體處理常式 | 是的 
+
+
+| RR_weight | "統一" 
+
+
+| 使用者易記名稱 | 否 
+
+
+| 廠商 | NetApp 
 |===
-
-.Example
-
-The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `no_path_retry` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
-
-----
-預設 { path_checker_readsector0 no_path_retry fail } 裝置 { 裝置 { 廠商「 NetApp 」產品 "lun.*" no_path_retry queue path_checkur } }
+.範例
+下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
 
 [listing]
 ----
-
-NOTE: To configure Oracle Linux 8.1 Red Hat Enterprise Kernel (RHCK), use the link:hu_rhel_81.html#recommended-settings[recommended settings] for Red Hat Enterprise Linux (RHEL) 8.1.
-
-== Known issues
-
-There are no known issues for the Oracle Linux 8.1 with ONTAP release.
-
-NOTE: For Oracle Linux (Red Hat compatible kernel) known issues, see the link:hu_rhel_81.html#known-problems-and-limitations[known issues] for Red Hat Enterprise Linux (RHEL) 8.1.
+defaults {
+ path_checker readsector0
+ no_path_retry fail
+ }
+devices {
+ device {
+ vendor "NETAPP "
+ product "LUN.*"
+ no_path_retry queue
+ path_checker tur
+ }
+}
 ----
+
+NOTE: 若要設定 Oracle Linux 8.1 Red Hat Enterprise 核心（ RCK ），請使用link:hu_rhel_81.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的。
+
+
+
+== 已知問題
+
+ONTAP 版本的 Oracle Linux 8.1 沒有已知問題。
+
+
+NOTE: 對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱link:hu_rhel_81.html#known-problems-and-limitations["已知問題"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的。

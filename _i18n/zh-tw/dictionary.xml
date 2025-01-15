@@ -3380,16 +3380,10 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="125316bd33fa278b6852a16d6a7e9aa5" category="doc">設定 KVM 設定</block>
   <block id="561907e10a6e8eda4d561a399f51365e" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於 LUN 已對應至 Hypervisor ，因此無需變更即可設定 KVM 。</block>
   <block id="5d896adeb3ef8a2ffa075f87226d15f8" category="paragraph">您不需要直接將任何內容新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置，請將下列語法新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案，以您要排除的裝置的全球識別碼（ WWID ）字串取代 &lt;DevId&gt; ：</block>
-  <block id="4f99c93f391ff0e2d6860a0f43807ae1" category="paragraph">360030057024d0730239134810c0cb833</block>
-  <block id="2b59da7c705d1ef7529e0a902fee06df" category="paragraph">黑名單 { WWID 3600a098038314c4a433f5774717a3046 devnode " ^（ RAM|RAW|REW|FD|MD|dm-|SR|SCD|st)[0-9]*" devnode "^HD[a-z]" devnode "^ccis.*"}</block>
   <block id="fd97e6af5040ad49359412a731cf9a48" category="paragraph">安裝 NetApp 主機公用程式套件會自動安裝工具套件。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>公用程式，可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。此<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>命令會傳回有關對應至主機的 LUN ，多重路徑及建立啟動器群組所需的資訊。</block>
   <block id="3aeb4eb76668e1a648ac20167d1fd7aa" category="paragraph">NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與非對稱命名空間存取（ ANA ）。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取（ ALUA ）多重路徑。ANA 是使用核心內建 NVMe 多重路徑功能來實作。</block>
   <block id="f236c844e8dbdb37680ec9722ff657bb" category="admonition">這些步驟不適用於 Qlogic NVMe / FC 主機。</block>
   <block id="7a946bd15eacb1e51c541a0a6a5d47b0" category="list-text">確認預期值<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>為 256 ：</block>
-  <block id="f4b1e97a50ff51ef960c4d7211e5b1fd" category="paragraph">預設 { path_checker_readsector0 no_path_retry fail } 裝置 { 裝置 { 廠商「 NetApp 」產品 "lun.*" no_path_retry queue path_checkur } }</block>
-  <block id="14d2c9c4d8010ba7a3fd6bbcedf75c4c" category="paragraph">預設 { path_checker_readsector0 no_path_retry fail }</block>
-  <block id="6454b8b7b36e80d757f99946bc8662f9" category="paragraph">裝置 { device { 廠商「 NetApp 」產品 "LUN.*" no_path_retry queue path_checker" }</block>
-  <block id="03608048be7d0de432f3d7e46102df2c" category="paragraph">預設 { path_checker_readsector0 detect_prio no } 裝置 { device { Vendor "LUN.*" NetApp path_checker" turte_prio yes } }</block>
   <block id="4180755acfbcb9827a8bc0318b20f91e" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.4</block>
   <block id="87f6913bd00fe9b478a698cf2d7f8104" category="doc">搭配 ONTAP 使用 Oracle Linux 9.4</block>
   <block id="876974ebc862d8c6c538cfecc9720c17" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 9.4 與 ONTAP 設定為目標。</block>
@@ -3408,7 +3402,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3113b333d3e749ddc1b54d0f9fe223c5" category="paragraph">RHEL 9.5 作業系統是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="b4feac4c74eecf06eed0200cfc8710c8" category="paragraph">下列範例說明如何修正被覆寫的預設值。在這種情況下，檔案會<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>定義與<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN 不相容的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block>。如果其他 SAN 陣列仍連接至主機，請使用裝置區段，針對 ONTAP LUN 修正這些參數。</block>
   <block id="cd964b47d77b51ab541371b337cd33b7" category="paragraph">在 ONTAP 版本中、 RHEL 9.5 的 FC 主機組態沒有已知問題。</block>
-  <block id="194e7b22f756f3778f23f84e4ad513be" category="paragraph">預設 { path_checker_readsector0 no_path_retry fail } 裝置 { 裝置 { 廠商「 NetApp 」產品 "lun.*" no_path_retry queue path_checkur } }</block>
   <block id="1053a5857d6cd620d40c66ef47b594d8" category="paragraph">SUSE Linux Enterprise Server 15 SP1 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。</block>
   <block id="a243e92c34f812e7c56005c42a770271" category="summary">適用於 ONTAP 的 Oracle Linux 9.4 版 NVMe 型主機組態</block>
   <block id="8d7e003d34318d8e9e26f43a6131a1ff" category="paragraph">NVMe 主機組態提供下列支援和功能，適用於配備 ONTAP 儲存設備的 Oracle Linux 9.4 。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
@@ -3443,4 +3436,332 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="710b53594e3ee110c5fc61ba3387e351" category="list-text">為 RHEL 9.5 主機產生 dhchap 金鑰。</block>
   <block id="9e4ea029a49b7e7586107af115c15f41" category="paragraph">在採用 ONTAP 版本的 RHEL 9.5 上， NVMe 主機組態不存在已知問題。</block>
   <block id="eab7e959c5707439b9e2c1fe3e86d60c" category="sidebar">9.5</block>
+  <block id="a4ac74af7c81edef10a1710e62ceadeb" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block>是您要新增至黑名單的本機 SCSI 磁碟。</block>
+  <block id="e78866ae0ff845eed770c2b938efee3b" category="paragraph">請務必檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。</block>
+  <block id="0addb4faeee17f16535b967fa12087f4" category="paragraph">下列範例示範如何修正覆寫的預設值。在這種情況下，檔案會<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>定義與<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN 不相容的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block>。如果因為其他SAN陣列仍連接至主機而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
+  <block id="1cf74d5a15225e81daff79d7ccb11382" category="admonition">若要設定 Oracle Linux 8.10 RedHat Enterprise 核心、請使用<block ref="8fd6ca76e28de543c48473a969597840" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.10 的。</block>
+  <block id="6bb89cc49fca8628d227dd847602703b" category="paragraph">您也可以使用<block ref="4bba837a8ebd28cc5db475b23d73ca01" category="inline-xref-macro-rx"></block>來設定核心型虛擬機器（ KVM ）。由於 LUN 已對應至 Hypervisor ，因此不需要變更即可設定 KVM 。</block>
+  <block id="3e1ec4fdd93153b353d57238402daa53" category="paragraph">ONTAP 版本的 Oracle Linux 8.10 沒有已知問題。</block>
+  <block id="fa82877b3beb26d7d7bc882389d60aca" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.10 的。</block>
+  <block id="38e584f52f25fb096dead8f8866657b0" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="f736929b1834226891236b2c0b0b218e" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.4 的。</block>
+  <block id="e79780a12540c43b1147fb9232479dc4" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="0158dc1052dab85818a92b1a427c95b7" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.5 的。</block>
+  <block id="ff74c42c74c13fedc08a8ca1624e32b4" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="aad294b0550f33ea846ebc2598292576" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.6 的。</block>
+  <block id="9d2a87ba78cec8237c139f77ffb44261" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="fd679b4991af24edfd6d66f5cbc5db76" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.7 的。</block>
+  <block id="1d153902c02cd7301318e3e1be83184a" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="7703b3b38de881e061b6dbcbbcaf9f81" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.8 的。</block>
+  <block id="9c5b436e1bb8a6899180fe9890e5395b" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="6381fe6a72f9bd9f067a0ec390d2a8fb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.9 的。</block>
+  <block id="70d8388968a3a11604bb39f33f659b12" category="paragraph">使用 ONTAP 版本的 CentOS 7.0 沒有已知問題。</block>
+  <block id="851e86338d86c905fc29f8ecedbd0b2f" category="paragraph">使用 ONTAP 版本的 CentOS 7.1 沒有已知問題。</block>
+  <block id="def5d7178ce6eb1ac3496c404892e8dc" category="paragraph">使用 ONTAP 版本的 CentOS 7.2 沒有已知問題。</block>
+  <block id="7feb2b1450534db8c446c0f70860b69a" category="paragraph">使用 ONTAP 版本的 CentOS 7.3 沒有已知問題。</block>
+  <block id="082ff273f4446479932be5f51cf8433b" category="paragraph">CentOS 7.4 with ONTAP 版本有下列已知問題：</block>
+  <block id="0d22c29a0eb01e70e085a44916b321b4" category="cell">1440718</block>
+  <block id="2a80f8446aa4a429e9f97920b1e74d2c" category="cell">如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。</block>
+  <block id="432a6b98702aceeda0bf1a325e31bcf4" category="inline-link-macro">NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損</block>
+  <block id="0317854ad5c788fd489e5dfe652c06cd" category="cell">當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解<block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>、請參閱。</block>
+  <block id="315cfe7e8975ed230363b922955d221b" category="paragraph">CentOS 7.5 with ONTAP 版本有下列已知問題：</block>
+  <block id="0b3c2391c446a11bbd0c66a38ea6904b" category="paragraph">CentOS 7.6 with ONTAP 版本有下列已知問題：</block>
+  <block id="80a7e1a7a3dc1fb6bca0ae027c3516e0" category="paragraph">CentOS 7.7 with ONTAP 版本有下列已知問題：</block>
+  <block id="e5531573dc40c61302ff8ed6b99bde7d" category="paragraph">CentOS 7.8 with ONTAP 版本有下列已知問題：</block>
+  <block id="68259199df7fde5545f7ab7628a2628b" category="paragraph">CentOS 7.9 with ONTAP 版本有下列已知問題：</block>
+  <block id="16c8f9caff89a168a424e7f5ade0f822" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.0 的。</block>
+  <block id="4ed487db5845a58ae6349ab5f8fcc335" category="paragraph">若為 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的。</block>
+  <block id="f1beda93cf92219b8b55ae973eac7daa" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="840d5abfe44b15b4222ea5c534ce82a9" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.2 的。</block>
+  <block id="cdaab392c5ef9c222bc95dc907be230b" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="3c7f0100e93cbb394731ee7d8982c161" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.3 的。</block>
+  <block id="294f49673136bab1fa20a2da73fdee21" category="paragraph">使用 ONTAP 版本的 CentOS 8.4 沒有已知問題。</block>
+  <block id="4ecf9d7a3a8c52cfa00d399121a8eda8" category="paragraph">使用 ONTAP 版本的 CentOS 8.5 沒有已知問題。</block>
+  <block id="58dc5490e7551dc8532694e6c1891c35" category="admonition">若要設定 Oracle Linux 7.0 Red Hat Enterprise 核心（ RHHCK ），請使用 <block ref="95c92cba905c8a4ca7d7698440b6011a" category="inline-link-macro-rx"></block>for Red Hat Enterprise Linux （ RHEL ） 7.0 。</block>
+  <block id="b85d15d2a4c68e31e07d28311d3bc5de" category="paragraph">Oracle Linux 7.0 with ONTAP 版本有下列已知問題：</block>
+  <block id="141ad1ff5cf1058b78e7b327d5363940" category="inline-link-macro">901558</block>
+  <block id="36449de1465a8388d5bd6898a3ae93a1" category="cell"><block ref="7ace244e7f60745da9174ac22c242ea9" category="inline-link-macro-rx"></block></block>
+  <block id="f7f82c29a44c5277ce27b17a6e4a45c0" category="cell">OL7.0：由於Emulex 8G（LPe12002）主機上的OL 7.0 UEK r3U5 Beta上出現「RSCN Timeout（RSCN逾時）」錯誤、因此主機失去通往LUN的所有路徑並當機</block>
+  <block id="09e33a526489b73c952a64dd843c9a3b" category="cell">您可能會發現Emulex 8G（LPe12002）主機當機、而且在使用I/O進行儲存容錯移轉作業期間、I/O中斷的情形很大您可能會看到路徑未恢復、這是RSCN逾時的結果、因為主機會遺失所有路徑並當機。很可能會發生此問題。</block>
+  <block id="b15feddd9b4f1d23e73c109324c3a1d3" category="inline-link-macro">901557</block>
+  <block id="4e9eb27f9ba0d13fc056bc68489f4cc5" category="cell"><block ref="757afc833102d287158052ecff4aa0f8" category="inline-link-macro-rx"></block></block>
+  <block id="905be380a5cf4045892a845261cf2ca9" category="cell">OL 7.0：在使用IO進行儲存容錯移轉作業期間、QLogic 8G FC（QLE2562）SAN主機發生高IO中斷</block>
+  <block id="9ca61b9ed5c5b141e2e563126e3fe821" category="cell">在使用IO進行儲存容錯移轉作業期間、您可能會發現QLogic 8G FC（QLE2562）主機的IO中斷時間過長。當主機上的IO中斷時、會中止並重新設定裝置的資訊清單。發生IO中斷的可能性很高。</block>
+  <block id="b57fe8d67ce7e8b23436c6228a9844ae" category="inline-link-macro">894766</block>
+  <block id="1e7db3fd2dab6919804846f952f02300" category="cell"><block ref="6960627c9953978229447a40b4f35f7e" category="inline-link-macro-rx"></block></block>
+  <block id="243e8d80abd39f22538ed54c7b95b785" category="cell">OL7.0：Dracut無法在UEKR3U5 Alpha的initramfs中包含SCSI_DH_alua.ko模組</block>
+  <block id="2b240993e14d428bca40885f69c834d2" category="cell">即使在核心命令列中新增參數「rloaddriver=scsi_dd_alua」並建立Dracut之後、SCSI_DH_alua模組也可能無法載入。因此、並未依建議啟用ALUA來使用NetApp LUN。</block>
+  <block id="0f52c52921eb352109559caece80f1fe" category="inline-link-macro">894796</block>
+  <block id="ecc82191bb7a9a243d2283ea9c7b0216" category="cell"><block ref="e5c2727a17035b48e2347f7bebb799e2" category="inline-link-macro-rx"></block></block>
+  <block id="43bce7f4fa80451d6519c90b20bc882a" category="cell">雖然在OL 7.0 OS安裝期間登入成功、但anacondo仍會顯示iSCSI登入失敗訊息</block>
+  <block id="111244c57c63118901aaf37fd7dc6652" category="cell">安裝OL 7.0時、anaconda安裝畫面會顯示iSCSI登入多個目標IP失敗、但iSCSI登入成功。anaconda顯示下列錯誤訊息：「節點登入失敗」您只會在選取多個目標IP進行iSCSI登入時才會看到此錯誤。您可以按一下「確定」按鈕、繼續安裝作業系統。此錯誤不會妨礙iSCSI或OL 7.0作業系統的安裝。</block>
+  <block id="0b49dd30562999499de068c03e8d8475" category="inline-link-macro">894771</block>
+  <block id="e36fc25b14a43aecb2be9299a4d1a15f" category="cell"><block ref="2ade0e7a464a0266f27561f87bd72d36" category="inline-link-macro-rx"></block></block>
+  <block id="76ac94ee86c78014de635dac93c950cb" category="cell">OL7.0：Anacondo不會在核心cmd行中新增bootdev*引數、以設定iSCSI SANboot OS安裝的IP位址</block>
+  <block id="5e60ad980d93367ed750fec269220ca4" category="cell">Anaconda不會在核心命令列中新增bootdev*引數、您可在iSCSI多重路徑LUN上安裝OL 7.0 OS期間、於其中設定IPV4位址。因此、在OL 7.0開機期間、您無法將IP位址指派給任何設定為與儲存子系統建立iSCSI工作階段的乙太網路介面。由於未建立iSCSI工作階段、因此在作業系統開機時不會發現根LUN、因此作業系統開機失敗。</block>
+  <block id="31d4b7b1b5735d1ba80e9d02816156ef" category="inline-link-macro">916501</block>
+  <block id="d29e31150c6fcebfe259ef1e60f97a7a" category="cell"><block ref="aaf2fffdc60a7c2259559deac3f25e1c" category="inline-link-macro-rx"></block></block>
+  <block id="f83731b7eb4660b4b25652429ded993f" category="cell">在IO的儲存容錯移轉作業期間、觀察到QLogic 10G FCoE（QLE8152）主機核心當機</block>
+  <block id="2a5337b34ae2f42558961dd451ec2a21" category="cell">您可能會看到10G FCoE邏輯（QLE8152）主機上的邏輯驅動程式模組發生核心當機。當機發生於IO的儲存容錯移轉作業期間。發生這種當機的可能性很高、導致主機的IO中斷時間更長。</block>
+  <block id="5665ff399a1bf0bb1955be6b42e7f7b2" category="admonition">若要設定 Oracle Linux 7.1 Red Hat Enterprise 核心（ RCK ），請使用<block ref="ac06888ec4e3e5a4526108ac1f8520b7" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.1 的。</block>
+  <block id="3765a3c3c98c335068342b7297b1fd7f" category="paragraph">ONTAP 版本的 Oracle Linux 7.1 沒有已知問題。</block>
+  <block id="8a5c5bd5d7d2cf00b6f9f428ae6077d8" category="admonition">若要設定 Oracle Linux 7.2 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="b6341682387f7873fba9fb1f6f4c5842" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.2 的。</block>
+  <block id="12816f6cc6e072d421258f60c7368dd0" category="paragraph">ONTAP 版本的 Oracle Linux 7.2 沒有已知問題。</block>
+  <block id="cf14c642d83317aeeb4b66dfccaf0748" category="admonition">若要設定 Oracle Linux 7.3 Red Hat Enterprise 核心（ RCK ），請使用<block ref="afd18201682c20761a139e3ba1b44320" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.3 的。</block>
+  <block id="655caf3afb6f5d2ec5a25110b46b1dac" category="paragraph">ONTAP 版本的 Oracle Linux 7.3 沒有已知問題。</block>
+  <block id="89d8b4fe15405a87af2ec65fc634abbc" category="paragraph">下列範例說明如何修正被覆寫的預設值。在這種情況下，檔案會<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>定義與<block ref="dbffbd283cd0d9c7937014167893297e" prefix=" " category="inline-code"></block> ONTAP LUN 不相容的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block>。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
+  <block id="8545ef0e74f9a7e959b7fdf91f7e42bf" category="admonition">若要設定 Oracle Linux 7.4 Red Hat Enterprise 核心（ RCK ），請使用<block ref="0f891679fa4536a4e919969e65b85526" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.4 的。</block>
+  <block id="9fc0bb91482095051bfd449367fb3e5c" category="paragraph">Oracle Linux 7.4 with ONTAP 版本有下列已知問題：</block>
+  <block id="f6a519893db9e6c1633112ee90905e2a" category="inline-link-macro">1109468</block>
+  <block id="7079c64a5b24cdd32462fc31603b1135" category="cell"><block ref="db94b7133d12176606a6a4461fe651e0" category="inline-link-macro-rx"></block></block>
+  <block id="82acca8af52f5f8d8536c7d62c245815" category="cell">在使用QLE8362卡的OL7.4 Hypervisor上觀察到韌體傾印</block>
+  <block id="d6afe009ea52239221866c17107326f9" category="cell">在使用QLE8362卡的OL7.4 Hypervisor上執行儲存容錯移轉作業時、偶爾會觀察到韌體傾印。韌體傾印可能會導致主機I/O中斷、可能會長達500秒。介面卡完成韌體傾印後、I/O作業會以正常方式恢復。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/message檔案中會顯示下列訊息：qla2xxx [0000:0c:00.3]-d001:8：韌體傾印已儲存至暫存緩衝區（8/ffffc90008901000）、傾印狀態旗標（0x3f）</block>
+  <block id="f1b1c741cf490c9ed0d147815f318e8e" category="admonition">若要設定 Oracle Linux 7.5 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="bd5476eff85991b1a8eb2197c27bdbeb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.5 的。</block>
+  <block id="07b4fb7cda0bd8b484d606550854f57e" category="paragraph">Oracle Linux 7.5 with ONTAP 版本有下列已知問題：</block>
+  <block id="3c146e54f2928af3c6df39922419b24f" category="inline-link-macro">1177239</block>
+  <block id="9104aa498f971a4f36b36c41f445ce30" category="cell"><block ref="a8f52c228282c2c6ed4c049cc277ae5a" category="inline-link-macro-rx"></block></block>
+  <block id="7d937b6efb504d37a46095c07e7716cd" category="cell">在儲存容錯移轉作業期間、利用QLogic QLE2672 16G FC觀察到OL7.5發生核心中斷</block>
+  <block id="7a1b52e64826aa344229a4f10a14cabf" category="cell">在使用核心4.1.12-112.16.4.el7uek.x86_64和QLogic QLE2672 HBA的Oracle Linux 7（OL7.5）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示重新開機作業系統、導致應用程式中斷。如果設定kdump、核心中斷會在/var/crash /目錄中建立vmcore檔案。這種中斷可在模組「 kmem_cache_alloc+118 」中觀察，此模組會記錄在 vmcore 檔案中，並以字串「例外 RIP ： kmem_cache_alloc+118 」來識別。在核心中斷之後，您可以重新啟動主機作業系統並重新啟動應用程式來恢復。</block>
+  <block id="6b2e7f1954c5ca07454ba050537bfc97" category="admonition">若要設定 Oracle Linux 7.6 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="01c1a2a180a79aab210cc480d73c73eb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.6 的。</block>
+  <block id="a2ad6d83a8574c572c9a8b9c0652127e" category="paragraph">Oracle Linux 7.6 with ONTAP 版本有下列已知問題：</block>
+  <block id="9f1d7307449f2a1971a05bc6e54a02e9" category="inline-link-macro">1202736</block>
+  <block id="ff09581cb2c13d8ad132e71c1320dc7e" category="cell"><block ref="108e2d22c5beb633cb3cfe03baa4f66f" category="inline-link-macro-rx"></block></block>
+  <block id="3b8a92ff3e01668248ad17ab6e44808a" category="cell">由於使用QLogic QLE2742介面卡的OL7U6主機上的遠端連接埠處於「不存在」狀態、因此LUN在主機探索期間可能無法使用</block>
+  <block id="266caf48844d8cdb3bb559a8663357b3" category="cell">在主機探索期間、使用QLogic QLE2742介面卡之OL7U6主機上的光纖通道（FC）遠端連接埠狀態可能會進入「Not Present（不存在）」狀態。狀態為「不存在」的遠端連接埠可能會導致通往LUN的路徑無法使用。在儲存容錯移轉期間、路徑備援可能會減少、並導致I/O中斷。您可以輸入下列命令來檢查遠端連接埠狀態：# cat /sys/class/fc_remise_ports/rport-*/port_state以下是顯示的輸出範例：Online Not Present Online Online</block>
+  <block id="5624202524c863954fd4270ff814d9ec" category="inline-link-macro">1204078</block>
+  <block id="e053b68e3667628d3c9f9104950b35b4" category="cell"><block ref="779f6732159318ae884ba5b402eebb3b" category="inline-link-macro-rx"></block></block>
+  <block id="110e0b5a03d1167053a9543acb43aacf" category="cell">在儲存容錯移轉作業期間、執行Qlogic（QLE2672）16Gb FC HBA的Oracle Linux 7.6會發生核心中斷</block>
+  <block id="c0bf7a084fa2c4a01bd1c93955f36853" category="cell">在Oracle Linux 7.6搭配QLogic QLE2672 Fibre Channel（FC）主機匯流排介面卡（HBA）的儲存容錯移轉作業期間、核心發生毀損、原因是核心發生恐慌。核心異常會導致Oracle Linux 7.6重新開機、進而導致應用程式中斷。如果已啟用kdump機制、核心異常會產生位於/var/crash /目錄中的vmcore檔案。您可以分析vmcore檔案、判斷造成這種情況的原因。核心中斷之後、您可以重新啟動主機作業系統並恢復作業系統、然後視需要重新啟動任何應用程式。</block>
+  <block id="f9de5b33d228fc7a257b05e2d0b6c683" category="inline-link-macro">1204351</block>
+  <block id="3c392133be4d94a24a2bafbe80d3f9fa" category="cell"><block ref="e4f067f2a87df9a65f3b48107d7ac51a" category="inline-link-macro-rx"></block></block>
+  <block id="4b97d2c9a1fc0afb4fde2570b328366a" category="cell">在儲存容錯移轉作業期間、執行Qlogic（QLE2742）32GB FC HBA的Oracle Linux 7.6可能會發生核心中斷</block>
+  <block id="a41dd8fa5c4b21d6d565247a17260afc" category="cell">在使用QLogic QLE2742 Fibre Channel（FC）主機匯流排介面卡（HBA）的Oracle Linux 7.6上執行儲存容錯移轉作業時、核心可能會因為核心中的恐慌而造成核心中斷。核心異常會導致Oracle Linux 7.6重新開機、進而導致應用程式中斷。如果已啟用kdump機制、核心異常會產生位於/var/crash /目錄中的vmcore檔案。您可以分析vmcore檔案、判斷造成這種情況的原因。核心中斷之後、您可以重新啟動主機作業系統並恢復作業系統、然後視需要重新啟動任何應用程式。</block>
+  <block id="d6c0c50761ad6452637a662cef9b7c83" category="inline-link-macro">1204352</block>
+  <block id="49c68535f9d278fae88a21a2b48a79ef" category="cell"><block ref="2d73099ef4fd4b2be1ad69d22e7490ca" category="inline-link-macro-rx"></block></block>
+  <block id="233dfa37455a25cad0ff70b82758fd04" category="cell">在儲存容錯移轉作業期間、執行Emulex（LPe32002-M2）32GB FC HBA的Oracle Linux 7.6可能會發生核心中斷</block>
+  <block id="de4751a6623d2dc19176d3eefc40a63a" category="cell">在使用Emulex LPe32002 - M2 Fibre Channel（FC）主機匯流排介面卡（HBA）的Oracle Linux 7.6上執行儲存容錯移轉作業時、核心可能會因為核心中的恐慌而造成核心中斷。核心異常會導致Oracle Linux 7.6重新開機、進而導致應用程式中斷。如果已啟用kdump機制、核心異常會產生位於/var/crash /目錄中的vmcore檔案。您可以分析vmcore檔案、判斷造成這種情況的原因。核心中斷之後、您可以重新啟動主機作業系統並恢復作業系統、然後視需要重新啟動任何應用程式。</block>
+  <block id="1be16d281967c5fd1105ba268364fdff" category="inline-link-macro">11246134</block>
+  <block id="596f5900897f794536e4fd09d9e67d1b" category="cell"><block ref="b642b2365a114acdecf31316d612089a" category="inline-link-macro-rx"></block></block>
+  <block id="6493a407c9bbe979a9aad945277aad29" category="cell">在採用UEK5U2核心的Oracle Linux 7.6上、儲存容錯移轉作業期間、與Emulex LPe16002B-m6 16G FC HBA一起執行時、沒有I/O進度</block>
+  <block id="310e18c99baea86232364acadb939a15" category="cell">在Oracle Linux 7.6上執行儲存容錯移轉作業時、如果UEK5U2核心執行Emulex LPe16002B-m6 16G光纖通道（FC）主機匯流排介面卡（HBA）、I/O進度可能會因為報告遭到封鎖而停止。儲存容錯移轉作業報告會從「線上」狀態變更為「封鎖」狀態、導致讀取和寫入作業延遲。作業成功完成後、報告將無法返回「線上」狀態、並繼續保持「封鎖」狀態。</block>
+  <block id="7f7d7442869ba0a43e1c8a7628283fb6" category="inline-link-macro">1246327</block>
+  <block id="425d6a0675c65fcbb55962fe041d3750" category="cell"><block ref="2fc4638611f41ecf99c51cb3b7693e41" category="inline-link-macro-rx"></block></block>
+  <block id="803346e13fcd7415573e4bec58e22f89" category="cell">在儲存容錯移轉作業期間、QLogic QLE2672 16G主機上的遠端連接埠狀態遭到封鎖</block>
+  <block id="b2aadc0859a33b6672ced88dfb500d44" category="cell">在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行QLogic QLE2672 16G主機和QLE2742 32GB Fibre Channel（FC）主機匯流排介面卡（HBA）、IO進度可能會因為封鎖的連接埠而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online</block>
+  <block id="63d16eafcc1543dfb24ba7b199c989fe" category="admonition">若要設定 Oracle Linux 7.7 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="d03bd5ac8fbc60aafcf4f05cb4079c96" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.7 的。</block>
+  <block id="7e08dcb999f7727996d113a118c754b2" category="paragraph">Oracle Linux 7.7 with ONTAP 版本有下列已知問題：</block>
+  <block id="1b61a7a3856fdbc478513136a65d30e6" category="inline-link-macro">1311575</block>
+  <block id="a30ebc25935788a02b62f5c31dd68ff4" category="cell"><block ref="267c5dd990c8ab56721888f5900e0ee0" category="inline-link-macro-rx"></block></block>
+  <block id="7256202799e1cc52fa1bfe78899975cf" category="cell">在使用QLogic QLE2672（16G）進行儲存容錯移轉期間、由於讀取/寫入作業而導致IO延遲無法切換至次要路徑</block>
+  <block id="1a0e4d0026b3ac15a923132544984581" category="cell">在Oracle Linux 7.7核心（5.4.17-2011.0.7.el7uek.x86_64）與QLogic QLE2672 16G HBA的儲存容錯移轉作業期間、I/O作業可能無法透過次要路徑繼續。如果在儲存容錯移轉期間、由於主要路徑遭到封鎖而導致I/O進度停止、則可能無法透過次要路徑繼續I/O作業、導致I/O延遲。只有在主路徑完成儲存容錯移轉還原作業後才會恢復I/O作業。</block>
+  <block id="f32d9fbfd3260ad4f93224817ee55b7b" category="inline-link-macro">1311576</block>
+  <block id="8f82eaddc5433072fa47bef87ad2bbbb" category="cell"><block ref="cccef1478e8fcadf27979573716d7b1c" category="inline-link-macro-rx"></block></block>
+  <block id="1d12a6f973bbe0e6a8487112455bc428" category="cell">在使用Emulex LPe16002（16G）進行儲存容錯移轉期間、由於讀取/寫入作業無法透過次要路徑切換而導致IO延遲。</block>
+  <block id="11530752ab9f40fa1149a3d6f8ba9999" category="cell">在Oracle Linux 7.7核心（5.4.17-2011.0.7.el7uek.x86_64）與Emulex LPe16002 16G HBA上執行儲存容錯移轉作業期間、I/O作業可能無法透過次要路徑繼續。如果在儲存容錯移轉期間、由於主要路徑遭到封鎖而導致I/O進度停止、則可能無法透過次要路徑繼續I/O作業、導致I/O延遲。只有在主路徑完成儲存容錯移轉還原作業後才會恢復I/O作業。</block>
+  <block id="4e486911a10e3fffaba70e13f82fd319" category="inline-link-macro">1246134-1246134.</block>
+  <block id="f1ed8010b222ca665b73581bc564dfbb" category="cell"><block ref="9f94588b71f175c6fb8a48dc1c897075" category="inline-link-macro-rx"></block></block>
+  <block id="116824fa5f36407773b9af1e47763391" category="cell">觀察到IO延遲、而在使用Emulex LPe16002（16G）進行儲存容錯移轉期間、報告會移至封鎖、不顯示狀態</block>
+  <block id="d1e8c721d32f2d555893470672bb537f" category="cell">在Oracle Linux 7.6上執行儲存容錯移轉作業時、如果UEK5U2核心執行Emulex LPe16002B-m6 16G光纖通道（FC）主機匯流排介面卡（HBA）、I/O進度可能會因為報告遭到封鎖而停止。儲存容錯移轉作業報告會從「線上」狀態變更為「封鎖」狀態、導致讀取和寫入作業延遲。成功完成作業後、報告將無法返回「線上」狀態、並繼續保持「封鎖」狀態。</block>
+  <block id="af4bdc6f0612ae419e8be2df4a6dc1f8" category="cell">觀察到IO延遲、且Rport在使用QLogic QLE2672（16G）和QLE2742（32G）進行儲存容錯移轉期間移至封鎖、不存在狀態</block>
+  <block id="501bcccc8f9d47ad0f5a58eda68930e0" category="cell">在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行QLogic QLE2672 16G主機和QLE2742 32GB Fibre Channel（FC）主機匯流排介面卡（HBA）、IO進度可能會因為封鎖的連接埠而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online</block>
+  <block id="72b09ff66539cda97d7c0438a667a52e" category="admonition">若要設定 Oracle Linux 7.8 Red Hat Enterprise 核心（ RCK ），請使用<block ref="f258b7d81a3180e673755835c6a903ac" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.8 的。</block>
+  <block id="a448bbf7fe72c623da762666ceb0fb0d" category="paragraph">Oracle Linux 7.8 with ONTAP 版本有下列已知問題：</block>
+  <block id="3b142e0394d092f040e5f91fbe307885" category="admonition">若要設定 Oracle Linux 7.9 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="44610b841747038fd655ebbf0a88f02e" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.9 的。</block>
+  <block id="2757a308d4d1083cccf0f8d499cc92dc" category="paragraph">Oracle Linux 7.9 with ONTAP 版本有下列已知問題：</block>
+  <block id="eb1fc035eeba662cf025ce042074e2b4" category="cell">如果您在未執行 SCSI 重新掃描的情況下取消對應或對應 LUN 、可能會導致主機上的資料毀損</block>
+  <block id="e70f1869df403451e259e10988ea5f80" category="cell">當您將多重路徑組態參數設定為「是」時<block ref="08dba88199429f4a52c71e37581877d5" prefix=" " category="inline-code"></block>，會在全球識別碼（ WWID ）變更時停用對路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的 WWID 還原至多重路徑裝置的 WWID 為止。如<block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>需詳細資訊、請參閱。</block>
+  <block id="cf9bf895ad4ca7687a9d6f3107e8bc7d" category="admonition">若要設定 Oracle Linux 8.0 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="dd019c9be944c1791639aca9ec9dceb1" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.0 的。</block>
+  <block id="de7704b02c52eca8b10fe3c3fcbe02be" category="paragraph">ONTAP 版本的 Oracle Linux 8.0 沒有已知問題。</block>
+  <block id="f32d48cf755668783343d18d81af5662" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.0 的。</block>
+  <block id="7360ec09f843020e3cdedadf07f9c6eb" category="admonition">若要設定 Oracle Linux 8.1 Red Hat Enterprise 核心（ RCK ），請使用<block ref="ba385beac84ef95968bf8513eda510a6" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的。</block>
+  <block id="32dcf8794513ae60bb7547178c8e2506" category="paragraph">ONTAP 版本的 Oracle Linux 8.1 沒有已知問題。</block>
+  <block id="04727b6e26d6c60a42231cfea7028876" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的。</block>
+  <block id="243b0430cd7bcb315e3ddad5eeee3d9e" category="admonition">若要設定 Oracle Linux 8.2 Red Hat Enterprise 核心（ RHHCK ），請使用<block ref="4fa0e58c0abf395a1bcef392b352f5ab" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.2 的。</block>
+  <block id="b00681e055849110f05e9642516e3a1a" category="paragraph">ONTAP 版本的 Oracle Linux 8.2 沒有已知問題。</block>
+  <block id="64017e4fce264fae779ea6ffb9022691" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="840d5abfe44b15b4222ea5c534ce82a9" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.2 的。</block>
+  <block id="dfa4360b9ef5c59ee3bab4c95d016689" category="admonition">若要設定 Oracle Linux 8.3 Red Hat Enterprise 核心（ RCK ），請使用<block ref="4e79a9939610f9dc89e0e26786a809f0" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.3 的。</block>
+  <block id="89ced9668e13589ae02be8c30c466b1b" category="paragraph">ONTAP 版本的 Oracle Linux 8.3 沒有已知問題。</block>
+  <block id="273955f9a81b6001ec0fed11c89c61c3" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="3c7f0100e93cbb394731ee7d8982c161" category="inline-link-macro-rx"></block>相應 Red Hat Enterprise Linux 版本文件中的一節。</block>
+  <block id="2e70e755dfc045a7907c2a353ffc7a3d" category="admonition">若要設定 Oracle Linux 8.4 Red Hat Enterprise 核心（ RHHCK ），請使用<block ref="2a5bf462d4974235d181075f07ec40ac" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.4 的。</block>
+  <block id="5fa917b25abcb73abe17905f90a2c698" category="section-title">KVM 設定</block>
+  <block id="461896975771f0f6bcc17f6a47fc447c" category="paragraph">ONTAP 版本的 Oracle Linux 8.4 沒有已知問題。</block>
+  <block id="4447162ab1e53ae3a7c371586690d068" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="1cf241ba8c9adec487a38ecfba1ee9ce" category="inline-link-macro-rx"></block>相應 Red Hat Enterprise Linux 版本文件中的一節。</block>
+  <block id="83f959a424c03531fb16c92bd0aa57a4" category="admonition">若要設定 Oracle Linux 8.5 Red Hat Enterprise 核心（ RCK ），請使用<block ref="7e47a54075763937d25ec51fa82726e1" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.5 的。</block>
+  <block id="8beac64737284b3d1504d3c6ce28839e" category="paragraph">ONTAP 版本的 Oracle Linux 8.5 沒有已知問題。</block>
+  <block id="5d90071a09878a695a26d84f9a4f073b" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="b5087b96e856dc400373808e0f627382" category="inline-link-macro-rx"></block>相應 Red Hat Enterprise Linux 版本文件中的一節。</block>
+  <block id="6ed1f472cda2679cdeae66607f09c936" category="admonition">若要設定 Oracle Linux 8.6 Red Hat Enterprise 核心（ RHHCK ），請使用<block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.6 的。</block>
+  <block id="f2a4520ddaa2d566ab9995023d086f49" category="paragraph">ONTAP 版本的 Oracle Linux 8.6 沒有已知問題。</block>
+  <block id="5ebe49302359fb6e4d762fdceb288864" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="10ee08d1b3d909bc389f3b317276174b" category="inline-link-macro-rx"></block>相應 Red Hat Enterprise Linux 版本文件中的一節。</block>
+  <block id="61bc992261a6530c122ec5f5e732d7ee" category="admonition">若要設定 Oracle Linux 8.7 Red Hat Enterprise 核心（ RHHCK ），請使用<block ref="2799389175d462b609c459275109bc99" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.7 的。</block>
+  <block id="73ba9729c9740db82f51a4f8954414ff" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。當 LUN 對應至 Hypervisor 時、無需進行任何變更即可設定 KVM 。</block>
+  <block id="f2cce8002ce2f5b95462132893d95199" category="paragraph">ONTAP 版本的 Oracle Linux 8.7 沒有已知問題。</block>
+  <block id="2026d2310fc2424795c036d93b9ede10" category="admonition">若要設定 Oracle Linux 8.8 Red Hat Enterprise 核心、請使用<block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.8 的。</block>
+  <block id="01b8600fd938010d5f121c919a853516" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。當 LUN 對應至 Hypervisor 時、設定 KVM 並不需要變更。</block>
+  <block id="54eeaca913032941b7691ee3076cdc34" category="paragraph">ONTAP 版本的 Oracle Linux 8.8 沒有已知問題。</block>
+  <block id="8ea7d65541343d381b99affa2d1c6996" category="admonition">若要設定 Oracle Linux 8.9 RedHat Enterprise 核心、請使用<block ref="ce7483c182b39cf5b993c406b0ed7268" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。</block>
+  <block id="2df37fd98bd7f04cdf8ebbea351923d5" category="paragraph">ONTAP 版本的 Oracle Linux 8.9 沒有已知問題。</block>
+  <block id="b4fd571d0a72855bfe7c33832138bcaa" category="paragraph">在 ONTAP 版本中、 RHEL 6.10 沒有已知問題。</block>
+  <block id="f40357634c33f034611ff10bf2cf0bb3" category="paragraph">採用 ONTAP 版本的 RHEL 6.4 有下列已知問題：</block>
+  <block id="523f9962862f3611c9e9f05e775a3ff2" category="inline-link-macro">673009</block>
+  <block id="a9927553fafc276c5d2ee1dad0e61037" category="cell"><block ref="2ed902a18c5937c4d45e0f1b6d65e574" category="inline-link-macro-rx"></block></block>
+  <block id="4576384480fab68c9ff4fab12c287bd5" category="cell">在啟用捨棄、精簡配置的多重路徑裝置上建立lv等量分佈的ext4檔案系統、會觸發「要求殭屍」核心錯誤</block>
+  <block id="bc9d2295f7997ff93de371bc0c88ea73" category="cell">當使用者嘗試在啟用捨棄、精簡配置的多重路徑裝置上建立ext4檔案系統時、就會看到「要求已配置的」核心錯誤。因此、建立ext4檔案系統可能需要較長的時間才能完成、而且偶爾會發生中斷。只有當使用者嘗試在執行Red Hat Enterprise Linux 6.x和Data ONTAP 更新版本且以7-Mode運作的系統上、跨15個以上已啟用捨棄的多重路徑裝置、在執行LV等量分佈的多重路徑上建立ext4檔案系統時、才會發生此問題。發生此問題的原因是核心錯誤地嘗試合併捨棄要求、而Red Hat Enterprise Linux 6.x目前不支援此要求。發生此問題時、會將下列訊息的多個執行個體寫入syslog（/var/log/Messages）：kernel：BlK：Request boted。因此、建立檔案系統可能需要比預期更長的時間才能完成。</block>
+  <block id="372496c541b6d2288b69f4f74a31cbfd" category="paragraph">採用 ONTAP 版本的 RHEL 6.5 有下列已知問題：</block>
+  <block id="a59016517c085a5d945f2e32273f6c6f" category="inline-link-macro">760515</block>
+  <block id="243da89cf867b347c2cdf3a124dd79b3" category="cell"><block ref="7ebb9447894bd2a8ae903079bdb0ba32" category="inline-link-macro-rx"></block></block>
+  <block id="35ff8a31e7e43ab2149f0953acd85e95" category="cell">在執行儲存容錯移轉作業期間、RHEL 6.5 8G QlogicFC SAN主機發現路徑故障或主機當機</block>
+  <block id="5fb0af32d419d1ce3bf31b76b50c3d02" category="cell">在執行儲存容錯移轉作業期間、RHEL 6.5 8G QlogicFC SAN主機發現路徑故障或主機當機。</block>
+  <block id="28701edb25458185d37b2540356e6277" category="inline-link-macro">758271</block>
+  <block id="50cd670c75298aa10c9b84b4b7994363" category="cell"><block ref="b3048e7a899eced67978d5ffa9d56597" category="inline-link-macro-rx"></block></block>
+  <block id="89c1277823b0a1248fc95de91b1ea803" category="cell">使用自訂的INITRD開機時、無法載入bnx2韌體（dracut -f）</block>
+  <block id="8c8f585604e1606fc35bdcace1522cf7" category="cell">Broadcom Xtreming II Gigabit控制器連接埠無法ping通、因為bnx2韌體在使用自訂的initrit開機期間無法載入。</block>
+  <block id="16840b9e6effbc5ab69dd8881a6ccfab" category="inline-link-macro">799394</block>
+  <block id="654eadcb200b9ffa725b02fdd8afc0a5" category="cell"><block ref="e2a85abec4200c0008487aa3cd10ccd6" category="inline-link-macro-rx"></block></block>
+  <block id="8923d2902e44fe7f3f8794dea2c1ed47" category="cell">RHEL 6U5：在執行儲存容錯移轉作業的I/O期間、發生Emulex 16G FC（LPe16002B-M6）主機當機</block>
+  <block id="89bd24c458ce5bb4aef9ad351b120d0a" category="cell">16G FC Emulex（LPe16002B-M6）主機在執行儲存容錯移轉作業的I/O期間當機。</block>
+  <block id="9ff744f86f7d5b8f9aa97a474d022d3d" category="inline-link-macro">786571</block>
+  <block id="cca285e74c2f9677ba98375d8baef66b" category="cell"><block ref="1f0bad4c5ece7b0a35dcbf01ee955754" category="inline-link-macro-rx"></block></block>
+  <block id="281ed23f425fc37d1a62ffd7bce04ae9" category="cell">在執行儲存容錯移轉作業的I/O期間、在RHEL 6.5中觀察到QLogic FCoE主機當機/路徑故障</block>
+  <block id="205f0b8a90fa3a29cfd7137d063a9ef6" category="cell">在執行儲存容錯移轉作業的I/O期間、RHEL 6.5會觀察到QLogic FCoE（QLE8242）主機當機/路徑故障。在這種情況下、您可能會看到下列訊息：「Mailbox cmd timeout occurred、cmd =x54、MB[0]=x54。排程ISP中止」訊息、導致主機掛起/路徑故障。</block>
+  <block id="ac143edc551ca0f939bb8e4b680e5ba4" category="inline-link-macro">801580</block>
+  <block id="963f318de0bb50b8c58b27664dff7bd9" category="cell"><block ref="bebaa8c57093221d69ca3e75cf045786" category="inline-link-macro-rx"></block></block>
+  <block id="46b5e459ba83be6f3933222f42a4caac" category="cell">在執行儲存容錯移轉作業的I/O期間、在RHEL 6.5中觀察到QLogic 16G FC主機當機或路徑故障</block>
+  <block id="a62e4298a14b3b2b0eed1e03a1901a18" category="cell">在儲存容錯移轉作業期間、QLogic 16G FC主機（QLE2672）會觀察到I/O延遲超過600秒。在此情況下、會顯示下列訊息：「失敗的mbx[0]=54、MB[1]=0、MB[2]=76b9、MB[3]=5200、cmd = 54」</block>
+  <block id="62fb1383f4b014d958cc5bb04c5f3d5f" category="paragraph">採用 ONTAP 版本的 RHEL 6.6 有下列已知問題：</block>
+  <block id="3dd1380ca8825e58f232363f493daa52" category="inline-link-macro">863878</block>
+  <block id="7c6368b45cd4a10d967aedcac959efaa" category="cell"><block ref="d55a62707aaaf29806d28ef6f3b7058c" category="inline-link-macro-rx"></block></block>
+  <block id="cfc3ef228e5c554b3af78e00b3866bd7" category="cell">儲存設備故障時、RHEL 6U6主機發生核心當機</block>
+  <block id="86bcd8bb1315a4f054fd1f555f9d899c" category="cell">您可能會在儲存設備/架構期間看到RHEL 6U6主機上的核心當機。</block>
+  <block id="41c83455913a93be4b440521e4eac4a6" category="inline-link-macro">1076584</block>
+  <block id="2704e91bd5f573cbad7eba20723ba864" category="cell"><block ref="378b02b2d7a64c9eae783f8e2a49ec5e" category="inline-link-macro-rx"></block></block>
+  <block id="40b50e78109d71c974de2da8c30f4afa" category="cell">在RHEL 6U4儲存設備故障期間、QLogic 16G FC（QLE2672）主機的IO停滯時間可達300秒</block>
+  <block id="034e508587b2a511fa0b5f33efc527be" category="cell">在儲存設備/光纖故障期間、您可能會發現QLogic 16G FC（QLE2672）主機上的IO停滯達300秒。</block>
+  <block id="b9f3e02ef3d9223f789bce52be09acab" category="inline-link-macro">795684</block>
+  <block id="c7d76ba7e2d3e0a292f2b51c84704276" category="cell"><block ref="61a24ea643a2edb19ad6c476806b4823" category="inline-link-macro-rx"></block></block>
+  <block id="43736b02ccf596e4213cc67f0c6102c5" category="cell">RHEL6 U5 Multpathd在執行模式和儲存容錯移轉故障作業時、錯誤地將多重路徑對應群組在一起</block>
+  <block id="f549ae562768e489107707fb1bef11e9" category="cell">在LUN隨需移動作業期間、您可能會發現LUN上的路徑分組不正確、以及儲存設備故障。在LUN移動作業期間、多重路徑優先順序將會變更、而且多重路徑因為儲存故障而導致裝置故障、無法重新載入裝置表格。這會導致不正確的路徑群組。</block>
+  <block id="d19953e22684756c9889d44178f664e8" category="paragraph">在 ONTAP 版本中、 RHEL 6.7 沒有已知問題。</block>
+  <block id="c5485eb0c7882c6575d6c7713c2fb21d" category="paragraph">在 ONTAP 版本中、 RHEL 6.8 沒有已知問題。</block>
+  <block id="62e41fa6c4017dbb4d6912d9353592ef" category="paragraph">採用 ONTAP 版本的 RHEL 6.9 有下列已知問題：</block>
+  <block id="ae8092674c13f36003f14ece68d3c42c" category="inline-link-macro">1067272</block>
+  <block id="15af5af1296f3b00950876c7349c589b" category="cell"><block ref="eb38e5b23df5e0f2a1ba579e254db319" category="inline-link-macro-rx"></block></block>
+  <block id="6689d526e6da9f46eb73959de7ccfb3d" category="cell">在儲存容錯移轉作業期間、Emulex LPe32002主機上的遠端連接埠狀態可能處於「封鎖」狀態</block>
+  <block id="dfc052f6b0b40c1faced595a085c2d50" category="cell">在儲存容錯移轉作業期間、使用LPe32002介面卡的RHEL 6.9主機上的特定遠端連接埠狀態可能會進入「封鎖」狀態。由於儲存節點當機時、邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設定為「封鎖」狀態。但是、當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠狀態預期為「線上」。但在某些情況下、遠端連接埠仍處於「封鎖」狀態。此狀態會在多重路徑層的LUN上顯示為「故障」。</block>
+  <block id="bd280470f9fb5a81e270305b53204d0f" category="cell"><block ref="9caa015d3334857faa7c3d61e0b9334f" category="inline-link-macro-rx"></block></block>
+  <block id="8a35d17d4ad08e708a249ff2f9752b5a" category="cell">在儲存容錯移轉作業期間、Red Hat Enterprise Linux 6.9 QLogic QE8362 HBA會發生韌體傾印</block>
+  <block id="c61e89bea3bd59d60d354b2b2ee41bb6" category="cell">在使用QLogic QLE8362主機匯流排介面卡（HBA）的Red Hat Enterprise Linux（RHEL）6.9主機上執行儲存容錯移轉作業時、可能會發生韌體傾印。韌體傾印可能會在主機上顯示為I/O中斷、持續時間長達1200秒。介面卡完成卸載韌體核心之後、I/O作業會恢復正常。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/messages檔案中會顯示下列訊息：kernel：qla2xxx [0000:0c:00.3]-d001:3：韌體傾印已儲存至暫存緩衝區（3/ffffc90018b01000）、傾印狀態旗標（0x3f）</block>
+  <block id="770ebf5dbf724ec0fa622a552b5c6b44" category="paragraph">採用 ONTAP 版本的 RHEL 7.0 有下列已知問題：</block>
+  <block id="04488a0bd269503a1ea3a47fe93a7b7f" category="inline-link-macro">844417</block>
+  <block id="6c17b0f0234f39da13553a38107913c1" category="cell"><block ref="95a9102507af9f3ef170e893db92aa0d" category="inline-link-macro-rx"></block></block>
+  <block id="69460499fb32604ce99d2202e67c3b50" category="cell">在儲存容錯移轉作業的I/O期間、Emulex 16G FC（LPe16002B-M6）主機當機</block>
+  <block id="938ae41ce3b0130f6ec39355095fef8e" category="cell">您可能會發現16G FC Emulex（LPe16002B-M6）主機在執行儲存容錯移轉作業時當機。</block>
+  <block id="6405b7880498750d41c93c6ff89cff96" category="inline-link-macro">811587</block>
+  <block id="d92bbc344480c1c4676dd6c7e7c9051a" category="cell"><block ref="25d4a04a283671c8f8df69363684eeb6" category="inline-link-macro-rx"></block></block>
+  <block id="e3a4319bc10063852c504b5613965892" category="inline-link-macro">803071</block>
+  <block id="18b0326d52bd20b9f07e25f01ff7a7f8" category="cell"><block ref="d76156bb15a180ce870200aaa220a25c" category="inline-link-macro-rx"></block></block>
+  <block id="fe10bf02cac14b527073d56ad68ea0d9" category="inline-link-macro">820163</block>
+  <block id="e61b41ec03dc6a7a5c73f96233f3f803" category="cell"><block ref="911c76fb9ad4021a1f383f66b11e6a74" category="inline-link-macro-rx"></block></block>
+  <block id="6b1b934c2f0a24d69275ea2e6f568b91" category="cell">在執行儲存容錯移轉作業的I/O期間、觀察到QLogic主機當機或路徑故障</block>
+  <block id="44c8ddef58e9a1a6681cc56a75963cce" category="cell">在執行儲存容錯移轉作業的I/O期間、您可能會看到QLogic主機發生當機或路徑故障。在這類情況下、您可能會看到下列訊息：「發生信箱cmd逾時、字串=x54、MB[0]=x54和儲存至暫存緩衝區的韌體傾印」、這些訊息會導致主機掛起/路徑故障。</block>
+  <block id="7ced44d26ed0cab51eebd7115b20664d" category="inline-link-macro">799323</block>
+  <block id="adb237a95eaa1f6584cb4481fea5bbb1" category="cell"><block ref="f10a7befc9bc4d4101abc10635a20919" category="inline-link-macro-rx"></block></block>
+  <block id="28ffca95f560b372f37e92a47d022750" category="cell">在執行儲存容錯移轉作業的I/O期間、發現Emulex FCoE（OCe102-FX-D）主機當機或路徑故障</block>
+  <block id="d55d79b6330424fc43bbdce9eb47ec8b" category="cell">在執行儲存容錯移轉作業的I/O期間、您可能會發現Emulex 10G FCoE主機（OCe102-FX-D）發生主機當機或路徑故障。在這種情況下、您可能會看到下列訊息：「驅動程式的緩衝資源池是空的、IO佔線和SCSI層I/O中止要求狀態」、這些訊息會導致主機掛起/路徑故障。</block>
+  <block id="d696987992555daac44e6e0221ca5aa8" category="inline-link-macro">849212</block>
+  <block id="333d134a2f4244baf148d678579abef9" category="cell"><block ref="4c874aa4796d22540097a0906a154f2c" category="inline-link-macro-rx"></block></block>
+  <block id="f4d030c17534e71245b7ad007df27f45" category="cell">在執行儲存容錯移轉作業的I/O期間、會觀察到Emulex 16G FC（LPe16002B-M6）主機當機或路徑故障</block>
+  <block id="4ca1bd1052174da8e9aa737bbb1b32fd" category="cell">在執行儲存容錯移轉作業的I/O期間、您可能會看到Emulex 16G FC（LPe16002B-M6）主機發生主機當機或路徑故障。在此情況下、您可能會看到下列訊息：「RSCN Timeout Data和iotag x1301 is out of range：Max iotag」（RSCN逾時資料和iotag x1301超出範圍：最大iotag）訊息、導致主機掛起/路徑故障</block>
+  <block id="4ef8ad7e74bdf446d5db36da2dd1b24a" category="inline-link-macro">836800</block>
+  <block id="3d23d6bf2cafcca60ba9774578396d12" category="cell"><block ref="5adc4cadb3537d660246eb69c4800937" category="inline-link-macro-rx"></block></block>
+  <block id="56c232b9fb8984a71220d9c5a78fea18" category="cell">雖然在RHEL 7.0 OS安裝期間登入成功、但anacondo仍會顯示iSCSI登入失敗訊息</block>
+  <block id="99e7a8ab2ec7111edb9e26a71a6c0a86" category="cell">當您在iSCSI多重路徑LUN上安裝root（/）時、會在核心命令列中指定乙太網路介面的IP位址、以便在iSCSI服務啟動之前指派IP位址。不過、在開機期間、磁碟機無法在iSCSI服務啟動之前、將IP位址指派給所有的乙太網路連接埠。這會導致在沒有IP位址的介面上iSCSI登入失敗。您會看到iSCSI服務嘗試多次登入、這會導致作業系統開機時間延遲。</block>
+  <block id="a8c077074773359e7cd193725f41a860" category="inline-link-macro">836875</block>
+  <block id="5f2c9318592eaf6ee83d6c6bb5a5d002" category="cell"><block ref="83d2e393f0ac9d3a1c3786fb315d90c6" category="inline-link-macro-rx"></block></block>
+  <block id="d44e6fb07493c929aa84d152539e0412" category="cell">在啟動安裝在iSCSI多重路徑LUN上的RHEL 7.0作業系統時、並不一定會指派IP位址</block>
+  <block id="8b5e0ba2f3aea90174a30a7c43bebcee" category="cell">安裝RHEL 7.0時、anaconda安裝畫面會顯示iSCSI登入多個目標IP失敗、但iSCSI登入成功。anaconda顯示下列錯誤訊息：「Node Login Failed（節點登入失敗）」您只會在選取多個目標IP進行iSCSI登入時才會看到此錯誤。您可以按一下「確定」按鈕、繼續安裝作業系統。此錯誤不會妨礙iSCSI或RHEL 7.0作業系統的安裝。</block>
+  <block id="ecf13e437df4cb2ff5ec5edeeab0adbe" category="inline-link-macro">836657</block>
+  <block id="8f1e30f29d9588ad4042431720826957" category="cell"><block ref="041c2851ebb0c7c2f188babcdefb8252" category="inline-link-macro-rx"></block></block>
+  <block id="d8eb8fe260fdcd93af7707dd8bac33ee" category="cell">anacondon不會在核心cmd行中新增bootdev*引數、以設定安裝在iSCSI多重路徑LUN上之RHEL 7.0 OS的IP位址</block>
+  <block id="6ad39c26575ec2ca15832d288d5cb802" category="cell">Anaconda不會在核心命令列中新增bootdev*引數、您可在iSCSI多重路徑LUN上安裝RHEL 7.0 OS期間、於其中設定IPV4位址。這可防止在RHEL 7.0開機期間、將IP位址指派給任何設定為與儲存子系統建立iSCSI工作階段的乙太網路介面。由於未建立iSCSI工作階段、因此在作業系統開機時不會發現根LUN、因此作業系統開機失敗。</block>
+  <block id="36d8219b1c65f85c2d260681966dda6e" category="paragraph">採用 ONTAP 版本的 RHEL 7.1 有下列已知問題：</block>
+  <block id="decf77540b0827bf2f8607451a3743f3" category="cell">在執行儲存容錯移轉作業的I/O期間、您可能會發現Emulex 10G FCoE主機（OCe102-FX-D）發生主機當機或路徑故障。在這種情況下、您可能會看到下列訊息：「驅動程式的緩衝資源池是空的、IO佔線和SCSI層I/O中止要求狀態」</block>
+  <block id="95a2524d940c646f1fe1078eca4d0be8" category="paragraph">在 ONTAP 版本中、 RHEL 7.2 沒有已知問題。</block>
+  <block id="660393db491695a06c31c051e9c97e86" category="paragraph">在 ONTAP 版本中、 RHEL 7.3 沒有已知問題。</block>
+  <block id="207419efdf6b07c1a0770500d7faf464" category="paragraph">採用 ONTAP 版本的 RHEL 7.4 有下列已知問題：</block>
+  <block id="e65ef45a94df4beb052c921508f05aad" category="paragraph">採用 ONTAP 版本的 RHEL 7.5 有下列已知問題：</block>
+  <block id="7383337d244878e79e189215ad6bfdc7" category="inline-link-macro">1139053</block>
+  <block id="1295ae9315edfd5b220cf2daf1aa17e6" category="cell"><block ref="007697ca9026c19e168d3fdf666001ca" category="inline-link-macro-rx"></block></block>
+  <block id="9dc352394728d1be345a1e8fa64a71ad" category="cell">在儲存容錯移轉作業期間、使用QLogic QLE2672 16GB FC的RHEL7.5發生核心中斷</block>
+  <block id="c72893cf0f959738c7d9d4448ab69c9c" category="cell">在使用QLogic QLE2672 16GB光纖通道主機匯流排介面卡的RHEL7U5核心上執行儲存容錯移轉作業時、核心會因為核心中的恐慌而中斷。核心異常會導致RHEL 7.5重新開機、進而導致應用程式中斷。如果已設定kdump、核心異常會在/var/crash /目錄下產生vmcore檔案。vmcore檔案用於瞭解故障原因。在這種情況下、vmcore檔案中記錄的「Get_no_timer_interrupt+440」模組會出現緊急狀況、並顯示下列字串：「[例外RIP：Get_no_timer_interrupt+440]」核心中斷之後、您可以重新啟動主機作業系統、並視需要重新啟動應用程式、以恢復作業系統。</block>
+  <block id="a091672e9523f13695b5ce236a025cfa" category="inline-link-macro">1138536</block>
+  <block id="a596200cfc306d0de00f26be2a8f777c" category="cell"><block ref="c6f70118bf7bd1ac73b4c76b9feb75ea" category="inline-link-macro-rx"></block></block>
+  <block id="f7fff0e4d49653725b3503ea6599c461" category="cell">在儲存容錯移轉作業期間、使用QLogic QLE2742 32GB FC的RHEL7U5發生核心中斷</block>
+  <block id="b531bab4f04d588f25830af15dd9732f" category="cell">在使用QLogic QLE2742 HBA的Red Hat Enterprise Linux（RHEL）RHEL7U5核心上執行儲存容錯移轉作業時、核心會因核心異常而中斷。核心毀損會導致作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心異常會在/var/crash /目錄下產生vmcore檔案。當核心出現問題時、您可以使用vmcore檔案來調查故障原因。以下範例顯示bGet_no_timer_interrips+440b模組中的緊急情況。在vmcore檔案中、系統會以下列字串登入緊急狀況：「[例外RIP：Get_no_timer_interrup+440]」。您可以重新啟動主機作業系統、並視需要重新啟動應用程式、藉此恢復作業系統。</block>
+  <block id="692dec64260aae5d0dd37a2adee5ade4" category="inline-link-macro">1148090</block>
+  <block id="1bf7bac4b210e706865d12510d6cd9cc" category="cell"><block ref="7f5fbed4010b651f3d0035e9e60eec99" category="inline-link-macro-rx"></block></block>
+  <block id="2889b5c407bd32dd8473d8f2ea939832" category="cell">在執行儲存容錯移轉作業期間、RHEL 7.5搭配QLogic QLE2742 32GB FC HBA會發生核心中斷</block>
+  <block id="e780d267955ef9d13c386e99e3e69711" category="cell">在使用QLogic QLE2742 Fibre Channel（FC）主機匯流排介面卡（HBA）的Red Hat Enterprise Linux（RHEL）7.5核心上執行儲存容錯移轉作業時、核心會因為核心中的恐慌而造成核心中斷。核心異常會導致RHEL 7.5重新開機、進而導致應用程式中斷。如果已啟用kdump機制、核心異常會產生位於/var/crash /目錄中的vmcore檔案。您可以分析vmcore檔案、判斷造成這種情況的原因。在這種情況下、當發生以QLogic QLE2742 HBA事件進行儲存容錯移轉時、「nNative佇列_sin_lock _lipath+464」模組會受到影響。您可以在vmcore檔案中找到事件、方法是找出下列字串：「[例外RIP：nature_enternated_sin_lock_lipath+464]"核心中斷之後、您可以重新開機主機作業系統並還原作業系統、然後視需要重新啟動應用程式。</block>
+  <block id="ca04edb5871b22fb77d8fe405800b5aa" category="inline-link-macro">116898</block>
+  <block id="682e4a71760a5129450fd59e2e95f3c4" category="cell"><block ref="220f7a19228a0baba7045dc91e92095a" category="inline-link-macro-rx"></block></block>
+  <block id="49aace017ee0842a9697ff4e8796b414" category="cell">儲存容錯移轉作業期間、RHEL 7.5與Emulex HBA發生核心中斷</block>
+  <block id="cd254c710e508f1521cd808f014d9514" category="cell">在使用Emulex LPe32002 - M2 32-GB FC主機匯流排介面卡（HBA）的Red Hat Enterprise Linux（RHEL）7.5系統上執行儲存容錯移轉作業時、核心會中斷。核心中斷會導致作業系統重新開機、進而導致應用程式中斷。如果您設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以使用vmcore檔案來判斷故障原因。在下列範例中、您可以在「lfc_HBA _clean _txcmplq+3668」模組中看到中斷情形。此中斷會以下列字串記錄在vmcore檔案中：「[例外RIP：lfc_HBA、clean、txcmplq+368]"。核心中斷後、請重新啟動主機作業系統以恢復作業系統。視需要重新啟動應用程式。</block>
+  <block id="aa8759d569e14f35a8b9847a51f11254" category="paragraph">採用 ONTAP 版本的 RHEL 7.6 有下列已知問題：</block>
+  <block id="e3d8ce1190bfeaa278be5f7e8b0d5995" category="inline-link-macro">1186754</block>
+  <block id="532edc5b4fd01c5e7e8eece87dabaeb4" category="cell"><block ref="8dbfd01f5544aaaa573a97a85d555718" category="inline-link-macro-rx"></block></block>
+  <block id="4fdd995ab037517f3a8a22f0d1dce429" category="cell">使用QLogic QLE2742主機的RHEL7U6遠端連接埠狀態、可能會在主機探索期間遭到封鎖</block>
+  <block id="63881d899fc9dba0492fe0e8b9ba540e" category="cell">在主機探索期間、使用QLogic QLE2742介面卡的RHEL7U6主機上的FC遠端連接埠狀態可能會進入封鎖狀態。這些封鎖的遠端連接埠可能會導致通往LUN的路徑變成無法使用。在儲存容錯移轉期間、路徑備援可能會減少、並導致I/O中斷。您可以輸入下列命令來檢查遠端連接埠狀態：# cat /sys/class/fc_reme_ports/rport-*/port_state</block>
+  <block id="1b602286dc5045d99a549759ecfdc9d2" category="inline-link-macro">1190698</block>
+  <block id="a5fcd7e0e32bcd7b79ba21fcbaab4a61" category="cell"><block ref="1c061382cffd1ef980d60e4d1cda99f0" category="inline-link-macro-rx"></block></block>
+  <block id="2afcce12bf741e426f0a49dfee981cdc" category="cell">在執行儲存容錯移轉作業期間、使用QLogic QLE2672主機的RHEL7U6遠端連接埠狀態可能會遭到封鎖</block>
+  <block id="6ec9e586bca93270bdd317231ac24e7f" category="cell">在儲存容錯移轉作業期間、若使用QLogic QLE2672主機、Red Hat Enterprise Linux（RHEL）7U6上的FC遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠的功能仍會遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠狀態：# cat /sys/class/fc_remite_ports/rport-*/port_state</block>
+  <block id="2ae5644c969f8fb5b3b41d2058b7ffb7" category="paragraph">採用 ONTAP 版本的 RHEL 7.7 有下列已知問題：</block>
+  <block id="d7fad245b12b629fd89fe1e208312a84" category="inline-link-macro">1258856</block>
+  <block id="3b6b215a71077b84727e3c7236fe2162" category="cell"><block ref="8cbdd34ea1179295cbf8f3baf8a265b7" category="inline-link-macro-rx"></block></block>
+  <block id="f0bf2f8e80766c6042932e1f36ea6c1e" category="cell">在儲存容錯移轉作業期間、利用Emulex LPe16002 16GB FC將遠端連接埠傳輸至RHEL7U7上的封鎖狀態</block>
+  <block id="a41cff6600524079541f57663691afd7" category="cell">在儲存容錯移轉作業期間、遠端連接埠可能會使用LPe16002 16GB FC介面卡、在RHEL 7.7主機上傳輸至封鎖狀態。當儲存節點恢復至最佳狀態時、LIF也會啟動、遠端連接埠狀態應顯示為「online（線上）」。有時遠端連接埠狀態可能會繼續顯示為「封鎖」或「不存在」。此狀態可能會導致多重路徑層上LUN的「故障」路徑。</block>
+  <block id="655dd2c13c5d63b0a2fc94b680533b22" category="inline-link-macro">1261474</block>
+  <block id="208f21e7140ce8dbee86e2ae4acc5c66" category="cell"><block ref="0d668094fd68805b827c56bb7f3873cf" category="inline-link-macro-rx"></block></block>
+  <block id="24d7acc632c5ded196817c3cfb589a5a" category="cell">利用Emulex LPe32002 32GB FC、將RHEL7U7上的遠端連接埠傳輸至封鎖狀態</block>
+  <block id="6074aae24d017a1d81afefcd4fd284f3" category="cell">在儲存容錯移轉作業期間、使用LPe32002 32GB FC介面卡的遠端連接埠可能會在RHEL 7.7主機上傳輸至封鎖狀態。當儲存節點恢復至最佳狀態時、LIF也會啟動、遠端連接埠狀態應顯示為「online（線上）」。有時遠端連接埠狀態可能會繼續顯示為「封鎖」或「不存在」。此狀態可能會導致多重路徑層上LUN的「故障」路徑。</block>
+  <block id="568dd4e82232adcfd8efaba56fbe453b" category="paragraph">採用 ONTAP 版本的 RHEL 7.8 有下列已知問題：</block>
+  <block id="532bcb27cfd6431e40d01bbd1755c5ab" category="paragraph">採用 ONTAP 版本的 RHEL 7.9 有下列已知問題：</block>
+  <block id="258bf1e428c6a64e10fbd6caf51f80b3" category="paragraph">採用 ONTAP 版本的 SUSE Linux Enterprise Server 12 有下列已知問題：</block>
+  <block id="1ad7f1f0694cd5d565246dd8f5e08ff3" category="inline-link-macro">873555</block>
+  <block id="5bc6dd2808e58ceb12daa3fa188c92d2" category="cell"><block ref="46d58291164df69e74195823c43d724c" category="inline-link-macro-rx"></block></block>
+  <block id="3f173227feb8878f022ad1b36c91e876" category="cell">SCSI_DH_ALUA模組不會在本機開機時於多路徑d開機期間載入</block>
+  <block id="d3810cc1f6dda6df4587ddfeb62972ee" category="cell">SCSI_DH_ALUA是Linux ALUA裝置處理常式模組。這不會在本機開機時的多路徑啟動期間載入。由於此裝置處理常式、因此無法載入、但目標端已啟用ALUA。</block>
+  <block id="79c7a9bb0aa24422c212e2b382099d0a" category="inline-link-macro">863584</block>
+  <block id="4d73614eae0a505c039fae3f1ee9900d" category="cell"><block ref="3c45cc75b4c66415e3786feb781dcee8" category="inline-link-macro-rx"></block></block>
+  <block id="a42499118062067bb57ae3e080112f10" category="cell">當您在SLES12上建立DM裝置時、畫面上會出現「Conflicting Device Node 'dev/mapper/360xx' found"（找到衝突的裝置節點'/dev/mapper/360xx'）」訊息</block>
+  <block id="0f002f358a4edc403bdbf073453e31c0" category="cell">您可能會發現在SLES 12的開發/對應器目錄下建立DM裝置的連結失敗、並看到「找到衝突的裝置節點'/dev/mapper/360xx'」訊息。</block>
+  <block id="43f008f2dfc233acd97b155115e02d78" category="inline-link-macro">847490</block>
+  <block id="442330e970ceb587a68e59d052af913a" category="cell"><block ref="4c1cf8590d2642eac66c4c5c98ac5df5" category="inline-link-macro-rx"></block></block>
+  <block id="aa5d2614a5cdd3ecb6439fff78eae1c5" category="cell">多重路徑精靈會在SLES 12上顯示路徑故障</block>
+  <block id="f3c857b5b590c65054bfa6277dd7b8d8" category="cell">您可能會在I/O期間發現儲存設備或網路故障時、在SLES12多重路徑精靈上發生路徑故障。</block>
+  <block id="7163369929a870e00f81cb19317f2586" category="paragraph">使用 ONTAP 版本的 SUSE Linux Enterprise Server 12 SP1 沒有已知問題。</block>
+  <block id="862991b4e8bb913292709d1d52ced572" category="paragraph">使用 ONTAP 版本的 SUSE Linux Enterprise Server 12 SP2 沒有已知問題。</block>
+  <block id="eeae44b3f003bf5bc3f99b3f3743d8a1" category="paragraph">SUSE Linux Enterprise Server 15 SP3 with ONTAP 版本有下列已知問題：</block>
+  <block id="faa333743d9719ffabaef492f9d3addf" category="inline-link-macro">（一</block>
+  <block id="2c88ec62d1d721428e4602e651219de8" category="cell"><block ref="70d91751d74c1680862a2be7b819ad17" category="inline-link-macro-rx"></block></block>
+  <block id="0474958a1d6d3dac5a2d4f89aa906f00" category="cell">在儲存容錯移轉作業期間、在採用Emulex LPe16002 16GB FC的核心版本SLES12 SP3上觀察到核心中斷</block>
+  <block id="e473d01bdff0fd380180c07445efe5f1" category="cell">在使用Emulex LPe16002 HBA的核心版本SLES12 SP3上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會提示重新開機作業系統、進而導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以調查vmcore檔案中的故障原因。範例：在觀察到的案例中、核心中斷是在模組「lfc_SLI_ringtxcmpl_plip+51」中觀察到、並記錄在vmcore檔案中–例外RIP：lfc_SLI_ringtxcmpl_plut+51。重新啟動主機作業系統並重新啟動應用程式、即可在核心中斷後恢復作業系統。</block>
+  <block id="a589b9691d471fdbcfcbed00289ff95f" category="inline-link-macro">1</block>
+  <block id="52b22b314256e76d5ce7c9f4b449e75e" category="cell"><block ref="c46197206f006ddca20b9528971eb8a2" category="inline-link-macro-rx"></block></block>
+  <block id="50468e9e489c6f64df69a9b2050b5c03" category="cell">在儲存容錯移轉作業期間、在採用Emulex LPe32002 32GB FC的核心版本SLES12 SP3上觀察到核心中斷</block>
+  <block id="35bd2083d35550687ccc83eda9de58bd" category="cell">在使用Emulex LPe32002 HBA的核心版本SLES12 SP3上執行儲存容錯移轉作業時、可能會發生核心中斷。核心中斷會提示重新開機作業系統、進而導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。您可以調查vmcore檔案中的故障原因。範例：在觀察到的案例中、核心中斷是在模組「lfc_SLI_faure_hbq+76」中觀察到、並記錄在vmcore檔案中–例外RIP：lfc_SLI_faure_hbq+76。重新啟動主機作業系統並重新啟動應用程式、即可在核心中斷後恢復作業系統。</block>
+  <block id="87cb91fa2b27bd295cf6cb3ab5625b5a" category="inline-link-macro">1117248</block>
+  <block id="8e44470268c498635871633867199cf8" category="cell"><block ref="2bc8591437ea8a0ab5e4a9dc7b8cf226" category="inline-link-macro-rx"></block></block>
+  <block id="8657c4ef49cd9bde003a33d3c79613d9" category="cell">在執行儲存容錯移轉作業期間、使用QLogic QLE2562 8GB FC的SLES12SP3發生核心中斷</block>
+  <block id="069104042a617bd6267aa1b9aa15c171" category="cell">在使用QLogic QLE2562 HBA的Sles12sp3核心（kernel-default-4.4.2-6.3.1）上執行儲存容錯移轉作業期間、由於核心中發生恐慌、導致核心中斷。核心毀損會導致作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心異常會在/var/crash /目錄下產生vmcore檔案。當核心異常時、可以使用vmcore檔案來瞭解故障原因。範例：在這種情況下、會在「blk_finish _request +89」模組中看到這種恐慌。它會以下列字串登入vmcore檔案：「例外RIP：blk_fine_request + 289」。核心中斷之後、您可以重新啟動主機作業系統來恢復作業系統。您可以視需要重新啟動應用程式。</block>
+  <block id="5f8a31b40158a3881c423f19cbe43336" category="inline-link-macro">1117261</block>
+  <block id="b9041783185cb4c07cb13dc636f9fe2c" category="cell"><block ref="610aa731a80c19f0997775dc3dd0e227" category="inline-link-macro-rx"></block></block>
+  <block id="a8955b831ee58d47a67ef51745c0b4c5" category="cell">在執行儲存容錯移轉作業期間、使用QLogic QLE2662 16GB FC的SLES12SP3發生核心中斷</block>
+  <block id="02b00e954d820a7d9250b98b4049906d" category="cell">使用QLogic QLE2662 HBA在Sles12sp3核心（kernel-default-4.4.82至6.3.1）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。vmcore檔案可用來瞭解故障原因。範例：在此情況下、模組「未知或無效位址」中觀察到核心中斷、並以下列字串登入vmcore檔案：例外RIP：未知或無效位址。核心中斷之後、可重新啟動主機作業系統、並視需要重新啟動應用程式、藉此恢復作業系統。</block>
+  <block id="3b13be33c3c4e5bc96d1614404203912" category="inline-link-macro">1117274</block>
+  <block id="1fc265bafea1a8916f986a6847bd1910" category="cell"><block ref="06edb5bde68f86e3606b213ec5575e58" category="inline-link-macro-rx"></block></block>
+  <block id="3800975d23c462cc9945e7b5174cd2ff" category="cell">在執行儲存容錯移轉作業期間、使用Emulex LPe16002 16GB FC的SLES12SP3發生核心中斷</block>
+  <block id="751f8b88fa9fa7a82232c514979e6d24" category="cell">在使用Emulex LPe16002 HBA的Sles12sp3核心（kernel-default-4.4.4.87-3.1）上執行儲存容錯移轉作業期間、您可能會發現核心中斷。這會提示作業系統重新開機、導致應用程式中斷。如果已設定kdump、核心中斷會在/var/crash /目錄下產生vmcore檔案。vmcore檔案可用來瞭解故障原因。範例：在這種情況下、模組「raw_sin_lock_irqsost+30」中觀察到核心中斷、並以下列字串登入vmcore檔案：–例外RIP：_raw_sin_lock_irqsost+30。核心中斷之後、可重新啟動主機作業系統、並視需要重新啟動應用程式、藉此恢復作業系統。</block>
+  <block id="0a94524957635a3767e9d9dac90332e7" category="paragraph">使用 ONTAP 版本的 SUSE Linux Enterprise Server 12 SP4 沒有已知問題。</block>
+  <block id="8cd24a204513ad5db902fadb631383aa" category="paragraph">SUSE Linux Enterprise Server 12 SP5 with ONTAP 版本有下列已知問題：</block>
+  <block id="e5a77b1a174097186e6d1fb9a005709f" category="inline-link-macro">1284293</block>
+  <block id="1de66e64e76f786a82bec52a2cab5118" category="cell"><block ref="579531e464015b6b9b3dc77dc4c47e40" category="inline-link-macro-rx"></block></block>
+  <block id="d92dccde54014b78d3cee57124dc1c25" category="cell">儲存容錯移轉作業期間、使用QLogic QLE2562 8GB FC HBA的SLES12 SP5會發生核心中斷</block>
+  <block id="c086ba1cb82d2640bcad8ebcee84deca" category="cell">使用QLogic QLE2562 Fibre Channel（FC）主機匯流排介面卡（HBA）在SLES12 SP5核心上執行儲存容錯移轉作業時、會發生核心中斷。核心中斷會導致SLES12 SP5重新開機、導致應用程式中斷。如果啟用kdump機制、核心中斷會產生位於/var/crash /目錄中的vmcore檔案。檢查vmcore檔案以判斷造成中斷的原因。使用QLogic QLE2562 HBA事件進行儲存容錯移轉會影響「thread資訊：ffff8aedf723c2c0」模組。在vmcore檔案中找出此事件、方法是找出下列字串：「[thread資訊：ffff8aedf723c2c0]」。核心中斷之後、請重新啟動主機作業系統、使其能夠恢復。然後重新啟動應用程式。</block>
+  <block id="6fb5e6298af28149708c219d9830dece" category="paragraph">採用 ONTAP 版本的 SUSE Linux Enterprise Server 15 有下列已知問題：</block>
+  <block id="9eb138f8329b6a05b2da910e54b750c9" category="inline-link-macro">1154309</block>
+  <block id="1e45eb414e878e896ff6c8568d44aaed" category="cell"><block ref="409bdf20edf896ce4497acd46087929e" category="inline-link-macro-rx"></block></block>
+  <block id="4ccdcef8fc98cb6452f9ba7aa1df1c0c" category="cell">重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式</block>
+  <block id="c6bc802c921069bf472f1e8359672c59" category="cell">重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式。維護模式會依照下列訊息變成單一使用者模式：<block ref="3e4fc983295eaca22de2d8651a4d47f0" prefix=" " category="inline-code"></block></block>
 </blocks>
