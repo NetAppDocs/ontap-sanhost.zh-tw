@@ -270,7 +270,7 @@ NOTE: 若要設定 Oracle Linux 8.10 RedHat Enterprise 核心、請使用link:hu
 
 == KVM 設定
 
-您也可以使用<<recommended_settings_ol_810,建議設定>>來設定核心型虛擬機器（ KVM ）。由於 LUN 已對應至 Hypervisor ，因此不需要變更即可設定 KVM 。
+您不需要在 Oracle Linux 8.10 上設定核心型虛擬機器的設定，因為 LUN 已對應至 Hypervisor 。
 
 
 

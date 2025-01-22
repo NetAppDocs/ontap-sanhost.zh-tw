@@ -3440,7 +3440,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e78866ae0ff845eed770c2b938efee3b" category="paragraph">請務必檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。</block>
   <block id="0addb4faeee17f16535b967fa12087f4" category="paragraph">下列範例示範如何修正覆寫的預設值。在這種情況下，檔案會<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>定義與<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN 不相容的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block>。如果因為其他SAN陣列仍連接至主機而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
   <block id="1cf74d5a15225e81daff79d7ccb11382" category="admonition">若要設定 Oracle Linux 8.10 RedHat Enterprise 核心、請使用<block ref="8fd6ca76e28de543c48473a969597840" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.10 的。</block>
-  <block id="6bb89cc49fca8628d227dd847602703b" category="paragraph">您也可以使用<block ref="4bba837a8ebd28cc5db475b23d73ca01" category="inline-xref-macro-rx"></block>來設定核心型虛擬機器（ KVM ）。由於 LUN 已對應至 Hypervisor ，因此不需要變更即可設定 KVM 。</block>
   <block id="3e1ec4fdd93153b353d57238402daa53" category="paragraph">ONTAP 版本的 Oracle Linux 8.10 沒有已知問題。</block>
   <block id="fa82877b3beb26d7d7bc882389d60aca" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.10 的。</block>
   <block id="38e584f52f25fb096dead8f8866657b0" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="f736929b1834226891236b2c0b0b218e" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.4 的。</block>
@@ -3764,4 +3763,5 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="1e45eb414e878e896ff6c8568d44aaed" category="cell"><block ref="409bdf20edf896ce4497acd46087929e" category="inline-link-macro-rx"></block></block>
   <block id="4ccdcef8fc98cb6452f9ba7aa1df1c0c" category="cell">重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式</block>
   <block id="c6bc802c921069bf472f1e8359672c59" category="cell">重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式。維護模式會依照下列訊息變成單一使用者模式：<block ref="3e4fc983295eaca22de2d8651a4d47f0" prefix=" " category="inline-code"></block></block>
+  <block id="a563fbe9dc21252c94fb2aac9ee8aceb" category="paragraph">您不需要在 Oracle Linux 8.10 上設定核心型虛擬機器的設定，因為 LUN 已對應至 Hypervisor 。</block>
 </blocks>
