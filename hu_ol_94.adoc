@@ -283,13 +283,13 @@ devices {
 ----
 ====
 
-NOTE: 若要設定 Oracle Linux 9.4 Red Hat Enterprise 核心（ RHEK ）、請使用link:hu_rhel_94.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 9.4 的。
+NOTE: 若要設定 Oracle Linux 9.4 Red Hat 相容核心（ RHCK ），請使用link:hu_rhel_94.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 9.4 的。
 
 
 
-=== 設定 KVM 設定
+== 設定 KVM 設定
 
-您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。
+您不需要設定核心型虛擬機器的設定，因為 LUN 會對應至 Hypervisor 。
 
 
 

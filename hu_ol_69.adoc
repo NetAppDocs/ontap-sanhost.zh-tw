@@ -252,7 +252,7 @@ devices {
 }
 ----
 
-NOTE: 若要設定 Oracle Linux 6.9 Red Hat Enterprise 核心（ RHCK ）、請使用link:hu_rhel_69.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 6.9 的。
+NOTE: 若要設定 Oracle Linux 6.9 Red Hat 相容核心（ RHCK ），請使用link:hu_rhel_69.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 6.9 的。
 
 
 
@@ -268,4 +268,4 @@ Oracle Linux 6.9 with ONTAP 版本有下列已知問題：
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1082780["1082780"^] | 使用QLE8362卡時、有時會在OL6.9 Hypervisor上觀察到韌體傾印 | 在使用QLE8362卡的OL6.9 Hypervisor上執行儲存容錯移轉作業時、偶爾會觀察到韌體傾印。韌體傾印可能會導致主機I/O中斷、可能長達一千秒。介面卡完成韌體傾印後、I/O作業會以正常方式恢復。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/message檔案中會顯示下列訊息：qla2xxx [0000:0c:00.3]-d001:3：韌體傾印已儲存至暫存緩衝區（3/ffffc90008901000）、傾印狀態旗標（0x3f）。 
 |===
 
-NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_69.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）6.9。
+NOTE: 有關 Oracle Linux RHCK 已知問題，請參閱link:hu_rhel_69.html#known-problems-and-limitations["已知問題"]適用於 RHEL 6.9 的。

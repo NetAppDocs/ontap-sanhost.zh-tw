@@ -246,7 +246,7 @@ devices {
 }
 ----
 
-NOTE: 若要設定 Oracle Linux 8.0 Red Hat Enterprise 核心（ RHCK ），請使用link:hu_rhel_80.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.0 的。
+NOTE: 若要設定 Oracle Linux 8.0 Red Hat 相容核心（ RHCK ），請使用link:hu_rhel_80.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.0 的。
 
 
 
@@ -255,4 +255,4 @@ NOTE: 若要設定 Oracle Linux 8.0 Red Hat Enterprise 核心（ RHCK ），請�
 ONTAP 版本的 Oracle Linux 8.0 沒有已知問題。
 
 
-NOTE: 對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱link:hu_rhel_80.html#known-problems-and-limitations["已知問題"]適用於 Red Hat Enterprise Linux （ RHEL ） 8.0 的。
+NOTE: 如需 Oracle Linux RHCK 已知問題，請參閱link:hu_rhel_80.html#known-problems-and-limitations["已知問題"]適用於 RHEL 8.0 的。

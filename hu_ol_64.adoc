@@ -252,7 +252,7 @@ devices {
 }
 ----
 
-NOTE: 若要設定 Oracle Linux 6.4 Red Hat Enterprise 核心（ RCK ）、請使用link:hu_rhel_64.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 6.4 的。
+NOTE: 若要設定 Oracle Linux 6.4 Red Hat 相容核心（ RHCK ），請使用link:hu_rhel_64.html#recommended-settings["建議設定"]適用於 Red Hat Enterprise Linux （ RHEL ） 6.4 的。
 
 
 
@@ -277,4 +277,4 @@ Oracle Linux 6.4 with ONTAP 版本有下列已知問題：
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=739909["739909"^] | 在使用UEK2的OL6.x和OL5.x主機發生FC故障之後、SG_IO ioctl系統呼叫在dm-multipaths裝置上失敗 | 在使用UEK2核心的Oracle Linux 6.x主機和使用UEK2核心的Oracle Linux 5.x主機上、發現問題。多重路徑裝置上的sg_*命令會在發生光纖故障之後失敗、並顯示EAGAIN錯誤代碼（errno）、使作用中路徑群組中的所有路徑都關閉。僅當多重路徑裝置沒有I/O發生時、才會出現此問題。以下為範例：# sg_inq -v /dev/mapper/3600a098041764937303f436c75337370查詢cdb：12 00 00 24 00 ioctl（SG_IO v3）失敗、作業系統（errno）= 11查詢：通過OS錯誤：資源暫時無法使用HDIO_Get_iocl:身分識別失敗 資源暫時無法使用[11]在/dev/mapper/3600a098041764937303f436c75337370 #上、SCSI查詢和擷取ATA資訊都失敗。此問題發生的原因是、當DM-Multipath裝置上沒有I/O時、ioctl（）呼叫期間不會啟動路徑群組切換至其他作用中群組。以下版本的kernel-uek和device-mapper-multipaths套件出現此問題：OL6.4版本：kernel-uek-2.6.39-400.171.el6uek設備-mapper-multipath-0.4.9-64.0.1.el6 OL5.9版本：kernel-uek-2.6.39-400.171.el5uek設備-640.4.0.4-multipathmapper.5. 
 |===
 
-NOTE: 如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 link:hu_rhel_64.html#known-problems-and-limitations["已知問題"] 適用於Red Hat Enterprise Linux（RHEL）6.4。
+NOTE: 如需 Oracle Linux RHCK 已知問題，請參閱link:hu_rhel_64.html#known-problems-and-limitations["已知問題"]適用於 RHEL 6.4 的。

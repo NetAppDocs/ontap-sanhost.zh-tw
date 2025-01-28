@@ -67,7 +67,6 @@
   <block id="7c3613dba5171cb6027c67835dd3b9d4" category="cell">廠商</block>
   <block id="971c047750d8e3b03c71d24020b3816f" category="cell">NetApp</block>
   <block id="e652073cb2a43641b24496c09164f62a" category="paragraph">下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
-  <block id="1c673ef626dadf1264ece247fbed2de7" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。</block>
   <block id="e7565a20fc615772fc73eed9c1b34d4a" category="inline-link-macro">已知問題</block>
   <block id="5dd03e8d039863e563e049be198c3fd3" category="section-title">版本資訊</block>
   <block id="f25da2d4ec4aacff4750d97e83acec21" category="section-title">ASM鏡射</block>
@@ -208,7 +207,6 @@
   <block id="3b3051e9028e74cd5ada27ca8f32e352" category="paragraph">對於Oracle Linux 6.10、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.10是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="4c489d4721694c4117162307ded4345c" category="list-text">使用「mkitrd」命令重新建立initrd-image。Oracle 6x及更新版本可使用以下命令：命令：「mkitrd -f /boot/ initrd-"uname -r"。imguname -r"或命令：「Dracut -f」</block>
   <block id="00d1a8ad09df702e5b164c26cbd1bc1a" category="paragraph">Oracle Linux 6.10作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="e2fadd98203b659772427cfe42d4a39e" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.10。</block>
   <block id="33fb3916b5bbccadc7502b97d2b47e0a" category="summary">說明如何搭配ONTAP 使用Citrix XenServer 7.x與VMware</block>
   <block id="a51e3210f96458fa393e6f4bf88caabc" category="paragraph">Citrix XenServer中的多重路徑支援是以Device對應器Multibathd元件為基礎。不會自動為所有顯示給XenServer的LUN建立裝置對應器節點、而且只有當儲存管理層（API）主動使用LUN時、才會進行資源配置。Citrix XenServer Storage Manager API外掛程式可自動啟動及停用多重路徑節點。</block>
   <block id="614673c0b1eeb91e8ffc86cde6faa93b" category="paragraph">由於與整合式多重路徑管理架構不相容、Citrix建議您使用Citrix XenCenter應用程式來管理儲存組態。如果需要手動查詢Device Mapper表的狀態、或在系統上列出作用中的裝置對應器多重路徑節點、您可以使用「/sbin/mpathutils STATUS」命令來驗證ONTAP 您的還原LUN設定。如需詳細資訊、請參閱Citrix XenServer的標準廠商文件。</block>
@@ -304,7 +302,6 @@
   <block id="a7612c1b52cef63443272a841e63f053" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="3b4b1f1818c7805cf81dfa92e64600a8" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="33d395db2629e42725961d07de66379b" category="paragraph">對於Oracle Linux 6.5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.5的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="b027f2cb101039990e34b69dadd64cc9" category="paragraph">Oracle Linux 6.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="834597fc454ac7d366bc8af44fcf5609" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="0158dc1052dab85818a92b1a427c95b7" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.5。</block>
   <block id="efe683deb739d72b3d44d53878cbd348" category="summary">說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12搭配使用功能</block>
   <block id="b94389e6af9ad2829e75db3797917210" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="7038607a0479f24929e014f2be329604" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="7ac69be8c86fae53d6626eba5e2377d9" category="paragraph">對於SUSE Linux Enterprise Server 12、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 12採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。</block>
@@ -446,7 +443,6 @@
   <block id="23aa57b371bac8344dedcd1613b8be86" category="cell"><block ref="27cd76b3a4455543cfaba6391cb8f5b5" category="inline-link-macro-rx"></block></block>
   <block id="c0f2efac60484d28bcdd08cfb17caa1d" category="cell">在使用UEK2的OL6.x和OL5.x主機發生FC故障之後、SG_IO ioctl系統呼叫在dm-multipaths裝置上失敗</block>
   <block id="97e64aa1a81f574216de1997c1b5ba68" category="cell">在使用UEK2核心的Oracle Linux 6.x主機和使用UEK2核心的Oracle Linux 5.x主機上、發現問題。多重路徑裝置上的sg_*命令會在發生光纖故障之後失敗、並顯示EAGAIN錯誤代碼（errno）、使作用中路徑群組中的所有路徑都關閉。僅當多重路徑裝置沒有I/O發生時、才會出現此問題。以下為範例：# sg_inq -v /dev/mapper/3600a098041764937303f436c75337370查詢cdb：12 00 00 24 00 ioctl（SG_IO v3）失敗、作業系統（errno）= 11查詢：通過OS錯誤：資源暫時無法使用HDIO_Get_iocl:身分識別失敗 資源暫時無法使用[11]在/dev/mapper/3600a098041764937303f436c75337370 #上、SCSI查詢和擷取ATA資訊都失敗。此問題發生的原因是、當DM-Multipath裝置上沒有I/O時、ioctl（）呼叫期間不會啟動路徑群組切換至其他作用中群組。以下版本的kernel-uek和device-mapper-multipaths套件出現此問題：OL6.4版本：kernel-uek-2.6.39-400.171.el6uek設備-mapper-multipath-0.4.9-64.0.1.el6 OL5.9版本：kernel-uek-2.6.39-400.171.el5uek設備-640.4.0.4-multipathmapper.5.</block>
-  <block id="7b9fb98af3d3330107d455e90e676611" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="f736929b1834226891236b2c0b0b218e" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.4。</block>
   <block id="6a94c5eba3910f79e55ae69f947dc541" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 8.0搭配使用功能</block>
   <block id="1e56b264d1c8b79d8067436bfdda0ea2" category="paragraph">對於Red Hat Enterprise Linux（RHEL）8.0、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 8.0是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="eb3208d8f7cf5a53017d9aeebb9a3433" category="paragraph">RHEL 8.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
@@ -486,7 +482,6 @@
   <block id="777197cb0e422c596874100405fc362f" category="cell"><block ref="91e82093309bf20c099d28c5559f3009" category="inline-link-macro-rx"></block></block>
   <block id="38b857ac7145e662f13bf1705fe21a46" category="cell">使用QLE8362卡時、有時會在OL6.9 Hypervisor上觀察到韌體傾印</block>
   <block id="10968bb02641daba6ea997ddf4f9106c" category="cell">在使用QLE8362卡的OL6.9 Hypervisor上執行儲存容錯移轉作業時、偶爾會觀察到韌體傾印。韌體傾印可能會導致主機I/O中斷、可能長達一千秒。介面卡完成韌體傾印後、I/O作業會以正常方式恢復。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/message檔案中會顯示下列訊息：qla2xxx [0000:0c:00.3]-d001:3：韌體傾印已儲存至暫存緩衝區（3/ffffc90008901000）、傾印狀態旗標（0x3f）。</block>
-  <block id="6d7f9adf0bf7944b1d3ff491429c9aa3" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="6381fe6a72f9bd9f067a0ec390d2a8fb" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.9。</block>
   <block id="fde32bae28ce21f6dcfb99eaf23d2e50" category="summary">說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12 SP1搭配使用功能</block>
   <block id="a25366ea3f2c10a10d1307811212c68a" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="027e0a464cdf00de4a711147d832f324" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="082dbb21e0b198384fe053b2d5bdb626" category="paragraph">對於SUSE Linux Enterprise Server 12 SP1、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 12 SP1的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
@@ -586,7 +581,6 @@
   <block id="f25e7d0c2e23e28b5e2fcc826eab9d89" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="20a6fac93934f3cd0fc46716c10ade14" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="b17be161e93154b1a8e4c9e17fc3b190" category="paragraph">對於Oracle Linux 6.6、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.6是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="3c92bea3eb2289a6ec3282c1090533ba" category="paragraph">Oracle Linux 6.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="cdab1722faf4570592f09483d692f9a3" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="aad294b0550f33ea846ebc2598292576" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.6。</block>
   <block id="77e11862f04c6ec12fa9eddd581dafa1" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.9與功能</block>
   <block id="6dc52e1e053dff71affc3d2bba0668d4" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="e5d3b515d8d9f71d6ecc6d12f04876c6" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="150ce233c309a7f628f109b1bf8bd7f6" category="paragraph">對於Oracle Linux（OL）7.9、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 7.9採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。</block>
@@ -714,7 +708,6 @@
   <block id="7a10fec24c048df32aa9daca418df81a" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="b5abfd2250ee315cd6ad25de3df45edd" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="7c7b1ac412755c409b674d6d1d5261c8" category="paragraph">對於Oracle Linux 6.7、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.7的所有設定都經過編譯、可辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="30551084db41b5a626c643ea028e9abc" category="paragraph">Oracle Linux 6.7作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="ffc40f78b93020104da2125464f60645" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="fd679b4991af24edfd6d66f5cbc5db76" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.7。</block>
   <block id="6f7f69f453663da32b05f6e1d898fb8e" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.7搭配使用功能</block>
   <block id="ff16e637ac4104828e13ea103025c195" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 <block ref="78e9fc355bd36c3a43e4700024680370" category="inline-link-macro-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="a1bdb7a660f71ebcfb10fb395252c57a" category="paragraph">對於Red Hat Enterprise Linux（RHEL）7.7、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 7.7是以所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。</block>
@@ -996,7 +989,6 @@
   <block id="c2c3cb3deab4f22710adbed9c6148ed1" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="0da8e8d8e04d92cff39dc5df78f41efc" category="inline-link-rx"></block> 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。</block>
   <block id="f554c70908c90cf2ddb8539029693dc9" category="paragraph">對於Oracle Linux 6.8、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.8是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="6485c78f22d3f3aa24bf7cbcea864cb3" category="paragraph">Oracle Linux 6.8作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="cd78cb35643e7fcdb41ef3474518e9b9" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱 <block ref="7703b3b38de881e061b6dbcbbcaf9f81" category="inline-link-macro-rx"></block> 適用於Red Hat Enterprise Linux（RHEL）6.8。</block>
   <block id="f4bba4cff96aef30f859bc5d933b86d1" category="summary">說明如何搭配ONTAP 使用CentOS 7.7搭配使用功能</block>
   <block id="85c1cd097e2b89074f8df27d3f429558" category="paragraph">對於CentOS 7.7、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 7.7是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
   <block id="b5532e466b7ace9d1d9ddb98b57ec0d7" category="summary">說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterprise Server 15 SP3的NVMe/FC</block>
@@ -1678,7 +1670,6 @@
   <block id="e5bb15bb11bc9d2f4a5298c657566227" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.0</block>
   <block id="ae8e81252a704349cea5f061e9fb652e" category="paragraph">對於 Oracle Linux （ OL ） 9.0<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。OL 9.0 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
   <block id="2722dd408e2c6dddce120893d4c5c0a7" category="paragraph">Oracle Linux 9.0 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。</block>
-  <block id="2de4eb9b3af281c4790a039cf2f92eb7" category="section-title">KVM 設定</block>
   <block id="678b361384466d6bf28f930dd514a9a8" category="doc">適用於 ONTAP 的 Oracle Linux 9.0 的 NVMe / FC 主機組態</block>
   <block id="2cbaf680f82c54fd6fb7778f0101ab88" category="paragraph">如需支援組態的詳細資訊、請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block>。</block>
   <block id="55fb7862f01474277c3620f9debfb3d5" category="list-text">Oracle Linux 9.0 預設已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。</block>
@@ -1703,7 +1694,6 @@
   <block id="51372fd44786d9688cfe76623106730b" category="doc">Windows Unified Host Utilities 版本資訊</block>
   <block id="d01454be7f3c4cdc6a05c67e9f6dd9a9" category="list-text">Windows Unified Host Utilities 7.2 支援 NVMe / FC 驅動程式參數設定、以及新廠商卡的錯誤修正。</block>
   <block id="6136261711c49bf0e8e1dcb22a2c524f" category="cell">不適用</block>
-  <block id="54ed56ff6f53cace0a89cfd9c793d498" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。由於LUN已對應至Hypervisor、因此無需變更KVM設定。</block>
   <block id="e0a63b6c7b84f763f3ca8d8b86db69b8" category="summary">Windows 統一化主機公用程式包含一個安裝程式、可設定所需的 Windows 登錄和 HBA 參數、讓 Windows 主機正確處理 NetApp ONTAP 和 E 系列平台的儲存系統行為。</block>
   <block id="c49c2dee17bca0bb7b37e30a531ae56e" category="cell">由安裝程式用來設定 HBA 參數。</block>
   <block id="f5defee9801990370925a9ccd31788ad" category="cell">由安裝程式用來設定 QLogic FC HBA 參數。</block>
@@ -2959,15 +2949,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0287d772e7f840b433f088e2f28bd6f8" category="paragraph">Oracle Linux 7.9.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 7.9 主機可透過相同的光纖通道（ FC ）啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。如需支援組態的最新清單，請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="3d5c89a6c37ed7f3e12ef6c9b1698314" category="paragraph">Oracle Linux 8.1.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 8.1 主機可以透過相同的光纖通道（ FC ）啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。請注意、Broadcom啟動器可透過相同的FC介面卡連接埠、同時處理NVMe/FC和FCP流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。如需支援組態的最新清單，請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
   <block id="f8f5ef83021f80cd31f5163ddb8f3cd7" category="paragraph">Oracle Linux 8.2.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 8.2 主機可透過相同的光纖通道（ FC ）啟動器介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。如需支援組態的最新清單，請參閱 <block ref="5b880de3118511ac9479bd0428b63139" category="inline-link-macro-rx"></block>。</block>
-  <block id="74c148265ea4a8961ebb3420adde5e84" category="admonition">若要設定 Oracle Linux 6.10 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="a294cf4df5bbbd1673f2ccf0dacf7b03" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.10 的。</block>
-  <block id="2c666792527b6b3680c82973cba01c3b" category="admonition">若要設定 Oracle Linux 6.4 Red Hat Enterprise 核心（ RCK ）、請使用<block ref="a06e2728aa3780c72bf0b5a9e2b2f14f" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.4 的。</block>
-  <block id="65ed1b727fe88e2a69e47c82d4310acd" category="admonition">若要設定 Oracle Linux 6.5 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="d9929df24012e2c19b3258bd0a117bc4" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.5 的。</block>
-  <block id="c072ebb84605f0b92a244cb3777bb151" category="admonition">若要設定 Oracle Linux 6.6 Red Hat Enterprise 核心（ RCK ）、請使用<block ref="206a39f130bf92080cb56256dd2c28f9" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.6 的。</block>
-  <block id="054957356c253064b2320e9d4c9db125" category="admonition">若要設定 Oracle Linux 6.7 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="8889d65b7bf0d43fb28eb69a57d4d394" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.7 的。</block>
-  <block id="507b23533892ab96b02be4f8b5a8edb2" category="admonition">若要設定 Oracle Linux 6.8 Red Hat Enterprise 核心（ RCK ）、請使用<block ref="1d07883740b2178a6c8bf634ff911c00" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.8 的。</block>
-  <block id="07d1214e34c544030ee4241cb0582c35" category="admonition">若要設定 Oracle Linux 6.9 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="e6290e19ce3858749b0edbfa1565d904" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.9 的。</block>
-  <block id="d95c2403b93ac14ffcf47c8e500ca18b" category="admonition">若要設定 Oracle Linux 9.0 Red Hat Enterprise 核心（ RCK ）、請使用<block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.0 的。</block>
-  <block id="189ec3cd54035d4865dbc8a0c4501bad" category="admonition">若要設定 Oracle Linux 9.1 Red Hat Enterprise 核心（ RCK ）、請使用<block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.1 的。</block>
   <block id="a83d1438dc3047a6938e3c9a7a2eea6b" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.3</block>
   <block id="3fca70163c38ce3aeaad83b1acb54703" category="doc">搭配 ONTAP 使用 Oracle Linux 9.3</block>
   <block id="a210d69f837ecbdbf71f84e8f39fc01b" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 9.3 與 ONTAP 設定為目標。</block>
@@ -2987,8 +2968,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="6015ee0c3c4dbc37f534783a65239e72" category="example-title">顯示範例</block>
   <block id="84b0dce03a1f0b594addcb101eab6c2c" category="list-text">確認 OL 9.3 主機上的下列 NVMe / FC 設定：</block>
   <block id="0f184640fa014a23c70b94529da4bca4" category="paragraph">ONTAP 版本的 Oracle Linux 9.3 沒有已知問題。</block>
-  <block id="42fbeb17f790bf6d3c9744236968cf00" category="admonition">若要設定 Oracle Linux 9.2 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="5ab13879c64fa7edac23d51636b59ed3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.2 的。</block>
-  <block id="4099fbc5685a209f2d831acd40be70be" category="admonition">若要設定 Oracle Linux 9.3 Red Hat Enterprise 核心（ RHCK ）、請使用<block ref="aa2da13d93f93b231e31aba556996ce9" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.3 的。</block>
   <block id="26adbe58d014b17e22edee324b7c14d8" category="paragraph">第一次建立<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：</block>
   <block id="524b08ad750352e65f141bb6a45404ad" category="list-text">將<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數設定為 256 ：</block>
   <block id="032f906dd9faf121059404519f7da75d" category="admonition">非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
@@ -3378,7 +3357,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5235e05531bf4930a5cd9d16f28eba17" category="paragraph">以下範例顯示 ONTAP LUN 的正確輸出。</block>
   <block id="71708800a9cc01d42c2915b4f844ac36" category="paragraph">您可以從下載 NetApp Linux 統一主機公用程式軟體套件作為 64-bit.rpm 檔案<block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block>。</block>
   <block id="125316bd33fa278b6852a16d6a7e9aa5" category="doc">設定 KVM 設定</block>
-  <block id="561907e10a6e8eda4d561a399f51365e" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（KVM）。由於 LUN 已對應至 Hypervisor ，因此無需變更即可設定 KVM 。</block>
   <block id="5d896adeb3ef8a2ffa075f87226d15f8" category="paragraph">您不需要直接將任何內容新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置，請將下列語法新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案，以您要排除的裝置的全球識別碼（ WWID ）字串取代 &lt;DevId&gt; ：</block>
   <block id="fd97e6af5040ad49359412a731cf9a48" category="paragraph">安裝 NetApp 主機公用程式套件會自動安裝工具套件。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>公用程式，可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。此<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>命令會傳回有關對應至主機的 LUN ，多重路徑及建立啟動器群組所需的資訊。</block>
   <block id="3aeb4eb76668e1a648ac20167d1fd7aa" category="paragraph">NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與非對稱命名空間存取（ ANA ）。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取（ ALUA ）多重路徑。ANA 是使用核心內建 NVMe 多重路徑功能來實作。</block>
@@ -3393,7 +3371,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0d4d008ef4dfff03721f95b083637bf8" category="paragraph">您可以在 Oracle Linux 9.4 中使用多重路徑來管理 ONTAP LUN 。若要使用多重路徑，<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案必須存在。如果<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案不存在，您可以使用 Touch 命令建立空白的零位元組檔案<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>。您不需要對檔案進行變更<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>，因為 Oracle Linux 9.4 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
   <block id="32a23376361312ec9b549b4c64b617d4" category="paragraph">Oracle Linux 9.4 作業系統可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="b26e74ed6e2892c7e2bb95e414d460c6" category="cell">LUN</block>
-  <block id="b87e18110c17fe33e402d72adca1ecbb" category="admonition">若要設定 Oracle Linux 9.4 Red Hat Enterprise 核心（ RHEK ）、請使用<block ref="b9a8d32f10d77ca35a155d7d0e65ccf3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.4 的。</block>
   <block id="311482e0133a8a4537cdec7aed350743" category="paragraph">在 ONTAP 版本中、 OL 9.4 的 FC 主機組態沒有已知問題。</block>
   <block id="86e78d728a4a5f36415a50836d2ad405" category="summary">說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 9.5</block>
   <block id="59c5ed7920d19e5228c908c5f3570ea0" category="doc">將 Red Hat Enterprise Linux 9.5 與 ONTAP 搭配使用</block>
@@ -3439,7 +3416,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="a4ac74af7c81edef10a1710e62ceadeb" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block>是您要新增至黑名單的本機 SCSI 磁碟。</block>
   <block id="e78866ae0ff845eed770c2b938efee3b" category="paragraph">請務必檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。</block>
   <block id="0addb4faeee17f16535b967fa12087f4" category="paragraph">下列範例示範如何修正覆寫的預設值。在這種情況下，檔案會<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>定義與<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN 不相容的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block>。如果因為其他SAN陣列仍連接至主機而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
-  <block id="1cf74d5a15225e81daff79d7ccb11382" category="admonition">若要設定 Oracle Linux 8.10 RedHat Enterprise 核心、請使用<block ref="8fd6ca76e28de543c48473a969597840" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.10 的。</block>
   <block id="3e1ec4fdd93153b353d57238402daa53" category="paragraph">ONTAP 版本的 Oracle Linux 8.10 沒有已知問題。</block>
   <block id="fa82877b3beb26d7d7bc882389d60aca" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.10 的。</block>
   <block id="38e584f52f25fb096dead8f8866657b0" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="f736929b1834226891236b2c0b0b218e" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.4 的。</block>
@@ -3468,7 +3444,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="cdaab392c5ef9c222bc95dc907be230b" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="3c7f0100e93cbb394731ee7d8982c161" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.3 的。</block>
   <block id="294f49673136bab1fa20a2da73fdee21" category="paragraph">使用 ONTAP 版本的 CentOS 8.4 沒有已知問題。</block>
   <block id="4ecf9d7a3a8c52cfa00d399121a8eda8" category="paragraph">使用 ONTAP 版本的 CentOS 8.5 沒有已知問題。</block>
-  <block id="58dc5490e7551dc8532694e6c1891c35" category="admonition">若要設定 Oracle Linux 7.0 Red Hat Enterprise 核心（ RHHCK ），請使用 <block ref="95c92cba905c8a4ca7d7698440b6011a" category="inline-link-macro-rx"></block>for Red Hat Enterprise Linux （ RHEL ） 7.0 。</block>
   <block id="b85d15d2a4c68e31e07d28311d3bc5de" category="paragraph">Oracle Linux 7.0 with ONTAP 版本有下列已知問題：</block>
   <block id="141ad1ff5cf1058b78e7b327d5363940" category="inline-link-macro">901558</block>
   <block id="36449de1465a8388d5bd6898a3ae93a1" category="cell"><block ref="7ace244e7f60745da9174ac22c242ea9" category="inline-link-macro-rx"></block></block>
@@ -3494,26 +3469,20 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d29e31150c6fcebfe259ef1e60f97a7a" category="cell"><block ref="aaf2fffdc60a7c2259559deac3f25e1c" category="inline-link-macro-rx"></block></block>
   <block id="f83731b7eb4660b4b25652429ded993f" category="cell">在IO的儲存容錯移轉作業期間、觀察到QLogic 10G FCoE（QLE8152）主機核心當機</block>
   <block id="2a5337b34ae2f42558961dd451ec2a21" category="cell">您可能會看到10G FCoE邏輯（QLE8152）主機上的邏輯驅動程式模組發生核心當機。當機發生於IO的儲存容錯移轉作業期間。發生這種當機的可能性很高、導致主機的IO中斷時間更長。</block>
-  <block id="5665ff399a1bf0bb1955be6b42e7f7b2" category="admonition">若要設定 Oracle Linux 7.1 Red Hat Enterprise 核心（ RCK ），請使用<block ref="ac06888ec4e3e5a4526108ac1f8520b7" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.1 的。</block>
   <block id="3765a3c3c98c335068342b7297b1fd7f" category="paragraph">ONTAP 版本的 Oracle Linux 7.1 沒有已知問題。</block>
-  <block id="8a5c5bd5d7d2cf00b6f9f428ae6077d8" category="admonition">若要設定 Oracle Linux 7.2 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="b6341682387f7873fba9fb1f6f4c5842" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.2 的。</block>
   <block id="12816f6cc6e072d421258f60c7368dd0" category="paragraph">ONTAP 版本的 Oracle Linux 7.2 沒有已知問題。</block>
-  <block id="cf14c642d83317aeeb4b66dfccaf0748" category="admonition">若要設定 Oracle Linux 7.3 Red Hat Enterprise 核心（ RCK ），請使用<block ref="afd18201682c20761a139e3ba1b44320" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.3 的。</block>
   <block id="655caf3afb6f5d2ec5a25110b46b1dac" category="paragraph">ONTAP 版本的 Oracle Linux 7.3 沒有已知問題。</block>
   <block id="89d8b4fe15405a87af2ec65fc634abbc" category="paragraph">下列範例說明如何修正被覆寫的預設值。在這種情況下，檔案會<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>定義與<block ref="dbffbd283cd0d9c7937014167893297e" prefix=" " category="inline-code"></block> ONTAP LUN 不相容的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block>。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
-  <block id="8545ef0e74f9a7e959b7fdf91f7e42bf" category="admonition">若要設定 Oracle Linux 7.4 Red Hat Enterprise 核心（ RCK ），請使用<block ref="0f891679fa4536a4e919969e65b85526" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.4 的。</block>
   <block id="9fc0bb91482095051bfd449367fb3e5c" category="paragraph">Oracle Linux 7.4 with ONTAP 版本有下列已知問題：</block>
   <block id="f6a519893db9e6c1633112ee90905e2a" category="inline-link-macro">1109468</block>
   <block id="7079c64a5b24cdd32462fc31603b1135" category="cell"><block ref="db94b7133d12176606a6a4461fe651e0" category="inline-link-macro-rx"></block></block>
   <block id="82acca8af52f5f8d8536c7d62c245815" category="cell">在使用QLE8362卡的OL7.4 Hypervisor上觀察到韌體傾印</block>
   <block id="d6afe009ea52239221866c17107326f9" category="cell">在使用QLE8362卡的OL7.4 Hypervisor上執行儲存容錯移轉作業時、偶爾會觀察到韌體傾印。韌體傾印可能會導致主機I/O中斷、可能會長達500秒。介面卡完成韌體傾印後、I/O作業會以正常方式恢復。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/message檔案中會顯示下列訊息：qla2xxx [0000:0c:00.3]-d001:8：韌體傾印已儲存至暫存緩衝區（8/ffffc90008901000）、傾印狀態旗標（0x3f）</block>
-  <block id="f1b1c741cf490c9ed0d147815f318e8e" category="admonition">若要設定 Oracle Linux 7.5 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="bd5476eff85991b1a8eb2197c27bdbeb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.5 的。</block>
   <block id="07b4fb7cda0bd8b484d606550854f57e" category="paragraph">Oracle Linux 7.5 with ONTAP 版本有下列已知問題：</block>
   <block id="3c146e54f2928af3c6df39922419b24f" category="inline-link-macro">1177239</block>
   <block id="9104aa498f971a4f36b36c41f445ce30" category="cell"><block ref="a8f52c228282c2c6ed4c049cc277ae5a" category="inline-link-macro-rx"></block></block>
   <block id="7d937b6efb504d37a46095c07e7716cd" category="cell">在儲存容錯移轉作業期間、利用QLogic QLE2672 16G FC觀察到OL7.5發生核心中斷</block>
   <block id="7a1b52e64826aa344229a4f10a14cabf" category="cell">在使用核心4.1.12-112.16.4.el7uek.x86_64和QLogic QLE2672 HBA的Oracle Linux 7（OL7.5）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示重新開機作業系統、導致應用程式中斷。如果設定kdump、核心中斷會在/var/crash /目錄中建立vmcore檔案。這種中斷可在模組「 kmem_cache_alloc+118 」中觀察，此模組會記錄在 vmcore 檔案中，並以字串「例外 RIP ： kmem_cache_alloc+118 」來識別。在核心中斷之後，您可以重新啟動主機作業系統並重新啟動應用程式來恢復。</block>
-  <block id="6b2e7f1954c5ca07454ba050537bfc97" category="admonition">若要設定 Oracle Linux 7.6 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="01c1a2a180a79aab210cc480d73c73eb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.6 的。</block>
   <block id="a2ad6d83a8574c572c9a8b9c0652127e" category="paragraph">Oracle Linux 7.6 with ONTAP 版本有下列已知問題：</block>
   <block id="9f1d7307449f2a1971a05bc6e54a02e9" category="inline-link-macro">1202736</block>
   <block id="ff09581cb2c13d8ad132e71c1320dc7e" category="cell"><block ref="108e2d22c5beb633cb3cfe03baa4f66f" category="inline-link-macro-rx"></block></block>
@@ -3539,7 +3508,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="425d6a0675c65fcbb55962fe041d3750" category="cell"><block ref="2fc4638611f41ecf99c51cb3b7693e41" category="inline-link-macro-rx"></block></block>
   <block id="803346e13fcd7415573e4bec58e22f89" category="cell">在儲存容錯移轉作業期間、QLogic QLE2672 16G主機上的遠端連接埠狀態遭到封鎖</block>
   <block id="b2aadc0859a33b6672ced88dfb500d44" category="cell">在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行QLogic QLE2672 16G主機和QLE2742 32GB Fibre Channel（FC）主機匯流排介面卡（HBA）、IO進度可能會因為封鎖的連接埠而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online</block>
-  <block id="63d16eafcc1543dfb24ba7b199c989fe" category="admonition">若要設定 Oracle Linux 7.7 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="d03bd5ac8fbc60aafcf4f05cb4079c96" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.7 的。</block>
   <block id="7e08dcb999f7727996d113a118c754b2" category="paragraph">Oracle Linux 7.7 with ONTAP 版本有下列已知問題：</block>
   <block id="1b61a7a3856fdbc478513136a65d30e6" category="inline-link-macro">1311575</block>
   <block id="a30ebc25935788a02b62f5c31dd68ff4" category="cell"><block ref="267c5dd990c8ab56721888f5900e0ee0" category="inline-link-macro-rx"></block></block>
@@ -3555,41 +3523,19 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d1e8c721d32f2d555893470672bb537f" category="cell">在Oracle Linux 7.6上執行儲存容錯移轉作業時、如果UEK5U2核心執行Emulex LPe16002B-m6 16G光纖通道（FC）主機匯流排介面卡（HBA）、I/O進度可能會因為報告遭到封鎖而停止。儲存容錯移轉作業報告會從「線上」狀態變更為「封鎖」狀態、導致讀取和寫入作業延遲。成功完成作業後、報告將無法返回「線上」狀態、並繼續保持「封鎖」狀態。</block>
   <block id="af4bdc6f0612ae419e8be2df4a6dc1f8" category="cell">觀察到IO延遲、且Rport在使用QLogic QLE2672（16G）和QLE2742（32G）進行儲存容錯移轉期間移至封鎖、不存在狀態</block>
   <block id="501bcccc8f9d47ad0f5a58eda68930e0" category="cell">在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行QLogic QLE2672 16G主機和QLE2742 32GB Fibre Channel（FC）主機匯流排介面卡（HBA）、IO進度可能會因為封鎖的連接埠而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online</block>
-  <block id="72b09ff66539cda97d7c0438a667a52e" category="admonition">若要設定 Oracle Linux 7.8 Red Hat Enterprise 核心（ RCK ），請使用<block ref="f258b7d81a3180e673755835c6a903ac" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.8 的。</block>
   <block id="a448bbf7fe72c623da762666ceb0fb0d" category="paragraph">Oracle Linux 7.8 with ONTAP 版本有下列已知問題：</block>
-  <block id="3b142e0394d092f040e5f91fbe307885" category="admonition">若要設定 Oracle Linux 7.9 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="44610b841747038fd655ebbf0a88f02e" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.9 的。</block>
   <block id="2757a308d4d1083cccf0f8d499cc92dc" category="paragraph">Oracle Linux 7.9 with ONTAP 版本有下列已知問題：</block>
   <block id="eb1fc035eeba662cf025ce042074e2b4" category="cell">如果您在未執行 SCSI 重新掃描的情況下取消對應或對應 LUN 、可能會導致主機上的資料毀損</block>
   <block id="e70f1869df403451e259e10988ea5f80" category="cell">當您將多重路徑組態參數設定為「是」時<block ref="08dba88199429f4a52c71e37581877d5" prefix=" " category="inline-code"></block>，會在全球識別碼（ WWID ）變更時停用對路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的 WWID 還原至多重路徑裝置的 WWID 為止。如<block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>需詳細資訊、請參閱。</block>
-  <block id="cf9bf895ad4ca7687a9d6f3107e8bc7d" category="admonition">若要設定 Oracle Linux 8.0 Red Hat Enterprise 核心（ RHCK ），請使用<block ref="dd019c9be944c1791639aca9ec9dceb1" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.0 的。</block>
   <block id="de7704b02c52eca8b10fe3c3fcbe02be" category="paragraph">ONTAP 版本的 Oracle Linux 8.0 沒有已知問題。</block>
-  <block id="f32d48cf755668783343d18d81af5662" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.0 的。</block>
-  <block id="7360ec09f843020e3cdedadf07f9c6eb" category="admonition">若要設定 Oracle Linux 8.1 Red Hat Enterprise 核心（ RCK ），請使用<block ref="ba385beac84ef95968bf8513eda510a6" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的。</block>
   <block id="32dcf8794513ae60bb7547178c8e2506" category="paragraph">ONTAP 版本的 Oracle Linux 8.1 沒有已知問題。</block>
-  <block id="04727b6e26d6c60a42231cfea7028876" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的。</block>
-  <block id="243b0430cd7bcb315e3ddad5eeee3d9e" category="admonition">若要設定 Oracle Linux 8.2 Red Hat Enterprise 核心（ RHHCK ），請使用<block ref="4fa0e58c0abf395a1bcef392b352f5ab" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.2 的。</block>
   <block id="b00681e055849110f05e9642516e3a1a" category="paragraph">ONTAP 版本的 Oracle Linux 8.2 沒有已知問題。</block>
-  <block id="64017e4fce264fae779ea6ffb9022691" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="840d5abfe44b15b4222ea5c534ce82a9" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.2 的。</block>
-  <block id="dfa4360b9ef5c59ee3bab4c95d016689" category="admonition">若要設定 Oracle Linux 8.3 Red Hat Enterprise 核心（ RCK ），請使用<block ref="4e79a9939610f9dc89e0e26786a809f0" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.3 的。</block>
   <block id="89ced9668e13589ae02be8c30c466b1b" category="paragraph">ONTAP 版本的 Oracle Linux 8.3 沒有已知問題。</block>
-  <block id="273955f9a81b6001ec0fed11c89c61c3" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="3c7f0100e93cbb394731ee7d8982c161" category="inline-link-macro-rx"></block>相應 Red Hat Enterprise Linux 版本文件中的一節。</block>
-  <block id="2e70e755dfc045a7907c2a353ffc7a3d" category="admonition">若要設定 Oracle Linux 8.4 Red Hat Enterprise 核心（ RHHCK ），請使用<block ref="2a5bf462d4974235d181075f07ec40ac" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.4 的。</block>
-  <block id="5fa917b25abcb73abe17905f90a2c698" category="section-title">KVM 設定</block>
   <block id="461896975771f0f6bcc17f6a47fc447c" category="paragraph">ONTAP 版本的 Oracle Linux 8.4 沒有已知問題。</block>
-  <block id="4447162ab1e53ae3a7c371586690d068" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="1cf241ba8c9adec487a38ecfba1ee9ce" category="inline-link-macro-rx"></block>相應 Red Hat Enterprise Linux 版本文件中的一節。</block>
-  <block id="83f959a424c03531fb16c92bd0aa57a4" category="admonition">若要設定 Oracle Linux 8.5 Red Hat Enterprise 核心（ RCK ），請使用<block ref="7e47a54075763937d25ec51fa82726e1" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.5 的。</block>
   <block id="8beac64737284b3d1504d3c6ce28839e" category="paragraph">ONTAP 版本的 Oracle Linux 8.5 沒有已知問題。</block>
-  <block id="5d90071a09878a695a26d84f9a4f073b" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="b5087b96e856dc400373808e0f627382" category="inline-link-macro-rx"></block>相應 Red Hat Enterprise Linux 版本文件中的一節。</block>
-  <block id="6ed1f472cda2679cdeae66607f09c936" category="admonition">若要設定 Oracle Linux 8.6 Red Hat Enterprise 核心（ RHHCK ），請使用<block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.6 的。</block>
   <block id="f2a4520ddaa2d566ab9995023d086f49" category="paragraph">ONTAP 版本的 Oracle Linux 8.6 沒有已知問題。</block>
-  <block id="5ebe49302359fb6e4d762fdceb288864" category="admonition">對於 Oracle Linux （ Red Hat 相容核心）已知問題，請參閱<block ref="10ee08d1b3d909bc389f3b317276174b" category="inline-link-macro-rx"></block>相應 Red Hat Enterprise Linux 版本文件中的一節。</block>
-  <block id="61bc992261a6530c122ec5f5e732d7ee" category="admonition">若要設定 Oracle Linux 8.7 Red Hat Enterprise 核心（ RHHCK ），請使用<block ref="2799389175d462b609c459275109bc99" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.7 的。</block>
-  <block id="73ba9729c9740db82f51a4f8954414ff" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。當 LUN 對應至 Hypervisor 時、無需進行任何變更即可設定 KVM 。</block>
   <block id="f2cce8002ce2f5b95462132893d95199" category="paragraph">ONTAP 版本的 Oracle Linux 8.7 沒有已知問題。</block>
-  <block id="2026d2310fc2424795c036d93b9ede10" category="admonition">若要設定 Oracle Linux 8.8 Red Hat Enterprise 核心、請使用<block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.8 的。</block>
-  <block id="01b8600fd938010d5f121c919a853516" category="paragraph">您也可以使用建議的設定來設定核心型虛擬機器（ KVM ）。當 LUN 對應至 Hypervisor 時、設定 KVM 並不需要變更。</block>
   <block id="54eeaca913032941b7691ee3076cdc34" category="paragraph">ONTAP 版本的 Oracle Linux 8.8 沒有已知問題。</block>
-  <block id="8ea7d65541343d381b99affa2d1c6996" category="admonition">若要設定 Oracle Linux 8.9 RedHat Enterprise 核心、請使用<block ref="ce7483c182b39cf5b993c406b0ed7268" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。</block>
   <block id="2df37fd98bd7f04cdf8ebbea351923d5" category="paragraph">ONTAP 版本的 Oracle Linux 8.9 沒有已知問題。</block>
   <block id="b4fd571d0a72855bfe7c33832138bcaa" category="paragraph">在 ONTAP 版本中、 RHEL 6.10 沒有已知問題。</block>
   <block id="f40357634c33f034611ff10bf2cf0bb3" category="paragraph">採用 ONTAP 版本的 RHEL 6.4 有下列已知問題：</block>
@@ -3763,5 +3709,52 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="1e45eb414e878e896ff6c8568d44aaed" category="cell"><block ref="409bdf20edf896ce4497acd46087929e" category="inline-link-macro-rx"></block></block>
   <block id="4ccdcef8fc98cb6452f9ba7aa1df1c0c" category="cell">重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式</block>
   <block id="c6bc802c921069bf472f1e8359672c59" category="cell">重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式。維護模式會依照下列訊息變成單一使用者模式：<block ref="3e4fc983295eaca22de2d8651a4d47f0" prefix=" " category="inline-code"></block></block>
-  <block id="a563fbe9dc21252c94fb2aac9ee8aceb" category="paragraph">您不需要在 Oracle Linux 8.10 上設定核心型虛擬機器的設定，因為 LUN 已對應至 Hypervisor 。</block>
+  <block id="02b22a4665a408c3e680f6e2b9bafdcc" category="paragraph">您不需要設定核心型虛擬機器的設定，因為 LUN 會對應至 Hypervisor 。</block>
+  <block id="064f34177ddb44dc3b16f0c28e9696a8" category="admonition">若要設定 Oracle Linux 8.10 Red Hat 相容核心（ RHCK ），請使用<block ref="8fd6ca76e28de543c48473a969597840" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.10 的。</block>
+  <block id="0740b5df22667a7e744aa71953beb230" category="admonition">若要設定 Oracle Linux 6.10 Red Hat 相容核心（ RHCK ），請使用<block ref="a294cf4df5bbbd1673f2ccf0dacf7b03" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.10 的。</block>
+  <block id="b3f1ab4f1021cad5dbb0ecebe3b01119" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block>適用於 RHEL 6.10 的。</block>
+  <block id="a4cd81eccdcd73aff6505e3d429a130b" category="admonition">若要設定 Oracle Linux 6.4 Red Hat 相容核心（ RHCK ），請使用<block ref="a06e2728aa3780c72bf0b5a9e2b2f14f" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.4 的。</block>
+  <block id="25a94284ceccc99fb23a79e416c8173a" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="f736929b1834226891236b2c0b0b218e" category="inline-link-macro-rx"></block>適用於 RHEL 6.4 的。</block>
+  <block id="31b224cd5a639428743a26ab8a72737a" category="admonition">若要設定 Oracle Linux 6.5 Red Hat 相容核心（ RHCK ），請使用<block ref="d9929df24012e2c19b3258bd0a117bc4" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.5 的。</block>
+  <block id="6f1ac0afba6703725e1d230220a7f5b0" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="0158dc1052dab85818a92b1a427c95b7" category="inline-link-macro-rx"></block>適用於 RHEL 6.5 的。</block>
+  <block id="83a1102b5f5a4a8d6c50e4286e9367b2" category="admonition">若要設定 Oracle Linux 6.6 Red Hat 相容核心（ RHCK ），請使用<block ref="206a39f130bf92080cb56256dd2c28f9" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.6 的。</block>
+  <block id="8230a070d602725403fc0401e3ac41e9" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="aad294b0550f33ea846ebc2598292576" category="inline-link-macro-rx"></block>適用於 RHEL 6.6 的。</block>
+  <block id="6eb7cef06003ab6d67f8b80987f771f5" category="admonition">若要設定 Oracle Linux 6.7 Red Hat 相容核心（ RHCK ），請使用<block ref="8889d65b7bf0d43fb28eb69a57d4d394" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.7 的。</block>
+  <block id="813c544a12f1cafc63829bad2d1ddecd" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="fd679b4991af24edfd6d66f5cbc5db76" category="inline-link-macro-rx"></block>適用於 RHEL 6.7 的。</block>
+  <block id="41030c1f63542a66b6745f483c36130a" category="admonition">若要設定 Oracle Linux 6.8 Red Hat 相容核心（ RHCK ），請使用<block ref="1d07883740b2178a6c8bf634ff911c00" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.8 的。</block>
+  <block id="bb559c6421377ba8691783146145f853" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="7703b3b38de881e061b6dbcbbcaf9f81" category="inline-link-macro-rx"></block>適用於 RHEL 6.8 的。</block>
+  <block id="01959cefae34c9172600de87478915b8" category="admonition">若要設定 Oracle Linux 6.9 Red Hat 相容核心（ RHCK ），請使用<block ref="e6290e19ce3858749b0edbfa1565d904" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.9 的。</block>
+  <block id="9933915a8c8496b899a0b703737d9f01" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="6381fe6a72f9bd9f067a0ec390d2a8fb" category="inline-link-macro-rx"></block>適用於 RHEL 6.9 的。</block>
+  <block id="24a02af33e9baef6b7473a0c54dd62bb" category="admonition">若要設定 Oracle Linux 7.0 Red Hat 相容核心（ RHCK ），請使用<block ref="95c92cba905c8a4ca7d7698440b6011a" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.0 的。</block>
+  <block id="b7e6f2b25319ad1cd2874cc1cf8b8c31" category="admonition">若要設定 Oracle Linux 7.1 Red Hat 相容核心（ RHCK ），請使用<block ref="ac06888ec4e3e5a4526108ac1f8520b7" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.1 的。</block>
+  <block id="76f217465a08ee2206d859c211cf934a" category="admonition">若要設定 Oracle Linux 7.2 Red Hat 相容核心（ RHCK ），請使用<block ref="b6341682387f7873fba9fb1f6f4c5842" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.2 的。</block>
+  <block id="2ed63ef23d2a20a743c4c00ddc0a1fe2" category="admonition">若要設定 Oracle Linux 7.3 Red Hat 相容核心（ RHCK ），請使用<block ref="afd18201682c20761a139e3ba1b44320" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.3 的。</block>
+  <block id="6c69f3fb0359004b2b085768906f56ad" category="admonition">若要設定 Oracle Linux 7.4 Red Hat 相容核心（ RHCK ），請使用<block ref="0f891679fa4536a4e919969e65b85526" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.4 的。</block>
+  <block id="12aead4db39ddd50d0265fd1f391e3ef" category="admonition">若要設定 Oracle Linux 7.5 Red Hat 相容核心（ RHCK ），請使用<block ref="bd5476eff85991b1a8eb2197c27bdbeb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.5 的。</block>
+  <block id="481caa56d58da49aafb45e57aa180096" category="admonition">若要設定 Oracle Linux 7.6 Red Hat 相容核心（ RHCK ），請使用<block ref="01c1a2a180a79aab210cc480d73c73eb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.6 的。</block>
+  <block id="531c3881e4e0d1a43c6e12f0ce5625e6" category="admonition">若要設定 Oracle Linux 7.7 Red Hat 相容核心（ RHCK ），請使用<block ref="d03bd5ac8fbc60aafcf4f05cb4079c96" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.7 的。</block>
+  <block id="3c1839d04c26218d381dc97d5feca9c1" category="admonition">若要設定 Oracle Linux 7.8 Red Hat 相容核心（ RHCK ），請使用<block ref="f258b7d81a3180e673755835c6a903ac" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.8 的。</block>
+  <block id="d15997b4d058ce06742e0143d6d16c7c" category="admonition">若要設定 Oracle Linux 7.9 Red Hat 相容核心（ RHCK ），請使用<block ref="44610b841747038fd655ebbf0a88f02e" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.9 的。</block>
+  <block id="268c36ef3a3435b738229f2d19eb0591" category="admonition">若要設定 Oracle Linux 8.0 Red Hat 相容核心（ RHCK ），請使用<block ref="dd019c9be944c1791639aca9ec9dceb1" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.0 的。</block>
+  <block id="230e9832b065ce5844ded87b524a1869" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block>適用於 RHEL 8.0 的。</block>
+  <block id="6dd98ffe6406aff752f2b1ef29c5f1ff" category="admonition">若要設定 Oracle Linux 8.1 Red Hat 相容核心（ RHCK ），請使用<block ref="ba385beac84ef95968bf8513eda510a6" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的。</block>
+  <block id="f582f708b93cc65a19316b11494cff0d" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block>適用於 RHEL 8.1 的。</block>
+  <block id="b064c6c47577cadf504e64f6267d0ef1" category="admonition">若要設定 Oracle Linux 8.2 Red Hat 相容核心（ RHCK ），請使用<block ref="4fa0e58c0abf395a1bcef392b352f5ab" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.2 的。</block>
+  <block id="986734eb094c9c2f2d3b2b3c0a0c870e" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="840d5abfe44b15b4222ea5c534ce82a9" category="inline-link-macro-rx"></block>適用於 RHEL 8.2 的。</block>
+  <block id="a2b69a679bf050f2bbfcaaeb6ea992b4" category="admonition">若要設定 Oracle Linux 8.3 Red Hat 相容核心（ RHCK ），請使用<block ref="4e79a9939610f9dc89e0e26786a809f0" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.3 的。</block>
+  <block id="4d897e8736146cf40790531f1f666597" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="3c7f0100e93cbb394731ee7d8982c161" category="inline-link-macro-rx"></block>對應 RHEL 版本文件中的一節。</block>
+  <block id="ffc987a2f21aae5e3195355025c76bf4" category="admonition">若要設定 Oracle Linux 8.4 Red Hat 相容核心（ RHCK ），請使用<block ref="2a5bf462d4974235d181075f07ec40ac" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.4 的。</block>
+  <block id="45dbaae3c2793a4b404f3a2322689377" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="1cf241ba8c9adec487a38ecfba1ee9ce" category="inline-link-macro-rx"></block>對應 RHEL 版本文件中的一節。</block>
+  <block id="c88bfe3802b773efecb4e9d3a0324e29" category="admonition">若要設定 Oracle Linux 8.5 Red Hat 相容核心（ RHCK ），請使用<block ref="7e47a54075763937d25ec51fa82726e1" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.5 的。</block>
+  <block id="d6c8969c6a4fc3aacc016c608d66db93" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="b5087b96e856dc400373808e0f627382" category="inline-link-macro-rx"></block>對應 RHEL 版本文件中的一節。</block>
+  <block id="4699a6f7a3bd171bd91e63dfcdfd564f" category="admonition">若要設定 Oracle Linux 8.6 Red Hat 相容核心（ RHCK ），請使用<block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.6 的。</block>
+  <block id="8615fb2fd88be1c6019d2c1bf3ebec1f" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="10ee08d1b3d909bc389f3b317276174b" category="inline-link-macro-rx"></block>對應 Red Hat Enterprise Linux 版本文件中的一節。</block>
+  <block id="d97bfa8784f6caef731d7250b102aeaf" category="admonition">若要設定 Oracle Linux 8.7 Red Hat 相容核心（ RHCK ），請使用<block ref="2799389175d462b609c459275109bc99" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.7 的。</block>
+  <block id="e4c3957504ec156c5892823238a99140" category="admonition">若要設定 Oracle Linux 8.8 Red Hat 相容核心（ RHCK ），請使用<block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.8 的。</block>
+  <block id="1c91c1c9b210398355d879d0b5a29962" category="admonition">若要設定 Oracle Linux 8.9 Red Hat 相容核心（ RHCK ），請使用<block ref="ce7483c182b39cf5b993c406b0ed7268" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。</block>
+  <block id="8e8af6fa9c2a46908c54887cbd7ce151" category="admonition">若要設定 Oracle Linux 9.0 Red Hat 相容核心（ RHCK ），請使用<block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.0 的。</block>
+  <block id="9266ba839452bc329871928d82225ac5" category="admonition">若要設定 Oracle Linux 9.1 Red Hat 相容核心（ RHCK ），請使用<block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.1 的。</block>
+  <block id="ffa125c5632df868ce4207d98d9a904a" category="admonition">若要設定 Oracle Linux 9.2 Red Hat 相容核心（ RHCK ），請使用<block ref="5ab13879c64fa7edac23d51636b59ed3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.2 的。</block>
+  <block id="a2d7c1776c37101df831ef0e6f0e5ce5" category="admonition">若要設定 Oracle Linux 9.3 Red Hat 相容核心（ RHCK ），請使用<block ref="aa2da13d93f93b231e31aba556996ce9" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.3 的。</block>
+  <block id="8c49dde2af519712a2f50d452f6ce90d" category="admonition">若要設定 Oracle Linux 9.4 Red Hat 相容核心（ RHCK ），請使用<block ref="b9a8d32f10d77ca35a155d7d0e65ccf3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.4 的。</block>
 </blocks>
