@@ -24,4 +24,4 @@ HP-UX Host Utilities 6.0 繼續支援下列版本：
 * HP-UX 11iv3
 
 
-HP-UX 主機公用程式 6.0 版本沒有新功能、增強功能、已知限制或注意事項。
+HP-UX Host Utilities 6.0 版本沒有新功能，增強功能，已知限制或注意事項。

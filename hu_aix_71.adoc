@@ -22,9 +22,9 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.1搭配使用
 
 == 安裝 AIX 主機公用程式
 
-您必須安裝AIX主機公用程式套件、才能搭配使用AIX MPIO搭配NetApp ONTAP 功能儲存設備。
+在 ONTAP 儲存設備上使用 AIX Microsoft 多重路徑 I/O （ MPIO ）時，您必須安裝 AIX 主機公用程式套件。
 
-您可以從下載包含主機公用程式軟體套件的壓縮檔案 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp 支援網站"^]。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的兩個軟體套件。
+您可以從下載包含主機公用程式軟體套件link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp 支援網站"^]的壓縮檔案。下載檔案後，您需要將其解壓縮，才能取得安裝主機公用程式所需的兩個軟體套件。
 
 .步驟
 . 登入您的主機。
@@ -75,8 +75,8 @@ data_vserver      /vol/vol4/lun4    hdisk14     fcs0       FCP       20g    C
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 SAN開機是將SAN附加磁碟（LUN）設定為AIX主機的開機裝置的程序。您可以設定SAN開機LUN、以便在以FC或FCoE傳輸協定執行AIX主機公用程式的AIX MPIO環境中運作。您在AIX MPIO環境中建立SAN開機LUN及在其上安裝新的OS映像的方法可能有所不同、視您使用的傳輸協定而定。
 
@@ -154,7 +154,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 == 建議設定
 
-以下是 ONTAP LUN 的一些建議參數設定。  安裝NetApp主機公用程式套件後、會自動設定適用於整個流程的關鍵參數ONTAP 。
+NetApp 建議 ONTAP LUN 採用下列參數設定。安裝NetApp主機公用程式套件後、會自動設定適用於整個流程的關鍵參數ONTAP 。
 
 [cols="4*"]
 |===

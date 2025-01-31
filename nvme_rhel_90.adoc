@@ -18,7 +18,7 @@ summary: 如何針對RHEL 9.0設定NVMe主機、ONTAP 並搭配使用功能
 [role="lead"]
 RHEL 9.0支援NVMe（包括NVMe / FC和NVMe / TCP）、並具備ONTAP 非對稱命名空間存取（ANA）功能、可在不間斷的儲存容錯移轉（SFO）上執行。ANA是與NVM環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。使用此程序、您可以使用 RHEL 9.0 上的 ANA 和 ONTAP 作為目標、來啟用內核心 NVMe 多重路徑的 NVMe 。
 
-如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
@@ -42,7 +42,7 @@ RHEL 9.0支援NVMe（包括NVMe / FC和NVMe / TCP）、並具備ONTAP 非對稱�
 
 .步驟
 . 在伺服器上安裝RHEL 9.0。
-. 安裝完成後、請確認您執行的是指定的RHEL 9.0核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
+. 安裝完成後、請確認您正在執行指定的 RHEL 9.0 核心。如需支援版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -89,7 +89,7 @@ NOTE: 如果主機NQN字串不相符、您應該使用「vserver modify」命令
 .Broadcom / Emulex
 --
 .步驟
-. 確認您使用的是支援的介面卡。如需支援介面卡的其他詳細資料、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+. 確認您使用的是支援的介面卡。如需支援介面卡的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -104,7 +104,7 @@ LPe32002-M2
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需目前支援的介面卡驅動程式和韌體版本清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -220,7 +220,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

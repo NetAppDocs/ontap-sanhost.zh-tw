@@ -91,12 +91,12 @@ data_vserver       /vol/vol2/lun2  /dev/rdsk/c0t600A098038314362705D51465A626475
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 SAN開機是將SAN附加磁碟（LUN）設定為Solaris主機的開機裝置的程序。
 
-您可以使用 FC 傳輸協定、設定 SAN 開機 LUN 在 Solaris MPxIO 環境中運作、並執行 Solaris Host Utilities 。您用來設定SAN開機LUN的方法可能會因Volume Manager和檔案系統而異。請參閱 link:hu_solaris_62.html["安裝 Solaris 主機公用程式"] 如需 Solaris MPIO （多重路徑 I/O ）環境中 SAN 開機 LUN 的詳細資訊、
+您可以使用 FC 傳輸協定、設定 SAN 開機 LUN 在 Solaris MPxIO 環境中運作、並執行 Solaris Host Utilities 。您用來設定SAN開機LUN的方法可能會因Volume Manager和檔案系統而異。如需 Solaris MPIO （ Microsoft 多重路徑 I/O ）環境中 SAN 開機 LUN 的詳細資訊，請參閱link:hu_solaris_62.html["安裝 Solaris 主機公用程式"]。
 
 
 
@@ -147,7 +147,7 @@ NOTE: 所有 SAN 陣列（ ASA ）組態都支援從 ONTAP 9.8 開始、適用�
 
 == 建議設定
 
-NetApp 建議您針對 Solaris 11.4 SPARC 和 x86_64 搭配 NetApp ONTAP LUN 使用下列參數設定。這些參數值由Host Utilities設定。如需其他 Solaris 11.4 系統設定、請參閱 Oracle DOC ID ： 2595926.1 。
+NetApp 建議您針對 Solaris 11.4 SPARC 和 x86_64 搭配 ONTAP LUN 使用下列參數設定。這些參數值由Host Utilities設定。如需其他 Solaris 11.4 系統設定、請參閱 Oracle DOC ID ： 2595926.1 。
 
 [cols="2*"]
 |===
@@ -218,8 +218,8 @@ NetApp 建議您使用 NetApp LUN 、成功將 4KB I/O 與 zPools 對齊：
 
 * Solaris虛擬化選項包括Solaris邏輯網域（也稱為LDom或Oracle VM Server for SPARC）、Solaris動態網域、Solaris區域及Solaris Container。雖然這些技術是以不同的架構為基礎、但這些技術已被重新標記為「 Oracle 虛擬機器」。
 * 在某些情況下、可同時使用多個選項、例如特定Solaris邏輯網域內的Solaris Container。
-* NetApp通常支援使用這些虛擬化技術、其中Oracle支援整體組態、且任何直接存取LUN的分割區均列於上 link:https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp 互通性對照表"^] 支援的組態。其中包括根容器、 LDOM I/O 網域、以及使用 NPIV 存取 LUN 的 LDOM 。
-* 僅使用虛擬化儲存資源（例如）的分割區或虛擬機器 `vdsk`、不需要特定資格、因為他們無法直接存取 NetApp LUN 。只有直接存取底層 LUN 的分割區或虛擬機器、例如 LDOM I/O 網域、才能在中找到 link:https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
+* NetApp 通常支援使用這些虛擬化技術，其中 Oracle 支援整體組態，而任何可直接存取 LUN 的分割區都會列在支援組態的中link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。其中包括根容器、 LDOM I/O 網域、以及使用 NPIV 存取 LUN 的 LDOM 。
+* 只使用虛擬化儲存資源（例如）的分割區或虛擬機器 `vdsk`不需要特定資格，因為它們無法直接存取 NetApp LUN 。只有直接存取底層 LUN 的分割區或虛擬機器（例如 LDOM I/O 網域）才能在中找到link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。
 
 
 

@@ -18,7 +18,7 @@ summary:
 [role="lead"]
 Oracle Linux （ OL ） 9.0 支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe / FC 和其他傳輸、並提供非對稱命名空間存取（ ANA ）。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。
 
-如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
@@ -156,7 +156,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 0:12.8.0.11
 ----
 +
-如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 . 請確認 `lpfc_enable_fc4_type` 設為 `3`：
 +
@@ -248,7 +248,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

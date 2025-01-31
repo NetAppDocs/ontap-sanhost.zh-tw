@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_hpux_60.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: 說明如何搭配 ONTAP 使用 HP-UX Unified Host Utilities 6.0 
+summary: 說明如何將 HP-UX 主機公用程式 6.0 與 ONTAP 儲存設備搭配使用 
 ---
-= HP-UX Host Utilities 6.0
+= 適用於 ONTAP 儲存設備的 HP-UX 主機公用程式 6.0
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,22 +16,22 @@ summary: 說明如何搭配 ONTAP 使用 HP-UX Unified Host Utilities 6.0
 
 
 [role="lead"]
-HP-UX 主機公用程式可讓您將 HP-UX 主機連接至 NetApp 儲存設備。
+NetApp HP-UX 主機公用程式可讓您將 HP-UX 主機連接至 ONTAP 儲存設備。
 
 HP-UX 主機公用程式支援多種通訊協定及下列環境：
 
-* 原生MPIO
+* 原生 Microsoft 多重路徑 I/O （ MPIO ）
 * Veritas動態多路徑（DMP）
 
 
 
 NOTE: 為了指出使用的環境、本文有時會針對 Veritas DMP 環境指定「 DMP 」、對於 HP-UX 原生環境則指定「 MPIO 」。在某些情況下、您使用的命令可能會因您使用的驅動程式而有所不同。在這些情況下、會同時指定環境和驅動程式類型。
 
-.您需要的產品
+.開始之前
 * 若要確保操作可靠、請確認您的整個 iSCSI 、 FC 或 FCoE 組態均受到支援。
 
 
-您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 以驗證組態。
+您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]來驗證組態。
 
 .關於這項工作
 NetApp HP-UX主機公用程式軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["NetApp 支援網站"^] 在壓縮檔案中。下載檔案之後、您必須在安裝前將其解壓縮。
@@ -66,7 +66,7 @@ swinstall /s /depot_path'
 
 == SAN工具套件
 
-HP-UX Host Utilities是NetApp主機軟體、可在HP-UX主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供 `sanlun` 可協助您管理 LUN 和主機匯流排介面卡的公用程式。（ HBA ）。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
+HP-UX 主機公用程式是 NetApp 主機軟體，可在 HP-UX 主機上提供命令列工具組。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供 `sanlun`公用程式，可協助您管理 LUN 和主機匯流排介面卡。（ HBA ）。此 `sanlun`命令會傳回有關對應至主機的 LUN ，多重路徑及建立啟動器群組所需的資訊。
 
 .範例
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
@@ -85,4 +85,4 @@ sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0 
 
 ----
 
-NOTE: 此工具組適用於所有主機公用程式組態和通訊協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。
+NOTE: 此工具組適用於所有主機公用程式組態和通訊協定。因此，所有元件並不適用於每個組態。未使用的元件不會影響您的系統效能。SAN 工具套件在 AIX 和 PowerVM/VIOS OS 版本上受支援。

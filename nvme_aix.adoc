@@ -16,7 +16,7 @@ summary: 如何使用 ONTAP 設定適用於 AIX 的 NVMe / FC 主機
 
 
 [role="lead"]
-您可以在 IBM AIX 和 VIOS/PowerVM 主機上啟用 NVMe over Fibre Channel （ NVMe / FC ）、將 ONTAP 儲存設備作為目標。如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+您可以在 IBM AIX 和 VIOS/PowerVM 主機上啟用 NVMe over Fibre Channel （ NVMe / FC ），將 ONTAP 儲存設備作為目標。如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 下列支援可用於具有 ONTAP 的 AIX 主機的 NVMe / FC 主機組態：
 

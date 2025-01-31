@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_hpux_60_cmd.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用 
+summary: 說明如何搭配 ONTAP 使用 Linux 主機公用程式 7.1 
 ---
 = HP-UX Host Utilities 6.0 命令參照
 :hardbreaks:
@@ -16,7 +16,7 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 
 
 [role="lead"]
-您可以使用 HP-UX Unified Host Utilities 6.0 範例命令參照、使用主機公用程式工具來進行端點對端點 NetApp 儲存組態驗證。
+您可以使用 HP-UX Host Utilities 6.0 範例命令參照，使用主機公用程式工具來進行端點對端點 ONTAP 儲存組態驗證。
 
 
 

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_luhu_71.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用 
+summary: 說明如何搭配 ONTAP 使用 Linux 主機公用程式 7.1 
 ---
-= 安裝 Linux Unified Host Utilities 7.1
+= 安裝 Linux 主機公用程式 7.1
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 
 
 [role="lead"]
-Linux 統一化主機公用程式（ Luhu ）可協助您管理連接至 Linux 主機的 NetApp ONTAP 儲存設備。NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+Linux 主機公用程式可協助您管理連接至 Linux 主機的 ONTAP 儲存設備。NetApp 強烈建議您安裝 Linux 主機公用程式，但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 支援下列 Linux 套裝作業系統：
 
@@ -27,16 +27,16 @@ Linux 統一化主機公用程式（ Luhu ）可協助您管理連接至 Linux �
 * Citrix XenServer
 
 
-.您需要的產品
-NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 在32位元或64位元.rpm檔案中。
+.開始之前
+NetApp Linux 主機公用程式軟體套件位於 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]32 位元或 64 位元 .rpm 檔案中。
 
 * 為了確保作業可靠、您必須確認整個iSCSI、FC或FCoE組態均受到支援。
 +
-您可以使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 以驗證組態。
+您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]來驗證組態。
 
 * 您必須安裝廠商支援網站上提供的主機匯流排介面卡（ HBA ）管理套件。
 +
-管理軟體可讓 SAN 工具組命令收集 FC HBA 的相關資訊、例如其 WWPN 。適用於 `sanlun fcp show adapter` 命令若要運作、請確認下列套件已正確安裝：
+管理軟體可讓 SAN Toolkit 命令收集 FC HBA 的相關資訊，例如其 WWPN 。若要讓 `sanlun fcp show adapter`命令正常運作，請確認下列套件已正確安裝：
 
 +
 ** Marvell QLogic HBA – QConverteConsole CLI
@@ -48,28 +48,25 @@ NetApp Linux Unified Host Utilities軟體套件可在上取得 link:https://mysu
 
 
 
-NOTE: Linux Unified Host Utilities 軟體不支援 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ）主機傳輸協定。
+NOTE: Linux 主機公用程式軟體不支援 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ）主機傳輸協定。
 
 .步驟
-. 如果您目前已安裝Linux Unified Host Utilities版本、請使用下列命令將其移除：
+. 如果您目前已安裝 Linux 主機公用程式版本，請使用下列命令將其移除：
 +
 [source, cli]
 ----
 rpm -e netapp_linux_unified_host_utilities-7-1
 ----
 +
-若為舊版 Linux 主機公用程式、請移至安裝主機公用程式軟體的目錄、然後輸入 uninstall 命令以移除已安裝的套件。
+如需舊版 Linux 主機公用程式，請移至安裝主機公用程式軟體的目錄，然後輸入 uninstall 命令以移除已安裝的套件。
 
-. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
+. 將 32 位元或 64 位元 Linux 主機公用程式軟體套件從下載link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]至主機。
 . 移至您下載軟體套件的目錄、然後使用下列命令進行安裝：
 +
 [source, cli]
 ----
 rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_xx.rpm
 ----
-+
-* 輸出範例 *
-
 +
 [listing]
 ----
@@ -84,9 +81,6 @@ Updating / installing...
 ----
 sanlun version
 ----
-+
-* 輸出範例 *
-
 +
 [listing]
 ----
@@ -104,7 +98,7 @@ sanlun version 7.1.386.1644
 
 == SAN工具套件
 
-Linux Unified Host Utilities是NetApp主機軟體、可在Linux主機上提供命令列工具套件。
+Linux 主機公用程式是 NetApp 主機軟體，可在 Linux 主機上提供命令列工具組。
 
 當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
 
@@ -130,7 +124,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 [NOTE]
 ====
 * 此工具套件適用於Host Utilities的所有組態和傳輸協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。
-* Citrix XenServer、Oracle VM和Red Hat Enterprise Virtualization Hypervisor不支援SAN工具套件。
+* Citrix XenServer ， Oracle VM 和 Red Hat Enterprise Virtualization Hypervisor 不支援 SAN Toolkit 。
 
 
 ====

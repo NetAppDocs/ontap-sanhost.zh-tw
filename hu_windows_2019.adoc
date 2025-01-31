@@ -28,7 +28,7 @@ summary: 使用Windows Server 2019 ONTAP 搭配使用
 
 === SAN開機
 
-如果您選擇使用SAN開機、您的組態必須支援SAN開機。您可以使用NetApp互通性對照表工具來驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您選擇使用SAN開機、您的組態必須支援SAN開機。您可以使用互通性對照表工具來驗證作業系統， HBA ， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否受到支援。
 
 . 將SAN開機LUN對應至主機。
 . 確認有多個路徑可供使用。
@@ -66,20 +66,20 @@ TIP: 許多修補程式都需要重新開機Windows主機、但您可以選擇�
 
 
 
-== 安裝 Windows Unified Host Utilities
+== 安裝 Windows 主機公用程式
 
-Windows統一化主機公用程式（Wuhu）是一組軟體程式、內含文件、可讓您將主機電腦連接至NetApp SAN上的虛擬磁碟（LUN）。NetApp 建議您下載並安裝最新的公用程式套件。如需蕪湖組態資訊與說明、請參閱 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows Unified Host Utilities 文件"] 並選取 Windows Unified Host Utilities 版本的安裝程序。
+Windows 主機公用程式是一組軟體程式，其中包含文件，可讓您將主機電腦連接至 NetApp SAN 上的虛擬磁碟（ LUN ）。NetApp 建議您下載並安裝最新的公用程式套件。如需蕪湖組態資訊與指示，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"]並選取 Windows 主機公用程式版本的安裝程序。
 
 
 
 == 多重路徑
 
-如果您的Windows主機有多個儲存系統路徑、則必須安裝MPIO軟體並設定多重路徑。如果沒有MPIO軟體、作業系統可能會將每個路徑視為獨立的磁碟、進而導致資料毀損。MPIO軟體為所有路徑的作業系統提供單一磁碟、而裝置專屬模組（DSM）則負責管理路徑容錯移轉。
+如果 Windows 主機有多個路徑通往儲存系統，則必須安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並設定多重路徑。如果沒有MPIO軟體、作業系統可能會將每個路徑視為獨立的磁碟、進而導致資料毀損。MPIO軟體為所有路徑的作業系統提供單一磁碟、而裝置專屬模組（DSM）則負責管理路徑容錯移轉。
 
 在Windows系統上、任何MPIO解決方案的兩個主要元件為DSM和Windows MPIO。在Hyper-V虛擬機器中執行的Windows XP或Windows Vista不支援MPIO。
 
 
-NOTE: 當您選取MPIO支援時、Windows Unified Host Utilities會啟用Windows Server 2019隨附的MPIO功能。
+NOTE: 當您選取 MPIO 時， Windows 主機公用程式會啟用 Windows Server 2019 隨附的 MPIO 功能。
 
 
 
@@ -145,7 +145,7 @@ NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，
 | PortDownRetryCount | 10. 
 |===
 
-NOTE: Windows Unified Host Utility會設定這些值。如需詳細的建議設定、請參閱 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"] 並選取 Windows Unified Host Utilities 版本的安裝程序。
+NOTE: Windows 主機公用程式會設定這些值。如需詳細的建議設定，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"]，然後選取 Windows 主機公用程式版本的安裝程序。
 
 
 

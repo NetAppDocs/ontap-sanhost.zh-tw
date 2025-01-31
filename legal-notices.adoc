@@ -8,10 +8,7 @@ summary: 法律聲明提供版權聲明、商標、專利等存取權限。
 :allow-uri-read: 
 
 
-[role="lead"]
-法律聲明提供版權聲明、商標、專利等存取權限。
-
-[role="lead"]
+[role="lead lead"]
 法律聲明提供版權聲明、商標、專利等存取權限。
 
 
@@ -41,14 +38,6 @@ link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://
 == 隱私權政策
 
 link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
-
-
-
-== 開放原始碼
-
-通知檔案提供有關 NetApp 軟體所使用之協力廠商版權與授權的資訊。
-
-提供本產品所使用之協力廠商版權與授權的相關資訊。
 
 * link:./media/Notices-AIX61-2023.pdf["AIX 注意事項"^]
 * link:./media/Linux_Unified_Host_Utilities.pdf["Linux 注意事項"^]

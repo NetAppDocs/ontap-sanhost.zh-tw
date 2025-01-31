@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_solaris_62.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用 
+summary: 說明如何將 Solaris 主機公用程式 6.2 與 ONTAP 搭配使用 
 ---
-= 安裝 Solaris Host Utilities 6.2
+= 安裝適用於 ONTAP 儲存設備的 Solaris 主機公用程式 6.2
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,25 +16,25 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 
 
 [role="lead"]
-Solaris 統一化主機公用程式可協助您管理附加至 Solaris 主機的 NetApp ONTAP 儲存設備。
+Solaris 主機公用程式可協助您管理附加至 Solaris 主機的 ONTAP 儲存設備。
 
-Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。主要的主機公用程式環境包括：
+Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。主要主機公用程式環境包括：
 
 * 原生作業系統搭配MPxIO、搭配使用SPARC處理器或x8/64處理器的系統光纖通道（FC）或iSCSI傳輸協定。
 * Veritas Dynamic Multipathing （ DMP ）搭配使用 SPARC 處理器的系統上的 FC 或 iSCSI 傳輸協定、或是使用 x86_64 處理器的系統上的 iSCSI 傳輸協定。
 
 
-Solaris Unified Host Utilities 6.2繼續支援下列版本的Solaris：
+Solaris Host Utilities 6.2 繼續支援下列 Solaris 版本：
 
 * Solaris 11.x系列
 * Solaris 10.x系列
 
 
-.您需要的產品
+.開始之前
 * 若要確保操作可靠、請確認您的整個 iSCSI 、 FC 或 FCoE 組態均受到支援。
 
 
-您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 以驗證組態。
+您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]來驗證組態。
 
 
 NOTE: NetApp Solaris主機公用程式軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^] 為處理器提供壓縮檔案格式。您可以從Support網站下載適用於您環境的Host Utilities軟體套件。
@@ -55,13 +55,16 @@ NOTE: NetApp Solaris主機公用程式軟體套件可在上取得 link:https://m
 +
 gunzip NetApp_solution_host_utilitutions_6_2_SPARC.tar.gz
 
-. 解壓縮檔案。您可以使用 `tar xvf` 執行此作業的命令。
+. 使用以下命令解壓縮檔案 `tar xvf`：
 +
 "# tar xvf netapp_solaris主機公用程式_6_2_SPARC.tar
 
-. 將您從tar檔案擷取的套件新增至主機。您可以使用「pkgadd」命令來執行此作業。
+. 使用命令將從 tar 檔案擷取的套件新增至主機 `pkgadd`。
 +
-這些套件會新增至「/opt/NTAP/SANToolkit / bin」目錄。以下範例使用「pkgadd（軟體組新增））指令來安裝Solaris安裝套件：
+這些套件會新增至「/opt/NTAP/SANToolkit / bin」目錄。
+
++
+以下範例使用 `pkgadd`命令來安裝 Solaris 安裝套件：
 
 +
 按#鍵
@@ -126,4 +129,4 @@ data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A09803830443
 
 ----
 
-NOTE: 此工具組適用於所有主機公用程式組態和通訊協定。因此、某些工具組內容可能會套用至某個組態、但不會套用至另一個組態。使用未使用的元件不會影響您的系統效能。
+NOTE: 此工具組適用於所有主機公用程式組態和通訊協定。因此，所有元件並不適用於每個組態。未使用的元件不會影響您的系統效能。SAN 工具套件在 AIX 和 PowerVM/VIOS OS 版本上受支援。

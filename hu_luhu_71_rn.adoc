@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_luhu_71_rn.html 
 keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
-summary: Linux Unified Host Utilities 7.1版本資訊 
+summary: Linux 主機公用程式 7.1 版本資訊 
 ---
-= Linux Unified Host Utilities 7.1版本說明
+= Linux 主機公用程式 7.1 版本資訊
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,7 +18,7 @@ summary: Linux Unified Host Utilities 7.1版本資訊
 [role="lead"]
 版本資訊說明新功能與增強功能、已知問題與限制、以及使用 ONTAP 儲存系統設定及管理特定主機的重要注意事項。
 
-如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
+有關主機公用程式支援的作業系統版本和更新的特定資訊，請參閱link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。
 
 
 
@@ -47,7 +47,7 @@ NOTE: 本文提及的任何主機公用程式或Linux主機公用程式、都是
 
 
 
-NOTE: NetApp會繼續與Host Utilities合作、在初次發行後新增功能支援。如需支援功能及新增功能的最新資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
+NOTE: NetApp會繼續與Host Utilities合作、在初次發行後新增功能支援。如需支援功能的最新資訊及新增功能，請參閱link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。
 
 
 
@@ -66,12 +66,9 @@ Linux 主機公用程式 7.1 版本有下列已知問題和限制。
 | NetApp錯誤ID | 標題 | 說明 
 
 
-| 1457017 | 「anlun」安裝會發出與「libdevmapper.so」和「libnl.so」程式庫相關的警告訊息。這些警告不會影響到「暫停」套件的功能。 | 當您在 SAN 主機上執行 Linux Unified Host Utilities CLI 命令「 sanlun FCP show adapter -v 」時、命令會失敗、並顯示錯誤訊息、顯示主機匯流排介面卡（ HBA ）探索所需的程式庫相依性不可為
-位於：
-
-[root@hostname~]# sanlun FCP show adapter -v
-無法找到 /usr/lib64/libHBAAPI.so 程式庫
-確定安裝程式庫的套件已安裝並載入
-請參閱 NetApp 線上錯誤 - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^]。 
+| 1457017 | 「anlun」安裝會發出與「libdevmapper.so」和「libnl.so」程式庫相關的警告訊息。這些警告不會影響到「暫停」套件的功能。 | 當您在 SAN 主機上執行 Linux 主機公用程式 CLI 命令「 sanlun FCP show adapter -v 」時，命令會失敗，並顯示錯誤訊息，顯示無法找到主機匯流排介面卡（ HBA ）探索所需的程式庫相依性：
+`[root@hostname ~]# sanlun fcp show adapter -v
+Unable to locate /usr/lib64/libHBAAPI.so library
+Make sure the package installing the library is installed & loaded`請參閱 NetApp 線上錯誤 - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^]。 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。

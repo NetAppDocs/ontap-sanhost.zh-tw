@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_aix_61_cmd.html 
 keywords: host utilities, aix, powervm, vios, 3.1, 7.2, 7.0, netapp, ontap 
-summary: 您可以使用 AIX 主機公用程式範例命令參考、使用主機公用程式工具來進行端點對端點驗證 NetApp 儲存組態。 
+summary: 您可以使用「主機公用程式」工具，使用 AIX 主機公用程式範例命令參考來進行 NetApp 儲存組態的端點對端點驗證。 
 ---
 = AIX 主機公用程式範例命令參考
 :hardbreaks:
@@ -16,7 +16,7 @@ summary: 您可以使用 AIX 主機公用程式範例命令參考、使用主機
 
 
 [role="lead"]
-您可以使用 AIX 主機公用程式範例命令參考、使用主機公用程式工具來進行端點對端點驗證 NetApp 儲存組態。
+您可以使用「主機公用程式」工具，使用 AIX 主機公用程式範例命令參考來進行 NetApp 儲存組態的端點對端點驗證。
 
 
 

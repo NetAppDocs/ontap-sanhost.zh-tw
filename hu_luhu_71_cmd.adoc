@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_luhu_71_cmd.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使用 
+summary: 說明如何搭配 ONTAP 使用 Linux 主機公用程式 7.1 
 ---
-= Linux Unified Host Utilities 7.1 命令參照
+= Linux 主機公用程式 7.1 命令參考
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 說明如何搭配ONTAP 使用Linux Unified Host Utilities 7.1搭配使
 
 
 [role="lead"]
-您可以使用 Linux Unified Host Utilities 7.1 範例命令參考、使用主機公用程式工具來進行端點對端點 NetApp 儲存組態驗證。
+您可以使用 Linux 主機公用程式 7.1 命令範例參考，使用主機公用程式工具來進行端點對端點驗證 NetApp 儲存組態。
 
 
 

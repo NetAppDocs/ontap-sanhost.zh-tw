@@ -31,7 +31,7 @@ NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與�
 
 
 +
-如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 * 可用功能：
 +
@@ -182,7 +182,7 @@ Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 0:14.2.0.13
 ----
 +
-如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
@@ -290,7 +290,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

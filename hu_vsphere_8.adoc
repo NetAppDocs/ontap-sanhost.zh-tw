@@ -22,8 +22,8 @@ summary: 您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 VMware vSphere
 
 == Hypervisor SAN 開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -43,9 +43,9 @@ NOTE: 在主機作業系統啟動並在路徑上執行之後，就可以使用�
 
 == 多重路徑
 
-ESXi 提供一個稱為原生多路徑外掛程式（ NMP ）的可延伸多重路徑模組、可管理子外掛程式、儲存陣列類型外掛程式（ Storage Array Type Plugins 、簡稱 SATP ）和路徑選擇外掛程式（ CSP ）。根據預設、 ESXi 提供這些 SATAP 規則。
+ESXi 提供一個稱為原生多路徑外掛程式（ NMP ）的可延伸多重路徑模組，可管理子外掛程式，儲存陣列類型外掛程式（ Storage Array Type Plugins ，簡稱 SATP ）和路徑選擇外掛程式（ CSP ）。根據預設、 ESXi 提供這些 SATAP 規則。
 
-對於 NetApp ONTAP 儲存設備、 `VMW_SATP_ALUA` 外掛程式預設用於 `VMW_PSP_RR` 作為路徑選擇原則（ PSP ）。您可以使用下列命令進行確認：
+對於 ONTAP 儲存設備，「 VMW_SATA_ALUA 」外掛程式預設會使用「 VMW_PSP_RR 」做為路徑選擇原則（ PSP ）。您可以執行下列命令來確認 PSP ：
 
 [listing]
 ----
@@ -216,7 +216,7 @@ fc.200034800d756a74:210034800d756a74-fc.2018d039ea936319:2016d039ea936319-naa.60
 
 VMware vSphere的VMware vSphere支援VASA Provider for VMware、提供整合點、讓VMware vCenter能夠運用vVols型儲存設備。ONTAP ONTAP當您部署 ONTAP 工具開放式虛擬化設備（ OVA ）時、系統會自動在 vCenter 伺服器上註冊、並啟用 VASA 提供者。
 
-使用vCenter使用者介面建立vVols資料存放區時、會引導您建立FlexVols作為資料存放區的備份儲存設備。ESXi 主機使用傳輸協定端點（ PE ）來存取 vVols 資料存放區內的 VVols 。在SAN環境FlexVol 中、資料存放區中的每個功能區都會建立一個4 MB LUN、作為PE使用。SAN PE是管理邏輯單元（ALU）。vVols是輔助邏輯單元（SLU）。
+當您使用 vCenter UI 建立 vVols 資料存放區時，它會引導您建立 FlexVols 做為資料存放區的備份儲存區。 ESXi 主機會使用傳輸協定端點（ PE ）來存取 vVols 中的 vVols 。在SAN環境FlexVol 中、資料存放區中的每個功能區都會建立一個4 MB LUN、作為PE使用。SAN PE 是管理邏輯單元（ ALU ）。 VVols 是附屬邏輯單元（ SLU ）。
 
 使用vVols時、適用SAN環境的標準要求與最佳實務做法、包括（但不限於）下列各項：
 
@@ -231,7 +231,7 @@ NOTE: 您必須部署ONTAP VMware vSphere的支援功能、才能啟用VASA Prov
 
 NetApp目前不建議變更任何vVols設定。
 
-請參閱 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 適用於ONTAP 特定版本的支援工具、或適用於特定版本vSphere和ONTAP VMware的舊版VASA供應商。
+如需特定版本的 ONTAP 工具，請參閱；如需特定版本的 vSphere 和 ONTAP ，請參閱 https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]舊版 VASA Provider 。
 
 如需資源配置與管理 vVols 的詳細資訊、請參閱 ONTAP Tools for VMware vSphere 文件、 link:https://docs.netapp.com/us-en/netapp-solutions/hybrid-cloud/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^]和 link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^]。
 

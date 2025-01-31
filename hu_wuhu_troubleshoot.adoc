@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_wuhu_troubleshoot.html 
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
-summary: Windows Unified Host Utilities包含一個安裝程式、可設定所需的Windows登錄和HBA參數、讓Windows主機正確處理適用於NetApp ONTAP ®及E系列平台的儲存系統行為。 
+summary: Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數，讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。 
 ---
 = 疑難排解
 :toc: macro
@@ -23,13 +23,13 @@ summary: Windows Unified Host Utilities包含一個安裝程式、可設定所�
 
 以下是您可針對潛在互通性問題進行調查的不同領域清單：
 
-* 若要識別潛在的互通性問題、請確認主機公用程式支援主機作業系統軟體、主機硬體、 ONTAP 軟體和儲存系統硬體的組合。請參閱 http://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^] 以取得更多資訊。
+* 若要識別潛在的互通性問題、請確認主機公用程式支援主機作業系統軟體、主機硬體、 ONTAP 軟體和儲存系統硬體的組合。如需詳細資訊、請參閱 http://mysupport.netapp.com/matrix["互通性對照表工具"^]。
 * 確認您擁有正確的 iSCSI 組態。
 * 如果 iSCSI LUN 在重新開機後無法使用、請確認目標列在 Microsoft iSCSI 啟動器 GUI 的 * 持續目標 * 索引標籤上為持續。
 * 如果使用 LUN 的應用程式在啟動時顯示錯誤、請確認應用程式已設定為依賴 iSCSI 服務。
 * 對於執行 ONTAP 的儲存控制器的 FC 路徑、請確認 FC 交換器已使用目標生命體的 WWPN 進行分區、而非節點上實體連接埠的 WWPN 。
 * 檢閱 link:hu_wuhu_71_rn.html["版本資訊"] 讓 Windows 主機公用程式檢查已知問題。版本資訊包含已知問題與限制清單。
-* 檢閱 SAN 管理指南中適用於您 ONTAP 版本的疑難排解資訊。
+* 檢閱文件中的疑難排解資訊 https://docs.netapp.com/us-en/ontap/san-admin/index.html["ONTAP SAN 管理"^]。
 * 搜尋 https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 針對最近發現的問題。
 +
 ** 在「進階搜尋」下的「錯誤類型」欄位中、選取 *iSCSI - Windows* 、然後選取 *Go* 。您應該重複搜尋錯誤類型 *FCP -Windows* 。

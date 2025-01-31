@@ -18,16 +18,16 @@ summary: AIX主機公用程式6.1版本資訊
 [role="lead"]
 版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 AIX 主機相關的重要注意事項。
 
-如需主機公用程式所支援之作業系統版本和更新的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/imt.jsp?components=85803;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^]。
+有關主機公用程式支援的作業系統版本和更新的特定資訊，請參閱link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。
 
 
 
 == 新增功能
 
-最新版的 AIX 主機公用程式包含下列新功能和增強功能：
+AIX 主機公用程式版本包含下列新功能和增強功能：
 
 * AIX 主機公用程式 7.0 支援 AIX 主機作業系統上的 SCSI 取消對應。藉助 AIX 主機實用程序 7.0 ， SCSI 精簡配置功能可與 AIX 和 FC 設備的 NetApp LUN 無縫配合使用。
-* AIX 主機公用程式 6.1 新增對較早版本的 AIX 主機作業系統中發生的記憶體故障問題的支援。有了AIX Host Utilities 6.1、只有sanlun二進位檔已變更。MPIO和相關的ODM維持不變。
+* AIX 主機公用程式 6.1 支援舊版 AIX 主機作業系統中發生的記憶體故障問題。有了AIX Host Utilities 6.1、只有sanlun二進位檔已變更。Microsoft 多重路徑 I/O （ MPIO ）和相關的 ODM 維持不變。
 
 
 
@@ -41,7 +41,7 @@ summary: AIX主機公用程式6.1版本資訊
 | 錯誤ID | 標題 | 說明 
 
 
-| 不適用 | NetApp ONTAP iSCSI LUN 的 SCSI 取消對應支援 | AIX 主機公用程式 7.0 僅支援 FC 裝置的 SCSI 取消對應功能。此版本不支援 iSCSI 裝置的 SCSI 取消對應。 
+| 不適用 | ONTAP iSCSI LUN 的 SCSI 取消對應支援 | AIX 主機公用程式 7.0 僅支援 FC 裝置的 SCSI 取消對應功能。此版本不支援 iSCSI 裝置的 SCSI 取消對應。 
 
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1069147["1069147"^] | AIX Hu Sanlun報告HBA速度不正確 | 執行「sanlun FCP show介面卡–v」命令時、會報告sanlun顯示錯誤HBA速度的執行個體。「ianlun FCP show介面卡–v」命令會顯示HBA卡資訊、例如介面卡的支援和協調速度。這似乎只是報告問題。若要識別實際速度、請使用「fcstat fcsx」命令。 

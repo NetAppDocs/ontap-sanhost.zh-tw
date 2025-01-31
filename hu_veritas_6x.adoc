@@ -16,18 +16,18 @@ summary: 針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態�
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、為採用 FC 、 FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ RCK 型）平台、提供 Veritas Storage Foundation 6 系列版本。
+您可以使用 ONTAP SAN 主機組態設定來設定 Veritas Storage Foundation 6 系列版本，以搭配 FC ， FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ Red Hat 相容核心架構）平台。
 
 
 
-== 安裝Linux Unified Host Utilities
+== 安裝 Linux 主機公用程式
 
-您可以從下載 NetApp Linux 統一主機公用程式軟體套件作為 64-bit.rpm 檔案link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]。
+您可以從下載 NetApp Linux 主機公用程式軟體套件作為 64-bit.rpm 檔案link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]。
 
-NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+NetApp 強烈建議您安裝 Linux 主機公用程式，但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 .步驟
-. 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
+. 將 64 位元 Linux 主機公用程式軟體套件從下載 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]至主機。
 . 安裝軟體套件：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
@@ -67,8 +67,8 @@ enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 請參閱Veritas支援入口網站（產品對照表、平台查詢、HCL對照表）、確認SAN開機組態是否可支援及已知的注意事項。
 
@@ -90,7 +90,7 @@ NOTE: 在主機作業系統啟動並在路徑上執行之後，就可以使用�
 
 == 多重路徑
 
-您必須驗證組態是否符合系統需求。如需詳細資訊、請參閱 https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 以及Veritas HCL Matrix。
+您必須驗證組態是否符合系統需求。如需更多資訊，請參閱 https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]和 Veritas HCL Matrix 。
 
 .範例
 在下列範例中、 `vxdmpadm`命令用於驗證 VxDMP 多重路徑是否已附加 ONTAP 目標陣列。
@@ -167,7 +167,7 @@ NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，
 
 ==== Veritas多重路徑的設定
 
-NetApp建議使用下列Veritas VxDMP可調參數、以在儲存容錯移轉作業中達到最佳系統組態。
+NetApp 建議您使用下列 Veritas VxDMP 可調參數，以在儲存設備容錯移轉作業中達到最佳的系統組態。
 
 [cols="2*"]
 |===
@@ -257,7 +257,7 @@ NOTE: 如需Veritas的所有其他特定設定、請參閱標準Veritas Infoscal
 
 == 多重路徑共存
 
-如果您有異質多重路徑環境、包括Veritas Infoscale、Linux原生裝置對應表和LVM Volume Manager、請參閱《Veritas產品管理指南》以瞭解組態設定。
+如果您有異質多重路徑環境，包括 Veritas Infoscale ， Linux Native Device Mapper 和 LVM Volume Manager ，請參閱 Veritas Product Administration 文件以取得組態設定。
 
 
 

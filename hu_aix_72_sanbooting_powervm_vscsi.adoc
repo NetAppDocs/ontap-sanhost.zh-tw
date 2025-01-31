@@ -30,7 +30,7 @@ cfgdeve命令會導致：
 +
 ** 用於登入Fabric的啟動器。
 ** 用於檢查新裝置的系統。
-** 系統會建立新的裝置項目、並使用預設PCM將新LUN對應為MPIO裝置。
+** 用於建立新裝置項目的系統，新 LUN 會使用預設 PCM 對應為 Microsoft 多重路徑 I/O （ MPIO ）裝置。
 
 
 . 若要驗證hdisk MPIO裝置是否已建立、請輸入下列命令：
@@ -59,7 +59,7 @@ hdisk4   Available   MPIO NetApp FCP Default PCM Disk
 hdisk5   Available   MPIO NetApp FCP Default PCM Disk
 hdisk6   Available   MPIO NetApp FCP Default PCM Disk
 ----
-. 若要取得設定的相關資訊、請輸入下列命令：
+. 擷取設定的相關資訊：
 +
 "lsdev-devhdisk_name -attr"
 
@@ -97,7 +97,7 @@ scsi_id         0xd10001                         SCSI ID                        
 start_timeout   60                               START unit time out value               True
 ww_name         0x500a0984994ae0e0               FC World Wide Name                      False
 ----
-. 如果您的組態不支援ALUA、則必須執行DotPaths公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用ALUA、請勿使用dotPaths公用程式。輸入下列命令、切換至「OEM_setup_env」模式以執行dotPaths：
+. 如果您的組態不支援 ALUA ，您需要使用 dotPaths 公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用ALUA、請勿使用dotPaths公用程式。輸入下列命令，切換至 `oem_setup_env`執行 DotPaths 的模式：
 +
 「OEM_setup_env」
 
@@ -119,9 +119,9 @@ ww_name         0x500a0984994ae0e0               FC World Wide Name             
 
 
 
-. 如果您的組態不支援ALUA、則必須執行DotPaths公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用ALUA、請勿使用dotPaths公用程式。
+. 如果您的組態不支援 ALUA ，您需要使用 dotPaths 公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用ALUA、請勿使用dotPaths公用程式。
 +
-.. 若要設定所有Data ONTAP 的LUN優先順序、請輸入：
+.. 若要設定所有 ONTAP LUN 的優先順序，請輸入：
 +
 "DotPaths（路徑）"
 

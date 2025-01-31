@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: hu_aix_72.html 
-keywords: host utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
+keywords: Host Utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
 summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用 
 ---
 = 將 IBM AIX 7.2 和 / 或 PowerVM （ VIOS 3.1 ）搭配 ONTAP 使用
@@ -22,11 +22,11 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 
 == 安裝 AIX/VIOS 主機公用程式
 
-您必須安裝AIX主機公用程式套件、才能搭配使用AIX MPIO搭配NetApp ONTAP 功能儲存設備。
+在 ONTAP 儲存設備上使用 AIX Microsoft 多重路徑 I/O （ MPIO ）時，您必須安裝 AIX 主機公用程式套件。
 
-您可以從下載包含主機公用程式軟體套件的壓縮檔案 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp 支援網站"^]。取得檔案之後、您必須解壓縮檔案、才能取得安裝主機公用程式所需的兩個軟體套件。
+您可以從下載包含主機公用程式軟體套件link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp 支援網站"^]的壓縮檔案。取得檔案後、您必須解壓縮檔案、才能取得安裝Host Utilities所需的兩個軟體套件。
 
-NetApp AIX Host Utilities 6.1是最新版本。此版本可解決先前版本中報告的記憶體洩漏問題。如需其他資訊、請參閱版本說明一節。
+AIX 主機公用程式 6.1 版本可解決先前版本所報告的記憶體洩漏問題。如需其他資訊，請參閱link:hu_aix_rn.html["版本資訊"]。
 
 .步驟
 . 登入您的主機。
@@ -78,8 +78,8 @@ data_vserver      /vol/vol4/lun4    hdisk14     fcs0       FCP       20g    C
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 SAN開機是將SAN附加磁碟（LUN）設定為AIX/PowerVM主機的開機裝置的程序。您可以設定SAN開機LUN、以便在以FC或FCoE傳輸協定執行AIX主機公用程式的AIX MPIO環境中運作。您在AIX MPIO環境中建立SAN開機LUN及在其上安裝新的OS映像的方法可能有所不同、視您使用的傳輸協定而定。
 
@@ -157,7 +157,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 == 建議設定
 
-以下是 ONTAP LUN 的一些建議參數設定。  安裝NetApp主機公用程式套件後、會自動設定適用於整個流程的關鍵參數ONTAP 。
+以下是 ONTAP LUN 的一些建議參數設定。安裝NetApp主機公用程式套件後、會自動設定適用於整個流程的關鍵參數ONTAP 。
 
 [cols="4*"]
 |===
@@ -241,5 +241,5 @@ IBM AIX 7.2 和 / 或 PowerVM （ VIOS 3.1 ）搭配 ONTAP 版本、有下列已
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1414700["1414700"^] | 在儲存容錯移轉期間、AIX 7.2 TL04在虛擬iSCSI磁碟（VIOS 3.1.1.x）上發生I/O中斷 | 在透過VIOS 3.1.1.x對應的虛擬iSCSI磁碟上、在AIX 7.2 TL4主機上執行儲存容錯移轉作業時、可能會發生I/O中斷根據預設、VOC上vSCSI介面卡的「rw_timeout」值為45秒。如果在儲存容錯移轉期間發生超過45秒的I/O延遲、可能會發生I/O故障。若要避免這種情況、請參閱Burt中提及的因應措施。 | 不適用 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653."^] | 在SFO故障和直接I/O期間、查看VIOS 3.1.1.10的I/O問題 | 在VIOS 3.1.1 IO故障時、NPIV用戶端磁碟可能會出現故障、而NPIV用戶端磁碟則以16/32GB FC介面卡為後盾。此外、「vfchost」驅動程式可能會進入停止處理用戶端I/O要求的狀態。套用IBM APAR J22290 IBM APAR J23222即可修正此問題。 | 不適用 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653."^] | 在 SFO 故障和直接 I/O 期間， VIOS 3.1.1.10 發生 I/O 問題 | 在 VIOS 3.1.1 上，以 16 GB 或 32 GB FC 介面卡作為後盾的 NPIV 用戶端磁碟可能會發生 I/O 故障。此外， `vfchost`驅動程式可能會停止處理來自用戶端的 I/O 要求。套用 IBM APAR IJ22290 IBM APAR IJ23222 可修正此問題。 | 不適用 
 |===

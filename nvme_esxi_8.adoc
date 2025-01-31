@@ -81,7 +81,7 @@ nvme_fc nvme_ss  nqn.2014-08.org.nvmexpress:uuid:62a19711-ba8c-475d-c954-0000c9f
 
 。 `lpfc` 驅動程式和 `qlnativefc` vSphere 8.x 中的驅動程式預設會啟用 NVMe / FC 功能。
 
-請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 檢查驅動程式或韌體是否支援組態。
+請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]以檢查驅動程式或韌體是否支援組態。
 
 
 

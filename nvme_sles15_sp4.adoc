@@ -20,11 +20,11 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 
 以下支援適用於採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP4 的 NVMe 主機組態：
 
-* NVMe和SCSI流量都可以在相同的共存主機上執行。因此、對於 SCSI LUN 、您可以為 SCSI mpath 裝置設定 dm-multipath 、而您可以使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
+* NVMe 和 SCSI 流量都可以在同一部主機上執行。因此、對於 SCSI LUN 、您可以為 SCSI mpath 裝置設定 dm-multipath 、而您可以使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
 * 支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生 NVMe - CLI 套件中的 NetApp 外掛程式會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
 
 
-如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
@@ -241,7 +241,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

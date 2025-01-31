@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu_wuhu_72.html 
-keywords: wuhu, 7.2, host utilities, SAN, windows, unified 
-summary: Windows 統一化主機公用程式包含一個安裝程式、可設定所需的 Windows 登錄和 HBA 參數、讓 Windows 主機正確處理 NetApp ONTAP 和 E 系列平台的儲存系統行為。 
+keywords: windows, 7.2, host utilities, SAN, windows 
+summary: Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數，讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。 
 ---
-= 安裝 Windows Unified Host Utilities 7.2
+= 安裝 Windows 主機公用程式 7.2
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,9 +14,9 @@ summary: Windows 統一化主機公用程式包含一個安裝程式、可設定
 
 
 [role="lead"]
-Windows 整合式主機公用程式（ Wuhu ）可讓您將 Windows 主機電腦連線至 NetApp 儲存系統。
+Windows 主機公用程式可讓您將 Windows 主機電腦連接至 NetApp 儲存系統。
 
-Windows Unified Host Utilities 支援下列版本的 Windows ：
+Windows 主機公用程式支援下列 Windows 版本：
 
 * Windows 2022
 * Windows 2019
@@ -25,7 +25,7 @@ Windows Unified Host Utilities 支援下列版本的 Windows ：
 * Windows 2012
 
 
-Windows Unified Host Utilities 包含一個安裝程式、可設定所需的 Windows 登錄和主機匯流排介面卡（ HBA ）參數、讓 Windows 主機能夠正確處理 NetApp ONTAP 和 E 系列平台的儲存系統行為。
+Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和主機匯流排介面卡（ HBA ）參數，讓 Windows 主機能夠正確處理 ONTAP 和 E 系列平台的儲存系統行為。
 
 安裝 Host Utilities 軟體時、安裝程式會設定所需的 Windows 登錄和 HBA 參數。
 
@@ -49,16 +49,16 @@ Windows Unified Host Utilities 包含一個安裝程式、可設定所需的 Win
 
 | 「an版本」 | 顯示主機公用程式和 FC HBA 的版本。 
 |===
-主機公用程式支援不同的 Windows 主機組態、通訊協定和多重路徑選項。如需詳細資訊、請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+主機公用程式支援不同的 Windows 主機組態、通訊協定和多重路徑選項。如需詳細資訊，請參閱 https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
 == 驗證您的主機和儲存系統組態
 
-安裝主機公用程式之前、您必須確認主機公用程式版本支援您的主機和儲存系統組態、以便軟體正確安裝。
+安裝主機公用程式之前、您必須先確認主機公用程式版本是否支援主機和儲存系統組態、以便正確安裝軟體。
 
 .步驟
-. 檢查中支援的組態 http://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]。
+. 檢查中支援的組態 http://mysupport.netapp.com/matrix["互通性對照表工具"^]。
 . 檢查中個別主機所需的 Hotfix link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機Windows文件"]。
 +
 
@@ -98,18 +98,18 @@ CAUTION: 請勿手動變更 HBA 設定。
 
 == 安裝主機公用程式
 
-安裝程式會安裝主機公用程式套件、並設定 Windows 登錄和 HBA 設定。
+安裝程式會安裝Host Utilities套件、並設定Windows登錄和HBA設定。
 
-您必須指定在安裝Windows Unified Host Utilities軟體套件時、是否要納入多重路徑支援。安裝程式會提示您輸入下列選項。您也可以從Windows命令提示字元執行無訊息（無人值守）安裝。
+安裝 Windows 主機公用程式軟體套件時，您必須指定是否包含多重路徑支援。安裝程式會提示您輸入下列選項。您也可以從Windows命令提示字元執行無訊息（無人值守）安裝。
 
 .多重路徑支援
 * 選擇 `MPIO` 如果從 Windows 主機或虛擬機器到儲存系統有多條路徑、
 * 選擇 `no MPIO` 僅當您使用單一路徑通往儲存系統時。
 
 
-MPIO選項不適用於Windows XP和Windows Vista系統；這些來賓作業系統不支援多重路徑I/O。對於Hyper-V來賓作業系統、如果您選擇多重路徑支援、則原始（傳遞）磁碟不會出現在來賓作業系統中。您可以使用原始磁碟、也可以使用MPIO、但不能在客體作業系統中同時使用這兩種磁碟。
+Windows XP 和 Windows Vista 系統無法使用 Microsoft 多重路徑 I/O （ MPIO ）選項；這些客體作業系統不支援多重路徑 I/O 。對於Hyper-V來賓作業系統、如果您選擇多重路徑支援、則原始（傳遞）磁碟不會出現在來賓作業系統中。您可以使用原始磁碟、也可以使用MPIO、但不能在客體作業系統中同時使用這兩種磁碟。
 
-您可以互動或使用命令列來安裝主機公用程式。新的主機公用程式安裝套件必須位於Windows主機可存取的路徑中。依照互動式或從 Windows 命令列安裝主機公用程式的指示進行。
+您可以互動式或使用命令列來安裝主機公用程式。新的主機公用程式安裝套件必須位於Windows主機可存取的路徑中。依照互動式或從 Windows 命令列安裝主機公用程式的指示進行。
 
 [role="tabbed-block"]
 ====
@@ -127,7 +127,7 @@ MPIO選項不適用於Windows XP和Windows Vista系統；這些來賓作業系�
 --
 .從命令列安裝
 --
-您可以在 Windows 命令提示字元中輸入適當的命令、以執行主機公用程式的無訊息（無人值守）安裝。安裝完成後、系統會自動重新開機。
+您可以在 Windows 命令提示字元中輸入適當的命令，以執行 Host Utilities 的無訊息（無人值守）安裝。安裝完成後、系統會自動重新開機。
 
 .步驟
 . 在 Windows 命令提示字元中輸入下列命令：
@@ -137,7 +137,7 @@ MPIO選項不適用於Windows XP和Windows Vista系統；這些來賓作業系�
 +
 ** `installer` 為的名稱 `.msi` 適用於您 CPU 架構的檔案。
 ** 多重路徑會指定是否安裝MPIO支援。允許的值為「 0 」表示「否」、「 1 」表示「是」。
-** `inst_path` 是安裝主機公用程式檔案的路徑。預設路徑為 `C:\Program Files\NetApp\Windows Host Utilities\`。
+** 「inst_path」是安裝主機公用程式檔案的路徑。預設路徑為「C:\Program Files\NetApp\Windows Host Utilities」。
 
 
 

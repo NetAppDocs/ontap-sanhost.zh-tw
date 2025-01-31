@@ -23,7 +23,7 @@ Red Hat Enterprise Linux （ RHEL ） 8.9 搭配非對稱命名空間存取（ A
 * 支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生 NVMe - CLI 套件中的 NetApp 外掛程式會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
 
 
-如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
@@ -180,7 +180,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 0:14.0.0.21
 ----
 +
-如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 . 請確認 `lpfc_enable_fc4_type` 設為 `3`：
 +
@@ -288,7 +288,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

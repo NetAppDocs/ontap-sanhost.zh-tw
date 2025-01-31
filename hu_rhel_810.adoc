@@ -20,14 +20,14 @@ summary: 說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 8.10
 
 
 
-== 安裝Linux Unified Host Utilities
+== 安裝 Linux 主機公用程式
 
-您可以從下載 NetApp Linux 統一主機公用程式軟體套件作為 64-bit.rpm 檔案link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]。
+您可以從下載 NetApp Linux 主機公用程式軟體套件作為 64-bit.rpm 檔案link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]。
 
-NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+NetApp 強烈建議您安裝 Linux 主機公用程式，但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 .步驟
-. 從下載64位元Linux Unified Host Utilities軟體套件 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
+. 將 64 位元 Linux 主機公用程式軟體套件從下載 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]至主機。
 . 安裝軟體套件：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
@@ -36,9 +36,9 @@ NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強
 
 
 
-== SAN 工具套件
+== SAN工具套件
 
-當您安裝 NetApp 主機公用程式套件時、工具套件會自動安裝。此套件提供 `sanlun` 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
+當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供 `sanlun` 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
 
 在以下範例中、「左LUN show」命令會傳回LUN資訊。
 
@@ -62,8 +62,8 @@ vs_25_2742                 /vol/fc_vol_1_4/dynamic_lun   /dev/sdt      host9    
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://mysupport.netapp.com/matrix/imt["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。

@@ -18,10 +18,7 @@ summary: 如何使用 ONTAP 設定適用於 RHEL 9.5 的 NVMe 主機
 [role="lead"]
 NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與非對稱命名空間存取（ ANA ）。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取（ ALUA ）多重路徑。ANA 是使用核心內建 NVMe 多重路徑功能來實作。
 
-
-
-== 關於這項工作
-
+.關於這項工作
 您可以在 Red Hat Enterprise Linux （ RHEL ） 9.5 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。
 
 * 可用支援：
@@ -29,7 +26,7 @@ NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與�
 ** 除了 NVMe over Fibre Channel （ NVMe / FC ）之外，還支援 NVMe over TCP （ NVMe / TCP ）。原生套件中的 NetApp 外掛程式 `nvme-cli`會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
 ** 在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI mpath 裝置設定 dm-multipath ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
 +
-如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
@@ -177,7 +174,7 @@ Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 
 
 +
-如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 . 驗證的預期輸出是否 `lpfc_enable_fc4_type`設置爲 `3`：
 +
@@ -303,7 +300,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

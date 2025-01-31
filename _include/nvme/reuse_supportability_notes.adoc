@@ -4,4 +4,4 @@
 
 請注意、Broadcom啟動器可透過相同的32G FC介面卡連接埠、同時處理NVMe/FC和FCP流量。對於FCP和FC/NVMe、請使用MSDSM做為Microsoft多重路徑I/O（MPIO）選項。
 
-請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。如需支援的組態與版本最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。如需支援組態和版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。

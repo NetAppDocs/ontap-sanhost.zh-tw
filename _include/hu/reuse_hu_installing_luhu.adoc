@@ -2,19 +2,19 @@
 :allow-uri-read: 
 
 
-NetApp Linux Unified Host Utilities軟體套件可在上取得 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 在32位元或64位元.rpm檔案中。
+NetApp Linux 主機公用程式軟體套件位於 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 32 位元或 64 位元 .rpm 檔案中。
 
-NetApp 強烈建議您安裝 Linux 統一化主機公用程式、但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+NetApp 強烈建議您安裝 Linux 主機公用程式，但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
 .步驟
-. 如果您目前已安裝Linux Unified Host Utilities版本、請使用下列命令將其移除：
+. 如果您目前已安裝 Linux 主機公用程式版本，請使用下列命令將其移除：
 +
 「rpm -e netapp_Linux統一化_host_utilities - 7-1」
 
 +
-若為舊版的Linux主機公用程式、請前往安裝主機公用程式軟體的目錄、然後輸入「uninstall」命令。
+如需舊版 Linux 主機公用程式，請前往安裝主機公用程式軟體的目錄，然後輸入 `uninstall`命令。
 
-. 從下載 32 位元或 64 位元 Linux Unified Host Utilities 軟體套件 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
+. 將 32 位元或 64 位元 Linux 主機公用程式軟體套件從下載link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]至主機。
 . 移至您下載軟體套件的目錄、然後使用下列命令進行安裝：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64。rpm」

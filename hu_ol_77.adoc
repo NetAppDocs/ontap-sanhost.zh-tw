@@ -20,16 +20,16 @@ summary: 說明如何搭配ONTAP 使用Oracle Linux 7.7搭配使用
 
 
 
-== 安裝Linux Unified Host Utilities
+== 安裝 Linux 主機公用程式
 
-NetApp Linux Unified Host Utilities 軟體套件可在 32 位元和 64 位元的 .rpm 檔案中找link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]到。如果您不知道哪一個檔案適合您的組態，請使用來驗證您需要的檔案link:https://mysupport.netapp.com/matrix/#welcome["NetApp 互通性對照表工具"^]。
+NetApp Linux 主機公用程式軟體套件位於 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]32 位元和 64 位元 .rpm 檔案中。如果您不知道哪一個檔案適合您的組態，請使用來驗證您需要的檔案link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]。
 
-NetApp 強烈建議您安裝 Linux 統一化主機公用程式，但並非強制安裝。這些公用程式不會變更 Linux 主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+NetApp 強烈建議您安裝 Linux 主機公用程式，但並非強制安裝。這些公用程式不會變更 Linux 主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
-如果您目前已安裝 Linux Unified Host Utilities ，您應該將其升級至最新版本，或是將其移除，然後依照下列步驟安裝最新版本。
+如果您目前已安裝 Linux 主機公用程式，您應該將其升級至最新版本，或是將其移除，然後依照下列步驟安裝最新版本。
 
 .步驟
-. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
+. 將 32 位元或 64 位元 Linux 主機公用程式軟體套件從下載link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]至主機。
 . 安裝軟體套件：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
@@ -68,8 +68,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=90144;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -259,14 +259,14 @@ Oracle Linux 7.7 with ONTAP 版本有下列已知問題：
 | 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]、請參閱。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311575["1311575"^] | 在使用QLogic QLE2672（16G）進行儲存容錯移轉期間、由於讀取/寫入作業而導致IO延遲無法切換至次要路徑 | 在Oracle Linux 7.7核心（5.4.17-2011.0.7.el7uek.x86_64）與QLogic QLE2672 16G HBA的儲存容錯移轉作業期間、I/O作業可能無法透過次要路徑繼續。如果在儲存容錯移轉期間、由於主要路徑遭到封鎖而導致I/O進度停止、則可能無法透過次要路徑繼續I/O作業、導致I/O延遲。只有在主路徑完成儲存容錯移轉還原作業後才會恢復I/O作業。 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311575["1311575"^] | 由於讀取 / 寫入作業在使用 Qlogic QLE2672 （ 16G ）進行儲存容錯移轉期間，無法在次要路徑之間切換，導致 I/O 延遲。 | 在Oracle Linux 7.7核心（5.4.17-2011.0.7.el7uek.x86_64）與QLogic QLE2672 16G HBA的儲存容錯移轉作業期間、I/O作業可能無法透過次要路徑繼續。如果在儲存容錯移轉期間、由於主要路徑遭到封鎖而導致I/O進度停止、則可能無法透過次要路徑繼續I/O作業、導致I/O延遲。只有在主路徑完成儲存容錯移轉還原作業後才會恢復I/O作業。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311576["1311576"^] | 在使用Emulex LPe16002（16G）進行儲存容錯移轉期間、由於讀取/寫入作業無法透過次要路徑切換而導致IO延遲。 | 在Oracle Linux 7.7核心（5.4.17-2011.0.7.el7uek.x86_64）與Emulex LPe16002 16G HBA上執行儲存容錯移轉作業期間、I/O作業可能無法透過次要路徑繼續。如果在儲存容錯移轉期間、由於主要路徑遭到封鎖而導致I/O進度停止、則可能無法透過次要路徑繼續I/O作業、導致I/O延遲。只有在主路徑完成儲存容錯移轉還原作業後才會恢復I/O作業。 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1311576["1311576"^] | 在使用 Emulex LPe16002(16G) 進行儲存容錯移轉期間，由於讀取 / 寫入作業無法切換次要路徑，導致 I/O 延遲 | 在Oracle Linux 7.7核心（5.4.17-2011.0.7.el7uek.x86_64）與Emulex LPe16002 16G HBA上執行儲存容錯移轉作業期間、I/O作業可能無法透過次要路徑繼續。如果在儲存容錯移轉期間、由於主要路徑遭到封鎖而導致I/O進度停止、則可能無法透過次要路徑繼續I/O作業、導致I/O延遲。只有在主路徑完成儲存容錯移轉還原作業後才會恢復I/O作業。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246134["1246134-1246134."^] | 觀察到IO延遲、而在使用Emulex LPe16002（16G）進行儲存容錯移轉期間、報告會移至封鎖、不顯示狀態 | 在Oracle Linux 7.6上執行儲存容錯移轉作業時、如果UEK5U2核心執行Emulex LPe16002B-m6 16G光纖通道（FC）主機匯流排介面卡（HBA）、I/O進度可能會因為報告遭到封鎖而停止。儲存容錯移轉作業報告會從「線上」狀態變更為「封鎖」狀態、導致讀取和寫入作業延遲。成功完成作業後、報告將無法返回「線上」狀態、並繼續保持「封鎖」狀態。 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246134["1246134-1246134."^] | 使用 Emulex LPe16002(16G) 進行儲存容錯移轉時，發現 I/O 延遲並將報告移至封鎖狀態，不存在狀態 | 在Oracle Linux 7.6上執行儲存容錯移轉作業時、如果UEK5U2核心執行Emulex LPe16002B-m6 16G光纖通道（FC）主機匯流排介面卡（HBA）、I/O進度可能會因為報告遭到封鎖而停止。儲存容錯移轉作業報告會從「線上」狀態變更為「封鎖」狀態、導致讀取和寫入作業延遲。成功完成作業後、報告將無法返回「線上」狀態、並繼續保持「封鎖」狀態。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327["1246327"^] | 觀察到IO延遲、且Rport在使用QLogic QLE2672（16G）和QLE2742（32G）進行儲存容錯移轉期間移至封鎖、不存在狀態 | 在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行QLogic QLE2672 16G主機和QLE2742 32GB Fibre Channel（FC）主機匯流排介面卡（HBA）、IO進度可能會因為封鎖的連接埠而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327["1246327"^] | 使用 Qlogic QLE2672 （ 16G ）和 QLE2742 （ 32G ）進行儲存容錯移轉時，觀察到 I/O 延遲且 Rports 移至「 Blocked （ Blocked ）」（封鎖），「 Not Present （不存在）」狀態 | 在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行 QLogic QLE2672 16G 主機和 QLE2742 32GB 光纖通道（ FC ）主機匯流排介面卡（ HBA ），則 I/O 進度可能會因連接埠遭到封鎖而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online 
 |===

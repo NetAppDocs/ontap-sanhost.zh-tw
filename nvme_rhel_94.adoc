@@ -24,7 +24,7 @@ Red Hat Enterprise Linux （ RHEL ） 9.4 搭配非對稱命名空間存取（ A
 * 在指定主機匯流排介面卡（ HBA ）上的同一主機上使用 NVMe 和 SCSI 共存流量、而不使用明確的 dm-multipath 設定、以避免使用 NVMe 命名空間。
 
 
-如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
@@ -179,7 +179,7 @@ Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 0:14.2.0.16
 ----
 +
-如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 . 請確認 `lpfc_enable_fc4_type` 設為 `3`：
 +
@@ -288,7 +288,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

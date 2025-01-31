@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu-aix-70.html 
 keywords: host utilities, aix, powervm, vios, 3.1, 7.0, netapp, ontap 
-summary: AIX 統一主機公用程式可協助您管理連接至 AIX 主機的 NetApp ONTAP 儲存設備。 
+summary: AIX 主機公用程式可協助您管理連接至 AIX 主機的 ONTAP 儲存設備。 
 ---
 = 安裝 AIX 主機公用程式 7.0
 :hardbreaks:
@@ -16,7 +16,7 @@ summary: AIX 統一主機公用程式可協助您管理連接至 AIX 主機的 N
 
 
 [role="lead"]
-AIX 統一主機公用程式可協助您管理連接至 AIX 主機的 NetApp ONTAP 儲存設備。
+AIX 主機公用程式可協助您管理連接至 AIX 主機的 ONTAP 儲存設備。
 
 AIX 主機公用程式支援下列通訊協定：
 
@@ -27,7 +27,7 @@ AIX 主機公用程式支援下列通訊協定：
 
 AIX 主機公用程式支援下列環境：
 
-* AIX MPIO （原生作業系統）
+* AIX Microsoft 多重路徑 I/O （ MPIO ）（原生作業系統）
 * PowerVM
 +
 如需有關 PowerVM 的詳細資訊、請參閱 IBM PowerVM Live Partition Mobility Red Book 。
@@ -37,13 +37,13 @@ AIX 主機公用程式支援下列環境：
 .開始之前
 * 若要確保操作可靠、請確認您的整個 iSCSI 、 FC 或 FCoE 組態均受到支援。
 +
-您可以使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 以驗證組態。
+您可以使用 https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]來驗證組態。
 
 * 必須為所有 FC 和 FCoE 啟動器啟用動態追蹤。
 
 
 
-NOTE: NetApp AIX 主機公用程式軟體套件link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp 支援網站"^]位於壓縮的 tar.gz 檔案中。在 NetApp ONTAP 儲存設備上使用 AIX MPIO 時、您必須安裝 AIX 主機公用程式套件。
+NOTE: NetApp AIX 主機公用程式軟體套件可在中的中 `tar.gz file`取得link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp 支援網站"^]。在 ONTAP 儲存設備上使用 AIX MPIO 時，您必須安裝 AIX 主機公用程式套件。
 
 .步驟
 . 登入您的主機。
@@ -54,7 +54,7 @@ NOTE: NetApp AIX 主機公用程式軟體套件link:https://mysupport.netapp.com
 
 . 移至、 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp 支援網站"^]並將包含主機公用程式的壓縮檔案下載至主機上的目錄。
 . 前往內含下載內容的目錄。
-. 解壓縮檔案並解壓縮 SAN 工具套件軟體套件：
+. 解壓縮檔案並解壓縮 SAN Toolkit 軟體套件：
 +
 `# tar -xvf ntap_aix_host_utilities_7.0.tar.gz`
 
@@ -65,7 +65,7 @@ NOTE: NetApp AIX 主機公用程式軟體套件link:https://mysupport.netapp.com
 +
 `# installp -aXYd /var/tmp/ntap_aix_host_utilities_7.0/MPIO NetApp.MPIO_Host_Utilities_Kit`
 
-. 安裝 SAN 工具套件：
+. 安裝SAN工具套件：
 +
 `# installp -aXYd /var/tmp/ntap_aix_host_utilities_7.0/SAN_Tool_Kit/NetApp.SAN_toolkit`
 
@@ -152,4 +152,4 @@ data_vserver   /vol/vol3/lun3 hdisk11 fcs0   FCP      20g C
 data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
 ----
 
-NOTE: 此工具組適用於所有主機公用程式組態和通訊協定。因此、部分內容會套用至一個組態、而非另一個組態。使用未使用的元件不會影響您的系統效能。在AIX和PowerVM/VIOS OS版本上均支援SAN工具套件。
+NOTE: 此工具組適用於所有主機公用程式組態和通訊協定。因此，所有元件並不適用於每個組態。未使用的元件不會影響您的系統效能。SAN 工具套件在 AIX 和 PowerVM/VIOS OS 版本上受支援

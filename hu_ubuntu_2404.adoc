@@ -22,7 +22,7 @@ summary: 說明如何搭配 ONTAP 使用 Ubuntu 24.04
 您可以使用 ONTAP SAN 主機組態設定，將 ONTAP 設定為目標。
 
 
-NOTE: NetApp Linux Unified Host Utilities 軟體套件不適用於 Ubuntu 24.04 作業系統。
+NOTE: Ubuntu 24.04 作業系統無法使用 NetApp Linux 主機公用程式軟體套件。
 
 
 
@@ -31,7 +31,7 @@ NOTE: NetApp Linux Unified Host Utilities 軟體套件不適用於 Ubuntu 24.04 
 如果您決定使用SAN開機、則組態必須支援SAN開機。
 
 .開始之前
-使用link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^]驗證是否支援您的 OS ， HBA ， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本。
+使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援您的 OS ， HBA ， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。

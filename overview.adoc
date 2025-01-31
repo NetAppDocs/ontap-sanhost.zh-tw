@@ -16,13 +16,13 @@ summary: 本內容提供特定於發佈的指引、說明如何設定連接Cloud
 
 
 [role="lead"]
-SAN 主機應設定為多重路徑、並設定特定參數和設定、以確保能正確操作 ONTAP LUN 。  主機組態會因主機作業系統和傳輸協定而異。  正確的組態對於最佳效能和成功的容錯移轉非常重要。
+您應該針對多重路徑設定 SAN 主機，並設定特定的參數和設定，以確保 ONTAP LUN 能正常運作。主機組態會因主機作業系統和傳輸協定而異。正確的組態對於最佳效能和成功的容錯移轉非常重要。
 
-您應該將 SAN 主機設定為使用 NetApp SAN 主機公用程式。SAN 主機公用程式可協助您管理及監控 LUN 和主機匯流排介面卡（ HBA ）。例如、您可以使用 SAN 主機公用程式來擷取對應至主機的所有 LUN 清單、或查看對應至主機之特定 LUN 的所有屬性清單。如果您遇到需要協助的問題、 NetApp 客戶支援也可以使用 SAN 主機公用程式來收集組態的相關資訊。
+您應該將 SAN 主機設定為使用 NetApp SAN 主機公用程式。SAN 主機公用程式可協助您管理及監控 LUN 和主機匯流排介面卡（ HBA ）。例如，您可以使用 SAN 主機公用程式來擷取對應至主機的所有 LUN 清單，或查看對應至主機之特定 LUN 的所有屬性清單。如果您遇到需要協助的問題， NetApp 客戶支援也可以使用 SAN 主機公用程式來收集組態的相關資訊。
 
-NetApp 建議您使用 SAN 主機公用程式軟體（如果 SAN 主機有可用的軟體）。
+NetApp 建議您使用 SAN 主機公用程式軟體（如果適用於 SAN 主機）。
 
-如果 SAN 組態支援此功能、您也可以將主機設定為使用 SAN 開機、以簡化部署並提升擴充性。使用 SAN 開機、您可以將多部新伺服器連線至 SAN 、並設定適當的開機設定、來部署這些伺服器。如此一來、就不再需要在每部伺服器上個別安裝作業系統、進而節省時間。
+如果 SAN 組態支援 SAN 開機，您也可以將主機設定為使用 SAN 開機，以簡化部署並改善擴充性。使用 SAN 開機、您可以將多部新伺服器連線至 SAN 、並設定適當的開機設定、來部署這些伺服器。如此一來、就不再需要在每部伺服器上個別安裝作業系統、進而節省時間。
 
 您的SAN主機和ONTAP 支援功能可存放在內部部署、雲端或兩者。
 
@@ -32,8 +32,8 @@ NOTE: 在雲端環境中、主機通常稱為用戶端。此內容中的所有�
 例如、您可以設定內部部署 ONTAP 儲存設備、以連線至內部部署 SAN 主機或 SAN 雲端用戶端。您也可以設定在雲端環境上執行的儲存服務、例如 link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 或 link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/index.html["Amazon FSX for NetApp ONTAP 產品"^] 連線至內部部署 SAN 主機或 SAN 雲端用戶端。
 
 .相關資訊
-* 。 link:https://docs.netapp.com/us-en/ontap/san-config/index.html["ONTAP SAN 組態"^] 適用於ONTAP 您的版本的
-* 。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["《SAN管理指南》ONTAP"^] 適用於ONTAP 您的版本的
-* 。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明 ONTAP"^] 適用於ONTAP 您的版本的
-* 。 link:https://docs.netapp.com/us-en/e-series/index.html["E系列文件"^] 以尋找SANtricity 有關的文件。
+* link:https://docs.netapp.com/us-en/ontap/san-config/index.html["ONTAP SAN 組態參考"^]
+* link:https://docs.netapp.com/us-en/ontap/san-management/index.html["ONTAP SAN 儲存管理"^]
+* link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明ONTAP"^]
+* 中的 SANtricity 相關文件link:https://docs.netapp.com/us-en/e-series/index.html["E系列系統文件"^]
 

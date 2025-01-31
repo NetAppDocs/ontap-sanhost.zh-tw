@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu_sanhost_index.html 
-keywords:  
-summary:  
+keywords: san, host, utility, software, netapp 
+summary: 瞭解有關 SAN 主機公用程式版本的最新資訊，並存取主機組態的安裝程序。 
 ---
-= 總覽
+= 瞭解 SAN 主機公用程式
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,13 @@ summary:
 
 
 [role="lead"]
-探索 SAN 主機公用程式版本的最新資訊、並存取主機組態的安裝程序。
+瞭解有關 SAN 主機公用程式版本的最新資訊，並存取主機組態的安裝程序。
+
+NetApp 支援網站上提供數種 SAN 主機公用程式軟體套件。NetApp 建議您使用 SAN 主機公用程式軟體（如果適用於 SAN 主機）。
+
+AIX ， HP-UX ， Linux 和 Solaris Host Utilities 軟體提供命令列工具組。此工具套件可協助您管理 ONTAP LUN 和主機匯流排介面卡（ HBA ）。如果您遇到需要協助的問題， NetApp 客戶支援也可以使用 SAN 主機公用程式來收集組態的相關資訊。當您安裝主機公用程式軟體套件時，會自動安裝此工具套件。
+
+Windows 主機公用程式可讓您將 Windows 主機電腦連接至 NetApp 儲存系統。此軟體包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數。這可讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。
 
 
-NOTE: 若要在安裝後獲得可靠的操作、請使用 https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證您的主機是否支援完整的 NVMe over Fabric （包括 NVMe over TCP 和 NVMe over Fibre Channel ）、 iSCSI 、 FC 或 FCoE 組態。
+NOTE: 若要在安裝後可靠運作，請使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]來驗證您的主機是否支援完整的 NVMe over Fabrics （包括 NVMe over TCP 和 NVMe over Fibre Channel ）， iSCSI ， FC 或 FCoE 組態。

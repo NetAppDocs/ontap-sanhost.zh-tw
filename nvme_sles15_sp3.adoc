@@ -18,15 +18,15 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 [role="lead"]
 支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸），適用於含 ANA （非對稱命名空間存取）的 SUSE Linux Enterprise Server 15 SP3 。ANA 是 NVMe 環境中的 ALUA 等效產品，目前是以核心內建 NVMe 多重路徑來實作。使用此程序、您可以在 SUSE Linux Enterprise Server 15 SP3 和 ONTAP 上使用 ANA 作為目標、以核心內建 NVMe 多重路徑來啟用 NVMe 。
 
-請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得所支援組態的正確詳細資料。
+如需支援組態的詳細資訊、請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
 == 功能
 
 * SUSE Linux Enterprise Server 15 SP3 支援 NVMe / FC 及其他傳輸。
-* 不支援NVMe的sanlun。因此、 SUSE Linux Enterprise Server 15 SP3 不支援 Luhu NVMe 。您可以仰賴原生 NVMe - CLI 套件中隨附的 NetApp 外掛程式來執行 NVMe - of 。這應該支援所有 NVMe 傳輸。
-* NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是客戶最常部署的主機組態。因此、對於SCSI而言、您可以像往常一樣為SCSI LUN設定「dm-multipath"、以產生mpath裝置、而NVMe多重路徑則可用於在主機上設定NVMe多重路徑裝置。
+* 不支援NVMe的sanlun。因此， SUSE Linux Enterprise Server 15 SP3 上不支援 NVMe 型 Linux 主機公用程式。您可以仰賴原生 NVMe - CLI 套件中隨附的 NetApp 外掛程式來執行 NVMe - of 。這應該支援所有 NVMe 傳輸。
+* NVMe 和 SCSI 流量都可以在同一部主機上執行。事實上、這是客戶最常部署的主機組態。因此，對於 SCSI ，您可以像往常一樣設定 `dm-multipath`導致 mpath 裝置的 SCSI LUN ，而 NVMe 多重路徑則可用於在主機上設定 NVMe 多重路徑裝置。
 
 
 
@@ -39,13 +39,13 @@ summary: 說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterp
 
 == 啟用內核NVMe多重路徑
 
-在 SUSE Linux Enterprise Server 主機（例如 SUSE Linux Enterprise Server 15 SP3 ）上、預設已啟用核心內建 NVMe 多重路徑。因此、此處不需要其他設定。如需支援組態的詳細資訊、請參閱link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+在 SUSE Linux Enterprise Server 主機（例如 SUSE Linux Enterprise Server 15 SP3 ）上、預設已啟用核心內建 NVMe 多重路徑。因此、此處不需要其他設定。如需支援組態的詳細資訊、請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
 == NVMe啟動器套件
 
-請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得所支援組態的正確詳細資料。
+如需支援組態的詳細資訊、請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 . 確認您已在 SUSE Linux Enterprise Server 15 SP3 MU 主機上安裝必要的核心和 NVMe CLI MU 套件。
 +
@@ -208,7 +208,7 @@ FCP CMPL: xb 0000159d Err 000135c3
 
 ==== 啟用1MB I/O大小（選用）
 
-在「識別控制器」資料中、若能報告MDTS（不含資料的傳輸大小）為8、表示I/O要求的最大大小應為1 MB。ONTAP MAX Data不過、若要針對Broadcom NVMe / FC主機發出大小為1 MB的I/O要求、則lfc參數「lffc_sg_seg_cnt"也應該從預設值64增加至256。請依照下列指示操作：
+在「識別控制器」資料中、若能報告MDTS（不含資料的傳輸大小）為8、表示I/O要求的最大大小應為1 MB。ONTAP MAX Data不過，若要針對 Broadcom NVMe / FC 主機發出 1MB 大小的 I/O 要求， lpfc 參數 `lpfc_sg_seg_cnt`也應該從預設值 64 增加到 256 。請依照下列指示操作：
 
 . 在相應的「modfbe lfc.conf」檔案中附加值256：
 +

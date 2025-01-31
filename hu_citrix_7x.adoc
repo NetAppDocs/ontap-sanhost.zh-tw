@@ -22,8 +22,8 @@ summary: 說明如何搭配ONTAP 使用Citrix XenServer 7.x與VMware
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -45,7 +45,7 @@ NOTE: 在主機作業系統啟動並在路徑上執行之後，就可以使用�
 
 Citrix XenServer中的多重路徑支援是以Device對應器Multibathd元件為基礎。不會自動為所有顯示給XenServer的LUN建立裝置對應器節點、而且只有當儲存管理層（API）主動使用LUN時、才會進行資源配置。Citrix XenServer Storage Manager API外掛程式可自動啟動及停用多重路徑節點。
 
-由於與整合式多重路徑管理架構不相容、Citrix建議您使用Citrix XenCenter應用程式來管理儲存組態。如果需要手動查詢Device Mapper表的狀態、或在系統上列出作用中的裝置對應器多重路徑節點、您可以使用「/sbin/mpathutils STATUS」命令來驗證ONTAP 您的還原LUN設定。如需詳細資訊、請參閱Citrix XenServer的標準廠商文件。
+由於與整合式多重路徑管理架構不相容、Citrix建議您使用Citrix XenCenter應用程式來管理儲存組態。如果需要手動查詢 Device Mapper 表的狀態，或列出系統上的作用中裝置對應程式多重路徑節點，您可以使用 `/sbin/mpathutil status`命令來驗證 ONTAP LUN 的設定。如需詳細資訊、請參閱Citrix XenServer的標準廠商文件。
 
 
 

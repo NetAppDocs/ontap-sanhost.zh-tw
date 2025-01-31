@@ -22,7 +22,7 @@ summary: 說明如何使用ONTAP 支援功能來設定Oracle Linux 7.7的NVMe/FC
 
 == 支援能力
 
-Oracle Linux 7.7.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 7.7 主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。如需支援組態的最新清單，請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+從 ONTAP 9.6 開始， Oracle Linux 7.7 支援 NVMe / FC 。Oracle Linux 7.7 主機可透過相同的光纖通道啟動器介面卡連接埠，同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。如需支援組態的目前清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
@@ -90,7 +90,7 @@ NOTE: 如果主機NQN字串不相符、您應該使用vserver modify命令來更
 
 == 設定適用於NVMe / FC的Broadcom FC介面卡
 
-. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+. 確認您使用的是支援的介面卡。如需支援介面卡的目前清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -112,7 +112,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # rpm -ivh nvmefc-connect-12.4.65.0-1.noarch.rpm
 ----
 . 重新啟動主機。
-. 確認您使用的是建議的Broadcom lfit韌體、原生收件匣驅動程式和外盒自動連線套件版本。如需支援版本的清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+. 確認您使用的是推薦的 Broadcom lpfc 韌體，原生收件匣驅動程式和外箱自動連線套件版本。如需支援版本的清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -251,7 +251,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

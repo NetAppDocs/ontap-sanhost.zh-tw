@@ -20,16 +20,16 @@ summary: 說明如何搭配ONTAP 使用Oracle Linux 7.0搭配使用功能
 
 
 
-== 安裝Linux Unified Host Utilities
+== 安裝 Linux 主機公用程式
 
-NetApp Linux Unified Host Utilities 軟體套件可在 32 位元和 64 位元的 .rpm 檔案中找link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]到。如果您不知道哪一個檔案適合您的組態，請使用來驗證您需要的檔案link:https://mysupport.netapp.com/matrix/#welcome["NetApp 互通性對照表工具"^]。
+NetApp Linux 主機公用程式軟體套件位於 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]32 位元和 64 位元 .rpm 檔案中。如果您不知道哪一個檔案適合您的組態，請使用來驗證您需要的檔案link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]。
 
-NetApp 強烈建議您安裝 Linux 統一化主機公用程式，但並非強制安裝。這些公用程式不會變更 Linux 主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+NetApp 強烈建議您安裝 Linux 主機公用程式，但並非強制安裝。這些公用程式不會變更 Linux 主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
-如果您目前已安裝 Linux Unified Host Utilities ，您應該將其升級至最新版本，或是將其移除，然後依照下列步驟安裝最新版本。
+如果您目前已安裝 Linux 主機公用程式，您應該將其升級至最新版本，或是將其移除，然後依照下列步驟安裝最新版本。
 
 .步驟
-. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
+. 將 32 位元或 64 位元 Linux 主機公用程式軟體套件從下載link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]至主機。
 . 安裝軟體套件：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
@@ -68,8 +68,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 https://mysupport.netapp.com/matrix/imt.jsp?components=68625;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。
@@ -272,7 +272,7 @@ Oracle Linux 7.0 with ONTAP 版本有下列已知問題：
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901558["901558"^] | OL7.0：由於Emulex 8G（LPe12002）主機上的OL 7.0 UEK r3U5 Beta上出現「RSCN Timeout（RSCN逾時）」錯誤、因此主機失去通往LUN的所有路徑並當機 | 您可能會發現Emulex 8G（LPe12002）主機當機、而且在使用I/O進行儲存容錯移轉作業期間、I/O中斷的情形很大您可能會看到路徑未恢復、這是RSCN逾時的結果、因為主機會遺失所有路徑並當機。很可能會發生此問題。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901557["901557"^] | OL 7.0：在使用IO進行儲存容錯移轉作業期間、QLogic 8G FC（QLE2562）SAN主機發生高IO中斷 | 在使用IO進行儲存容錯移轉作業期間、您可能會發現QLogic 8G FC（QLE2562）主機的IO中斷時間過長。當主機上的IO中斷時、會中止並重新設定裝置的資訊清單。發生IO中斷的可能性很高。 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901557["901557"^] | OL 7.0 ：在使用 I/O 進行儲存容錯移轉作業期間， QLogic 8G FC （ QLE2562 ） SAN 主機發生高 I/O 中斷 | 在使用 I/O 進行儲存容錯移轉作業期間，您可能會在 QLogic 8G FC （ QLE2562 ）主機上觀察到大量 I/O 中斷當主機上的 I/O 中斷時，會中止和裝置重設清單。達到此 I/O 中斷的可能性很高。 
 
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894766["894766"^] | OL7.0：Dracut無法在UEKR3U5 Alpha的initramfs中包含SCSI_DH_alua.ko模組 | 即使在核心命令列中新增參數「rloaddriver=scsi_dd_alua」並建立Dracut之後、SCSI_DH_alua模組也可能無法載入。因此、並未依建議啟用ALUA來使用NetApp LUN。 
@@ -284,5 +284,5 @@ Oracle Linux 7.0 with ONTAP 版本有下列已知問題：
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894771["894771"^] | OL7.0：Anacondo不會在核心cmd行中新增bootdev*引數、以設定iSCSI SANboot OS安裝的IP位址 | Anaconda不會在核心命令列中新增bootdev*引數、您可在iSCSI多重路徑LUN上安裝OL 7.0 OS期間、於其中設定IPV4位址。因此、在OL 7.0開機期間、您無法將IP位址指派給任何設定為與儲存子系統建立iSCSI工作階段的乙太網路介面。由於未建立iSCSI工作階段、因此在作業系統開機時不會發現根LUN、因此作業系統開機失敗。 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=916501["916501"^] | 在IO的儲存容錯移轉作業期間、觀察到QLogic 10G FCoE（QLE8152）主機核心當機 | 您可能會看到10G FCoE邏輯（QLE8152）主機上的邏輯驅動程式模組發生核心當機。當機發生於IO的儲存容錯移轉作業期間。發生這種當機的可能性很高、導致主機的IO中斷時間更長。 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=916501["916501"^] | 使用 I/O 進行儲存容錯移轉作業時，觀察到 QLogic 10G FCoE （ QLE8152 ）主機核心當機 | 您可能會在 10G FCoE Qlogic （ QLE8152 ）主機上的 Qlogic 驅動程式模組中觀察到核心當機。當機發生在 I/O 的儲存容錯移轉作業期間發生此損毀的機率很高，導致主機上的 I/O 中斷時間較長。 
 |===

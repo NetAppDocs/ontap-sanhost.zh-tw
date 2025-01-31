@@ -35,11 +35,11 @@ sidebar:
         url: "/hu_hpux_60.html"
       - title: 命令參考範例
         url: "/hu_hpux_60_cmd.html"
-    - title: Linux統一化主機公用程式
+    - title: Linux主機公用程式
       entries:
       - title: 版本資訊
         url: "/hu_luhu_71_rn.html"
-      - title: 安裝Luhu 7.1
+      - title: 安裝 Linux 主機公用程式 7.1
         url: "/hu_luhu_71.html"
       - title: 命令參考範例
         url: "/hu_luhu_71_cmd.html"
@@ -51,17 +51,17 @@ sidebar:
         url: "/hu_solaris_62.html"
       - title: 命令參考範例
         url: "/hu_solaris_62_cmd.html"
-    - title: Windows統一化主機公用程式
+    - title: Windows 主機公用程式
       entries:
       - title: 版本資訊
         url: "/hu_wuhu_71_rn.html"
-      - title: 安裝蕪湖 7.2
+      - title: 安裝 Windows 主機公用程式 7.2
         url: "/hu_wuhu_72.html"
-      - title: 安裝Wuhu 7.1
+      - title: 安裝 Windows 主機公用程式 7.1
         url: "/hu_wuhu_71.html"
-      - title: 升級蕪湖
+      - title: 升級 Windows 主機公用程式
         url: "/hu_wuhu_upgrade.html"
-      - title: 修理及移除蕪湖
+      - title: 修復和移除 Windows 主機公用程式
         url: "/hu_wuhu_repair_remove.html"
       - title: 設定登錄設定
         url: "/hu_wuhu_hba_settings.html"

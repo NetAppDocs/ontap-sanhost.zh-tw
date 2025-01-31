@@ -4,7 +4,7 @@ permalink: hu_aix_72_sanbooting_aix.html
 keywords: host utilities, aix, netapp, ontap, configure, discover, configuring, discovering 
 summary: 說明如何使用AIX探索及設定LUN 
 ---
-= （不含PowerVM的AIX MPIO）使用AIX探索及設定LUN
+= （不含 PowerVM 的 AIX MPIO ）使用 AIX 探索及設定 LUN
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 說明如何使用AIX探索及設定LUN
 
 
 [role="lead"]
-當您使用沒有PowerVM的AIX時、可以使用cfgmgr命令 讓主機探索LUN。您不需要重新啟動主機即可探索LUN。若要確認主機已探索到LUN、您可以使用sanlun公用程式。
+當您使用不含 PowerVM 的 AIX 時，可以執行 `cfgmgr`命令，讓主機能夠探索 LUN 。您不需要重新啟動主機即可探索 LUN 。若要確認主機已探索到LUN、您可以使用sanlun公用程式。
 
 
 NOTE: 後續步驟不適用於執行PowerVM環境的主機。
@@ -36,7 +36,7 @@ NOTE: 後續步驟不適用於執行PowerVM環境的主機。
 ** 用於建立新裝置項目的系統。
 
 
-. 若要顯示所有的AIX磁碟、包括NetApp LUN、請輸入下列命令：
+. 顯示所有 AIX 磁碟，包括 NetApp LUN ：
 +
 「lsdev-Cc disk」
 
@@ -47,9 +47,12 @@ LUN在主機上顯示為磁碟。您可以使用這些磁碟、就像使用主�
 記下hdisk執行個體編號。您可以在執行路徑組態時使用它們。
 
 +
-以下是lsdev-Cc disk命令在使用FC的環境中產生的輸出類型。
+下列範例顯示 `lsdev -Cc disk` FC 環境中的命令輸出。
 
 +
+.顯示範例輸出
+[%collapsible]
+====
 [listing]
 ----
 # lsdev -Cc disk
@@ -60,14 +63,15 @@ hdisk3 Available 04-08-02  MPIO NetApp FCP Default PCM Disk
 hdisk4 Available 04-08-02  MPIO NetApp FCP Default PCM Disk
 hdisk5 Available 04-08-02  MPIO NetApp FCP Default PCM Disk
 ----
-. 輸入下列命令以取得設定的相關資訊：
+====
+. 擷取設定的相關資訊：
 +
 《lsattr -EL hdisk_name》
 
 +
-此命令會產生下列輸出。
-
-+
+.顯示範例輸出
+[%collapsible]
+====
 [listing]
 ----
 # lsattr -El hdisk65
@@ -97,7 +101,8 @@ scsi_id         0xd10001                         SCSI ID                        
 start_timeout   60                               START unit time out value               True
 ww_name         0x500a0984994ae0e0               FC World Wide Name                      False
 ----
-. 如果您的組態支援ALUA、您可以使用它來設定路徑優先順序。確認已啟用ALUA：
+====
+. 如果您的組態支援ALUA、您可以使用它來設定路徑優先順序。確認ALUA已啟用：
 +
 「LUN igroup show -instance igroup_name」
 
@@ -108,30 +113,32 @@ ww_name         0x500a0984994ae0e0               FC World Wide Name             
 
 
 
-. 如果您的組態不支援ALUA、則必須執行DotPaths公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用ALUA、請勿使用dotPaths公用程式。
+. 如果您的組態不支援 ALUA ，您需要使用 dotPaths 公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用 ALUA ，請勿使用 dotPaths 公用程式。
 +
-.. 若要設定所有Data ONTAP 的LUN優先順序、請輸入：
+.. 設定所有 ONTAP LUN 的優先順序：
 +
 "DotPaths（路徑）"
 
-.. 若要設定特定磁碟集的優先順序、請輸入：
+.. 設定特定磁碟集的優先順序：
 +
 「DotPaths（-HQV）[hdiskN ...（hdiskN ...）」
 
 +
-使用「-v」選項可啟用詳細模式並顯示所有優先順序。使用「-q'」選項可查詢所有或個別的磁碟優先順序。
+使用 `-v`選項來啟用詳細模式，並顯示所有優先順序。使用 `-q`選項查詢所有或個別磁碟優先順序。
 
 
 
-. 若要驗證主機是否已找到LUN、請輸入下列命令：
+. 確認主機已探索到 LUN ：
 +
 《# sanlun LUN show》（# sanlun LUN show）
 
 +
-.範例
-此範例顯示MPIO多重路徑環境中「左LUN show」命令的典型輸出。
+以下範例顯示 Microsoft 多重路徑 I/O （ MPIO ）多重路徑環境中命令的一般輸出 `sanlun lun show`：
 
 +
+.顯示範例輸出
+[%collapsible]
+====
 [listing]
 ----
 sanlun lun show -p
@@ -167,4 +174,5 @@ up        secondary   path13 fcs1    4a                                         
 up        primary     path14 fcs1    4b                                             1
 up        primary     path15 fcs1    4a                                             1
 ----
+====
 

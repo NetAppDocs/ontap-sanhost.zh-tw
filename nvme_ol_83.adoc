@@ -34,7 +34,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 * Oracle Linux 8.3預設為NVMe命名空間啟用內核NVMe多重路徑。
 * 在 Oracle Linux 8.3 中、 `nvme-fc auto-connect`指令碼會包含在原生的 NVMe CLI 套件中。您可以使用這些原生自動連線指令碼、而非安裝外部廠商提供的外箱自動連線指令碼。
 * Oracle Linux 8.3（原生） `udev` 規則是在中提供的一部分 `nvme-cli` 套件、可針對NVMe多重路徑啟用循環資源負載平衡。因此、您不再需要手動建立此規則。
-* 有了Oracle Linux 8.3、NVMe和SCSI流量都可以在相同的共存主機上執行。事實上、這是通常部署的主機組態。因此、對於SCSI、您可以像往常一樣為SCSI LUN設定dm-multipaths、以產生mpath裝置、而NVMe多重路徑則可用於設定NVMe型多重路徑裝置（例如、 `/dev/nvmeXnY`）。
+* 有了 Oracle Linux 8.3 ， NVMe 和 SCSI 流量都可以在同一部主機上執行。這是一般部署的主機組態。您可以像往常一樣，為導致 mpath 裝置的 SCSI LUN 設定 dm-multipath ，也可以使用 NVMe 多重路徑在主機上設定 NVMe 多重路徑裝置（例如 `/dev/nvmeXnY`）。
 * 使用Oracle Linux 8.3、原生的NetApp外掛程式 `nvme-cli` 套件能夠顯示ONTAP 各種細節及ONTAP 功能不完整的命名空間。
 
 
@@ -48,14 +48,14 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 == 組態需求
 
-請參閱 http://mysupport.netapp.com/matrix3["NetApp互通性對照表工具IMT （不含）"^] 以取得目前支援的組態清單。
+如需支援組態的目前清單，請參閱 http://mysupport.netapp.com/matrix3["互通性對照表工具IMT （不含）"^]。
 
 
 
 == 使用Oracle Linux 8.3啟用NVMe / FC
 
 .步驟
-. 在伺服器上安裝Oracle Linux 8.3 GA。安裝完成後、請確認您執行的是指定的Oracle Linux 8.3 GA核心。請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援版本清單。
+. 在伺服器上安裝 Oracle Linux 8.3 GA 。安裝完成後、請確認您正在執行指定的 Oracle Linux 8.3 GA 核心。如需支援版本的最新清單，請參閱 https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -90,7 +90,7 @@ NOTE: 如果hostnqn字串不相符、您應該使用 `vserver modify` 用於更�
 +
 [NOTE]
 ====
-如果您打算在相同的Oracle Linux 8.3共存主機上同時執行NVMe和SCSI流量、NetApp建議您使用核心內建NVMe多重路徑ONTAP 來執行不含任何名稱空間的命名空間和 `dm-multipath` 分別用於ONTAP 支援的LUN。這也表示ONTAP 應在中列入不符合需求的命名空間 `dm-multipath` 預防 `dm-multipath` 並宣告這些命名空間裝置。您可以將_enable外部_設定新增至來完成此作業 `/etc/multipath.conf` 檔案：
+如果您打算在同一部 Oracle Linux 8.3 主機上同時執行 NVMe 和 SCSI 流量， NetApp 建議分別針對 ONTAP 命名空間和 ONTAP LUN 使用核心內建 NVMe 多重路徑 `dm-multipath`。這也表示 ONTAP 命名空間應列入黑名單 `dm-multipath`，以防止 `dm-multipath`宣告這些命名空間裝置。您可以將 _enable Foreign 設定新增至檔案，以完成 `/etc/multipath.conf`此作業：
 
 [listing]
 ----
@@ -109,7 +109,7 @@ defaults {
 == 設定適用於NVMe / FC的Broadcom FC介面卡
 
 .步驟
-. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+. 確認您使用的是支援的介面卡。如需支援介面卡的目前清單，請參閱 https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -124,7 +124,7 @@ LPe36002-M2
 Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 ----
-. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱 https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -215,7 +215,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

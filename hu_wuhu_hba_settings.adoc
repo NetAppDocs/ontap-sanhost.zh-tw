@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_wuhu_hba_settings.html 
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
-summary: Windows Unified Host Utilities包含一個安裝程式、可設定所需的Windows登錄和HBA參數、讓Windows主機正確處理適用於NetApp ONTAP ®及E系列平台的儲存系統行為。 
+summary: Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數，讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。 
 ---
 = 設定登錄設定
 :toc: macro
@@ -27,22 +27,22 @@ Windows 主機公用程式會設定影響 Windows 主機回應延遲或資料遺
 
 FC 、 NVMe / FC 和 iSCSI HBA 也有必須設定的參數、以確保最佳效能並成功處理儲存系統事件。
 
-Windows Unified Host Utilities 隨附的安裝程式會將 Windows 、 FC 和 NVMe / FC HBA 參數設定為支援的值。
+Windows 主機公用程式隨附的安裝程式會將 Windows ， FC 和 NVMe / FC HBA 參數設定為支援的值。
 
 您必須手動設定 iSCSI HBA 參數。
 
-安裝程式會根據您在執行安裝程式時是否指定多重路徑 I/O （ MPIO ）支援來設定不同的值。
+安裝程式會根據您在執行安裝程式時是否指定 Microsoft 多重路徑 I/O （ MPIO ）支援來設定不同的值。
 
 
 NOTE: 除非 NetApp 技術支援人員指示您變更這些值、否則您不應變更這些值。
 
 
 
-== Windows Unified Host Utilities 7.2 設定的登錄值
+== Windows 主機公用程式 7.2 設定的登錄值
 
-Windows Unified Host Utilities 安裝程式會根據您在安裝期間所做的選擇、自動設定登錄值。您應該知道這些登錄值和作業系統版本。
+Windows 主機公用程式安裝程式會根據您在安裝期間所做的選擇，自動設定登錄值。您應該知道這些登錄值和作業系統版本。
 
-下列值由Windows Unified Host Utilities安裝程式設定。除非另有說明、否則所有值都是十進位的。
+Windows 主機公用程式安裝程式會設定下列值。除非另有說明、否則所有值都是十進位的。
 
 
 NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
@@ -124,7 +124,7 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 
 === NVMe 參數
 
-安裝 Windows Unified Host Utilities 7.2 時、會更新下列 NVMe Emulex 驅動程式參數：
+安裝 Windows 主機公用程式 7.2 時，會更新下列 NVMe Emulex 驅動程式參數：
 
 * 啟用NVMe = 1
 * NVMEMode = 0
@@ -133,11 +133,11 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 
 
 
-== Windows Unified Host Utilities 7.1 設定的登錄值
+== Windows Host Utilities 7.1 設定的登錄值
 
-Windows Unified Host Utilities安裝程式會根據您在安裝期間所做的選擇、自動設定登錄值。您應該注意這些登錄值、作業系統版本。
+Windows 主機公用程式安裝程式會根據您在安裝期間所做的選擇，自動設定登錄值。您應該注意這些登錄值、作業系統版本。
 
-下列值由Windows Unified Host Utilities安裝程式設定。除非另有說明、否則所有值都是十進位的。
+Windows 主機公用程式安裝程式會設定下列值。除非另有說明、否則所有值都是十進位的。
 
 
 NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。

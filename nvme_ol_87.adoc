@@ -24,7 +24,7 @@ NVMe over Fabrics （ NVMe of ）（包括 NVMe over Fibre Channel （ NVMe / FC
 * 在指定主機匯流排介面卡（ HBA ）上的同一主機上使用 NVMe 和 SCSI 共存流量、而不使用明確的 dm-multipath 設定、以避免使用 NVMe 命名空間。
 
 
-如需支援組態的詳細資訊、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
@@ -112,7 +112,7 @@ NOTE: 如果是 `hostnqn` 字串不相符、您可以使用 `vserver modify` 命
 +
 [NOTE]
 ====
-如果您打算在相同的 Oracle Linux 8.7 主機上同時執行 NVMe 和 SCSI 流量、 NetApp 建議分別使用內建 NVMe 多重路徑來處理 ONTAP 命名空間、以及將 dm-multipath 用於 ONTAP LUN 。這也表示ONTAP 應在dm-multipaths中列入清單以防止dm-multipaths宣告這些命名空間裝置。您可以新增來執行此作業 `enable_foreign` 設定為 `/etc/multipath.conf` 檔案：
+如果您打算在同一部 Oracle Linux 8.7 主機上同時執行 NVMe 和 SCSI 流量， NetApp 建議分別針對 ONTAP 命名空間使用核心內建 NVMe 多重路徑，以及針對 ONTAP LUN 使用 dm-multipath 。這也表示ONTAP 應在dm-multipaths中列入清單以防止dm-multipaths宣告這些命名空間裝置。您可以將設定新增至 `/etc/multipath.conf`檔案來執行此 `enable_foreign`作業：
 
 [listing]
 ----
@@ -180,7 +180,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 
 ----
 +
-如需支援的介面卡驅動程式和韌體版本的最新清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 . 請確認 `lpfc_enable_fc4_type` 設為 `3`：
 +
@@ -288,7 +288,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

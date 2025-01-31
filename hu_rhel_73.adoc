@@ -20,16 +20,16 @@ summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.3搭配使用�
 
 
 
-== 安裝Linux Unified Host Utilities
+== 安裝 Linux 主機公用程式
 
-NetApp Linux Unified Host Utilities 軟體套件可在 32 位元和 64 位元的 .rpm 檔案中找link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]到。如果您不知道哪一個檔案適合您的組態，請使用來驗證您需要的檔案link:https://mysupport.netapp.com/matrix/#welcome["NetApp 互通性對照表工具"^]。
+NetApp Linux 主機公用程式軟體套件位於 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]32 位元和 64 位元 .rpm 檔案中。如果您不知道哪一個檔案適合您的組態，請使用來驗證您需要的檔案link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]。
 
-NetApp 強烈建議您安裝 Linux 統一化主機公用程式，但並非強制安裝。這些公用程式不會變更 Linux 主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
+NetApp 強烈建議您安裝 Linux 主機公用程式，但並非強制安裝。這些公用程式不會變更 Linux 主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
 
-如果您目前已安裝 Linux Unified Host Utilities ，您應該將其升級至最新版本，或是將其移除，然後依照下列步驟安裝最新版本。
+如果您目前已安裝 Linux 主機公用程式，您應該將其升級至最新版本，或是將其移除，然後依照下列步驟安裝最新版本。
 
 .步驟
-. 從下載32位元或64位元Linux Unified Host Utilities軟體套件 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^] 到您的主機。
+. 將 32 位元或 64 位元 Linux 主機公用程式軟體套件從下載link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]至主機。
 . 安裝軟體套件：
 +
 「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
@@ -68,8 +68,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=76238;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 .步驟
 . 將SAN開機LUN對應至主機。

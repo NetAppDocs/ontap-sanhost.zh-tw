@@ -29,4 +29,4 @@
 | PortDownRetryCount | 10. 
 |===
 
-NOTE: Windows Unified Host Utility會設定這些值。如需詳細的建議設定、請參閱 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"] 並選取 Windows Unified Host Utilities 版本的安裝程序。
+NOTE: Windows 主機公用程式會設定這些值。如需詳細的建議設定，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"]，然後選取 Windows 主機公用程式版本的安裝程序。

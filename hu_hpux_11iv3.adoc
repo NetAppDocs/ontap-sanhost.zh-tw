@@ -63,8 +63,8 @@ sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c12t0d0 fc
 
 == SAN開機
 
-.您需要的產品
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用 link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp 互通性對照表工具"^] 驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+.開始之前
+如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
 
 SAN開機是將SAN附加磁碟（LUN）設定為HP-UX主機的開機裝置的程序。主機公用程式支援在HP-UX環境中使用FC和FCoE傳輸協定進行SAN開機。
 

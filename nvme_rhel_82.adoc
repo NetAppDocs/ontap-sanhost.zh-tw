@@ -16,9 +16,9 @@ summary: 如何針對RHEL 8.2設定NVMe/FC主機ONTAP 以使用功能
 
 
 [role="lead"]
-適用於 Red Hat Enterprise Linux （ RHEL ） 8.2 的 ONTAP 9.6 或更新版本支援 NVMe / FC 。RHEL 8.2主機透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。
+從 ONTAP 9.6 開始， Red Hat Enterprise Linux （ RHEL ） 8.2 支援 NVMe / FC 。RHEL 8.2主機透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。
 
-請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援組態清單。
+如需支援組態的目前清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
@@ -26,7 +26,7 @@ summary: 如何針對RHEL 8.2設定NVMe/FC主機ONTAP 以使用功能
 
 * 從 RHEL 8.2 開始、 `nvme-fc auto-connect`指令碼會包含在原生 `nvme-cli`套件中。您可以使用這些原生自動連線指令碼、而不必安裝外部廠商提供的外箱自動連線指令碼。
 * 從原生 RHEL 8.2 開始 `udev` 規則已在中提供 `nvme-cli` 套件、可針對NVMe多重路徑啟用循環資源負載平衡。您不需要再手動建立此規則（如RHEL 8.1所做）。
-* 從 RHEL 8.2 開始、 NVMe 和 SCSI 流量都可以在相同的共存主機上執行。事實上、這是預期部署的主機組態。因此、對於 SCSI 、您可以設定 `dm-multipath` 與往常一樣、 SCSI LUN 也會產生 `mpath` 裝置、而 NVMe 多重路徑可用於在主機上設定 NVMe 多重路徑裝置。
+* 從 RHEL 8.2 開始， NVMe 和 SCSI 流量都可以在同一部主機上執行。事實上、這是預期部署的主機組態。因此，對於 SCSI ，您可以像往常一樣為導致裝置的 SCSI LUN `mpath` 進行設定 `dm-multipath`，而 NVMe 多重路徑則可用於在主機上設定 NVMe 多重路徑裝置。
 * 從 RHEL 8.2 開始、即原生的 NetApp 外掛程式 `nvme-cli` 套件能夠顯示 ONTAP 命名空間的 ONTAP 詳細資料。
 
 
@@ -79,7 +79,7 @@ yum install nvmecli
 4.18.0-193.el8.x86_64
 ----
 +
-請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援版本清單。
+如需支援版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 . 安裝NVMe-CLI套件。
 +
@@ -115,7 +115,7 @@ Vserver      Subsystem        Host           NQN
 . 重新啟動主機。
 . 更新「啟用外部」設定（選用）_。
 +
-如果您打算在同一個 RHEL 8.2 共存的主機上同時執行 NVMe 和 SCSI 流量、 NetApp 建議分別針對 ONTAP 命名空間使用核心內建 NVMe 多重路徑、以及針對 ONTAP LUN 使用 dm-multipath 。您也應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以新增來執行此作業 `enable_foreign` 設定為 `/etc/multipath.conf`，如下所示。
+如果您打算在同一部 RHEL 8.2 主機上同時執行 NVMe 和 SCSI 流量， NetApp 建議分別針對 ONTAP 命名空間使用核心 NVMe 多重路徑，以及針對 ONTAP LUN 使用 dm-multipath 。您也應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將設定新增 `enable_foreign`至 `/etc/multipath.conf`，如下所示。
 
 +
 [listing]
@@ -134,7 +134,7 @@ defaults {
 
 您可以使用下列程序來設定 Broadcom FC 介面卡。
 
-如需最新的支援介面卡清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援介面卡的目前清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 .步驟
 . 確認您使用的是支援的介面卡。
@@ -203,7 +203,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 . 啟用1 MB I/O大小（選用）_。
 +
-需要將"lfc_sg_seg_cnt"參數設為256、以便lfc驅動程式發出大小高達1 MB的I/O要求。
+此 `lpfc_sg_seg_cnt`參數必須設為 256 ，以便 lpfc 驅動程式發出高達 1MB 大小的 I/O 要求。
 
 +
 [listing]
@@ -284,7 +284,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 . 啟用1 MB I/O大小（選用）_。
 +
-需要將"lfc_sg_seg_cnt"參數設為256、以便lfc驅動程式發出大小高達1 MB的I/O要求。
+此 `lpfc_sg_seg_cnt`參數必須設為 256 ，以便 lpfc 驅動程式發出高達 1MB 大小的 I/O 要求。
 
 +
 [listing]

@@ -53,7 +53,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 . 啟用1 MB I/O大小（選用）_。
 +
-需要將"lfc_sg_seg_cnt"參數設為256、以便lfc驅動程式發出大小高達1 MB的I/O要求。
+此 `lpfc_sg_seg_cnt`參數必須設為 256 ，以便 lpfc 驅動程式發出高達 1MB 大小的 I/O 要求。
 
 +
 [listing]

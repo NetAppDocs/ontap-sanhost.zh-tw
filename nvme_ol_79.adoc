@@ -22,7 +22,7 @@ summary: 以VMware為例、設定Oracle Linux 7.9的VME/FC主機組態ONTAP
 
 == 支援能力
 
-Oracle Linux 7.9.支援在支援NVMe 9.6或更新版本的NVMe/FC ONTAP 。Oracle Linux 7.9 主機可透過相同的光纖通道（ FC ）啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。如需支援組態的最新清單，請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+從 ONTAP 9.6 開始， Oracle Linux 7.9 支援 NVMe / FC 。Oracle Linux 7.9 主機可透過相同的光纖通道（ FC ）啟動器介面卡連接埠，同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。如需支援組態的目前清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
@@ -33,7 +33,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 
 * 原生NVMe / FC自動連線指令碼在「NVMe - CLI」套件中無法使用。使用HBA廠商提供的外部自動連線指令碼。
 * 根據預設、NVMe多重路徑中不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。如需在Oracle Linux 7.9上啟用NVMe/FC的步驟、請參閱一節。
-* 不支援NVMe/FC、因此Oracle Linux 7.9不支援Linux Unified Host Utilities（Luhu）NVMe / FC。使用ONTAP NetApp外掛程式隨附於原生NVMe CLI中的支援功能之一、即可取得的支援功能。
+* NVMe / FC 不支援 sanlun ，因此 Oracle Linux 7.9 不支援 NVMe / FC 的 Linux 主機公用程式。使用ONTAP NetApp外掛程式隨附於原生NVMe CLI中的支援功能之一、即可取得的支援功能。
 * 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
@@ -42,7 +42,7 @@ NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端�
 == 啟用NVMe/FC
 
 . 在伺服器上安裝Oracle Linux 7.9。
-. 安裝完成後、請確認您執行的是支援的Unbreakable Enterprise核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+. 安裝完成後、請確認您執行的是支援的Unbreakable Enterprise核心。請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -90,7 +90,7 @@ nqn.2014-08.org.nvmexpress:uuid:497ad959-e6d0-4987-8dc2-a89267400874
 
 == 設定適用於NVMe / FC的Broadcom FC介面卡
 
-. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+. 確認您使用的是支援的介面卡。如需支援介面卡的目前清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -251,7 +251,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_wuhu_repair_remove.html 
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
-summary: Windows Unified Host Utilities包含一個安裝程式、可設定所需的Windows登錄和HBA參數、讓Windows主機正確處理適用於NetApp ONTAP ®及E系列平台的儲存系統行為。 
+summary: Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數，讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。 
 ---
-= 修復並移除 Windows Unified Host Utilities
+= 修復並移除 Windows 主機公用程式
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -29,7 +29,7 @@ summary: Windows Unified Host Utilities包含一個安裝程式、可設定所�
 
 .步驟
 . 開啟 Windows * 程式與功能 * （ Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 和 Windows 2022 ）。
-. 選擇* NetApp Windows Unified Host Utilities *。
+. 選取 * NetApp Windows 主機公用程式 * 。
 . 選取 * 變更 * 。
 . 視需要選取 * 修復 * 或 * 移除 * 。
 . 請依照畫面上的指示操作。
@@ -41,7 +41,7 @@ summary: Windows Unified Host Utilities包含一個安裝程式、可設定所�
 「修復」 * 選項會使用所需的設定來更新 Windows 登錄和 FC HBA 。您也可以從Windows命令列中完全移除主機公用程式。
 
 .步驟
-. 在Windows命令列上輸入下列命令、以修復Windows主機公用程式：
+. 修復 Windows 主機公用程式：
 +
 `msiexec /f installer.msi [/quiet]`
 

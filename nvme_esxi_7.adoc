@@ -31,7 +31,7 @@ summary: 說明如何使用ONTAP VMware設定適用於ESXi 7.x的NVMe
 
 == 功能
 
-* ESXi啟動器主機可透過相同的介面卡連接埠、同時執行NVMe/FC和FCP流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援組態和版本清單。
+* ESXi啟動器主機可透過相同的介面卡連接埠、同時執行NVMe/FC和FCP流量。如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。如需支援組態和版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 * 從VMware支援的版本號為0、99.1、P3開始ONTAP 、ESXi 7.0更新版本3支援NVMe / FC功能。
 * 對於ESXi 7.0及更新版本、HPP（高效能外掛程式）是NVMe裝置的預設外掛程式。
 
@@ -68,7 +68,7 @@ Host NQN: nqn.2014-08.com.vmware:nvme:nvme-esx
 
 === 設定Broadcom / Emulex
 
-. 請參閱、檢查所需的驅動程式/韌體是否支援該組態 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+. 請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]，檢查所需的驅動程式 / 韌體是否支援組態。
 . 設定lffc驅動程式參數「lffc_enable_FC4_type=3」、以便在「lffc"驅動程式中啟用nvm/FC支援、然後重新啟動主機。
 
 
@@ -98,7 +98,7 @@ vmhba65   lpfc     link-up     fc.200000109b954570:100000109b954570             
 === 設定Marvell / QLogic
 
 .步驟
-. 請參閱、檢查所需的驅動程式/韌體是否支援組態 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^]。
+. 請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]，檢查所需的驅動程式 / 韌體是否支援組態。
 . 將「qlnativefc」驅動程式參數「ql2xnvmesupport=1」設定為在「qlnativefc」驅動程式中啟用nvm/FC支援、然後重新啟動主機。
 +
 '# esxcfg-module-s 'ql2xnvmesupport=1' qlnativefc'

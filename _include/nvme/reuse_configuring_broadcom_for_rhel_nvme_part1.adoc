@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-如需最新的支援介面卡清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
+如需支援介面卡的目前清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 .步驟
 . 確認您使用的是支援的介面卡。
@@ -71,7 +71,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 . 啟用1 MB I/O大小（選用）_。
 +
-需要將"lfc_sg_seg_cnt"參數設為256、以便lfc驅動程式發出大小高達1 MB的I/O要求。
+此 `lpfc_sg_seg_cnt`參數必須設為 256 ，以便 lpfc 驅動程式發出高達 1MB 大小的 I/O 要求。
 
 +
 [listing]

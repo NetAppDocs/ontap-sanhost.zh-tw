@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-如果您選擇使用SAN開機、您的組態必須支援SAN開機。您可以使用NetApp互通性對照表工具來驗證是否ONTAP 支援您的作業系統、HBA、HBA韌體和HBA開機BIOS及BIOS版本。
+如果您選擇使用SAN開機、您的組態必須支援SAN開機。您可以使用互通性對照表工具來驗證作業系統， HBA ， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否受到支援。
 
 . 將SAN開機LUN對應至主機。
 . 確認有多個路徑可供使用。

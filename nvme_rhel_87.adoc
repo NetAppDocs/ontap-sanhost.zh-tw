@@ -18,7 +18,7 @@ summary: 如何針對RHEL 8.7設定NVMe主機、ONTAP 並搭配使用功能
 [role="lead"]
 Red Hat Enterprise Linux （ RHEL ） 8.7 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。在此程序中、您可以使用 RHEL 8.7 上的 ANA 、 ONTAP 作為目標、來啟用內核 NVMe 多重路徑的 NVMe 。
 
-請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得所支援組態的正確詳細資料。
+如需支援組態的詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 
 
@@ -43,7 +43,7 @@ RHEL 8.7除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。�
 
 .步驟
 . 在伺服器上安裝RHEL 8.7。
-. 安裝完成後、請確認您執行的是指定的RHEL 8.7核心。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援版本清單。
+. 安裝完成後、請確認您正在執行指定的 RHEL 8.7 核心。如需支援版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 範例：
 
@@ -121,7 +121,7 @@ defaults {
 .Broadcom / Emulex
 --
 .步驟
-. 確認您使用的是支援的介面卡。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援介面卡清單。
+. 確認您使用的是支援的介面卡。如需支援介面卡的目前清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -132,7 +132,7 @@ LPe35002-M2
 Emulex LightPulse LPe35002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe35002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表"^] 以取得最新的支援介面卡驅動程式和韌體版本清單。
+. 請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 +
 [listing]
 ----
@@ -235,7 +235,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認預期值 `lpfc_sg_seg_cnt`為 256 ：
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [listing]
 ----
