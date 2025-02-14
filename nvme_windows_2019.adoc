@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: nvme_windows_2019.html 
 keywords: nvme, windows, enterprise 
-summary: 適用於Windows Server 2019的NVMe / FC主機組態、ONTAP 含更新功能 
+summary: 您可以在執行 Windows Server 2019 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。 
 ---
 = 適用於Windows Server 2019的NVMe / FC主機組態、ONTAP 含更新功能
 :hardbreaks:
@@ -16,31 +16,36 @@ summary: 適用於Windows Server 2019的NVMe / FC主機組態、ONTAP 含更新�
 
 
 [role="lead"]
-您可以使用 ONTAP 做為目標、在執行 Windows Server 2019 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。
+您可以在執行 Windows Server 2019 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。
 
-適用於2019年Windows Server的NVMe 9.7或更新版本支援NVMe / FC ONTAP 。
-
-請注意、Broadcom啟動器可透過相同的32G FC介面卡連接埠、同時處理NVMe/FC和FCP流量。對於FCP和FC/NVMe、請使用MSDSM做為Microsoft多重路徑I/O（MPIO）選項。
-
-如需支援的 FC 介面卡和控制器清單、請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 。如需支援組態和版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
+.關於這項工作
+您可以在 Windows 2019 的 NVMe / FC 主機組態中使用下列支援。在開始設定程序之前，您也應該先檢閱已知的限制。
 
 
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+NOTE: 您可以使用本程序提供的組態設定link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]，來設定連線至和的雲端用戶端link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]。
+
+* 可用支援：
++
+從 ONTAP 9.7 開始， Windows Server 2019 支援 NVMe / FC 。
+
++
+如需支援的 FC 介面卡和控制器清單，請參閱link:https://hwu.netapp.com/Home/Index["Hardware Universe"^]。如需支援組態和版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
+
+* 已知限制：
++
+NVMe / FC 不支援 Windows 容錯移轉叢集，因為 ONTAP 目前不支援 NVMe / FC 的持續保留。
+
++
+
+NOTE: Broadcom 隨附 Windows NVMe / FC 的外部驅動程式，這是轉譯式 SCSI 變速度 NVMe 驅動程式，而非真正的 NVMe / FC 驅動程式。轉譯的負荷不一定會影響效能，但會抵消 NVMe / FC 的效能優勢。因此，在 Windows 伺服器上， NVMe / FC 和 FCP 的效能是相同的，不像其他作業系統，例如 Linux ，那就是 NVMe / FC 的效能遠比 FCP 的效能好。
 
 
 
-== 已知限制
-
-不支援ONTAP Windows容錯移轉叢集（WFC）搭配使用不支援使用NVMe / FC、因為ONTAP 目前不支援使用NVMe / FC的持續保留。
 
 
-NOTE: Broadcom為Windows NVMe / FC提供的外部驅動程式並非真正的NVMe / FC驅動程式、而是轉譯式SCSI非NVMe驅動程式。這種轉譯負荷並不一定會影響效能、但確實會抵消NVMe / FC的效能優勢。因此、在Windows伺服器上、NVMe / FC和FCP的效能是一樣的、這與其他作業系統（例如Linux）不同、因為NVMe / FC的效能明顯優於FCP。
+== 啟用NVMe/FC
 
-
-
-== 在Windows啟動器主機上啟用NVMe/FC
-
-請遵循下列步驟、在Windows啟動器主機上啟用FC/NVMe：
+在 Windows 啟動器主機上啟用 FC/NVMe 。
 
 .步驟
 . 在Windows主機上安裝OneCommand Manager公用程式。
@@ -48,7 +53,6 @@ NOTE: Broadcom為Windows NVMe / FC提供的外部驅動程式並非真正的NVMe
 +
 ** 啟用NVMe = 1
 ** NVMEMode = 0
-** LemTransferSize=1
 
 
 . 重新啟動主機。
@@ -56,9 +60,11 @@ NOTE: Broadcom為Windows NVMe / FC提供的外部驅動程式並非真正的NVMe
 
 
 
-== 在Windows中設定適用於NVMe / FC的Broadcom FC介面卡
+== 設定 Broadcom FC 介面卡
 
-在Windows環境中使用適用於FC/NVMe的Broadcom介面卡時、每個主機匯流排介面卡（HBA）連接埠都會產生一個「+hostnqn+」。"+hostnqn+"格式如下。
+Broadcom 啟動器可透過相同的 32G FC 介面卡連接埠，同時處理 NVMe / FC 和 FCP 流量。對於 FCP 和 FC/NVMe ，您應該使用 Microsft 裝置專用模組（ DSM ）做為 Microsoft 多重路徑 I/O （ MPIO ）選項。
+
+A `+hostnqn+` 與 Windows 環境中的 Broadcom 介面卡（含 FC/NVMe ）的每個主機匯流排介面卡（ HBA ）連接埠相關聯。 `+hostnqn+`格式如下例所示：
 
 ....
 nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9765
@@ -66,8 +72,11 @@ nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9766
 ....
 
 
-=== 在Windows主機上啟用NVMe裝置的MPIO
+=== 為 NVMe 裝置啟用 MPIO
 
+您需要啟用適用於 NVMe 裝置的 MPIO ，才能在 Windows 主機上完成 NVMe 組態。
+
+.步驟
 . 安裝 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Windows主機公用程式套件7.1"] 設定FC和NVMe通用的驅動程式參數。
 . 開啟MPIO內容。
 . 從*探索多重路徑*索引標籤、新增NVMe所列的裝置ID。
@@ -75,8 +84,8 @@ nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9766
 MPIO會感知NVMe裝置、這些裝置可在磁碟管理下看到。
 
 . 打開* Disk Management（磁碟管理）*、然後移至* Disk Properties（磁碟內容）*。
-. 在「* MPIO *」索引標籤中、按一下「* Details *」。
-. 設定下列MSDSM設定：
+. 從 *MPIO 選項卡中，選擇 * 詳細資料 * 。
+. 設定下列 Microsoft DSM 設定：
 +
 ** PathVerfiedPeriod:* 10*
 ** PathVerifyEnabled:* Enabled*
@@ -95,26 +104,25 @@ HKLM\SYSTEM\CurrentControlSet\Services\mpio\Parameters\PathRecoveryInterval DWOR
 HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\ UseCustomPathRecoveryInterval  DWORD-> 1
 ----
 . 重新啟動主機。
-+
-NVMe組態現在已在Windows主機上完成。
-
 
 
 
 
 == 驗證NVMe/FC
 
-. 驗證連接埠類型是否為FC+NVMe。
+確認已探索到 NVMe 子系統，且 ONTAP 命名空間適用於 NVMe 組態。
+
+.步驟
+. 確認「連接埠類型」為 `+FC+NVMe+`：
 +
-啟用NVMe之後、您應該看到「+連接埠類型+」列示為「+FC+NVMe +」、如下所示。
+`listhba`
 
 +
-[listing]
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
 ----
-PS C:\Program Files\Emulex\Util\OCManager> .\hbacmd listhba
-
-Manageable HBA List
-
 Port WWN       : 10:00:00:10:9b:1b:97:65
 Node WWN       : 20:00:00:10:9b:1b:97:65
 Fabric Name    : 10:00:c4:f5:7c:a5:32:e0
@@ -126,7 +134,7 @@ Port Number    : 0
 Mode           : Initiator
 PCI Bus Number : 94
 PCI Function   : 0
-Port Type      : FC+NVMe
+*Port Type*      : *FC+NVMe*
 Model          : LPe32002-M2
 
 Port WWN       : 10:00:00:10:9b:1b:97:66
@@ -143,17 +151,16 @@ PCI Function   : 1
 Port Type      : FC+NVMe
 Model          : LPe32002-M2
 ----
-. 驗證是否已探索到NVMe/FC子系統。
+====
+. 確認已探索到 NVMe / FC 子系統：
 +
-「+NVMe清單+」命令會列出NVMe / FC探索到的子系統。
-
+** `+nvme-list+`
 +
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
-PS C:\Program Files\Emulex\Util\OCManager> .\hbacmd nvme-list 10:00:00:10:9b:1b:97:65
-
-Discovered NVMe Subsystems for 10:00:00:10:9b:1b:97:65
-
 NVMe Qualified Name     :  nqn.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159
 Port WWN                :  20:09:d0:39:ea:14:11:04
 Node WWN                :  20:05:d0:39:ea:14:11:04
@@ -175,13 +182,14 @@ Total Capacity          :  Not Available
 Unallocated Capacity    :  Not Available
 Note: At present Namespace Management is not supported by NetApp Arrays.
 ----
+====
+** `nvme-list`
 +
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
-PS C:\Program Files\Emulex\Util\OCManager> .\hbacmd nvme-list 10:00:00:10:9b:1b:97:66
-
-Discovered NVMe Subsystems for 10:00:00:10:9b:1b:97:66
-
 NVMe Qualified Name     :  nqn.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159
 Port WWN                :  20:07:d0:39:ea:14:11:04
 Node WWN                :  20:05:d0:39:ea:14:11:04
@@ -204,17 +212,19 @@ Unallocated Capacity    :  Not Available
 
 Note: At present Namespace Management is not supported by NetApp Arrays.
 ----
-. 驗證是否已建立命名空間。
+====
+
+
+. 確認已建立命名空間：
 +
-「+nNVMe清單-ns +」命令會列出指定NVMe目標的命名空間、列出連接至主機的命名空間。
+`+nvme-list-ns+`
 
 +
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
-PS C:\Program Files\Emulex\Util\OCManager> .\HbaCmd.exe nvme-list-ns 10:00:00:10:9b:1b:97:66 20:08:d0:39:ea:14:11:04 nq
-.1992-08.com.netapp:sn.a3b74c32db2911eab229d039ea141105:subsystem.win_nvme_interop-57-159 0
-
-
 Active Namespaces (attached to controller 0x0141):
 
                                        SCSI           SCSI           SCSI
@@ -230,4 +240,5 @@ Active Namespaces (attached to controller 0x0141):
 0x00000008   \\.\PHYSICALDRIVE16        0               1              7
 
 ----
+====
 

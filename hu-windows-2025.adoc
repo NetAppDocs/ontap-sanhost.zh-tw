@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_windows_2016.html 
+permalink: hu-windows-2025.html 
 keywords: windows, enterprise 
-summary: 搭配ONTAP 使用Windows Server 2016搭配使用 
+summary: 您可以使用 ONTAP SAN 主機組態設定來設定 Windows Server 2025 ，以便與 ONTAP 儲存設備搭配運作。 
 ---
-= 搭配 ONTAP 使用 Windows Server 2016
+= 為 ONTAP 儲存設備設定 Windows Server 2025
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 搭配ONTAP 使用Windows Server 2016搭配使用
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定，將 Windows Server 2016 設定為搭配 ONTAP 儲存設備運作。
+您可以使用 ONTAP SAN 主機組態設定來設定 Windows Server 2025 ，以便與 ONTAP 儲存設備搭配運作。
 
 
 
@@ -34,9 +34,6 @@ summary: 搭配ONTAP 使用Windows Server 2016搭配使用
 .SAN開機
 --
 如果您選擇使用 SAN 開機，則必須由您的組態支援。
-
-
-NOTE: 您可以使用本程序提供的組態設定link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]，來設定連線至和的雲端用戶端link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]。
 
 .開始之前
 使用 https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Windows 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
@@ -67,7 +64,7 @@ NOTE: 只有在主機作業系統啟動並在路徑上執行之後、才能使�
 NetApp 建議您在主機伺服器上安裝 Microsoft Update 目錄中提供的 * 最新累計更新 * 。
 
 .步驟
-. 從下載 Hotfix link:https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2016["Microsoft Update目錄2016"^]。
+. 從下載 Hotfix link:https://www.catalog.update.microsoft.com/Search.aspx?q=update%20%22windows%20server%202025%22["Microsoft Update目錄2025"^]。
 
 
 
@@ -89,7 +86,7 @@ Windows 主機公用程式是一組軟體程式，其中包含文件，可讓您
 
 == 多重路徑
 
-如果您的 Windows 主機有多個路徑通往儲存系統，則需要安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並啟用多重路徑。當您選取 MPIO 支援時， Windows 主機公用程式會啟用 Windows Server 2016 中包含的 MPIO 功能。如果您未使用 Windows 主機公用程式，則需要手動啟用多重路徑功能。
+如果您的 Windows 主機有多個路徑通往儲存系統，則需要安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並啟用多重路徑。
 
 MPIO 軟體為所有路徑提供 Windows 作業系統的單一磁碟，而裝置專用模組（ DSM ）則管理路徑容錯移轉。在 Windows 系統上，任何 MPIO 解決方案中的兩個主要元件是 DSM 和 Windows MPIO 。
 
@@ -171,4 +168,4 @@ NOTE: 如需建議設定的詳細資訊，請參閱link:hu_wuhu_hba_settings.htm
 
 == 已知問題
 
-使用 ONTAP 版本的 Windows Server 2016 沒有已知問題。
+使用 ONTAP 版本的 Windows Server 2025 沒有已知問題。

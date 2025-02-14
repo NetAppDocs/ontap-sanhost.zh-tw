@@ -25,7 +25,7 @@ summary: 使用支援VMware的Oracle Linux 8.4設定VME/FC主機組態ONTAP 、�
 NVMe over Fabrics或NVMe（包括NVMe / FC和NVMe / TCP）可搭配Oracle Linux 8.4搭配非對稱命名空間存取（ANA）支援、ONTAP 而非對稱式命名空間存取（ANA）則是在不間斷儲存容錯移轉（SFO）上運作所需的功能。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。本主題詳細說明如何在Oracle Linux 8.4上使用ANA搭配ONTAP 以支援以NVMe為目標的內核NVMe多重路徑來啟用NVMe。
 
 
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+NOTE: 您可以使用本程序提供的組態設定link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]，來設定連線至和的雲端用戶端link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]。
 
 
 

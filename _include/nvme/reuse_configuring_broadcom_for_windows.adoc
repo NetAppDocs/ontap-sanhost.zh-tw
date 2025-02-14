@@ -2,7 +2,9 @@
 :allow-uri-read: 
 
 
-在Windows環境中使用適用於FC/NVMe的Broadcom介面卡時、每個主機匯流排介面卡（HBA）連接埠都會產生一個「+hostnqn+」。"+hostnqn+"格式如下。
+Broadcom 啟動器可透過相同的 32G FC 介面卡連接埠，同時處理 NVMe / FC 和 FCP 流量。對於 FCP 和 FC/NVMe ，您應該使用 Microsft 裝置專用模組（ DSM ）做為 Microsoft 多重路徑 I/O （ MPIO ）選項。
+
+A `+hostnqn+` 與 Windows 環境中的 Broadcom 介面卡（含 FC/NVMe ）的每個主機匯流排介面卡（ HBA ）連接埠相關聯。 `+hostnqn+`格式如下例所示：
 
 ....
 nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9765

@@ -1,7 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-如果 Windows 主機有多個路徑通往儲存系統，則必須安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並設定多重路徑。如果沒有MPIO軟體、作業系統可能會將每個路徑視為獨立的磁碟、進而導致資料毀損。MPIO軟體為所有路徑的作業系統提供單一磁碟、而裝置專屬模組（DSM）則負責管理路徑容錯移轉。
-
-在Windows系統上、任何MPIO解決方案的兩個主要元件為DSM和Windows MPIO。在Hyper-V虛擬機器中執行的Windows XP或Windows Vista不支援MPIO。

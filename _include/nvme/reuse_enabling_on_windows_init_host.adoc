@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-請遵循下列步驟、在Windows啟動器主機上啟用FC/NVMe：
+在 Windows 啟動器主機上啟用 FC/NVMe 。
 
 .步驟
 . 在Windows主機上安裝OneCommand Manager公用程式。
@@ -10,7 +10,6 @@
 +
 ** 啟用NVMe = 1
 ** NVMEMode = 0
-** LemTransferSize=1
 
 
 . 重新啟動主機。

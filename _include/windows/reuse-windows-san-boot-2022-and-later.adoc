@@ -1,0 +1,39 @@
+= 
+:allow-uri-read: 
+
+
+您可以使用本機開機或 SAN 開機來開機 Windows 作業系統。如果您的組態支援 SAN 開機， NetApp 建議您使用該開機。
+
+[role="tabbed-block"]
+====
+.本機開機
+--
+在本機硬碟（ SSD ， SATA ， RAID 等）上安裝 Windows 作業系統，以執行本機開機。
+
+--
+.SAN開機
+--
+如果您選擇使用 SAN 開機，則必須由您的組態支援。
+
+.開始之前
+使用 https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Windows 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
+
+.步驟
+. 將SAN開機LUN對應至主機。
++
+請參閱。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["SAN 儲存管理"^]
+
+. 確認有多個路徑可供使用。
++
+
+NOTE: 只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。
+
+. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
++
+如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
+
+. 重新啟動主機，確認開機成功
+
+
+--
+====

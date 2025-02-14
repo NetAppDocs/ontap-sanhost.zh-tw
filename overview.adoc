@@ -4,7 +4,7 @@ permalink: overview.html
 keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracle, linux, windows, enterprise, fc, fcp, isci, aix, powervm, vios, centos, citrix, hp-ux, solaris, veritas, cvo, cloud, volume, ontap, clients, configuration, FSx, instance, netapp 
 summary: 本內容提供特定於發佈的指引、說明如何設定連接Cloud Volumes ONTAP 至下列項目的雲端用戶端ONTAP ：針對連接至內部部署ONTAP 的更新儲存設備的介面和SAN主機、設定連接至原地更新儲存設備的Amazon FSX和Amazon FSX。 
 ---
-= SAN主機組態總覽
+= 瞭解 SAN 主機組態
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

@@ -4,7 +4,7 @@ permalink: hu_windows_2022.html
 keywords: windows, enterprise 
 summary: 搭配ONTAP 使用Windows Server 2022搭配使用 
 ---
-= 搭配ONTAP 使用Windows Server 2022搭配使用
+= 搭配 ONTAP 使用 Windows Server 2022
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,108 +16,123 @@ summary: 搭配ONTAP 使用Windows Server 2022搭配使用
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、將 Windows Server 2022 設定為 ONTAP 作為目標。
+您可以使用 ONTAP SAN 主機組態設定來設定 Windows Server 2022 ，以便與 ONTAP 儲存設備搭配運作。
 
 
 
-== 開機作業系統
+== 啟動 Windows 作業系統
 
-開機作業系統有兩種選項：使用本機開機或SAN開機。若要進行本機開機、您需要在本機硬碟（SSD、SATA、RAID等）上安裝作業系統。如需SAN開機、請參閱下列指示。
+您可以使用本機開機或 SAN 開機來開機 Windows 作業系統。如果您的組態支援 SAN 開機， NetApp 建議您使用該開機。
 
+[role="tabbed-block"]
+====
+.本機開機
+--
+在本機硬碟（ SSD ， SATA ， RAID 等）上安裝 Windows 作業系統，以執行本機開機。
 
+--
+.SAN開機
+--
+如果您選擇使用 SAN 開機，則必須由您的組態支援。
 
-=== SAN開機
+.開始之前
+使用 https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Windows 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
 
-如果您選擇使用SAN開機、您的組態必須支援SAN開機。您可以使用互通性對照表工具來驗證作業系統， HBA ， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否受到支援。
-
+.步驟
 . 將SAN開機LUN對應至主機。
++
+請參閱。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["SAN 儲存管理"^]
+
 . 確認有多個路徑可供使用。
 +
 
 NOTE: 只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。
 
-. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
-. 重新啟動主機、確認開機成功。
+. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
++
+如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
+
+. 重新啟動主機，確認開機成功
 
 
+--
+====
 
 
 == 安裝 Windows Hotfix
 
-NetApp 建議在伺服器上安裝 * 最新的累計更新 * 。
+NetApp 建議您在主機伺服器上安裝 Microsoft Update 目錄中提供的 * 最新累計更新 * 。
 
-
-NOTE: 前往 link:https://www.catalog.update.microsoft.com/Search.aspx?q=update%20%22windows%20server%202022%22["Microsoft Update目錄2022"^] 網站、取得並安裝適用於您Windows版本的必要Windows修補程式。
-
-. 從Microsoft支援網站下載即時修補程式。
+.步驟
+. 從下載 Hotfix link:https://www.catalog.update.microsoft.com/Search.aspx?q=update%20%22windows%20server%202022%22["Microsoft Update目錄2022"^]。
 
 
 
-NOTE: 部分修補程式無法直接下載。在這些情況下、您需要向Microsoft支援人員索取特定的修補程式。
+NOTE: 您需要聯絡 Microsoft 支援部門，以取得無法從 Microsoft Update 目錄下載的 Hotfix 。
 
 . 依照Microsoft提供的指示安裝修補程式。
 
 
 
-TIP: 許多修補程式都需要重新開機Windows主機、但您可以選擇等待重新開機主機、直到安裝或升級Host Utilities為止。
+TIP: 許多 Hotfix 都需要重新開機 Windows 主機。您可以選擇等待重新啟動主機，直到安裝或升級主機公用程式之後。
 
 
 
 == 安裝 Windows 主機公用程式
 
-Windows 主機公用程式是一組軟體程式，其中包含文件，可讓您將主機電腦連接至 NetApp SAN 上的虛擬磁碟（ LUN ）。NetApp 建議您下載並安裝最新的公用程式套件。如需蕪湖組態資訊與指示，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"]並選取 Windows 主機公用程式版本的安裝程序。
+Windows 主機公用程式是一組軟體程式，其中包含文件，可讓您將主機電腦連接至 NetApp SAN 上的虛擬磁碟（ LUN ）。NetApp 建議您下載並安裝最新的公用程式套件。如需 Windows 主機公用程式組態資訊和指示，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"]並選取 Windows 主機公用程式版本的安裝程序。
 
 
 
 == 多重路徑
 
-如果 Windows 主機有多個路徑通往儲存系統，則必須安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並設定多重路徑。如果沒有MPIO軟體、作業系統可能會將每個路徑視為獨立的磁碟、進而導致資料毀損。MPIO軟體為所有路徑的作業系統提供單一磁碟、而裝置專屬模組（DSM）則負責管理路徑容錯移轉。
+如果您的 Windows 主機有多個路徑通往儲存系統，則需要安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並啟用多重路徑。當您選取 MPIO 支援時， Windows 主機公用程式會啟用 Windows Server 2022 中包含的 MPIO 功能。如果您未使用 Windows 主機公用程式，則需要手動啟用多重路徑功能。
 
-在Windows系統上、任何MPIO解決方案的兩個主要元件為DSM和Windows MPIO。在Hyper-V虛擬機器中執行的Windows XP或Windows Vista不支援MPIO。
+MPIO 軟體為所有路徑提供 Windows 作業系統的單一磁碟，而裝置專用模組（ DSM ）則管理路徑容錯移轉。在 Windows 系統上，任何 MPIO 解決方案中的兩個主要元件是 DSM 和 Windows MPIO 。
 
 
-NOTE: 當您選取 MPIO 支援時， Windows 主機公用程式會啟用 Windows Server 2022 隨附的 MPIO 功能。
+CAUTION: 如果您不安裝 MPIO 軟體， Windows 作業系統可能會將每個路徑視為獨立的磁碟。這可能導致資料毀損。
+
+
+NOTE: 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO 。
 
 
 
 == SAN組態
 
+根據您的 SAN 組態，主機會使用所有 SAN 陣列（ ASA ）或非 ASA 組態來存取 ONTAP LUN 。在 ASA 和非 ASA 組態中，存取單一 ONTAP LUN 的路徑不應超過四條。如果您有四條以上的路徑，可能會在儲存設備故障期間導致路徑問題。
+
+
+
+=== 所有SAN陣列組態
+
+ASA 組態應該有一組具有單一優先順序的主動 / 最佳化路徑。這表示路徑由控制器提供服務，而 I/O 會在所有作用中路徑上傳送。
+
+下列範例顯示具有主動 / 最佳化路徑的 ONTAP LUN 的正確輸出。
+
+image::asa.png[具有主動 / 最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
+
 
 
 === 非ASA組態
 
-對於非ASA組態、應該有兩組具有不同優先順序的路徑。
+非 ASA 組態應該有兩個路徑群組，其優先順序不同。優先順序較高的路徑為主動 / 最佳化。這表示「主動 / 最佳化」路徑由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
 
-優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。
-
-優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。
-
-
-NOTE: 非最佳化路徑只有在最佳化路徑無法使用時才會使用。
-
-.範例
 下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
 
 image::nonasa.png[具有兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
 
 
 
-=== 所有SAN陣列組態
-
-對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑都是主動/最佳化的；也就是由控制器提供服務、並在所有作用中路徑上傳送I/O。
-
-image::asa.png[具有主動 / 最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
-
-
-NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
-
-
-
 == 建議設定
 
-在使用FC的系統上、選取MPIO時、必須提供Emulex和QLogic FC HBA的下列逾時值。
+當您在使用 FC 的系統上選取 MPIO 時， Host Utilities 安裝程式會為 Emulex 和 QLogic FC HBA 設定所需的逾時值。
 
-對於Emulex Fibre Channel HBA：
+[role="tabbed-block"]
+====
+.Emulex FC
+--
+Emulex FC HBA 的逾時值：
 
 [cols="2*"]
 |===
@@ -129,7 +144,10 @@ NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，
 
 | 節點時間輸出 | 10. 
 |===
-若為QLogic Fibre Channel HBA：
+--
+.QLogic FC
+--
+QLogic FC HBA 的逾時值：
 
 [cols="2*"]
 |===
@@ -141,8 +159,10 @@ NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，
 
 | PortDownRetryCount | 10. 
 |===
+--
+====
 
-NOTE: Windows 主機公用程式會設定這些值。如需詳細的建議設定，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"]，然後選取 Windows 主機公用程式版本的安裝程序。
+NOTE: 如需建議設定的詳細資訊，請參閱link:hu_wuhu_hba_settings.html["設定 Windows 主機公用程式的登錄設定"]。
 
 
 

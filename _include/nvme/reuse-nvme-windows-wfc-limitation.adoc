@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+NVMe / FC 不支援 Windows 容錯移轉叢集，因為 ONTAP 目前不支援 NVMe / FC 的持續保留。
+
++ 附註： Broadcom 隨附適用於 Windows NVMe / FC 的外部驅動程式，這是轉譯式 SCSI 非 NVMe 驅動程式，而非真正的 NVMe / FC 驅動程式。轉譯的負荷不一定會影響效能，但會抵消 NVMe / FC 的效能優勢。因此，在 Windows 伺服器上， NVMe / FC 和 FCP 的效能是相同的，不像其他作業系統，例如 Linux ，那就是 NVMe / FC 的效能遠比 FCP 的效能好。

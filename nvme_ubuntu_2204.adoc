@@ -4,7 +4,7 @@ permalink: nvme_ubuntu_2204.html
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: 如何使用 ONTAP 設定 Ubuntu 22.04 的 NVMe 主機 
 ---
-= 適用於 ONTAP 的 Ubuntu 22.04 的 NVMe 主機組態
+= 適用於 ONTAP 的 Ubuntu 24.04 的 NVMe 主機組態
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

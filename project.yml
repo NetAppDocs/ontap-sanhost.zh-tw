@@ -11,11 +11,11 @@ sidebar:
   entries:
   - title: 設定SAN主機和雲端用戶端
     url: "/index.html"
-  - title: 總覽
+  - title: 瞭解 SAN 主機組態
     url: "/overview.html"
   - title: 安裝 SAN 主機公用程式
     entries:
-    - title: 總覽
+    - title: 瞭解 SAN 主機公用程式
       url: "/hu_sanhost_index.html"
     - title: AIX主機公用程式
       entries:
@@ -378,6 +378,8 @@ sidebar:
     - title: Windows
       pdf-filename: Windows -FCP
       entries:
+      - title: '2025'
+        url: "/hu-windows-2025.html"
       - title: 2022年
         url: "/hu_windows_2022.html"
       - title: 2019年
@@ -510,6 +512,8 @@ sidebar:
         url: "/nvme_ubuntu_2204.html"
     - title: Windows
       entries:
+      - title: '2025'
+        url: "/nvme-windows-2025.html"
       - title: 2022年
         url: "/nvme_windows_2022.html"
       - title: 2019年

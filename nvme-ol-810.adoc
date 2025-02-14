@@ -425,7 +425,7 @@ NOTE: NetApp 建議將選項設定 `ctrl-loss-tmo`為「 -1 」，以便在路�
 
 == 驗證NVMe
 
-若要支援正確的 ONTAP LUN 作業，請確認核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
+驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
 
 .步驟
 . 確認已啟用核心內建 NVMe 多重路徑：

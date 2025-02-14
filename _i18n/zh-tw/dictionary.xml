@@ -11,7 +11,6 @@
   <block id="12979f8a3c6b4227894a0c63e81784a9" category="list-text">將SAN開機LUN對應至主機。</block>
   <block id="ae2b455a54af72efa36eb66631dcf444" category="list-text">在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。</block>
   <block id="482fb3c22fb491f46c3f0e54cea6b9d1" category="paragraph">如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。</block>
-  <block id="5a776bf93e0712efccb14ab4ad4ab170" category="list-text">重新啟動主機、確認開機成功。</block>
   <block id="4150162ad42bffea7bb903b4c7a4ffd9" category="section-title">多重路徑</block>
   <block id="ed81d40ee1a062d4852e88bbb707608d" category="paragraph">對於CentOS 6.4、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 6.4是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
   <block id="43387e22eb25565e2d012f61068ff5ff" category="paragraph">若要啟用ALUA處理常式、請執行下列步驟：</block>
@@ -84,56 +83,33 @@
   <block id="72421574ca16f2cc8486132314d384b7" category="list-text">使用「mkitrd」命令重新建立initrd-image。RHEL 6x及更新版本可使用以下命令：命令：「mkitrd -f /boot/ initrd-"uname -r"。imguname -r"或命令：「Dracut -f」</block>
   <block id="845baae8777888665cfa3588985a095e" category="paragraph">RHEL 6.10作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
   <block id="b2d91944503b473fe8f36b2e57bc92ad" category="summary">搭配ONTAP 使用Windows Server 2012 R2搭配使用</block>
-  <block id="bb0f6fb06e60baa493bb3441eb78e1ef" category="section-title">開機作業系統</block>
-  <block id="cf8e37c6ed225ec772faf3c88fe433b9" category="paragraph">開機作業系統有兩種選項：使用本機開機或SAN開機。若要進行本機開機、您需要在本機硬碟（SSD、SATA、RAID等）上安裝作業系統。如需SAN開機、請參閱下列指示。</block>
   <block id="d39909bec744e2f2c23d014243c69d33" category="section-title">SAN開機</block>
-  <block id="03ed98061513afaf0a716e8d7756931a" category="list-text">在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。</block>
   <block id="880b9ba9933b6e3ce087d9412e66470b" category="inline-link-macro">Microsoft Update目錄2012 R2</block>
-  <block id="0732474ba551155a9a0983a068b65a4e" category="admonition">前往 <block ref="c91fa8395bb99838be8ab4e7b48666cc" category="inline-link-macro-rx"></block> 網站、取得並安裝適用於您Windows版本的必要Windows修補程式。</block>
-  <block id="b9ae3f85c9e860efac72637c24ed529b" category="list-text">從Microsoft支援網站下載即時修補程式。</block>
-  <block id="623e88bd2085eeb3f49a2784ec97654e" category="admonition">部分修補程式無法直接下載。在這些情況下、您需要向Microsoft支援人員索取特定的修補程式。</block>
   <block id="5a3b43f9090be87b411af7ac82adcb38" category="list-text">依照Microsoft提供的指示安裝修補程式。</block>
-  <block id="56dd1899b4280d897ff6670fb0968e02" category="admonition">許多修補程式都需要重新開機Windows主機、但您可以選擇等待重新開機主機、直到安裝或升級Host Utilities為止。</block>
-  <block id="a0e497cbff11ff2d61625663418c3fc8" category="paragraph">在Windows系統上、任何MPIO解決方案的兩個主要元件為DSM和Windows MPIO。在Hyper-V虛擬機器中執行的Windows XP或Windows Vista不支援MPIO。</block>
   <block id="4f27a34799ad8580f67b93c57e242ad0" category="section-title">SAN組態</block>
   <block id="4bab92c0679e684c0db0cc740cd47758" category="section-title">非ASA組態</block>
-  <block id="62400040936d82d99ac08dd73758a123" category="paragraph">對於非ASA組態、應該有兩組具有不同優先順序的路徑。</block>
-  <block id="098ea71f2042c61bc1f4527ee7d06503" category="paragraph">下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。</block>
   <block id="7a0a3a29c4e371b5125adb49cae3a738" category="section-title">所有SAN陣列組態</block>
   <block id="c9bbd6792eac761da84ef7d035e5b41c" category="section-title">Hyper-V VHD需要對齊才能獲得最佳效能</block>
-  <block id="b5db8e140c9b8a986547e3b2766d1acf" category="paragraph">如果磁碟分割的資料區塊邊界與基礎LUN的區塊邊界不一致、則儲存系統通常必須針對每個作業系統區塊的讀取或寫入、完成兩個區塊的讀取或寫入。因對齊錯誤而產生的額外區塊讀取和寫入、可能會造成嚴重的效能問題。</block>
-  <block id="f7b5fa867e9aa465eda58085dc8cbee4" category="paragraph">主開機記錄所定義的每個分割區的起始磁區位置都會導致錯誤對齊。</block>
   <block id="270748dbbd5a9031b10d44f9f16973cf" category="admonition">Windows Server 2016建立的分割區依預設應保持一致。</block>
-  <block id="7b221632977cbed9f448c74705b35ed9" category="paragraph">使用NetApp PowerShell Toolkit中的「Get-NAVirtualDiskAllocation」指令程式ONTAP 、檢查分割區是否與基礎LUN一致。如果分割區的對齊不正確、請使用「修復-儲存磁碟對齊」指令程式、建立正確對齊的新VHD檔案。此Cmdlet會將所有分割區複製到新檔案。原始VHD檔案不會修改或刪除。複製資料時、必須關閉虛擬機器。</block>
-  <block id="a432483f271039135d89450152b7c2cd" category="paragraph">您可以在ONTAP NetApp社群下載《NetApp PowerShell Toolkit》。您必須將「DataONTAP.Zip」檔案解壓縮至環境變數「%PSModulePath%」所指定的位置（或使用「Install.ps1」指令碼為您執行）。安裝完成後、請使用「How－NAHelp」Cmdlet取得Cmdlet的說明。</block>
-  <block id="1390f52cfb4ccd4f9cbdcd7bcdb075a9" category="paragraph">PowerShell工具套件僅支援含MBR-類型分割區的固定大小VHD檔案。不支援使用Windows動態磁碟或GPT分割的VHD。此外、PowerShell Toolkit需要4 GB的最小分割區大小。較小的分割區無法正確對齊。</block>
   <block id="1104f990ade81e5b4d644288a54cf49a" category="admonition">對於在VHD上使用Grub開機載入程式的Linux虛擬機器、您必須在執行PowerShell Toolkit之後更新開機組態。</block>
   <block id="b9ef2c298abb1a6d04513bf9fee94dda" category="paragraph">在磁碟上執行「mbralign」、以使用Grub開機載入程式、在Linux客體作業系統上使用PowerShell Toolkit修正MBR-對齊之後、您必須重新安裝Grub、以確保客體作業系統能正確開機。</block>
-  <block id="a6e4f0d5cc29281e962b33fc7c84286f" category="paragraph">PowerShell Toolkit Cmdlet已完成虛擬機器的VHD檔案。本主題僅適用於使用Grub開機載入程式和「ystemRescueCd」的Linux客體作業系統。</block>
   <block id="972f2c4ba9001b48966c37ef2a152dc0" category="list-text">掛載安裝CD磁碟1的ISO映像、以取得適用於虛擬機器的正確Linux版本。</block>
   <block id="75cb80233f6f80283591654412489249" category="list-text">在Hyper-V Manager中開啟虛擬機器的主控台。</block>
-  <block id="3099a5656e3f912505f9d6912d810465" category="list-text">如果VM正在運行並掛起在Grub屏幕上，請在顯示區域中單擊以確保它處於活動狀態，然後單擊*Ctrl-Alt-Delete *工具欄圖標以重新引導VM。如果VM未執行、請啟動它、然後立即按一下顯示區域以確定它處於作用中狀態。</block>
   <block id="737083ee251b627f57dd05899466dc4b" category="list-text">一旦看到VMware BIOS啟動畫面、請按一下* Esc*鍵。隨即顯示開機功能表。</block>
   <block id="ccc37fa0e9dd606175ec88322d6be351" category="list-text">在開機功能表中、選取* CD-rom*。</block>
   <block id="8fc05f93a1e2b7d0f8e575b13b63b37d" category="list-text">在Linux開機畫面中、輸入：「Linux救援」</block>
   <block id="c1dc6d18649b347b978130011d44a49a" category="list-text">採用Anaconda的預設值（藍色/紅色組態畫面）。網路為選用功能。</block>
   <block id="241c8b3bd8818322d5fba757a4374a34" category="list-text">輸入"grub（grub）"以啟動Grub</block>
-  <block id="92f0faf086af04bc7264f494a2325bb8" category="list-text">如果此VM中只有一個虛擬磁碟、或是有多個磁碟、但第一個是開機磁碟、請執行下列Grub命令：</block>
-  <block id="2ad561b2290177fb94422e288a709d8a" category="paragraph">如果VM中有多個虛擬磁碟、而開機磁碟不是第一個磁碟、或者您是從未對齊的備份VHD開機來修正Grub、請輸入下列命令來識別開機磁碟：</block>
   <block id="e05674955ac595342c4c496ecfbdc101" category="paragraph">然後執行下列命令：</block>
-  <block id="03ed2a207516388ba04bfabe01205803" category="admonition">請注意、上面的「boot_disk」是開機磁碟實際磁碟識別碼的預留位置。</block>
   <block id="501d6d7f3776c626c1ec5d95589d5cca" category="list-text">按* Ctrl-D*登出。</block>
   <block id="ec93937c58f140d445e59c5bbc51be26" category="paragraph">Linux救援會關閉、然後重新開機。</block>
   <block id="2e8526cbe762cb1b8393d935a3b0bf16" category="section-title">建議設定</block>
-  <block id="1801611ab26d1810208b951594169cfe" category="paragraph">在使用FC的系統上、選取MPIO時、必須提供Emulex和QLogic FC HBA的下列逾時值。</block>
-  <block id="27a26e8988975d0cca1aae0df3ce6936" category="paragraph">對於Emulex Fibre Channel HBA：</block>
   <block id="1dd9d61dc0438fbaf47669042c33c32f" category="cell">內容類型</block>
   <block id="4a697eb9fdac91d5651375075c998596" category="cell">屬性值</block>
   <block id="ec66408da57b16ff80b53777a6defe4d" category="cell">LinkTimeDOut</block>
   <block id="c4ca4238a0b923820dcc509a6f75849b" category="cell">1.</block>
   <block id="313fad726a197f1c8b81e29dbda22a11" category="cell">節點時間輸出</block>
   <block id="d3d9446802a44259755d38e6d163e820" category="cell">10.</block>
-  <block id="74802e20676d4776b1eea0dca80bcb9a" category="paragraph">若為QLogic Fibre Channel HBA：</block>
   <block id="08a7801aadb2d395506d0735d17dcf62" category="cell">LinkDownTimeDOut</block>
   <block id="f9c8e6ceed8ad8db75740e78e48a6236" category="cell">PortDownRetryCount</block>
   <block id="482723983a4f2af954e36ff41e567451" category="section-title">已知限制</block>
@@ -166,7 +142,6 @@
   <block id="073055d89f87f920dc7706848774e7b2" category="paragraph">Oracle Linux 7.1支援Unbreakable Enterprise Kernel（UEK）R3和UEK R4。作業系統預設會以UEK R3核心開機。</block>
   <block id="66cd34e86ff7d645147b1d5d5a6c9f10" category="paragraph">對於Oracle Linux 7.1 UEK R3、請建立一個空的multipath.conf檔案。Oracle Linux 7.1 UEK的設定預設會自動更新、且不會更新ALUA。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="f4d88f38762443125e864f0e0bf3dc56" category="list-text">使用「dracut -f」命令重新建立initrd-image。</block>
-  <block id="0aa6d9cb7674d34a808be2224e074189" category="paragraph">下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。</block>
   <block id="6ff43f8d58cf03692931460affd888be" category="paragraph">Oracle Linux 7.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
   <block id="97bfb8bbe6415581f3c953b6daabb241" category="paragraph">下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「detect_prio'」的值、這些值與ONTAP 不相容於哪些LUN。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
   <block id="0ab1d58d11afaa3c04cf66282eb98ab3" category="inline-link-macro">建議設定</block>
@@ -644,30 +619,17 @@
   <block id="6c54367f89a8101fb18321adda6331eb" category="paragraph">對於Oracle Linux 7.5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.5的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="8eee884db44f521f0d19cac36bf258cc" category="summary">搭配ONTAP 使用Windows Server 2016搭配使用</block>
   <block id="f5cba97c30a47867e3649fd136cca68c" category="inline-link-macro">Microsoft Update目錄2016</block>
-  <block id="68744b8d382d9303c5e3ae596645d8f1" category="admonition">前往 <block ref="6e6b75f4256049ee1dbc008868e8aa3a" category="inline-link-macro-rx"></block> 網站、取得並安裝適用於您Windows版本的必要Windows修補程式。</block>
   <block id="480c1af29fcb3cc17dbe8a841a6a3c06" category="summary">說明如何搭配ONTAP 使用CentOS 8.2搭配使用功能</block>
   <block id="6d0ef457a6d83b808baa2444f1d454db" category="paragraph">對於CentOS 8.2、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.2已使用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。</block>
-  <block id="3c04c0dd9302edadef0b0e9a03b2ac43" category="summary">適用於Windows Server 2016 ONTAP 的NVMe / FC主機組態搭配使用</block>
-  <block id="dd19e6b1b8c34e56b1831595566adbf0" category="paragraph">適用於Windows Server 2016的NVMe 9.7或更新版本支援NVMe / FC ONTAP 。</block>
-  <block id="959ca5b147c021ab1f2cf1f45d4db6bb" category="paragraph">請注意、Broadcom啟動器可透過相同的32G FC介面卡連接埠、同時處理NVMe/FC和FCP流量。對於FCP和FC/NVMe、請使用MSDSM做為Microsoft多重路徑I/O（MPIO）選項。</block>
-  <block id="e069702f93877aa76c32a99b6780156b" category="paragraph">不支援ONTAP Windows容錯移轉叢集（WFC）搭配使用不支援使用NVMe / FC、因為ONTAP 目前不支援使用NVMe / FC的持續保留。</block>
-  <block id="f834e9106683e94a02939e2811ebbee2" category="admonition">Broadcom為Windows NVMe / FC提供的外部驅動程式並非真正的NVMe / FC驅動程式、而是轉譯式SCSI非NVMe驅動程式。這種轉譯負荷並不一定會影響效能、但確實會抵消NVMe / FC的效能優勢。因此、在Windows伺服器上、NVMe / FC和FCP的效能是一樣的、這與其他作業系統（例如Linux）不同、因為NVMe / FC的效能明顯優於FCP。</block>
-  <block id="025c962221700c78eb1d525adb016ea6" category="section-title">在Windows啟動器主機上啟用NVMe/FC</block>
-  <block id="e2e5374e9a78d7eca1de41fc5244e80e" category="paragraph">請遵循下列步驟、在Windows啟動器主機上啟用FC/NVMe：</block>
   <block id="410517e1f795e6fa809a7ff5630e2bdd" category="list-text">在Windows主機上安裝OneCommand Manager公用程式。</block>
   <block id="7d182740e5fe1d15ec7f97f69178b4a8" category="list-text">在每個HBA啟動器連接埠上、設定下列HBA驅動程式參數：</block>
   <block id="1d71ea83cceb2b7470e1c54838adb506" category="list-text">啟用NVMe = 1</block>
   <block id="814e9f528f5fa391cd6774e57a5c651c" category="list-text">NVMEMode = 0</block>
   <block id="12975cfd6b02fcd31121a100cbbb128c" category="list-text">LemTransferSize=1</block>
-  <block id="073bde40ca4f1c0bc9a2024c00df60ac" category="section-title">在Windows中設定適用於NVMe / FC的Broadcom FC介面卡</block>
-  <block id="95feeb984f6b07e38a54290d155380fb" category="paragraph">在Windows環境中使用適用於FC/NVMe的Broadcom介面卡時、每個主機匯流排介面卡（HBA）連接埠都會產生一個「+hostnqn+」。"+hostnqn+"格式如下。</block>
-  <block id="6d50f9a166e2b5b5cadd884e2bfaf99a" category="section-title">在Windows主機上啟用NVMe裝置的MPIO</block>
   <block id="cc6f38a02ffcad6a7b76b5c9c2a8a868" category="list-text">開啟MPIO內容。</block>
   <block id="8eff5eebf9f16bb0e2893ae3c5998da1" category="list-text">從*探索多重路徑*索引標籤、新增NVMe所列的裝置ID。</block>
   <block id="1fc4b6b7368b8cca78fdc9a59572d5bb" category="paragraph">MPIO會感知NVMe裝置、這些裝置可在磁碟管理下看到。</block>
   <block id="3d078be6c0d773e21485712592093767" category="list-text">打開* Disk Management（磁碟管理）*、然後移至* Disk Properties（磁碟內容）*。</block>
-  <block id="c56c265dd3b76c17d91729b1a2c7b1da" category="list-text">在「* MPIO *」索引標籤中、按一下「* Details *」。</block>
-  <block id="112e9e2cfc2ae539865d9bd23d9f1b92" category="list-text">設定下列MSDSM設定：</block>
   <block id="fd04a7962ed8b4dabd3626eddb6a9088" category="list-text">PathVerfiedPeriod:* 10*</block>
   <block id="2820aa7b776fec678048e070f821f6cd" category="list-text">PathVerifyEnabled:* Enabled*</block>
   <block id="e12372d6121f335ab4e6eea4bc8f1e6f" category="list-text">重試計數：* 6 *</block>
@@ -675,13 +637,6 @@
   <block id="85becc53ef98b63dce1fc3e1b356bd02" category="list-text">PDORemovedPeriod:* 130*</block>
   <block id="a0ae59a68ecc7cb46a13fb68c3b08410" category="list-text">選擇MPIO Policy * Round Robin with Subscal*。</block>
   <block id="2dca3dab4f027df43c5e5409a002b806" category="list-text">變更登錄值：</block>
-  <block id="7db08474ec0f5c1218d36b7273f2d1f7" category="paragraph">NVMe組態現在已在Windows主機上完成。</block>
-  <block id="5c03a66bcd7727b86eb8c79ccfacf5bb" category="list-text">驗證連接埠類型是否為FC+NVMe。</block>
-  <block id="79167b2c6f200dc7fb25ad8a1fc3a343" category="paragraph">啟用NVMe之後、您應該看到「+連接埠類型+」列示為「+FC+NVMe +」、如下所示。</block>
-  <block id="d3900b3975cc92bd8c4ed820f19eb77d" category="list-text">驗證是否已探索到NVMe/FC子系統。</block>
-  <block id="72d40a24406ca9cb1e27fe3058a463d9" category="paragraph">「+NVMe清單+」命令會列出NVMe / FC探索到的子系統。</block>
-  <block id="4d30c87ecbf573d3a03790c7a2971315" category="list-text">驗證是否已建立命名空間。</block>
-  <block id="8eabcd914763b27e42e21afc24ee68ce" category="paragraph">「+nNVMe清單-ns +」命令會列出指定NVMe目標的命名空間、列出連接至主機的命名空間。</block>
   <block id="3a1eadc8d9bb3cf94717f7abc94eae77" category="inline-link">Red Hat Enterprise Linux版本</block>
   <block id="ecd07dd2a42b46fb7e8f73e1e5544962" category="admonition">如需Oracle Linux（Red Hat相容核心）已知問題、請參閱對應的「已知問題」一節<block ref="939c54c506d35e0d0c1ee5e3c74f33dd" category="inline-link-rx"></block> 文件。</block>
   <block id="e373b253d3dda0488582e96b90463674" category="paragraph">「rpm -e netapp_Linux統一化_host_utilities - 7-1」</block>
@@ -804,7 +759,6 @@
   <block id="8c14192b8816f047aeb8cd691b0dcee5" category="paragraph">在上述範例中、兩個命名空間會對應至Oracle Linux 8.2 ANA主機。這可透過四個目標生命期來查看：兩個本機節點生命期、以及兩個其他合作夥伴/遠端節點生命期。此設定顯示主機上每個命名空間的兩個ANA最佳化路徑和兩個ANA不可存取路徑。</block>
   <block id="6b83d866c4dfa9b95b03b5a6ede846f7" category="summary">使用Windows Server 2019 ONTAP 搭配使用</block>
   <block id="51da3f0f90428027f2a496d366e696eb" category="inline-link-macro">2019年Microsoft Update目錄</block>
-  <block id="c1d8c8391831a9a897601503e32894d5" category="admonition">前往 <block ref="145f31fd192f816eb74b3bac6d3cac60" category="inline-link-macro-rx"></block> 網站、取得並安裝適用於您Windows版本的必要Windows修補程式。</block>
   <block id="120d1efb0373e4924670fa06d0e23b7d" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.3搭配使用功能</block>
   <block id="a62a1c6a3f1f4dcff8f3cfc9b1ff6c53" category="paragraph">對於Oracle Linux 7.3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.3的所有設定都經過編譯、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="eea65c7c864efb688d55381c5b21a910" category="summary">說明如何搭配ONTAP 使用Veritas Infoscale 6.5與6.7 for Linux搭配使用</block>
@@ -883,8 +837,6 @@
   <block id="16a3fbe78a74d2c0274fa4740e085eed" category="paragraph">對於Oracle Linux（OL）7.8、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 7.8是使用所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="39e2f887814ee9598f2240638f02ad73" category="summary">說明如何搭配ONTAP 使用CentOS 8.3搭配使用功能</block>
   <block id="ef00ac506f369c446209297666bbc1c1" category="paragraph">對於CentOS 8.3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.3是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
-  <block id="a4ce0de71d1077f7479ab2d2dd2983aa" category="summary">適用於Windows Server 2012 R2 ONTAP 的NVMe / FC主機組態搭配使用</block>
-  <block id="a20db5f8d609188514b6dc14c4022e68" category="paragraph">適用於Windows Server 2012的NVMe 9.7或更新版本支援NVMe / FC ONTAP 。</block>
   <block id="ba9c5cfb8923c683e175b0343242d5b2" category="summary">說明如何搭配ONTAP 使用CentOS 8.0搭配使用功能</block>
   <block id="2abffb2205f281bc82ee25fbb0545967" category="paragraph">對於CentOS 8.0、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.0是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="f75fbeea110530ab4a9306fd42a5e085" category="summary">說明如何搭配ONTAP 使用Oracle Linux 6.8 with介紹</block>
@@ -961,7 +913,6 @@
   <block id="e5e8913907553117e947ccc75671f941" category="cell">登錄機碼</block>
   <block id="2f13ada49ba30a3f17abc7ff1c610656" category="cell">設定時</block>
   <block id="353a3cc2e6698fc1eca7603cde3ca48e" category="cell">HKLM\system\System\CurrentControlSet\Services \msdsm\參\Parameters \DsmMaximumRetryTimeDingStateTransition</block>
-  <block id="d3bb06aa2e617fef664d4f9ea219e26d" category="cell">指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM</block>
   <block id="82f92b873b165010afb1e3db606cc578" category="cell">HKLM\system\System\CurrentControlSet\Services \msdsm\Parameters \DsmMaximumStateTransitionTime</block>
   <block id="aa20dc2a80a37d024aeb48f792ce37e7" category="cell">HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\DsmSupportedDevice清單</block>
   <block id="58964aa39a762d99f66ee51314c961fb" category="cell">" NETAPPLUN"</block>
@@ -999,12 +950,10 @@
   <block id="d869132de4d1117323541655c6e9f69b" category="cell">HKLM\system\System\CurrentControlSet\Services \vnetapp\Parameters\RetryCount</block>
   <block id="50df24e16fcbbdd3d1ecc483c34342cb" category="cell">HKLM \system\System\CurrentControlSet\Services \MPIO \Parameters\RetryInterval</block>
   <block id="74b9417aef19b6df4aefdba907d59f30" category="cell">HKLM\system\System\CurrentControlSet\Services \msdsm\Parameters\RetryInterval</block>
-  <block id="5945bff4ea07034f19a469d54aceb05d" category="cell">指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM</block>
   <block id="4c4ac49fb73d4856f852917288069ccd" category="cell">HKLM\system\System\CurrentControlSet\Services \vnetapp\Parameters\RetryInterval</block>
   <block id="a5b83cd29ece8eb608d8f558a14aafd2" category="cell">HKLM\system\CurrentControlSet \Services\disk\TimeOutValue</block>
   <block id="4637624d464362ff692d287b658a58ba" category="cell">如果未選取MPIO支援、除非Data ONTAP 偵測到不支援的情形</block>
   <block id="42dde1eb61f6c2638c5d044047417179" category="cell">HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval</block>
-  <block id="46a467f98c686e7e623f63c2bcb194ea" category="cell">當您的伺服器僅適用於Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時</block>
   <block id="c57dcf0db9f722653d2df0250b192c2f" category="inline-link">Microsoft文件</block>
   <block id="820c80a71d25737a6640c8135c800297" category="section-title">由Windows主機公用程式設定的FC HBA值</block>
   <block id="8f0fd19a2d99e6260c0b4e6513b7638c" category="inline-link">Emulex</block>
@@ -1069,7 +1018,6 @@
   <block id="47a1a789b24d958d3c073bab6e64e3b4" category="list-text">升級原生的NVMe-CLI套件。</block>
   <block id="3c4bf282fc2deeb24018cd11152fa91c" category="paragraph">這套原生的NVMe CLI套件包含NVMe / FC自動連線指令碼ONTAP 、即支援NVMe多重路徑循環負載平衡的支援、以及ONTAP NetApp的用於擴充名稱空間的外掛程式。</block>
   <block id="6b41fb8eea99b0d8d062e30f5b71d616" category="summary">適用於Windows Server 2019的NVMe / FC主機組態、ONTAP 含更新功能</block>
-  <block id="20a78b272b5f3dce057f1a808d44d00c" category="paragraph">適用於2019年Windows Server的NVMe 9.7或更新版本支援NVMe / FC ONTAP 。</block>
   <block id="51a78203e5d6aa30e5bcafd469a2d2be" category="summary">說明如何搭配ONTAP 使用SUSE Linux Enterprise Server 12附帶的SP5</block>
   <block id="3622b9af63906c6b9ad79d33b1f46e2e" category="paragraph">對於SUSE Linux Enterprise Server 12 SP5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。SUSE Linux Enterprise Server 12附帶所有必要設定、可辨識ONTAP 及正確管理各種LUN。</block>
   <block id="81a952f0a3b26ee44dabb3aa10180e75" category="summary">說明如何搭配ONTAP 使用CentOS 6.8搭配使用功能</block>
@@ -1280,11 +1228,8 @@
   <block id="8da61845fa1ac07e5d54097fe9d2a4cb" category="summary">說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterprise Server 15 SP4的NVMe/FC</block>
   <block id="0882578f9915da36a8ab5c612728ad30" category="paragraph">範例（A）：</block>
   <block id="806707e47ee8fe684a6d5e5b0898539a" category="sidebar">NVMeF OL</block>
-  <block id="0b6a095cb9010243600ae8c7163d4eab" category="summary">適用於Windows Server 2022的NVMe / FC主機組態、ONTAP 含功能更新</block>
-  <block id="3140d5ae29066c53a2abd430851c6993" category="paragraph">適用於Windows Server 2022的NVMe 9.7或更新版本支援NVMe / FC ONTAP 。</block>
   <block id="29b512fbc4379581cd2fd8694ca529c4" category="summary">搭配ONTAP 使用Windows Server 2022搭配使用</block>
   <block id="8d1d5b8defd8dab28a7e51c7b4ff5d33" category="inline-link-macro">Microsoft Update目錄2022</block>
-  <block id="6ea674183040bb4a5f8bcd1659c019d0" category="admonition">前往 <block ref="47dfbc363030c19b6fccb995dd42bb8c" category="inline-link-macro-rx"></block> 網站、取得並安裝適用於您Windows版本的必要Windows修補程式。</block>
   <block id="3a824154b16ed7dab899bf000b80eeee" category="sidebar">2022年</block>
   <block id="452d8ca267c17453aeeac8e238531175" category="sidebar">OA-FCP</block>
   <block id="e6a493a32b49704e906197646788a842" category="sidebar">ol-8-FCP</block>
@@ -1299,7 +1244,6 @@
   <block id="c345c92c1db74865c1b5cb8dad478651" category="summary">本內容針對發佈內容、提供如何設定連接ONTAP 到NetApp儲存設備的SAN用戶端的相關指引。</block>
   <block id="d1c811acf82829db30f1d8b3e6c940d6" category="doc">SAN主機和雲端用戶端</block>
   <block id="708c2a641aba7d3caf588312e9a41596" category="summary">本內容提供特定於發佈的指引、說明如何設定連接Cloud Volumes ONTAP 至下列項目的雲端用戶端ONTAP ：針對連接至內部部署ONTAP 的更新儲存設備的介面和SAN主機、設定連接至原地更新儲存設備的Amazon FSX和Amazon FSX。</block>
-  <block id="be2f9317bef1b02401365be22d60a02b" category="doc">SAN主機組態總覽</block>
   <block id="ab5c1cc33879491a00632f6478216936" category="paragraph">您的SAN主機和ONTAP 支援功能可存放在內部部署、雲端或兩者。</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="inline-link-macro">Cloud Volumes ONTAP</block>
   <block id="18cf072964a583150dd247485ba75b92" category="inline-link-macro">Amazon FSX for ONTAP Sf</block>
@@ -1314,7 +1258,6 @@
   <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows主機公用程式套件7.1</block>
   <block id="0165fb41a35ddb937948f77394256403" category="inline-link-macro">SAN主機Windows文件</block>
   <block id="6edf97e112927c25a9a1571ba78c02f9" category="list-text">檢查上個別主機所需的修補程式 <block ref="d639dff184f4bf79d87dbc978d26f542" category="inline-link-macro-rx"></block>。</block>
-  <block id="125c89a36748abb41fb38e89f5009ec9" category="inline-link-macro">使用Windows Server 2022 ONTAP 搭配使用</block>
   <block id="eff83cf87307f9f0c4cf876914031ade" category="inline-link-macro">安裝Windows修補程式</block>
   <block id="95dc0391ce7b396d7dd5622284e8fc3e" category="section-title">已知問題</block>
   <block id="56659c18435d50a38e076a58b32163a4" category="cell">執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block> 在執行Red Hat Enterprise Linux或SUSE Linux Enterprise Server的Hyper-V客體上、不再需要指令碼</block>
@@ -1323,7 +1266,6 @@
   <block id="05aa4f4bc5b51efef2c52f4fb2ddc55f" category="paragraph"><block ref="06c8d471f4d0311b3446a94e54fc8a82" category="inline-link-macro-rx"></block> 提供大多數已知問題的完整資訊、包括可能的建議因應措施。</block>
   <block id="1bad318175e7aa1eb67e6db2256bb9b1" category="paragraph">系統會將擷取的軟體放在您解壓縮儲存庫檔案的目錄中。</block>
   <block id="3ad269cd9c25c5c028bf155f768f0618" category="paragraph">根據預設、當沒有LUN可用的路徑時、AIX作業系統會強制執行較短的I/O逾時時間。這可能發生在單一交換器SAN架構和MetroCluster 體驗非計畫性容錯移轉的各種組態中。如需更多資訊及建議的預設設定變更、請參閱 <block ref="682b92f396ad2229bd62e99c5a518610" category="inline-link-macro-rx"></block></block>
-  <block id="eae76491b6011f6e80494775aea500b6" category="paragraph">對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑均為「主動/最佳化」、這表示它們由控制器提供服務、而I/O則會傳送至所有作用中路徑。</block>
   <block id="3012ce3908219f8e726469f86858ac26" category="paragraph">對於AIX、路徑控制模組（PCM）負責控制多個路徑。PCM是儲存設備廠商提供的程式碼、可處理路徑管理。這項功能會在主機公用程式安裝過程中安裝及啟用。</block>
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">在雲端環境中、主機通常稱為用戶端。此內容中的所有主機專屬資訊也適用於雲端用戶端。</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如、</block>
@@ -1349,7 +1291,6 @@
   <block id="579f8656182e55995ca799f60b8b3706" category="list-text">驗證<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 已設定、可讓Marvell介面卡以NVMe / FC啟動器的形式運作、使用下列命令：</block>
   <block id="0dea8ccda08dc1647ed0a458849e5cda" category="doc">適用於Oracle Linux 8.6的NVMe / FC主機組態、ONTAP 含功能</block>
   <block id="309cf24349edc5122d2f31c53280bf27" category="doc">NVMe / FC主機組態、適用於Oracle Linux 8.5 with ONTAP Fisc</block>
-  <block id="50d880869dbad54df4986a506d8e811c" category="admonition">您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 <block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block> 和 <block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>。</block>
   <block id="362156721e24ceedbadf34c0abc7e007" category="list-text">RHEL 9.1支援預設啟用的NVMe命名空間內核心NVMe多重路徑、不需要明確設定。</block>
   <block id="79d6a4c19ab1815ebac474c0cb176558" category="section-title">啟用核心內建NVMe多重路徑</block>
   <block id="2d012da343e217426e95ab334286ee04" category="list-text">驗證<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 已設定、可讓Marvell介面卡以NVMe / FC啟動器的形式運作、使用下列命令：</block>
@@ -1542,9 +1483,7 @@
   <block id="5db0ac001d15414764c966da33036c9d" category="paragraph">FC 、 NVMe / FC 和 iSCSI HBA 也有必須設定的參數、以確保最佳效能並成功處理儲存系統事件。</block>
   <block id="fb08e9e706df430eb21a77dc77a7e2cf" category="paragraph">您必須手動設定 iSCSI HBA 參數。</block>
   <block id="c372bc249b31090fc161de15de7b7603" category="admonition">HKLM 是的縮寫<block ref="86565cb5d05fc56046ceb32627a70264" prefix=" " category="inline-code"></block>。</block>
-  <block id="8e66c3776f07026b09cf93b7a7ef7b65" category="cell">指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 和 Windows 2019 、或 Windows Server 2022</block>
   <block id="6393c224d437438785810287f79cf4dc" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\msdssm\Parameters \DsmimumStateTransitionTime</block>
-  <block id="5e0f9034fc68a806750874502446868b" category="cell">如果指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、或 Windows Server 2016 、 Windows 2019 或 Windows Server 2022</block>
   <block id="507442ae6083cce9fd165274005cd952" category="cell">HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\DsmSupportedDeviceList</block>
   <block id="4032e28156cfb67550271f983690ac63" category="cell">「 NetApp LUN 」、「 NetApp LUN C 模式」、「 NVMe NetApp ONTAO Con 」</block>
   <block id="2a10dce2db92496db6490d59d8a30023" category="cell">HKLM\SYSTEM\CurrentControlSet\Control \Class\ ｛ iscsis_driver_GUID ｝ \ instance_ID \Parameters \IPSecConfigTimeout</block>
@@ -1553,16 +1492,12 @@
   <block id="3f2bc56be3f6b729d16e1597fa8b4941" category="cell">HKLM\SYSTEM\CurrentControlSet\Control \Class\ ｛ iscsis_driver_GUID ｝ \ instance_ID \Parameters \MaxRequestHoldTime</block>
   <block id="86d63918f540a0e97186b88a4bd8db36" category="cell">HKLM\SYSTEM\CurrentControlSet\Control \MPDEV\MPIOSupportedDeviceList</block>
   <block id="da30944c1d57c7273e8b0e5b8e7de029" category="cell">「 NetApp LUN 」、「 NetApp LUN C 模式」、「 NVMe NetApp ONTAO Con 」</block>
-  <block id="bfb9441a00a130e51838ed5e62e1fd1d" category="cell">當您的伺服器是 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022</block>
-  <block id="e02de9b30922acba32e7fbbc45bdb384" category="cell">指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022</block>
   <block id="011d6126050fa9b098fd5f8b3202e725" category="cell">HKLM\SYSTEM\CurrentControlSet\Services \vnetapp\Parameters\PathVerifyEnabled</block>
   <block id="0cb41c0c0339d303dbc72093df6e7bc2" category="cell">HKLM\SYSTEM\CurrentControlSet\Services \MPIO \Parameters\PDORemovePeriod</block>
-  <block id="fea42e9e2da5073e0810bd87ef74da3e" category="cell">指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022</block>
   <block id="d157c38b633d15d34a4e43ef4ea3b75e" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\PDORemovePeriod</block>
   <block id="167c82f7d0ec275e5272b5fc7600bc0e" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\MPIO \Parameters\RetryCount</block>
   <block id="a36e35adbb79918014ee8e4717ea399c" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\MPIO \Parameters\RetryInterval</block>
   <block id="dd0c0b55cec9c97153981c22e267be6d" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\msdsm \Parameters\RetryInterval</block>
-  <block id="0e8c3d4c6738d32b9e7adc30abf79b8b" category="cell">指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022</block>
   <block id="2faabf4d68e773f3251eae7f2305fe39" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\RetryInterval</block>
   <block id="a3b50b6fbb714e581e6f560a62661a92" category="cell">HKLM\SYSTEM\CurrentControlSet\Services \disk\TimeOutValue</block>
   <block id="c5a575f6523964e8855617a1937db583" category="section-title">NVMe 參數</block>
@@ -1976,7 +1911,6 @@
   <block id="5fa98009978b8534f94887b150f76e94" category="section-title">依主機裝置檔案名稱列出 ONTAP LUN 屬性</block>
   <block id="bd9053d2f5cfa60e3884b5bf2dcdc78f" category="paragraph">您可以透過指定主機裝置檔案名稱來擷取所有 ONTAP LUN 屬性的清單。</block>
   <block id="8d4478de8c42ac77a687fe1b9da495db" category="paragraph">使用 ONTAP 的 ESXi 7.x 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="34eb69c2ca284db87777cb75cdcf0dd9" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2019 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
   <block id="91770f038cd944a1d3b9b347edeb2b10" category="section-title">新增功能</block>
   <block id="47851fc857cb6267d67c526211828e1e" category="paragraph">Linux 主機公用程式 7.1 版本包含下列新功能與增強功能：</block>
   <block id="92d4f2c8b053dc173575e4ac46223415" category="list-text">Linux 主機公用程式現在稱為 Linux 統一主機公用程式、因為它支援執行 SANtricity 的 NetApp E 系列儲存系統、以及執行 ONTAP 的 AFF 、 FAS 和 ASA 系統。</block>
@@ -1984,11 +1918,9 @@
   <block id="7636f503a3339c628c780594076ebb17" category="section-title">已在此版本中修正</block>
   <block id="d2eefe458609a5477d08446697ea1261" category="paragraph">Linux 主機公用程式 7.1 版本有下列已知問題和限制。</block>
   <block id="7d21aae7a58430ed491d0dcc91fdc835" category="paragraph">OL 8.4 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="9de20e72ce939c2312bbc9e7045ded44" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2012 R2 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
   <block id="9139a77e42fad6b63368eea822f35757" category="paragraph">採用 ONTAP 的 RHEL 8.6 的 NVMe 主機組態有下列已知問題：</block>
   <block id="13dea42e38aa7f2230bd74fcabf6b0e8" category="paragraph">OL 8.6 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
   <block id="4036ce7f5249110346ac2f0ee1325460" category="paragraph">採用 ONTAP 的 RHEL 9.1 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="e3a71b9db068cf6781abb11924ac42ee" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2016 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
   <block id="2007c4c5bd8a037f1d8e640cb7e961c0" category="paragraph">您可以擷取對應至主機的主機啟動器清單。</block>
   <block id="0f72498039f4dd70eff202dff74b269e" category="paragraph">您可以從指定的 SVM 擷取對應至主機的所有 LUN 清單。</block>
   <block id="f7f35aac075a8552952158a8b905355f" category="paragraph">您可以擷取對應至主機之指定 LUN 的所有屬性清單。</block>
@@ -2000,7 +1932,6 @@
   <block id="364c9974898b89845661be07a4997db2" category="paragraph">您可以擷取指定 SVM 目標 LIF WWPN 在主機上所注意到的 ONTAP LUN 清單。</block>
   <block id="e214de5ea0b1a8eb765598cf4b80a404" category="summary">您可以為 NVMe over Fabrics （ NVMe of ）傳輸協定設定特定 SAN 主機。</block>
   <block id="b1199565b654a20a5acee144d68ae4cb" category="paragraph">採用 ONTAP 的 RHEL 9.0 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="b6351e6ceb9609fde0ff665d6ec8e551" category="paragraph">您可以使用 ONTAP 做為目標、在執行 Windows Server 2022 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ）。</block>
   <block id="71451af1b87baede129f9469cc138039" category="paragraph">採用 ONTAP 的 RHEL 8.7 NVMe 主機組態有下列已知問題：</block>
   <block id="5196c04a99b765f6b853ef816161d88a" category="paragraph">您可以使用 ONTAP SAN 主機組態設定來設定 vSphere 6.5.x 和 6.7.x 版本搭配 FC 、 FCoE 和 iSCSI 通訊協定。</block>
   <block id="adb402e65bdeaf3ca526f0f9c14f1f04" category="doc">HP-UX Host Utilities 6.0 命令參照</block>
@@ -2215,7 +2146,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="de8436327090df48b4ae3cc7a509c47a" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.3 與 ONTAP 設定為目標。</block>
   <block id="120fa6b913776d68e5e164c956047aef" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 9.1 設定為 ONTAP 作為目標。</block>
   <block id="36c728caff429b005ed9ebd7107f1598" category="paragraph">採用 ONTAP 版本的 RHEL 9.1 有下列已知問題：</block>
-  <block id="cb3888ca1ee5fb896dc6a9d63612b2a3" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Windows Server 2016 設定為 ONTAP 作為目標。</block>
   <block id="ce6daf5739712167ff9559d54d5b84d1" category="paragraph">使用 ONTAP 版本的 Windows Server 2016 沒有已知問題。</block>
   <block id="708aa4255b7e46bb95ff47e221b37a0f" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 CentOS 6.6 與 ONTAP 設定為目標。</block>
   <block id="8cf5a4e1d8829324666d40a8ffd9c07e" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 6.6 。</block>
@@ -2265,7 +2195,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="ce00fba9fd48aa9d2be034d6c85b2091" category="paragraph">RHEL 8.2 with ONTAP 版本並無已知問題。</block>
   <block id="397e645bcf3f261ce33a94c570c7becd" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 9.0 與 ONTAP 設定為目標。</block>
   <block id="b8cee175869cb9e7584357258e5139b9" category="paragraph">在 ONTAP 版本中、 RHEL 9.0 沒有已知問題。</block>
-  <block id="2689d8ed5ce1a7d58c69c12a56c0cf03" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將以 ONTAP 為目標的 Windows 伺服器 2019 設定為目標。</block>
   <block id="9a54de79abf75dfa58e891711132c192" category="paragraph">Windows Server 2019 搭配 ONTAP 版本並無已知問題。</block>
   <block id="2c28f13d66417467433a2437f55ea117" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.0 與 ONTAP 設定為目標。</block>
   <block id="001844af86b0a1f099720e6aed9988f7" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 6.8 設定為 ONTAP 作為目標。</block>
@@ -2327,7 +2256,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="ee0e00ac8a597d343ecf7da72dd6effd" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 6.10 與 ONTAP 設定為目標。</block>
   <block id="c7512b0badc93efcac520b6d3264ca72" category="paragraph">ONTAP 版本的 Oracle Linux 6.10 沒有已知問題。</block>
   <block id="5387bc3530d20a4d53855a62ea8e930c" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將以 ONTAP 為目標的 SUSE Linux Enterprise Server 15 設定為目標。</block>
-  <block id="525016cc385baf77c39fc096da262bc2" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Windows Server 2012 R2 設定為 ONTAP 作為目標。</block>
   <block id="8a95c3a52d7c4637ec5bd95d7e964b9a" category="paragraph">Windows Server 2012 R2 with ONTAP 版本沒有已知問題。</block>
   <block id="e37d4396f7a54a6aef6587965e32f2c9" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 7.9 設定為 ONTAP 作為目標。</block>
   <block id="289d4a224c51f2aeb418b081093d4d1e" category="sidebar">Solaris主機公用程式</block>
@@ -2388,10 +2316,8 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="86891fa05c8b78ad9621085c8abc1fb4" category="paragraph">您可以使用產生 JSON 檔案<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> 選項。如需更多語法選項、請參閱 NVMe CONNECT ALL 手冊頁。</block>
   <block id="0ecfee1e5b63a34e0c870ad349ab2d79" category="section-title">安裝 Windows Hotfix</block>
   <block id="f00aa3de5284bd6ffc1c6eb440a68428" category="inline-link-macro">Windows主機公用程式文件</block>
-  <block id="cffc00678708e63d08b03d05ada52624" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Windows Server 2022 設定為 ONTAP 作為目標。</block>
   <block id="6f49a4f8a77775eb655aad7d40795d50" category="section-title">使用 PowerShell Toolkit 修正 MBR 對齊之後、重新安裝適用於 Linux 來賓作業系統的 GRUB</block>
   <block id="29bdde7506503e06e915420031c09cbf" category="cell">iSCSI 軟體開機不支援每個工作階段多個連線（ MCS ）</block>
-  <block id="f27074de856fd7a4a667b8e75fcdfbec" category="paragraph">NetApp 建議在伺服器上安裝 * 最新的累計更新 * 。</block>
   <block id="3a891098b79eaa53ca214516fa78a5e6" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.1 的 NVMe 主機</block>
   <block id="5464d39105cc61c77c01f61a6c049eae" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.2 的 NVMe 主機</block>
   <block id="a5b8980d9b2b30a00ffe7dac19c43d5d" category="summary">說明如何搭配 ONTAP 使用 Red Hat Enterprise Linux 9.3</block>
@@ -2442,7 +2368,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="fef580c9fa53238fe6c716f723de316d" category="cell">由安裝程式用來設定 QLogic FC HBA 參數。</block>
   <block id="84fea991fbe5f206bc68a262753c59b8" category="cell">顯示主機公用程式和 FC HBA 的版本。</block>
   <block id="6c8b96accd87b84aaf295fbc85931b98" category="section-title">驗證您的主機和儲存系統組態</block>
-  <block id="48e099120e81dc142f9f2b406ffa722e" category="admonition">。 <block ref="c6686e038b760393cddd662d474b7627" category="inline-link-macro-rx"></block> 文件提供相關指示 <block ref="9dcc96c7a1b888cfbb8ae39c864be341" category="inline-link-macro-rx"></block> 適用於Windows伺服器2022。請參閱主機組態類別中的 Windows 文件、以尋找舊版 Windows 伺服器的相關 Hotfix 資訊。</block>
   <block id="08d8bdc537be4d932c64f646f257bd25" category="admonition">FC 和 iSCSI 通訊協定不需要在使用 SANtricity Storage Manager 的 E 系列儲存系統上取得授權。</block>
   <block id="121d9e4993fb92968420c9621abc9dd8" category="inline-link">SAN組態參考</block>
   <block id="2c7d2356b0521019a46eea80f92f6f1c" category="inline-link">E 系列硬體纜線</block>
@@ -2481,11 +2406,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="518879a09a758cd95e10ccda1b2ef7a8" category="doc">設定登錄設定</block>
   <block id="ef127e2524262f219434d09112047ee0" category="paragraph">主機公用程式需要特定的登錄和參數設定、以驗證 Windows 主機是否正確處理儲存系統行為。</block>
   <block id="c4cba2c44d214df950c2b380f4f1f8ee" category="paragraph">並非所有值都適用於 Storage Manager 的裝置專用模組（ DSM ）、但主機公用程式設定的值與 SANtricity for SANtricity Storage Manager 設定的值重疊、並不會造成衝突。</block>
-  <block id="4d09d39f1117fe865350d705a1213cc7" category="admonition">除非 NetApp 技術支援人員指示您變更這些值、否則您不應變更這些值。</block>
   <block id="40bb1ea4c1bbc484f41a531e80ddb519" category="admonition"><block ref="c6d731b2e6e90d0e19df48cb3d9d7498" prefix="" category="inline-code"></block> 為的縮寫<block ref="86565cb5d05fc56046ceb32627a70264" prefix=" " category="inline-code"></block>。</block>
   <block id="a624f3024f6945790c5f3a01e38649bf" category="paragraph">請參閱<block ref="cc2304a59b5feaeebd0c5646fd22caf0" category="inline-link-rx"></block> 以取得登錄參數詳細資料。</block>
   <block id="d7b45eaf5a2c22cb7c622ea9675a6f32" category="paragraph">在使用 FC 的系統上、 Host Utilities 安裝程式會設定 Emulex 和 QLogic FC HBA 所需的逾時值。</block>
-  <block id="940a1e5f8e791b017d34ecf8b0cd3de3" category="paragraph">對於 QLogic Fibre Channel HBA 、安裝程式會設定下列參數：</block>
   <block id="b182eae32a0022889eab1f98a5ba3a49" category="admonition">參數名稱可能會因程式而稍有不同。
 例如、在 QLogic QConverteConsole 程式中、參數會顯示為<block ref="b554d47c6702123b3a28a3e04ed39621" prefix=" " category="inline-code"></block>。
 主機公用程式<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " category="inline-code"></block> 檔案會將此參數顯示為兩者之一<block ref="08a7801aadb2d395506d0735d17dcf62" prefix=" " category="inline-code"></block> 或<block ref="e29ad18354768c222941f5de52fd92c9" prefix=" " category="inline-code"></block>，視是否指定 MPIO 而定。但是、所有這些名稱都是指相同的HBA參數。請參閱<block ref="6d63c8366c015331075fa86de38975e8" category="inline-link-rx"></block> 或<block ref="4399df604c07a452cc084d95811dafae" category="inline-link-rx"></block> 以深入瞭解逾時參數。</block>
@@ -2512,7 +2435,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="918af3e81e1488cf1519a1f43482b774" category="paragraph">Ubuntu 22.04 作業系統是為了辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="268d764f10521ffc4e0f9dfd03765bd6" category="paragraph">使用 ONTAP 版本的 Ubuntu 22.04 沒有已知問題。</block>
   <block id="78550e91fbb2b5810210b43b287b7c4e" category="summary">如何使用 ONTAP 設定 Ubuntu 22.04 的 NVMe 主機</block>
-  <block id="be09412791a80b1e99189d1da97f513c" category="doc">適用於 ONTAP 的 Ubuntu 22.04 的 NVMe 主機組態</block>
   <block id="c6846e0213409c96ad77f710fa307642" category="paragraph">含非對稱命名空間存取（ ANA ）的 Ubuntu 22.04 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="71251761db71d74ce129581af51deea0" category="paragraph">下列支援適用於 ONTAP 的 Ubuntu 22.04 NVMe 主機組態：</block>
   <block id="c7b8b08d4869ac84fdd57c23e53885a4" category="list-text">原生 NVMe - CLI 套件中的 NetApp 外掛程式會顯示 NVMe / FC 命名空間的 ONTAP 詳細資料。</block>
@@ -2610,7 +2532,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0705687e23a55c98a49a67821189d6b8" category="admonition">之後<block ref="ce0493257bc72d9f3741350d87a14b7d" prefix=" " category="inline-code"></block> 已套用、<block ref="3a8e4c06e471595f6eb262bb9b5582d9" prefix=" " category="inline-code"></block> 已新增至<block ref="552db9f221945d76c9e04206b850f3bc" prefix=" " category="inline-code"></block>。
 如需其他資訊及預設設定的建議變更、請參閱NetApp知識庫文章<block ref="38eefb55aea51664f737ddbdc6c85594" category="inline-link-rx"></block>。</block>
   <block id="24ae7542f38ef52be0ec1f780221fd23" category="sidebar">8.10.</block>
-  <block id="116d55b793d97066c1d9e8d10b5f4cf9" category="paragraph">對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑都是主動/最佳化的；也就是由控制器提供服務、並在所有作用中路徑上傳送I/O。</block>
   <block id="e0838e6ee58912186f2b21f886daa80d" category="image-alt">具有主動 / 最佳化路徑的 ONTAP LUN 螢幕擷取畫面</block>
   <block id="d485a78eda6522675d5ac87291b0f93b" category="image-alt">具有兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑的 ONTAP LUN 螢幕擷取畫面</block>
   <block id="c562be7af2a3a19ec7e17ebb8a3eeb49" category="paragraph">您可以將某些 SAN 主機設定為 FCP 或 iSCSI 、並將 ONTAP 設定為目標。首先安裝相關的作業系統主機公用程式套件、其中包括 SAN 工具套件。然後驗證 NetApp ONTAP LUN 的多重路徑設定。</block>
@@ -2645,7 +2566,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0f184640fa014a23c70b94529da4bca4" category="paragraph">ONTAP 版本的 Oracle Linux 9.3 沒有已知問題。</block>
   <block id="26adbe58d014b17e22edee324b7c14d8" category="paragraph">第一次建立<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：</block>
   <block id="524b08ad750352e65f141bb6a45404ad" category="list-text">將<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數設定為 256 ：</block>
-  <block id="032f906dd9faf121059404519f7da75d" category="admonition">非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="4e6815a5eaf606ab0b37b61763f811c3" category="paragraph"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要將內容附加至檔案。您可以在<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案中新增下列語法、以排除不需要的裝置。</block>
   <block id="f2d86a1e1d50cd6070c7ed2e2ac2a324" category="paragraph"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要將內容附加至檔案。您可以將下列語法新增至多重路徑.conf檔案、以排除不需要的裝置。</block>
   <block id="8d3d223fd7a6303b1d21d5a6d2ff42cf" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.9</block>
@@ -2699,34 +2619,25 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e53d231580138a5c74d1783c30057235" category="cell">Ubuntu 22.04 NVMe 主機會建立重複的持續探索控制器</block>
   <block id="f7529407d6b5167c4740699e83603d32" category="cell">在 NVMe 主機上、您可以使用「 NVMe 探索 -p 」命令來建立持續探索控制器（ LC ）。此命令只能為每個啟動器目標組合建立一個 PDC 。不過、如果您在 NVMe 主機上執行 Ubuntu 22.04 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。</block>
   <block id="19da5996e127dc42574323b94bce7dc8" category="paragraph">下列各節提供對應至 ASA 和非 ASA 角色之 LUN 的多重路徑輸出範例。</block>
-  <block id="22842eddc6851487a56907e9a4c8df95" category="paragraph">對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
-  <block id="7244aa1da89f577efceade42bc5989c1" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化、這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="f3478c814fd82f33620059d2d7656ea9" category="list-text">判斷 WWID ：</block>
   <block id="9eb91e4550c86ff0aa1e87339af6ac4a" category="paragraph">除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要直接將裝置新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案。若要排除不想要的裝置、請將下列語法新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案、以您要排除的裝置 WWID 字串取代 &lt;DevId&gt; ：</block>
   <block id="26abbb90105e84ce5c3470d46cb09443" category="paragraph">在以下範例中<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block>、是您要新增至黑名單的本機 SCSI 磁碟。</block>
   <block id="48a57465c9050da3e456de11a1bce0f0" category="list-text">重新啟動主機、確認開機成功。</block>
-  <block id="112599b7f7b863c3ca4f8c772391369c" category="paragraph">優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。</block>
-  <block id="f27578cbd0815667d51b4b52487a268d" category="paragraph">優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。</block>
   <block id="f7de5451f0d12f9de62cf0d59c9695f2" category="admonition">只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。</block>
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph"><block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block>命令會產生下列類型的輸出。下列範例中的輸出會被截斷。</block>
-  <block id="852dfc139ed83ad4444f6858d67973bf" category="paragraph">您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化、這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="2f4a9005041851e9a64a6509d048aa33" category="paragraph">在以下 Citrix XenServer 7.x 範例中<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block>、是您要新增至黑名單的本機 SCSI 磁碟。</block>
   <block id="a43126cc8c2ddd919f3ae99c4cf4c423" category="paragraph">對於 Citrix Hypervisor （ CH ） 8.x 、<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案必須存在、但您不需要對檔案進行特定變更。CH 8.x是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。您可以使用<block ref="e5268735d39d64bce63bec4d1a023fa2" prefix=" " category="inline-code"></block> status 命令來驗證 ONTAP LUN 的設定。下列各節提供對應至 ASA 角色之 LUN 的多重路徑輸出範例。</block>
   <block id="8f1e95bbd539f4c76614944f8cf01b52" category="paragraph">在以下 Citrix Hypervisor 8.x 範例中<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block>、是您要新增至黑名單的本機 SCSI 磁碟。</block>
   <block id="fb403c5f670d67ab47637709eb33917d" category="paragraph">在 SUSE Linux Enterprise Server 12 SP1 、 OL 7.2 、 RHEL 7.2 和 RHEL 6.8 中執行命令時、發生間歇性主機作業系統故障問題<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block>、在此版本中已修正。</block>
-  <block id="e6d87caecf449a6afce0f7a65052dd6a" category="list-text">驗證<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>命令的輸出以確保設定完成。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化、這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
-  <block id="b51b5afbdc51e3415dda2592b0259c70" category="paragraph">對於Oracle Linux 7.1 UEK R4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.1的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化、這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="e660061f6ca1690f631875aa9b659f5c" category="paragraph">下列各節提供對應至非 ASA 角色之 LUN 的多重路徑輸出範例。</block>
   <block id="f2694c4b7724c227a6fd0a9ab3d8a8f9" category="paragraph">下列各節提供對應至所有 SAN 陣列（ ASA ）和非 ASA 組態之 LUN 的多重路徑輸出範例。</block>
   <block id="b327c10d42e3a38ce2d60cb45f70f9d6" category="paragraph">下列各節提供對應至 ASA 和非 ASA 角色之 LUN 的多重路徑輸出範例。</block>
   <block id="1c3d645a37e60dbbd21e80cf7d5f54bb" category="paragraph">SUSE Linux Enterprise Server 15 SP1 with ONTAP 版本有下列已知問題：</block>
-  <block id="48d15b4e98b7350ae1ff3e31c9bdbdc1" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="08cd61144e582785c831f26c6e4c5c92" category="paragraph">SUSE Linux Enterprise Server 15 SP2 with ONTAP 版本有下列已知問題：</block>
   <block id="1f9090c13a627840d3e8110654671ecd" category="cell">完成 SUSE Linux Enterprise Server 15S P2 作業系統安裝後、無法使用靜態 IP 組態從 SAN 開機</block>
   <block id="74fe7cde6e68f9607ef6c16f62916dd8" category="paragraph">iSCSI sanbooted. LUN 在使用靜態 IP 組態完成 SUSE Linux Enterprise Server 15 SP2 作業系統安裝後無法開機。每次使用靜態IP組態時都會發生開機失敗。這會導致伺服器拒絕繼續開機程序、並顯示下列錯誤訊息：</block>
   <block id="e28079de974ec8ffab98cb9a1dc4bb49" category="paragraph">SUSE Linux Enterprise Server 15 SP4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本的顯示和非ASA組態、正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="7466d39e188f68573c9503fb3aca2a4c" category="paragraph">在下列範例中、<block ref="1dd59c7806bb784d02ed91f3980f5f17" prefix=" " category="inline-code"></block>命令用於驗證 VxDMP 多重路徑是否已附加 ONTAP 目標陣列。</block>
-  <block id="9ce5ce6f8b77bb8f2c3f95a375afb5b9" category="paragraph">對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為主動 / 最佳化、表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="bfa501ff636bcdd9d901c662b9d6853f" category="paragraph">NVMe over Fabrics或NVMe（包括NVMe / FC）可搭配Oracle Linux 8.3（非對稱命名空間存取（ANA））支援ONTAP 、以在整個過程中在整個過程中維持儲存容錯移轉（SFO）。ANA是NVMe環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。使用此程序、您可以使用 OL 8.3 上的 ANA 和 ONTAP 作為目標、來啟用內核 NVMe 多重路徑的 NVMe 。</block>
   <block id="97447b9c11ecf4cccde177a6834c134a" category="list-text">在 Oracle Linux 8.3 中、<block ref="dafde1b5ed9f22cccd76aeeb9844345b" prefix=" " category="inline-code"></block>指令碼會包含在原生的 NVMe CLI 套件中。您可以使用這些原生自動連線指令碼、而非安裝外部廠商提供的外箱自動連線指令碼。</block>
   <block id="2d1d27d4a22aac12bc1ee25fb58732b3" category="paragraph">OL 8.3 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
@@ -2930,9 +2841,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4d2491544460a0c7af79b0ca7492e6fd" category="paragraph">您應該一律檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。</block>
   <block id="d7b408d96809ae22d6292a5e84814c2a" category="admonition">單一 LUN 不應需要四個以上的路徑。超過四條路徑可能會在儲存設備故障期間造成路徑問題。</block>
   <block id="ec1fba1237506df59a6228cbfc26fd26" category="admonition">單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。</block>
-  <block id="f4de91a071d92f31569d9c8df2eafecc" category="admonition">在主機作業系統啟動並在路徑上執行之後，就可以使用多個路徑。</block>
   <block id="d7eeafe16e993a6db0f390553a4f2af4" category="paragraph">NVMe / TCP 傳輸協定不支援此<block ref="c73910bff7459eb78b9c2d1e7c0e3ed7" prefix=" " category="inline-code"></block>作業。您可以改為透過手動執行 NVMe / TCP 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>作業來探索 NVMe / TCP 子系統和命名空間<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block>。</block>
-  <block id="3ba1b1dfbe496360e686b5bebf95afa2" category="paragraph">若要支援正確的 ONTAP LUN 作業，請確認核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。</block>
   <block id="15090de1ea1067de344502d808b5a4bd" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.10</block>
   <block id="b10eaf512cfb063ba4b0781aefa988d5" category="doc">搭配 ONTAP 使用 Oracle Linux 8.10</block>
   <block id="2edf7768da0e39fb7431b55e42f9bd8f" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.10 與 ONTAP 設定為目標。</block>
@@ -3419,11 +3328,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5de1f1ffc4af04a7ba0c559424a84841" category="paragraph">此<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數必須設為 256 ，以便 lpfc 驅動程式發出高達 1MB 大小的 I/O 要求。</block>
   <block id="f2869e809227203f20526542f378586c" category="paragraph">ONTAP 會在識別控制器資料中報告 8 的 MDTS （ MAX Data 傳輸大小）。這表示最大 I/O 要求大小最多可達 1MB 。若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求，您應該將參數值<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>從預設值 64 增加<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block>至 256 。</block>
   <block id="01f3b61694e835dc0ccae70425e4829e" category="list-text">確認的值<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>為 256 ：</block>
-  <block id="bf250fa760a91be41ea487874ce876c3" category="paragraph">如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。如需支援組態和版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="0be5a9fa15c69dffd721e5b5c4d552c8" category="paragraph">Windows 主機公用程式是一組軟體程式，其中包含文件，可讓您將主機電腦連接至 NetApp SAN 上的虛擬磁碟（ LUN ）。NetApp 建議您下載並安裝最新的公用程式套件。如需蕪湖組態資訊與指示，請參閱<block ref="1035103116c48a69520d80b6269bd2d8" category="inline-link-macro-rx"></block>並選取 Windows 主機公用程式版本的安裝程序。</block>
-  <block id="139ba50bca955728b6e184ed1c1c3c52" category="paragraph">如果 Windows 主機有多個路徑通往儲存系統，則必須安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並設定多重路徑。如果沒有MPIO軟體、作業系統可能會將每個路徑視為獨立的磁碟、進而導致資料毀損。MPIO軟體為所有路徑的作業系統提供單一磁碟、而裝置專屬模組（DSM）則負責管理路徑容錯移轉。</block>
-  <block id="29a94bd8eaf5819778ac8d9e5ae8deda" category="admonition">Windows 主機公用程式會設定這些值。如需詳細的建議設定，請參閱<block ref="1035103116c48a69520d80b6269bd2d8" category="inline-link-macro-rx"></block>，然後選取 Windows 主機公用程式版本的安裝程序。</block>
-  <block id="454497beb31ba84245c914d8fb273d7b" category="paragraph">如果您選擇使用SAN開機、您的組態必須支援SAN開機。您可以使用互通性對照表工具來驗證作業系統， HBA ， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否受到支援。</block>
   <block id="22882a842ed3381cf11f4f74315c331a" category="summary">AIX 主機公用程式可協助您管理連接至 AIX 主機的 ONTAP 儲存設備。</block>
   <block id="affe7f44f33e44467d480857dfac9d27" category="list-text">AIX Microsoft 多重路徑 I/O （ MPIO ）（原生作業系統）</block>
   <block id="ed38028f27ef27d10213ff1a8b47d724" category="paragraph">您可以使用<block ref="d4eba3849609aea965d9c09098fd43df" category="inline-link-rx"></block>來驗證組態。</block>
@@ -3568,10 +3472,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f8396d6deec4872026f8255ab97b8282" category="paragraph">ESXi 提供一個稱為原生多路徑外掛程式（ NMP ）的可延伸多重路徑模組，可管理子外掛程式，儲存陣列類型外掛程式（ Storage Array Type Plugins ，簡稱 SATP ）和路徑選擇外掛程式（ CSP ）。根據預設、 ESXi 提供這些 SATAP 規則。</block>
   <block id="d44b14edb7148595e8fd7c39e18a1d82" category="paragraph">當您使用 vCenter UI 建立 vVols 資料存放區時，它會引導您建立 FlexVols 做為資料存放區的備份儲存區。 ESXi 主機會使用傳輸協定端點（ PE ）來存取 vVols 中的 vVols 。在SAN環境FlexVol 中、資料存放區中的每個功能區都會建立一個4 MB LUN、作為PE使用。SAN PE 是管理邏輯單元（ ALU ）。 VVols 是附屬邏輯單元（ SLU ）。</block>
   <block id="18daf84ed810f1c72da54c0484f9c353" category="section-title">安裝 Windows 主機公用程式</block>
-  <block id="2948d9820526fecc8824a5c473d3d0fb" category="admonition">當您選取 MPIO 支援時， Windows 主機公用程式會啟用 Windows Server 2012 R2 隨附的 MPIO 功能。</block>
-  <block id="2516a23cb4457d30ea64ceb607c71c81" category="admonition">當您選取 MPIO 時， Windows 主機公用程式會啟用 Windows Server 2016 隨附的 MPIO 功能。</block>
-  <block id="0f740c7258a7771e49923778d5197894" category="admonition">當您選取 MPIO 時， Windows 主機公用程式會啟用 Windows Server 2019 隨附的 MPIO 功能。</block>
-  <block id="2ebd8d2f4c9c0fcabd0789f9135a8c66" category="admonition">當您選取 MPIO 支援時， Windows 主機公用程式會啟用 Windows Server 2022 隨附的 MPIO 功能。</block>
   <block id="550d5f0555aa2a5e59269c14de819e78" category="summary">Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數，讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。</block>
   <block id="6896363d719a238fdc4b6d2ef8ef5a78" category="doc">安裝 Windows 主機公用程式 7.1</block>
   <block id="f0ed46888b875cc5c73315cc1272f90b" category="paragraph">Windows 主機公用程式可讓您將 Windows 主機電腦連接至 NetApp 儲存系統。</block>
@@ -3701,4 +3601,131 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="32d3d02609168b1cbff59b6a77ef5c96" category="sidebar">Windows 主機公用程式</block>
   <block id="3205357007dcc723614411bf3bce6b79" category="sidebar">升級 Windows 主機公用程式</block>
   <block id="5bd371b303a08f10ed03a43a40df6b03" category="sidebar">修復和移除 Windows 主機公用程式</block>
+  <block id="ebbd466160e6d2d7f97b6dab115ddc71" category="admonition">您可以使用本程序提供的組態設定<block ref="e817674c4b959088a38fc0d01ba3d16d" category="inline-link-macro-rx"></block>，來設定連線至和的雲端用戶端<block ref="5671724540e4dc98b668b1507167bffb" category="inline-link-macro-rx"></block>。</block>
+  <block id="64850e5ba65ccd603def52fce0d8ef52" category="paragraph">對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="3ac0cbe21a89eff36272c46427a6190f" category="paragraph">應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="f2e04893e244d58e7312b018d7c330cd" category="admonition">在主機作業系統啟動並在路徑上執行後、就會有多個路徑可供使用。</block>
+  <block id="39c75b1752c16e4e7cf46909e305e32e" category="paragraph">驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。</block>
+  <block id="570f72c2c071dfe2d63d01eb26c78095" category="paragraph">NVMe / FC 不支援 Windows 容錯移轉叢集，因為 ONTAP 目前不支援 NVMe / FC 的持續保留。</block>
+  <block id="48b56091857874f689d32ae6493fef1c" category="paragraph">+ 附註： Broadcom 隨附適用於 Windows NVMe / FC 的外部驅動程式，這是轉譯式 SCSI 非 NVMe 驅動程式，而非真正的 NVMe / FC 驅動程式。轉譯的負荷不一定會影響效能，但會抵消 NVMe / FC 的效能優勢。因此，在 Windows 伺服器上， NVMe / FC 和 FCP 的效能是相同的，不像其他作業系統，例如 Linux ，那就是 NVMe / FC 的效能遠比 FCP 的效能好。</block>
+  <block id="345857ba5e44cc7f1e2566ff2f498d3e" category="paragraph">Broadcom 啟動器可透過相同的 32G FC 介面卡連接埠，同時處理 NVMe / FC 和 FCP 流量。對於 FCP 和 FC/NVMe ，您應該使用 Microsft 裝置專用模組（ DSM ）做為 Microsoft 多重路徑 I/O （ MPIO ）選項。</block>
+  <block id="a1e3ef95782e0b597f9cdad5d031bc49" category="paragraph">A<block ref="eba7e0b12a189364b39ab6613de786ec" prefix=" " category="inline-code"></block> 與 Windows 環境中的 Broadcom 介面卡（含 FC/NVMe ）的每個主機匯流排介面卡（ HBA ）連接埠相關聯。<block ref="eba7e0b12a189364b39ab6613de786ec" prefix=" " category="inline-code"></block>格式如下例所示：</block>
+  <block id="7e651fd9dc979935568f88611690f422" category="paragraph">您需要啟用適用於 NVMe 裝置的 MPIO ，才能在 Windows 主機上完成 NVMe 組態。</block>
+  <block id="7cdfb9b34d9869e511ede1f2ae8c96bd" category="list-text">從 *MPIO 選項卡中，選擇 * 詳細資料 * 。</block>
+  <block id="2a95a47023ad8c770fa0dba7121d19d0" category="list-text">設定下列 Microsoft DSM 設定：</block>
+  <block id="46e5e5fad94838922e8ee5abdbd34921" category="paragraph">在 Windows 啟動器主機上啟用 FC/NVMe 。</block>
+  <block id="c89173c6dad5e2add16bc48f36e21f0c" category="paragraph">如需支援的 FC 介面卡和控制器清單，請參閱<block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block>。如需支援組態和版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
+  <block id="cf0d470c2ea1d2f9441fc5305a7fa106" category="paragraph">確認已探索到 NVMe 子系統，且 ONTAP 命名空間適用於 NVMe 組態。</block>
+  <block id="46afd7fa748ce56cf2cced7fc5c0463f" category="list-text">確認「連接埠類型」為<block ref="a5a83193bb9df73c19f2a972b3edc3ba" prefix=" " category="inline-code"></block>：</block>
+  <block id="ffc3bdcc2cf028fc3df243e5003e415f" category="paragraph"><block ref="91812d1be34d6e4aaa4c2e385e5ccb31" prefix="" category="inline-code"></block></block>
+  <block id="86b811f02b345837f0e8964bffd33c22" category="list-text">確認已探索到 NVMe / FC 子系統：</block>
+  <block id="a56b340f0fc521acb1e1500c6bc00862" category="list-text"><block ref="3b3d8dc7714e20532e01541b6d2478ed" prefix="" category="inline-code"></block></block>
+  <block id="12019871b1c1fb86c8b96a14a8a0d87b" category="list-text"><block ref="df729424b829987d85e6e4181d0da2e5" prefix="" category="inline-code"></block></block>
+  <block id="e9caa2fbbe110ef69dc016bc16c3a49d" category="list-text">確認已建立命名空間：</block>
+  <block id="ecf0c848ba2569e96b551762e31fb53a" category="paragraph"><block ref="a24d9720998709cd16e0a6013010df1b" prefix="" category="inline-code"></block></block>
+  <block id="c27f42ef1dd62f55beb26309bacd2581" category="paragraph">MPIO 軟體為所有路徑提供 Windows 作業系統的單一磁碟，而裝置專用模組（ DSM ）則管理路徑容錯移轉。在 Windows 系統上，任何 MPIO 解決方案中的兩個主要元件是 DSM 和 Windows MPIO 。</block>
+  <block id="9eb01e2d5f78a1ebcc6f4f019384dbf4" category="admonition">如果您不安裝 MPIO 軟體， Windows 作業系統可能會將每個路徑視為獨立的磁碟。這可能導致資料毀損。</block>
+  <block id="198983b35ee46ea062d1cabf85f522db" category="admonition">在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO 。</block>
+  <block id="ebafa948e488222fb51d74d762de66f4" category="paragraph">您可以使用本機開機或 SAN 開機來開機 Windows 作業系統。如果您的組態支援 SAN 開機， NetApp 建議您使用該開機。</block>
+  <block id="9ce2fcadde50a0f6f02b767f526a925d" category="open-title">本機開機</block>
+  <block id="df98c9f379a2c7043a362f477e6bc3ec" category="paragraph">在本機硬碟（ SSD ， SATA ， RAID 等）上安裝 Windows 作業系統，以執行本機開機。</block>
+  <block id="5c715b8fde529251e535a7b4e48f84c2" category="open-title">SAN開機</block>
+  <block id="58d0fc761c647663983ac6b7e586281c" category="paragraph">如果您選擇使用 SAN 開機，則必須由您的組態支援。</block>
+  <block id="47d17b750a3f193d9db742ef86494b1e" category="paragraph">使用<block ref="b77f230f2effb14751e6164ceee6da3f" category="inline-link-rx"></block>驗證您的 Windows 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。</block>
+  <block id="3097ad2af11c180c3e0a96a78dfe1685" category="inline-link-macro">SAN 儲存管理</block>
+  <block id="5fa27798a398e981850ac8db94c48efa" category="paragraph">請參閱。 <block ref="331abebe4c201790e2378608c644cbb6" category="inline-link-macro-rx"></block></block>
+  <block id="a68eb6fa2edcdc8960e83492a4af4541" category="list-text">重新啟動主機，確認開機成功</block>
+  <block id="ba5e9a5307d838817264d934e6080263" category="paragraph">根據您的 SAN 組態，主機會使用所有 SAN 陣列（ ASA ）或非 ASA 組態來存取 ONTAP LUN 。在 ASA 和非 ASA 組態中，存取單一 ONTAP LUN 的路徑不應超過四條。如果您有四條以上的路徑，可能會在儲存設備故障期間導致路徑問題。</block>
+  <block id="df71bac0ba76ff83dcf7e26b1350fe50" category="paragraph">ASA 組態應該有一組具有單一優先順序的主動 / 最佳化路徑。這表示路徑由控制器提供服務，而 I/O 會在所有作用中路徑上傳送。</block>
+  <block id="6a25c5df0849f9286646dc1c4746bc77" category="paragraph">下列範例顯示具有主動 / 最佳化路徑的 ONTAP LUN 的正確輸出。</block>
+  <block id="7e7bd9d92ebb121bcce736b10711ab8c" category="admonition">您需要聯絡 Microsoft 支援部門，以取得無法從 Microsoft Update 目錄下載的 Hotfix 。</block>
+  <block id="4c2bfdf61e2e24a49c061c9666b96e1b" category="admonition">許多 Hotfix 都需要重新開機 Windows 主機。您可以選擇等待重新啟動主機，直到安裝或升級主機公用程式之後。</block>
+  <block id="9bd687f53bb8eba834ecb54f33ebf261" category="paragraph">如果磁碟分割的資料區塊邊界與基礎 LUN 的區塊邊界不一致，則儲存系統通常必須針對每個作業系統區塊讀取或寫入完成兩個區塊讀取或寫入。因對齊錯誤而產生的額外區塊讀取和寫入、可能會造成嚴重的效能問題。</block>
+  <block id="2ff9b2398c78131af0b1d1523781ef19" category="paragraph">主開機記錄所定義的每個分割區的起始扇區位置會導致未對齊。</block>
+  <block id="6b56b79977ded504f44030c7aacf202c" category="paragraph">使用<block ref="4e1e27349c8a128a19e874bcbd0666b6" prefix=" " category="inline-code"></block> ONTAP PowerShell 工具組中的 Cmdlet 來檢查分割區是否與基礎 LUN 一致。如果分割區未正確對齊，請使用<block ref="1c425220dcb59c3825f2baed3229bb55" prefix=" " category="inline-code"></block> Cmdlet 建立正確對齊的新 VHD 檔案。此Cmdlet會將所有分割區複製到新檔案。原始VHD檔案不會修改或刪除。複製資料時、必須關閉虛擬機器。</block>
+  <block id="67d5317777feed5c5f907721eccb63d1" category="paragraph">您可以在ONTAP NetApp社群下載《NetApp PowerShell Toolkit》。您必須將檔案解壓縮<block ref="f9975b70d855f1fce1e9949953ca0e28" prefix=" " category="inline-code"></block>至環境變數所指定的位置<block ref="105b23cb210b6142f68f0f6f1d8cd1cb" prefix=" " category="inline-code"></block>（或使用<block ref="05555c8b844b7e945be8140460ba564c" prefix=" " category="inline-code"></block>指令碼為您執行）。完成安裝之後，請使用<block ref="0776c469e94bf86e8f54a0596ac6bd51" prefix=" " category="inline-code"></block> Cmdlet 取得 Cmdlet 的說明。</block>
+  <block id="a0b96a6b218fdba91fb2aacb84bdb32c" category="paragraph">PowerShell工具套件僅支援含MBR-類型分割區的固定大小VHD檔案。不支援使用 Windows 動態磁碟或 GPT 分割區的 VHD 。此外、PowerShell Toolkit需要4 GB的最小分割區大小。較小的分割區無法正確對齊。</block>
+  <block id="a9b04f14f3219b20221b1f298895e7f1" category="paragraph">Windows 主機公用程式是一組軟體程式，其中包含文件，可讓您將主機電腦連接至 NetApp SAN 上的虛擬磁碟（ LUN ）。NetApp 建議您下載並安裝最新的公用程式套件。如需 Windows 主機公用程式組態資訊和指示，請參閱<block ref="1035103116c48a69520d80b6269bd2d8" category="inline-link-macro-rx"></block>並選取 Windows 主機公用程式版本的安裝程序。</block>
+  <block id="b8e499b30940e319e34a9def3a8277a9" category="paragraph">非 ASA 組態應該有兩個路徑群組，其優先順序不同。優先順序較高的路徑為主動 / 最佳化。這表示「主動 / 最佳化」路徑由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="f5c21e4e25a06d31a8e38ae7a1270165" category="paragraph">當您在使用 FC 的系統上選取 MPIO 時， Host Utilities 安裝程式會為 Emulex 和 QLogic FC HBA 設定所需的逾時值。</block>
+  <block id="3e575d4c266efc0bf10abf8506bf9fc9" category="open-title">Emulex FC</block>
+  <block id="61d5be4d95eb9ed2c2aae574d01274d3" category="paragraph">Emulex FC HBA 的逾時值：</block>
+  <block id="2704ea6051977d60de74b19a5d26a552" category="open-title">QLogic FC</block>
+  <block id="1e2248ff99196b0abd94b919f10e5087" category="paragraph">QLogic FC HBA 的逾時值：</block>
+  <block id="54695ec579cd9f604542649198e293ff" category="inline-link-macro">設定 Windows 主機公用程式的登錄設定</block>
+  <block id="652e337de2c34d4fb20d8d014b085e00" category="admonition">如需建議設定的詳細資訊，請參閱<block ref="b7590f68c328ab26959227c8347d06f0" category="inline-link-macro-rx"></block>。</block>
+  <block id="20b917718e62cc33572b686d2c3ef283" category="paragraph">PowerShell Toolkit Cmdlet已完成虛擬機器的VHD檔案。此程序僅適用於使用 GRUB 開機 Loader 和的 Linux 來賓作業系統<block ref="601f2f600347fee361e3e2ca8b73a177" prefix=" " category="inline-code"></block>。</block>
+  <block id="df2077261c59032c7739522f829cdb8e" category="list-text">如果 VM 在 GRUB 畫面上執行並凍結，請在顯示區域中按一下以確定其為作用中狀態，然後選取 *Ctrl-Alt-Delete* 工具列圖示以重新啟動 VM 。如果VM未執行、請啟動它、然後立即按一下顯示區域以確定它處於作用中狀態。</block>
+  <block id="1efd70950af96e10b879896c7e865e47" category="list-text">如果此 VM 中只有一個虛擬磁碟，或是有多個磁碟，而第一個是開機磁碟，請執行下列 GRUB 命令：</block>
+  <block id="fcc869a543c1e80be3bdacff22793cf7" category="paragraph">如果 VM 中有多個虛擬磁碟，而且開機磁碟不是第一個磁碟，或是從未對齊的備份 VHD 開機來修復 GRUB ，請輸入下列命令來識別開機磁碟：</block>
+  <block id="68bccc9f47a1d689c835812de6c7a435" category="admonition">在中<block ref="7b530ba82b70d4821bf776b3f3fb778a" prefix=" " category="inline-code"></block>，<block ref="cd096f9e86c0ef0d9e34df35a959627c" prefix=" " category="inline-code"></block>是開機磁碟實際磁碟識別碼的預留位置。</block>
+  <block id="6b1a062ab30f453c4d8f30042bd36a0d" category="summary">您可以使用 ONTAP SAN 主機組態設定來設定 Windows Server 2025 ，以便與 ONTAP 儲存設備搭配運作。</block>
+  <block id="6cbabda8de389ba6ce8a60e0359b51b7" category="doc">為 ONTAP 儲存設備設定 Windows Server 2025</block>
+  <block id="24c9734089a30c666463d52a352e3326" category="section-title">啟動 Windows 作業系統</block>
+  <block id="d211c3930b27be56feb1a5044f105d64" category="paragraph">NetApp 建議您在主機伺服器上安裝 Microsoft Update 目錄中提供的 * 最新累計更新 * 。</block>
+  <block id="c6e9e839e8304cacb5378299e7f6ca42" category="inline-link-macro">Microsoft Update目錄2025</block>
+  <block id="68e5c8d1251c633565ba668446a95b32" category="list-text">從下載 Hotfix <block ref="86167046a85b88d4b396a82107daadba" category="inline-link-macro-rx"></block>。</block>
+  <block id="bcf622355381554644b7b19355170fb1" category="paragraph">如果您的 Windows 主機有多個路徑通往儲存系統，則需要安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並啟用多重路徑。</block>
+  <block id="4be31bb14f28cd1a1a92b994b241b6e3" category="paragraph">使用 ONTAP 版本的 Windows Server 2025 沒有已知問題。</block>
+  <block id="564407f81c68d8b8dba176bafd8d2c07" category="paragraph">您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="4fbe6cc46c4e7732ef1cd6a8c08ee6a9" category="paragraph">對於所有SAN陣列ASA （ESAN Array）組態、應該有一組具有單一優先順序的路徑。所有路徑皆為主動 / 最佳化。這表示它們由控制器提供服務，而 I/O 會在所有作用中路徑上傳送。</block>
+  <block id="769a40f63534a31b2b123052ac1da6ad" category="list-text">驗證<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>命令的輸出以確保設定完成。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="39d53198af3fc38b686628c26e87a4f8" category="paragraph">對於Oracle Linux 7.1 UEK R4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.1的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="47e930d345db593756a39027df077a51" category="paragraph">對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
+  <block id="fc50f2493bad30bed7c038ecd3810f93" category="doc">搭配 ONTAP 使用 Windows Server 2012 R2</block>
+  <block id="90e0eb50d77220c88968e61e6c89e567" category="paragraph">您可以使用 ONTAP SAN 主機組態設定來設定 Windows Server 2012 R2 ，以便與 ONTAP 儲存設備搭配運作。</block>
+  <block id="d7b8955c7b96bef9985fd48649d70251" category="list-text">從下載 Hotfix <block ref="c91fa8395bb99838be8ab4e7b48666cc" category="inline-link-macro-rx"></block>。</block>
+  <block id="0a2cdf45f16c5bcac7186ac07812cdce" category="paragraph">如果您的 Windows 主機有多個路徑通往儲存系統，則需要安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並啟用多重路徑。當您選取 MPIO 支援時， Windows 主機公用程式會啟用 Windows Server 2012 R2 中的 MPIO 功能。如果您未使用 Windows 主機公用程式，則需要手動啟用多重路徑功能。</block>
+  <block id="31c93f15c528366dfc58055f875a34cd" category="doc">搭配 ONTAP 使用 Windows Server 2016</block>
+  <block id="3d01866452cd64359121ccc794a6e0ca" category="paragraph">您可以使用 ONTAP SAN 主機組態設定，將 Windows Server 2016 設定為搭配 ONTAP 儲存設備運作。</block>
+  <block id="d933dd46766685abc25b001848a8b8a5" category="list-text">從下載 Hotfix <block ref="6e6b75f4256049ee1dbc008868e8aa3a" category="inline-link-macro-rx"></block>。</block>
+  <block id="43490c570a858087e3c2378b85a7dbea" category="paragraph">如果您的 Windows 主機有多個路徑通往儲存系統，則需要安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並啟用多重路徑。當您選取 MPIO 支援時， Windows 主機公用程式會啟用 Windows Server 2016 中包含的 MPIO 功能。如果您未使用 Windows 主機公用程式，則需要手動啟用多重路徑功能。</block>
+  <block id="4224c766e662726e9cf96dddea9f4e7a" category="doc">搭配 ONTAP 使用 Windows Server 2019</block>
+  <block id="7736a65c91a62ba2a8b7aadb3cf461da" category="paragraph">您可以使用 ONTAP SAN 主機組態設定，將 Windows 伺服器 2019 與 ONTAP 一起設定，以便與 ONTAP 儲存設備搭配運作。</block>
+  <block id="35fec4b95b75bf64df4556334d921ef8" category="list-text">從下載 Hotfix <block ref="145f31fd192f816eb74b3bac6d3cac60" category="inline-link-macro-rx"></block>。</block>
+  <block id="c94dd2d695431882dfa7ae6e19a7febb" category="paragraph">如果您的 Windows 主機有多個路徑通往儲存系統，則需要安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並啟用多重路徑。當您選取 MPIO 支援時， Windows 主機公用程式會啟用 Windows Server 2019 中的 MPIO 功能。如果您未使用 Windows 主機公用程式，則需要手動啟用多重路徑功能。</block>
+  <block id="a1c2de0c15edd5b78acba06a44bdcd8a" category="doc">搭配 ONTAP 使用 Windows Server 2022</block>
+  <block id="2dee01b5959243269004d022056184d2" category="paragraph">您可以使用 ONTAP SAN 主機組態設定來設定 Windows Server 2022 ，以便與 ONTAP 儲存設備搭配運作。</block>
+  <block id="c770fe286b0fbfc90b0ed457920cd83d" category="list-text">從下載 Hotfix <block ref="47dfbc363030c19b6fccb995dd42bb8c" category="inline-link-macro-rx"></block>。</block>
+  <block id="fa9f943956ba22db15d970418ff02172" category="paragraph">如果您的 Windows 主機有多個路徑通往儲存系統，則需要安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並啟用多重路徑。當您選取 MPIO 支援時， Windows 主機公用程式會啟用 Windows Server 2022 中包含的 MPIO 功能。如果您未使用 Windows 主機公用程式，則需要手動啟用多重路徑功能。</block>
+  <block id="1628ca90abc9594100e347a697e2dc68" category="inline-link-macro">搭配 ONTAP 使用 Windows Server 2022</block>
+  <block id="70d71bae405a7523fd995c196332326a" category="admonition">本<block ref="196238094ec94cba164df46da9abe159" category="inline-link-macro-rx"></block>文件提供 Windows Server 2022 的相關說明<block ref="9dcc96c7a1b888cfbb8ae39c864be341" category="inline-link-macro-rx"></block>。請參閱主機組態類別中的 Windows 文件、以尋找舊版 Windows 伺服器的相關 Hotfix 資訊。</block>
+  <block id="8abc082f978aa2a27e65e7507ac905d7" category="paragraph">Windows 主機公用程式支援下列 Windows 版本：</block>
+  <block id="989db21aea1c122bc4034e50ecb6887c" category="list-text">Windows 2025</block>
+  <block id="54ad126c575a982a9193e9a904789b96" category="paragraph">安裝 Windows 主機公用程式 7.2 之後，您需要變更 LimTransferSize 參數值，請參閱<block ref="ce2819af0e0859b56105f0d0261dbfb3" category="inline-xref-macro-rx"></block>。</block>
+  <block id="1beed36fb41e6829b1b802156fe677e5" category="paragraph">對於 Windows 主機公用程式 7.2 和 7.1 的所有其他參數和登錄機碼，除非技術支援人員告訴您變更這些值。</block>
+  <block id="e1fb3bc85942df243da9db83c85073bd" category="cell">如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2</block>
+  <block id="e391b693ae84de83009e50a6ff0d773d" category="cell">當您的伺服器是 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 時</block>
+  <block id="10e20033accbc339bb5469c868b2b071" category="cell">如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2</block>
+  <block id="fa5c369c0560373ede3332d2508c4819" category="paragraph">安裝 Windows 主機公用程式 7.2 時， LimTransferSize 參數會自動設為「 1 」。安裝後，您需要手動將 LimTransferSize 值變更為「 0 」，然後重新啟動伺服器。</block>
+  <block id="70cefc9a608dc188dd16deb1397a1529" category="cell">指定 MPIO 支援，且您的伺服器為 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 ，但偵測到 Data ONTAP DSM 除外</block>
+  <block id="28c4a2aff9dab89964d88a9594119baa" category="cell">當您的伺服器是 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 時</block>
+  <block id="88db364807adcc50e3c03e4e7c2eb386" category="paragraph">對於 QLogic FC HBA 、安裝程式會設定下列參數：</block>
+  <block id="b76b67fa1e708efcaa2d6a257e3dc3a5" category="summary">適用於Windows Server 2052的NVMe / FC主機組態、ONTAP 含功能更新</block>
+  <block id="e240b4a9acf4df1925780394d9f14be9" category="doc">使用適用於 ONTAP 的 NVMe / FC 來設定 Windows Server 2025</block>
+  <block id="1332a2397f4fcbb21e78a6e3c713af4b" category="paragraph">您可以在執行 Windows Server 2025 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。</block>
+  <block id="936aa4aa59385428bc622db0d7601422" category="paragraph">您可以在 Windows 2025 的 NVMe / FC 主機組態中使用下列支援。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="1e6b2c27b558cd0699ca10f52adf7cee" category="paragraph">從 ONTAP 9.10.1 開始， Windows Server 2025 支援 NVMe / FC 。</block>
+  <block id="62dc47abb3bb749d8074640021c80245" category="admonition">Broadcom 隨附 Windows NVMe / FC 的外部驅動程式，這是轉譯式 SCSI 變速度 NVMe 驅動程式，而非真正的 NVMe / FC 驅動程式。轉譯的負荷不一定會影響效能，但會抵消 NVMe / FC 的效能優勢。因此，在 Windows 伺服器上， NVMe / FC 和 FCP 的效能是相同的，不像其他作業系統，例如 Linux ，那就是 NVMe / FC 的效能遠比 FCP 的效能好。</block>
+  <block id="9d955c40c223a3d99336abaa0005165e" category="section-title">設定 Broadcom FC 介面卡</block>
+  <block id="2fe841686078dd687f3a792667f8b956" category="section-title">為 NVMe 裝置啟用 MPIO</block>
+  <block id="72da748d73a42a301641d8386d5ccd84" category="section-title">驗證 NVMe / FC 組態</block>
+  <block id="e37b1cc77523d8fdebbd8a906862a304" category="summary">您可以在執行 Windows Server 2012 R2 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。</block>
+  <block id="2a4f572bfb226597f119fc014a2027e6" category="doc">使用適用於 ONTAP 的 NVMe / FC 設定 Windows Server 2012 R2</block>
+  <block id="38e75942057e2acd088cefeb91d3a25a" category="paragraph">您可以在 Windows 2012 R2 的 NVMe / FC 主機組態中使用下列支援。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="384913c95b694411ecc97e52c4fd81b1" category="paragraph">從 ONTAP 9.7 開始， Windows Server 2012 R2 支援 NVMe / FC 。</block>
+  <block id="0a75cdec971ef2b5a936bbfb76129003" category="summary">您可以在執行 Windows Server 2016 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。</block>
+  <block id="2c3cd86c61fa3a40802b9cbd9aa1b264" category="doc">使用適用於 ONTAP 的 NVMe / FC 來設定 Windows Server 2016</block>
+  <block id="918da7d62848f1cca68a95a4cb9f048c" category="paragraph">您可以在 Windows 2016 的 NVMe / FC 主機組態中使用下列支援。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="a6c8aa67eaefff3cc4467e31bae8b830" category="paragraph">從 ONTAP 9.7 開始， Windows Server 2016 支援 NVMe / FC 。</block>
+  <block id="70a766ab0540f0ab26e0e875bd8d36f6" category="summary">您可以在執行 Windows Server 2019 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。</block>
+  <block id="f679945e06867d32db47f57ecd2d5d4b" category="paragraph">您可以在執行 Windows Server 2019 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。</block>
+  <block id="b7f4c93fc041774be908c564dd8dfa10" category="paragraph">您可以在 Windows 2019 的 NVMe / FC 主機組態中使用下列支援。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="99d2934d97078624f5f6051de1b097cf" category="paragraph">從 ONTAP 9.7 開始， Windows Server 2019 支援 NVMe / FC 。</block>
+  <block id="19a23d4f4a4ea3d0f3bb4d9585dd09f4" category="summary">您可以在執行 Windows Server 2022 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。</block>
+  <block id="15959231e0ffc0cb978f1a4a3578f42b" category="doc">使用適用於 ONTAP 的 NVMe / FC 來設定 Windows Server 2022</block>
+  <block id="a94e07a9fc4da4898bb19865e9811596" category="paragraph">您可以將下列支援搭配適用於 Windows 2022 的 NVMe / FC 主機組態使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="446a12d919c8ace091d69571c8964509" category="paragraph">從 ONTAP 9.7 開始， Windows Server 2022 支援 NVMe / FC 。</block>
+  <block id="d26e08171a5072e33fe155b7ad5a5659" category="doc">瞭解 SAN 主機組態</block>
+  <block id="312351bff07989769097660a56395065" category="sidebar">2025</block>
 </blocks>

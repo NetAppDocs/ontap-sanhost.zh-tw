@@ -37,7 +37,7 @@ NetApp 強烈建議您安裝 Linux 主機公用程式，但並非強制安裝。
 
 
 
-NOTE: 您可以使用本文所提供的組態設定來設定連線至的雲端用戶端 link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 和 link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]。
+NOTE: 您可以使用本程序提供的組態設定link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]，來設定連線至和的雲端用戶端link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]。
 
 
 
@@ -76,7 +76,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 . 確認有多個路徑可供使用。
 +
 
-NOTE: 在主機作業系統啟動並在路徑上執行之後，就可以使用多個路徑。
+NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路徑可供使用。
 
 . 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
 +
@@ -91,10 +91,10 @@ NOTE: 在主機作業系統啟動並在路徑上執行之後，就可以使用�
 
 對於Oracle Linux 7.4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.4是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。
 
-您可以使用 `multipath -ll`命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化、這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的、但未最佳化、因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
+您可以使用 `multipath -ll`命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
 
 .範例
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
 
 [listing]
 ----

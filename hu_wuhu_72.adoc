@@ -18,6 +18,7 @@ Windows 主機公用程式可讓您將 Windows 主機電腦連接至 NetApp 儲�
 
 Windows 主機公用程式支援下列 Windows 版本：
 
+* Windows 2025
 * Windows 2022
 * Windows 2019
 * Windows 2016
@@ -62,7 +63,7 @@ Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 
 . 檢查中個別主機所需的 Hotfix link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機Windows文件"]。
 +
 
-NOTE: 。 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["使用Windows Server 2022 ONTAP 搭配使用"] 文件提供相關指示 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["安裝Windows修補程式"] 適用於Windows伺服器2022。請參閱主機組態類別中的 Windows 文件、以尋找舊版 Windows 伺服器的相關 Hotfix 資訊。
+NOTE: 本link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["搭配 ONTAP 使用 Windows Server 2022"]文件提供 Windows Server 2022 的相關說明link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["安裝Windows修補程式"]。請參閱主機組態類別中的 Windows 文件、以尋找舊版 Windows 伺服器的相關 Hotfix 資訊。
 
 . 新增 iSCSI 、 FCP 或 NVMe 授權、然後啟動目標服務。
 +

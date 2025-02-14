@@ -2,14 +2,11 @@
 :allow-uri-read: 
 
 
-. 從Microsoft支援網站下載即時修補程式。
 
-
-
-NOTE: 部分修補程式無法直接下載。在這些情況下、您需要向Microsoft支援人員索取特定的修補程式。
+NOTE: 您需要聯絡 Microsoft 支援部門，以取得無法從 Microsoft Update 目錄下載的 Hotfix 。
 
 . 依照Microsoft提供的指示安裝修補程式。
 
 
 
-TIP: 許多修補程式都需要重新開機Windows主機、但您可以選擇等待重新開機主機、直到安裝或升級Host Utilities為止。
+TIP: 許多 Hotfix 都需要重新開機 Windows 主機。您可以選擇等待重新啟動主機，直到安裝或升級主機公用程式之後。

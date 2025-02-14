@@ -4,7 +4,7 @@ permalink: hu_wuhu_hba_settings.html
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數，讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。 
 ---
-= 設定登錄設定
+= 設定 Windows 主機公用程式的登錄設定
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -33,9 +33,13 @@ Windows 主機公用程式隨附的安裝程式會將 Windows ， FC 和 NVMe / 
 
 安裝程式會根據您在執行安裝程式時是否指定 Microsoft 多重路徑 I/O （ MPIO ）支援來設定不同的值。
 
+[NOTE]
+====
+安裝 Windows 主機公用程式 7.2 之後，您需要變更 LimTransferSize 參數值，請參閱<<nvme_parameters,NVMe 參數>>。
 
-NOTE: 除非 NetApp 技術支援人員指示您變更這些值、否則您不應變更這些值。
+對於 Windows 主機公用程式 7.2 和 7.1 的所有其他參數和登錄機碼，除非技術支援人員告訴您變更這些值。
 
+====
 
 
 == Windows 主機公用程式 7.2 設定的登錄值
@@ -52,10 +56,10 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 | 登錄機碼 | 價值 | 設定時 
 
 
-| HKLM\system\System\CurrentControlSet\Services \msdsm\參\Parameters \DsmMaximumRetryTimeDingStateTransition | 120 | 指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 和 Windows 2019 、或 Windows Server 2022 
+| HKLM\system\System\CurrentControlSet\Services \msdsm\參\Parameters \DsmMaximumRetryTimeDingStateTransition | 120 | 如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdssm\Parameters \DsmimumStateTransitionTime | 120 | 如果指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、或 Windows Server 2016 、 Windows 2019 或 Windows Server 2022 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdssm\Parameters \DsmimumStateTransitionTime | 120 | 如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\DsmSupportedDeviceList | 「 NetApp LUN 」、「 NetApp LUN C 模式」、「 NVMe NetApp ONTAO Con 」 | 指定MPIO支援時 
@@ -79,13 +83,13 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 | HKLM\SYSTEM\CurrentControlSet\Control \MPDEV\MPIOSupportedDeviceList | 「 NetApp LUN 」、「 NetApp LUN C 模式」、「 NVMe NetApp ONTAO Con 」 | 指定MPIO支援時 
 
 
-| HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\PathRecoveryInterval | 30 | 當您的伺服器是 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022 
+| HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\PathRecoveryInterval | 30 | 當您的伺服器是 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 時 
 
 
 | 已啟用HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\PathVerifyEnabled | 1. | 指定MPIO支援時 
 
 
-| 已啟用HKLM \system\System\CurrentControlSet\Services \msdsm\Parameters\PathVerifyEnabled | 1. | 指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022 
+| 已啟用HKLM \system\System\CurrentControlSet\Services \msdsm\Parameters\PathVerifyEnabled | 1. | 如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services \vnetapp\Parameters\PathVerifyEnabled | 0 | 指定MPIO支援時 
@@ -94,22 +98,22 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 | HKLM\SYSTEM\CurrentControlSet\Services \MPIO \Parameters\PDORemovePeriod | 130 | 指定MPIO支援時 
 
 
-| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\PDORemovePeriod | 130 | 指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022 
+| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\PDORemovePeriod | 130 | 如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\PDORemovePeriod | 130 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
+| HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\PDORemovePeriod | 130 | 指定MPIO支援時 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO \Parameters\RetryCount | 6. | 指定MPIO支援時 
 
 
-| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\RetryCount | 6. | 指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022 
+| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\RetryCount | 6. | 如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\MPIO \Parameters\RetryInterval | 1. | 指定MPIO支援時 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services\msdsm \Parameters\RetryInterval | 1. | 指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022 
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm \Parameters\RetryInterval | 1. | 如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\RetryInterval | 1. | 指定MPIO支援時 
@@ -118,7 +122,7 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 | HKLM\SYSTEM\CurrentControlSet\Services \disk\TimeOutValue | 120 | 未選取MPIO支援時 
 
 
-| HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval | 1. | 指定 MPIO 支援、且您的伺服器為 Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 或 Windows Server 2022 
+| HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval | 1. | 如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 
 |===
 
 
@@ -129,6 +133,9 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 * 啟用NVMe = 1
 * NVMEMode = 0
 * LemTransferSize=1
++
+安裝 Windows 主機公用程式 7.2 時， LimTransferSize 參數會自動設為「 1 」。安裝後，您需要手動將 LimTransferSize 值變更為「 0 」，然後重新啟動伺服器。
+
 
 
 
@@ -147,10 +154,10 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 | 登錄機碼 | 價值 | 設定時 
 
 
-| HKLM\system\System\CurrentControlSet\Services \msdsm\參\Parameters \DsmMaximumRetryTimeDingStateTransition | 120 | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+| HKLM\system\System\CurrentControlSet\Services \msdsm\參\Parameters \DsmMaximumRetryTimeDingStateTransition | 120 | 指定 MPIO 支援，且您的伺服器為 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 ，但偵測到 Data ONTAP DSM 除外 
 
 
-| HKLM\system\System\CurrentControlSet\Services \msdsm\Parameters \DsmMaximumStateTransitionTime | 120 | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+| HKLM\system\System\CurrentControlSet\Services \msdsm\Parameters \DsmMaximumStateTransitionTime | 120 | 指定 MPIO 支援，且您的伺服器為 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 ，但偵測到 Data ONTAP DSM 除外 
 
 
 .2+| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\DsmSupportedDevice清單 | " NETAPPLUN" | 指定MPIO支援時 
@@ -189,7 +196,7 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 | 已啟用HKLM \system\CurrentControlSet\Services\msdsm \Parameters\PathVerifyEnabled | 0 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
 
 
-| 已啟用HKLM \system\System\CurrentControlSet\Services \msdsm\Parameters\PathVerifyEnabled | 0 | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+| 已啟用HKLM \system\System\CurrentControlSet\Services \msdsm\Parameters\PathVerifyEnabled | 0 | 指定 MPIO 支援，且您的伺服器為 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 ，但偵測到 Data ONTAP DSM 除外 
 
 
 | HKLM\system\System\CurrentControlSet\Services \msiscdsm\Parameters\PathVerifyEnabled | 0 | 當指定MPIO支援且您的伺服器為Windows Server 2003時、除非Data ONTAP 偵測到使用支援功能的DSM 
@@ -201,7 +208,7 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 | HKLM\system\System\CurrentControlSet\Services\MPIO \Parameters\PDORemovePeriod | 130 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
 
 
-| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\PDORemovePeriod | 130 | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\PDORemovePeriod | 130 | 指定 MPIO 支援，且您的伺服器為 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 ，但偵測到 Data ONTAP DSM 除外 
 
 
 | HKLM\system\System\CurrentControlSet\Services\msiscdsm \Parameters\PDORemovePeriod | 130 | 當指定MPIO支援且您的伺服器為Windows Server 2003時、除非Data ONTAP 偵測到使用支援功能的DSM 
@@ -213,7 +220,7 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 | HKLM \system\System\CurrentControlSet\Services \MPIO \Parameters\RetryCount | 6. | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
 
 
-| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\RetryCount | 6. | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+| HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\RetryCount | 6. | 指定 MPIO 支援，且您的伺服器為 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 ，但偵測到 Data ONTAP DSM 除外 
 
 
 | HKLM\system\System\CurrentControlSet\Services \msiscdsm\Parameters\RetryCount | 6. | 當指定MPIO支援且您的伺服器為Windows Server 2003時、除非Data ONTAP 偵測到使用支援功能的DSM 
@@ -225,7 +232,7 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 | HKLM \system\System\CurrentControlSet\Services \MPIO \Parameters\RetryInterval | 1. | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
 
 
-| HKLM\system\System\CurrentControlSet\Services \msdsm\Parameters\RetryInterval | 1. | 指定MPIO支援且伺服器為Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時、除非Data ONTAP 偵測到W2 DSM 
+| HKLM\system\System\CurrentControlSet\Services \msdsm\Parameters\RetryInterval | 1. | 指定 MPIO 支援，且您的伺服器為 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 ，但偵測到 Data ONTAP DSM 除外 
 
 
 | HKLM\system\System\CurrentControlSet\Services \vnetapp\Parameters\RetryInterval | 1. | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
@@ -237,7 +244,7 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 | 60 | 指定MPIO支援時、Data ONTAP 除非偵測到使用支援功能 
 
 
-| HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval | 1. | 當您的伺服器僅適用於Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2或Windows Server 2016時 
+| HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval | 1. | 當您的伺服器是 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 時 
 |===
 請參閱 https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users["Microsoft文件"^] 以取得登錄參數詳細資料。
 
@@ -276,7 +283,7 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 |===
 --
 ====
-對於 QLogic Fibre Channel HBA 、安裝程式會設定下列參數：
+對於 QLogic FC HBA 、安裝程式會設定下列參數：
 
 [role="tabbed-block"]
 ====

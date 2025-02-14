@@ -403,7 +403,7 @@ NOTE: 從 Oracle Linux 9.4 開始， NVMe / TCP 的預設設定 `ctrl_loss_tmo t
 
 == 驗證NVMe
 
-若要支援正確的 ONTAP LUN 作業，請確認核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
+驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
 
 .步驟
 . 驗證 Oracle Liniux 9.4 主機上的下列 NVMe / FC 設定：

@@ -2,6 +2,9 @@
 :allow-uri-read: 
 
 
+您需要啟用適用於 NVMe 裝置的 MPIO ，才能在 Windows 主機上完成 NVMe 組態。
+
+.步驟
 . 安裝 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Windows主機公用程式套件7.1"] 設定FC和NVMe通用的驅動程式參數。
 . 開啟MPIO內容。
 . 從*探索多重路徑*索引標籤、新增NVMe所列的裝置ID。
@@ -9,8 +12,8 @@
 MPIO會感知NVMe裝置、這些裝置可在磁碟管理下看到。
 
 . 打開* Disk Management（磁碟管理）*、然後移至* Disk Properties（磁碟內容）*。
-. 在「* MPIO *」索引標籤中、按一下「* Details *」。
-. 設定下列MSDSM設定：
+. 從 *MPIO 選項卡中，選擇 * 詳細資料 * 。
+. 設定下列 Microsoft DSM 設定：
 +
 ** PathVerfiedPeriod:* 10*
 ** PathVerifyEnabled:* Enabled*
@@ -29,7 +32,4 @@ HKLM\SYSTEM\CurrentControlSet\Services\mpio\Parameters\PathRecoveryInterval DWOR
 HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\ UseCustomPathRecoveryInterval  DWORD-> 1
 ----
 . 重新啟動主機。
-+
-NVMe組態現在已在Windows主機上完成。
-
 

@@ -2,18 +2,18 @@
 :allow-uri-read: 
 
 
-如果磁碟分割的資料區塊邊界與基礎LUN的區塊邊界不一致、則儲存系統通常必須針對每個作業系統區塊的讀取或寫入、完成兩個區塊的讀取或寫入。因對齊錯誤而產生的額外區塊讀取和寫入、可能會造成嚴重的效能問題。
+如果磁碟分割的資料區塊邊界與基礎 LUN 的區塊邊界不一致，則儲存系統通常必須針對每個作業系統區塊讀取或寫入完成兩個區塊讀取或寫入。因對齊錯誤而產生的額外區塊讀取和寫入、可能會造成嚴重的效能問題。
 
-主開機記錄所定義的每個分割區的起始磁區位置都會導致錯誤對齊。
+主開機記錄所定義的每個分割區的起始扇區位置會導致未對齊。
 
 
 NOTE: Windows Server 2016建立的分割區依預設應保持一致。
 
-使用NetApp PowerShell Toolkit中的「Get-NAVirtualDiskAllocation」指令程式ONTAP 、檢查分割區是否與基礎LUN一致。如果分割區的對齊不正確、請使用「修復-儲存磁碟對齊」指令程式、建立正確對齊的新VHD檔案。此Cmdlet會將所有分割區複製到新檔案。原始VHD檔案不會修改或刪除。複製資料時、必須關閉虛擬機器。
+使用 `Get-NaVirtualDiskAlignment` ONTAP PowerShell 工具組中的 Cmdlet 來檢查分割區是否與基礎 LUN 一致。如果分割區未正確對齊，請使用 `Repair-NaVirtualDiskAlignment` Cmdlet 建立正確對齊的新 VHD 檔案。此Cmdlet會將所有分割區複製到新檔案。原始VHD檔案不會修改或刪除。複製資料時、必須關閉虛擬機器。
 
-您可以在ONTAP NetApp社群下載《NetApp PowerShell Toolkit》。您必須將「DataONTAP.Zip」檔案解壓縮至環境變數「%PSModulePath%」所指定的位置（或使用「Install.ps1」指令碼為您執行）。安裝完成後、請使用「How－NAHelp」Cmdlet取得Cmdlet的說明。
+您可以在ONTAP NetApp社群下載《NetApp PowerShell Toolkit》。您必須將檔案解壓縮 `DataONTAP.zip`至環境變數所指定的位置 `%PSModulePath%`（或使用 `Install.ps1`指令碼為您執行）。完成安裝之後，請使用 `Show-NaHelp` Cmdlet 取得 Cmdlet 的說明。
 
-PowerShell工具套件僅支援含MBR-類型分割區的固定大小VHD檔案。不支援使用Windows動態磁碟或GPT分割的VHD。此外、PowerShell Toolkit需要4 GB的最小分割區大小。較小的分割區無法正確對齊。
+PowerShell工具套件僅支援含MBR-類型分割區的固定大小VHD檔案。不支援使用 Windows 動態磁碟或 GPT 分割區的 VHD 。此外、PowerShell Toolkit需要4 GB的最小分割區大小。較小的分割區無法正確對齊。
 
 
 NOTE: 對於在VHD上使用Grub開機載入程式的Linux虛擬機器、您必須在執行PowerShell Toolkit之後更新開機組態。

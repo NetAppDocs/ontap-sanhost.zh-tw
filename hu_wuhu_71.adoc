@@ -67,7 +67,7 @@ Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 
 . 檢查上個別主機所需的修補程式 link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機Windows文件"]。
 +
 
-NOTE: 。 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["使用Windows Server 2022 ONTAP 搭配使用"] 文件提供相關指示 link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["安裝Windows修補程式"] 適用於Windows伺服器2022。請參閱主機組態類別中的 Windows 文件、以尋找舊版 Windows 伺服器的相關 Hotfix 資訊。
+NOTE: 本link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["搭配 ONTAP 使用 Windows Server 2022"]文件提供 Windows Server 2022 的相關說明link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["安裝Windows修補程式"]。請參閱主機組態類別中的 Windows 文件、以尋找舊版 Windows 伺服器的相關 Hotfix 資訊。
 
 . 新增iSCSI或FCP授權、然後啟動目標服務。
 +
