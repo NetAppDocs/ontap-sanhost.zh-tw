@@ -621,7 +621,6 @@
   <block id="f5cba97c30a47867e3649fd136cca68c" category="inline-link-macro">Microsoft Update目錄2016</block>
   <block id="480c1af29fcb3cc17dbe8a841a6a3c06" category="summary">說明如何搭配ONTAP 使用CentOS 8.2搭配使用功能</block>
   <block id="6d0ef457a6d83b808baa2444f1d454db" category="paragraph">對於CentOS 8.2、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.2已使用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。</block>
-  <block id="410517e1f795e6fa809a7ff5630e2bdd" category="list-text">在Windows主機上安裝OneCommand Manager公用程式。</block>
   <block id="7d182740e5fe1d15ec7f97f69178b4a8" category="list-text">在每個HBA啟動器連接埠上、設定下列HBA驅動程式參數：</block>
   <block id="1d71ea83cceb2b7470e1c54838adb506" category="list-text">啟用NVMe = 1</block>
   <block id="814e9f528f5fa391cd6774e57a5c651c" category="list-text">NVMEMode = 0</block>
@@ -3728,4 +3727,5 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="446a12d919c8ace091d69571c8964509" category="paragraph">從 ONTAP 9.7 開始， Windows Server 2022 支援 NVMe / FC 。</block>
   <block id="d26e08171a5072e33fe155b7ad5a5659" category="doc">瞭解 SAN 主機組態</block>
   <block id="312351bff07989769097660a56395065" category="sidebar">2025</block>
+  <block id="439a17362d8592514caf19c7e8ec2147" category="list-text">在 Windows 主機上安裝 Emulex HBA Manager 公用程式。</block>
 </blocks>
