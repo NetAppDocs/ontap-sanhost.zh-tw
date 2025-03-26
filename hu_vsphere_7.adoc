@@ -211,7 +211,7 @@ NetApp目前不建議變更任何vVols設定。
 
 如需特定版本的 ONTAP 工具，請參閱；如需特定版本的 vSphere 和 ONTAP ，請參閱 https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]舊版 VASA Provider 。
 
-有關配置和管理 vVols 的詳細信息，請參閱 ONTAP Tools for VMware vSphere 文檔以及link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]和link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^]。
+有關配置和管理 vVols 的詳細信息，請參閱 ONTAP Tools for VMware vSphere 文檔以及link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere 搭配 ONTAP"^]和link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vvols-overview.html["使用 ONTAP 工具的虛擬磁碟區（ vVols ） 10."^]。
 
 
 
@@ -329,7 +329,7 @@ naa.600a098038304731783f506670553355
 ONTAP 版本的 VMware vSphere 7.x 沒有已知問題。
 
 .相關資訊
-* link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]
+* link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere 搭配 ONTAP"^]
 * link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
 * link:https://kb.vmware.com/s/article/83370["NetApp ONTAP 搭配 NetApp SnapMirror 與 VMware vSphere Metro Storage 叢集（ VMSC ）進行主動同步"^]
 

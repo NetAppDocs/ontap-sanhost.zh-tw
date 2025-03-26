@@ -285,6 +285,12 @@ devices {
 
 
 
+== ASM鏡射
+
+自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。ONTAP 上的大多數 ASM 組態都使用外部備援，這表示資料保護是由外部陣列提供，而 ASM 則不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊，請參閱link:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["ONTAP 上的 Oracle 資料庫"^]。
+
+
+
 == 已知問題
 
 在 ONTAP 版本中、 RHEL 8.6 沒有已知問題。

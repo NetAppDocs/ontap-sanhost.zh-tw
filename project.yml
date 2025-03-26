@@ -79,8 +79,6 @@ sidebar:
         url: "/hu_aix_71.html"
     - title: CentOS
       entries:
-      - title: 版本資訊
-        url: "/hu_centos_asm_release_notes.html"
       - title: CentOS 8.
         entries:
         - title: '8.5'
@@ -154,8 +152,6 @@ sidebar:
     - title: Oracle Linux
       pdf-filename: OA-FCP
       entries:
-      - title: 版本資訊
-        url: "/hu_ol_asm_release_notes.html"
       - title: ol 9.
         entries:
         - title: 9.4.
@@ -235,8 +231,6 @@ sidebar:
           url: "/hu_ol_64.html"
     - title: RHEL
       entries:
-      - title: 版本資訊
-        url: "/hu_rhel_asm_release_notes.html"
       - title: RHEL 9
         pdf-filename: RHEL-9-FCP
         entries:
@@ -325,8 +319,6 @@ sidebar:
         url: "/hu_solaris_113.html"
     - title: SUSE Linux Enterprise Server
       entries:
-      - title: 版本資訊
-        url: "/hu_sles_asm_release_notes.html"
       - title: SUSE Linux Enterprise Server 15
         pdf-filename: sles-15-FCP
         entries:

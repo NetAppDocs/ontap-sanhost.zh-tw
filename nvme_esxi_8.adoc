@@ -320,6 +320,4 @@ ESXi 8.x 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：
 
 |===
 .相關資訊
-link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597- VMware vSphere搭配ONTAP VMware"^]
-link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
-link:https://kb.vmware.com/s/article/83370["VMware vSphere 6.x 與 7.x 支援 NetApp SnapMirror 主動同步"^]
+link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere 搭配 ONTAP"^] link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^] link:https://kb.vmware.com/s/article/83370["VMware vSphere 6.x 與 7.x 支援 NetApp SnapMirror 主動同步"^]
