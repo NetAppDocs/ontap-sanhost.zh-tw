@@ -233,7 +233,7 @@ NetApp目前不建議變更任何vVols設定。
 
 如需特定版本的 ONTAP 工具，請參閱；如需特定版本的 vSphere 和 ONTAP ，請參閱 https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]舊版 VASA Provider 。
 
-有關配置和管理 vVols 的詳細信息，請參閱 ONTAP tools for VMware vSphere 文檔，link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere 搭配 ONTAP"^]和link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vvols-overview.html["使用 ONTAP 工具的虛擬磁碟區（ vVols ） 10."^]。
+有關配置和管理 vVols 的詳細信息，請參閱 ONTAP Tools for VMware vSphere 文檔，link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere 搭配 ONTAP"^]和link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vvols-overview.html["使用 ONTAP 工具的虛擬磁碟區（ vVols ） 10."^]。
 
 
 

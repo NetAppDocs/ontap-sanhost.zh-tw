@@ -4,7 +4,7 @@ permalink: hu_hpux_60.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: 說明如何將 HP-UX 主機公用程式 6.0 與 ONTAP 儲存設備搭配使用 
 ---
-= 適用於 ONTAP 儲存設備的 HP-UX 主機公用程式 6.0
+= 安裝適用於 ONTAP 儲存設備的 HP-UX 主機公用程式 6.0
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

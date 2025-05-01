@@ -1,0 +1,11 @@
+= 步驟 1 ：安裝 HP-UX 主機公用程式
+:allow-uri-read: 
+
+
+
+
+== 步驟 1 ：安裝 HP-UX 主機公用程式
+
+NetApp 強烈建議您安裝 Linux 主機公用程式，以支援 ONTAP LUN 管理，並協助技術支援收集組態資料。
+
+link:hu_hpux_60.html["安裝 HP-UX Host Utilities 6.0"]。
