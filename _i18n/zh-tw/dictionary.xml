@@ -830,7 +830,6 @@
   <block id="eeca789d03a65dbfd928a28fa9ca3aab" category="cell">「\NetAppQCLI/*。*」</block>
   <block id="271e95bb5110c34300c9e4e30ad2991d" category="cell">「an版本」</block>
   <block id="c0a6e0dc55b98c30081b044a2713737b" category="section-title">驗證您的主機和儲存系統組態</block>
-  <block id="700f2514d3d4cc2ed02cb06d8b922b2d" category="paragraph">安裝主機公用程式之前、您必須先確認主機公用程式版本是否支援主機和儲存系統組態、以便正確安裝軟體。</block>
   <block id="29cd26a0b6469ed25fabeac1805eb8a6" category="list-text">新增iSCSI或FCP授權、然後啟動目標服務。</block>
   <block id="dafd8a261adaf4e33c8e8c74baa71755" category="list-text">驗證纜線</block>
   <block id="96e0cae7407a65fe53018dd9c13dbbe7" category="section-title">設定FC HBA和交換器</block>
@@ -1172,7 +1171,6 @@
   <block id="c11de2cda31d67ed47c0182334a7ac91" category="sidebar">sles-15-FCP</block>
   <block id="2f7ca50ec80cb8bec6ae8dd04c29748c" category="sidebar">Windows -FCP</block>
   <block id="c345c92c1db74865c1b5cb8dad478651" category="summary">本內容針對發佈內容、提供如何設定連接ONTAP 到NetApp儲存設備的SAN用戶端的相關指引。</block>
-  <block id="d1c811acf82829db30f1d8b3e6c940d6" category="doc">SAN主機和雲端用戶端</block>
   <block id="708c2a641aba7d3caf588312e9a41596" category="summary">本內容提供特定於發佈的指引、說明如何設定連接Cloud Volumes ONTAP 至下列項目的雲端用戶端ONTAP ：針對連接至內部部署ONTAP 的更新儲存設備的介面和SAN主機、設定連接至原地更新儲存設備的Amazon FSX和Amazon FSX。</block>
   <block id="ab5c1cc33879491a00632f6478216936" category="paragraph">您的SAN主機和ONTAP 支援功能可存放在內部部署、雲端或兩者。</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="inline-link-macro">Cloud Volumes ONTAP</block>
@@ -1182,7 +1180,6 @@
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">更多資源</block>
   <block id="8f631f7b4d000947dcf86232c51cf147" category="sidebar">所有SAN Array軟體組態</block>
   <block id="587c9aa3c6003c9a9fa1fc9c2ceb2eaa" category="sidebar">SAN管理</block>
-  <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">設定SAN主機和雲端用戶端</block>
   <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">總覽</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">NVMeoF RHEL</block>
   <block id="38022ef96e4c7edb41b89fa3a008c3f6" category="inline-link-macro">Windows主機公用程式套件7.1</block>
@@ -3228,7 +3225,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="550d5f0555aa2a5e59269c14de819e78" category="summary">Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數，讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。</block>
   <block id="6896363d719a238fdc4b6d2ef8ef5a78" category="doc">安裝 Windows 主機公用程式 7.1</block>
   <block id="f0ed46888b875cc5c73315cc1272f90b" category="paragraph">Windows 主機公用程式可讓您將 Windows 主機電腦連接至 NetApp 儲存系統。</block>
-  <block id="fd0cfddf11b707411ea1c87986350b1a" category="paragraph">Windows 主機公用程式支援下列 Windows 版本：</block>
   <block id="0652c88686b5ecfc5bf453239b43dbd5" category="paragraph">Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和主機匯流排介面卡（ HBA ）參數，讓 Windows 主機能夠正確處理 ONTAP 和 E 系列平台的儲存系統行為。</block>
   <block id="2a1a96da7bfe08f1d385743c49246a17" category="paragraph">主機公用程式支援不同的 Windows 主機組態、通訊協定和多重路徑選項。如需支援組態的目前清單，請參閱<block ref="e29293ebfe5b9174e3113da62e6426ca" category="inline-link-rx"></block>。</block>
   <block id="440a0a613ea9d79644732dd469b879c6" category="list-text">檢查中支援的組態<block ref="8202e2d9ff186d084c29140284f981f1" category="inline-link-rx"></block>。</block>
@@ -3653,7 +3649,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f3f5e5774254d60ece67c2757e73c5fe" category="summary">在 RHEL 9.5 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="bf2e2850028a550db4d4777a6c320006" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 9.5</block>
   <block id="9c2f294f2ce9dacd34475fe6a3fa5c52" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.5 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
-  <block id="dd8d9457c96c61b509341e8fc9c06a5a" category="section-title">步驟 2 ：確認主機的多重路徑組態</block>
   <block id="0f1de05675767624511aae207e8e0251" category="paragraph">您可以搭配 RHEL 9.5 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="df703c7c915219367c5e3f921d60e7af" category="summary">在 SUSE Linux Enterprise Server 12 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="43d4d647f16dbd3d230e0439558b88db" category="doc">設定 SUSE Linux Enterprise Server 12 for FCP 和 iSCSI with ONTAP 儲存設備</block>
@@ -3716,4 +3711,10 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d29ad9efbcae6053e82420f1cc871c51" category="paragraph">有關配置和管理 vVols 的詳細信息，請參閱 ONTAP Tools for VMware vSphere 文檔以及<block ref="c45840700e4ab6d55371aa3a3251b306" category="inline-link-rx"></block>和<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>。</block>
   <block id="764c3360f3f7d6cb07c2ff1a79f2cf58" category="paragraph">有關配置和管理 vVols 的詳細信息，請參閱 ONTAP Tools for VMware vSphere 文檔以及<block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>和<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>。</block>
   <block id="d04eb85f6d5ba5f0fcd2c894dea16fe5" category="paragraph">有關配置和管理 vVols 的詳細信息，請參閱 ONTAP Tools for VMware vSphere 文檔，<block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>和<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>。</block>
+  <block id="db3880822387ba5ff86b2e765ae8e03d" category="paragraph">Windows 主機公用程式支援下列 Windows 版本：</block>
+  <block id="6338107550646e4da84ebb66cf1e3b7e" category="inline-xref">支援的 Windows 版本</block>
+  <block id="14aa8f54a503ff6089f17bed95d65cb6" category="paragraph">在安裝的 Windows 主機公用程式之前，請先確認您的主機和儲存系統組態是否受到支援<block ref="e07b0c094759647153725a704df4b0de" category="inline-xref-macro-rx"></block>。</block>
+  <block id="74464dd5db6f61c62453cee626aca30f" category="paragraph">在安裝的 Windows 主機公用程式之前，請先確認您的主機和儲存系統組態是否受到支援<block ref="fa2ff82d2dc57012eed1f266cf01842e" category="inline-xref-macro-rx"></block>。</block>
+  <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">ONTAP SAN 主機和雲端用戶端</block>
+  <block id="6fbaf2334ca5f8d82bd9bd67bc534670" category="sidebar">設定 ONTAP SAN 主機和雲端用戶端</block>
 </blocks>

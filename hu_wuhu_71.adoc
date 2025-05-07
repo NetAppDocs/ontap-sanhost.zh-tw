@@ -60,7 +60,7 @@ Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 
 
 == 驗證您的主機和儲存系統組態
 
-安裝主機公用程式之前、您必須先確認主機公用程式版本是否支援主機和儲存系統組態、以便正確安裝軟體。
+在安裝的 Windows 主機公用程式之前，請先確認您的主機和儲存系統組態是否受到支援<<supported-windows-versions-71,支援的 Windows 版本>>。
 
 .步驟
 . 檢查中支援的組態 http://mysupport.netapp.com/matrix["互通性對照表工具"^]。
