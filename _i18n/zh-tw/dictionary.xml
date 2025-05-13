@@ -2506,17 +2506,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="ece05e51adea1b8393f46534993e099e" category="sidebar">15 SP6.</block>
   <block id="587b796170a9abac4701cd8aa1bb38cb" category="listing-title">輸出範例</block>
   <block id="8b6a5845688d81720a1016c10aa9e843" category="list-text">根據預設，所有新建立的 NVMe 命名空間都會啟用從 ONTAP 9 。 16.1 開始的空間分配。</block>
-  <block id="9ce7ccb7a563810f05fbf6164e2af335" category="section-title">啟用空間分配</block>
-  <block id="81ad1bd3daf2d2592e0b23231ef5c682" category="paragraph">ESXi 8.x 及更新版本支援空間分配。</block>
-  <block id="71593ecd4a2f345a8370df61fb686ae8" category="paragraph">啟用空間分配時，如果命名空間用盡空間， ONTAP 會與主機通訊，表示沒有可用的空間可用於寫入作業；命名空間會保持在線上，並繼續提供讀取作業。當有更多可用空間可用時，寫入作業就會恢復。空間分配也可讓主機執行<block ref="c92fdf55401abf777b4eb053ea6c606b" prefix=" " category="inline-code"></block>（有時稱為<block ref="a32049f307ffa78cf7b4586ac7d98e06" prefix=" " category="inline-code"></block>）作業。取消對應作業可讓主機識別不再需要的資料區塊，因為這些區塊不再包含有效資料。然後、儲存系統就可以取消分配這些資料區塊、以便在其他地方使用這些空間。</block>
-  <block id="87b77f5d21760f2e78b6cef2eb32e5cc" category="inline-link-macro">啟用 ONTAP 儲存系統上的空間分配</block>
-  <block id="a99df67d3f89a1baa57bfcf5c677da6e" category="paragraph"><block ref="39229d8be2166ad80e065c5227b6fd93" category="inline-link-macro-rx"></block>。然後，您應該在 ESXi 主機上執行下列步驟。</block>
-  <block id="31b4aa899c9dd9e850705ce301c77be2" category="list-text">在 ESXi 主機上，確認 DSM 已停用：</block>
   <block id="664436f4ce3f6d98f6df651147109cff" category="paragraph"><block ref="dc858e51d6de4761e03193e6d9baadfc" prefix="" category="inline-code"></block></block>
   <block id="0c48e7c4bbc87e64bef6a0afca5676b3" category="paragraph">預期值為 0 。</block>
-  <block id="736e20d43ebb0de5071ca41644488730" category="list-text">啟用 NVMe DSM ：</block>
   <block id="e63e68670f6caa57aae357d60e7ea92c" category="paragraph"><block ref="5fb81999d6f54088d56d3a83b7e45bb2" prefix="" category="inline-code"></block></block>
-  <block id="c9bec81e64a920c39131bd795dcf5492" category="list-text">確認 DSM 已啟用：</block>
   <block id="7b4c45ceb018e94a23feffc876757fd9" category="paragraph">預期值為 1 。</block>
   <block id="f664c687d53cbadf53c910f16307ad27" category="list-text">不支援NVMe的sanlun。因此、 OL 8.8 主機上不支援 NVMe 型主機公用程式。您可以仰賴原生<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套件中隨附的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
   <block id="5681ca777f3abafe80823417b4bf2991" category="list-text">不支援NVMe的sanlun。因此、 Oracle Linux 8.9 主機上不支援 NVMe 型主機公用程式。您可以仰賴原生<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套件中隨附的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
@@ -3717,4 +3709,12 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="74464dd5db6f61c62453cee626aca30f" category="paragraph">在安裝的 Windows 主機公用程式之前，請先確認您的主機和儲存系統組態是否受到支援<block ref="fa2ff82d2dc57012eed1f266cf01842e" category="inline-xref-macro-rx"></block>。</block>
   <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">ONTAP SAN 主機和雲端用戶端</block>
   <block id="6fbaf2334ca5f8d82bd9bd67bc534670" category="sidebar">設定 ONTAP SAN 主機和雲端用戶端</block>
+  <block id="c6c1a6259bdf26d263bd4a9472d66719" category="section-title">NVMe 取消分配</block>
+  <block id="f384bde747b94f669a3fa94059005a05" category="paragraph">在 ONTAP 9.16.1 及更新版本中， ESXi 8.0u2 及更新版本支援 NVMe 取消分配命令。</block>
+  <block id="098d6b2a9e23cc2be9c1426e0cde97a4" category="paragraph">NVMe 命名空間一律會啟用取消分配支援。取消分配也可讓客體作業系統在 VMFS 資料存放區上執行「取消對應」（有時稱為「修剪」）作業。取消分配作業可讓主機識別不再需要的資料區塊，因為這些區塊不再包含有效資料。然後，儲存系統就可以移除這些資料區塊，以便在其他地方使用這些空間。</block>
+  <block id="d9ba6fcda45e3e392aac07a721648773" category="list-text">在 ESXi 主機上，驗證 DSM 的設定是否已取消分配，並支援 TP4040 ：</block>
+  <block id="c247361aa16f74f8358db5f6142ea1fd" category="list-text">啟用以 TP4040 支援取消配置 DSM 的設定：</block>
+  <block id="6026c444a91983a6b5a6dcb031503f89" category="list-text">確認已啟用使用 TP4040 支援取消配置 DSM 的設定：</block>
+  <block id="b666f1fcf3d24bdf8d1596c592783e04" category="inline-link">vSphere 中的儲存空間回收</block>
+  <block id="e2b29f49797a2325ae454b80e6aecf4a" category="paragraph">如需 VMware vSphere 中 NVMe 取消配置的詳細資訊，請參閱<block ref="c446d1e3b484512e9ba1bbe8eab259bf" category="inline-link-rx"></block></block>
 </blocks>
