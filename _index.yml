@@ -1,6 +1,6 @@
 ---
 indexpage:
-  title: ONTAP SAN 主機和雲端用戶端
+  title: ONTAP SAN 主機公用程式
   summary: 本內容針對發佈內容、提供如何設定連接ONTAP 到NetApp儲存設備的SAN用戶端的相關指引。
   keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracle,
     linux, windows, enterprise, fc, fcp, isci, aix, powervm, vios, centos, citrix,

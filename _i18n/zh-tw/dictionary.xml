@@ -3707,8 +3707,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="6338107550646e4da84ebb66cf1e3b7e" category="inline-xref">支援的 Windows 版本</block>
   <block id="14aa8f54a503ff6089f17bed95d65cb6" category="paragraph">在安裝的 Windows 主機公用程式之前，請先確認您的主機和儲存系統組態是否受到支援<block ref="e07b0c094759647153725a704df4b0de" category="inline-xref-macro-rx"></block>。</block>
   <block id="74464dd5db6f61c62453cee626aca30f" category="paragraph">在安裝的 Windows 主機公用程式之前，請先確認您的主機和儲存系統組態是否受到支援<block ref="fa2ff82d2dc57012eed1f266cf01842e" category="inline-xref-macro-rx"></block>。</block>
-  <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">ONTAP SAN 主機和雲端用戶端</block>
-  <block id="6fbaf2334ca5f8d82bd9bd67bc534670" category="sidebar">設定 ONTAP SAN 主機和雲端用戶端</block>
   <block id="c6c1a6259bdf26d263bd4a9472d66719" category="section-title">NVMe 取消分配</block>
   <block id="f384bde747b94f669a3fa94059005a05" category="paragraph">在 ONTAP 9.16.1 及更新版本中， ESXi 8.0u2 及更新版本支援 NVMe 取消分配命令。</block>
   <block id="098d6b2a9e23cc2be9c1426e0cde97a4" category="paragraph">NVMe 命名空間一律會啟用取消分配支援。取消分配也可讓客體作業系統在 VMFS 資料存放區上執行「取消對應」（有時稱為「修剪」）作業。取消分配作業可讓主機識別不再需要的資料區塊，因為這些區塊不再包含有效資料。然後，儲存系統就可以移除這些資料區塊，以便在其他地方使用這些空間。</block>
@@ -3717,4 +3715,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="6026c444a91983a6b5a6dcb031503f89" category="list-text">確認已啟用使用 TP4040 支援取消配置 DSM 的設定：</block>
   <block id="b666f1fcf3d24bdf8d1596c592783e04" category="inline-link">vSphere 中的儲存空間回收</block>
   <block id="e2b29f49797a2325ae454b80e6aecf4a" category="paragraph">如需 VMware vSphere 中 NVMe 取消配置的詳細資訊，請參閱<block ref="c446d1e3b484512e9ba1bbe8eab259bf" category="inline-link-rx"></block></block>
+  <block id="e99f28bee3ac5bad6e5414411cd5ffa0" category="sidebar">ONTAP SAN 主機公用程式</block>
+  <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">設定SAN主機和雲端用戶端</block>
 </blocks>
