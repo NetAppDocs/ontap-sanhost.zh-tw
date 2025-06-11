@@ -2498,7 +2498,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="fc471da28a10b288c7becc2d14173bdb" category="paragraph">除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要直接將裝置新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案。您可以將下列語法新增至檔案、以您要排除的裝置 WWID 字串取代 &lt;DevId&gt; 、來排除不需要的<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>裝置：</block>
   <block id="eaa95f8be0a818bc84d23c1b3fef5725" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block>是您要新增至黑名單的本機 SCSI 磁碟。</block>
   <block id="26bbc264025eb640d0a21b5280ca517a" category="paragraph">下表說明<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block> ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則需要在<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案中以特定方式套用至 ONTAP LUN 的形式、在稍後加以修正。如果沒有這麼做、ONTAP 則可能無法如預期般運作。只有在完全瞭解影響的情況下、您才應諮詢 NetApp 和 / 或作業系統廠商、以覆寫這些預設值。</block>
-  <block id="7d3d6c9fc8d341eaa26d83545052db7b" category="paragraph">使用 ONTAP 版本的 SUSE Linux Enterprise Server 15 SP6 沒有已知問題。</block>
   <block id="ddd05bd427ff935c5fc7e7ee226415f1" category="summary">說明如何為採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP6 設定 NVMe / FC 。</block>
   <block id="d147fb9f4a20a8d22dfe8c5247b12c27" category="doc">適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP6 的 NVMe 主機組態</block>
   <block id="dbb7e5b9df8e9f022cb88ee582377faf" category="paragraph">以下支援適用於採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP6 的 NVMe 主機組態：</block>
@@ -2527,9 +2526,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="604dbd1b7d87647f33f14a4f924b3c93" category="section-title">驗證 NVMe 服務</block>
   <block id="82df088f6ba140ed873ee24f8ff5c346" category="paragraph">從 SUSE Linux Enterprise Server 15 SP6 開始，<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> NVMe / FC 套件隨附的和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>開機服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>會在系統開機期間自動啟用。系統開機完成後，您應該確認開機服務已啟用。</block>
   <block id="5dc1adc63079845f3cac2caf1db0fa6a" category="list-text">確認<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>已啟用：</block>
-  <block id="f17577127ab2e84c20f714db959353d3" category="paragraph"><block ref="cee298feeb3e213ee36300180a00bd01" prefix="" category="inline-code"></block></block>
   <block id="a5203704145a9efb5be031a61c0e47e6" category="list-text">確認<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>已啟用：</block>
-  <block id="3c853373f44c095457102f92b570173c" category="paragraph"><block ref="69c22354a230572f55564f96ca4f0aeb" prefix="" category="inline-code"></block></block>
   <block id="73adc7de0b8ec5250832fc10c3810522" category="paragraph">NVMe / TCP 沒有自動連線功能。您可以改為透過手動執行 NVMe / TCP 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>作業來探索 NVMe / TCP 子系統和命名空間<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block>。</block>
   <block id="6f6e90e999896f87c906fd2a45c1270c" category="admonition">從 SUSE Linux Enterprise Server 15 SP6 開始、 NVMe / TCP 逾時的預設設定<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block>就會關閉。這表示重試次數沒有限制（無限期重試），而且您不需要在使用或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項<block ref="269889131ee4793a82191b78a2eb60e3" prefix=" " category="inline-code"></block>）時手動設定特定的<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block>逾時時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>。此外、在發生路徑故障時、 NVMe / TCP 控制器不會發生逾時、也不會無限期保持連線。</block>
   <block id="54fa1b935227c60b90bdcd38d49344ef" category="paragraph">請使用下列程序來驗證具有 ONTAP 組態的 SUSE Linux Enterprise Server 15 SP6 的 NVMe 型。</block>
@@ -2546,7 +2543,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0cc817fdf178d998506590bcd7f4435a" category="admonition">在上述範例中，<block ref="b4ccff4fcae86dd694df37690970d401" prefix=" " category="inline-code"></block>對應於<block ref="b564e1f3e83c3835c800589da9434401" prefix=" " category="inline-code"></block>，並<block ref="7c5692629f37b2fc3b73d10ecb68180e" prefix=" " category="inline-code"></block>對應至<block ref="c74aa421e1eeec8a71897cfdbf55b4c4" prefix=" " category="inline-code"></block>。</block>
   <block id="cca9751debdb563a025b1255c382b607" category="section-title">設定傳輸層安全性</block>
   <block id="6ab36115f46bb64da1b6626f47c3d1a8" category="paragraph">傳輸層安全性（ TLS ）可為 NVMe 主機和 ONTAP 陣列之間的 NVMe 連線提供安全的端對端加密。從 ONTAP 9 。 16.1 開始，您可以使用 CLI 和設定的預先共用金鑰（ PSK ）來設定 TLS 1.3 。</block>
-  <block id="9a8cd16b2c754986b4de5b4a07f17fd0" category="paragraph">您可以在 SUSE Linux Enterprise Server 15 SP6 主機上執行此程序中的步驟，但指定您在 ONTAP 控制器上執行步驟的位置除外。</block>
   <block id="3b86ef6861ab37460f14c7cca5f2ecf9" category="list-text">檢查主機上是否安裝了以下 ktls-utils ， openssl 和 libopenssl 軟件包：</block>
   <block id="94af47577475b9842466b2cda14bffae" category="list-text"><block ref="eba606d0a45a6acc38e99cfc11f79ff4" prefix="" category="inline-code"></block></block>
   <block id="fa09d1fd67990fa52b192b453ee3f411" category="list-text"><block ref="0349a9de91d8d2777180988686f8a790" prefix="" category="inline-code"></block></block>
@@ -2554,17 +2550,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="bb29fc4790c7eaf5ae7a9445a08776bf" category="list-text">啟用<block ref="67de54fa2975e1afbfa0e5b44910694e" prefix=" " category="inline-code"></block>以在系統開機時啟動：</block>
   <block id="edf98b56eb368003a84c3f6e6325bc24" category="list-text">驗證守護程序是否<block ref="67de54fa2975e1afbfa0e5b44910694e" prefix=" " category="inline-code"></block>正在運行：</block>
   <block id="cc03b98609648131cf98c136c9325ae6" category="list-text">使用產生 TLS PSK<block ref="75260898c7ef0a545e10c9413524db08" prefix=" " category="inline-code"></block> ：</block>
-  <block id="b595664b17c23b9c65800f5f2ee6bd60" category="list-text"><block ref="ff083824b5947cb311fd6336234d2f08" prefix="" category="inline-code"></block></block>
-  <block id="329041f78f097df81a7f8ae854150413" category="list-text"><block ref="f31123afb140e56354d20f4296a62a1a" prefix="" category="inline-code"></block></block>
-  <block id="9a188a453d6f7a4139c805197ffad6d7" category="list-text">在 ONTAP 控制器上，將 TLS PSK 新增至 ONTAP 子系統：</block>
-  <block id="3a6a93137906aeb888c944ff8cd57c5a" category="list-text">將 TLS PSK 插入主機核心金鑰環：</block>
   <block id="456655754b0c48b034d1fdf59967c5fb" category="admonition">PSK 顯示為「 NVMe1R01 」，因為它使用 TLS 交握演算法的「 identity v1 」。Identity v1 是 ONTAP 唯一支援的版本。</block>
   <block id="ca320bf6c4ad8f767e85d406ee4fde14" category="list-text">確認 TLS PSK 已正確插入：</block>
-  <block id="17a9f150c8c2ab60092808d0908e820b" category="list-text">使用插入的 TLS PSK 連線至 ONTAP 子系統：</block>
-  <block id="532c0a0166f57d64080032345311e992" category="list-text"><block ref="352b5cd6e4380372116548b2c6dab1a5" prefix="" category="inline-code"></block></block>
-  <block id="798926c594ff5920496900e82fc4f8ee" category="list-text"><block ref="b77dfffb05a37f29ed729db166995be8" prefix="" category="inline-code"></block></block>
   <block id="8424d580c7f527bd670292899f979c75" category="list-text">新增目標，並驗證 TLS 連線至指定的 ONTAP 子系統：</block>
-  <block id="750e58d680481d7813150837191657cf" category="paragraph"><block ref="f3772228bbdd61b9e99ef34e7e8724df" prefix="" category="inline-code"></block></block>
   <block id="2ec9c91229d2e2f17a8f17a73a54304b" category="admonition">單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。</block>
   <block id="5825e25cd2548b8d4af651b91652e28d" category="paragraph">該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
   <block id="d2151dcee8f5a191a60c2d0cb4823f78" category="list-text">執行<block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block>命令，然後重新啟動主機。</block>
@@ -3522,7 +3510,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="de7c28ff0eb95c7790427d99e464cd7d" category="list-text">確認<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案已結束。如果檔案不存在，請建立空白的零位元組檔案：</block>
   <block id="4154b2933e2df9573e5568e1cb8b0708" category="list-text">每次引導主機時，空的<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>零位元組檔案會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。您不需要變更<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>主機的檔案，因為作業系統會使用多重路徑參數進行編譯，以正確辨識及管理 ONTAP LUN 。</block>
   <block id="2dc85993483fece6ce86d25200665755" category="paragraph">下表顯示 ONTAP LUN 的 Linux OS 原生編譯多重路徑參數設定。</block>
-  <block id="55e68527d8c164dc338b18da64611305" category="admonition">您不需要設定核心型虛擬機器（ KVM ）設定，因為 ONTAP LUN 會自動對應至 KVM Hypervisor 。</block>
   <block id="3e69d2b38cbdad51b5f0a5227c5c242e" category="paragraph">您應該檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案，尤其是在預設值區段中，以瞭解可能會覆寫的設定<block ref="3e47c09a7bdcd0377df056ba2567e852" category="inline-xref-macro-rx"></block>。</block>
   <block id="d0cd85ffaeb74cce57bdd7f018a8056d" category="paragraph">例如，如果您的主機已連接至其他廠商的 LUN ，且任何多重路徑參數設定都會被覆寫，則您需要在檔案中稍後新增特定適用於 ONTAP LUN 的節點來修正這些設定<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。</block>
   <block id="7d6ed8198fddc97f7e4e07dc8cb965c1" category="inline-link-macro">瞭解如何使用 Linux 主機公用程式工具</block>
@@ -3717,4 +3704,16 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e2b29f49797a2325ae454b80e6aecf4a" category="paragraph">如需 VMware vSphere 中 NVMe 取消配置的詳細資訊，請參閱<block ref="c446d1e3b484512e9ba1bbe8eab259bf" category="inline-link-rx"></block></block>
   <block id="e99f28bee3ac5bad6e5414411cd5ffa0" category="sidebar">ONTAP SAN 主機公用程式</block>
   <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">設定SAN主機和雲端用戶端</block>
+  <block id="d42d49b663d32823894e50123ab762aa" category="admonition">您不需要手動設定基於核心的虛擬機器 (KVM) 設定，因為 ONTAP LUN 會自動對應到虛擬機器管理程式。</block>
+  <block id="6c1237c8a63c9432743995a73de4f2ea" category="paragraph">您可以在 SUSE Linux Enterprise Server 主機上執行此程序中的步驟，除非它指定您在 ONTAP 控制器上執行某個步驟。</block>
+  <block id="a06bd7b24c1effd63b064b3a8b11fac4" category="paragraph"><block ref="43e4de7615f2615407bf61dc8bab917d" prefix="" category="inline-code"></block></block>
+  <block id="9717b15229fcf955162bc44c0245c940" category="paragraph"><block ref="e5fc4f0ee1a350182939ab0bca460c98" prefix="" category="inline-code"></block></block>
+  <block id="762c5561f01f01d3a3d6677f3972abe5" category="list-text"><block ref="1c78bed9e35b03f05a58a1b43589b4b2" prefix="" category="inline-code"></block></block>
+  <block id="3b8094306cbf785ab92adf321ddbe00b" category="list-text"><block ref="e428c84f18e3d18bdc6f7a6ad7049ad8" prefix="" category="inline-code"></block></block>
+  <block id="3fe78ae2313cd2a031d60fd3b1908014" category="list-text">在 ONTAP 陣列上，將 TLS PSK 加入到 ONTAP 子系統：</block>
+  <block id="82230a22c6ecae257dedcf3b1a20f740" category="list-text">在 SUSE Linux Enterprise Server 主機上，將 TLS PSK 插入主機核心金鑰環：</block>
+  <block id="3bd434fbafe93a5c609f93354e39f38c" category="list-text">在 SUSE Linux Enterprise Server 主機上，使用插入的 TLS PSK 連線到 ONTAP 子系統：</block>
+  <block id="6f0abeb231f9492f647495d82e71a409" category="list-text"><block ref="784df77e179355f677ae4620639e145e" prefix="" category="inline-code"></block></block>
+  <block id="cd3cfdbbdf68695695503ec99f60b54f" category="list-text"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block></block>
+  <block id="c8ba574e6385bfff25580806e2cfd27d" category="paragraph"><block ref="2c3856aef23f7e774c0fec3948e0a8b5" prefix="" category="inline-code"></block></block>
 </blocks>

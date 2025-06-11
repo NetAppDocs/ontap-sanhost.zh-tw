@@ -19,7 +19,7 @@ summary: 在 RHEL 9.5 主機上安裝 Linux 主機公用程式，以管理使用
 Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.5 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。
 
 
-NOTE: 您不需要設定核心型虛擬機器（ KVM ）設定，因為 ONTAP LUN 會自動對應至 KVM Hypervisor 。
+NOTE: 您不需要手動設定基於核心的虛擬機器 (KVM) 設定，因為 ONTAP LUN 會自動對應到虛擬機器管理程式。
 
 
 
