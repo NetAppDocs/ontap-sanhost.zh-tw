@@ -3716,4 +3716,59 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="6f0abeb231f9492f647495d82e71a409" category="list-text"><block ref="784df77e179355f677ae4620639e145e" prefix="" category="inline-code"></block></block>
   <block id="cd3cfdbbdf68695695503ec99f60b54f" category="list-text"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block></block>
   <block id="c8ba574e6385bfff25580806e2cfd27d" category="paragraph"><block ref="2c3856aef23f7e774c0fec3948e0a8b5" prefix="" category="inline-code"></block></block>
+  <block id="44e9f27b29f987774dffc9a83910b3f1" category="paragraph">您應該會看到類似以下範例的輸出：</block>
+  <block id="104e6af592420ff3d441fd7ec7435c39" category="summary">在 RHEL 10 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
+  <block id="d7c1825e0f2407a4d10d399ac78c1f95" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 10</block>
+  <block id="d7b201e34bf72ed2024522784d92bd59" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 10 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
+  <block id="0171e05f7a58a96089d554991286cd67" category="paragraph">您可以搭配 RHEL 10 使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="236e1a6c16fc596f7520a28ad7a1db03" category="section-title">啟用 SAN 工具包</block>
+  <block id="429ffdde936d5759e07807c3b66f38d2" category="summary">如何使用 ONTAP 設定適用於 RHEL 10 的 NVMe 主機</block>
+  <block id="cd64186b2c2cedea7d5dfd05d86304c6" category="doc">適用於 ONTAP 的 RHEL 10 NVMe 主機組態</block>
+  <block id="c0cd0678856b67d02b2dfc3c9646fac2" category="paragraph">您可以在 Red Hat Enterprise Linux （ RHEL ） 10 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="bf21bd2f7b624998085c3d69986dbe53" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 10 中使用 NVMe/TCP 的安全帶內驗證。</block>
+  <block id="4baea929c29e972312029711f923ecc9" category="list-text">從 RHEL 10 開始，本機 NVMe 多路徑始終處於啟用狀態，且不支援 NVMe-oF 的 DM 多路徑支援。</block>
+  <block id="705049d3ff516ba95d2f556556788c5a" category="list-text">避免發布<block ref="de5ac85ea45047f4dbeea79d7b729b7d" prefix=" " category="inline-code"></block>命令，因為它會斷開根檔案系統和資料檔案系統的連接，並可能導致系統不穩定。</block>
+  <block id="9ce1ac3eb326fa20a6e4cc846d38ef38" category="list-text">建立 SAN 啟動命名空間並將其對應到主機。</block>
+  <block id="20cd59705d89627333024680d966bb16" category="inline-link">配置NVMe儲存設備</block>
+  <block id="2ae5f54ecc4375d7e4bc5d4417d72e85" category="paragraph">請參閱。<block ref="0cb485556fb9e40c82f55474b807ef26" category="inline-link-rx"></block></block>
+  <block id="80eb2a3788bc043e0e117027749a3b7a" category="list-text">在伺服器 BIOS 中為 SAN 啟動命名空間對應到的連接埠啟用 SAN 啟動。</block>
+  <block id="8796e28d4a4ab01704a45b84e10299f3" category="section-title">步驟 2：驗證軟體版本</block>
+  <block id="bfa758a2fd039564c81329a71d8a55b8" category="paragraph">使用以下步驟驗證最低支援的 RHEL 10 軟體版本。</block>
+  <block id="8686219d94060c8bb51e3307818e48c4" category="list-text">在伺服器上安裝 RHEL 10 。安裝完成後、請確認您執行的是指定的 RHEL 10 核心：</block>
+  <block id="207b3f28e8aa21d614e81b31699e50bf" category="paragraph">以下範例顯示了 RHEL 核心版本：</block>
+  <block id="fb47e45e6131ce8573db817dc34e3ba6" category="paragraph">下面的例子展示了<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>軟體包版本：</block>
+  <block id="d14319cd9fe8bb3c15b66611ee50ab63" category="paragraph">下面的例子展示了<block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block>軟體包版本：</block>
+  <block id="353615218a31d80048bde6c36a52f6d6" category="list-text">在主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> ：</block>
+  <block id="49254d029fbf5a05d560c49c65e3682d" category="paragraph">下面的例子展示了<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>版本：</block>
+  <block id="b52c5d0392407a559b20b04250a22a2b" category="section-title">步驟3：設定NVMe/FC</block>
+  <block id="3c4d68a984cfab18b058f7614517f26b" category="list-text">顯示模型名稱：</block>
+  <block id="61e9eafd114033b79115785b3c135abb" category="paragraph">您應該會看到下列輸出：</block>
+  <block id="d474b8d44546ee3743d50d33e3e43016" category="list-text">顯示模型描述：</block>
+  <block id="f5380639862d7f30daa3a708e324d0b8" category="list-text">顯示韌體版本：</block>
+  <block id="6d7cdce7ef63034f99b2d7060ae672bc" category="paragraph">以下範例顯示韌體版本：</block>
+  <block id="2e7877df9f97bc43731073c516c35196" category="list-text">顯示收件匣驅動程式版本：</block>
+  <block id="5960cabb9dbe62e8e98f3d79f0a1c9e0" category="paragraph">以下範例顯示了驅動程式版本：</block>
+  <block id="6b3d7041f640e56620316768e2c2bea9" category="paragraph">以下範例顯示連接埠標識：</block>
+  <block id="dfeb27de594c744f1f1bc3f70af7fe62" category="paragraph">以下範例顯示了驅動程式和韌體版本：</block>
+  <block id="c0dfb3da16b4c34ba6641ab9c5ced78a" category="section-title">步驟 4：可選，啟用 1MB I/O</block>
+  <block id="bb209e859372a1cf79b17e0f3ce4b72d" category="section-title">步驟 5：驗證 NVMe 啟動服務</block>
+  <block id="1e39429c019f1be4225017909bd3e504" category="paragraph">使用 RHEL 10， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用這些軟體包。啟動完成後，請驗證這些服務是否已啟用。</block>
+  <block id="3f6eafce29d3de48f970b9d611381841" category="section-title">步驟 6：設定 NVMe/TCP</block>
+  <block id="dda9e001bef1d21ede41e855ce95f071" category="section-title">步驟 7：驗證 NVMe-oF</block>
+  <block id="7ebd106b9b1cfecd3d6fb0451340153e" category="list-text">顯示子系統：</block>
+  <block id="924a2d9478a76ff931a7b33da760a8aa" category="list-text">顯示策略：</block>
+  <block id="33f7abd10cff2281a91b19ee32201623" category="section-title">步驟 8：設定安全帶內身份驗證</block>
+  <block id="3f2aed41975c4d98d941e8a7b03bf8e5" category="paragraph">從 ONTAP 9.12.1 開始，RHEL 10 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內驗證。</block>
+  <block id="ffc19e5b6958faf88524a792e1c1635d" category="paragraph">每個主機或控制器必須與一個<block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block>金鑰來設定安全身份驗證。 <block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block>金鑰是 NVMe 主機或控制器的 NQN 與管理員配置的身份驗證金鑰的組合。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。</block>
+  <block id="e50800c92fe482bd476da8e2b8778963" category="paragraph">使用 CLI 或設定 JSON 檔案設定安全帶內身份驗證。如果您需要為不同的子系統指定不同的 dhchap 金鑰、則必須使用組態 JSON 檔案。</block>
+  <block id="d1864d59ca252f6be1b9b7a1114e5ec4" category="list-text">為 RHEL 10 主機產生 dhchap 金鑰。</block>
+  <block id="0d99f1978c6ac8e224f5b9429539befa" category="paragraph">使用<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block>選項來產生 JSON 檔案。如需更多語法選項，請參閱 NVMe Connect All 手冊頁。</block>
+  <block id="aeafecb6e5d6ff8d736488ca4255a495" category="list-text">配置 JSON 檔案。</block>
+  <block id="abf3e38be1e135b4689023b375f16aed" category="admonition">在以下範例中， <block ref="b4ccff4fcae86dd694df37690970d401" prefix=" " category="inline-code"></block>對應於<block ref="b564e1f3e83c3835c800589da9434401" prefix=" " category="inline-code"></block>和<block ref="7c5692629f37b2fc3b73d10ecb68180e" prefix=" " category="inline-code"></block>對應於<block ref="c74aa421e1eeec8a71897cfdbf55b4c4" prefix=" " category="inline-code"></block> 。</block>
+  <block id="52fa57cb89715461d2004558d3bd3b78" category="list-text">驗證每個子系統的相應控制器是否已啟用 dhchap 機密。</block>
+  <block id="9b5f1d99b3cc83e8839e8c1c7044f62f" category="paragraph">以下範例顯示了 dhchap 金鑰：</block>
+  <block id="a8037bee31f3b32217fc0d5b84621e5e" category="section-title">步驟 9 ：檢閱已知問題</block>
+  <block id="b4da3417a3bbac7760c5f326458d9927" category="sidebar">RHEL 10</block>
+  <block id="63da114c28add40c319de84e3a92a8ed" category="sidebar">RHEL-10-FCP</block>
+  <block id="43a1437f7f656cd8be7c996c58719e0a" category="sidebar">10.0</block>
 </blocks>

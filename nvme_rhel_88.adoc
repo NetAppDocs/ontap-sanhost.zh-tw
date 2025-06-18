@@ -36,6 +36,27 @@ Red Hat Enterprise Linux （ RHEL ） 8.8 搭配非對稱命名空間存取（ A
 
 
 
+== 啟用 SAN 開機
+
+您可以將主機設定為使用 SAN 開機，以簡化部署並改善擴充性。
+
+.開始之前
+使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Linux 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
+
+.步驟
+. 建立 SAN 啟動命名空間並將其對應到主機。
++
+請參閱。 https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["配置NVMe儲存設備"^]
+
+. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
++
+如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
+
+. 重新啟動主機並驗證作業系統是否正常運作，以確認組態是否成功。
+
+
+
+
 == 啟用核心內建多重路徑
 
 您可以使用下列程序來啟用內核心多重路徑。
@@ -280,10 +301,13 @@ NOTE: 這些步驟不適用於 Qlogic NVMe / FC 主機。
 .步驟
 . 將 `lpfc_sg_seg_cnt`參數設定為 256 ：
 +
-[listing]
+[source, cli]
 ----
 cat /etc/modprobe.d/lpfc.conf
 ----
++
+您應該會看到類似以下範例的輸出：
+
 +
 [listing]
 ----
@@ -292,7 +316,7 @@ options lpfc lpfc_sg_seg_cnt=256
 . 執行 `dracut -f`命令，然後重新啟動主機。
 . 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
-[listing]
+[source, cli]
 ----
 cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
