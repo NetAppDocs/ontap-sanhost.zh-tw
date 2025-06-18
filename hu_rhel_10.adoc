@@ -210,7 +210,7 @@ size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
 +
 [source, cli]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
 ----
 +
 「 SDA 」是您要新增至黑名單的本機 SCSI 磁碟。

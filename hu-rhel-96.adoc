@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_79.html 
-keywords: host utilities, red hat, rhel, linux, 7.9, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.9與功能 
+permalink: hu-rhel-96.html 
+keywords: host utilities, red hat, rhel, linux, 9.6, netapp, ontap, rhel 
+summary: 在 RHEL 9.6 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。 
 ---
-= 使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 7.9
+= 使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 9.6
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.9與功能
 
 
 [role="lead"]
-Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 7.9 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。
+Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.6 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。
 
 
 NOTE: 您不需要手動設定基於核心的虛擬機器 (KVM) 設定，因為 ONTAP LUN 會自動對應到虛擬機器管理程式。
@@ -57,20 +57,12 @@ NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機
 
 == 步驟 3 ：確認主機的多重路徑組態
 
-您可以搭配 RHEL 7.9 使用多重路徑來管理 ONTAP LUN 。
+您可以搭配 RHEL 9.6 使用多重路徑來管理 ONTAP LUN 。
 
 為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
 
 .步驟
-. 確認 `/etc/multipath.conf`檔案存在：
-+
-[source, cli]
-----
-ls /etc/multipath.conf
-----
-+
-如果檔案不存在，請建立空白的零位元組檔案：
-
+. 確認 `/etc/multipath.conf`檔案已結束。如果檔案不存在，請建立空白的零位元組檔案：
 +
 [source, cli]
 ----
@@ -87,9 +79,9 @@ systemctl enable multipathd
 ----
 systemctl start multipathd
 ----
-. 每次引導主機時，空的 `/etc/multipath.conf`零位元組檔案會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。您不需要變更 `/etc/multipath.conf`主機的檔案，因為主機作業系統是使用多重路徑參數編譯，可正確辨識及管理 ONTAP LUN 。
+. 每次引導主機時，空的 `/etc/multipath.conf`零位元組檔案會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。您不需要變更 `/etc/multipath.conf`主機的檔案，因為作業系統會使用多重路徑參數進行編譯，以正確辨識及管理 ONTAP LUN 。
 +
-下表顯示 ONTAP LUN 的原生 Linux OS 編譯多重路徑參數設定。
+下表顯示 ONTAP LUN 的 Linux OS 原生編譯多重路徑參數設定。
 
 +
 .顯示參數設定
@@ -112,7 +104,7 @@ systemctl start multipathd
 | fast_io_f故障_tmo | 5. 
 
 
-| 功能 | "3 queue_if_no_path pg_init_retries 50" 
+| 功能 | "2 pg_init_retries 50" 
 
 
 | Flip_on_last刪除 | "是" 
@@ -139,7 +131,7 @@ systemctl start multipathd
 | 優先 | 「NetApp」ONTAP 
 
 
-| 產品 | LUN.* 
+| 產品 | LUN 
 
 
 | Retain附加的硬體處理常式 | 是的 
@@ -175,14 +167,14 @@ ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中�
 
 [listing]
 ----
-# multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+multipath -ll
+3600a098038314c4a433f577471797958 dm-2 NETAPP,LUN C-Mode
+size=180G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 3:0:7:9    sdco 69:192  active ready running
-  |- 3:0:8:9    sddi 71:0    active ready running
-  |- 14:0:8:9   sdjq 65:320  active ready running
-  `- 14:0:7:9   sdiw 8:256   active ready running
+  |- 14:0:0:0  sdc  8:32   active ready running
+  |- 17:0:0:0  sdas 66:192 active ready running
+  |- 14:0:3:0  sdar 66:176 active ready running
+  `- 17:0:3:0  sdch 69:80  active ready running
 ----
 --
 .AFF 或 FAS 組態
@@ -193,15 +185,15 @@ AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。�
 
 [listing]
 ----
-# multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+multipath -ll
+3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
+size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 3:0:3:0    sdd  8:48    active ready running
-| |- 3:0:4:0    sdx  65:112  active ready running
+| |- 16:0:3:0  sdcg 69:64  active ready running
+| `- 10:0:0:0  sdb  8:16   active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 14:0:2:0   sdfk 130:96  active ready running
-  `- 14:0:5:0   sdgz 132:240 active ready running
+  |- 10:0:1:0  sdc  8:32   active ready running
+  `- 16:0:2:0  sdcf 69:48  active ready running
 ----
 --
 ====
@@ -262,7 +254,7 @@ defaults {
 devices {
    device {
       vendor          "NETAPP"
-      product         "LUN.*"
+      product         "LUN"
       no_path_retry   *queue*
       path_checker    *tur*
    }
@@ -272,15 +264,8 @@ devices {
 
 == 步驟 6 ：檢閱已知問題
 
-採用 ONTAP 儲存版本的 RHEL 7.9 有下列已知問題：
+沒有已知問題。
 
-[cols="3*"]
-|===
-| NetApp錯誤ID | 標題 | 說明 
-
-
-| 1440718 | 如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。 | 當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損"^]、請參閱。 
-|===
 
 
 == 接下來呢？

@@ -3771,4 +3771,22 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="b4da3417a3bbac7760c5f326458d9927" category="sidebar">RHEL 10</block>
   <block id="63da114c28add40c319de84e3a92a8ed" category="sidebar">RHEL-10-FCP</block>
   <block id="43a1437f7f656cd8be7c996c58719e0a" category="sidebar">10.0</block>
+  <block id="282e82c820d3f500a969ebb9a9054584" category="summary">在 RHEL 9.6 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
+  <block id="f4e7617d1cef5f8ab23add41d40625fb" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 9.6</block>
+  <block id="5cecbf0e006813819e7ea0d92ccca8df" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.6 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
+  <block id="c655b9821bde0a911428a133bb7ef67f" category="paragraph">您可以搭配 RHEL 9.6 使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="6cbcd68038ece1dbafa173add2c90697" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機</block>
+  <block id="3dff0e4b77025c9e0739e3b02b3ff268" category="doc">適用於 ONTAP 的 RHEL 9.6 NVMe 主機組態</block>
+  <block id="fdee72360607bede29fc52844f306e62" category="paragraph">您可以在 Red Hat Enterprise Linux （ RHEL ） 9.6 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="770bddea589c1a8e5b2541551754b4e4" category="list-text">根據預設， RHEL 9.6 可為 NVMe 命名空間啟用核心內建 NVMe 多重路徑，無需明確設定。</block>
+  <block id="e118d7e4742cf0454d407a22991c4f23" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 9.6 中使用 NVMe/TCP 的安全帶內驗證。</block>
+  <block id="027d24fe581a1889d6b5752e3886e380" category="list-text">沒有可用的新功能。</block>
+  <block id="3b6f23fb41215bfbde13af4b92268902" category="paragraph">使用以下步驟驗證最低支援的 RHEL 9.6 軟體版本。</block>
+  <block id="61e91ca529ce5516397f8af4ff223ab0" category="list-text">在伺服器上安裝 RHEL 9.6 。安裝完成後、請確認您執行的是指定的 RHEL 9.6 核心：</block>
+  <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">以下範例顯示了 nvme-cli 軟體包版本：</block>
+  <block id="a33245ebb2f380b62ab218a312110f3a" category="list-text">在 RHEL 9.6 主機上，請檢查 hostnqn 字串，網址為<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="844df812cde8ebcaf9f2cc35022248c6" category="paragraph">使用 RHEL 9.6， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>軟體包會在系統啟動時自動啟用。系統啟動完成後，請驗證啟動服務是否已啟用。</block>
+  <block id="103bbc9741f09ef806d7d9f1ff8e4957" category="paragraph">從 ONTAP 9.12.1 開始，RHEL 9.6 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內驗證。</block>
+  <block id="c76dae5432bc09fa983706505086692e" category="list-text">為 RHEL 9.6 主機產生 dhchap 金鑰。</block>
+  <block id="eaf2f97729e8d5e4d205672da8afc9a5" category="sidebar">9.6</block>
 </blocks>

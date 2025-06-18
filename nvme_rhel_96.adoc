@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_rhel_10.html 
+permalink: nvme-rhel-96.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何使用 ONTAP 設定適用於 RHEL 10 的 NVMe 主機 
+summary: 如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機 
 ---
-= 適用於 ONTAP 的 RHEL 10 NVMe 主機組態
+= 適用於 ONTAP 的 RHEL 9.6 NVMe 主機組態
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -19,14 +19,15 @@ summary: 如何使用 ONTAP 設定適用於 RHEL 10 的 NVMe 主機
 NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與非對稱命名空間存取（ ANA ）。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取（ ALUA ）多重路徑。ANA 是使用核心內建 NVMe 多重路徑功能來實作。
 
 .關於這項工作
-您可以在 Red Hat Enterprise Linux （ RHEL ） 10 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。
+您可以在 Red Hat Enterprise Linux （ RHEL ） 9.6 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。
 
 * 可用支援：
 +
 ** 除了 NVMe over Fibre Channel （ NVMe / FC ）之外，還支援 NVMe over TCP （ NVMe / TCP ）。原生套件中的 NetApp 外掛程式 `nvme-cli`會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
 ** 在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI mpath 裝置設定 dm-multipath ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
 ** 支援使用 NVMe / FC 傳輸協定進行 SAN 開機。
-** 從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 10 中使用 NVMe/TCP 的安全帶內驗證。
+** 根據預設， RHEL 9.6 可為 NVMe 命名空間啟用核心內建 NVMe 多重路徑，無需明確設定。
+** 從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 9.6 中使用 NVMe/TCP 的安全帶內驗證。
 +
 如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
@@ -34,7 +35,7 @@ NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與�
 
 * 可用功能：
 +
-** 從 RHEL 10 開始，本機 NVMe 多路徑始終處於啟用狀態，且不支援 NVMe-oF 的 DM 多路徑支援。
+** 沒有可用的新功能。
 
 
 * 已知限制：
@@ -69,10 +70,10 @@ NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與�
 
 == 步驟 2：驗證軟體版本
 
-使用以下步驟驗證最低支援的 RHEL 10 軟體版本。
+使用以下步驟驗證最低支援的 RHEL 9.6 軟體版本。
 
 .步驟
-. 在伺服器上安裝 RHEL 10 。安裝完成後、請確認您執行的是指定的 RHEL 10 核心：
+. 在伺服器上安裝 RHEL 9.6 。安裝完成後、請確認您執行的是指定的 RHEL 9.6 核心：
 +
 [source, cli]
 ----
@@ -84,7 +85,7 @@ uname -r
 +
 [listing]
 ----
-6.12.0-55.9.1.el10_0.x86_64
+5.14.0-570.12.1.el9_6.x86_64
 ----
 . 安裝「NVMe-CLI（NVMe - CLI）套件：
 +
@@ -93,12 +94,12 @@ uname -r
 rpm -qa|grep nvme-cli
 ----
 +
-下面的例子展示了 `nvme-cli`軟體包版本：
+以下範例顯示了 nvme-cli 軟體包版本：
 
 +
 [listing]
 ----
-nvme-cli-2.11-5.el10.x86_64
+nvme-cli-2.11-5.el9.x86_64
 ----
 . 安裝 `libnvme` 套件：
 +
@@ -112,9 +113,9 @@ rpm -qa|grep libnvme
 +
 [listing]
 ----
-libnvme-1.11.1-1.el10.x86_64
+libnvme-1.11.1-1.el9.x86_64
 ----
-. 在主機上，檢查 hostnqn 字串 `/etc/nvme/hostnqn` ：
+. 在 RHEL 9.6 主機上，請檢查 hostnqn 字串，網址為 `/etc/nvme/hostnqn`：
 +
 [source, cli]
 ----
@@ -132,7 +133,7 @@ nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 +
 [source, cli]
 ----
-::> vserver nvme subsystem host show -vserver vs_nvme_194_rhel10
+::> vserver nvme subsystem host show -vserver vs_coexistence_LPE36002
 ----
 +
 .顯示範例
@@ -142,15 +143,15 @@ nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 ----
 Vserver Subsystem Priority  Host NQN
 ------- --------- --------  ------------------------------------------------
-vs_ nvme_194_rhel10
-        nvme4
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
+vs_coexistence_LPE36002
+        nvme
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
         nvme_1
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
         nvme_2
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
         nvme_3
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 4 entries were displayed.
 ----
 ====
@@ -219,8 +220,8 @@ cat /sys/class/scsi_host/host*/fwrev
 +
 [listing]
 ----
-14.0.539.16, sli-4:6:d
-14.0.539.16, sli-4:6:d
+14.4.393.25, sli-4:6:d
+14.4.393.25, sli-4:6:d
 ----
 .. 顯示收件匣驅動程式版本：
 +
@@ -234,7 +235,7 @@ cat /sys/module/lpfc/version
 +
 [listing]
 ----
-0:14.4.0.6
+0: 14.4.0.6
 ----
 
 
@@ -259,8 +260,8 @@ cat /sys/class/fc_host/host*/port_name
 +
 [listing]
 ----
-0x2100f4c7aa0cd7c2
-0x2100f4c7aa0cd7c3
+0x100000109bf044b1
+0x100000109bf044b2
 ----
 . 驗證啟動器連接埠是否在線上：
 +
@@ -290,30 +291,60 @@ cat /sys/class/scsi_host/host*/nvme_info
 [listing, subs="+quotes"]
 ----
 NVME Initiator Enabled
-XRI Dist lpfc2 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc2 WWPN x100000109bf044b1 WWNN x200000109bf044b1 DID x022a00 *ONLINE*
-NVME RPORT       WWPN x202fd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x021310 *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x202dd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020b10 *TARGET DISCSRVC ONLINE*
+XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc0 WWPN x100000109b954518 WWNN x200000109b954518 DID x000000 *ONLINE*
 
 NVME Statistics
-LS: Xmt 0000000810 Cmpl 0000000810 Abort 00000000
+LS: Xmt 0000000000 Cmpl 0000000000 Abort 00000000
 LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 000000007b098f07 Issue 000000007aee27c4 OutIO ffffffffffe498bd
-        abort 000013b4 noxri 00000000 nondlp 00000058 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 000013b4 Err 00021443
+Total FCP Cmpl 0000000000000000 Issue 0000000000000000 OutIO 0000000000000000
+          abort 00000000 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000000 Err 00000000
+
+NVME Initiator Enabled
+XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc1 WWPN x100000109b954519 WWNN x200000109b954519 DID x020500 *ONLINE*
+
+NVME Statistics
+LS: Xmt 0000000000 Cmpl 0000000000 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 0000000000000000 Issue 0000000000000000 OutIO 0000000000000000
+         abort 00000000 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00000000 Err 00000000
+
+NVME Initiator Enabled
+XRI Dist lpfc2 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc2 WWPN x100000109bf044b1 WWNN x200000109bf044b1 DID x022a00 *ONLINE*
+NVME RPORT       WWPN x200bd039eaa7dfc8 WWNN x2008d039eaa7dfc8 DID x021319 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2155d039eaa7dfc8 WWNN x2154d039eaa7dfc8 DID x02130f *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2001d039eaa7dfc8 WWNN x2000d039eaa7dfc8 DID x021310 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x200dd039eaa7dfc8 WWNN x2008d039eaa7dfc8 DID x020b15 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2156d039eaa7dfc8 WWNN x2154d039eaa7dfc8 DID x020b0d *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2003d039eaa7dfc8 WWNN x2000d039eaa7dfc8 DID x020b10 *TARGET DISCSRVC ONLINE*
+
+NVME Statistics
+LS: Xmt 0000003049 Cmpl 0000003049 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 0000000018f9450b Issue 0000000018f5de57 OutIO fffffffffffc994c
+          abort 000036d3 noxri 00000313 nondlp 00000c8d qdepth 00000000 wqerr 00000064 err 00000000
+FCP CMPL: xb 000036d1 Err 000fef0f
 
 NVME Initiator Enabled
 XRI Dist lpfc3 Total 6144 IO 5894 ELS 250
 NVME LPORT lpfc3 WWPN x100000109bf044b2 WWNN x200000109bf044b2 DID x021b00 *ONLINE*
-NVME RPORT       WWPN x2033d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020110 *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2032d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x022910 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2062d039eaa7dfc8 WWNN x2008d039eaa7dfc8 DID x022915 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2157d039eaa7dfc8 WWNN x2154d039eaa7dfc8 DID x02290f *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2002d039eaa7dfc8 WWNN x2000d039eaa7dfc8 DID x022910 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2065d039eaa7dfc8 WWNN x2008d039eaa7dfc8 DID x020119 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2158d039eaa7dfc8 WWNN x2154d039eaa7dfc8 DID x02010d *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2004d039eaa7dfc8 WWNN x2000d039eaa7dfc8 DID x020110 *TARGET DISCSRVC ONLINE*
 
 NVME Statistics
-LS: Xmt 0000000840 Cmpl 0000000840 Abort 00000000
+LS: Xmt 0000002f2c Cmpl 0000002f2c Abort 00000000
 LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 000000007afd4434 Issue 000000007ae31b83 OutIO ffffffffffe5d74f
-        abort 000014a5 noxri 00000000 nondlp 0000006a qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 000014a5 Err 0002149a
+Total FCP Cmpl 000000001aaf3eb5 Issue 000000001aab4373 OutIO fffffffffffc04be
+          abort 000035cc noxri 0000038c nondlp 000009e3 qdepth 00000000 wqerr 00000082 err 00000000
+FCP CMPL: xb 000035cc Err 000fcfc0
 ----
 =====
 
@@ -336,8 +367,8 @@ cat /sys/class/fc_host/host*/symbolic_name
 +
 [listing]
 ----
-QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
-QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+QLE2872 FW:v9.15.03 DVR:v10.02.09.300-k-debug
+QLE2872 FW:v9.15.03 DVR:v10.02.09.300-k-debug
 ----
 . 請確認 `ql2xnvmeenable` 已設定。這可讓 Marvell 介面卡作為 NVMe / FC 啟動器運作：
 +
@@ -389,7 +420,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 == 步驟 5：驗證 NVMe 啟動服務
 
-使用 RHEL 10，  `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service` NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時會自動啟用這些軟體包。啟動完成後，請驗證這些服務是否已啟用。
+使用 RHEL 9.6，  `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service` NVMe/FC 中包含的啟動服務 `nvme-cli`軟體包會在系統啟動時自動啟用。系統啟動完成後，請驗證啟動服務是否已啟用。
 
 .步驟
 . 確認 `nvmf-autoconnect.service`已啟用：
@@ -457,9 +488,9 @@ nvme discover -t tcp -w host-traddr -a traddr
 ====
 [listing, subs="+quotes"]
 ----
-nvme discover -t tcp -w 192.168.20.1 -a 192.168.20.20
+nvme discover -t tcp -w 192.168.1.31 -a 192.168.1.24
 
-Discovery Log Number of Records 8, Generation counter 18
+Discovery Log Number of Records 20, Generation counter 25
 =====Discovery Log Entry 0======
 trtype:  tcp
 adrfam:  ipv4
@@ -467,8 +498,8 @@ subtype: *current discovery subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 8009
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
-traddr:  192.168.21.21
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:discovery
+traddr:  192.168.2.25
 eflags:  *explicit discovery connections, duplicate discovery information*
 sectype: none
 =====Discovery Log Entry 1======
@@ -478,8 +509,8 @@ subtype: *current discovery subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 8009
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
-traddr:  192.168.20.21
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:discovery
+traddr:  192.168.1.25
 eflags:  *explicit discovery connections, duplicate discovery information*
 sectype: none
 =====Discovery Log Entry 2======
@@ -487,10 +518,10 @@ trtype:  tcp
 adrfam:  ipv4
 subtype: *current discovery subsystem*
 treq:    not specified
-portid:  3
+portid:  5
 trsvcid: 8009
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
-traddr:  192.168.21.20
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:discovery
+traddr:  192.168.2.24
 eflags:  *explicit discovery connections, duplicate discovery information*
 sectype: none
 =====Discovery Log Entry 3======
@@ -500,8 +531,8 @@ subtype: *current discovery subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 8009
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:discovery
-traddr:  192.168.20.20
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:discovery
+traddr:  192.168.1.24
 eflags:  *explicit discovery connections, duplicate discovery information*
 sectype: none
 =====Discovery Log Entry 4======
@@ -511,8 +542,8 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rhel10_tcp_subsystem
-traddr:  192.168.21.21
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_NONE_1_3
+traddr:  192.168.2.25
 eflags:  none
 sectype: none
 =====Discovery Log Entry 5======
@@ -522,8 +553,8 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rhel10_tcp_subsystem
-traddr:  192.168.20.21
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_NONE_1_4
+traddr:  192.168.1.25
 eflags:  none
 sectype: none
 =====Discovery Log Entry 6======
@@ -531,10 +562,10 @@ trtype:  tcp
 adrfam:  ipv4
 subtype: *nvme subsystem*
 treq:    not specified
-portid:  3
+portid:  5
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rhel10_tcp_subsystem
-traddr:  192.168.21.20
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_NONE_1_5
+traddr:  192.168.2.24
 eflags:  none
 sectype: none
 =====Discovery Log Entry 7======
@@ -544,8 +575,140 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rhel10_tcp_subsystem
-traddr:  192.168.20.20
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_2_2
+traddr:  192.168.1.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 8======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  4
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_2_3
+traddr:  192.168.2.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 9======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  2
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_2_5
+traddr:  192.168.1.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 10======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  5
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_2_2
+traddr:  192.168.2.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 11======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  1
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_2_3
+traddr:  192.168.1.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 12======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  4
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_2_3
+traddr:  192.168.2.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 13======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  2
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_4
+traddr:  192.168.1.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 14======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  5
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_5
+traddr:  192.168.2.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 15======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  1
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_6
+traddr:  192.168.1.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 16======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  4
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_7
+traddr:  192.168.2.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 17======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  2
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_8
+traddr:  192.168.1.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 18======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  5
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
+traddr:  192.168.2.24
+eflags:  none
+sectype: none
+=====Discovery Log Entry 19======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  1
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_9
+traddr:  192.168.1.24
 eflags:  none
 sectype: none
 ----
@@ -562,10 +725,10 @@ nvme discover -t tcp -w host-traddr -a traddr
 ====
 [listing, subs="+quotes"]
 ----
-nvme discover -t tcp -w 192.168.20.1 -a 192.168.20.20
-nvme discover -t tcp -w 192.168.21.1 -a 192.168.21.20
-nvme discover -t tcp -w 192.168.20.1 -a 192.168.20.21
-nvme discover -t tcp -w 192.168.21.1 -a 192.168.21.21
+nvme discover -t tcp -w 192.168.1.31 -a 192.168.1.24
+nvme discover -t tcp -w 192.168.2.31 -a 192.168.2.24
+nvme discover -t tcp -w 192.168.1.31 -a 192.168.1.25
+nvme discover -t tcp -w 192.168.2.31 -a 192.168.2.25
 ----
 ====
 . 執行 `nvme connect-all` 跨所有節點支援的 NVMe / TCP 啟動器目標生命體執行命令：
@@ -580,10 +743,10 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 ====
 [listing, subs="+quotes"]
 ----
-nvme	connect-all	-t	tcp	-w	192.168.20.1	-a	192.168.20.20
-nvme	connect-all	-t	tcp	-w	192.168.21.1	-a	192.168.21.20
-nvme	connect-all	-t	tcp	-w	192.168.20.1	-a	192.168.20.21
-nvme	connect-all	-t	tcp	-w	192.168.21.1	-a	192.168.21.21
+nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.24
+nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.24
+nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.25
+nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ----
 ====
 
@@ -598,6 +761,20 @@ NOTE: 從 RHEL 9.5 開始、 NVMe / TCP 逾時的預設設定 `ctrl_loss_tmo`會
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
 
 .步驟
+. 確認已啟用核心內建 NVMe 多重路徑：
++
+[source, cli]
+----
+cat /sys/module/nvme_core/parameters/multipath
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+Y
+----
 . 驗證個別 ONTAP 命名空間的適當 NVMe 設定（例如、模型設定為 NetApp ONTAP 控制器、負載平衡 iopolicing 設定為循環）是否正確反映在主機上：
 +
 .. 顯示子系統：
@@ -662,20 +839,21 @@ Namespace Usage    Format             FW             Rev
 --
 [source, cli]
 ----
-nvme list-subsys /dev/nvme5n1
+nvme list-subsys /dev/nvme4n5
 ----
 .顯示範例
 [%collapsible]
 =====
 [listing, subs="+quotes"]
 ----
-nvme-subsys5 - NQN=nqn.1992-08.com.netapp:sn.f7565b15a66911ef9668d039ea951c46:subsystem.nvme1
-               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
-\
- +- nvme126 *fc* traddr=nn-0x2036d039ea951c45:pn-0x2038d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c3:pn-0x2100f4c7aa0cd7c3 *live optimized*
- +- nvme176 *fc* traddr=nn-0x2036d039ea951c45:pn-0x2037d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c2:pn-0x2100f4c7aa0cd7c2 *live optimized*
- +- nvme5 *fc* traddr=nn-0x2036d039ea951c45:pn-0x2039d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c2:pn-0x2100f4c7aa0cd7c2 *live non-optimized*
- +- nvme71 *fc* traddr=nn-0x2036d039ea951c45:pn-0x203ad039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c3:pn-0x2100f4c7aa0cd7c3 *live non-optimized*
+nvme-subsys4 - NQN=nqn.1992-08.com.netapp:sn.3a5d31f5502c11ef9f50d039eab6cb6d:subsystem.nvme_1
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:e6dade64-216d-
+11ec-b7bb-7ed30a5482c3
+iopolicy=round-robin\
++- nvme1 *fc* traddr=nn-0x2082d039eaa7dfc8:pn-0x2088d039eaa7dfc8,host_traddr=nn-0x20000024ff752e6d:pn-0x21000024ff752e6d *live optimized*
++- nvme12 *fc* traddr=nn-0x2082d039eaa7dfc8:pn-0x208ad039eaa7dfc8,host_traddr=nn-0x20000024ff752e6d:pn-0x21000024ff752e6d *live non-optimized*
++- nvme10 *fc* traddr=nn-0x2082d039eaa7dfc8:pn-0x2087d039eaa7dfc8,host_traddr=nn-0x20000024ff752e6c:pn-0x21000024ff752e6c *live non-optimized*
++- nvme3 *fc* traddr=nn-0x2082d039eaa7dfc8:pn-0x2083d039eaa7dfc8,host_traddr=nn-0x20000024ff752e6c:pn-0x21000024ff752e6c *live optimized*
 ----
 =====
 --
@@ -683,26 +861,32 @@ nvme-subsys5 - NQN=nqn.1992-08.com.netapp:sn.f7565b15a66911ef9668d039ea951c46:su
 --
 [source, cli]
 ----
-nvme list-subsys /dev/nvme4n2
+nvme list-subsys /dev/nvme1n1
 ----
 .顯示範例
 [%collapsible]
 =====
 [listing, subs="+quotes"]
 ----
-nvme-subsys4 - NQN=nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.nvme4
-               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-c2c04f444d33
+nvme-subsys5 - NQN=nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
+hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33
+iopolicy=round-robin
 \
-+- nvme102 *tcp* traddr=192.168.21.20,trsvcid=4420,host_traddr=192.168.21.1,src_addr=192.168.21.1 *live non-optimized*
-+- nvme151 *tcp* traddr=192.168.21.21,trsvcid=4420,host_traddr=192.168.21.1,src_addr=192.168.21.1 *live optimized*
-+- nvme4 *tcp* traddr=192.168.20.20,trsvcid=4420,host_traddr=192.168.20.1,src_addr=192.168.20.1 *live non-optimized*
-+- nvme53 *tcp* traddr=192.168.20.21,trsvcid=4420,host_traddr=192.168.20.1,src_addr=192.168.20.1 *live optimized*
++- nvme13 *tcp* traddr=192.168.2.25,trsvcid=4420,host_traddr=192.168.2.31,
+src_addr=192.168.2.31 *live optimized*
++- nvme14 *tcp* traddr=192.168.2.24,trsvcid=4420,host_traddr=192.168.2.31,
+src_addr=192.168.2.31 *live non-optimized*
++- nvme5 *tcp* traddr=192.168.1.25,trsvcid=4420,host_traddr=192.168.1.31,
+src_addr=192.168.1.31 *live optimized*
++- nvme6 *tcp* traddr=192.168.1.24,trsvcid=4420,host_traddr=192.168.1.31,
+src_addr=192.168.1.31 *live non-optimized*
 ----
 =====
 --
 ====
 . 驗證NetApp外掛程式是否顯示每ONTAP 個版本名稱空間裝置的正確值：
-+
+
+
 [role="tabbed-block"]
 ====
 .欄位
@@ -719,11 +903,11 @@ nvme netapp ontapdevices -o column
 
 Device        Vserver   Namespace Path
 ----------------------- ------------------------------
-/dev/nvme10n1     vs_tcp_rhel10       /vol/vol10/ns10
+/dev/nvme1n1     linux_tcnvme_iscsi        /vol/tcpnvme_1_0_0/tcpnvme_ns
 
 NSID       UUID                                   Size
 ------------------------------------------------------------
-1    bbf51146-fc64-4197-b8cf-8a24f6f359b3   21.47GB
+1    5f7f630d-8ea5-407f-a490-484b95b15dd6   21.47GB
 ----
 =====
 --
@@ -741,28 +925,26 @@ nvme netapp ontapdevices -o json
 {
   "ONTAPdevices":[
     {
-      "Device":"/dev/nvme10n1",
-      "Vserver":"vs_tcp_rhel10",
-      "Namespace_Path":"/vol/vol10/ns10",
+      "Device":"/dev/nvme1n1",
+      "Vserver":"linux_tcnvme_iscsi",
+      "Namespace_Path":"/vol/tcpnvme_1_0_0/tcpnvme_ns",
       "NSID":1,
-      "UUID":"bbf51146-fc64-4197-b8cf-8a24f6f359b3",
+      "UUID":"5f7f630d-8ea5-407f-a490-484b95b15dd6",
       "Size":"21.47GB",
       "LBA_Data_Size":4096,
       "Namespace_Size":5242880
-}
+    },
 ]
-    }
+}
 ----
 =====
 --
 ====
 
 
-
-
 == 步驟 8：設定安全帶內身份驗證
 
-從 ONTAP 9.12.1 開始，RHEL 10 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內驗證。
+從 ONTAP 9.12.1 開始，RHEL 9.6 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內驗證。
 
 每個主機或控制器必須與一個 `DH-HMAC-CHAP`金鑰來設定安全身份驗證。  `DH-HMAC-CHAP`金鑰是 NVMe 主機或控制器的 NQN 與管理員配置的身份驗證金鑰的組合。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
 
@@ -781,7 +963,7 @@ nvme netapp ontapdevices -o json
 ----
 cat /etc/nvme/hostnqn
 ----
-. 為 RHEL 10 主機產生 dhchap 金鑰。
+. 為 RHEL 9.6 主機產生 dhchap 金鑰。
 +
 下列輸出說明 `gen-dhchap-key`命令參數：
 
@@ -801,8 +983,9 @@ nvme gen-dhchap-key -s optional_secret -l key_length {32|48|64} -m HMAC_function
 +
 [listing]
 ----
-nvme gen-dhchap-key -m 3 -n nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-c2c04f444d33
-DHHC-1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
+nvme gen-dhchap-key -m 3 -n nqn.2014-
+08.org.nvmexpress:uuid:e6dade64-216d-11ec-b7bb-7ed30a5482c3
+DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
 ----
 . 在 ONTAP 控制器上、新增主機並指定兩個 dhchap 金鑰：
 +
@@ -830,15 +1013,12 @@ cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_secret
 =====
 [listing]
 ----
-# cat /sys/class/nvme-subsystem/nvme-subsys1/nvme*/dhchap_secret
-DHHC- 1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jTmzEKUbcWu26I33b93b
-il2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
-DHHC- 1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jTmzEKUbcWu26I33b93b
-il2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
-DHHC- 1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jTmzEKUbcWu26I33b93b
-il2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
-DHHC- 1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jTmzEKUbcWu26I33b93b
-il2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
+cat /sys/class/nvme-subsystem/nvme-
+subsys1/nvme*/dhchap_secret
+DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
+DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
+DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
+DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
 ----
 =====
 .. 驗證控制器 dhchap 按鍵：
@@ -853,18 +1033,12 @@ cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_ctrl_secret
 =====
 [listing]
 ----
-# cat /sys/class/nvme-subsystem/nvme-subsys6/nvme*/dhchap_ctrl_secret
-DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
-1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
-
-DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
-1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
-
-DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
-1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
-
-DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
-1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
+cat /sys/class/nvme-subsystem/nvme-
+subsys6/nvme*/dhchap_ctrl_secret
+DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
+DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
+DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
+DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
 ----
 =====
 
@@ -891,47 +1065,67 @@ NOTE: 在以下範例中，  `dhchap_key`對應於 `dhchap_secret`和 `dhchap_ct
 =====
 [listing]
 ----
-# cat /etc/nvme/config.json
+cat /etc/nvme/config.json
 [
 {
-"hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-c2c04f444d33",
-"hostid":"4c4c4544-0035-5910-804b-c2c04f444d33",
-"dhchap_key":"DHHC-1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:",
-"subsystems":[
-{
-"nqn":"nqn.1992-08.com.netapp:sn.127ade26168811f0a50ed039eab69ad3:subsystem.inband_unidirectional",
-"ports":[
-{
-"transport":"tcp",
-"traddr":"192.168.20.17",
-"host_traddr":"192.168.20.1",
-"trsvcid":"4420"
+  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:9796c1ec-0d34-11eb-
+  b6b2-3a68dd3bab57",
+  "hostid":"b033cd4fd6db4724adb48655bfb55448",
+  "dhchap_key":" DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:"
 },
 {
-"transport":"tcp",
-"traddr":"192.168.20.18",
-"host_traddr":"192.168.20.1",
-"trsvcid":"4420"
-},
-{
-"transport":"tcp",
-"traddr":"192.168.21.18",
-"host_traddr":"192.168.21.1",
-"trsvcid":"4420"
-},
-{
-"transport":"tcp",
-"traddr":"192.168.21.17",
-"host_traddr":"192.168.21.1",
-"trsvcid":"4420"
-}]
+  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-
+  804b-b5c04f444d33",
+  "subsystems":[
+        {
+          "nqn":"nqn.1992-
+          08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.bidi
+          r_DHCP",
+          "ports":[
+              {
+                  "transport":"tcp",
+                    "traddr":" 192.168.1.24 ",
+                  "host_traddr":" 192.168.1.31 ",
+                  "trsvcid":"4420",
+                  "dhchap_ctrl_key":"DHHC-
+                  1:03: wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:"
+              },
+              {
+                  "transport":"tcp",
+                  "traddr":" 192.168.1.25 ",
+                  "host_traddr":" 192.168.1.31",
+                  "trsvcid":"4420",
+                  "dhchap_ctrl_key":"DHHC-
+                  1:03: wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:"
+              },
+              {
+                  "transport":"tcp",
+                 "traddr":" 192.168.2.24 ",
+                  "host_traddr":" 192.168.2.31",
+                  "trsvcid":"4420",
+                  "dhchap_ctrl_key":"DHHC-
+                  1:03: wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:"
+              },
+              {
+                  "transport":"tcp",
+                  "traddr":" 192.168.2.25 ",
+                    "host_traddr":" 192.168.2.31",
+                  "trsvcid":"4420",
+                  "dhchap_ctrl_key":"DHHC-
+                  1:03: wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:"
+              }
+          ]
+      }
+  ]
+}
+]
 ----
 =====
 . 使用組態 JSON 檔案連線至 ONTAP 控制器：
 +
 [source, cli]
 ----
-# nvme connect-all -J /etc/nvme/config.json
+nvme connect-all -J /etc/nvme/config.json
 ----
 +
 .顯示範例
@@ -939,31 +1133,23 @@ NOTE: 在以下範例中，  `dhchap_key`對應於 `dhchap_secret`和 `dhchap_ct
 =====
 [listing]
 ----
-traddr=192.168.20.20 is already connected
-traddr=192.168.20.20 is already connected
-traddr=192.168.20.20 is already connected
-traddr=192.168.20.20 is already connected
-traddr=192.168.20.20 is already connected
-traddr=192.168.20.20 is already connected
-traddr=192.168.20.20 is already connected
-traddr=192.168.20.20 is already connected
-traddr=192.168.20.21 is already connected
-traddr=192.168.20.21 is already connected
-traddr=192.168.20.21 is already connected
-traddr=192.168.20.21 is already connected
-traddr=192.168.20.21 is already connected
-traddr=192.168.20.21 is already connected
-traddr=192.168.20.21 is already connected
-traddr=192.168.20.21 is already connected
+already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
+r_DHCP,transport=tcp,traddr=192.168.1.25,trsvcid=4420
+already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
+r_DHCP,transport=tcp,traddr=192.168.2.25,trsvcid=4420
+already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
+r_DHCP,transport=tcp,traddr=192.168.1.24,trsvcid=4420
+already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
+r_DHCP,transport=tcp,traddr=192.168.2.24,trsvcid=4420
 ----
 =====
-. 驗證每個子系統的相應控制器是否已啟用 dhchap 機密。
+. 確認已為每個子系統的個別控制器啟用 dhchap 機密：
 +
 .. 驗證主機 dhchap 金鑰：
 +
 [source, cli]
 ----
-# cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_secret
+cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_secret
 ----
 +
 以下範例顯示了 dhchap 金鑰：
@@ -971,14 +1157,13 @@ traddr=192.168.20.21 is already connected
 +
 [listing]
 ----
-DHHC-1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia1
-aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
+DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
 ----
 .. 驗證控制器 dhchap 按鍵：
 +
 [source, cli]
 ----
-# cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
+cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
 ----
 +
 您應該會看到類似以下範例的輸出：
@@ -986,8 +1171,7 @@ aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
 +
 [listing]
 ----
-DHHC-1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jT
-mzEKUbcWu26I33b93bil2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
+DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
 ----
 
 
