@@ -27,7 +27,6 @@
   <block id="21a58bdeaf70327c6f6f5fd597b24fa3" category="section-title">建議設定</block>
   <block id="c5b0e8703af1ccb56a53d3ccc87f83ac" category="paragraph">CentOS 6.4作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。</block>
   <block id="4d70a817ac85626aff88bbc73d0a2deb" category="list-text">執行下列命令來判斷WWID：</block>
-  <block id="ff73d7e0f0c6051bbd80575105bb1cb1" category="list-text">將此WWID新增至「/etc/multipath.conf」中的黑名單節：</block>
   <block id="83f499a540b1323009c200d6f8cc9396" category="cell">參數</block>
   <block id="51ac4bf63a0c6a9cefa7ba69b4154ef1" category="cell">設定</block>
   <block id="dbffbd283cd0d9c7937014167893297e" category="cell">DETECT（偵測）_prio</block>
@@ -155,32 +154,6 @@
   <block id="3b3051e9028e74cd5ada27ca8f32e352" category="paragraph">對於Oracle Linux 6.10、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.10是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="4c489d4721694c4117162307ded4345c" category="list-text">使用「mkitrd」命令重新建立initrd-image。Oracle 6x及更新版本可使用以下命令：命令：「mkitrd -f /boot/ initrd-"uname -r"。imguname -r"或命令：「Dracut -f」</block>
   <block id="00d1a8ad09df702e5b164c26cbd1bc1a" category="paragraph">Oracle Linux 6.10作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="33fb3916b5bbccadc7502b97d2b47e0a" category="summary">說明如何搭配ONTAP 使用Citrix XenServer 7.x與VMware</block>
-  <block id="a51e3210f96458fa393e6f4bf88caabc" category="paragraph">Citrix XenServer中的多重路徑支援是以Device對應器Multibathd元件為基礎。不會自動為所有顯示給XenServer的LUN建立裝置對應器節點、而且只有當儲存管理層（API）主動使用LUN時、才會進行資源配置。Citrix XenServer Storage Manager API外掛程式可自動啟動及停用多重路徑節點。</block>
-  <block id="9fc86c956b59ea355d470ac30580447a" category="paragraph">Citrix XenServer 7.x OS是以辨識及正確管理ONTAP VMware LUN所需的所有設定所編譯。對於Citrix XenServer 7.x、必須存在空白的零位元組「/etc/multipath.conf」檔案、但您不需要對該檔案進行特定變更。</block>
-  <block id="410267f88a5f79f5d40838a8e7a35e62" category="paragraph">從* XenCenter Management Portal/*啟用主機多重路徑服務、並確認多重路徑服務已啟用並正在執行。</block>
-  <block id="b00ab7c17a141468a5921157cdf11ec3" category="admonition">將*取代為您要排除之裝置的WWID字串。</block>
-  <block id="ec8b35f300ba884a5dff762db20c0a35" category="paragraph">請使用「$multipathd show config」命令來參考多重路徑參數執行時間組態。您應該一律檢查執行中的組態、查看可能會覆寫預設設定的舊版設定、尤其是在預設值區段。</block>
-  <block id="aea5fd959632948a3225c2ddd5323d43" category="paragraph">下表顯示ONTAP 適用於整個過程的關鍵*多路徑d*參數、以及所需的值。如果主機連接至其他廠商的LUN、且任一參數被覆寫、則需要在*多重路徑.conf *中的稍後儲存區加以修正、以特別適用於ONTAP 整個LUN。如果沒有這麼做、ONTAP 則可能無法如預期般運作。下列預設值僅應在諮詢NetApp和/或作業系統廠商、且必須完全瞭解其影響時予以覆寫。</block>
-  <block id="093280d0b1b888a2d2861cdc763f5f54" category="cell">"Detect_prio"</block>
-  <block id="d4f9e6cd04344d6033229cebcf82d8e6" category="cell">「DEEV_Loss」TMO</block>
-  <block id="0b45dcda8325354552a9f3f77a81fb12" category="cell">故障恢復</block>
-  <block id="f723063a7c67a9c4d6dc09fcc9258bc0" category="cell">「fast_io_fail _tmo」</block>
-  <block id="9b1acf92108be93042969ae0cd15c662" category="cell">功能</block>
-  <block id="51639d9d920527eeeeb339933ef1d388" category="cell">「Flush」</block>
-  <block id="dd3d09a74b9822f94f3022c45d6d89eb" category="cell">硬體處理常式</block>
-  <block id="7793f55f663016533cfccea244686d20" category="cell">"path_checker_"</block>
-  <block id="0229f06974ddf0fbb6c8163410252381" category="cell">"path_grouping_policy_"</block>
-  <block id="100ea8f1ede2192d241e4386cfe3c479" category="cell">"path_selector"</block>
-  <block id="06d7756e9ce36c56b9cea270ed31aa7d" category="cell">"Polling_時間 間隔"</block>
-  <block id="5b64d224179378eb0872e824614167de" category="cell">《prio》</block>
-  <block id="dc2ba82454a2923edf99404df680c7ee" category="cell">《產品》</block>
-  <block id="aaa74fa881bc5ea07b9b9aef23bb28ab" category="cell">"REATH_ATHOND_HW_Handler"</block>
-  <block id="1b1f4bb4b35ee6994917bd6527d2e343" category="cell">"rr_weight（rrr_weight）"</block>
-  <block id="677641ebec419b9c5915ed13974b0c07" category="cell">《user_fuse_names》</block>
-  <block id="34fed3385bd742bd2b178de283f371b7" category="cell">「第一」</block>
-  <block id="9d5bc46c4aa8d12cf17b1243dea3cdb8" category="paragraph">以下範例說明如何修正被覆寫的預設值。在此情況下、* multipath.conf *檔案會定義* path_checker*和* detect_prio*的值、這些值與ONTAP 不相容於哪些LUN。如果因為主機連接的其他SAN陣列而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
-  <block id="73087707ff2bdcd46af8a5eca4a750f8" category="admonition">Citrix XenServer建議針對所有Linux和Windows型客體VM使用Citrix VM工具、以進行支援的組態。</block>
   <block id="7b226a13926b533ec9331dd4d86cd914" category="summary">說明如何搭配ONTAP 使用CentOS 6.7搭配使用功能</block>
   <block id="2a1ab1135667d6dc77c69e8562aa36e0" category="paragraph">對於CentOS 6.7、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 6.7採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各個LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="eb694d82bb8432a9005a1a1f219b1fa0" category="paragraph">CentOS 6.7作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動為ASA 各種版本的支援和非ASA組態設定正確的所有組態參數。</block>
@@ -1018,7 +991,6 @@
   <block id="f884cc5c56f9c9a8d4d61568ff64db9c" category="sidebar">6.5</block>
   <block id="ded681fc154529ebbc7562fb0c73ba47" category="sidebar">6.4.</block>
   <block id="44259680bd01002134994d85d023710c" category="sidebar">Citrix</block>
-  <block id="095f17ad6c7f706c5fa881fa28d2b0e2" category="sidebar">XenServer 7</block>
   <block id="b0781c18fd091c4f9e79ff11eb4b9fc5" category="sidebar">VMware vSphere 7</block>
   <block id="11b4279628bd5bd99185024194584bba" category="sidebar">VMware vSphere 6.5與6.7</block>
   <block id="b1fd823d262032e04291313f72be9452" category="sidebar">HP-UX</block>
@@ -1082,7 +1054,6 @@
   <block id="2ee1fba4400a50245e66ef649b54d588" category="sidebar">安裝AIX Hu 6.1</block>
   <block id="9b402891c0d38b9c654dcfa36df9d722" category="sidebar">8.6.</block>
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">AIX主機公用程式6.1版本資訊</block>
-  <block id="c03432d938277a67cb7c8ce5d783b2ca" category="paragraph">下列範例顯示ONTAP 所有四個主動/最佳化路徑之用、正確輸出的列舉之一：</block>
   <block id="c1326fec4f12ec093296d507d6b6e33a" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.6.</block>
   <block id="fa491ee178ddf6e96992dad027671112" category="paragraph">對於Oracle Linux（OL）8.6"/etc/multipath.conf "檔案必須存在、但您不需要對該檔案進行特定變更。OL 8.6是使用所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="ea11e68a3ea4e3736ee4012985057991" category="paragraph">Oracle Linux 8.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
@@ -1670,7 +1641,6 @@
   <block id="beb55dba3ba1d2be4056c146cb0bf458" category="paragraph">Oracle Linux 9.2 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="02b2bcdfe73b2cce057d7b84806fa6ed" category="paragraph">Oracle Linux 9.1 with NetApp ONTAP 版本有下列已知問題：</block>
   <block id="cc40ed991073c638cc114ee18ad15d8c" category="paragraph">Oracle Linux 9.0 with NetApp ONTAP 版本有下列已知問題：</block>
-  <block id="9f0988d93d2475f41e07c537ac5637e6" category="doc">將 Citrix XenServer 搭配 ONTAP 使用</block>
   <block id="f419fe819afeb109ae85608ed6bd0ca7" category="doc">使用 Veritas Infoscale 7 for Linux with ONTAP</block>
   <block id="30d85838b9488ee908d075559c8978cd" category="doc">搭配 ONTAP 使用 VMware vSphere 8.x</block>
   <block id="7dfa70c3f5b28c905e177a472ecf20d7" category="doc">將 Oracle Linux 9.2 與 ONTAP 搭配使用</block>
@@ -1767,7 +1737,6 @@
   <block id="0659d428df833a806e29e65e632d380a" category="inline-link-macro">NetApp支援</block>
   <block id="b3303f1e3e1d5672f6b839c968637989" category="paragraph">如果您仍面臨問題、請收集下列檔案和命令輸出及聯絡人 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 進一步分類：</block>
   <block id="8e2fe53ccb05734b777fbcc2363d25ab" category="paragraph">您可以將 vSphere 7.x 版本的 ONTAP SAN 主機組態設定與 FC 、 FCoE 和 iSCSI 通訊協定一起使用。</block>
-  <block id="4a09c73fa303eedb14779e29343fb862" category="paragraph">您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 Citrix XenServer 7 系列作業系統版本設定 ONTAP SAN 主機組態設定。</block>
   <block id="16739062558f135a2a67b7745e31e80d" category="paragraph">您可以擷取對應至主機的所有主機啟動器清單。</block>
   <block id="416012ceac18a0ac6c16db45563c9298" category="paragraph">您可以擷取對應至主機的所有 LUN 清單。</block>
   <block id="34f24f66e929234e4a25705afbec0a62" category="paragraph">您可以從特定 SVM 擷取對應至主機的所有 LUN 清單。</block>
@@ -2063,7 +2032,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="57175c72c9ec2223e90f7a6f933b0c1b" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標、以設定 Oracle Linux 7.6 。</block>
   <block id="23e8ad4d32c5f707280dc61ecce90740" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 CentOS 8.1 設定為 ONTAP 作為目標。</block>
   <block id="3d8d5b2f05311b66754ca058971f7e2e" category="paragraph">使用 ONTAP 版本的 SUSE Linux Enterprise Server 15 SP5 沒有已知問題。</block>
-  <block id="d68505b811ecc342e2c201e1fcd2942d" category="paragraph">使用 ONTAP 版本的 Citrix XenServer 沒有已知問題。</block>
   <block id="30b87f3af4543974205ca57666930631" category="paragraph">Veritas Storage Foundation 6 for Linux with ONTAP 版本並無已知問題。</block>
   <block id="ee0e00ac8a597d343ecf7da72dd6effd" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 6.10 與 ONTAP 設定為目標。</block>
   <block id="c7512b0badc93efcac520b6d3264ca72" category="paragraph">ONTAP 版本的 Oracle Linux 6.10 沒有已知問題。</block>
@@ -2345,7 +2313,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0f184640fa014a23c70b94529da4bca4" category="paragraph">ONTAP 版本的 Oracle Linux 9.3 沒有已知問題。</block>
   <block id="26adbe58d014b17e22edee324b7c14d8" category="paragraph">第一次建立<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：</block>
   <block id="524b08ad750352e65f141bb6a45404ad" category="list-text">將<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數設定為 256 ：</block>
-  <block id="4e6815a5eaf606ab0b37b61763f811c3" category="paragraph"><block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>除非您有不想要多重路徑管理的裝置、或是現有的設定會覆寫預設值、否則不需要將內容附加至檔案。您可以在<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案中新增下列語法、以排除不需要的裝置。</block>
   <block id="8d3d223fd7a6303b1d21d5a6d2ff42cf" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.9</block>
   <block id="82ccd7f4292a5fcdb3c91b2dac42a0ee" category="doc">搭配 ONTAP 使用 Oracle Linux 8.9</block>
   <block id="18b1f91c51b933e6287d49ea6806740e" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.9 與 ONTAP 設定為目標。</block>
@@ -2403,7 +2370,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="48a57465c9050da3e456de11a1bce0f0" category="list-text">重新啟動主機、確認開機成功。</block>
   <block id="f7de5451f0d12f9de62cf0d59c9695f2" category="admonition">只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。</block>
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph"><block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block>命令會產生下列類型的輸出。下列範例中的輸出會被截斷。</block>
-  <block id="2f4a9005041851e9a64a6509d048aa33" category="paragraph">在以下 Citrix XenServer 7.x 範例中<block ref="59b466fd93164953e56bdd1358dc0044" prefix=" " category="inline-code"></block>、是您要新增至黑名單的本機 SCSI 磁碟。</block>
   <block id="fb403c5f670d67ab47637709eb33917d" category="paragraph">在 SUSE Linux Enterprise Server 12 SP1 、 OL 7.2 、 RHEL 7.2 和 RHEL 6.8 中執行命令時、發生間歇性主機作業系統故障問題<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block>、在此版本中已修正。</block>
   <block id="e660061f6ca1690f631875aa9b659f5c" category="paragraph">下列各節提供對應至非 ASA 角色之 LUN 的多重路徑輸出範例。</block>
   <block id="f2694c4b7724c227a6fd0a9ab3d8a8f9" category="paragraph">下列各節提供對應至所有 SAN 陣列（ ASA ）和非 ASA 組態之 LUN 的多重路徑輸出範例。</block>
@@ -3090,7 +3056,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="65e17e3635aff4a06545ebdec876d723" category="paragraph">AIX 主機公用程式版本包含下列新功能和增強功能：</block>
   <block id="3a7c6e3d017877edeea93359d3fe1527" category="list-text">AIX 主機公用程式 6.1 支援舊版 AIX 主機作業系統中發生的記憶體故障問題。有了AIX Host Utilities 6.1、只有sanlun二進位檔已變更。Microsoft 多重路徑 I/O （ MPIO ）和相關的 ODM 維持不變。</block>
   <block id="2a372b892113e198dff50fad53f7c8cf" category="cell">ONTAP iSCSI LUN 的 SCSI 取消對應支援</block>
-  <block id="0593445145635811aefe17e2c2c0cee9" category="paragraph">由於與整合式多重路徑管理架構不相容、Citrix建議您使用Citrix XenCenter應用程式來管理儲存組態。如果需要手動查詢 Device Mapper 表的狀態，或列出系統上的作用中裝置對應程式多重路徑節點，您可以使用<block ref="933a1510d6585bc60786b9db6910db56" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。如需詳細資訊、請參閱Citrix XenServer的標準廠商文件。</block>
   <block id="ad8a44c5166ba0f4232aef9400e09e61" category="cell">在Sing All SAN Array中、SCSI傳輸長度上限為1 MB。ONTAP若要限制連接ONTAP 到Sing All SAN Array時、從HP-UX主機傳輸的最大傳輸長度、必須將HP-UX SCSI子系統允許的最大I/O大小設為1 MB。如需詳細資訊、請參閱HP-UX廠商文件。</block>
   <block id="09cab502d540fb90ba458ff77a1bf626" category="summary">說明如何將 HP-UX 主機公用程式 6.0 與 ONTAP 儲存設備搭配使用</block>
   <block id="0fc97dd29480cf6d4f2229a9139b99f6" category="paragraph">NetApp HP-UX 主機公用程式可讓您將 HP-UX 主機連接至 ONTAP 儲存設備。</block>
@@ -3779,5 +3744,5 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="a2e2d0fcc9350f73f4294c53a7b2fa53" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Citrix Xenserver 8.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="405ee507e1b0e20ba609f39dc449664e" category="paragraph">您可以使用 Citrix Xenserver 8.4 的多路徑來管理 ONTAP LUN。</block>
   <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8.4</block>
-  <block id="df472899f555ad076c9b90f4bd508f91" category="sidebar">Hypervisor 8.2.</block>
+  <block id="c4bb680e83ce918749e1d4853b0073d1" category="sidebar">虛擬機器管理程序 8.2 (LTSR)</block>
 </blocks>
