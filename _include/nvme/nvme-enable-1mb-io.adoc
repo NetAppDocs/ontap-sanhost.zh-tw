@@ -1,0 +1,29 @@
+= 
+:allow-uri-read: 
+
+
+您可以為配置了 Broadcom 適配器的 NVMe/FC 啟用 1MB 大小的 I/O 請求。 ONTAP在識別控制器資料中報告的最大資料傳輸大小 (MDTS) 為 8。這表示最大 I/O 要求大小最多可達 1MB 。要發出 1MB 大小的 I/O 請求，您需要增加 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
+
+
+NOTE: 這些步驟不適用於 Qlogic NVMe / FC 主機。
+
+.步驟
+. 將 `lpfc_sg_seg_cnt`參數設定為 256 ：
++
+[listing]
+----
+cat /etc/modprobe.d/lpfc.conf
+----
++
+[listing]
+----
+options lpfc lpfc_sg_seg_cnt=256
+----
+. 執行 `dracut -f`命令，然後重新啟動主機。
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
++
+[listing]
+----
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+----
+

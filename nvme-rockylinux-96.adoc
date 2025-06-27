@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme-rhel-96.html 
-keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機 
+permalink: nvme-rockylinux-96.html 
+keywords: nvme, rocky, red hat, enterprise 
+summary: 如何使用 ONTAP 為 Rocky Linux 9.6 設定 NVMe-oF 主機 
 ---
-= 使用 ONTAP 儲存為 NVMe-oF 設定 RHEL 9.6
+= 使用 ONTAP 儲存為 NVMe-oF 設定 Rocky Linux 9.6
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -19,14 +19,14 @@ summary: 如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機
 NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與非對稱命名空間存取（ ANA ）。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取（ ALUA ）多重路徑。ANA 是使用核心內建 NVMe 多重路徑功能來實作。
 
 .關於這項工作
-您可以在 Red Hat Enterprise Linux （ RHEL ） 9.6 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。
+您可以將以下支援和功能與 Rocky Linux 9.6 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。
 
 * 可用支援：
 +
 ** 除了 NVMe over Fibre Channel （ NVMe / FC ）之外，還支援 NVMe over TCP （ NVMe / TCP ）。原生套件中的 NetApp 外掛程式 `nvme-cli`會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
 ** 在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI mpath 裝置設定 dm-multipath ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
-** 根據預設， RHEL 9.6 可為 NVMe 命名空間啟用核心內建 NVMe 多重路徑，無需明確設定。
-** 從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 9.6 中使用 NVMe/TCP 的安全帶內驗證。
+** Rocky Linux 9.6 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。
+** 從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以使用 Rocky Linux 9.6 對 NVMe/TCP 進行安全帶內身份驗證。
 +
 如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
@@ -66,10 +66,10 @@ NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與�
 
 == 步驟 2：驗證軟體版本
 
-使用以下步驟驗證最低支援的 RHEL 9.6 軟體版本。
+使用以下步驟驗證最低支援的 Rocky Linux 9.6 軟體版本。
 
 .步驟
-. 在伺服器上安裝 RHEL 9.6 。安裝完成後、請確認您執行的是指定的 RHEL 9.6 核心：
+. 在伺服器上安裝 Rocky Linux 9.6。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.6 核心：
 +
 [source, cli]
 ----
@@ -111,7 +111,7 @@ rpm -qa|grep libnvme
 ----
 libnvme-1.11.1-1.el9.x86_64
 ----
-. 在 RHEL 主機上，檢查 hostnqn 字串 `/etc/nvme/hostnqn` ：
+. 在 Rocky Linux 主機上，檢查 hostnqn 字串 `/etc/nvme/hostnqn` ：
 +
 [source, cli]
 ----
@@ -416,7 +416,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 == 步驟 5：驗證 NVMe 啟動服務
 
-使用 RHEL 9.6，  `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service` NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時會自動啟用這些軟體包。啟動完成後，請驗證這些服務是否已啟用。
+使用 Rocky Linux 9.6，  `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service` NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時，這些軟體包會自動啟用。啟動完成後，請驗證這些服務是否已啟用。
 
 .步驟
 . 確認 `nvmf-autoconnect.service`已啟用：
@@ -469,12 +469,12 @@ Jun 10 01:08:36 localhost systemd[1]: Finished Auto-connect to subsystems on FC-
 
 == 步驟 6：設定 NVMe/TCP
 
-NVMe/TCP 協定不支援自動連線操作。您可以透過手動執行 NVMe/TCP connect 或 connect-all 操作來發現 NVMe/TCP 子系統和命名空間。
+NVMe / TCP 傳輸協定不支援此 `auto-connect`作業。您可以改為透過手動執行 NVMe / TCP 或 `connect-all`作業來探索 NVMe / TCP 子系統和命名空間 `connect`。
 
 .步驟
 . 確認啟動器連接埠可在支援的NVMe/TCP LIF中擷取探索記錄頁面資料：
 +
-[listing]
+[source, cli]
 ----
 nvme discover -t tcp -w host-traddr -a traddr
 ----
@@ -538,7 +538,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_NONE_1_3
 traddr:  192.168.2.25
 eflags:  none
 sectype: none
@@ -549,7 +549,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_NONE_1_4
 traddr:  192.168.1.25
 eflags:  none
 sectype: none
@@ -560,7 +560,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  5
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_NONE_1_5
 traddr:  192.168.2.24
 eflags:  none
 sectype: none
@@ -571,7 +571,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_2_2
 traddr:  192.168.1.24
 eflags:  none
 sectype: none
@@ -582,7 +582,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_2_3
 traddr:  192.168.2.25
 eflags:  none
 sectype: none
@@ -593,7 +593,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_2_5
 traddr:  192.168.1.25
 eflags:  none
 sectype: none
@@ -604,7 +604,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  5
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_2_2
 traddr:  192.168.2.24
 eflags:  none
 sectype: none
@@ -615,7 +615,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_2_3
 traddr:  192.168.1.24
 eflags:  none
 sectype: none
@@ -626,7 +626,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_2_3
 traddr:  192.168.2.25
 eflags:  none
 sectype: none
@@ -637,7 +637,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_4
 traddr:  192.168.1.25
 eflags:  none
 sectype: none
@@ -648,7 +648,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  5
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_5
 traddr:  192.168.2.24
 eflags:  none
 sectype: none
@@ -659,7 +659,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_6
 traddr:  192.168.1.24
 eflags:  none
 sectype: none
@@ -670,7 +670,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_7
 traddr:  192.168.2.25
 eflags:  none
 sectype: none
@@ -681,7 +681,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_8
 traddr:  192.168.1.25
 eflags:  none
 sectype: none
@@ -703,15 +703,15 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_9
 traddr:  192.168.1.24
 eflags:  none
 sectype: none
 ----
 ====
-. 確認其他的 NVMe / TCP 啟動器目標 LIF 組合能夠成功擷取探索記錄頁面資料：
+. 確認其他的 NVMe / TCP 啟動器目標 LIF 組合可以成功擷取探索記錄頁面資料：
 +
-[listing]
+[source, cli]
 ----
 nvme discover -t tcp -w host-traddr -a traddr
 ----
@@ -729,7 +729,7 @@ nvme discover -t tcp -w 192.168.2.31 -a 192.168.2.25
 ====
 . 執行 `nvme connect-all` 跨所有節點支援的 NVMe / TCP 啟動器目標生命體執行命令：
 +
-[listing]
+[source, cli]
 ----
 nvme connect-all -t tcp -w host-traddr -a traddr
 ----
@@ -746,6 +746,9 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ----
 ====
 
+
+
+NOTE: 從 Rocky Linux 9.5 開始，NVMe/TCP 的預設設置 `ctrl_loss_tmo`超時已關閉。這表示重試次數沒有限制（無限期重試）。因此，使用或 `nvme connect-all`命令（選項 -l ）時不需要手動配置特定的 `ctrl_loss_tmo`超時持續時間 `nvme connect`。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。
 
 
 
@@ -937,7 +940,7 @@ nvme netapp ontapdevices -o json
 
 == 步驟 8：設定安全帶內身份驗證
 
-從 ONTAP 9.12.1 開始，RHEL 9.6 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內驗證。
+從 ONTAP 9.12.1 開始，Rocky Linux 9.6 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。
 
 每個主機或控制器必須與一個 `DH-HMAC-CHAP`金鑰來設定安全身份驗證。  `DH-HMAC-CHAP`金鑰是 NVMe 主機或控制器的 NQN 與管理員配置的身份驗證金鑰的組合。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
 
@@ -956,7 +959,7 @@ nvme netapp ontapdevices -o json
 ----
 cat /etc/nvme/hostnqn
 ----
-. 為 RHEL 9.6 主機產生 dhchap 金鑰。
+. 為 Rocky Linux 9.6 主機產生 dhchap 金鑰。
 +
 下列輸出說明 `gen-dhchap-key`命令參數：
 

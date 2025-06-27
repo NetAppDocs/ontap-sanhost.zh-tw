@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme-rhel-96.html 
-keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機 
+permalink: nvme-rockylinux-87.html 
+keywords: nvme, linux, rocky linux, enterprise 
+summary: 如何使用 ONTAP 為 Rocky Linux 8.7 設定 NVMe-oF 主機 
 ---
-= 使用 ONTAP 儲存為 NVMe-oF 設定 RHEL 9.6
+= 使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.7
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,30 +16,24 @@ summary: 如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機
 
 
 [role="lead"]
-NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與非對稱命名空間存取（ ANA ）。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取（ ALUA ）多重路徑。ANA 是使用核心內建 NVMe 多重路徑功能來實作。
+Rocky Linux 8.7 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。
+
+如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
 .關於這項工作
-您可以在 Red Hat Enterprise Linux （ RHEL ） 9.6 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。
+您可以將以下支援和功能與 Rocky Linux 8.7 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。
 
 * 可用支援：
 +
 ** 除了 NVMe over Fibre Channel （ NVMe / FC ）之外，還支援 NVMe over TCP （ NVMe / TCP ）。原生套件中的 NetApp 外掛程式 `nvme-cli`會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
-** 在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI mpath 裝置設定 dm-multipath ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
-** 根據預設， RHEL 9.6 可為 NVMe 命名空間啟用核心內建 NVMe 多重路徑，無需明確設定。
-** 從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 9.6 中使用 NVMe/TCP 的安全帶內驗證。
-+
-如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
-
-
-
-* 可用功能：
-+
-** 沒有可用的新功能。
+** 在同一部主機上執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI mpath 裝置設定 dm-multipath ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
 
 
 * 已知限制：
 +
-** 避免發布 `nvme disconnect-all`命令，因為它會斷開根檔案系統和資料檔案系統的連接，並可能導致系統不穩定。
+** 對於 Rocky Linux 8.7 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。
+** 在 Rocky Linux 8.7 主機上，由於存在一些未解決的問題，NVMe/TCP 仍處於技術預覽階段。請參閱link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html-single/8.7_release_notes/index#technology-preview_file-systems-and-storage["Rocky Linux 8.7 發行說明"^]了解詳情。
+** 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
 
 
 
@@ -66,10 +60,10 @@ NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與�
 
 == 步驟 2：驗證軟體版本
 
-使用以下步驟驗證最低支援的 RHEL 9.6 軟體版本。
+使用以下步驟驗證最低支援的 Rocky Linux 8.7 軟體版本。
 
 .步驟
-. 在伺服器上安裝 RHEL 9.6 。安裝完成後、請確認您執行的是指定的 RHEL 9.6 核心：
+. 在伺服器上安裝 Rocky Linux 8.7。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.7 核心：
 +
 [source, cli]
 ----
@@ -111,7 +105,7 @@ rpm -qa|grep libnvme
 ----
 libnvme-1.11.1-1.el9.x86_64
 ----
-. 在 RHEL 主機上，檢查 hostnqn 字串 `/etc/nvme/hostnqn` ：
+. 在 Rocky Linux 主機上，檢查 hostnqn 字串 `/etc/nvme/hostnqn` ：
 +
 [source, cli]
 ----
@@ -161,7 +155,7 @@ NOTE: 如果是 `hostnqn` 字串不相符、請使用 `vserver modify` 命令來
 
 == 步驟3：設定NVMe/FC
 
-您可以使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 介面卡來設定 NVMe / FC 。對於組態為 Broadcom 介面卡的 NVMe / FC ，您可以啟用大小為 1 MB 的 I/O 要求。
+您可以使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 介面卡來設定 NVMe / FC 。您還需要手動發現 NVMe/TCP 子系統和命名空間。
 
 [role="tabbed-block"]
 ====
@@ -216,14 +210,14 @@ cat /sys/class/scsi_host/host*/fwrev
 +
 [listing]
 ----
-14.0.539.16, sli-4:6:d
-14.0.539.16, sli-4:6:d
+14.4.317.10, sli-4:6:d
+14.4.317.10, sli-4:6:d
 ----
 .. 顯示收件匣驅動程式版本：
 +
 [source, cli]
 ----
-cat /sys/module/lpfc/version
+cat /sys/module/lpfc/version`
 ----
 +
 以下範例顯示了驅動程式版本：
@@ -231,7 +225,7 @@ cat /sys/module/lpfc/version
 +
 [listing]
 ----
-0:14.4.0.6
+0:14.4.0.2
 ----
 
 
@@ -256,8 +250,8 @@ cat /sys/class/fc_host/host*/port_name
 +
 [listing]
 ----
-0x2100f4c7aa0cd7c2
-0x2100f4c7aa0cd7c3
+0x100000109bf044b1
+0x100000109bf044b2
 ----
 . 驗證啟動器連接埠是否在線上：
 +
@@ -287,60 +281,30 @@ cat /sys/class/scsi_host/host*/nvme_info
 [listing, subs="+quotes"]
 ----
 NVME Initiator Enabled
-XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc0 WWPN x100000109b954518 WWNN x200000109b954518 DID x000000 *ONLINE*
-
-NVME Statistics
-LS: Xmt 0000000000 Cmpl 0000000000 Abort 00000000
-LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 0000000000000000 Issue 0000000000000000 OutIO 0000000000000000
-          abort 00000000 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 00000000 Err 00000000
-
-NVME Initiator Enabled
-XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc1 WWPN x100000109b954519 WWNN x200000109b954519 DID x020500 *ONLINE*
-
-NVME Statistics
-LS: Xmt 0000000000 Cmpl 0000000000 Abort 00000000
-LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 0000000000000000 Issue 0000000000000000 OutIO 0000000000000000
-         abort 00000000 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 00000000 Err 00000000
-
-NVME Initiator Enabled
 XRI Dist lpfc2 Total 6144 IO 5894 ELS 250
 NVME LPORT lpfc2 WWPN x100000109bf044b1 WWNN x200000109bf044b1 DID x022a00 *ONLINE*
-NVME RPORT       WWPN x200bd039eaa7dfc8 WWNN x2008d039eaa7dfc8 DID x021319 *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2155d039eaa7dfc8 WWNN x2154d039eaa7dfc8 DID x02130f *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2001d039eaa7dfc8 WWNN x2000d039eaa7dfc8 DID x021310 *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x200dd039eaa7dfc8 WWNN x2008d039eaa7dfc8 DID x020b15 *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2156d039eaa7dfc8 WWNN x2154d039eaa7dfc8 DID x020b0d *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2003d039eaa7dfc8 WWNN x2000d039eaa7dfc8 DID x020b10 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x202fd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x021310 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x202dd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020b10 *TARGET DISCSRVC ONLINE*
 
 NVME Statistics
-LS: Xmt 0000003049 Cmpl 0000003049 Abort 00000000
+LS: Xmt 0000000810 Cmpl 0000000810 Abort 00000000
 LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 0000000018f9450b Issue 0000000018f5de57 OutIO fffffffffffc994c
-          abort 000036d3 noxri 00000313 nondlp 00000c8d qdepth 00000000 wqerr 00000064 err 00000000
-FCP CMPL: xb 000036d1 Err 000fef0f
+Total FCP Cmpl 000000007b098f07 Issue 000000007aee27c4 OutIO ffffffffffe498bd
+        abort 000013b4 noxri 00000000 nondlp 00000058 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 000013b4 Err 00021443
 
 NVME Initiator Enabled
 XRI Dist lpfc3 Total 6144 IO 5894 ELS 250
 NVME LPORT lpfc3 WWPN x100000109bf044b2 WWNN x200000109bf044b2 DID x021b00 *ONLINE*
-NVME RPORT       WWPN x2062d039eaa7dfc8 WWNN x2008d039eaa7dfc8 DID x022915 *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2157d039eaa7dfc8 WWNN x2154d039eaa7dfc8 DID x02290f *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2002d039eaa7dfc8 WWNN x2000d039eaa7dfc8 DID x022910 *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2065d039eaa7dfc8 WWNN x2008d039eaa7dfc8 DID x020119 *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2158d039eaa7dfc8 WWNN x2154d039eaa7dfc8 DID x02010d *TARGET DISCSRVC ONLINE*
-NVME RPORT       WWPN x2004d039eaa7dfc8 WWNN x2000d039eaa7dfc8 DID x020110 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2033d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020110 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2032d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x022910 *TARGET DISCSRVC ONLINE*
 
 NVME Statistics
-LS: Xmt 0000002f2c Cmpl 0000002f2c Abort 00000000
+LS: Xmt 0000000840 Cmpl 0000000840 Abort 00000000
 LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 000000001aaf3eb5 Issue 000000001aab4373 OutIO fffffffffffc04be
-          abort 000035cc noxri 0000038c nondlp 000009e3 qdepth 00000000 wqerr 00000082 err 00000000
-FCP CMPL: xb 000035cc Err 000fcfc0
+Total FCP Cmpl 000000007afd4434 Issue 000000007ae31b83 OutIO ffffffffffe5d74f
+        abort 000014a5 noxri 00000000 nondlp 0000006a qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 000014a5 Err 0002149a
 ----
 =====
 
@@ -349,6 +313,9 @@ FCP CMPL: xb 000035cc Err 000fcfc0
 .Marvell / QLogic
 --
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
+
+
+NOTE: Rocky Linux 核心中包含的原生內建 qla2xxx 驅動程式具有最新修復。這些修正對於 ONTAP 支援至關重要。
 
 .步驟
 . 確認您執行的是支援的介面卡驅動程式和韌體版本：
@@ -363,8 +330,8 @@ cat /sys/class/fc_host/host*/symbolic_name
 +
 [listing]
 ----
-QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
-QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+QLE2742 FW:v9.14.00 DVR:v10.02.09.200-k
+QLE2742 FW:v9.14.00 DVR:v10.02.09.200-k
 ----
 . 請確認 `ql2xnvmeenable` 已設定。這可讓 Marvell 介面卡作為 NVMe / FC 啟動器運作：
 +
@@ -373,7 +340,7 @@ QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
 cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 ----
 +
-預期的 ouptut 為 1 。
+預期輸出為 1 。
 
 
 
@@ -383,7 +350,7 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 == 步驟 4：可選，啟用 1MB I/O
 
-ONTAP 會在識別控制器資料中報告 8 的 MDTS （ MAX Data 傳輸大小）。這表示最大 I/O 要求大小最多可達 1MB 。若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求，您應該將參數值 `lpfc_sg_seg_cnt`從預設值 64 增加 `lpfc`至 256 。
+您可以為配置了 Broadcom 適配器的 NVMe/FC 啟用 1MB 大小的 I/O 請求。 ONTAP在識別控制器資料中報告的最大資料傳輸大小 (MDTS) 為 8。這表示最大 I/O 要求大小最多可達 1MB 。要發出 1MB 大小的 I/O 請求，您需要增加 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
 
 
 NOTE: 這些步驟不適用於 Qlogic NVMe / FC 主機。
@@ -391,13 +358,10 @@ NOTE: 這些步驟不適用於 Qlogic NVMe / FC 主機。
 .步驟
 . 將 `lpfc_sg_seg_cnt`參數設定為 256 ：
 +
-[source, cli]
+[listing]
 ----
 cat /etc/modprobe.d/lpfc.conf
 ----
-+
-您應該會看到類似以下範例的輸出：
-
 +
 [listing]
 ----
@@ -406,7 +370,7 @@ options lpfc lpfc_sg_seg_cnt=256
 . 執行 `dracut -f`命令，然後重新啟動主機。
 . 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
-[source, cli]
+[listing]
 ----
 cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
@@ -414,60 +378,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
-== 步驟 5：驗證 NVMe 啟動服務
-
-使用 RHEL 9.6，  `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service` NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時會自動啟用這些軟體包。啟動完成後，請驗證這些服務是否已啟用。
-
-.步驟
-. 確認 `nvmf-autoconnect.service`已啟用：
-+
-[source, cli]
-----
-systemctl status nvmf-autoconnect.service
-----
-+
-.顯示範例輸出
-[%collapsible]
-====
-[listing]
-----
-nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot
-     Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: disabled)
-     Active: inactive (dead)
-
-Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: Starting Connect NVMe-oF subsystems automatically during boot...
-Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
-Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: Finished Connect NVMe-oF subsystems automatically during boot.
-----
-====
-. 確認 `nvmefc-boot-connections.service`已啟用：
-+
-[source, cli]
-----
-systemctl status nvmefc-boot-connections.service
-----
-+
-.顯示範例輸出
-[%collapsible]
-====
-[listing]
-----
-nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot
-     Loaded: loaded (/usr/lib/systemd/system/nvmefc-boot-connections.service; enabled; preset: enabled)
-     Active: inactive (dead) since Tue 2025-06-10 01:08:36 EDT; 2h 59min ago
-   Main PID: 7090 (code=exited, status=0/SUCCESS)
-        CPU: 30ms
-
-Jun 10 01:08:36 localhost systemd[1]: Starting Auto-connect to subsystems on FC-NVME devices found during boot...
-Jun 10 01:08:36 localhost systemd[1]: nvmefc-boot-connections.service: Deactivated successfully.
-Jun 10 01:08:36 localhost systemd[1]: Finished Auto-connect to subsystems on FC-NVME devices found during boot.
-----
-====
-
-
-
-
-== 步驟 6：設定 NVMe/TCP
+== 步驟 5：設定 NVMe/TCP
 
 NVMe/TCP 協定不支援自動連線操作。您可以透過手動執行 NVMe/TCP connect 或 connect-all 操作來發現 NVMe/TCP 子系統和命名空間。
 
@@ -749,7 +660,7 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 
 
 
-== 步驟 7：驗證 NVMe-oF
+== 步驟 6：驗證 NVMe-oF
 
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
 
@@ -935,243 +846,14 @@ nvme netapp ontapdevices -o json
 ====
 
 
-== 步驟 8：設定安全帶內身份驗證
+== 步驟 7 ：檢閱已知問題
 
-從 ONTAP 9.12.1 開始，RHEL 9.6 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內驗證。
+具有 ONTAP 的 Rocky Linux 8.7 的 NVMe-oF 主機配置有以下已知問題：
 
-每個主機或控制器必須與一個 `DH-HMAC-CHAP`金鑰來設定安全身份驗證。  `DH-HMAC-CHAP`金鑰是 NVMe 主機或控制器的 NQN 與管理員配置的身份驗證金鑰的組合。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
-
-使用 CLI 或設定 JSON 檔案設定安全帶內身份驗證。如果您需要為不同的子系統指定不同的 dhchap 金鑰、則必須使用組態 JSON 檔案。
-
-[role="tabbed-block"]
-====
-.CLI
---
-使用 CLI 設定安全的頻內驗證。
-
-.步驟
-. 取得主機 NQN ：
-+
-[source, cli]
-----
-cat /etc/nvme/hostnqn
-----
-. 為 RHEL 9.6 主機產生 dhchap 金鑰。
-+
-下列輸出說明 `gen-dhchap-key`命令參數：
-
-+
-[listing]
-----
-nvme gen-dhchap-key -s optional_secret -l key_length {32|48|64} -m HMAC_function {0|1|2|3} -n host_nqn
-•	-s secret key in hexadecimal characters to be used to initialize the host key
-•	-l length of the resulting key in bytes
-•	-m HMAC function to use for key transformation
-0 = none, 1- SHA-256, 2 = SHA-384, 3=SHA-512
-•	-n host NQN to use for key transformation
-----
-+
-在下列範例中、會產生一個隨機的 dhchap 金鑰、其中 HMAC 設為 3 （ SHA-512 ）。
-
-+
-[listing]
-----
-nvme gen-dhchap-key -m 3 -n nqn.2014-
-08.org.nvmexpress:uuid:e6dade64-216d-11ec-b7bb-7ed30a5482c3
-DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
-----
-. 在 ONTAP 控制器上、新增主機並指定兩個 dhchap 金鑰：
-+
-[source, cli]
-----
-vserver nvme subsystem host add -vserver <svm_name> -subsystem <subsystem> -host-nqn <host_nqn> -dhchap-host-secret <authentication_host_secret> -dhchap-controller-secret <authentication_controller_secret> -dhchap-hash-function {sha-256|sha-512} -dhchap-group {none|2048-bit|3072-bit|4096-bit|6144-bit|8192-bit}
-----
-. 主機支援兩種驗證方法：單向和雙向。在主機上、連線至 ONTAP 控制器、並根據所選的驗證方法指定 dhchap 金鑰：
-+
-[source, cli]
-----
-nvme connect -t tcp -w <host-traddr> -a <tr-addr> -n <host_nqn> -S <authentication_host_secret> -C <authentication_controller_secret>
-----
-. 驗證 `nvme connect authentication` 命令驗證主機和控制器 dhchap 金鑰：
-+
-.. 驗證主機 dhchap 金鑰：
-+
-[source, cli]
-----
-cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_secret
-----
-+
-.顯示單向組態的輸出範例
-[%collapsible]
-=====
-[listing]
-----
-cat /sys/class/nvme-subsystem/nvme-subsys1/nvme*/dhchap_secret
-DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
-DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
-DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
-DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
-----
-=====
-.. 驗證控制器 dhchap 按鍵：
-+
-[source, cli]
-----
-cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_ctrl_secret
-----
-+
-.顯示雙向組態的輸出範例
-[%collapsible]
-=====
-[listing]
-----
-cat /sys/class/nvme-subsystem/nvme-
-subsys6/nvme*/dhchap_ctrl_secret
-DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
-DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
-DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
-DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
-----
-=====
+[cols="20,40,40"]
+|===
+| NetApp錯誤ID | 標題 | 說明 
 
 
-
-
---
-.Json 檔案
---
-當 ONTAP 控制器組態上有多個 NVMe 子系統可供使用時、您可以搭配命令使用該 `/etc/nvme/config.json`檔案 `nvme connect-all`。
-
-使用 `-o`選項來產生 JSON 檔案。如需更多語法選項，請參閱 NVMe Connect All 手冊頁。
-
-.步驟
-. 配置 JSON 檔案。
-+
-
-NOTE: 在以下範例中，  `dhchap_key`對應於 `dhchap_secret`和 `dhchap_ctrl_key`對應於 `dhchap_ctrl_secret` 。
-
-+
-.顯示範例
-[%collapsible]
-=====
-[listing]
-----
-cat /etc/nvme/config.json
-[
-{
-  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:9796c1ec-0d34-11eb-
-  b6b2-3a68dd3bab57",
-  "hostid":"b033cd4fd6db4724adb48655bfb55448",
-  "dhchap_key":" DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:"
-},
-{
-  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-
-  804b-b5c04f444d33",
-  "subsystems":[
-        {
-          "nqn":"nqn.1992-
-          08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.bidi
-          r_DHCP",
-          "ports":[
-              {
-                  "transport":"tcp",
-                    "traddr":" 192.168.1.24 ",
-                  "host_traddr":" 192.168.1.31 ",
-                  "trsvcid":"4420",
-                  "dhchap_ctrl_key":"DHHC-
-                  1:03: wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:"
-              },
-              {
-                  "transport":"tcp",
-                  "traddr":" 192.168.1.25 ",
-                  "host_traddr":" 192.168.1.31",
-                  "trsvcid":"4420",
-                  "dhchap_ctrl_key":"DHHC-
-                  1:03: wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:"
-              },
-              {
-                  "transport":"tcp",
-                 "traddr":" 192.168.2.24 ",
-                  "host_traddr":" 192.168.2.31",
-                  "trsvcid":"4420",
-                  "dhchap_ctrl_key":"DHHC-
-                  1:03: wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:"
-              },
-              {
-                  "transport":"tcp",
-                  "traddr":" 192.168.2.25 ",
-                    "host_traddr":" 192.168.2.31",
-                  "trsvcid":"4420",
-                  "dhchap_ctrl_key":"DHHC-
-                  1:03: wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:"
-              }
-          ]
-      }
-  ]
-}
-]
-----
-=====
-. 使用組態 JSON 檔案連線至 ONTAP 控制器：
-+
-[source, cli]
-----
-nvme connect-all -J /etc/nvme/config.json
-----
-+
-.顯示範例
-[%collapsible]
-=====
-[listing]
-----
-already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
-r_DHCP,transport=tcp,traddr=192.168.1.25,trsvcid=4420
-already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
-r_DHCP,transport=tcp,traddr=192.168.2.25,trsvcid=4420
-already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
-r_DHCP,transport=tcp,traddr=192.168.1.24,trsvcid=4420
-already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
-r_DHCP,transport=tcp,traddr=192.168.2.24,trsvcid=4420
-----
-=====
-. 確認已為每個子系統的個別控制器啟用 dhchap 機密：
-+
-.. 驗證主機 dhchap 金鑰：
-+
-[source, cli]
-----
-cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_secret
-----
-+
-以下範例顯示了 dhchap 金鑰：
-
-+
-[listing]
-----
-DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
-----
-.. 驗證控制器 dhchap 按鍵：
-+
-[source, cli]
-----
-cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
-----
-+
-您應該會看到類似以下範例的輸出：
-
-+
-[listing]
-----
-DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
-----
-
-
-
-
---
-====
-
-
-== 步驟 9 ：檢閱已知問題
-
-沒有已知問題。
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | Rocky Linux 8.7 NVMe-oF 主機建立重複的持久發現控制器 | 在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 ONTAP 9.10.1 和 Rocky Linux 8.7，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。 
+|===

@@ -6,9 +6,9 @@
 
 == 步驟 5 ：自訂 ONTAP LUN 的多重路徑參數
 
-您應該檢查 `/etc/multipath.conf`檔案，尤其是在預設值區段中，以瞭解可能會覆寫的設定<<multipath-parameter-settings,多重路徑參數的預設設定>>。
+如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
 
-例如，如果您的主機已連接至其他廠商的 LUN ，且任何多重路徑參數設定都會被覆寫，則您需要在檔案中稍後新增特定適用於 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
+請檢查您的 `/etc/multipath.conf`檔案，尤其是在預設值區段中，以瞭解可能會覆寫的設定<<multipath-parameter-settings,多重路徑參數的預設設定>>。
 
 
 CAUTION: 您不應覆寫 ONTAP LUN 的建議參數設定。這些設定是主機組態最佳效能所必需的。如需詳細資訊，請聯絡 NetApp 支援，您的作業系統廠商或兩者。

@@ -10,7 +10,7 @@ indexpage:
   tiles:
   - title: 開始使用
     links:
-    - title: 產品總覽
+    - title: 瞭解 SAN 主機組態
       url: "/overview.html"
     - title: AIX 主機公用程式發行說明
       url: "/hu_aix_rn.html"

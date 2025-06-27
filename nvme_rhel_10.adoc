@@ -54,10 +54,7 @@ NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與�
 使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Linux 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
 
 .步驟
-. 建立 SAN 啟動命名空間並將其對應到主機。
-+
-請參閱。 https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["配置NVMe儲存設備"^]
-
+. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["建立 SAN 啟動命名空間並將其對應到主機"^]。
 . 在伺服器 BIOS 中為 SAN 啟動命名空間對應到的連接埠啟用 SAN 啟動。
 +
 如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
@@ -645,7 +642,7 @@ nvme list
 [listing]
 ----
 Node         SN                   Model
----------------------------------------------------------
+-----------------------------------------------------------
 /dev/nvme4n1 81Ix2BVuekWcAAAAAAAB	NetApp ONTAP Controller
 
 
@@ -722,7 +719,7 @@ Device        Vserver   Namespace Path
 /dev/nvme10n1     vs_tcp_rhel10       /vol/vol10/ns10
 
 NSID       UUID                                   Size
-------------------------------------------------------------
+----------------------- ------------------------------
 1    bbf51146-fc64-4197-b8cf-8a24f6f359b3   21.47GB
 ----
 =====
@@ -830,7 +827,7 @@ cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_secret
 =====
 [listing]
 ----
-# cat /sys/class/nvme-subsystem/nvme-subsys1/nvme*/dhchap_secret
+cat /sys/class/nvme-subsystem/nvme-subsys1/nvme*/dhchap_secret
 DHHC- 1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jTmzEKUbcWu26I33b93b
 il2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
 DHHC- 1:03:fMCrJharXUOqRoIsOEaG6m2PH1yYvu5+z3jTmzEKUbcWu26I33b93b
@@ -853,7 +850,7 @@ cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_ctrl_secret
 =====
 [listing]
 ----
-# cat /sys/class/nvme-subsystem/nvme-subsys6/nvme*/dhchap_ctrl_secret
+cat /sys/class/nvme-subsystem/nvme-subsys6/nvme*/dhchap_ctrl_secret
 DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
 1aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
 
@@ -884,14 +881,13 @@ DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
 
 NOTE: 在以下範例中，  `dhchap_key`對應於 `dhchap_secret`和 `dhchap_ctrl_key`對應於 `dhchap_ctrl_secret` 。
 
-
-
++
 .顯示範例
 [%collapsible]
 =====
 [listing]
 ----
-# cat /etc/nvme/config.json
+cat /etc/nvme/config.json
 [
 {
 "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-c2c04f444d33",
@@ -931,7 +927,7 @@ NOTE: 在以下範例中，  `dhchap_key`對應於 `dhchap_secret`和 `dhchap_ct
 +
 [source, cli]
 ----
-# nvme connect-all -J /etc/nvme/config.json
+nvme connect-all -J /etc/nvme/config.json
 ----
 +
 .顯示範例
@@ -963,7 +959,7 @@ traddr=192.168.20.21 is already connected
 +
 [source, cli]
 ----
-# cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_secret
+cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_secret
 ----
 +
 以下範例顯示了 dhchap 金鑰：
@@ -978,7 +974,7 @@ aKDKJQ2o53pX3wYM9xdv5DtKNNhJInZ7X8wU2RQpQIngc=:
 +
 [source, cli]
 ----
-# cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
+cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
 ----
 +
 您應該會看到類似以下範例的輸出：

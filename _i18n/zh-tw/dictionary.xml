@@ -1712,7 +1712,6 @@
   <block id="bb6a1ceb13d5a6a98f1fab62ea2d512f" category="doc">將 Oracle Linux 6.6 與 ONTAP 搭配使用</block>
   <block id="e880125f3679cf40fd24e55f28d63538" category="doc">使用適用於 ONTAP 的 HP-UX 11i v3</block>
   <block id="cf5d40dc8478138e0c0d29b28520ae39" category="section-title">安裝 HP-UX 主機公用程式</block>
-  <block id="4b983fff716674f120176e09551dd445" category="sidebar">產品總覽</block>
   <block id="8a4e695bd23e65bc1993b3356eeb2277" category="sidebar">AIX 主機公用程式發行說明</block>
   <block id="360baa7584a9f61d637775beeeeab041" category="sidebar">HP-UX Host Utilities 版本資訊</block>
   <block id="e8496e75812b6bc1fac8161323e4bf5f" category="sidebar">Linux 主機公用程式發行說明</block>
@@ -2653,7 +2652,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9a8c8fd6ced80cbe4db0d4c4fef7bf6e" category="list-text">為 OL 9.4 主機產生 dhchap 金鑰。</block>
   <block id="d481825a9f6d37ba25450de94597b251" category="paragraph">ONTAP 版本的 Oracle Linux 9.4 沒有已知問題。</block>
   <block id="5dca4677c0eb60175de3486097fb7e31" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.5 的 NVMe 主機</block>
-  <block id="205c395027a9d9fe19678e0cebbf1855" category="doc">適用於 ONTAP 的 RHEL 9.5 NVMe 主機組態</block>
   <block id="a84296aedc6011b8c397f3233477b461" category="paragraph">您可以在 Red Hat Enterprise Linux （ RHEL ） 9.5 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
   <block id="c396639e860651e2d3cd53ecae736ced" category="list-text">除了 NVMe over Fibre Channel （ NVMe / FC ）之外，還支援 NVMe over TCP （ NVMe / TCP ）。原生套件中的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。</block>
   <block id="b1f115278eb622d0e0153250bf01cf4c" category="list-text">從 ONTAP 9.12.1 開始， NVMe 開始支援安全頻內驗證。您可以使用安全的頻內驗證來搭配 RHEL 9.5 使用 NVMe 。</block>
@@ -3455,8 +3453,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="de7c28ff0eb95c7790427d99e464cd7d" category="list-text">確認<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案已結束。如果檔案不存在，請建立空白的零位元組檔案：</block>
   <block id="4154b2933e2df9573e5568e1cb8b0708" category="list-text">每次引導主機時，空的<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>零位元組檔案會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。您不需要變更<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>主機的檔案，因為作業系統會使用多重路徑參數進行編譯，以正確辨識及管理 ONTAP LUN 。</block>
   <block id="2dc85993483fece6ce86d25200665755" category="paragraph">下表顯示 ONTAP LUN 的 Linux OS 原生編譯多重路徑參數設定。</block>
-  <block id="3e69d2b38cbdad51b5f0a5227c5c242e" category="paragraph">您應該檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案，尤其是在預設值區段中，以瞭解可能會覆寫的設定<block ref="3e47c09a7bdcd0377df056ba2567e852" category="inline-xref-macro-rx"></block>。</block>
-  <block id="d0cd85ffaeb74cce57bdd7f018a8056d" category="paragraph">例如，如果您的主機已連接至其他廠商的 LUN ，且任何多重路徑參數設定都會被覆寫，則您需要在檔案中稍後新增特定適用於 ONTAP LUN 的節點來修正這些設定<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。</block>
   <block id="7d6ed8198fddc97f7e4e07dc8cb965c1" category="inline-link-macro">瞭解如何使用 Linux 主機公用程式工具</block>
   <block id="50fccb7a08e328dd304687eaac55846c" category="list-text"><block ref="786b704a3e80d9336e72d473c71f71a5" category="inline-link-macro-rx"></block>。</block>
   <block id="5c74c157af6548045320136db7e14e99" category="doc">安裝適用於 ONTAP 儲存設備的 HP-UX 主機公用程式 6.0</block>
@@ -3648,7 +3644,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="b666f1fcf3d24bdf8d1596c592783e04" category="inline-link">vSphere 中的儲存空間回收</block>
   <block id="e2b29f49797a2325ae454b80e6aecf4a" category="paragraph">如需 VMware vSphere 中 NVMe 取消配置的詳細資訊，請參閱<block ref="c446d1e3b484512e9ba1bbe8eab259bf" category="inline-link-rx"></block></block>
   <block id="e99f28bee3ac5bad6e5414411cd5ffa0" category="sidebar">ONTAP SAN 主機公用程式</block>
-  <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">設定SAN主機和雲端用戶端</block>
   <block id="d42d49b663d32823894e50123ab762aa" category="admonition">您不需要手動設定基於核心的虛擬機器 (KVM) 設定，因為 ONTAP LUN 會自動對應到虛擬機器管理程式。</block>
   <block id="6c1237c8a63c9432743995a73de4f2ea" category="paragraph">您可以在 SUSE Linux Enterprise Server 主機上執行此程序中的步驟，除非它指定您在 ONTAP 控制器上執行某個步驟。</block>
   <block id="a06bd7b24c1effd63b064b3a8b11fac4" category="paragraph"><block ref="43e4de7615f2615407bf61dc8bab917d" prefix="" category="inline-code"></block></block>
@@ -3721,7 +3716,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5cecbf0e006813819e7ea0d92ccca8df" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.6 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="c655b9821bde0a911428a133bb7ef67f" category="paragraph">您可以搭配 RHEL 9.6 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="6cbcd68038ece1dbafa173add2c90697" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機</block>
-  <block id="3dff0e4b77025c9e0739e3b02b3ff268" category="doc">適用於 ONTAP 的 RHEL 9.6 NVMe 主機組態</block>
   <block id="fdee72360607bede29fc52844f306e62" category="paragraph">您可以在 Red Hat Enterprise Linux （ RHEL ） 9.6 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
   <block id="770bddea589c1a8e5b2541551754b4e4" category="list-text">根據預設， RHEL 9.6 可為 NVMe 命名空間啟用核心內建 NVMe 多重路徑，無需明確設定。</block>
   <block id="e118d7e4742cf0454d407a22991c4f23" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 9.6 中使用 NVMe/TCP 的安全帶內驗證。</block>
@@ -3729,8 +3723,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3b6f23fb41215bfbde13af4b92268902" category="paragraph">使用以下步驟驗證最低支援的 RHEL 9.6 軟體版本。</block>
   <block id="61e91ca529ce5516397f8af4ff223ab0" category="list-text">在伺服器上安裝 RHEL 9.6 。安裝完成後、請確認您執行的是指定的 RHEL 9.6 核心：</block>
   <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">以下範例顯示了 nvme-cli 軟體包版本：</block>
-  <block id="a33245ebb2f380b62ab218a312110f3a" category="list-text">在 RHEL 9.6 主機上，請檢查 hostnqn 字串，網址為<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
-  <block id="844df812cde8ebcaf9f2cc35022248c6" category="paragraph">使用 RHEL 9.6， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>軟體包會在系統啟動時自動啟用。系統啟動完成後，請驗證啟動服務是否已啟用。</block>
   <block id="103bbc9741f09ef806d7d9f1ff8e4957" category="paragraph">從 ONTAP 9.12.1 開始，RHEL 9.6 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內驗證。</block>
   <block id="c76dae5432bc09fa983706505086692e" category="list-text">為 RHEL 9.6 主機產生 dhchap 金鑰。</block>
   <block id="eaf2f97729e8d5e4d205672da8afc9a5" category="sidebar">9.6</block>
@@ -3745,4 +3737,251 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="405ee507e1b0e20ba609f39dc449664e" category="paragraph">您可以使用 Citrix Xenserver 8.4 的多路徑來管理 ONTAP LUN。</block>
   <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8.4</block>
   <block id="c4bb680e83ce918749e1d4853b0073d1" category="sidebar">虛擬機器管理程序 8.2 (LTSR)</block>
+  <block id="73dbe2792e643c8d49d1c396963179b8" category="inline-link-macro">建立 SAN 啟動 LUN 並將其對應到主機</block>
+  <block id="23f9932633d90fac9929676a3d96b73c" category="list-text"><block ref="d3b050efbc8875625662ab7a3bc1d82e" category="inline-link-macro-rx"></block>。</block>
+  <block id="55e68527d8c164dc338b18da64611305" category="admonition">您不需要設定核心型虛擬機器（ KVM ）設定，因為 ONTAP LUN 會自動對應至 KVM Hypervisor 。</block>
+  <block id="ca1309f891bafcb692fbf3149982c0e9" category="inline-link">建立 SAN 啟動命名空間並將其對應到主機</block>
+  <block id="e97e46892f962abb9d135b9f4260bb28" category="list-text"><block ref="5fb7de3d2a2b97d13727ed55244c1d34" category="inline-link-rx"></block>。</block>
+  <block id="83946a5f9a0c9e6468d1616ca938bdd0" category="list-text">在 RHEL 主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> ：</block>
+  <block id="43075b4ae15209d42a33c26736b1a616" category="list-text">在 Rocky Linux 主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> ：</block>
+  <block id="3207068e1112e1d7bf44793a16243167" category="paragraph">NVMe/TCP 協定不支援自動連線操作。您可以透過手動執行 NVMe/TCP connect 或 connect-all 操作來發現 NVMe/TCP 子系統和命名空間。</block>
+  <block id="5b65dc582fc3a54b76dad70a8f267f3f" category="paragraph">您可以使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 介面卡來設定 NVMe / FC 。您還需要手動發現 NVMe/TCP 子系統和命名空間。</block>
+  <block id="61b5a98a9fc13d3a4a8112007aef142d" category="admonition">Rocky Linux 核心中包含的原生內建 qla2xxx 驅動程式具有最新修復。這些修正對於 ONTAP 支援至關重要。</block>
+  <block id="59469b69c75b40a15b84cc48d2d1a5d4" category="paragraph">預期輸出為 1 。</block>
+  <block id="255f7dd737c93c62e180bd5b0eb68abb" category="paragraph">您可以為配置了 Broadcom 適配器的 NVMe/FC 啟用 1MB 大小的 I/O 請求。 ONTAP在識別控制器資料中報告的最大資料傳輸大小 (MDTS) 為 8。這表示最大 I/O 要求大小最多可達 1MB 。要發出 1MB 大小的 I/O 請求，您需要增加<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數從預設值 64 更改為 256。</block>
+  <block id="769454dbe77ed2cae45ab11f15c3cdfe" category="paragraph">從 ONTAP 9.12.1 開始，主機和 ONTAP 控制器之間透過 NVMe/TCP 和 NVMe/FC 支援安全帶內身份驗證。</block>
+  <block id="23634d6048eb22a5ca8d8ab3d1e781a7" category="list-text">為主機產生 dhchap 金鑰。</block>
+  <block id="c92a52992f13806a7d9c0f313df649d6" category="summary">在 Rocky Linux 10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="4d8e0dfcc8e342905265f68006cfcd68" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 10</block>
+  <block id="26522b37063e21b1731a31a2bfd1a0ed" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 10 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="c81edf36dc000954d363cf834dc3e1c0" category="paragraph">您可以使用 Rocky Linux 10 的多路徑來管理 ONTAP LUN。</block>
+  <block id="10c6ce445b6fd8fcc35776c073408bd2" category="summary">在 Rocky Linux 8.10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="cba38e964105989c754ebf56baca9af3" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.10</block>
+  <block id="7ff9eff62aade53ae2eb348ebae3cf47" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.10 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="5d989adb4f7d32eee4124400262bf918" category="paragraph">您可以使用 Rocky Linux 8.10 的多路徑來管理 ONTAP LUN。</block>
+  <block id="d98d14968fd86eba6c5ebc7d87fdd83b" category="summary">在 Rocky Linux 8.4 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="ba416f8aef0f245b847812984b757ce4" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.4</block>
+  <block id="174543e34b7d13429219a325a6fcbe93" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="171627c824ed442ad84a4d90a3c97952" category="paragraph">您可以使用 Rocky Linux 8.4 的多路徑來管理 ONTAP LUN。</block>
+  <block id="98dce0d2258c58c69460b0a488eb49c9" category="summary">在 Rocky Linux 8.5 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="410c38d7b5e3599337485ae6ef459a7e" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.5</block>
+  <block id="0acbbf852408838333f8d310f05ec475" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.5 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="5e88c1ca753afc9d771cd2019db114b3" category="paragraph">您可以使用 Rocky Linux 8.5 的多路徑來管理 ONTAP LUN。</block>
+  <block id="c45149732f3f935765d797769c9fd69a" category="summary">在 Rocky Linux 8.6 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="04ece8dfbc674327a705caceeb81d62b" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.6</block>
+  <block id="fa29a393a584868de2f8639785c016a2" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.6 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="9ae000a5d4fd91006240cf7e33d05c05" category="paragraph">您可以使用 Rocky Linux 8.6 的多路徑來管理 ONTAP LUN。</block>
+  <block id="8b4dafa474c7a4355a39383af8d1c7cc" category="summary">在 Rocky Linux 8.7 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="ce9599e816b36cb18a7a8cfb3f45fe7d" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.7</block>
+  <block id="cfb5d3fa62e6dc1366ef21d25eb6d8a9" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.7 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="bc0c16ca58e238a03817bc8d978d189a" category="paragraph">您可以使用 Rocky Linux 8.7 的多路徑來管理 ONTAP LUN。</block>
+  <block id="b20d601aeb70037eff844bb0df11d40d" category="summary">在 Rocky Linux 8.8 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="6217618a3143d0b9754e92036e9305e4" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.8</block>
+  <block id="31664cf89a6f7fcb891937e8c5dea7f3" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.8 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="202c52d6d4b643e7c3eac015375fbfd5" category="paragraph">您可以使用 Rocky Linux 8.8 的多路徑來管理 ONTAP LUN。</block>
+  <block id="3dcc0b1e5c77103db7b777fd05ec019e" category="summary">在 Rocky Linux 8.9 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="b16b1826e8443110e92767189b4a8551" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.9</block>
+  <block id="cffc2bf34b5020f3bc45474f09d6167a" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.9 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="e50750a077fa75109a2de3f93bb42adf" category="paragraph">您可以使用 Rocky Linux 8.9 的多路徑來管理 ONTAP LUN。</block>
+  <block id="b8f2b28d51f5ad1ed6ef3657cb80081d" category="summary">在 Rocky Linux 9.0 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="d7425bae8e902a7d5ec33ee8629b1dc5" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.0</block>
+  <block id="26c0be952da97210ffccf7832a50a648" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.0 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="07e4b32f34b896d73ffb495a88037151" category="paragraph">您可以使用 Rocky Linux 9.0 的多路徑來管理 ONTAP LUN。</block>
+  <block id="06f025c312a90965fc0bc646683a1a5e" category="summary">在 Rocky Linux 9.1 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="88f18a7ceb1d58730bbfabf1519c5648" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.1</block>
+  <block id="cd73b7440b86e7342c647768b8ee8758" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.1 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="e548f8628d947c00bc3b480707821d79" category="paragraph">您可以使用 Rocky Linux 9.1 的多路徑來管理 ONTAP LUN。</block>
+  <block id="64c13bc414e8523921f8ccfce8736da0" category="paragraph">適用於具有 ONTAP 儲存的 FCP 和 iSCSI 的 Rocky Linux 9.1 版本有下列已知問題：</block>
+  <block id="83d23b030ca5295c7d8736002bf1f7d2" category="cell">在 Rocky Linux 9.1 中，NetApp Linux SAN Host Utilities CLI <block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block>失敗，因為找不到支援 HBA 發現的庫包依賴項。</block>
+  <block id="0500cd1e151f6d1672a674d85a0631b1" category="summary">在 Rocky Linux 9.2 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="c300ebce91df3cb39e5e31308b78de62" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.2</block>
+  <block id="c2e307d87a03e5b748c1ced02a2edf6c" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.2 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="ebf412f3fd0e93aa81a3155388db822e" category="paragraph">您可以使用 Rocky Linux 9.2 的多路徑來管理 ONTAP LUN。</block>
+  <block id="0407ec3e3bff4e8012825fa1d5226f7b" category="paragraph">適用於具有 ONTAP 儲存的 FCP 和 iSCSI 的 Rocky Linux 9.2 版本有下列已知問題：</block>
+  <block id="3aa5c1fb6e11d4a3345025b6ab329582" category="summary">在 Rocky Linux 9.3 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="3ebca8bd785348ea265e78526a21a8cf" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.3</block>
+  <block id="74a65f1f314f1477d77a061875f8e976" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.3 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="505f24ab9736799ecc985bb9732c1386" category="paragraph">您可以使用 Rocky Linux 9.3 的多路徑來管理 ONTAP LUN。</block>
+  <block id="f1c5e93b02cb69209200bb18dd6c3fce" category="paragraph">適用於具有 ONTAP 儲存的 FCP 和 iSCSI 的 Rocky Linux 9.3 版本有下列已知問題：</block>
+  <block id="a69da5ead0dfdf6b2f7d873000f30065" category="summary">在 Rocky Linux 9.4 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="867a3c3b3a78822b79f9e274bd05645b" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.4</block>
+  <block id="4903eef42b7e47b3e075d363a1c038ca" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="da56ef3d8d73918e1ec023d3cccd7660" category="paragraph">您可以使用 Rocky Linux 9.4 的多路徑來管理 ONTAP LUN。</block>
+  <block id="0283c230872ee0538d0b3c23d992b395" category="summary">在 Rocky Linux 9.5 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="b28624e5c1d5f27d9bb572967555b42b" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.5</block>
+  <block id="9c295b02084a33345278a5faf4e5c992" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.5 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="60d78a670282f7a61eae67f19d440c37" category="paragraph">您可以使用 Rocky Linux 9.5 的多路徑來管理 ONTAP LUN。</block>
+  <block id="59ad3bdbbd45712662a5fecfe7774929" category="summary">在 Rocky Linux 9.6 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="b4d05655be91566f9bc3cf128c212819" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.6</block>
+  <block id="a2b75a7ad4a5886f1d32d9dccadcf773" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.6 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="ecb4bd3c426003f3430e774eac3ce2f6" category="paragraph">您可以使用 Rocky Linux 9.6 的多路徑來管理 ONTAP LUN。</block>
+  <block id="73f17c790fb6e615fc4015f793dd7853" category="summary">如何使用 ONTAP 儲存為 Rocky Linux 10 設定 NVMe-oF 主機</block>
+  <block id="95d56a95c4a46cb4d634d496d6e9b039" category="doc">使用 ONTAP 儲存為 NVMe-oF 設定 Rocky Linux 10</block>
+  <block id="0adc460f96fe4e3f2127561051d8615e" category="paragraph">您可以將以下支援和功能與 Rocky Linux 10 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="6611e2d11dfe627f04440281f705b6e8" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以使用 Rocky Linux 10 對 NVMe/TCP 進行安全帶內身份驗證。</block>
+  <block id="1b17124b24dbc39a0d7becfce134f36c" category="list-text">從 Rocky Linux 10 開始，本機 NVMe 多路徑始終處於啟用狀態，且不支援 NVMe-oF 的 DM 多路徑支援。</block>
+  <block id="6ea036c9f961aeb2208dfa3070bd3a2c" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 10 軟體版本。</block>
+  <block id="d82ff982ee38964fef1789b7031e01e7" category="list-text">在伺服器上安裝 Rocky Linux 10。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 10 核心：</block>
+  <block id="e3fbd13dfb8ea61b75afa9bbdecb654e" category="paragraph">以下範例顯示了 Rocky Linux 核心版本：</block>
+  <block id="6dfe623f7c51a70cb79b53affc5b832a" category="paragraph">借助 Rocky Linux 10， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，這些軟體包會自動啟用。啟動完成後，請驗證這些服務是否已啟用。</block>
+  <block id="db8bb9a360dc769d2ef0b970c683b33a" category="admonition">從 Rocky Linux 9.5 開始，NVMe/TCP 的預設設置<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block>超時已關閉。這表示重試次數沒有限制（無限期重試）。因此，使用或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項 -l ）時不需要手動配置特定的<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block>超時持續時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。</block>
+  <block id="594486d9bd4257ab1e26ff0ae5a35fed" category="paragraph">從 ONTAP 9.12.1 開始，Rocky Linux 10 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
+  <block id="a9c8004e9d1e07204938f2e404aa5aed" category="list-text">為 Rocky Linux 10 主機產生 dhchap 金鑰。</block>
+  <block id="222d00f6dedce44fb4277bf5767839a3" category="summary">如何使用 ONTAP 為 Rocky Linux 8.10 設定 NVMe-oF 主機</block>
+  <block id="8e628a7900ccbcbe897613470b379397" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.10</block>
+  <block id="85c8cdeb7264230e3576dcdedf0caad5" category="paragraph">Rocky Linux 8.10 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="c264db98e31638c1a8a87666a604a58e" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.10 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="c9e63917edd2644c65c4c83c5f513014" category="list-text">在同一部主機上執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI mpath 裝置設定 dm-multipath ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。</block>
+  <block id="dcccf8a1b4217ccff67e37945ae5e664" category="list-text">對於 Rocky Linux 8.10 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="46fede53b7d1ee83fe8a87bd6ecb6b28" category="inline-link">Rocky Linux 8.10 發行說明</block>
+  <block id="9ddcffe2b5bcdcca37f41378bd6c4381" category="list-text">在 Rocky Linux 8.10 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="47fab428b8102b062e87d7a496d804cc" category="inline-link-rx"></block> 。</block>
+  <block id="d46cc0e0ee3c68f52f6d36c351129d8a" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.10 軟體版本。</block>
+  <block id="7510807cecede571c43031ae720a798c" category="list-text">在伺服器上安裝 Rocky Linux 8.10。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.6 核心：</block>
+  <block id="0819fa6cde25c22d102ee0a7adf88eec" category="section-title">步驟 5：設定 NVMe/TCP</block>
+  <block id="c9fd308128312c542567755665c5daf4" category="section-title">步驟 6：驗證 NVMe-oF</block>
+  <block id="7aa8a009723869e0077d1b9c7c2f290b" category="section-title">步驟 7 ：檢閱已知問題</block>
+  <block id="5315051bad3c79e778c3721bb1d84a2c" category="paragraph">具有 ONTAP 的 Rocky Linux 8.10 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="a11f845df28a0287efbe676d4569a11b" category="cell">Rocky Linux 8.10 NVMe-oF 主機建立重複的持久發現控制器</block>
+  <block id="79342b66ce0b3b109cfdb66b5a341d0f" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.10，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="200f9314bb04c0424d3c67a467844971" category="summary">如何使用 ONTAP 為 Rocky Linux 8.4 設定 NVMe-oF 主機</block>
+  <block id="b98c3ab1117113f8763443775e07dead" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.4</block>
+  <block id="4f12792386d05508f13ace15f7e59b85" category="paragraph">Rocky Linux 8.4 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="2c89af6ab4363b71fc42e24987b4973d" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.4 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="fd8c87b26ab96a99f138d63b24cba7c1" category="list-text">對於 Rocky Linux 8.4 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="57435656bb50b9c00a00430b972d3fdf" category="inline-link">Rocky Linux 8.4 發行說明</block>
+  <block id="4ffa3ebd23b62aecb45b930ba9555c65" category="list-text">在 Rocky Linux 8.4 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="2a17fbed2340943dd5ec68e4ca7512c3" category="inline-link-rx"></block> 。</block>
+  <block id="ea55a5cb337f262d1971ff2eef04508d" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.4 軟體版本。</block>
+  <block id="ec2181acb237ce00035e0613f097d0ca" category="list-text">在伺服器上安裝 Rocky Linux 8.4。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.4 核心：</block>
+  <block id="8339e0de02e908b9d22d68001692825d" category="paragraph">帶有 ONTAP 版本的 Rocky Linux 8.4 上的 NVMe-oF 主機配置沒有已知問題。</block>
+  <block id="23a1570197793cedbad374c67a7107c0" category="summary">如何使用 ONTAP 為 Rocky Linux 8.5 設定 NVMe-oF 主機</block>
+  <block id="fe62864e17ae35435cb1bd029a48b198" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.5</block>
+  <block id="cab6b10f41d1fcbd48aee28f43ba11e8" category="paragraph">Rocky Linux 8.5 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="c0d7d1447e97ceac0585e2b01811be28" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.5 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="54f4647cbb6172c0ad1ab3cf12b032cf" category="list-text">對於 Rocky Linux 8.5 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="054e513aa4940f2bd0268fdfceca2842" category="inline-link">Rocky Linux 8.5 發行說明</block>
+  <block id="b7d1751b18b73c8e88858d5d4775f559" category="list-text">在 Rocky Linux 8.5 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="6334192d64a3a2e96b74c4d9684a48e9" category="inline-link-rx"></block> 。</block>
+  <block id="df96769874d4c9dbda21427b70785532" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.5 軟體版本。</block>
+  <block id="83423a9254d95179df87f66a8c191a7b" category="list-text">在伺服器上安裝 Rocky Linux 8.5。安裝完成後，驗證您執行的是指定的 Rocky Linux 8.5 核心：</block>
+  <block id="fc14ce7599aa7cd808d8b453fe4576ac" category="paragraph">帶有 ONTAP 版本的 Rocky Linux 8.5 上的 NVMe-oF 主機配置沒有已知問題。</block>
+  <block id="28fa950d7bb5ed27988b7b903d6758bb" category="summary">如何使用 ONTAP 為 Rocky Linux 8.6 設定 NVMe-oF 主機</block>
+  <block id="731e49e4b7f038e10007118817aa3208" category="doc">為 ONTAP 儲存配置帶有 NVMe-oF 的 Rocky Linux 8.6</block>
+  <block id="99386c68c131c2c0226f1d0fbfea8fbd" category="paragraph">Rocky Linux 8.6 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="180356a6fba90baca127157cd761f3fb" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.6 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="09ab4917eb1810647094e83ab60779ca" category="list-text">對於 Rocky Linux 8.6 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="e7e49cf8fccf3c12dc036caaaaf0dada" category="inline-link">Rocky Linux 8.6 發行說明</block>
+  <block id="90faee298dba82f1ebd942e4153d68b7" category="list-text">在 Rocky Linux 8.6 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="5a58ce93441eb12ea0edf37566d2c8be" category="inline-link-rx"></block> 。</block>
+  <block id="d3080448660c547e2fe83a242512ae71" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.6 軟體版本。</block>
+  <block id="18e838a3626451c6faff91c27f20d56b" category="list-text">在伺服器上安裝 Rocky Linux 8.6。安裝完成後，驗證您執行的是指定的 Rocky Linux 8.6 核心：</block>
+  <block id="69b0be8d747936b2b5465fe4b57ddfdf" category="paragraph">具有 ONTAP 的 Rocky Linux 8.6 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="10941bbc35cc1d748498953a221e9b38" category="cell">Rocky Linux 8.6 NVMe-oF 主機建立重複的持久發現控制器</block>
+  <block id="a883fd44cbff0b861d15b8136a3952f4" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 ONTAP 9.10.1 和 Rocky Linux 8.6，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="7b5fa3004cbc3003a3262683ec6c65cc" category="summary">如何使用 ONTAP 為 Rocky Linux 8.7 設定 NVMe-oF 主機</block>
+  <block id="ed03e9560c294d3ddc83cba29fba4b05" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.7</block>
+  <block id="969737c5049b17a5654a19dd3a43afbc" category="paragraph">Rocky Linux 8.7 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="53d262d878919873c5cb3f4e6985d831" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.7 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="45db8b6cf55c39bce94424f2ddb798e3" category="list-text">對於 Rocky Linux 8.7 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="e5d41b287558420b1da193ecbe60cc50" category="inline-link-macro">Rocky Linux 8.7 發行說明</block>
+  <block id="3bc1130ce3e680520898e40ac7959fa2" category="list-text">在 Rocky Linux 8.7 主機上，由於存在一些未解決的問題，NVMe/TCP 仍處於技術預覽階段。請參閱<block ref="d32810211fa0fabac0569c4390e790dc" category="inline-link-macro-rx"></block>了解詳情。</block>
+  <block id="7e4a70bbcd93eaa6141e87546c6f1f21" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.7 軟體版本。</block>
+  <block id="f5ee36bf3ec3b3e921b0b7e9d925b748" category="list-text">在伺服器上安裝 Rocky Linux 8.7。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.7 核心：</block>
+  <block id="78e181f317983c9fedb366c4a37a16cd" category="paragraph">具有 ONTAP 的 Rocky Linux 8.7 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="7a6a40bc5a4685658e1d343ed9b9dd39" category="cell">Rocky Linux 8.7 NVMe-oF 主機建立重複的持久發現控制器</block>
+  <block id="6d6607f7b41bf491341b99d0537f3629" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 ONTAP 9.10.1 和 Rocky Linux 8.7，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="47ec11f02f0c8839abe0813debc4f014" category="summary">如何使用 ONTAP 為 Rocky Linux 8.8 設定 NVMe-oF 主機</block>
+  <block id="c4b8d1690b30d457411a155632154e0f" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.8</block>
+  <block id="6f343957984f9d2eb78e0f01ea024112" category="paragraph">Rocky Linux 8.8 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="256f058874befacad0f6f9566228e7d6" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.8 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="8a14068da00827a35251d7ba986f9103" category="list-text">對於 Rocky Linux 8.8 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="159be813da4c10f2d5745d1aad3f34dc" category="inline-link">Rocky Linux 8.8 發行說明</block>
+  <block id="d48c8e0613a3d2462bab37e061f9c99a" category="list-text">在 Rocky Linux 8.8 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="c94cc770975ea6cce699ff8f723c184b" category="inline-link-rx"></block> 。</block>
+  <block id="e52751aedc7ac7fdc35e859dec9d1a84" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.8 軟體版本。</block>
+  <block id="dd66f0672670077d5170dcb95b0cace0" category="list-text">在伺服器上安裝 Rocky Linux 8.8。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.8 核心：</block>
+  <block id="b8c3c07079892e4901770e27f4802ec1" category="paragraph">具有 ONTAP 版本的 Rocky Linux 8.8 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="9d0224a2f615424bba089d74a7227ebe" category="cell">Rocky Linux 8.8 NVMe-oF 主機建立重複的持久發現控制器</block>
+  <block id="4e8203cb1c6fbcc8f8c247946196d38e" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.8，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="918e5346ad0239cf9b9c61db20bf484c" category="summary">如何使用 ONTAP 為 Rocky Linux 8.9 設定 NVMe-oF 主機</block>
+  <block id="c4cb2a6f173b95d0c4f67c8f96f7534b" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.9</block>
+  <block id="8e81ec9f25b772637f16944133db022c" category="paragraph">Rocky Linux 8.9 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="6e06dba9b7fe75fff25b335a9ecd497e" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.9 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="f23ce81eebb3426d889da5f6ca6f568b" category="list-text">對於 Rocky Linux 8.9 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
+  <block id="decc234e2e25bcd439c62a6924b45e43" category="inline-link">Rocky Linux 8.9 發行說明</block>
+  <block id="e035f49458f62168d6a4c971dfb2508d" category="list-text">在 Rocky Linux 8.9 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="940755a456f09b2cfde71703a8e286af" category="inline-link-rx"></block> 。</block>
+  <block id="74ba8ad92ae4c2a3b720f451f30601ab" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.9 軟體版本。</block>
+  <block id="94bace38b58b938918367d0c3cc6eaa5" category="list-text">在伺服器上安裝 Rocky Linux 8.9。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.9 核心：</block>
+  <block id="9f3a4c0a6d61ae1944d857976073d3fc" category="paragraph">具有 ONTAP 版本的 Rocky Linux 8.9 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="4c6f9e46e9e7dc5d30fea3fe515730e0" category="cell">Rocky Linux 8.9 NVMe-oF 主機建立重複的持久發現控制器</block>
+  <block id="0dbf100b5d804fe4caf4da2b664b2afa" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.9，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="f69e78a8431382f8f2ff25b30ad11ba3" category="summary">如何使用 ONTAP 為 Rocky Linux 9.0 設定 NVMe-oF 主機</block>
+  <block id="3031a6683c69d81249fa58f63e1d9e07" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.0</block>
+  <block id="e31a3bbcdce6caad6e848512cf31530f" category="paragraph">Rocky Linux 9.0 主機支援 NVMe/FC 和 NVMe/TCP 協議，並支援非對稱命名空間存取 (ANA)。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，是透過核心 NVMe 多路徑功能實現的。</block>
+  <block id="b81970d4f1aac579c43532a6541b65f8" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.0 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="607045456dfb12bc04d3522b1f874865" category="list-text">Rocky Linux 9.0 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
+  <block id="6cb5085ae04cfea89d334f12d091d300" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.0 軟體版本。</block>
+  <block id="57bec5364d8813b80d9ba8cbbe9cb4ed" category="list-text">在伺服器上安裝 Rocky Linux 9.0。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.0 核心：</block>
+  <block id="29a60b312aa9fdd9b477d6b295e0e45c" category="paragraph">具有 ONTAP 的 Rocky Linux 9.0 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="d89f68cec4fde8cdd4a14a4ef45a06f6" category="cell">Rocky Linux 9.0 NVMe-oF 主機建立重複的持久發現控制器</block>
+  <block id="ff01f1039161c2b6b5ea51efcfc04188" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 ONTAP 9.10.1 和 Rocky Linux 9.0，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
+  <block id="29af8d1042b30a5ba249a12d6db4fc61" category="summary">如何使用 ONTAP 為 Rocky Linux 9.1 設定 NVMe-oF 主機</block>
+  <block id="459e7abdd281255af78f1e72bc455c23" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.1</block>
+  <block id="0dfa9a7d24501e1c4aafaba720bcdd20" category="paragraph">Rocky Linux 9.1 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="71bceb39747a320dfdde9ed4ba485664" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.1 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="23dd49f82b27ef244f37aee158baf33e" category="list-text">Rocky Linux 9.1 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
+  <block id="adfdcaae3a69aa1a3f89a3a550b3e16b" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.1 軟體版本。</block>
+  <block id="ae7b811595439cd8cfc0f414a032e104" category="list-text">在伺服器上安裝 Rocky Linux 9.1。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.1 核心：</block>
+  <block id="0c36435076f0978fbc5c56aadf37500b" category="paragraph">具有 ONTAP 儲存的 Rocky Linux 9.1 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="97d2b9aba8be20cadd2e121636e33e94" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block>命令傳回給定子系統列出的重複的 NVMe 控制器</block>
+  <block id="b68755a212f05b7fd208d599e6c87bde" category="cell">這<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>命令應傳回與給定子系統關聯的 NVMe 控制器的唯一清單。在 Rocky Linux 9.1 中， <block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>此指令會傳回屬於指定子系統的所有命名空間的 NVMe 控制器及其各自的 ANA 狀態。但是，ANA 狀態是每個命名空間的屬性，因此，如果您列出給定命名空間的子系統指令語法，則應該顯示具有路徑狀態的唯一 NVMe 控制器條目。</block>
+  <block id="88b5ad79d4202975070e7a14f54943ed" category="summary">如何使用 ONTAP 為 Rocky Linux 9.2 設定 NVMe-oF 主機</block>
+  <block id="85c64415b5d598f73c6e847a0d77410b" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.2</block>
+  <block id="e3692d133b287428ed899012d278dcda" category="paragraph">Rocky Linux 9.2 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="0709e6e65dd199a6186a638123174eb6" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.2 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="9fe2171ff825eeae99977b246486ab45" category="list-text">Rocky Linux 9.2 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
+  <block id="67d55e75a94efcc45736cc2f3005df0a" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.2 軟體版本。</block>
+  <block id="aafcc0ab42ecf88d7324e3d1846a32f6" category="list-text">在伺服器上安裝 Rocky Linux 9.2。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.2 核心：</block>
+  <block id="83fa364538f4cac4c88dd64c121c63f0" category="summary">如何使用 ONTAP 為 Rocky Linux 9.3 設定 NVMe-oF 主機</block>
+  <block id="5d2b9a878794488507acc5f9357b82a0" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.3</block>
+  <block id="ceea4faa2a523b50b23f09456e8f2b21" category="paragraph">Rocky Linux 9.3 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="11c1761f4dde8eab6ffa9e7154617c1a" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.3 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="010c3b777e508a607c8f39ab91ec1128" category="list-text">Rocky Linux 9.3 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
+  <block id="c46e4a14e05a675d4ae1d9f257e2ba34" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.3 軟體版本。</block>
+  <block id="d5bbf51ec330863d1ccc5503b65c3524" category="list-text">在伺服器上安裝 Rocky Linux 9.3。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.3 核心：</block>
+  <block id="2441617d277c4f79e18a934101ee4495" category="summary">如何使用 ONTAP 為 Rocky Linux 9.4 設定 NVMe-oF 主機</block>
+  <block id="80da56795c34c574eef35bf2da92aadc" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.4</block>
+  <block id="54a0478f5c2c3d3d1764051d125e32d5" category="paragraph">Rocky Linux 9.4 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="93662bdab777129c11baf70f652cdfd2" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.4 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="de4920db6ed57af93eae69e1fbc5ea8e" category="list-text">Rocky Linux 9.4 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
+  <block id="53046fddde2a2d460ce72f8252c37d97" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.4 軟體版本。</block>
+  <block id="a0d9f55046993dfcf93d5c6ff3dfb996" category="list-text">在伺服器上安裝 Rocky Linux 9.4。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.4 核心：</block>
+  <block id="3e6b663dba2b6902083525e800d7dd95" category="summary">如何使用 ONTAP 為 Rocky Linux 9.5 設定 NVMe-oF 主機</block>
+  <block id="67ece1bbad231b0b59e17bc01e23f7e0" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.5</block>
+  <block id="ec299f59585f77b9058a264fa7db5713" category="paragraph">Rocky Linux 9.5 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
+  <block id="49a87e259c17e1ec85b982e20d8ee89f" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.5 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="e895eafc85f1ab6f7089bac854ff13ef" category="list-text">從 ONTAP 9.12.1 開始，您可以使用 Rocky Linux 9.5 對 NVMe-oF 進行安全帶內身份驗證。</block>
+  <block id="88009a7e4f8c0e41f21ef4110cfa1d17" category="list-text">Rocky Linux 9.5 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
+  <block id="42f338e7a67b898d8724af87a7eafa47" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.5 軟體版本。</block>
+  <block id="e0099a38b3f447f8615155f10805bd03" category="list-text">在伺服器上安裝 Rocky Linux 9.5。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.5 核心：</block>
+  <block id="0148f17cc04647b8533a3c01ec3b7393" category="section-title">步驟 7：設定安全帶內身份驗證</block>
+  <block id="dd181852761e35c13f645a9f053c77c7" category="section-title">步驟 8 ：檢閱已知問題</block>
+  <block id="cf2e09333e9b9de1b169b6c32eeff962" category="summary">如何使用 ONTAP 為 Rocky Linux 9.6 設定 NVMe-oF 主機</block>
+  <block id="331d7a0b82cb882efa5b3b430281a9d8" category="doc">使用 ONTAP 儲存為 NVMe-oF 設定 Rocky Linux 9.6</block>
+  <block id="470d036f1186ddd5fa5cd71478e6f05c" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.6 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="59188a56ae080a58348d66924900e8da" category="list-text">Rocky Linux 9.6 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
+  <block id="4ddb6dd0b1c0f78cd4fe39e69f93616c" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以使用 Rocky Linux 9.6 對 NVMe/TCP 進行安全帶內身份驗證。</block>
+  <block id="2f7acc3e67a351a5288af0031f2b39b0" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.6 軟體版本。</block>
+  <block id="befda5dfe1dca92c182f569e3a267615" category="list-text">在伺服器上安裝 Rocky Linux 9.6。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.6 核心：</block>
+  <block id="ae084e30a9a39299099ffeeeeb21278e" category="paragraph">使用 Rocky Linux 9.6， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，這些軟體包會自動啟用。啟動完成後，請驗證這些服務是否已啟用。</block>
+  <block id="d4454d1f91fdbee65b5b084bbf2c935c" category="paragraph">從 ONTAP 9.12.1 開始，Rocky Linux 9.6 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
+  <block id="e5f095ea13bd0114b461048aa3c82608" category="list-text">為 Rocky Linux 9.6 主機產生 dhchap 金鑰。</block>
+  <block id="9b26e38834ec2f2df9641c2b954ff579" category="doc">使用 ONTAP 儲存為 NVMe-oF 設定 RHEL 9.5</block>
+  <block id="dc5d05edf7eac3cf1cb6e7a130e6f430" category="doc">使用 ONTAP 儲存為 NVMe-oF 設定 RHEL 9.6</block>
+  <block id="e405d2e36dcf9476a789fd5b1938b283" category="paragraph">使用 RHEL 9.6， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用這些軟體包。啟動完成後，請驗證這些服務是否已啟用。</block>
+  <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">ONTAP SAN 主機和雲端用戶端</block>
+  <block id="fb09e86e3230567e42bbd530bcb5a946" category="sidebar">Rocky Linux</block>
+  <block id="1f27018b2bb672b8cdc3ade88964fcd2" category="sidebar">Rocky Linux 10</block>
+  <block id="9c5a13309f2776c548f1cdaad8fc39ea" category="sidebar">RL-10-FCP</block>
+  <block id="cf76271f717860ca93c6825568b0690d" category="sidebar">Rocky Linux 9</block>
+  <block id="e17ceddf1264512daf0c5ceaca0a2a0d" category="sidebar">RL-9-FCP</block>
+  <block id="074720cb7866529cf5ec3aad61198ac4" category="sidebar">Rocky Linux 8</block>
+  <block id="32abbb92208e586e49dce3e4e69b53e5" category="sidebar">RL-8-FCP</block>
+  <block id="004d94776b28ba1f02680460dac43cc0" category="sidebar">NVMeoF Rocky Linux</block>
 </blocks>

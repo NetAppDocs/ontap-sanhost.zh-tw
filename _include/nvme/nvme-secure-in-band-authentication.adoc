@@ -1,0 +1,225 @@
+= 
+:allow-uri-read: 
+
+
+從 ONTAP 9.12.1 開始，主機和 ONTAP 控制器之間透過 NVMe/TCP 和 NVMe/FC 支援安全帶內身份驗證。
+
+若要設定安全驗證、每個主機或控制器都必須與相關聯 `DH-HMAC-CHAP` 金鑰、這是 NVMe 主機或控制器的 NQN 組合、以及管理員設定的驗證密碼。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
+
+您可以使用 CLI 或組態 JSON 檔案來設定安全的頻內驗證。如果您需要為不同的子系統指定不同的 dhchap 金鑰、則必須使用組態 JSON 檔案。
+
+[role="tabbed-block"]
+====
+.CLI
+--
+使用 CLI 設定安全的頻內驗證。
+
+.步驟
+. 取得主機 NQN ：
++
+[listing]
+----
+cat /etc/nvme/hostnqn
+----
+. 為主機產生 dhchap 金鑰。
++
+下列輸出說明 `gen-dhchap-key`命令參數：
+
++
+[listing]
+----
+nvme gen-dhchap-key -s optional_secret -l key_length {32|48|64} -m HMAC_function {0|1|2|3} -n host_nqn
+•	-s secret key in hexadecimal characters to be used to initialize the host key
+•	-l length of the resulting key in bytes
+•	-m HMAC function to use for key transformation
+0 = none, 1- SHA-256, 2 = SHA-384, 3=SHA-512
+•	-n host NQN to use for key transformation
+----
++
+在下列範例中、會產生一個隨機的 dhchap 金鑰、其中 HMAC 設為 3 （ SHA-512 ）。
+
++
+[listing]
+----
+nvme gen-dhchap-key -m 3 -n nqn.2014-08.org.nvmexpress:uuid:e6dade64-216d-11ec-b7bb-7ed30a5482c3
+DHHC-1:03:1CFivw9ccz58gAcOUJrM7Vs98hd2ZHSr+iw+Amg6xZPl5D2Yk+HDTZiUAg1iGgxTYqnxukqvYedA55Bw3wtz6sJNpR4=:
+----
+. 在 ONTAP 控制器上、新增主機並指定兩個 dhchap 金鑰：
++
+[listing]
+----
+vserver nvme subsystem host add -vserver <svm_name> -subsystem <subsystem> -host-nqn <host_nqn> -dhchap-host-secret <authentication_host_secret> -dhchap-controller-secret <authentication_controller_secret> -dhchap-hash-function {sha-256|sha-512} -dhchap-group {none|2048-bit|3072-bit|4096-bit|6144-bit|8192-bit}
+----
+. 主機支援兩種驗證方法：單向和雙向。在主機上、連線至 ONTAP 控制器、並根據所選的驗證方法指定 dhchap 金鑰：
++
+[listing]
+----
+nvme connect -t tcp -w <host-traddr> -a <tr-addr> -n <host_nqn> -S <authentication_host_secret> -C <authentication_controller_secret>
+----
+. 驗證 `nvme connect authentication` 命令驗證主機和控制器 dhchap 金鑰：
++
+.. 驗證主機 dhchap 金鑰：
++
+[listing]
+----
+cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_secret
+----
++
+.顯示單向組態的輸出範例
+[%collapsible]
+=====
+[listing]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys1/nvme*/dhchap_secret
+DHHC-1:01:iM63E6cX7G5SOKKOju8gmzM53qywsy+C/YwtzxhIt9ZRz+ky:
+DHHC-1:01:iM63E6cX7G5SOKKOju8gmzM53qywsy+C/YwtzxhIt9ZRz+ky:
+DHHC-1:01:iM63E6cX7G5SOKKOju8gmzM53qywsy+C/YwtzxhIt9ZRz+ky:
+DHHC-1:01:iM63E6cX7G5SOKKOju8gmzM53qywsy+C/YwtzxhIt9ZRz+ky:
+----
+=====
+.. 驗證控制器 dhchap 按鍵：
++
+[listing]
+----
+cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_ctrl_secret
+----
++
+.顯示雙向組態的輸出範例
+[%collapsible]
+=====
+[listing]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys6/nvme*/dhchap_ctrl_secret
+DHHC-1:03:1CFivw9ccz58gAcOUJrM7Vs98hd2ZHSr+iw+Amg6xZPl5D2Yk+HDTZiUAg1iGgxTYqnxukqvYedA55Bw3wtz6sJNpR4=:
+DHHC-1:03:1CFivw9ccz58gAcOUJrM7Vs98hd2ZHSr+iw+Amg6xZPl5D2Yk+HDTZiUAg1iGgxTYqnxukqvYedA55Bw3wtz6sJNpR4=:
+DHHC-1:03:1CFivw9ccz58gAcOUJrM7Vs98hd2ZHSr+iw+Amg6xZPl5D2Yk+HDTZiUAg1iGgxTYqnxukqvYedA55Bw3wtz6sJNpR4=:
+DHHC-1:03:1CFivw9ccz58gAcOUJrM7Vs98hd2ZHSr+iw+Amg6xZPl5D2Yk+HDTZiUAg1iGgxTYqnxukqvYedA55Bw3wtz6sJNpR4=:
+----
+=====
+
+
+
+
+--
+.Json 檔案
+--
+當 ONTAP 控制器組態上有多個 NVMe 子系統可供使用時、您可以搭配命令使用該 `/etc/nvme/config.json`檔案 `nvme connect-all`。
+
+使用 `-o`選項來產生 JSON 檔案。如需更多語法選項，請參閱 NVMe Connect All 手冊頁。
+
+.步驟
+. 設定Json檔案：
++
+
+NOTE: 在以下範例中，  `dhchap_key`對應於 `dhchap_secret`和 `dhchap_ctrl_key`對應於 `dhchap_ctrl_secret` 。
+
++
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+cat /etc/nvme/config.json
+[
+{
+  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:9796c1ec-0d34-11eb-b6b2-3a68dd3bab57",
+  "hostid":"b033cd4fd6db4724adb48655bfb55448",
+  "dhchap_key":"DHHC-1:01:zGlgmRyWbplWfUCPMuaP3mAypX0+GHuSczx5vX4Yod9lMPim:"
+},
+{
+  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33",
+  "subsystems":[
+       {
+          "nqn":"nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.bidir_DHCP",
+          "ports":[
+              {
+                  "transport":"tcp",
+                   "traddr":" 192.168.1.24 ",
+                  "host_traddr":" 192.168.1.31 ",
+                  "trsvcid":"4420",
+                  "dhchap_ctrl_key":"DHHC-1:03:L52ymUoR32zYvnqZFe5OHhMg4gxD79jIyxSShHansXpVN+WiXE222aVc651JxGZlQCI863iVOz5dNWvgb+14F4B4bTQ=:"
+              },
+              {
+                  "transport":"tcp",
+                  "traddr":" 192.168.1.24 ",
+                  "host_traddr":" 192.168.1.31",
+                  "trsvcid":"4420",
+                  "dhchap_ctrl_key":"DHHC-1:03:L52ymUoR32zYvnqZFe5OHhMg4gxD79jIyxSShHansXpVN+WiXE222aVc651JxGZlQCI863iVOz5dNWvgb+14F4B4bTQ=:"
+              },
+              {
+                  "transport":"tcp",
+                 "traddr":" 192.168.1.24 ",
+                  "host_traddr":" 192.168.1.31",
+                  "trsvcid":"4420",
+                  "dhchap_ctrl_key":"DHHC-1:03:L52ymUoR32zYvnqZFe5OHhMg4gxD79jIyxSShHansXpVN+WiXE222aVc651JxGZlQCI863iVOz5dNWvgb+14F4B4bTQ=:"
+              },
+              {
+                  "transport":"tcp",
+                  "traddr":" 192.168.1.24 ",
+                   "host_traddr":" 192.168.1.31",
+                  "trsvcid":"4420",
+                  "dhchap_ctrl_key":"DHHC-1:03:L52ymUoR32zYvnqZFe5OHhMg4gxD79jIyxSShHansXpVN+WiXE222aVc651JxGZlQCI863iVOz5dNWvgb+14F4B4bTQ=:"
+              }
+          ]
+      }
+  ]
+}
+]
+----
+=====
+. 使用組態 JSON 檔案連線至 ONTAP 控制器：
++
+[listing]
+----
+nvme connect-all -J /etc/nvme/config.json
+----
++
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+traddr=192.168.1.24 is already connected
+traddr=192.168.1.24 is already connected
+traddr=192.168.1.24 is already connected
+traddr=192.168.1.24 is already connected
+traddr=192.168.1.24 is already connected
+traddr=192.168.1.24 is already connected
+traddr=192.168.1.25 is already connected
+traddr=192.168.1.25 is already connected
+traddr=192.168.1.25 is already connected
+traddr=192.168.1.25 is already connected
+traddr=192.168.1.25 is already connected
+traddr=192.168.1.25 is already connected
+----
+=====
+. 確認已為每個子系統的個別控制器啟用 dhchap 機密：
++
+.. 驗證主機 dhchap 金鑰：
++
+[listing]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_secret
+----
++
+[listing]
+----
+DHHC-1:01:zGlgmRyWbplWfUCPMuaP3mAypX0+GHuSczx5vX4Yod9lMPim:
+----
+.. 驗證控制器 dhchap 按鍵：
++
+[listing]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys0/nvme0/dhchap_ctrl_secret
+----
++
+[listing]
+----
+DHHC-1:03:L52ymUoR32zYvnqZFe5OHhMg4gxD79jIyxSShHansXpVN+WiXE222aVc651JxGZlQCI863iVOz5dNWvgb+14F4B4bTQ=:
+----
+
+
+
+
+--
+====
