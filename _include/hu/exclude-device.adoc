@@ -23,7 +23,7 @@
 
 . 將 WWID 新增至「黑名單」區：
 +
-[listing]
+[source, cli]
 ----
 blacklist {
 	     wwid   360030057024d0730239134810c0cb833

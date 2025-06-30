@@ -37,9 +37,6 @@ NetApp 強烈建議您安裝 Linux 主機公用程式，但並非強制安裝。
 
 
 
-NOTE: 您可以使用本程序提供的組態設定link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]，來設定連線至和的雲端用戶端link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]。
-
-
 
 == SAN工具套件
 

@@ -4,7 +4,7 @@ permalink: hu_centos_84.html
 keywords: host utilities, centos, linux, 8.4, netapp, ontap 
 summary: 說明如何搭配ONTAP 使用CentOS 8.4搭配使用 
 ---
-= 將 CentOS 8.4 搭配 ONTAP 使用
+= 為 ONTAP 儲存配置 CentOS 8.4 的 FCP 和 iSCSI
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,191 +16,75 @@ summary: 說明如何搭配ONTAP 使用CentOS 8.4搭配使用
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、將 CentOS 8.4 與 ONTAP 設定為目標。
+Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 CentOS 8.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。
+
+
+NOTE: 您不需要手動設定基於核心的虛擬機器 (KVM) 設定，因為 ONTAP LUN 會自動對應到虛擬機器管理程式。
 
 
 
-== 安裝 Linux 主機公用程式
+== 步驟 1 ：選擇性啟用 SAN 開機
 
-您可以從下載 NetApp Linux 主機公用程式軟體套件作為 64-bit.rpm 檔案link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]。
-
-NetApp 強烈建議您安裝 Linux 主機公用程式，但這不是強制性的。公用程式不會變更Linux主機上的任何設定。這些公用程式可改善管理、並協助NetApp客戶支援部門收集您的組態相關資訊。
-
-.步驟
-. 將 64 位元 Linux 主機公用程式軟體套件從下載 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]至主機。
-. 安裝軟體套件：
-+
-「rpm -ivh netapp_Linux統一化_host_utilities - 7-1.x86_64」
-
-
-
-
-NOTE: 您可以使用本程序提供的組態設定link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]，來設定連線至和的雲端用戶端link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]。
-
-
-
-== SAN工具套件
-
-當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供「資源」公用程式、可協助您管理LUN和HBA。「lanlun」命令會傳回對應至主機的LUN資訊、多重路徑、以及建立啟動器群組所需的資訊。
-
-.範例
-在以下範例中、「左LUN show」命令會傳回LUN資訊。
-
-[source, cli]
-----
-# sanlun lun show all
-----
-輸出範例：
-
-[listing]
-----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
-------------------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
-----
-
-
-== SAN開機
+您可以將主機設定為使用 SAN 開機，以簡化部署並改善擴充性。
 
 .開始之前
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
+使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Linux 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
 
 .步驟
-. 將SAN開機LUN對應至主機。
-. 確認有多個路徑可供使用。
-+
-
-NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路徑可供使用。
-
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["建立 SAN 啟動 LUN 並將其對應到主機"^]。
 . 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
 +
 如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
 
-. 重新啟動主機、確認開機成功。
+. 重新啟動主機並驗證作業系統是否正常運作，以確認組態是否成功。
 
 
 
 
-== 多重路徑
+== 步驟 2 ：安裝 Linux 主機公用程式
 
-對於CentOS 8.4、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 8.4是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。
+NetApp 強烈建議您安裝 Linux 主機公用程式，以支援 ONTAP LUN 管理，並協助技術支援收集組態資料。
 
-您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。
-
-下列各節提供對應至 ASA 和非 ASA 角色之 LUN 的多重路徑輸出範例。
+link:hu_luhu_71.html["安裝 Linux 主機公用程式 7.1"]。
 
 
-
-=== 所有 SAN 陣列組態
-
-所有 SAN 陣列（ ASA ）組態都會最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
-
-.範例
-以下範例顯示 ONTAP LUN 的正確輸出。
-
-[listing]
-----
-# multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-`-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running
-----
-
-NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
+NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機逾時設定。
 
 
 
-=== 非 ASA 組態
+== 步驟 3 ：確認主機的多重路徑組態
 
-對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
+您可以使用 CentOS 8.4 的多路徑來管理 ONTAP LUN。
 
-.範例
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
-
-[listing]
-----
-# multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=active
-| |- 16:0:6:35 sdwb  69:624  active ready running
-| |- 16:0:5:35 sdun  66:752  active ready running
-`-+- policy='service-time 0' prio=10 status=enabled
-  |- 15:0:0:35 sdaj  66:48   active ready running
-  |- 15:0:1:35 sdbx  68:176  active ready running
-----
-
-NOTE: 單一 LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間造成路徑問題。
-
-
-
-== 建議設定
-
-CentOS 8.4經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。
-
-該 `multipath.conf`檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案 `touch /etc/multipath.conf`。
-
-第一次建立 `multipath.conf`檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：
-
-[listing]
-----
-chkconfig multipathd on
-/etc/init.d/multipathd start
-----
-您不需要直接將任何內容新增至 `multipath.conf`檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置，請將下列語法新增至 `multipath.conf`檔案，以您要排除的裝置的全球識別碼（ WWID ）字串取代 <DevId> ：
-
-[listing]
-----
-blacklist {
-        wwid <DevId>
-        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-        devnode "^hd[a-z]"
-        devnode "^cciss.*"
-}
-----
-以下範例決定裝置的 WWID 、並將其新增至 `multipath.conf`檔案。
+為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
 
 .步驟
-. 判斷 WWID ：
-+
-[listing]
-----
-/lib/udev/scsi_id -gud /dev/sda
-----
-+
-[listing]
-----
-3600a098038314c4a433f5774717a3046
-----
-+
-`sda`是您要新增至黑名單的本機 SCSI 磁碟。
-
-. 新增 `WWID` 至中的黑名單 `/etc/multipath.conf`：
+. 確認 `/etc/multipath.conf`檔案已結束。如果檔案不存在，請建立空白的零位元組檔案：
 +
 [source, cli]
 ----
-blacklist {
-     wwid   3600a098038314c4a433f5774717a3046
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}
+touch /etc/multipath.conf
 ----
+. 第一次 `multipath.conf`建立檔案時，您可能需要啟用並啟動多重路徑服務，才能載入建議的設定：
++
+[source, cli]
+----
+chkconfig multipathd on
+----
++
+[source, cli]
+----
+/etc/init.d/multipathd start
+----
+. 每次引導主機時，空的 `/etc/multipath.conf`零位元組檔案會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。您不需要變更 `/etc/multipath.conf`主機的檔案，因為作業系統會使用多重路徑參數進行編譯，以正確辨識及管理 ONTAP LUN 。
++
+下表顯示 ONTAP LUN 的 Linux OS 原生編譯多重路徑參數設定。
 
-
-請務必檢查 `/etc/multipath.conf`檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。
-
-下表說明 `multipathd` ONTAP LUN 的關鍵參數及必要值。如果主機連接至其他廠商的 LUN 、且這些參數中的任何一個被覆寫、則必須在 `multipath.conf`檔案中以特定套用至 ONTAP LUN 的形式、在稍後的節段中加以修正。如果沒有此修正、 ONTAP LUN 可能無法如預期般運作。您只能在諮詢 NetApp 、作業系統廠商或兩者之後、以及完全瞭解影響時、才應覆寫這些預設值。
-
-[cols="2*"]
++
+.顯示參數設定
+[%collapsible]
+====
+[cols="2"]
 |===
 | 參數 | 設定 
 
@@ -244,7 +128,7 @@ blacklist {
 | 優先 | 「NetApp」ONTAP 
 
 
-| 產品 | LUN.* 
+| 產品 | LUN 
 
 
 | Retain附加的硬體處理常式 | 是的 
@@ -258,39 +142,134 @@ blacklist {
 
 | 廠商 | NetApp 
 |===
-.範例
-下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。
+====
+. 驗證 ONTAP LUN 的參數設定和路徑狀態：
++
+[source, cli]
+----
+multipath -ll
+----
++
+預設的多重路徑參數支援 ASA ， AFF 和 FAS 組態。在這些組態中，單一 ONTAP LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間導致路徑問題。
+
++
+以下輸出範例顯示 ASA ， AFF 或 FAS 組態中 ONTAP LUN 的正確參數設定和路徑狀態。
+
++
+[role="tabbed-block"]
+====
+.ASA 組態
+--
+ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
 
 [listing]
 ----
+multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi   130:64   active ready running
+  |- 11:0:9:1    sdiy  8:288     active ready running
+  |- 11:0:10:1  sdml 69:464   active ready running
+  |- 11:0:11:1  sdpt  131:304  active ready running
+----
+--
+.AFF 或 FAS 組態
+--
+AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。較高優先順序的主動 / 最佳化路徑由集合所在的控制器提供服務。較低優先順序的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
+
+以下範例顯示 ONTAP LUN 的輸出，其中包含兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑：
+
+[listing]
+----
+multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
+----
+--
+====
+
+
+
+
+== 步驟 4 ：選擇性地將裝置排除在多重路徑之外
+
+如果需要，您可以將不需要的裝置的 WWID 新增至檔案的「黑名單」區段，以排除裝置的多重路徑 `multipath.conf`功能。
+
+.步驟
+. 判斷 WWID ：
++
+[source, cli]
+----
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+「 SDA 」是您要新增至黑名單的本機 SCSI 磁碟。
+
++
+例如 WWID `360030057024d0730239134810c0cb833` 。
+
+. 將 WWID 新增至「黑名單」區：
++
+[source, cli]
+----
+blacklist {
+	     wwid   360030057024d0730239134810c0cb833
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}
+----
+
+
+
+
+== 步驟 5 ：自訂 ONTAP LUN 的多重路徑參數
+
+如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
+
+請檢查您的 `/etc/multipath.conf`檔案，尤其是在預設值區段中，以瞭解可能會覆寫的設定<<multipath-parameter-settings,多重路徑參數的預設設定>>。
+
+
+CAUTION: 您不應覆寫 ONTAP LUN 的建議參數設定。這些設定是主機組態最佳效能所必需的。如需詳細資訊，請聯絡 NetApp 支援，您的作業系統廠商或兩者。
+
+下列範例說明如何修正被覆寫的預設值。在此範例中，檔案會 `multipath.conf`定義與 ONTAP LUN 不相容的值 `path_checker`， `no_path_retry`而且您無法移除這些參數，因為 ONTAP 儲存陣列仍連接至主機。而是修正和 `no_path_retry`的值 `path_checker`，方法是將裝置節新增至 `multipath.conf`特定適用於 ONTAP LUN 的檔案。
+
+[listing, subs="+quotes"]
+----
 defaults {
-   path_checker      readsector0
-   no_path_retry      fail
+   path_checker      *readsector0*
+   no_path_retry     *fail*
 }
 
 devices {
    device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
-      no_path_retry     queue
-      path_checker      tur
+      vendor          "NETAPP"
+      product         "LUN"
+      no_path_retry   *queue*
+      path_checker    *tur*
    }
 }
 ----
 
 
-== 設定 KVM 設定
+== 步驟 6 ：檢閱已知問題
 
-您不需要設定核心型虛擬機器的設定，因為 LUN 會對應至 Hypervisor 。
+沒有已知問題。
 
 
 
-== ASM 鏡像
+== 接下來呢？
 
+* link:hu_luhu_71_cmd.html["瞭解如何使用 Linux 主機公用程式工具"]。
+* 瞭解 ASM 鏡像。
++
 自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。ONTAP 上的大多數 ASM 組態都使用外部備援，這表示資料保護是由外部陣列提供，而 ASM 則不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊，請參閱link:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["ONTAP 上的 Oracle 資料庫"^]。
 
 
-
-== 已知問題
-
-使用 ONTAP 版本的 CentOS 8.4 沒有已知問題。
