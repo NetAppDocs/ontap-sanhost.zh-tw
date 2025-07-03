@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_sles_12SP4.html 
 keywords: host utilities, suse linux enterprise server 12 SP4, suse, linux, 12 SP4, netapp, ontap 
-summary: 在 SUSE Linux Enterprise Server 12 SP4 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。 
+summary: 在 SUSE Linux Enterprise Server 12 SP4 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。 
 ---
 = 為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 12 SP4 ，並搭配 ONTAP 儲存設備
 :hardbreaks:
@@ -249,6 +249,9 @@ CAUTION: 您不應覆寫 ONTAP LUN 的建議參數設定。這些設定是主機
 
 下列範例說明如何修正被覆寫的預設值。在此範例中，檔案會 `multipath.conf`定義與 ONTAP LUN 不相容的值 `path_checker`， `no_path_retry`而且您無法移除這些參數，因為 ONTAP 儲存陣列仍連接至主機。而是修正和 `no_path_retry`的值 `path_checker`，方法是將裝置節新增至 `multipath.conf`特定適用於 ONTAP LUN 的檔案。
 
+.顯示範例
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 defaults {
@@ -265,6 +268,7 @@ devices {
    }
 }
 ----
+====
 
 
 == 步驟 6 ：檢閱已知問題

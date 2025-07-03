@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_rhel_10.html 
 keywords: host utilities, red hat, rhel, linux, 10, netapp, ontap, rhel 
-summary: 在 RHEL 10 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。 
+summary: 在 RHEL 10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。 
 ---
 = 使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 10
 :hardbreaks:

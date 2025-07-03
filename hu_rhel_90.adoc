@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_rhel_90.html 
 keywords: host utilities, red hat, rhel, linux, 9.0, netapp, ontap 
-summary: 在 RHEL 9.0 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。 
+summary: 在 RHEL 9.0 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。 
 ---
 = 使用 ONTAP 儲存設備設定適用於 FCP 和 iSCSI 的 RHEL 9.0
 :hardbreaks:
@@ -162,6 +162,9 @@ multipath -ll
 --
 ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
 
+.顯示範例
+[%collapsible]
+=====
 [listing]
 ----
 multipath -ll
@@ -173,6 +176,7 @@ size=180G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
   |- 14:0:3:0  sdar 66:176 active ready running
   `- 17:0:3:0  sdch 69:80  active ready running
 ----
+=====
 --
 .AFF 或 FAS 組態
 --
@@ -180,6 +184,9 @@ AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。�
 
 以下範例顯示 ONTAP LUN 的輸出，其中包含兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑：
 
+.顯示範例
+[%collapsible]
+=====
 [listing]
 ----
 multipath -ll
@@ -192,6 +199,7 @@ size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
   |- 10:0:1:0  sdc  8:32   active ready running
   `- 16:0:2:0  sdcf 69:48  active ready running
 ----
+=====
 --
 ====
 

@@ -66,7 +66,6 @@
   <block id="e652073cb2a43641b24496c09164f62a" category="paragraph">下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「no_path_retry」的值、這些值與ONTAP 不兼容的現象是什麼。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
   <block id="e7565a20fc615772fc73eed9c1b34d4a" category="inline-link-macro">已知問題</block>
   <block id="5dd03e8d039863e563e049be198c3fd3" category="section-title">版本資訊</block>
-  <block id="a6dc6c62ee31196ca4228a01ceaf054f" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.6搭配使用功能</block>
   <block id="a071ebe8686e61a0aa4fe307a3225ad9" category="cell">"服務時間0"</block>
   <block id="8e164918c56328c6560a73785d09e24f" category="cell">NetApp錯誤ID</block>
   <block id="b78a3223503896721cca1303f776159b" category="cell">標題</block>
@@ -109,7 +108,6 @@
   <block id="08a7801aadb2d395506d0735d17dcf62" category="cell">LinkDownTimeDOut</block>
   <block id="f9c8e6ceed8ad8db75740e78e48a6236" category="cell">PortDownRetryCount</block>
   <block id="482723983a4f2af954e36ff41e567451" category="section-title">已知限制</block>
-  <block id="6a1bc9ef2b246f475f3565d08b0f7fff" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.8搭配使用功能</block>
   <block id="fbd83cf0e839e6dec73fa3ff243bb8c5" category="summary">說明如何搭配ONTAP 使用CentOS 7.8搭配使用</block>
   <block id="2d42bb9d7307ce616ea0bcece7fd8556" category="cell">"2 pg_init_retries 50"</block>
   <block id="43b1876560748141954ab34c38e01ac0" category="summary">說明如何使用ONTAP 支援功能為RHEL 8.1設定NVMe/FC</block>
@@ -129,25 +127,10 @@
   <block id="61713dcee5b85916fbe59e04b45b37d0" category="list-text">驗證NetApp外掛ONTAP 程式是否適用於各種不實裝置。</block>
   <block id="bb145463d4b33f8a2c6719372c1e8d1d" category="section-title">啟用Broadcom NVMe / FC的1MB I/O大小</block>
   <block id="abdf9c787f0ce3f5d12b402c6e131791" category="section-title">lffc詳細記錄</block>
-  <block id="a2e4546887c7d826529e2c2bc558c869" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.1搭配使用</block>
-  <block id="073055d89f87f920dc7706848774e7b2" category="paragraph">Oracle Linux 7.1支援Unbreakable Enterprise Kernel（UEK）R3和UEK R4。作業系統預設會以UEK R3核心開機。</block>
-  <block id="66cd34e86ff7d645147b1d5d5a6c9f10" category="paragraph">對於Oracle Linux 7.1 UEK R3、請建立一個空的multipath.conf檔案。Oracle Linux 7.1 UEK的設定預設會自動更新、且不會更新ALUA。若要啟用ALUA處理常式、請執行下列步驟：</block>
-  <block id="f4d88f38762443125e864f0e0bf3dc56" category="list-text">使用「dracut -f」命令重新建立initrd-image。</block>
-  <block id="6ff43f8d58cf03692931460affd888be" category="paragraph">Oracle Linux 7.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
   <block id="97bfb8bbe6415581f3c953b6daabb241" category="paragraph">下列範例說明如何修正被覆寫的預設值。在這種情況下、「multiPath.conf」檔案會定義「path_checker'」和「detect_prio'」的值、這些值與ONTAP 不相容於哪些LUN。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
   <block id="0ab1d58d11afaa3c04cf66282eb98ab3" category="inline-link-macro">建議設定</block>
-  <block id="6ef4ca5514fc3496c82be53f21ea03d2" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.3搭配使用功能</block>
-  <block id="922724d30ab7c207a8746d06dbe805f2" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.2搭配使用功能</block>
-  <block id="ace7da9c570d42fb25b932b78d3ece3e" category="paragraph">對於Oracle Linux（OL）8.2、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.2是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="04a5e299cf45ffa9952cc41f997c1f37" category="paragraph">您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。</block>
-  <block id="f2fdee93271556e428dd9507b3da7235" category="cell">無限</block>
-  <block id="6cba5c7dad29b66fb547b78b24a3814b" category="cell">2 pg_init_retries 50</block>
   <block id="cfcd208495d565ef66e7dff9f98764da" category="cell">0</block>
-  <block id="832e21f9da1ad55895637d00686fdb42" category="cell">Tur</block>
-  <block id="41b610f10650576893b321759da530ba" category="cell">群組_by_prio</block>
-  <block id="b17d506a868ef4f0b2135c9951a04940" category="cell">服務時間0</block>
-  <block id="a9ba4dc88fa11d44cc7c0c918d174778" category="cell">ONTAP</block>
-  <block id="a489ffed938ef1b9e86889bc413501ee" category="cell">統一</block>
   <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="paragraph">範例</block>
   <block id="99d5775ff67d3ebcdc6e872f0bb0e7bd" category="summary">說明如何搭配ONTAP 使用Oracle Linux 6.10搭配使用功能</block>
   <block id="3b3051e9028e74cd5ada27ca8f32e352" category="paragraph">對於Oracle Linux 6.10、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.10是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
@@ -307,7 +290,6 @@
   <block id="c0100c2009c306f8f4ee8e407477e33f" category="cell">SR 3-24746803021</block>
   <block id="a45d90a5f7a08888afb625a60a87c1fe" category="cell">1368957</block>
   <block id="d4cd0dabcf4caa22ad92fab40844c786" category="cell">不適用</block>
-  <block id="eb179c0936f34e2f183ff065cea19e3d" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.2搭配使用功能</block>
   <block id="894e4bdfe9d6da54721793a917a39e41" category="summary">說明如何搭配ONTAP 使用Oracle Linux 6.4搭配使用</block>
   <block id="acc24e9cf246ca31a5b0a8efe708e78a" category="paragraph">對於Oracle Linux 6.4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.4是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="07cbee168940977c800471bc6700728e" category="paragraph">Oracle Linux 6.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
@@ -364,13 +346,8 @@
   <block id="903b07b1963af0c45e65b6d887a9b059" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 6.9搭配使用功能</block>
   <block id="b2da1ca8334b29f1d40436a25662d8d6" category="paragraph">對於Red Hat Enterprise Linux（RHEL）6.9、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 6.9是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="481485305bd44028530f59a9a9614451" category="paragraph">RHEL 6.9作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="1af1d134f1d2df0e60d3d26a745e9a9c" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.4搭配使用</block>
-  <block id="3f3097c34940e47c43cc1e2aaf144513" category="paragraph">對於Oracle Linux（OL）8.4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.4是以辨識及正確管理ONTAP 各種LUN所需的所有設定所編譯。</block>
   <block id="938f1047c15f00fdd0cbfc8e4cfa15e1" category="paragraph">* 範例 *</block>
   <block id="9128494ba0ee37c628f015b5af093f58" category="summary">說明如何搭配ONTAP 使用CentOS 7.0搭配使用功能</block>
-  <block id="0fd599859ca499a908d11962595ba872" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.9與功能</block>
-  <block id="157584ac811d45f102c8c688e0c7c7a4" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.0搭配使用功能</block>
-  <block id="05b3b7ebfe3f9b8f7b7fa7d073f86fcd" category="paragraph">對於Oracle Linux 8.0、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 8.0是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
   <block id="1669e5f0b1148e1054b39b7a819b7fdb" category="summary">說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用</block>
   <block id="f22bfff17408247273e66b8771e95a3d" category="list-text">在AIX主機上、以* root*登入。</block>
   <block id="716d37b2c6f554f878cb0230e2c5b8b7" category="list-text">從NetApp支援網站下載包含主機公用程式的壓縮檔案複本至主機上的目錄。</block>
@@ -444,8 +421,6 @@
   <block id="d6a549e2961efba4f33c4deb10965085" category="summary">說明如何搭配ONTAP 使用Oracle Linux 6.6搭配使用</block>
   <block id="b17be161e93154b1a8e4c9e17fc3b190" category="paragraph">對於Oracle Linux 6.6、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.6是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="3c92bea3eb2289a6ec3282c1090533ba" category="paragraph">Oracle Linux 6.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="77e11862f04c6ec12fa9eddd581dafa1" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.9與功能</block>
-  <block id="150ce233c309a7f628f109b1bf8bd7f6" category="paragraph">對於Oracle Linux（OL）7.9、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 7.9採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="5fc5720a1a04d98fd8788b6a94e31e4e" category="summary">使用VMware技術設定適用於Oracle Linux 7.8的VME/FC主機組態ONTAP 、並提供範例</block>
   <block id="62eef3d72485420aaef57ae6f4135044" category="doc">適用於Oracle Linux 7.8的NVMe / FC主機組態、ONTAP 含功能</block>
   <block id="cddebb777dcce0d200e1342fa6f70131" category="list-text">根據預設、NVMe多重路徑中不會啟用循環配置資源負載平衡。您必須撰寫udev,才能啟用此功能。在Oracle Linux 7.8上啟用NVMe/FC一節中提供步驟。</block>
@@ -513,11 +488,6 @@
   <block id="64ede1e6f2ef30c339f9a3e100f40cfc" category="cell">「沒有要擷取的探索記錄項目」</block>
   <block id="abbdb018748bb6cd12284ad6c1685b67" category="cell">「寫入/dev/NVMe架構失敗：作業已在進行中」</block>
   <block id="5d58354522165b88ab742ec42aac9161" category="section-title">何時聯絡技術支援</block>
-  <block id="e16f67a9f3c6e6f9fd2a71ca2c71b042" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.0搭配使用功能</block>
-  <block id="31db1dbc8875fe1d1fb0c598273975d6" category="paragraph">對於Oracle Linux 7.0、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.0採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
-  <block id="40c5d9e1e896025a107a6c97b22c1167" category="list-text">使用"dracut -f"命令重新建立initrd-image。</block>
-  <block id="ed1146f14c5bbbbb36046ba06da1cd88" category="paragraph">Oracle Linux 7.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="c973ee9c17b37717f62a4aff80aecfb5" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.1搭配使用功能</block>
   <block id="9571def175ecc3ee331559407e9d5ed4" category="summary">說明如何使用AIX探索及設定LUN</block>
   <block id="12db200b370b8e6338ff799157e5faa9" category="admonition">後續步驟不適用於執行PowerVM環境的主機。</block>
   <block id="080e9c7916d00328189e183a451bff56" category="list-text">以root身分登入主機。</block>
@@ -541,16 +511,9 @@
   <block id="8f6489cc32f6141446bbbf6eba20b321" category="paragraph">使用「-v」選項可啟用詳細模式並顯示所有優先順序。使用「-q'」選項可查詢所有或個別的磁碟優先順序。</block>
   <block id="2a894c946342eacded4eef5c9a7b96b9" category="list-text">若要驗證主機是否已找到LUN、請輸入下列命令：</block>
   <block id="6fb1a7b78cf35553296a12dc1837ac9b" category="paragraph">《# sanlun LUN show》（# sanlun LUN show）</block>
-  <block id="d469d8f0f0ea6195efacf51226ff8db4" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.7搭配使用</block>
-  <block id="83c8070e0465c3b76698f556c407a97a" category="paragraph">對於Oracle Linux 7.7、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.7的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
-  <block id="1007b7632045ad8e75cf3589b6d28f94" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.1搭配使用功能</block>
-  <block id="3adfaacb5236083e12561cfda09586f4" category="paragraph">對於Oracle Linux 8.1、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 8.1的所有設定都經過編譯、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="cdf5d86cb1edacde3eb5e2a5ecdde6c3" category="summary">說明如何搭配ONTAP 使用Oracle Linux 6.7 with介紹</block>
   <block id="7c7b1ac412755c409b674d6d1d5261c8" category="paragraph">對於Oracle Linux 6.7、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.7的所有設定都經過編譯、可辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="30551084db41b5a626c643ea028e9abc" category="paragraph">Oracle Linux 6.7作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="6f7f69f453663da32b05f6e1d898fb8e" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.7搭配使用功能</block>
-  <block id="3e6c084e49fee07ccce9fb194055ad83" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.5搭配使用</block>
-  <block id="6c54367f89a8101fb18321adda6331eb" category="paragraph">對於Oracle Linux 7.5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.5的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="8eee884db44f521f0d19cac36bf258cc" category="summary">搭配ONTAP 使用Windows Server 2016搭配使用</block>
   <block id="f5cba97c30a47867e3649fd136cca68c" category="inline-link-macro">Microsoft Update目錄2016</block>
   <block id="480c1af29fcb3cc17dbe8a841a6a3c06" category="summary">說明如何搭配ONTAP 使用CentOS 8.2搭配使用功能</block>
@@ -578,9 +541,6 @@
   <block id="7e6f60bf7bd831ecb9a591f4ed8bd2f2" category="paragraph">對於Red Hat Enterprise Linux（RHEL）6.7、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 6.7採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="5592861a9331f6fc89845ea236081712" category="paragraph">RHEL 6.7作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不符合ASA的組態、正確設定所有組態參數。</block>
   <block id="0a4a555ba90159c1b3608a4b2e3295e1" category="summary">說明如何搭配ONTAP 使用CentOS 7.4搭配使用功能</block>
-  <block id="880612d7054085e9af1cd3802ce4127d" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7．4搭配使用</block>
-  <block id="491bbe882aaf63711fd558642fdb4958" category="paragraph">對於Oracle Linux 7.4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.4是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。</block>
-  <block id="28d6df6dca047dcc2e777e7124494ec5" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.0搭配使用功能</block>
   <block id="62d54f77039c15fe0a65691e9ff3f4c2" category="summary">說明如何搭配ONTAP 使用CentOS 7.5搭配使用</block>
   <block id="4dae86ccd354e19dab3d36ea3289ddf9" category="list-text">原生作業系統搭配MPxIO、搭配使用SPARC處理器或x8/64處理器的系統光纖通道（FC）或iSCSI傳輸協定。</block>
   <block id="fea59de608f0d3ad102d8ee095187049" category="list-text">以root身分登入主機。</block>
@@ -652,7 +612,6 @@
   <block id="11f09804b54aa2c55c142764b2502d82" category="paragraph">以下是使用DotPaths公用程式的範例：</block>
   <block id="9ba6b55ceee2f1425bbe62109b05bbf8" category="paragraph">sanlun LUN show -p'</block>
   <block id="08bca029e13ca38021fc7509f607c4d1" category="paragraph">此範例顯示直接附加組態的「lanlun LUN show -p」命令典型輸出。它還包含「sanlun LUN show -d hdisk9 -v」命令、可顯示有關hdisk9的資訊。此命令的輸出已被截短。</block>
-  <block id="df638353a182a7918b8592fc949dcf8c" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7．4搭配使用功能</block>
   <block id="ce33fe68519e0e2d14428572a71c7569" category="summary">以VMware為例、針對Oracle Linux 8.2設定VME/FC主機組態ONTAP</block>
   <block id="89d62bb3e0891fdc6a601122dddc0440" category="doc">適用於Oracle Linux 8.2（ONTAP 含擴充功能）的NVMe/FC主機組態</block>
   <block id="444ce06dcc32d405185ecb72eb5ab7a2" category="list-text">在伺服器上安裝Oracle Linux 8.2。</block>
@@ -661,8 +620,6 @@
   <block id="8c14192b8816f047aeb8cd691b0dcee5" category="paragraph">在上述範例中、兩個命名空間會對應至Oracle Linux 8.2 ANA主機。這可透過四個目標生命期來查看：兩個本機節點生命期、以及兩個其他合作夥伴/遠端節點生命期。此設定顯示主機上每個命名空間的兩個ANA最佳化路徑和兩個ANA不可存取路徑。</block>
   <block id="6b83d866c4dfa9b95b03b5a6ede846f7" category="summary">使用Windows Server 2019 ONTAP 搭配使用</block>
   <block id="51da3f0f90428027f2a496d366e696eb" category="inline-link-macro">2019年Microsoft Update目錄</block>
-  <block id="120d1efb0373e4924670fa06d0e23b7d" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.3搭配使用功能</block>
-  <block id="a62a1c6a3f1f4dcff8f3cfc9b1ff6c53" category="paragraph">對於Oracle Linux 7.3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.3的所有設定都經過編譯、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="eea65c7c864efb688d55381c5b21a910" category="summary">說明如何搭配ONTAP 使用Veritas Infoscale 6.5與6.7 for Linux搭配使用</block>
   <block id="97702a0c8ad7bf7deb907e6a931a9c14" category="paragraph">在上述範例中、LUN已從NetApp儲存設備對應4個路徑（4個主動最佳化路徑）。</block>
   <block id="285dc13017989020e1a1eb0ca9eb9125" category="paragraph">在上述範例中、LUN已從NetApp儲存設備對應4個路徑（2個主動最佳化路徑、2個主動-未最佳化路徑）。</block>
@@ -727,9 +684,6 @@
   <block id="ccea754e7046e3a8078e83df3db0dd24" category="cell">1344935</block>
   <block id="ae1b434f4d27837b33cfc80ed6814a95" category="cell">路徑報告問題ASA 與不符合需求的組態。</block>
   <block id="1288c56822a6bb56a7acdc5941948855" category="cell">1306354</block>
-  <block id="9a8a0895e5f69c5c06d82e847ceb32e9" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 7.5搭配使用功能</block>
-  <block id="cc04a552b7bd63c26430fa93dd280a82" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.8搭配使用功能</block>
-  <block id="16a3fbe78a74d2c0274fa4740e085eed" category="paragraph">對於Oracle Linux（OL）7.8、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 7.8是使用所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="39e2f887814ee9598f2240638f02ad73" category="summary">說明如何搭配ONTAP 使用CentOS 8.3搭配使用功能</block>
   <block id="ba9c5cfb8923c683e175b0343242d5b2" category="summary">說明如何搭配ONTAP 使用CentOS 8.0搭配使用功能</block>
   <block id="f75fbeea110530ab4a9306fd42a5e085" category="summary">說明如何搭配ONTAP 使用Oracle Linux 6.8 with介紹</block>
@@ -891,16 +845,8 @@
   <block id="cad20c09779103c2292c566cf14fb7ec" category="paragraph">如果「+hostnqn+」字串不相符、您應該使用「vserver modify」命令來更新對應ONTAP 的BIOS陣列子系統上的主機NQN字串、以符合主機上「etc/nvm/hostnqn」中的主機NQN字串。</block>
   <block id="8c95c9542a975007e5a35ecad47efad2" category="paragraph">較新的lfit驅動程式（包括收件匣和發件匣）預設為3。因此、您不需要在「/etc/modprobe.d/lffc.conf」中明確設定此項目。</block>
   <block id="cd028f2be9225b4251e86c9754599aa3" category="paragraph">在上述範例中、兩個命名空間會對應至Oracle Linux 7.9 ANA主機。這可透過四個目標生命期來查看：兩個本機節點生命期、以及兩個其他合作夥伴/遠端節點生命期。此設定顯示主機上每個命名空間的兩個ANA最佳化路徑和兩個ANA不可存取路徑。</block>
-  <block id="345708c99f04fb1a4ad3efd34001b3f3" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.6搭配使用</block>
-  <block id="73844c9e711a64b7c0cb09b929c5368f" category="paragraph">對於Oracle Linux 7.6、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.6編譯時、會使用所有必要的設定來辨識及正確管理ONTAP 各種LUN。</block>
-  <block id="86d37c3499918a5cbe18b451f7900060" category="summary">說明如何搭配ONTAP 使用Oracle Linux 7.2搭配使用功能</block>
-  <block id="879a2e4d18651bb7cc6629fafa11ad2c" category="paragraph">Oracle Linux 7.2支援Unbreakable Enterprise Kernel（UEK）R3和UEK R4。作業系統預設會以UEK R3核心開機。</block>
-  <block id="5325d7d76c5577b461889cc0a50b355e" category="paragraph">對於Oracle Linux 7.2 UEK R3、請建立一個空的multipath.conf檔案。Oracle Linux 7.2 UEK的設定預設會自動更新、且不會更新ALUA。若要啟用ALUA處理常式、請執行下列步驟：</block>
-  <block id="f33003e6d8c615a78b0ba29f1a147520" category="paragraph">對於Oracle Linux 7.2 UEK R4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.2的所有設定都已經過編譯、可辨識及正確管理ONTAP 各種LUN。</block>
   <block id="bea05db7b205cebd49d85c581b86c97e" category="summary">針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態設定的指引</block>
   <block id="b277f2029ada9ac25bce475d62557cb4" category="summary">說明如何搭配ONTAP 使用CentOS 7.9與功能</block>
-  <block id="cea2e5f9065bd07d72cb5caab3c1db47" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.3搭配使用功能</block>
-  <block id="3512af03a0184fdf02e1a9a23f8da83c" category="paragraph">對於Oracle Linux（OL）8.3、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.3是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="9f48bd68eb80a61379f6dd65620bec8c" category="summary">說明如何針對SUSE Linux Enterprise Server 15 SP2 ONTAP 搭配使用介紹功能的NVMe / FC進行設定</block>
   <block id="b7c80370e68c20a6d2b05ca2d022abbe" category="doc">適用於SUSE Linux Enterprise Server 15 SP2 with ONTAP ESS.的NVMe/FC主機組態</block>
   <block id="47a1a789b24d958d3c073bab6e64e3b4" category="list-text">升級原生的NVMe-CLI套件。</block>
@@ -1001,8 +947,6 @@
   <block id="27467eebfd85deae554fa659c40d5f50" category="sidebar">Veritas</block>
   <block id="47d254fd002b7f1a6c06e1aa7c25a4ef" category="sidebar">Infoscale 7.</block>
   <block id="66b0812a8cbedc46db133ed5327291bd" category="sidebar">儲存基礎6.</block>
-  <block id="072bbeb072deda2033d37a6e9af67b96" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.5搭配使用</block>
-  <block id="5afff738a58f6889eebdd3efb2f2c405" category="paragraph">對於Oracle Linux（OL）8.5、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。OL 8.5是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
   <block id="c73bbd3786350b0a8d3577d82afdf489" category="list-text">Red Hat Enterprise Linux</block>
   <block id="4ae0b3e9c82d7212e106b8d937d888f9" category="list-text">SUSE Linux Enterprise Server</block>
   <block id="f777d0936a10c30e434b6808f6124eaa" category="list-text">Oracle VM</block>
@@ -1017,12 +961,6 @@
   <block id="2813f127dc58929fb553bc32684c2e46" category="section-title">已知問題與限制</block>
   <block id="8b777dc32f2f743eb513fca0bfd52348" category="cell">1457017</block>
   <block id="0078173d6c66e3e11217e80e4ecc1d1b" category="cell">「anlun」安裝會發出與「libdevmapper.so」和「libnl.so」程式庫相關的警告訊息。這些警告不會影響到「暫停」套件的功能。</block>
-  <block id="51f210eb8bfa53321744e9dca7258c87" category="paragraph">Oracle Linux 8.1作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="60f09d4774647857c92f5a51f6de2354" category="paragraph">Oracle Linux 8.0作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="ffe5b32185032e3b293e94d4a0232f34" category="paragraph">Oracle Linux 8.2作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
-  <block id="73d4b705776db33e6478d2847ebc567c" category="paragraph">Oracle Linux 8.5作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
-  <block id="cb209f9eec3baeb4065409d39ca1f4d5" category="paragraph">Oracle Linux 8.3作業系統已經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
-  <block id="ce431e2558ea7b456c531991fb4a7e92" category="paragraph">Oracle Linux 8.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
   <block id="3eeb371f92f74d2b6501646282092ca7" category="summary">說明如何搭配ONTAP 使用CentOS 8.4搭配使用</block>
   <block id="c33b879e8a189cf4ded38992165273b7" category="summary">說明如何搭配ONTAP 使用CentOS 8.5搭配使用</block>
   <block id="ce081634ead33780d73e0e1f6b9ea0ca" category="paragraph">有了Veritas動態多重路徑（VxDMP）、您必須執行組態工作、將NetApp LUN宣告為Veritas多重路徑裝置。您必須安裝由Veritas為NetApp儲存系統提供的Array Support程式庫（ASB）和Array Policy Module（APM）套件。雖然Veritas軟體安裝會隨產品一起載入預設的ASLM套件、但建議您使用Veritas支援入口網站上列出的最新支援套件。</block>
@@ -1037,9 +975,6 @@
   <block id="2ee1fba4400a50245e66ef649b54d588" category="sidebar">安裝AIX Hu 6.1</block>
   <block id="9b402891c0d38b9c654dcfa36df9d722" category="sidebar">8.6.</block>
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">AIX主機公用程式6.1版本資訊</block>
-  <block id="c1326fec4f12ec093296d507d6b6e33a" category="summary">說明如何搭配ONTAP 使用Oracle Linux 8.6.</block>
-  <block id="fa491ee178ddf6e96992dad027671112" category="paragraph">對於Oracle Linux（OL）8.6"/etc/multipath.conf "檔案必須存在、但您不需要對該檔案進行特定變更。OL 8.6是使用所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。</block>
-  <block id="ea11e68a3ea4e3736ee4012985057991" category="paragraph">Oracle Linux 8.6作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種版本設定正確的所有組態參數。</block>
   <block id="244c37afdc307098d90d497c08f88069" category="paragraph">在AIX組態中、容錯移轉會中斷運作。每次容錯移轉時、您都必須在主機上執行重新掃描、才能恢復I/O作業。</block>
   <block id="587384a32d909bff27b8405e18d9d7cf" category="summary">如何針對RHEL 9.0設定NVMe主機、ONTAP 並搭配使用功能</block>
   <block id="d79792e27890df0330ac43850943e028" category="list-text">安裝「NVMe - CLI」套件。</block>
@@ -1142,10 +1077,6 @@
   <block id="ad6d243201e40d0f0153f9cf8a6eca49" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如：</block>
   <block id="d59db7846bd10b6d60d21543df9faa9e" category="paragraph-title">您需要的產品</block>
   <block id="30f60d67f457bb040dffde52197a54da" category="paragraph-title">相關資訊</block>
-  <block id="0330f3d77dc0535c34a5f7d97ee8d6a7" category="paragraph-title">Oracle Linux 7.1 UEK R3組態</block>
-  <block id="c4243d3bfe77762a42bf710ef09d7a49" category="paragraph-title">Oracle Linux 7.1 UEK R4組態</block>
-  <block id="f76dacb09cf26865aa39e565e340c25b" category="paragraph-title">Oracle Linux 7.2 UEK R3組態</block>
-  <block id="214edbb0ed79a899577c5689a76a98e3" category="paragraph-title">Oracle Linux 7.2 UEK R4組態</block>
   <block id="98a246e1f1b81f16a2ceb0cc274c4da8" category="summary">如何針對RHEL 8.7設定NVMe主機、ONTAP 並搭配使用功能</block>
   <block id="a3492942cb4c45f8a31e3e3845c9f04a" category="paragraph">RHEL 8.7除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。原生NVMe CLI套件中的NetApp外掛程式能夠顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資訊。</block>
   <block id="0e15c36dca614df066cc960ea227ce1c" category="list-text">在RHEL 8.7中、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
@@ -1178,7 +1109,6 @@
   <block id="19c0ae184ff29a5cb77c04c8bea684af" category="list-text">從ONTAP 支援VMware vSphere 9.7開始、將新增支援NVMe over Fibre Channel（NVMe / FC）的VMware vSphere版本。</block>
   <block id="3a34596144aee2d13108623781ca1789" category="list-text">從7.0U3c開始、支援ESXi Hypervisor的NVMe/TCP功能。</block>
   <block id="98f0b197b8132a81e5d6da89bc6ded25" category="list-text">從ONTAP 支援的功能部件號為E59.10.1開始、ONTAP 支援的功能為NVMe/TCP。</block>
-  <block id="191896e66abb860542afaf3bc97289fc" category="section-title">SAN工具套件</block>
   <block id="01281e2990c631b64037834e8b22bd4c" category="cell">rw_timeout（磁碟）</block>
   <block id="a97f41c78bd6ac237cc0a78dbc8e3557" category="section-title">推薦MetroCluster 的設定</block>
   <block id="53a86d5c1b5a726e2014e8e7789d3e96" category="list-text">設定<block ref="6a6d27f670629373aedb61a672b398f8" prefix=" " category="inline-code"></block> 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。</block>
@@ -1295,9 +1225,6 @@
   <block id="c44700394b9a4063439bc92ea42d5e41" category="inline-link-macro">Windows 注意事項</block>
   <block id="9d9a9c7064b8193ac433a5365fe1afdb" category="list-text"><block ref="9d9a9c7064b8193ac433a5365fe1afdb" category="inline-link-macro-rx"></block></block>
   <block id="8637d6c1f3e0436f7f2ec935b829bd22" category="paragraph">輸出範例：</block>
-  <block id="e5bb15bb11bc9d2f4a5298c657566227" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.0</block>
-  <block id="ae8e81252a704349cea5f061e9fb652e" category="paragraph">對於 Oracle Linux （ OL ） 9.0<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。OL 9.0 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
-  <block id="2722dd408e2c6dddce120893d4c5c0a7" category="paragraph">Oracle Linux 9.0 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。</block>
   <block id="678b361384466d6bf28f930dd514a9a8" category="doc">適用於 ONTAP 的 Oracle Linux 9.0 的 NVMe / FC 主機組態</block>
   <block id="55fb7862f01474277c3620f9debfb3d5" category="list-text">Oracle Linux 9.0 預設已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。</block>
   <block id="b064015a3282fc489c69be4a7699cc91" category="section-title">驗證軟體版本</block>
@@ -1519,10 +1446,6 @@
   <block id="9e10b0a5aea11686043890a4e7f7d67d" category="list-text">確認有多個路徑可供使用。</block>
   <block id="ddd1090ee13f345d376753ed7188e15e" category="section-title">所有 SAN 陣列組態</block>
   <block id="3b8031b77b02d24160100543956f1809" category="list-text">安裝軟體套件：</block>
-  <block id="6661a67145b2acf190d629ce621384e0" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.7</block>
-  <block id="15d47787709114478b06814b72bcf21a" category="paragraph">當您安裝NetApp主機公用程式套件時、會自動安裝此工具套件。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 公用程式、可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
-  <block id="25a88a400c35827341a424c2bbeeb8bc" category="paragraph">對於 Oracle Linux （ OL ） 8.7<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在。您不需要對檔案進行特定變更、因為 OL 8.7 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
-  <block id="0064eaa73c470581d9f79567a5552a2c" category="paragraph">Oracle Linux 8.7 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。</block>
   <block id="1918c14015c19cfe7ab5da89745a137f" category="doc">適用於 ONTAP 的 Oracle Linux 8.7 的 NVMe 主機組態</block>
   <block id="24aa52aa9699b501c3a8bed92978c144" category="paragraph">NVMe over Fabrics （ NVMe of ）（包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸）均支援使用非對稱命名空間存取（ ANA ）的 Oracle Linux （ OL ） 8.7 。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="5e23e6a5bed72a0ca8cbff0598786db4" category="paragraph">下列支援適用於 OL 8.7 搭配 ONTAP 的 NVMe / FC 主機組態：</block>
@@ -1581,7 +1504,6 @@
   <block id="8e34704e7af729eb74fd3ebaac0a9342" category="cell">。<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 命令應傳回與指定子系統相關聯的 NVMe 控制器唯一清單。在 Oracle Linux 9.1 中<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 命令會針對屬於指定子系統的所有命名空間、傳回具有各自非對稱命名空間存取（ ANA ）狀態的 NVMe 控制器。不過、如果您列出指定命名空間的子系統命令語法、則以路徑狀態顯示唯一的 NVMe 控制器項目會很有用、因為 ANA 狀態是每個命名空間的屬性。</block>
   <block id="5cf8c44d0d04885f386e9f0d05461ec2" category="cell">1539101</block>
   <block id="91a845901382406af3acfb27b99025ea" category="cell">Oracle Linux 9.1 NVMe 主機無法建立持續探索控制器</block>
-  <block id="533f5c2e4bcf35d9cefe9c97046f7654" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.1</block>
   <block id="da80aa62fc6cf6b66539a5a3933874a8" category="cell"><block ref="da80aa62fc6cf6b66539a5a3933874a8" category="inline-link-rx"></block></block>
   <block id="b8aa99c2e58dbe6b9f5fbd80d2ef3c41" category="summary">如何使用 ONTAP 設定適用於 RHEL 8.8 的 NVMe 主機</block>
   <block id="627fc5ce0d88e0997ea80bdeecc63bc3" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 8.8 搭配非對稱命名空間存取（ ANA ）支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
@@ -1605,10 +1527,6 @@
   <block id="317bd3f8323d3750053ef303ee6f5813" category="paragraph">Oracle Linux （ OL ） 9.1 搭配非對稱命名空間存取（ ANA ）支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="403f78a784ce2b6ea83a425d2530e736" category="paragraph">OL 9.1 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
   <block id="c43b3026b84082f6f8a8e5dbf4fc8359" category="cell">在 Oracle Linux 9.1 NVMe 主機上、您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 建立持續探索控制器（PD）的命令。使用此命令時、應針對每個啟動器目標組合建立一個 PDC 。不過、如果您在 NVMe 主機上執行 Oracle Linux 9.1 、則在建立時、 PDC 會失敗<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 命令即會執行。</block>
-  <block id="5ba9d31ec6b8af7200bbbb91b8d169f3" category="paragraph">對於 OL 9.1<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。ol 9.1 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
-  <block id="a757398c74551ef32047b5af3026cb65" category="paragraph">下列各節提供對應至 ASA 和非 ASA 組態之 LUN 的多重路徑輸出範例。</block>
-  <block id="2d69d1a04ab1fce41548a0d0d311bd3d" category="paragraph">Oracle Linux 9.1 作業系統是為了辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
-  <block id="5df3ff7cb7b785e8c8bebccf076a731e" category="paragraph">下列範例示範如何修正覆寫的預設值。在此案例中<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> 檔案定義的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 和<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> 與ONTAP 不兼容的如果因為其他SAN陣列仍連接至主機而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
   <block id="675cd8e52ba395fba110b2ae7c90675b" category="cell">使用 Emulex HBA 的 SAN LUN 公用程式需要從程式庫套件中取得符號連結</block>
   <block id="76da8e16b4b35b8424eb298d2b37d666" category="sidebar">8.8.8</block>
   <block id="176cc9bb29c2c566372a62c8e2b9207f" category="summary">適用於 ONTAP 的 Oracle Linux 9.2 的 NVMe 主機組態</block>
@@ -1619,60 +1537,34 @@
   <block id="14374a8eee952ba9020eba6e85e99557" category="list-text">在伺服器上安裝 OL 9.2 GA 。安裝完成後、請確認您正在執行指定的 OL 9.2 GA 核心。</block>
   <block id="1c5ecc74e916278d5c8a3b5c5d8285ee" category="list-text">在 Oracle Linux 9.2 主機上、請檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串at<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="50b3b109855fd86109ac2efd64fb0104" category="list-text">確認 OL 9.2 主機上的下列 NVMe / FC 設定：</block>
-  <block id="5ca07756ac4e8650b2d00a4453c23b6c" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.2</block>
-  <block id="a55c64674e30e11be44367361a197b70" category="paragraph">對於 OL 9.2<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。OL 9.2 是以辨識及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
-  <block id="beb55dba3ba1d2be4056c146cb0bf458" category="paragraph">Oracle Linux 9.2 作業系統的編譯是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
-  <block id="02b2bcdfe73b2cce057d7b84806fa6ed" category="paragraph">Oracle Linux 9.1 with NetApp ONTAP 版本有下列已知問題：</block>
-  <block id="cc40ed991073c638cc114ee18ad15d8c" category="paragraph">Oracle Linux 9.0 with NetApp ONTAP 版本有下列已知問題：</block>
   <block id="f419fe819afeb109ae85608ed6bd0ca7" category="doc">使用 Veritas Infoscale 7 for Linux with ONTAP</block>
   <block id="30d85838b9488ee908d075559c8978cd" category="doc">搭配 ONTAP 使用 VMware vSphere 8.x</block>
-  <block id="7dfa70c3f5b28c905e177a472ecf20d7" category="doc">將 Oracle Linux 9.2 與 ONTAP 搭配使用</block>
   <block id="6f304d3d0e5b539f0dcbc07ccaadfd0d" category="doc">將 Solaris 11.4 與 ONTAP 搭配使用</block>
   <block id="92434d9005fca09d1be87854a8eba962" category="doc">搭配 ONTAP 使用 Red Hat Enterprise Linux 6.4</block>
-  <block id="5b1dc80fba1c5b1c02a46a705987abf2" category="doc">將 Oracle Linux 9.1 與 ONTAP 搭配使用</block>
   <block id="a7c0c5734c50dba03d00cc462a49e909" category="doc">將 IBM AIX 7.2 和 / 或 PowerVM （ VIOS 3.1 ）搭配 ONTAP 使用</block>
   <block id="7e0b815f73afb730e7ee19f798970799" category="doc">搭配 ONTAP 使用 Oracle Linux 6.10</block>
   <block id="3944147aca4bcb3598602ba7abb8ecb6" category="doc">搭配 ONTAP 使用 Red Hat Enterprise Linux 6.9</block>
   <block id="1a397af520340e4380a5c55e26c5d54d" category="doc">將 CentOS 6.7 搭配 ONTAP 使用</block>
   <block id="cc4117db48a5e96b1494712383b1b668" category="doc">搭配 ONTAP 使用 Oracle Linux 6.4</block>
   <block id="6088639a5afca847eaa9177590532eea" category="doc">搭配 ONTAP 使用 Oracle Linux 6.9</block>
-  <block id="9c45b061a4c38d17e217a2ae139d53e6" category="doc">將 Oracle Linux 7.1 與 ONTAP 搭配使用</block>
-  <block id="f9674046dcea42f7f1b76662f92c73a5" category="doc">將 Oracle Linux 7.3 與 ONTAP 搭配使用</block>
-  <block id="9d82b77b5ad44e26cf2dd2b29f643724" category="doc">將 Oracle Linux 8.2 與 ONTAP 搭配使用</block>
-  <block id="3f2293670d4541aec2b54ea60492a51f" category="doc">搭配 ONTAP 使用 Oracle Linux 8.4</block>
   <block id="d8fbd5ac0666d17248d83c1cba75a567" category="doc">搭配 ONTAP 使用 Red Hat Enterprise Linux 6.7</block>
   <block id="1f7d8244b764d5a7c149c4cbfad4c873" category="paragraph">您可以針對 NVMe over Fabrics （ NVMe of ）傳輸協定（包括 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ））設定特定 SAN 主機、並以 ONTAP 作為目標。根據您的主機作業系統和 ONTAP 版本、您可以在主機上設定和驗證 NVMe / FC 或 NVMe / TCP 傳輸協定、或兩者。</block>
-  <block id="9ad0749524277f1a9205afc7dc2e9660" category="doc">搭配 ONTAP 使用 Oracle Linux 9.0</block>
-  <block id="8835b0ba3ac161aabc3cdea1abe9d36e" category="doc">搭配 ONTAP 使用 Oracle Linux 7.9</block>
-  <block id="a84715e6c4f285559b7478279590842c" category="doc">將 Oracle Linux 8.0 與 ONTAP 搭配使用</block>
   <block id="91addf30a04c0c5249fa7d52c99ad1b2" category="doc">搭配 ONTAP 使用 Oracle Linux 6.5</block>
   <block id="1298fa83c27263623f4780e10072ad20" category="doc">將 CentOS 6.9 與 ONTAP 搭配使用</block>
   <block id="379f97722abe4a13e4bed62c347317a6" category="doc">將 CentOS 6.8 搭配 ONTAP 使用</block>
   <block id="91cbf6680aa73c0fd3805226334a31ec" category="doc">搭配 ONTAP 使用 Red Hat Enterprise Linux 6.5</block>
   <block id="94b44acd6321eb98d389648c6d23e87f" category="doc">將 CentOS 6.6 與 ONTAP 搭配使用</block>
-  <block id="76a10186c32ada74e81aa00b639433fa" category="doc">搭配 ONTAP 使用 Oracle Linux 7.5</block>
   <block id="8081080397baec608d84fd3afffdb29d" category="doc">將 CentOS 6.5 搭配 ONTAP 使用</block>
   <block id="fcd5a26f819291c5057cf1bf9ba4b0e3" category="doc">搭配 ONTAP 使用 Red Hat Enterprise Linux 6.10</block>
   <block id="3e537edf35b6854e2685914d33b9835d" category="doc">將 Solaris 11.3 與 ONTAP 搭配使用</block>
   <block id="136a479cd65c7a7cb09b6cb800da37d1" category="doc">將 CentOS 6.10 搭配 ONTAP 使用</block>
-  <block id="3369bed83566ad14c6e2c04fbbca3406" category="doc">將 Oracle Linux 7.7 與 ONTAP 搭配使用</block>
   <block id="0bb42ad805a0ed69fa419191af218e74" category="doc">將 IBM AIX 7.1 與 ONTAP 搭配使用</block>
   <block id="2a93aec2ac948d43a3b7f879941df4e7" category="section-title">安裝 AIX 主機公用程式</block>
   <block id="19a3c68cbfae18afb1720bc598ea12bb" category="doc">搭配 ONTAP 使用 Oracle Linux 6.8</block>
   <block id="8d19958f3e338523c5e956fbddc3c9af" category="doc">搭配 ONTAP 使用 VMware vSphere 6.5 和 6.7</block>
-  <block id="c2364621e801637244e2e7cbae8837cb" category="doc">搭配 ONTAP 使用 Oracle Linux 8.3</block>
-  <block id="da75d1c0a883e5675fe41c864ecff154" category="doc">搭配 ONTAP 使用 Oracle Linux 8.7</block>
   <block id="d5c69ee7983a74c7b20cb2b125456c2f" category="doc">將 Red Hat Enterprise Linux 6.6 與 ONTAP 搭配使用</block>
-  <block id="d55410086bf109e244412e2249b9502d" category="doc">搭配 ONTAP 使用 Oracle Linux 8.1</block>
   <block id="d9cce7ecf669e2c8bb05f82a666a162d" category="doc">將 Red Hat Enterprise Linux 6.8 搭配 ONTAP 使用</block>
-  <block id="016d8c2c520396c76232c5f9e6b5d55e" category="doc">搭配 ONTAP 使用 Oracle Linux 8.5</block>
-  <block id="f40ff3f9f8b490795a2c37b0ef868d7f" category="doc">將 Oracle Linux 7.0 與 ONTAP 搭配使用</block>
-  <block id="23d193fcc8ed7c6b2c591b421e569903" category="doc">將 Oracle Linux 7.6 與 ONTAP 搭配使用</block>
-  <block id="cdaf0f06db13799e2ad260ac73c24b40" category="doc">搭配 ONTAP 使用 Oracle Linux 7.8</block>
-  <block id="8eac186652ad7bb00e2e352205afba06" category="doc">搭配 ONTAP 使用 Oracle Linux 7.2</block>
   <block id="3f774282fcdfb6c27b50967041caabfe" category="doc">將 CentOS 6.4 搭配 ONTAP 使用</block>
-  <block id="4101603df72240eb3cf7ba1a3021306f" category="doc">將 Oracle Linux 8.6 與 ONTAP 搭配使用</block>
-  <block id="d6f50b679febabd5a029294f3687131d" category="doc">搭配 ONTAP 使用 Oracle Linux 7.4</block>
   <block id="40db5019ed68654f4eb2cf21ec5021db" category="doc">搭配 ONTAP 使用 VMware vSphere 7.x</block>
   <block id="96c79d6b70b9da95c3236e3cf0b071a3" category="doc">搭配 ONTAP 使用 Oracle Linux 6.7</block>
   <block id="47d63174f5a8747823754dbe907413b8" category="doc">使用 Veritas Infoscale 8 for Linux with ONTAP</block>
@@ -1754,10 +1646,6 @@
   <block id="b91c8d257cb2ab1f821c4201c4d98d12" category="list-text">增加了 Broadcom Emulex 和 Marvell Qlogic 對 32GB FC 適配器的支持。</block>
   <block id="7027855d0b65fefb5ac52eae93da7ac6" category="sidebar">15 sp5</block>
   <block id="83444c1052de64c8564e51742b6d9650" category="paragraph">執行以重新啟動多路徑精靈<block ref="5a8f02947e83d77dcfc767816a70ab96" prefix=" " category="inline-code"></block> 套用新設定的命令。</block>
-  <block id="f34d1def2fe55a0d683939400c35dd41" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.8</block>
-  <block id="71dc6cab38b813fe8170f94bad66e4ad" category="doc">搭配 ONTAP 使用 Oracle Linux 8.8</block>
-  <block id="09f1d704d3c8696d3b1141a3aa4d5588" category="paragraph">對於 Oracle Linux （ OL ） 8.8<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案必須存在、但您不需要對檔案進行特定變更。ol 8.8 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
-  <block id="b27760a2802c30e312a502124bce80eb" category="paragraph">OL 8.8 作業系統會編譯為識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="04544654bde04401ad396d891040dc76" category="summary">適用於 ONTAP 的 Oracle Linux 8.8 版 NVMe 型主機組態</block>
   <block id="8880cd0c09153e73135dbdcb92bb36e4" category="paragraph">Oracle Linux （ OL ） 8.8 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸、並支援非對稱命名空間存取（ ANA ）。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="0c552ba088ff7c5ec4a148f22c0280af" category="paragraph">下列支援可用於 OL 8.8 搭配 ONTAP 的 NVMe 主機組態：</block>
@@ -1771,7 +1659,6 @@
   <block id="e681a3b45989b468533c4b90ee960bf9" category="cell">不適用</block>
   <block id="0a0990c5ca1e9aa6bb4871721a00290c" category="list-text">安裝 <block ref="7e5271dd15da7840bc647fc6451145a6" category="inline-link-macro-rx"></block> 設定FC和NVMe通用的驅動程式參數。</block>
   <block id="bba935ec6b4a409a039f2c174658a92b" category="list-text">從下載內含主機公用程式的壓縮檔案複本<block ref="64a98ab9b930adade338f7896c6bf819" category="inline-link-rx"></block> 到主機上的目錄。</block>
-  <block id="d93f4eaa8e066c5ee8f2b24ebc969b6b" category="paragraph">下列各節提供對應至 ASA 和非 ASA 組態之 LUN 的多重路徑輸出範例。</block>
   <block id="068e34bda638fda5123bf851072fe10d" category="paragraph">您可以從下載包含主機公用程式軟體套件的壓縮檔案 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block>。取得檔案後、您必須解壓縮檔案、才能取得安裝Host Utilities所需的軟體套件。</block>
   <block id="aa22d4ac7993fa542c414f5e9723529f" category="list-text">從下載內含主機公用程式的壓縮檔案複本 <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block> 到主機上的目錄。</block>
   <block id="bb6b61821a0d91a27d4798cbc695ecc8" category="paragraph">執行以重新啟動多路徑常駐程式<block ref="5a8f02947e83d77dcfc767816a70ab96" prefix=" " category="inline-code"></block> 命令。這可讓新設定生效。</block>
@@ -1917,57 +1804,38 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9a3d1b207d17fa417c10e7c159b0b0fd" category="cell">使用 OS 原生命令、在具有 AASA / pports 的 Solaris 主機上進行異常路徑報告</block>
   <block id="b3158ff5812b423b7633a78e4d877db7" category="cell">在使用所有 SAN 陣列（ ASA ）的 Solaris 11.4 上、會發現間歇性路徑報告問題。</block>
   <block id="d0e316336a8b1aa9192fa5b84596d3cd" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 CentOS 6.8 設定為 ONTAP 作為目標。</block>
-  <block id="165e1d450d3aa4bbe4ed9356a3c53a0b" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標、以設定 Oracle Linux 7.8 。</block>
   <block id="e017bc8db3fc729b1698178347c416a5" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 IBM AIX 7.2 和 / 或 PowerVM （ VIOS 3.1 ）與 ONTAP 設定為目標。</block>
   <block id="eee35ddae6ea06d61c15a9de3cb24c6d" category="paragraph">IBM AIX 7.2 和 / 或 PowerVM （ VIOS 3.1 ）搭配 ONTAP 版本、有下列已知問題：</block>
   <block id="1e1aabe902ce49322df6aba455576bfc" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 6.5 與 ONTAP 設定為目標。</block>
-  <block id="431ab03aeb7f65c6a8068f0f89ee1f37" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.9 與 ONTAP 設定為目標。</block>
   <block id="1e63f8c03568b214efdd000b3c1ebab0" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 CentOS 6.4 設定為 ONTAP 作為目標。</block>
-  <block id="9645981a652a196f15b86b721e5e2b2d" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 8.7 。</block>
-  <block id="de8436327090df48b4ae3cc7a509c47a" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.3 與 ONTAP 設定為目標。</block>
   <block id="ce6daf5739712167ff9559d54d5b84d1" category="paragraph">使用 ONTAP 版本的 Windows Server 2016 沒有已知問題。</block>
   <block id="708aa4255b7e46bb95ff47e221b37a0f" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 CentOS 6.6 與 ONTAP 設定為目標。</block>
   <block id="8cf5a4e1d8829324666d40a8ffd9c07e" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 6.6 。</block>
   <block id="475c59981753e28a3bbd2b2786d32646" category="paragraph">使用 ONTAP 版本的 Oracle Linux 6.6 沒有已知問題。</block>
-  <block id="b9c4fd5372ac078aca461916f6d22082" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.1 與 ONTAP 設定為目標。</block>
   <block id="e02c2cc5214ba6c1cf13b3f55f182816" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 6.5 與 ONTAP 設定為目標。</block>
   <block id="504e0c30fb2645a6baa2039125e4db84" category="paragraph">使用 ONTAP 版本的 Oracle Linux 6.5 沒有已知問題。</block>
   <block id="955a8ba1531bb4020623ab18e6949cfc" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 CentOS 6.5 設定為 ONTAP 作為目標。</block>
   <block id="bfb861b4de60d3c31c0349baa46c51b3" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 6.9 與 ONTAP 設定為目標。</block>
   <block id="7f3cd8ca9b188ba04b39e8260b58d5c0" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 6.7 與 ONTAP 設定為目標。</block>
   <block id="f6b1759ad7072aeed9f9cf3348794762" category="paragraph">使用 ONTAP 版本的 Oracle Linux 6.7 沒有已知問題。</block>
-  <block id="bb567628e15358e56e9d494de915bd76" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 7.7 。</block>
-  <block id="95a703fb7be39fb5bc05dba37cb6663a" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 9.0 與 ONTAP 設定為目標。</block>
-  <block id="3913db2b99a698fb4ff80fa1858d78bd" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.4 與 ONTAP 設定為目標。</block>
   <block id="12ad5d1ab65dc516a74a9b12db0d378f" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 6.10 設定為 ONTAP 作為目標。</block>
-  <block id="7e4c0abc516ebedb9b9f87be4f90f942" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.0 與 ONTAP 設定為目標。</block>
-  <block id="a18067179cc6f4b287b23e7ffc267699" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.2 與 ONTAP 設定為目標。</block>
-  <block id="8b6f606a4a301b4a1363fb06464ce09b" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 9.1 。</block>
   <block id="5c8d07800729066248b4d2f58721995e" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Solaris 11.3 設定為 ONTAP 作為目標。</block>
   <block id="ee6bccd9d4e5eb1093b1f5f3b0d86e7c" category="paragraph">Solaris 11.3 with ONTAP 版本有下列已知問題：</block>
   <block id="cbda152ea4d3b0dbc23c508508e1de79" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 6.6 與 ONTAP 設定為目標。</block>
   <block id="5b88a090e813de0c838f7197c24a3c75" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 CentOS 6.9 設定為 ONTAP 作為目標。</block>
-  <block id="c145abd6fbb348ce5e5f456ac88aabe3" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.1 與 ONTAP 設定為目標。</block>
-  <block id="9ce087c89f930ecdafc9ed9c4ed0e415" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 8.5 。</block>
   <block id="89803e3bc17feeb475170d3dcd320e4e" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 CentOS 6.10 設定為 ONTAP 作為目標。</block>
   <block id="9181955b285c10325d97f8ef33d5784c" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 IBM AIX 7.1 與 ONTAP 設定為目標。</block>
   <block id="92ecdf60dd5c6225e905e0a3eea885da" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 6.4 與 ONTAP 設定為目標。</block>
   <block id="0938dfec19dd45c8a6f64aa8b0b1eda4" category="paragraph">Oracle Linux 6.4 with ONTAP 版本有下列已知問題：</block>
   <block id="3998e195af175a67287a554b2d04b426" category="paragraph">Veritas Infoscale 7 for Linux with ONTAP 版本並無已知問題。</block>
   <block id="9a54de79abf75dfa58e891711132c192" category="paragraph">Windows Server 2019 搭配 ONTAP 版本並無已知問題。</block>
-  <block id="2c28f13d66417467433a2437f55ea117" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.0 與 ONTAP 設定為目標。</block>
   <block id="001844af86b0a1f099720e6aed9988f7" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 6.8 設定為 ONTAP 作為目標。</block>
-  <block id="4a6127f6277ebaba1f3ed76da30e7807" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 9.2 設定為 ONTAP 作為目標。</block>
-  <block id="3cf3a146a3a3539dac3e289c0be082b6" category="paragraph">Oracle Linux 9.2 with ONTAP 版本有下列已知問題：</block>
   <block id="c5041d07d38095b8620f889d70dea95d" category="paragraph">ONTAP 版本的 VMware vSphere 7.x 沒有已知問題。</block>
   <block id="6963533acedb1b8942f9674f67500cd3" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 6.8 。</block>
   <block id="4af84170930f2b57214e727fee146131" category="paragraph">使用 ONTAP 版本的 Oracle Linux 6.8 沒有已知問題。</block>
-  <block id="81d8fbe509061464d769a1e77f746158" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.5 設定為 ONTAP 作為目標。</block>
-  <block id="bd845f14007e127fad3aff7bfc9999ca" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 8.3 。</block>
   <block id="0eb65f1785cb89eb886adbf9059ea5f7" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 CentOS 6.7 設定為 ONTAP 作為目標。</block>
   <block id="a13006b9ebf1ba115456ee81fff754af" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 6.7 與 ONTAP 一起設定為目標。</block>
   <block id="f55878d5db78235140cd87e36b5e1afc" category="paragraph">VMware vSphere 8.x 搭配 ONTAP 版本有下列已知問題：</block>
-  <block id="7d19e2b29f5e9464257914203cd8e401" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.6 與 ONTAP 設定為目標。</block>
   <block id="e03ce41b558f38979d0e0d140a375ebd" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 6.4 與 ONTAP 設定為目標。</block>
   <block id="367978ec29f45d00d1f34cb9df274d1f" category="paragraph">VMware vSphere 6.5 與 6.7 搭配 ONTAP 版本有下列已知問題：</block>
   <block id="b16452e3905ac336b68babc6fa562702" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 6.9 。</block>
@@ -1976,11 +1844,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0d3d494fc08d768af320e003868e2ebc" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將具有 ONTAP 的 HP-UX 11i v3 設定為目標。</block>
   <block id="e044107e01e9d98146984293fe495b49" category="paragraph">採用 ONTAP 版本的 HP-UX 11i v3 有下列已知問題：</block>
   <block id="1bc24cef68b137efe0e69c2b269dd7da" category="paragraph">Veritas Infoscale 8 for Linux with ONTAP 版本並無已知問題。</block>
-  <block id="b6fc8a1131387d49545ad25502f3755d" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.4 設定為 ONTAP 作為目標。</block>
-  <block id="b0bf50be291cb2b8862c1b77bb1e9964" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.8 與 ONTAP 設定為目標。</block>
-  <block id="cdf4bf81cf3ee1a54f731160152019cf" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 7.2 與 ONTAP 設定為目標。</block>
   <block id="7145b773c01d1ea2262969c3644747a0" category="paragraph">使用 ONTAP 版本的 Windows Server 2022 沒有已知問題。</block>
-  <block id="57175c72c9ec2223e90f7a6f933b0c1b" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標、以設定 Oracle Linux 7.6 。</block>
   <block id="3d8d5b2f05311b66754ca058971f7e2e" category="paragraph">使用 ONTAP 版本的 SUSE Linux Enterprise Server 15 SP5 沒有已知問題。</block>
   <block id="30b87f3af4543974205ca57666930631" category="paragraph">Veritas Storage Foundation 6 for Linux with ONTAP 版本並無已知問題。</block>
   <block id="ee0e00ac8a597d343ecf7da72dd6effd" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 6.10 與 ONTAP 設定為目標。</block>
@@ -2243,12 +2107,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3524a0cbde7d5a506bfeb1822866a92b" category="paragraph">您可以在執行 Oracle Linux 8.4 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
   <block id="a8927346ef72516041053a51c124299c" category="paragraph">您可以在執行 Oracle Linux 8.5 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
   <block id="02c6431ec6bbc359f494834894f54864" category="paragraph">您可以在執行 Oracle Linux 8.6 和 ONTAP 的啟動器主機上、將 NVMe over Fibre Channel （ NVMe / FC ）設定為目標。</block>
-  <block id="a83d1438dc3047a6938e3c9a7a2eea6b" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.3</block>
-  <block id="3fca70163c38ce3aeaad83b1acb54703" category="doc">搭配 ONTAP 使用 Oracle Linux 9.3</block>
-  <block id="a210d69f837ecbdbf71f84e8f39fc01b" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 9.3 與 ONTAP 設定為目標。</block>
-  <block id="209ea84b7e9da962ac8d3949bbfc88d4" category="paragraph">若為 OL 9.3 、<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案必須存在、但您不需要對檔案進行特定變更。ol 9.3 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
-  <block id="cb9ab58d378e13ff5ba784ea2111ac56" category="paragraph">Oracle Linux 9.3 作業系統可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
-  <block id="553920b0052a46c8b10be33add5e61aa" category="paragraph">Oracle Linux 9.3 with ONTAP 版本有下列已知問題：</block>
   <block id="0e02571623de208737c8c59f0ee774bb" category="summary">適用於 ONTAP 的 Oracle Linux 9.3 版 NVMe 型主機組態</block>
   <block id="e18a35316367cdfc0401a22bf6352eb8" category="paragraph">Oracle Linux （ OL ） 9.3 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸、並支援非對稱命名空間存取（ ANA ）。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="f56bffa62df90c114a147cf7e606fc87" category="paragraph">下列支援適用於 ONTAP 的 OL 9.3 NVMe 主機組態：</block>
@@ -2263,11 +2121,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0f184640fa014a23c70b94529da4bca4" category="paragraph">ONTAP 版本的 Oracle Linux 9.3 沒有已知問題。</block>
   <block id="26adbe58d014b17e22edee324b7c14d8" category="paragraph">第一次建立<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案時、您可能需要使用下列命令來啟用和啟動多重路徑服務：</block>
   <block id="524b08ad750352e65f141bb6a45404ad" category="list-text">將<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數設定為 256 ：</block>
-  <block id="8d3d223fd7a6303b1d21d5a6d2ff42cf" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.9</block>
-  <block id="82ccd7f4292a5fcdb3c91b2dac42a0ee" category="doc">搭配 ONTAP 使用 Oracle Linux 8.9</block>
-  <block id="18b1f91c51b933e6287d49ea6806740e" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.9 與 ONTAP 設定為目標。</block>
-  <block id="dcf21194ace1cd7a19e5742d5b41364d" category="paragraph">對於 Oracle Linux （ OL ） 8.9 、<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案必須存在。您不需要對此檔案進行變更、因為 Oracle Linux 8.9 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
-  <block id="fa7b015244e235f53eacd30d6fd87f64" category="paragraph">Oracle Linux 8.9 OS 是為了識別 ONTAP LUN 、並自動為 ASA 和非 ASA 組態設定正確的組態參數而編譯。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="f1a95ec0fb91ac168edabfe7bbb45e77" category="cell">在 OL 8.7 NVMe 型主機上、持續探索控制器（ PDC ）是透過將<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block>選項傳遞給<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令來建立的。對於給定的 initiator 目標組合、<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令的每次執行都會建立一個 PDC 。不過、從 OL 8.x 開始、 NVMe 主機會建立重複的 PDF 。這會浪費主機和目標上的資源。</block>
   <block id="af4c7af55d02fc4883b224fec0b52ae7" category="cell">在 OL 8.8 NVMe 型主機上、持續探索控制器（ PDC ）是透過將<block ref="b3868ba70a8f4cf55464dd9926381db1" prefix=" " category="inline-code"></block>選項傳遞給<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令來建立的。對於給定的 initiator 目標組合、<block ref="c4014d0307156b07d4412051f511221a" prefix=" " category="inline-code"></block>命令的每次執行都會建立一個 PDC 。不過、從 OL 8.x 開始、 NVMe 主機會建立重複的 PDF 。這會浪費主機和目標上的資源。</block>
   <block id="6d322292fb24619a726c13d055b40ab0" category="summary">適用於 ONTAP 的 Oracle Linux 8.9 版 NVMe 型主機組態</block>
@@ -2321,9 +2174,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f7de5451f0d12f9de62cf0d59c9695f2" category="admonition">只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。</block>
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph"><block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block>命令會產生下列類型的輸出。下列範例中的輸出會被截斷。</block>
   <block id="fb403c5f670d67ab47637709eb33917d" category="paragraph">在 SUSE Linux Enterprise Server 12 SP1 、 OL 7.2 、 RHEL 7.2 和 RHEL 6.8 中執行命令時、發生間歇性主機作業系統故障問題<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block>、在此版本中已修正。</block>
-  <block id="e660061f6ca1690f631875aa9b659f5c" category="paragraph">下列各節提供對應至非 ASA 角色之 LUN 的多重路徑輸出範例。</block>
-  <block id="f2694c4b7724c227a6fd0a9ab3d8a8f9" category="paragraph">下列各節提供對應至所有 SAN 陣列（ ASA ）和非 ASA 組態之 LUN 的多重路徑輸出範例。</block>
-  <block id="b327c10d42e3a38ce2d60cb45f70f9d6" category="paragraph">下列各節提供對應至 ASA 和非 ASA 角色之 LUN 的多重路徑輸出範例。</block>
   <block id="1f9090c13a627840d3e8110654671ecd" category="cell">完成 SUSE Linux Enterprise Server 15S P2 作業系統安裝後、無法使用靜態 IP 組態從 SAN 開機</block>
   <block id="74fe7cde6e68f9607ef6c16f62916dd8" category="paragraph">iSCSI sanbooted. LUN 在使用靜態 IP 組態完成 SUSE Linux Enterprise Server 15 SP2 作業系統安裝後無法開機。每次使用靜態IP組態時都會發生開機失敗。這會導致伺服器拒絕繼續開機程序、並顯示下列錯誤訊息：</block>
   <block id="7466d39e188f68573c9503fb3aca2a4c" category="paragraph">在下列範例中、<block ref="1dd59c7806bb784d02ed91f3980f5f17" prefix=" " category="inline-code"></block>命令用於驗證 VxDMP 多重路徑是否已附加 ONTAP 目標陣列。</block>
@@ -2507,19 +2357,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="ec1fba1237506df59a6228cbfc26fd26" category="admonition">單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。</block>
   <block id="d7eeafe16e993a6db0f390553a4f2af4" category="paragraph">NVMe / TCP 傳輸協定不支援此<block ref="c73910bff7459eb78b9c2d1e7c0e3ed7" prefix=" " category="inline-code"></block>作業。您可以改為透過手動執行 NVMe / TCP 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>作業來探索 NVMe / TCP 子系統和命名空間<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block>。</block>
   <block id="15090de1ea1067de344502d808b5a4bd" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.10</block>
-  <block id="b10eaf512cfb063ba4b0781aefa988d5" category="doc">搭配 ONTAP 使用 Oracle Linux 8.10</block>
-  <block id="2edf7768da0e39fb7431b55e42f9bd8f" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 8.10 與 ONTAP 設定為目標。</block>
   <block id="2405d152712524b9eb2f91ba3cd97f49" category="section-title">啟用 SAN 開機</block>
-  <block id="2a634c51087efc0e309e1895650a5114" category="paragraph">對於 Oracle Linux 8.10 ，<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案必須存在。您不需要對此檔案進行變更，因為 Oracle Linux 8.10 是使用辨識及正確管理 ONTAP LUN 所需的設定進行編譯。</block>
-  <block id="450fcbe6c767b89b676ae3dec1072a60" category="paragraph">Oracle Linux 8.10 作業系統的編譯是為了識別 ONTAP LUN ，並自動為 ASA 和非 ASA 組態設定正確的組態參數。此外，您可以使用下列建議，進一步最佳化主機組態的效能：</block>
-  <block id="69ba8a9dba275c5475a9649a889e095c" category="paragraph">Oracle Linux 7.2 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
-  <block id="bba209ce867661e3a4b098c50c4ae891" category="paragraph">Oracle Linux 7.3 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
-  <block id="c28f46756cfeb28aa3236603ffeabd59" category="paragraph">Oracle Linux 7.4 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
-  <block id="be6a63610449ad955a43776e917bf220" category="paragraph">Oracle Linux 7.5 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
-  <block id="f51706abc5b236a2b727350843187973" category="paragraph">Oracle Linux 7.6 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
-  <block id="48a2be61af5262125f1f7edcb9c264c4" category="paragraph">Oracle Linux 7.7 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
-  <block id="bb6e6e8e38faf6f252e8bb87534ce2c6" category="paragraph">Oracle Linux 7.8 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
-  <block id="0dedd705364e6233f58b86f02008c7dc" category="paragraph">Oracle Linux 7.9 作業系統的編譯是為了識別 ONTAP LUN 、並自動正確設定所有組態參數。該<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案必須存在、多重路徑常駐程式才能啟動。如果此檔案不存在，您可以使用命令建立空白的零位元組檔案<block ref="307e748c432594fde04ec1d02c6808e4" prefix=" " category="inline-code"></block>。</block>
   <block id="db1e7207d8777a9c2c96489e2ef61867" category="summary">適用於 ONTAP 的 Oracle Linux 8.10 版 NVMe 型主機組態</block>
   <block id="95769ef42ae4724a8deb0d386fbf6b88" category="paragraph">您可以在 Oracle Linux 8.10 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
   <block id="7415be93e6df69c72126d277c3b7cc16" category="list-text">可用支援：</block>
@@ -2563,15 +2401,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="fd97e6af5040ad49359412a731cf9a48" category="paragraph">安裝 NetApp 主機公用程式套件會自動安裝工具套件。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>公用程式，可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。此<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>命令會傳回有關對應至主機的 LUN ，多重路徑及建立啟動器群組所需的資訊。</block>
   <block id="3aeb4eb76668e1a648ac20167d1fd7aa" category="paragraph">NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與非對稱命名空間存取（ ANA ）。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取（ ALUA ）多重路徑。ANA 是使用核心內建 NVMe 多重路徑功能來實作。</block>
   <block id="f236c844e8dbdb37680ec9722ff657bb" category="admonition">這些步驟不適用於 Qlogic NVMe / FC 主機。</block>
-  <block id="4180755acfbcb9827a8bc0318b20f91e" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 9.4</block>
-  <block id="87f6913bd00fe9b478a698cf2d7f8104" category="doc">搭配 ONTAP 使用 Oracle Linux 9.4</block>
-  <block id="876974ebc862d8c6c538cfecc9720c17" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 9.4 與 ONTAP 設定為目標。</block>
-  <block id="c409c0420f08acb2ec4447efdebbb32d" category="section-title">使用 SAN 工具套件</block>
-  <block id="d7960fbaddb5116dc004d9119b58db0c" category="section-title">啟用多重路徑</block>
-  <block id="0d4d008ef4dfff03721f95b083637bf8" category="paragraph">您可以在 Oracle Linux 9.4 中使用多重路徑來管理 ONTAP LUN 。若要使用多重路徑，<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案必須存在。如果<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案不存在，您可以使用 Touch 命令建立空白的零位元組檔案<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>。您不需要對檔案進行變更<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>，因為 Oracle Linux 9.4 是以識別及正確管理 ONTAP LUN 所需的所有設定進行編譯。</block>
-  <block id="32a23376361312ec9b549b4c64b617d4" category="paragraph">Oracle Linux 9.4 作業系統可辨識 ONTAP LUN 、並自動為 ASA 和非 ASA 組態正確設定所有組態參數。您可以使用下列建議設定、進一步最佳化主機組態的效能。</block>
   <block id="b26e74ed6e2892c7e2bb95e414d460c6" category="cell">LUN</block>
-  <block id="311482e0133a8a4537cdec7aed350743" category="paragraph">在 ONTAP 版本中、 OL 9.4 的 FC 主機組態沒有已知問題。</block>
   <block id="a243e92c34f812e7c56005c42a770271" category="summary">適用於 ONTAP 的 Oracle Linux 9.4 版 NVMe 型主機組態</block>
   <block id="8d7e003d34318d8e9e26f43a6131a1ff" category="paragraph">NVMe 主機組態提供下列支援和功能，適用於配備 ONTAP 儲存設備的 Oracle Linux 9.4 。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
   <block id="d5eb631f33b53d79f1963a09eca1f9b9" category="list-text">除了 NVMe over Fibre Channel （ NVMe / FC ）之外，還支援 NVMe over TCP （ NVMe / TCP ）。原生 NVMe - CLI 套件中的 NetApp 外掛程式會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。</block>
@@ -2606,8 +2436,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="eab7e959c5707439b9e2c1fe3e86d60c" category="sidebar">9.5</block>
   <block id="a4ac74af7c81edef10a1710e62ceadeb" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block>是您要新增至黑名單的本機 SCSI 磁碟。</block>
   <block id="e78866ae0ff845eed770c2b938efee3b" category="paragraph">請務必檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。</block>
-  <block id="0addb4faeee17f16535b967fa12087f4" category="paragraph">下列範例示範如何修正覆寫的預設值。在這種情況下，檔案會<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>定義與<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> ONTAP LUN 不相容的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block>。如果因為其他SAN陣列仍連接至主機而無法移除這些參數、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
-  <block id="3e1ec4fdd93153b353d57238402daa53" category="paragraph">ONTAP 版本的 Oracle Linux 8.10 沒有已知問題。</block>
   <block id="fa82877b3beb26d7d7bc882389d60aca" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.10 的。</block>
   <block id="38e584f52f25fb096dead8f8866657b0" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="f736929b1834226891236b2c0b0b218e" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.4 的。</block>
   <block id="e79780a12540c43b1147fb9232479dc4" category="paragraph">對於 CentOS （ Red Hat 相容核心）已知問題，請參閱<block ref="0158dc1052dab85818a92b1a427c95b7" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.5 的。</block>
@@ -2619,7 +2447,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="2a80f8446aa4a429e9f97920b1e74d2c" category="cell">如果在不執行SCSI重新掃描的情況下取消對應或對應LUN、可能會導致主機上的資料毀損。</block>
   <block id="432a6b98702aceeda0bf1a325e31bcf4" category="inline-link-macro">NetApp知識庫：Oracle Linux 7上iSCSI LUN上的檔案系統毀損</block>
   <block id="0317854ad5c788fd489e5dfe652c06cd" category="cell">當您將「dis中將_changed_WWID」多重路徑組態參數設定為「是」時、會在WWID變更時停用路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的WWID還原至多重路徑裝置的WWID為止。若要深入瞭解<block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>、請參閱。</block>
-  <block id="b85d15d2a4c68e31e07d28311d3bc5de" category="paragraph">Oracle Linux 7.0 with ONTAP 版本有下列已知問題：</block>
   <block id="141ad1ff5cf1058b78e7b327d5363940" category="inline-link-macro">901558</block>
   <block id="36449de1465a8388d5bd6898a3ae93a1" category="cell"><block ref="7ace244e7f60745da9174ac22c242ea9" category="inline-link-macro-rx"></block></block>
   <block id="f7f82c29a44c5277ce27b17a6e4a45c0" category="cell">OL7.0：由於Emulex 8G（LPe12002）主機上的OL 7.0 UEK r3U5 Beta上出現「RSCN Timeout（RSCN逾時）」錯誤、因此主機失去通往LUN的所有路徑並當機</block>
@@ -2640,21 +2467,14 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5e60ad980d93367ed750fec269220ca4" category="cell">Anaconda不會在核心命令列中新增bootdev*引數、您可在iSCSI多重路徑LUN上安裝OL 7.0 OS期間、於其中設定IPV4位址。因此、在OL 7.0開機期間、您無法將IP位址指派給任何設定為與儲存子系統建立iSCSI工作階段的乙太網路介面。由於未建立iSCSI工作階段、因此在作業系統開機時不會發現根LUN、因此作業系統開機失敗。</block>
   <block id="31d4b7b1b5735d1ba80e9d02816156ef" category="inline-link-macro">916501</block>
   <block id="d29e31150c6fcebfe259ef1e60f97a7a" category="cell"><block ref="aaf2fffdc60a7c2259559deac3f25e1c" category="inline-link-macro-rx"></block></block>
-  <block id="3765a3c3c98c335068342b7297b1fd7f" category="paragraph">ONTAP 版本的 Oracle Linux 7.1 沒有已知問題。</block>
-  <block id="12816f6cc6e072d421258f60c7368dd0" category="paragraph">ONTAP 版本的 Oracle Linux 7.2 沒有已知問題。</block>
-  <block id="655caf3afb6f5d2ec5a25110b46b1dac" category="paragraph">ONTAP 版本的 Oracle Linux 7.3 沒有已知問題。</block>
-  <block id="89d8b4fe15405a87af2ec65fc634abbc" category="paragraph">下列範例說明如何修正被覆寫的預設值。在這種情況下，檔案會<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>定義與<block ref="dbffbd283cd0d9c7937014167893297e" prefix=" " category="inline-code"></block> ONTAP LUN 不相容的值<block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block>。如果因為主機仍連接其他SAN陣列而無法移除、則可針對ONTAP 具有裝置例項的LUN、特別修正這些參數。</block>
-  <block id="9fc0bb91482095051bfd449367fb3e5c" category="paragraph">Oracle Linux 7.4 with ONTAP 版本有下列已知問題：</block>
   <block id="f6a519893db9e6c1633112ee90905e2a" category="inline-link-macro">1109468</block>
   <block id="7079c64a5b24cdd32462fc31603b1135" category="cell"><block ref="db94b7133d12176606a6a4461fe651e0" category="inline-link-macro-rx"></block></block>
   <block id="82acca8af52f5f8d8536c7d62c245815" category="cell">在使用QLE8362卡的OL7.4 Hypervisor上觀察到韌體傾印</block>
   <block id="d6afe009ea52239221866c17107326f9" category="cell">在使用QLE8362卡的OL7.4 Hypervisor上執行儲存容錯移轉作業時、偶爾會觀察到韌體傾印。韌體傾印可能會導致主機I/O中斷、可能會長達500秒。介面卡完成韌體傾印後、I/O作業會以正常方式恢復。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/message檔案中會顯示下列訊息：qla2xxx [0000:0c:00.3]-d001:8：韌體傾印已儲存至暫存緩衝區（8/ffffc90008901000）、傾印狀態旗標（0x3f）</block>
-  <block id="07b4fb7cda0bd8b484d606550854f57e" category="paragraph">Oracle Linux 7.5 with ONTAP 版本有下列已知問題：</block>
   <block id="3c146e54f2928af3c6df39922419b24f" category="inline-link-macro">1177239</block>
   <block id="9104aa498f971a4f36b36c41f445ce30" category="cell"><block ref="a8f52c228282c2c6ed4c049cc277ae5a" category="inline-link-macro-rx"></block></block>
   <block id="7d937b6efb504d37a46095c07e7716cd" category="cell">在儲存容錯移轉作業期間、利用QLogic QLE2672 16G FC觀察到OL7.5發生核心中斷</block>
   <block id="7a1b52e64826aa344229a4f10a14cabf" category="cell">在使用核心4.1.12-112.16.4.el7uek.x86_64和QLogic QLE2672 HBA的Oracle Linux 7（OL7.5）上執行儲存容錯移轉作業時、可能會發現核心中斷。這會提示重新開機作業系統、導致應用程式中斷。如果設定kdump、核心中斷會在/var/crash /目錄中建立vmcore檔案。這種中斷可在模組「 kmem_cache_alloc+118 」中觀察，此模組會記錄在 vmcore 檔案中，並以字串「例外 RIP ： kmem_cache_alloc+118 」來識別。在核心中斷之後，您可以重新啟動主機作業系統並重新啟動應用程式來恢復。</block>
-  <block id="a2ad6d83a8574c572c9a8b9c0652127e" category="paragraph">Oracle Linux 7.6 with ONTAP 版本有下列已知問題：</block>
   <block id="9f1d7307449f2a1971a05bc6e54a02e9" category="inline-link-macro">1202736</block>
   <block id="ff09581cb2c13d8ad132e71c1320dc7e" category="cell"><block ref="108e2d22c5beb633cb3cfe03baa4f66f" category="inline-link-macro-rx"></block></block>
   <block id="3b8a92ff3e01668248ad17ab6e44808a" category="cell">由於使用QLogic QLE2742介面卡的OL7U6主機上的遠端連接埠處於「不存在」狀態、因此LUN在主機探索期間可能無法使用</block>
@@ -2678,7 +2498,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7f7d7442869ba0a43e1c8a7628283fb6" category="inline-link-macro">1246327</block>
   <block id="425d6a0675c65fcbb55962fe041d3750" category="cell"><block ref="2fc4638611f41ecf99c51cb3b7693e41" category="inline-link-macro-rx"></block></block>
   <block id="803346e13fcd7415573e4bec58e22f89" category="cell">在儲存容錯移轉作業期間、QLogic QLE2672 16G主機上的遠端連接埠狀態遭到封鎖</block>
-  <block id="7e08dcb999f7727996d113a118c754b2" category="paragraph">Oracle Linux 7.7 with ONTAP 版本有下列已知問題：</block>
   <block id="1b61a7a3856fdbc478513136a65d30e6" category="inline-link-macro">1311575</block>
   <block id="a30ebc25935788a02b62f5c31dd68ff4" category="cell"><block ref="267c5dd990c8ab56721888f5900e0ee0" category="inline-link-macro-rx"></block></block>
   <block id="1a0e4d0026b3ac15a923132544984581" category="cell">在Oracle Linux 7.7核心（5.4.17-2011.0.7.el7uek.x86_64）與QLogic QLE2672 16G HBA的儲存容錯移轉作業期間、I/O作業可能無法透過次要路徑繼續。如果在儲存容錯移轉期間、由於主要路徑遭到封鎖而導致I/O進度停止、則可能無法透過次要路徑繼續I/O作業、導致I/O延遲。只有在主路徑完成儲存容錯移轉還原作業後才會恢復I/O作業。</block>
@@ -2688,20 +2507,8 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4e486911a10e3fffaba70e13f82fd319" category="inline-link-macro">1246134-1246134.</block>
   <block id="f1ed8010b222ca665b73581bc564dfbb" category="cell"><block ref="9f94588b71f175c6fb8a48dc1c897075" category="inline-link-macro-rx"></block></block>
   <block id="d1e8c721d32f2d555893470672bb537f" category="cell">在Oracle Linux 7.6上執行儲存容錯移轉作業時、如果UEK5U2核心執行Emulex LPe16002B-m6 16G光纖通道（FC）主機匯流排介面卡（HBA）、I/O進度可能會因為報告遭到封鎖而停止。儲存容錯移轉作業報告會從「線上」狀態變更為「封鎖」狀態、導致讀取和寫入作業延遲。成功完成作業後、報告將無法返回「線上」狀態、並繼續保持「封鎖」狀態。</block>
-  <block id="a448bbf7fe72c623da762666ceb0fb0d" category="paragraph">Oracle Linux 7.8 with ONTAP 版本有下列已知問題：</block>
-  <block id="2757a308d4d1083cccf0f8d499cc92dc" category="paragraph">Oracle Linux 7.9 with ONTAP 版本有下列已知問題：</block>
   <block id="eb1fc035eeba662cf025ce042074e2b4" category="cell">如果您在未執行 SCSI 重新掃描的情況下取消對應或對應 LUN 、可能會導致主機上的資料毀損</block>
   <block id="e70f1869df403451e259e10988ea5f80" category="cell">當您將多重路徑組態參數設定為「是」時<block ref="08dba88199429f4a52c71e37581877d5" prefix=" " category="inline-code"></block>，會在全球識別碼（ WWID ）變更時停用對路徑裝置的存取。多重路徑會停用路徑裝置的存取、直到路徑的 WWID 還原至多重路徑裝置的 WWID 為止。如<block ref="5e3e42b5c40ab78809e1bb63eb29a681" category="inline-link-macro-rx"></block>需詳細資訊、請參閱。</block>
-  <block id="de7704b02c52eca8b10fe3c3fcbe02be" category="paragraph">ONTAP 版本的 Oracle Linux 8.0 沒有已知問題。</block>
-  <block id="32dcf8794513ae60bb7547178c8e2506" category="paragraph">ONTAP 版本的 Oracle Linux 8.1 沒有已知問題。</block>
-  <block id="b00681e055849110f05e9642516e3a1a" category="paragraph">ONTAP 版本的 Oracle Linux 8.2 沒有已知問題。</block>
-  <block id="89ced9668e13589ae02be8c30c466b1b" category="paragraph">ONTAP 版本的 Oracle Linux 8.3 沒有已知問題。</block>
-  <block id="461896975771f0f6bcc17f6a47fc447c" category="paragraph">ONTAP 版本的 Oracle Linux 8.4 沒有已知問題。</block>
-  <block id="8beac64737284b3d1504d3c6ce28839e" category="paragraph">ONTAP 版本的 Oracle Linux 8.5 沒有已知問題。</block>
-  <block id="f2a4520ddaa2d566ab9995023d086f49" category="paragraph">ONTAP 版本的 Oracle Linux 8.6 沒有已知問題。</block>
-  <block id="f2cce8002ce2f5b95462132893d95199" category="paragraph">ONTAP 版本的 Oracle Linux 8.7 沒有已知問題。</block>
-  <block id="54eeaca913032941b7691ee3076cdc34" category="paragraph">ONTAP 版本的 Oracle Linux 8.8 沒有已知問題。</block>
-  <block id="2df37fd98bd7f04cdf8ebbea351923d5" category="paragraph">ONTAP 版本的 Oracle Linux 8.9 沒有已知問題。</block>
   <block id="b4fd571d0a72855bfe7c33832138bcaa" category="paragraph">在 ONTAP 版本中、 RHEL 6.10 沒有已知問題。</block>
   <block id="f40357634c33f034611ff10bf2cf0bb3" category="paragraph">採用 ONTAP 版本的 RHEL 6.4 有下列已知問題：</block>
   <block id="523f9962862f3611c9e9f05e775a3ff2" category="inline-link-macro">673009</block>
@@ -2856,7 +2663,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4ccdcef8fc98cb6452f9ba7aa1df1c0c" category="cell">重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式</block>
   <block id="c6bc802c921069bf472f1e8359672c59" category="cell">重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式。維護模式會依照下列訊息變成單一使用者模式：<block ref="3e4fc983295eaca22de2d8651a4d47f0" prefix=" " category="inline-code"></block></block>
   <block id="02b22a4665a408c3e680f6e2b9bafdcc" category="paragraph">您不需要設定核心型虛擬機器的設定，因為 LUN 會對應至 Hypervisor 。</block>
-  <block id="064f34177ddb44dc3b16f0c28e9696a8" category="admonition">若要設定 Oracle Linux 8.10 Red Hat 相容核心（ RHCK ），請使用<block ref="8fd6ca76e28de543c48473a969597840" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.10 的。</block>
   <block id="0740b5df22667a7e744aa71953beb230" category="admonition">若要設定 Oracle Linux 6.10 Red Hat 相容核心（ RHCK ），請使用<block ref="a294cf4df5bbbd1673f2ccf0dacf7b03" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.10 的。</block>
   <block id="b3f1ab4f1021cad5dbb0ecebe3b01119" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="9a91dd1025c16135359284037044a8d3" category="inline-link-macro-rx"></block>適用於 RHEL 6.10 的。</block>
   <block id="a4cd81eccdcd73aff6505e3d429a130b" category="admonition">若要設定 Oracle Linux 6.4 Red Hat 相容核心（ RHCK ），請使用<block ref="a06e2728aa3780c72bf0b5a9e2b2f14f" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.4 的。</block>
@@ -2871,38 +2677,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="bb559c6421377ba8691783146145f853" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="7703b3b38de881e061b6dbcbbcaf9f81" category="inline-link-macro-rx"></block>適用於 RHEL 6.8 的。</block>
   <block id="01959cefae34c9172600de87478915b8" category="admonition">若要設定 Oracle Linux 6.9 Red Hat 相容核心（ RHCK ），請使用<block ref="e6290e19ce3858749b0edbfa1565d904" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 6.9 的。</block>
   <block id="9933915a8c8496b899a0b703737d9f01" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="6381fe6a72f9bd9f067a0ec390d2a8fb" category="inline-link-macro-rx"></block>適用於 RHEL 6.9 的。</block>
-  <block id="24a02af33e9baef6b7473a0c54dd62bb" category="admonition">若要設定 Oracle Linux 7.0 Red Hat 相容核心（ RHCK ），請使用<block ref="95c92cba905c8a4ca7d7698440b6011a" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.0 的。</block>
-  <block id="b7e6f2b25319ad1cd2874cc1cf8b8c31" category="admonition">若要設定 Oracle Linux 7.1 Red Hat 相容核心（ RHCK ），請使用<block ref="ac06888ec4e3e5a4526108ac1f8520b7" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.1 的。</block>
-  <block id="76f217465a08ee2206d859c211cf934a" category="admonition">若要設定 Oracle Linux 7.2 Red Hat 相容核心（ RHCK ），請使用<block ref="b6341682387f7873fba9fb1f6f4c5842" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.2 的。</block>
-  <block id="2ed63ef23d2a20a743c4c00ddc0a1fe2" category="admonition">若要設定 Oracle Linux 7.3 Red Hat 相容核心（ RHCK ），請使用<block ref="afd18201682c20761a139e3ba1b44320" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.3 的。</block>
-  <block id="6c69f3fb0359004b2b085768906f56ad" category="admonition">若要設定 Oracle Linux 7.4 Red Hat 相容核心（ RHCK ），請使用<block ref="0f891679fa4536a4e919969e65b85526" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.4 的。</block>
-  <block id="12aead4db39ddd50d0265fd1f391e3ef" category="admonition">若要設定 Oracle Linux 7.5 Red Hat 相容核心（ RHCK ），請使用<block ref="bd5476eff85991b1a8eb2197c27bdbeb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.5 的。</block>
-  <block id="481caa56d58da49aafb45e57aa180096" category="admonition">若要設定 Oracle Linux 7.6 Red Hat 相容核心（ RHCK ），請使用<block ref="01c1a2a180a79aab210cc480d73c73eb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.6 的。</block>
-  <block id="531c3881e4e0d1a43c6e12f0ce5625e6" category="admonition">若要設定 Oracle Linux 7.7 Red Hat 相容核心（ RHCK ），請使用<block ref="d03bd5ac8fbc60aafcf4f05cb4079c96" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.7 的。</block>
-  <block id="3c1839d04c26218d381dc97d5feca9c1" category="admonition">若要設定 Oracle Linux 7.8 Red Hat 相容核心（ RHCK ），請使用<block ref="f258b7d81a3180e673755835c6a903ac" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.8 的。</block>
-  <block id="d15997b4d058ce06742e0143d6d16c7c" category="admonition">若要設定 Oracle Linux 7.9 Red Hat 相容核心（ RHCK ），請使用<block ref="44610b841747038fd655ebbf0a88f02e" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 7.9 的。</block>
-  <block id="268c36ef3a3435b738229f2d19eb0591" category="admonition">若要設定 Oracle Linux 8.0 Red Hat 相容核心（ RHCK ），請使用<block ref="dd019c9be944c1791639aca9ec9dceb1" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.0 的。</block>
-  <block id="230e9832b065ce5844ded87b524a1869" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="13be8945161aaeca52d4e4a694080916" category="inline-link-macro-rx"></block>適用於 RHEL 8.0 的。</block>
-  <block id="6dd98ffe6406aff752f2b1ef29c5f1ff" category="admonition">若要設定 Oracle Linux 8.1 Red Hat 相容核心（ RHCK ），請使用<block ref="ba385beac84ef95968bf8513eda510a6" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.1 的。</block>
-  <block id="f582f708b93cc65a19316b11494cff0d" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="028e50bd59e6088e4c25abc993c5b456" category="inline-link-macro-rx"></block>適用於 RHEL 8.1 的。</block>
-  <block id="b064c6c47577cadf504e64f6267d0ef1" category="admonition">若要設定 Oracle Linux 8.2 Red Hat 相容核心（ RHCK ），請使用<block ref="4fa0e58c0abf395a1bcef392b352f5ab" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.2 的。</block>
-  <block id="986734eb094c9c2f2d3b2b3c0a0c870e" category="admonition">如需 Oracle Linux RHCK 已知問題，請參閱<block ref="840d5abfe44b15b4222ea5c534ce82a9" category="inline-link-macro-rx"></block>適用於 RHEL 8.2 的。</block>
-  <block id="a2b69a679bf050f2bbfcaaeb6ea992b4" category="admonition">若要設定 Oracle Linux 8.3 Red Hat 相容核心（ RHCK ），請使用<block ref="4e79a9939610f9dc89e0e26786a809f0" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.3 的。</block>
-  <block id="4d897e8736146cf40790531f1f666597" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="3c7f0100e93cbb394731ee7d8982c161" category="inline-link-macro-rx"></block>對應 RHEL 版本文件中的一節。</block>
-  <block id="ffc987a2f21aae5e3195355025c76bf4" category="admonition">若要設定 Oracle Linux 8.4 Red Hat 相容核心（ RHCK ），請使用<block ref="2a5bf462d4974235d181075f07ec40ac" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.4 的。</block>
-  <block id="45dbaae3c2793a4b404f3a2322689377" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="1cf241ba8c9adec487a38ecfba1ee9ce" category="inline-link-macro-rx"></block>對應 RHEL 版本文件中的一節。</block>
-  <block id="c88bfe3802b773efecb4e9d3a0324e29" category="admonition">若要設定 Oracle Linux 8.5 Red Hat 相容核心（ RHCK ），請使用<block ref="7e47a54075763937d25ec51fa82726e1" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.5 的。</block>
-  <block id="d6c8969c6a4fc3aacc016c608d66db93" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="b5087b96e856dc400373808e0f627382" category="inline-link-macro-rx"></block>對應 RHEL 版本文件中的一節。</block>
-  <block id="4699a6f7a3bd171bd91e63dfcdfd564f" category="admonition">若要設定 Oracle Linux 8.6 Red Hat 相容核心（ RHCK ），請使用<block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.6 的。</block>
   <block id="8615fb2fd88be1c6019d2c1bf3ebec1f" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="10ee08d1b3d909bc389f3b317276174b" category="inline-link-macro-rx"></block>對應 Red Hat Enterprise Linux 版本文件中的一節。</block>
-  <block id="d97bfa8784f6caef731d7250b102aeaf" category="admonition">若要設定 Oracle Linux 8.7 Red Hat 相容核心（ RHCK ），請使用<block ref="2799389175d462b609c459275109bc99" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.7 的。</block>
-  <block id="e4c3957504ec156c5892823238a99140" category="admonition">若要設定 Oracle Linux 8.8 Red Hat 相容核心（ RHCK ），請使用<block ref="690c11dea402b4d6119bf0c00175eedb" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.8 的。</block>
-  <block id="1c91c1c9b210398355d879d0b5a29962" category="admonition">若要設定 Oracle Linux 8.9 Red Hat 相容核心（ RHCK ），請使用<block ref="ce7483c182b39cf5b993c406b0ed7268" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 8.9 的。</block>
-  <block id="8e8af6fa9c2a46908c54887cbd7ce151" category="admonition">若要設定 Oracle Linux 9.0 Red Hat 相容核心（ RHCK ），請使用<block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.0 的。</block>
-  <block id="9266ba839452bc329871928d82225ac5" category="admonition">若要設定 Oracle Linux 9.1 Red Hat 相容核心（ RHCK ），請使用<block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.1 的。</block>
-  <block id="ffa125c5632df868ce4207d98d9a904a" category="admonition">若要設定 Oracle Linux 9.2 Red Hat 相容核心（ RHCK ），請使用<block ref="5ab13879c64fa7edac23d51636b59ed3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.2 的。</block>
-  <block id="a2d7c1776c37101df831ef0e6f0e5ce5" category="admonition">若要設定 Oracle Linux 9.3 Red Hat 相容核心（ RHCK ），請使用<block ref="aa2da13d93f93b231e31aba556996ce9" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.3 的。</block>
-  <block id="8c49dde2af519712a2f50d452f6ce90d" category="admonition">若要設定 Oracle Linux 9.4 Red Hat 相容核心（ RHCK ），請使用<block ref="b9a8d32f10d77ca35a155d7d0e65ccf3" category="inline-link-macro-rx"></block>適用於 Red Hat Enterprise Linux （ RHEL ） 9.4 的。</block>
   <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
   <block id="a1a9afcf552a769c282769271829889a" category="paragraph"><block ref="a1a9afcf552a769c282769271829889a" category="inline-link-macro-rx"></block></block>
   <block id="f99aa604031e5049799e73b5c3748a98" category="inline-link-macro"><block ref="f99aa604031e5049799e73b5c3748a98" category="inline-link-rx"></block></block>
@@ -2937,7 +2712,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="221c50744b3c4471b399c8dfa3509684" category="list-text">安裝SAN工具套件：</block>
   <block id="35d30ae2960100fec7fe5d4442fa0ae3" category="admonition">此工具組適用於所有主機公用程式組態和通訊協定。因此，所有元件並不適用於每個組態。未使用的元件不會影響您的系統效能。SAN 工具套件在 AIX 和 PowerVM/VIOS OS 版本上受支援</block>
   <block id="1c5b4d360e35ca810d1f0d9e9f5c5f11" category="section-title">安裝 Linux 主機公用程式</block>
-  <block id="26003019ad69f6661c1f13b0bdf042eb" category="paragraph">使用<block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block>驗證是否支援您的 OS ， HBA ， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本。</block>
   <block id="0061b8b2da9499e43ee5bb81cca2cc75" category="doc">安裝適用於 ONTAP 儲存設備的 AIX 主機公用程式 6.1</block>
   <block id="5e3e13ba63b4b52ff39cf00323ed4f35" category="paragraph">您可以使用<block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block>來驗證組態。</block>
   <block id="1861346d2ad1471072a01a2aae90e199" category="list-text">啟用所有 FC 和 FCoE 啟動器的動態追蹤。</block>
@@ -3012,10 +2786,8 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9fc9bdaf569f62449156719f31a27f03" category="cell">使用 Emulex LPe16002(16G) 進行儲存容錯移轉時，發現 I/O 延遲並將報告移至封鎖狀態，不存在狀態</block>
   <block id="55044503b133c5b4c97864a314a57c73" category="cell">使用 Qlogic QLE2672 （ 16G ）和 QLE2742 （ 32G ）進行儲存容錯移轉時，觀察到 I/O 延遲且 Rports 移至「 Blocked （ Blocked ）」（封鎖），「 Not Present （不存在）」狀態</block>
   <block id="1b9a343a05e32d1550875621b82c0b1a" category="cell">在儲存容錯移轉作業期間、若使用QLogic QLE2672 16G主機、Red Hat Enterprise Linux（RHEL）7.6上的光纖通道（FC）遠端連接埠可能會遭到封鎖。由於儲存節點當機時邏輯介面會關閉、因此遠端連接埠會將儲存節點狀態設為「Blocked（封鎖）」。如果您同時執行 QLogic QLE2672 16G 主機和 QLE2742 32GB 光纖通道（ FC ）主機匯流排介面卡（ HBA ），則 I/O 進度可能會因連接埠遭到封鎖而停止。當儲存節點恢復至最佳狀態時、邏輯介面也會啟動、遠端連接埠也應該處於線上狀態。不過、遠端連接埠仍可能遭到封鎖。此封鎖狀態會在多重路徑層的LUN上登錄為故障。您可以使用下列命令來驗證遠端連接埠的狀態：# cat /sys/class/fc_remite_ports/rport-*/port_stat您應該會看到下列輸出：Blocked Blocked Blocked Blocked Online</block>
-  <block id="b9d06b45cab6929f7fe393306786eaaa" category="paragraph">您的組態支援 SAN 開機。請參閱、<block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block>確認您的作業系統、 HBA 、 HBA 韌體、 HBA 開機 BIOS 和 ONTAP 版本均受到支援。</block>
   <block id="663c29c691b9392361f072ff1c647494" category="paragraph">當您在 SAN 主機上執行 Linux 主機公用程式 CLI 命令「 sanlun FCP show adapter -v 」時，命令會失敗，並顯示錯誤訊息，顯示無法找到主機匯流排介面卡（ HBA ）探索所需的程式庫相依性：</block>
   <block id="fc09646256c1151d030354598d75230b" category="paragraph">當您在 SAN 主機上執行 Linux 主機公用程式 CLI 命令「 sanlun FCP show adapter -v 」時，命令會失敗，並顯示錯誤訊息，顯示無法找到主機匯流排介面卡（ HBA ）探索所需的程式庫相依性：</block>
-  <block id="d3d08ccb84a6c6378d32dbd5ba8ead17" category="paragraph">使用<block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block>驗證是否支援您的 OS ， HBA ， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本。</block>
   <block id="23cd5840e42365c634c6242d03cd4c9e" category="cell">在 RHEL 6U4 儲存設備故障期間， QLogic 16G FC （ QLE2672 ）主機的 I/O 停止達 300 秒</block>
   <block id="4ab0ffec7c4a080af27b43ce5f05a0ed" category="cell">在儲存 / 光纖網路故障期間，您可能會在 QLogic 16G FC （ QLE2672 ）主機上觀察到 I/O 停止達 300 秒。</block>
   <block id="a8ef8037d8bc65ce5c031566c94c1bdf" category="cell">在 RHEL 9.1 中， NetApp Linux SAN 主機公用程式 CLI<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> 失敗，因為找不到支援 HBA 探索的程式庫套件相依性。</block>
@@ -3261,9 +3033,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="68e5c8d1251c633565ba668446a95b32" category="list-text">從下載 Hotfix <block ref="86167046a85b88d4b396a82107daadba" category="inline-link-macro-rx"></block>。</block>
   <block id="bcf622355381554644b7b19355170fb1" category="paragraph">如果您的 Windows 主機有多個路徑通往儲存系統，則需要安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並啟用多重路徑。</block>
   <block id="4be31bb14f28cd1a1a92b994b241b6e3" category="paragraph">使用 ONTAP 版本的 Windows Server 2025 沒有已知問題。</block>
-  <block id="564407f81c68d8b8dba176bafd8d2c07" category="paragraph">您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="769a40f63534a31b2b123052ac1da6ad" category="list-text">驗證<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>命令的輸出以確保設定完成。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
-  <block id="39d53198af3fc38b686628c26e87a4f8" category="paragraph">對於Oracle Linux 7.1 UEK R4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 7.1的編譯包含所有必要設定、可辨識及正確管理ONTAP 各種LUN。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="47e930d345db593756a39027df077a51" category="paragraph">對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="fc50f2493bad30bed7c038ecd3810f93" category="doc">搭配 ONTAP 使用 Windows Server 2012 R2</block>
   <block id="90e0eb50d77220c88968e61e6c89e567" category="paragraph">您可以使用 ONTAP SAN 主機組態設定來設定 Windows Server 2012 R2 ，以便與 ONTAP 儲存設備搭配運作。</block>
@@ -3415,134 +3185,104 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="c03b2b8b8f3e7592387eb48c09025f97" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 7.9 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="cdec23a6dd205642c08c3dae43a8bb57" category="paragraph">您可以搭配 RHEL 7.9 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="4daca65b9dae2e242aaa6a2277999402" category="paragraph">採用 ONTAP 儲存版本的 RHEL 7.9 有下列已知問題：</block>
-  <block id="c999dfef8e0f9bc78b60f0649b997226" category="summary">在 RHEL 8.0 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="14dfcc43056d8c9d66119938d80c91b1" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.0</block>
   <block id="fb19abe5a6b5d3909b17818824ac6a49" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 8.0 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="cfb61557ec375a34976e74b594e10cf6" category="paragraph">您可以搭配 RHEL 8.0 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="2484c66dbb51aab2023931439f1119eb" category="paragraph">採用 ONTAP 儲存版本的 RHEL 8.0 有下列已知問題：</block>
-  <block id="7aa8a6ff833cc30d97fe54fcaac97874" category="summary">在 RHEL 8.1 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="2d076b7a88cbb2373d2a0530133f667c" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.1</block>
   <block id="2e2731e3f053ae0f6f388c7426044726" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 8.1 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來支援使用 ONTAP LUN 來管理 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="d60f06e4803f41fdef4c3f8cd8d22de0" category="paragraph">您可以搭配 RHEL 8.1 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="11b16033eea63378a72ed721ea048daf" category="paragraph">採用 ONTAP 儲存版本的 RHEL 8.1 有下列已知問題：</block>
-  <block id="6b6aa3ede0ee87ace61863bd9b44c3fc" category="summary">在 RHEL 8.10 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="5f221111bb01dee7664b4e654cc51fa9" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.10</block>
   <block id="ee259eef2ad89e22d691b70bbf582346" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 8.10 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="2f1fe7434d9a8691353a4b49531fca13" category="paragraph">您可以搭配 RHEL 8.10 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="41d0c30be84434efabbd2fe1c0c31623" category="summary">在 RHEL 8.2 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="acdc67be9f8c6efe4cb88e6744b435ff" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.2</block>
   <block id="37bb7a099c28222c4da8ac5dfa51ae52" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 8.2 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="d40f646bd40446058aa597cac4f91a6a" category="paragraph">您可以搭配 RHEL 8.2 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="9c73ceb9e64b96fe43648b0cf1ea922f" category="summary">在 RHEL 8.3 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="a5874beec36cd74a46c345a80830c681" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.3</block>
   <block id="b1816576eeeb42e0d3a1e06312382e37" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Red Hat Enterprise Linux （ RHEL ） 8.3 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="307ca9b828f7a80554244daaded195e3" category="paragraph">您可以搭配 RHEL 8.3 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="bf58360fa8f31fccc4877fb148dd0dad" category="summary">在 RHEL 8.4 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="fcfefadbc8afa810126debed3f258fcb" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.4</block>
   <block id="9eca8edd9cadefc1a339eb3ebbe5b9b4" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 8.4 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="158c8636e91d94395fdb8c9aec0f80e1" category="paragraph">您可以搭配 RHEL 8.4 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="d2620888d87c81b0883785e608e24d30" category="summary">在 RHEL 8.5 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="7b2a70885d624171a9c4fb1cbafa8d82" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.5</block>
   <block id="783bb370a2a2a8b728d8d16649d84101" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 8.5 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="008186359791bc62440cef42700c33c6" category="paragraph">您可以搭配 RHEL 8.5 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="e845880bbbf2915bb9241d9247883993" category="summary">在 RHEL 8.6 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="7c987b863d7ca2c29d2220aafc03e213" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.6</block>
   <block id="bec354c917bd9702d35e2cbd234ddceb" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Red Hat Enterprise Linux （ RHEL ） 8.6 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="2909899dd005b017ba3f4b2e304d8441" category="paragraph">您可以搭配 RHEL 8.6 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="627b4724d4612293b19b314a6098cfd1" category="summary">在 RHEL 8.7 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="899f55df06fff94c8f5e6e8810acd144" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.7</block>
   <block id="c6e4ec4093e067c6de448d96ad1c1117" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 8.7 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="45cffe7c99748c71db5f530b62ea3acc" category="paragraph">您可以搭配 RHEL 8.7 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="9f533f92ac486565413330ea0d0ace6e" category="summary">在 RHEL 8.8 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="ab6b0c6dac94bc48ddc030ecb77e253d" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.8</block>
   <block id="501cb99a36ad5973c8c8886317f017d7" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 8.8 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="cf6de343c5b865db5b3971059438a068" category="paragraph">您可以搭配 RHEL 8.8 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="994c111b5de94bd1eb2758298ffb2a67" category="summary">在 RHEL 8.9 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="202510ab76ea7250ddd0910da254b0eb" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 8.9</block>
   <block id="96396cc94d3f9590cc68201a09e41090" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 8.9 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="3c21b998cd6d8416fa4a16a4a285e09b" category="paragraph">您可以搭配 RHEL 8.9 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="8db3b3df068c144cfbbcacc00ab0feee" category="summary">在 RHEL 9.0 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="4ea02644e380e876cb6ebdd29f34d635" category="doc">使用 ONTAP 儲存設備設定適用於 FCP 和 iSCSI 的 RHEL 9.0</block>
   <block id="c42bf555b266791e6d0644e79f565aa3" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.0 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="b5d9d75e2c365357b06f6f9a7206d67c" category="paragraph">您可以搭配 RHEL 9.0 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="6f155c8006b0fbef5229840d547ba089" category="summary">在 RHEL 9.1 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="08e3752db10507a6aca17851f8ebf0d3" category="doc">使用 ONTAP 儲存設備設定適用於 FCP 和 iSCSI 的 RHEL 9.1</block>
   <block id="1a832116de8fd171def513205eb4e870" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.1 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="cabab11b9f068bc11794c81e459e0685" category="paragraph">您可以搭配 RHEL 9.1 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="afbdc08f531c5440d1dc851ccbfc99c4" category="paragraph">採用 ONTAP 儲存版本的 RHEL 9.1 有下列已知問題：</block>
-  <block id="1068d1d8187360d23f5315130f5b12dc" category="summary">在 RHEL 9.2 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="e2b40a955624e66df59b1d53a0844038" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 9.2</block>
   <block id="559b5da8fdf41820984763b571c383cd" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.2 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="14071197fca988f01fd2f99abdd4cb5e" category="paragraph">您可以搭配 RHEL 9.2 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="f24e6daa78df75c3492694fcff6a9b3c" category="paragraph">採用 ONTAP 儲存版本的 RHEL 9.2 有下列已知問題：</block>
-  <block id="6daac03ba95397dabac5b6b6a2f0ba2d" category="summary">在 RHEL 9.3 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="c5e5a948eba1b3de6364bd24121c4fba" category="doc">使用 ONTAP 儲存設備設定適用於 FCP 和 iSCSI 的 RHEL 9.3</block>
   <block id="c408646a49798427079f19d1ace534b5" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.3 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="7473625948f7967bfb459bbaa8d50271" category="paragraph">您可以搭配 RHEL 9.3 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="1689189290598975ccaaee0cb0cd602e" category="paragraph">採用 ONTAP 儲存版本的 RHEL 9.3 有下列已知問題：</block>
-  <block id="ce0122c1e0cadaf2fc358a113525b55e" category="summary">在 RHEL 9.4 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="6807e487e43970b90b38cac148ba9c49" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 9.4</block>
   <block id="ba9a8d5b4376d03fc61ae2bcc0bc9eab" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.4 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="5435ac89b9cd76c7031b996f3e38344f" category="paragraph">您可以搭配 RHEL 9.4 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="f3f5e5774254d60ece67c2757e73c5fe" category="summary">在 RHEL 9.5 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="bf2e2850028a550db4d4777a6c320006" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 9.5</block>
   <block id="9c2f294f2ce9dacd34475fe6a3fa5c52" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.5 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="0f1de05675767624511aae207e8e0251" category="paragraph">您可以搭配 RHEL 9.5 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="df703c7c915219367c5e3f921d60e7af" category="summary">在 SUSE Linux Enterprise Server 12 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="43d4d647f16dbd3d230e0439558b88db" category="doc">設定 SUSE Linux Enterprise Server 12 for FCP 和 iSCSI with ONTAP 儲存設備</block>
   <block id="dfeac90f4b243e13abf1a334467b65be" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 12 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="40821342e4bc79cbad2926f4ac5e6e9b" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 12 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="353e0178f08fe633ef44c53b8b81c881" category="paragraph">採用 ONTAP 儲存版本的 SUSE Linux Enterprise Server 12 有下列已知問題：</block>
-  <block id="b3f69471851e07fb4c5b3cec6f037e7d" category="summary">在 SUSE Linux Enterprise Server 12 SP1 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="0732b891c880c9dbcb25e237489f2690" category="doc">為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 12 SP1 ，並搭配 ONTAP 儲存設備</block>
   <block id="35442e4fb09a88ef3b61548c1d313ca6" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 12 SP1 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="027e454e384171d1e3c9995257d99e30" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 12 SP1 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="acfc376ee2870bcdc00a818e4a247441" category="summary">在 SUSE Linux Enterprise Server 12 SP2 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="f988d88f2f216f30c645497165cfd810" category="doc">為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 12 SP2 ，並搭配 ONTAP 儲存設備</block>
   <block id="17af054de7aff379d2535d2d3a741b6c" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 12 SP2 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="41a5cb180e7da4a03e67f0dc5ec70519" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 12 SP2 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="52f3717b9ce2152d9c14f06bc5bfc599" category="summary">在 SUSE Linux Enterprise Server 12 SP3 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="0aa50bc4fdeb93affeaf90946517497d" category="doc">設定 SUSE Linux Enterprise Server 12 SP3 for FCP 及 iSCSI with ONTAP 儲存設備</block>
   <block id="8d2181849ed202394c15c71268f18091" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 12 SP3 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="c393951767294986be150803e0f8f4c7" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 12 SP3 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="2c498b7b9708c9f4569e22f6968134a6" category="paragraph">SUSE Linux Enterprise Server 12 SP3 with ONTAP 儲存版本有下列已知問題：</block>
-  <block id="cf3abc139c1576c4684a113443b3a74c" category="summary">在 SUSE Linux Enterprise Server 12 SP4 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="d4ac069c6a8649236291248f8cb48ad5" category="doc">為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 12 SP4 ，並搭配 ONTAP 儲存設備</block>
   <block id="938545feadf1d265f32fc36e375443d5" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 12 SP4 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="ebfb843ce5c216e913ed4393a5b3edb5" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 12 SP4 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="b2c65831af105894c1fc0418c71884f9" category="summary">在 SUSE Linux Enterprise Server 12 SP5 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="6babcc3820e85723b8392d0c9c00e35f" category="doc">設定適用於 FCP 的 SUSE Linux Enterprise Server 12 SP5 ，以及使用 ONTAP 儲存設備的 iSCSI</block>
   <block id="3a0736cdf2a565e3d5f79ecb7eee0b95" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 12 SP5 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="43398cfb8eda87e25787443ae87a9706" category="paragraph">您可以在 SUSE Linux Enterprise Server 12 SP5 中使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="2d2ceaeb1cde218bda6ef5263308fea7" category="paragraph">具有 ONTAP 儲存版本的 SUSE Linux Enterprise Server 12 SP5 有下列已知問題：</block>
-  <block id="cc963798e414b2c3018cad81cf0abc56" category="summary">在 SUSE Linux Enterprise Server 15 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="65ec0acea8dc658d42864eb8199c4a97" category="doc">設定 SUSE Linux Enterprise Server 15 for FCP 和 iSCSI with ONTAP 儲存設備</block>
   <block id="a98a5e4b86d0238c6b4cf9a25592f1d0" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="274928dc553a85ffa2039505e1dba3cc" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 15 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="da8936c01732467d49e464e3885d6ed9" category="paragraph">採用 ONTAP 儲存版本的 SUSE Linux Enterprise Server 15 有下列已知問題：</block>
-  <block id="b55e51bfeb4feed2be7b3423a5af5f45" category="summary">在 SUSE Linux Enterprise Server 15 SP1 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="e9da4ceaeb8abb9f5a6ce5e86e7c004e" category="doc">為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 15 SP1 ，並搭配 ONTAP 儲存設備</block>
   <block id="6047ed4191c41e5830317c5ff8f3bae2" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 SP1 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="236290ad6bbcf9108c749778d91c7ee9" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 15 SP1 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="285a8ea56b494f0e7f9ef408dfd8e2f0" category="paragraph">SUSE Linux Enterprise Server 15 SP1 with ONTAP 儲存版本有下列已知問題：</block>
-  <block id="e674c5bdabcfcda428ee3660a73a4dac" category="summary">在 SUSE Linux Enterprise Server 15 SP2 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="03b5584b1473bd0a7f27e7d6785cdeb2" category="doc">為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 15 SP2 ，並搭配 ONTAP 儲存設備</block>
   <block id="ff08249403db05b9f51bad07ee544882" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 SP2 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="c6c2fd19574635f87eadff5006e23099" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 15 SP2 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="35000ca2392192513d21d7097322df24" category="paragraph">SUSE Linux Enterprise Server 15 SP2 with ONTAP 儲存版本有下列已知問題：</block>
-  <block id="8cae43db23d700802c853db03973731a" category="summary">在 SUSE Linux Enterprise Server 15 SP3 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="23dcddc6f19ef2cbc48ff53a3ba674ff" category="doc">設定 SUSE Linux Enterprise Server 15 SP3 for FCP 及 iSCSI with ONTAP 儲存設備</block>
   <block id="f26bc0ed31f715db66595e7231d19236" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 SP3 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="291af0b61cf44d9aba50f8e917c9cc20" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 15 SP3 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="24121591b8e4d16d6441d66435ea6770" category="summary">在 SUSE Linux Enterprise Server 15 SP4 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="7878bbc9cd6db18a02d8cc2ab119856f" category="doc">為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 15 SP4 ，並搭配 ONTAP 儲存設備</block>
   <block id="f3f7ac99c54661cfb6664028039913ce" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 SP4 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="fb77cb024980a692b58965ac6f43c0c7" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 15 SP4 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="a7df5ad49d1b8d658e80a4b9d3d73651" category="summary">在 SUSE Linux Enterprise Server 15 SP5 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="fbfda9dc43eb95af656463d4d122b1f8" category="doc">設定 SUSE Linux Enterprise Server 15 SP5 for FCP 和 iSCSI with ONTAP 儲存設備</block>
   <block id="13fe823d32722f24f2d8237c0f06ecbc" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 SP5 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="445c0c2ad7f9e2eb3c7970310f8bcb3d" category="paragraph">您可以在 SUSE Linux Enterprise Server 15 SP5 中使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="3fdd6d9d108fd85ed9cd14cf11a6544f" category="summary">在 SUSE Linux Enterprise Server 15 SP6 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="9af395dd782a22baa71b47ef0f212af9" category="doc">為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 15 SP6 搭配 ONTAP 儲存設備</block>
   <block id="224e434e0a89bdaae5dfa71999e91d79" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 SP6 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="c3f6ae35d84e612be71b323602fe985e" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 15 SP6 使用多重路徑來管理 ONTAP LUN 。</block>
@@ -3575,7 +3315,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="cd3cfdbbdf68695695503ec99f60b54f" category="list-text"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block></block>
   <block id="c8ba574e6385bfff25580806e2cfd27d" category="paragraph"><block ref="2c3856aef23f7e774c0fec3948e0a8b5" prefix="" category="inline-code"></block></block>
   <block id="44e9f27b29f987774dffc9a83910b3f1" category="paragraph">您應該會看到類似以下範例的輸出：</block>
-  <block id="104e6af592420ff3d441fd7ec7435c39" category="summary">在 RHEL 10 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="d7c1825e0f2407a4d10d399ac78c1f95" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 10</block>
   <block id="d7b201e34bf72ed2024522784d92bd59" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 10 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="0171e05f7a58a96089d554991286cd67" category="paragraph">您可以搭配 RHEL 10 使用多重路徑來管理 ONTAP LUN 。</block>
@@ -3629,7 +3368,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="b4da3417a3bbac7760c5f326458d9927" category="sidebar">RHEL 10</block>
   <block id="63da114c28add40c319de84e3a92a8ed" category="sidebar">RHEL-10-FCP</block>
   <block id="43a1437f7f656cd8be7c996c58719e0a" category="sidebar">10.0</block>
-  <block id="282e82c820d3f500a969ebb9a9054584" category="summary">在 RHEL 9.6 主機上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="f4e7617d1cef5f8ab23add41d40625fb" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 9.6</block>
   <block id="5cecbf0e006813819e7ea0d92ccca8df" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.6 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="c655b9821bde0a911428a133bb7ef67f" category="paragraph">您可以搭配 RHEL 9.6 使用多重路徑來管理 ONTAP LUN 。</block>
@@ -3669,69 +3407,39 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="255f7dd737c93c62e180bd5b0eb68abb" category="paragraph">您可以為配置了 Broadcom 適配器的 NVMe/FC 啟用 1MB 大小的 I/O 請求。 ONTAP在識別控制器資料中報告的最大資料傳輸大小 (MDTS) 為 8。這表示最大 I/O 要求大小最多可達 1MB 。要發出 1MB 大小的 I/O 請求，您需要增加<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數從預設值 64 更改為 256。</block>
   <block id="769454dbe77ed2cae45ab11f15c3cdfe" category="paragraph">從 ONTAP 9.12.1 開始，主機和 ONTAP 控制器之間透過 NVMe/TCP 和 NVMe/FC 支援安全帶內身份驗證。</block>
   <block id="23634d6048eb22a5ca8d8ab3d1e781a7" category="list-text">為主機產生 dhchap 金鑰。</block>
-  <block id="c92a52992f13806a7d9c0f313df649d6" category="summary">在 Rocky Linux 10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
   <block id="4d8e0dfcc8e342905265f68006cfcd68" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 10</block>
-  <block id="26522b37063e21b1731a31a2bfd1a0ed" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 10 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="c81edf36dc000954d363cf834dc3e1c0" category="paragraph">您可以使用 Rocky Linux 10 的多路徑來管理 ONTAP LUN。</block>
-  <block id="10c6ce445b6fd8fcc35776c073408bd2" category="summary">在 Rocky Linux 8.10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
   <block id="cba38e964105989c754ebf56baca9af3" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.10</block>
-  <block id="7ff9eff62aade53ae2eb348ebae3cf47" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.10 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="5d989adb4f7d32eee4124400262bf918" category="paragraph">您可以使用 Rocky Linux 8.10 的多路徑來管理 ONTAP LUN。</block>
-  <block id="d98d14968fd86eba6c5ebc7d87fdd83b" category="summary">在 Rocky Linux 8.4 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="ba416f8aef0f245b847812984b757ce4" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.4</block>
-  <block id="174543e34b7d13429219a325a6fcbe93" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="171627c824ed442ad84a4d90a3c97952" category="paragraph">您可以使用 Rocky Linux 8.4 的多路徑來管理 ONTAP LUN。</block>
-  <block id="98dce0d2258c58c69460b0a488eb49c9" category="summary">在 Rocky Linux 8.5 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="410c38d7b5e3599337485ae6ef459a7e" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.5</block>
-  <block id="0acbbf852408838333f8d310f05ec475" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.5 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="5e88c1ca753afc9d771cd2019db114b3" category="paragraph">您可以使用 Rocky Linux 8.5 的多路徑來管理 ONTAP LUN。</block>
-  <block id="c45149732f3f935765d797769c9fd69a" category="summary">在 Rocky Linux 8.6 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="04ece8dfbc674327a705caceeb81d62b" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.6</block>
-  <block id="fa29a393a584868de2f8639785c016a2" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.6 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="9ae000a5d4fd91006240cf7e33d05c05" category="paragraph">您可以使用 Rocky Linux 8.6 的多路徑來管理 ONTAP LUN。</block>
-  <block id="8b4dafa474c7a4355a39383af8d1c7cc" category="summary">在 Rocky Linux 8.7 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="ce9599e816b36cb18a7a8cfb3f45fe7d" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.7</block>
-  <block id="cfb5d3fa62e6dc1366ef21d25eb6d8a9" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.7 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="bc0c16ca58e238a03817bc8d978d189a" category="paragraph">您可以使用 Rocky Linux 8.7 的多路徑來管理 ONTAP LUN。</block>
-  <block id="b20d601aeb70037eff844bb0df11d40d" category="summary">在 Rocky Linux 8.8 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="6217618a3143d0b9754e92036e9305e4" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.8</block>
-  <block id="31664cf89a6f7fcb891937e8c5dea7f3" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.8 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="202c52d6d4b643e7c3eac015375fbfd5" category="paragraph">您可以使用 Rocky Linux 8.8 的多路徑來管理 ONTAP LUN。</block>
-  <block id="3dcc0b1e5c77103db7b777fd05ec019e" category="summary">在 Rocky Linux 8.9 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
   <block id="b16b1826e8443110e92767189b4a8551" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 8.9</block>
-  <block id="cffc2bf34b5020f3bc45474f09d6167a" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.9 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="e50750a077fa75109a2de3f93bb42adf" category="paragraph">您可以使用 Rocky Linux 8.9 的多路徑來管理 ONTAP LUN。</block>
-  <block id="b8f2b28d51f5ad1ed6ef3657cb80081d" category="summary">在 Rocky Linux 9.0 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="d7425bae8e902a7d5ec33ee8629b1dc5" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.0</block>
-  <block id="26c0be952da97210ffccf7832a50a648" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.0 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="07e4b32f34b896d73ffb495a88037151" category="paragraph">您可以使用 Rocky Linux 9.0 的多路徑來管理 ONTAP LUN。</block>
-  <block id="06f025c312a90965fc0bc646683a1a5e" category="summary">在 Rocky Linux 9.1 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="88f18a7ceb1d58730bbfabf1519c5648" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.1</block>
-  <block id="cd73b7440b86e7342c647768b8ee8758" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.1 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="e548f8628d947c00bc3b480707821d79" category="paragraph">您可以使用 Rocky Linux 9.1 的多路徑來管理 ONTAP LUN。</block>
   <block id="64c13bc414e8523921f8ccfce8736da0" category="paragraph">適用於具有 ONTAP 儲存的 FCP 和 iSCSI 的 Rocky Linux 9.1 版本有下列已知問題：</block>
   <block id="83d23b030ca5295c7d8736002bf1f7d2" category="cell">在 Rocky Linux 9.1 中，NetApp Linux SAN Host Utilities CLI <block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block>失敗，因為找不到支援 HBA 發現的庫包依賴項。</block>
-  <block id="0500cd1e151f6d1672a674d85a0631b1" category="summary">在 Rocky Linux 9.2 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="c300ebce91df3cb39e5e31308b78de62" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.2</block>
-  <block id="c2e307d87a03e5b748c1ced02a2edf6c" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.2 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="ebf412f3fd0e93aa81a3155388db822e" category="paragraph">您可以使用 Rocky Linux 9.2 的多路徑來管理 ONTAP LUN。</block>
   <block id="0407ec3e3bff4e8012825fa1d5226f7b" category="paragraph">適用於具有 ONTAP 儲存的 FCP 和 iSCSI 的 Rocky Linux 9.2 版本有下列已知問題：</block>
-  <block id="3aa5c1fb6e11d4a3345025b6ab329582" category="summary">在 Rocky Linux 9.3 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="3ebca8bd785348ea265e78526a21a8cf" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.3</block>
-  <block id="74a65f1f314f1477d77a061875f8e976" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.3 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="505f24ab9736799ecc985bb9732c1386" category="paragraph">您可以使用 Rocky Linux 9.3 的多路徑來管理 ONTAP LUN。</block>
   <block id="f1c5e93b02cb69209200bb18dd6c3fce" category="paragraph">適用於具有 ONTAP 儲存的 FCP 和 iSCSI 的 Rocky Linux 9.3 版本有下列已知問題：</block>
-  <block id="a69da5ead0dfdf6b2f7d873000f30065" category="summary">在 Rocky Linux 9.4 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="867a3c3b3a78822b79f9e274bd05645b" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.4</block>
-  <block id="4903eef42b7e47b3e075d363a1c038ca" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="da56ef3d8d73918e1ec023d3cccd7660" category="paragraph">您可以使用 Rocky Linux 9.4 的多路徑來管理 ONTAP LUN。</block>
-  <block id="0283c230872ee0538d0b3c23d992b395" category="summary">在 Rocky Linux 9.5 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="b28624e5c1d5f27d9bb572967555b42b" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.5</block>
-  <block id="9c295b02084a33345278a5faf4e5c992" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.5 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="60d78a670282f7a61eae67f19d440c37" category="paragraph">您可以使用 Rocky Linux 9.5 的多路徑來管理 ONTAP LUN。</block>
-  <block id="59ad3bdbbd45712662a5fecfe7774929" category="summary">在 Rocky Linux 9.6 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="b4d05655be91566f9bc3cf128c212819" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.6</block>
-  <block id="a2b75a7ad4a5886f1d32d9dccadcf773" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.6 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="ecb4bd3c426003f3430e774eac3ce2f6" category="paragraph">您可以使用 Rocky Linux 9.6 的多路徑來管理 ONTAP LUN。</block>
   <block id="73f17c790fb6e615fc4015f793dd7853" category="summary">如何使用 ONTAP 儲存為 Rocky Linux 10 設定 NVMe-oF 主機</block>
   <block id="95d56a95c4a46cb4d634d496d6e9b039" category="doc">使用 ONTAP 儲存為 NVMe-oF 設定 Rocky Linux 10</block>
@@ -3964,4 +3672,253 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e02248ab51c300e9606fb5813ed1ca78" category="doc">為 ONTAP 儲存配置 CentOS 8.5 的 FCP 和 iSCSI</block>
   <block id="9a9d47d430bc0ccaf329d88297d4948c" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 CentOS 8.5 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="67280eacf99cd3591c58a61aba24967f" category="paragraph">您可以使用 CentOS 8.5 的多路徑來管理 ONTAP LUN。</block>
+  <block id="ec2b69a90d4ad7c0b52ee36206d73d00" category="paragraph">根據您的配置，選擇 UEK 3 或 UEK 4 標籤。</block>
+  <block id="cc8b422ca0fb64a2e3dca2a58a9fbd5a" category="open-title">UEK 3</block>
+  <block id="cd63b2a656064944e61df028e283858e" category="paragraph">啟用和停用 ALUA 的 Oracle Linux UEK 3 設定都會自動更新。設定更新後，您需要啟用「ALUA 處理程序」：</block>
+  <block id="886f99c5fcfd8854183a6225b4c60133" category="list-text">將以下參數值附加到核心以使 ALUA 和非 ALUA 正常工作：</block>
+  <block id="27db7405166029a1f86b33674f8f6427" category="list-text">重新建立 initrd 映像：</block>
+  <block id="797d7c769a6ede56bea7336cfa2b35b1" category="list-text">查看<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>命令來驗證設定是否完成。</block>
+  <block id="4409363a45cfa288ed524d4f0dc52e3e" category="open-title">UEK 4</block>
+  <block id="5dd29161b38ded1b0182c73e6e601911" category="paragraph">對於 Oracle Linux UEK 4，驗證<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案已定義，並且已為您的 ONTAP LUN 設定了 NetApp 建議的設定。</block>
+  <block id="3bdb7006bc10348c455a69d6d21f1f08" category="paragraph">預設多路徑參數支援AFF和FAS配置。在這些組態中，單一 ONTAP LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間導致路徑問題。</block>
+  <block id="702585b74cd8e66c02a1414878b2ad93" category="paragraph">以下範例輸出顯示了具有兩個主動/最佳化路徑和兩個主動/非最佳化路徑的 AFF 或 FAS 配置中 ONTAP LUN 的正確參數設定和路徑狀態：</block>
+  <block id="8238c178b375772de481394e0541d723" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.10</block>
+  <block id="c2825dfc27bd2327c364381067ba6b5e" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.10 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="b7b748e9ac018cd64b536573e8b56137" category="paragraph">您可以在 Oracle Linux 8.10 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="549576fc3d040915bc1d736a8d302e70" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.10 的建議設置</block>
+  <block id="60acb8ab223c20a531ca67714ea46156" category="admonition">您可以使用<block ref="7086a0e9ea9060060de9931b9f626ca1" category="inline-link-macro-rx"></block>為 Oracle Linux 8.10 配置 Red Hat 相容核心。</block>
+  <block id="3a311013ebf6c1f20ecdfaddec95bac3" category="summary">在 RHEL 9.6 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="1c7d17bc7c1ded98c5fa5864d2adc78b" category="summary">在 Rocky Linux 10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="31f66dd0901349520fbfd979a57834c5" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 10 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="9de6a58a42e3c57aa7665ee2c2c7a0e5" category="summary">在 Rocky Linux 8.10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="940dbdef24a6bd2c45f673a1a3171985" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.10 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="0e67c5c5146ddcf6fde33ac9bea5c54d" category="summary">在 Rocky Linux 8.4 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="d4bbec1281b5fdb00fbd378e65e7c338" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="c4dd8bc9f9264d443603e258ed786748" category="summary">在 Rocky Linux 8.5 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="25a5a44555c4132ffc762b6318c7ebfd" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.5 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="1e8e5607f85f82c227dccfed9d0ca73d" category="summary">在 Rocky Linux 8.6 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="287eb2de37a791f38ea38ea4d61aab8b" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.6 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="3007c123f6c414105c501aa4e298181e" category="summary">在 Rocky Linux 8.7 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="269d95d9dee55d057f9502a5e29001db" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.7 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="aa1e660ee3ff4148c32ae4196ccef9aa" category="summary">在 Rocky Linux 8.8 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="eefa61e90345b0ff344017d92441c737" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.8 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="c6bb155a07205e396a4766a9eb3ed2a1" category="summary">在 Rocky Linux 8.9 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="e0cc26052c2f93d04fc7c38d186481f9" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 8.9 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="25a10d01f13e5f3914655216c35f5263" category="summary">在 Rocky Linux 9.0 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="8156c1e6d9467dd53746b20a5e8bf9ff" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.0 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="0b3ab7652684a395a25cee9112d56b74" category="summary">在 Rocky Linux 9.1 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="07ab2188d56279f80ec398b9cc44c6a3" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.1 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="fc0c29880c3c5b0307d6cc1b2d71d94b" category="summary">在 Rocky Linux 9.2 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="e079e342c978c592dc7d0e3a5b23a801" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.2 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="579129cd946473e9e586f5e3f5ce83e9" category="summary">在 Rocky Linux 9.3 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="eb52ea4dd9b17e5bcab3bb6e5fd295a5" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.3 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="6f46e4695ce3e0caf1363d71e09fbf18" category="summary">在 Rocky Linux 9.4 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="af528926e51a5435bfc5ad7e4cc497b4" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="8dde410fe326735107ffb3699e018e38" category="summary">在 Rocky Linux 9.5 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="53a6609840c8a368980f308107801253" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.5 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="9c30dd57a87df3d1297a2eb2a0359510" category="summary">在 Rocky Linux 9.6 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="7593795b02b0a4db0c3803d5aa395b63" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 9.6 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="06bee3156fdb14564c410b4498b097cb" category="summary">在 Oracle Linux 7.0 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="b6723505a37d0b64b9b52432313b8852" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.0</block>
+  <block id="c98016ceb7330c62da586826bc6e84a9" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 7.0 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="f11e8a65ee4d8f512c6910535126b064" category="paragraph">您可以在 Oracle Linux 7.0 中使用多重路徑來管理 ONTAP LUN 。Oracle Linux 7.0支援Unbreakable Enterprise Kernel（UEK）R3和UEK R4。作業系統預設使用 UEK R3 核心啟動</block>
+  <block id="0a627dc7670881f913f0e4a165b6bb46" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 7.0 的建議設置</block>
+  <block id="344a00417c7ae747fe1e1f05157b268a" category="admonition">您可以使用<block ref="e59ed221f87ba2a8cc499ac766b44342" category="inline-link-macro-rx"></block>為 Oracle Linux 7.0 配置 Red Hat 相容核心。</block>
+  <block id="ff2c93098bc2ed77e4400db37641ab6d" category="paragraph">帶有 ONTAP 儲存的 Oracle Linux 7.0 主機有以下已知問題：</block>
+  <block id="6456e9f56b06969f146b1d1619338d4b" category="summary">在 Oracle Linux 7.1 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="4f8fe8e066f9b3399a0c008c020475e0" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.1</block>
+  <block id="2e0c9484f52170f0e7cb55566ac20685" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 7.1 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="6c228ee909d31f7bcd007e9ed4649a71" category="paragraph">您可以在 Oracle Linux 7.1 中使用多重路徑來管理 ONTAP LUN 。Oracle Linux 7.1支援Unbreakable Enterprise Kernel（UEK）R3和UEK R4。作業系統預設會以UEK R3核心開機。</block>
+  <block id="87c4bb6a09c350b4e58e1fc614d57260" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 7.1 的建議設置</block>
+  <block id="67c538bb4f8a4ac7edf43176b308c7d5" category="admonition">您可以使用<block ref="5aae1127186c8a731e4f3f6ff6b462de" category="inline-link-macro-rx"></block>為 Oracle Linux 7.1 配置 Red Hat 相容核心。</block>
+  <block id="659d61ee85a168a0b75815e1dfd94f57" category="summary">在 Oracle Linux 7.2 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="5fb9e5411853fa828e64a72e70e384d6" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.2</block>
+  <block id="2eb3858da2328dcd865224d255f4a2b6" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 7.2 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="e25fc8d95e1dad63b4cfa1ec35e2ef55" category="paragraph">您可以在 Oracle Linux 7.2 中使用多重路徑來管理 ONTAP LUN 。Oracle Linux 7.2支援Unbreakable Enterprise Kernel（UEK）R3和UEK R4。作業系統預設使用 UEK R3 核心啟動</block>
+  <block id="21ad379836594c32fa9b55f462aa5a46" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 7.2 的建議設置</block>
+  <block id="2ee2e29c89c2fdebfe01f51a415ac0c9" category="admonition">您可以使用<block ref="367c3a0ce216d0240c944dddcf10cbf2" category="inline-link-macro-rx"></block>為 Oracle Linux 7.2 配置 Red Hat 相容核心。</block>
+  <block id="d9f78e876a2523bc7073d4bbf71a4717" category="summary">在 Oracle Linux 7.3 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="d3ca13fd42b07e8c829e0fec66c524dc" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.3</block>
+  <block id="8582efddebf5254a9b805a19482606a5" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 7.3 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="22475f552f79d61b9706b2155e686196" category="paragraph">您可以在 Oracle Linux 7.3 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="f7172e0ad01f6ca6fe7ea08f533242bb" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 7.3 的建議設置</block>
+  <block id="5eca29f114745b63b4b5ee4f36ec3983" category="admonition">您可以使用<block ref="6f9f271fbb5ffd2941f925190387cb1a" category="inline-link-macro-rx"></block>為 Oracle Linux 7.3 配置 Red Hat 相容核心。</block>
+  <block id="447e6759bea11b1141bc5c9e6cb4f050" category="summary">在 Oracle Linux 7.4 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="1feef37e8a256ccf657fd1e42d5f3dd0" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.4</block>
+  <block id="c86736cc38790c001659ab8f946c4e97" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 7.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="c7bba878361a729749e031736babdfe6" category="paragraph">您可以在 Oracle Linux 7.4 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="97b4b704bbdef60360c0078084bbf4a6" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 7.4 的建議設置</block>
+  <block id="60d6ee65ece18cf54d1efd1b3f89446f" category="admonition">您可以使用<block ref="289c5c407494866cd4b35ae1a329141a" category="inline-link-macro-rx"></block>為 Oracle Linux 7.4 配置 Red Hat 相容核心。</block>
+  <block id="857efccb3475eedc0c42537e2fcb83fd" category="paragraph">帶有 ONTAP 儲存的 Oracle Linux 7.4 主機有以下已知問題：</block>
+  <block id="60af987a6adfd89406c3413fa50e22b9" category="summary">在 Oracle Linux 7.5 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="d8d8e25f0cce2948aabb266c40a056d5" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.5</block>
+  <block id="7425f582fb982552925c458bcb876ff4" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 7.5 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="32604d53bcfecd53b3bb540875839b7b" category="paragraph">您可以在 Oracle Linux 7.5 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="63a37003209dc4e3bdb571cad5190876" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 7.5 的建議設置</block>
+  <block id="fba44d628a255dec883dc655d32a5c69" category="admonition">您可以使用<block ref="9b87ea4933c70a4cf4affde4b5d07098" category="inline-link-macro-rx"></block>為 Oracle Linux 7.5 配置 Red Hat 相容核心。</block>
+  <block id="fea9fa46f29f13cf5cb3e402c1d1a215" category="paragraph">帶有 ONTAP 儲存的 Oracle Linux 7.5 主機有以下已知問題：</block>
+  <block id="41a95b9a3cfa82bfee49e88f1a91bdd0" category="summary">在 Oracle Linux 7.6 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="925f8f737aef8e7e29fd1fd38527ee03" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.6</block>
+  <block id="d76c4aa2502462093072b91689ae0476" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 7.6 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="5e168086ac16161a42f57182b64a2991" category="paragraph">您可以在 Oracle Linux 7.6 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="f1d9dc7ca279cc11e699d2e7d8b8670d" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 7.6 的建議設置</block>
+  <block id="58e45da6ae9fabff94304160e2d04d12" category="admonition">您可以使用<block ref="97426b5175e08cbde827bdff11077444" category="inline-link-macro-rx"></block>為 Oracle Linux 7.6 配置 Red Hat 相容核心。</block>
+  <block id="bc94594feb59b2985db10baa434c4915" category="paragraph">帶有 ONTAP 儲存的 Oracle Linux 7.6 主機有以下已知問題：</block>
+  <block id="f0ae242773ac25e0299d1f19e2c02e46" category="summary">在 Oracle Linux 7.7 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="528b1953178443d52e91dba7d4912c42" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.7</block>
+  <block id="e2f7f52cc3a0f9de37f72ec92928ad54" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 7.7 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="1e39745910fe016521b2b1af6e1c7044" category="paragraph">您可以在 Oracle Linux 7.7 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="2dcaea3be2feb02d0a5326fea60c82c8" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 7.7 的建議設置</block>
+  <block id="c6eb671420d82d9f7e581a17b2b84e89" category="admonition">您可以使用<block ref="c3375b9f8e1e93422b8b2f39da68ba9a" category="inline-link-macro-rx"></block>為 Oracle Linux 7.7 配置 Red Hat 相容核心。</block>
+  <block id="2f5b4e3c6423a2dab85060145af5c0d4" category="paragraph">帶有 ONTAP 儲存的 Oracle Linux 7.7 主機有以下已知問題：</block>
+  <block id="17af8dcc16bd2d1729d53400bbe137ec" category="summary">在 Oracle Linux 7.8 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="1cf0da8f840e8f75a66b3161228c2c56" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.8</block>
+  <block id="2a3953ddb3e3c25e07f071aebdd96eae" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 7.8 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="dc4d92b823b5ab1ed756f433899dd228" category="paragraph">您可以在 Oracle Linux 7.8 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="391e0c3366ff1c5390bf1a87b3069793" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 7.8 的建議設置</block>
+  <block id="d33df830aa7d9debdd25832fbf3c591b" category="admonition">您可以使用<block ref="546d16e6b2676ba15683358a4d5a8268" category="inline-link-macro-rx"></block>為 Oracle Linux 7.8 配置 Red Hat 相容核心。</block>
+  <block id="49bc285aef23a71bacd48919a2e7f500" category="paragraph">帶有 ONTAP 儲存的 Oracle Linux 7.8 主機有以下已知問題：</block>
+  <block id="1cba5f48cb37ac7a44c8cdc05a1d2bf3" category="summary">在 Oracle Linux 7.9 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="f6e4752ee0d5cabe608a533393584ad2" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.9</block>
+  <block id="468c5ba2511c159dfe38fb8cbe6d4355" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 7.9 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="4f7d9a40817444cd028f405e140262b6" category="paragraph">您可以在 Oracle Linux 7.9 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="35571988552b93433dd9185ea0c1ca22" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 7.9 的建議設置</block>
+  <block id="20583a975c87e103781e8c8c43404f2e" category="admonition">您可以使用<block ref="17e9fe7ec973757c89c438e3bb4550f7" category="inline-link-macro-rx"></block>為 Oracle Linux 7.9 配置 Red Hat 相容核心。</block>
+  <block id="12f506f1dd3100eb63869051d94173e5" category="paragraph">帶有 ONTAP 儲存的 Oracle Linux 7.9 主機有以下已知問題：</block>
+  <block id="f4bcd6c3c7541be6d9c282cde07d6723" category="summary">在 Oracle Linux 8.0 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="999c2d7f3e32b0b9cbe0bcbeddff7a9f" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.0</block>
+  <block id="c56f0e294aa580d31cbb782a9104723c" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.0 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="323f2cd9192132c239f64b511a199e2d" category="paragraph">您可以在 Oracle Linux 8.0 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="88ed21531e184a33c15a4ea8d2829c39" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.0 的建議設置</block>
+  <block id="92183432ba044f2cc8e8ba2dda2713a7" category="admonition">您可以使用<block ref="6ba9406ca5c999684fe0553c71d5d7b5" category="inline-link-macro-rx"></block>為 Oracle Linux 8.0 配置 Red Hat 相容核心。</block>
+  <block id="6ac71c03546fbda1a1039c1c984b8da6" category="summary">在 Oracle Linux 8.1 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="9024d2f866ceedca4b1e5a9938311f4a" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.1</block>
+  <block id="69365da14b07be32df64d6c95613fbcd" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.1 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="7fe5035ce819c0ab51d0c59cc3e5d236" category="paragraph">您可以在 Oracle Linux 8.1 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="7bfec256b1647d210a22e6f870efa0ab" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.1 的建議設置</block>
+  <block id="72731823f1e3d559e16968860e64efbf" category="admonition">您可以使用<block ref="9458f794078e6df38bc9810d6888abda" category="inline-link-macro-rx"></block>為 Oracle Linux 8.1 配置 Red Hat 相容核心。</block>
+  <block id="55c9a966d6ca502c6b79622041cf2939" category="summary">在 Oracle Linux 8.2 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="190adfad8ab7e877ebccb8281291cd42" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.2</block>
+  <block id="2be5b19cea489c99c4a7b8bb0502bbba" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.2 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="bb45f9344c4b74b61923dd13350e8f0f" category="paragraph">您可以在 Oracle Linux 8.2 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="89ef4cb32878dd86644de584c5d8897a" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.2 的建議設置</block>
+  <block id="e49fb616246ddfd9e32fa98fd9de8849" category="admonition">您可以使用<block ref="954b7531a89381d9600f0d408641b8a5" category="inline-link-macro-rx"></block>為 Oracle Linux 8.2 配置 Red Hat 相容核心。</block>
+  <block id="630a90caa51b275aadc6fb8d7336911c" category="summary">在 Oracle Linux 8.3 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="7d47a9147a495e1864fbdb7fd149037d" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.3</block>
+  <block id="b6f02c50ac71efd57c806519a03ebd1d" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.3 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="9b90c5a4ab32e64460a8ed2de1985099" category="paragraph">您可以在 Oracle Linux 8.3 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="e24bfcfcb24d6491f58f36b878938409" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.3 的建議設置</block>
+  <block id="fc206a9921229da86f708c669b2141ca" category="admonition">您可以使用<block ref="7802643199848d9d64693a4babc7bd01" category="inline-link-macro-rx"></block>為 Oracle Linux 8.3 配置 Red Hat 相容核心。</block>
+  <block id="44a6cff586d9269de8b12455aeb0a112" category="summary">在 Oracle Linux 8.4 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="d3108768c1dfefc33deca58c739d30c3" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.4</block>
+  <block id="3a38c5ee61825ca94e533ec33699a59d" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="77be5193b45443f626a6e9d6213e952e" category="paragraph">您可以在 Oracle Linux 8.4 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="7ad5aca208b3c1c1cc1ff0b6e6a16c63" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.4 的建議設置</block>
+  <block id="896dc3ea0f496b1b5710d0b53c0b636a" category="admonition">您可以使用<block ref="15e6093c22e127a52279418a3e5bc8b6" category="inline-link-macro-rx"></block>為 Oracle Linux 8.4 配置 Red Hat 相容核心。</block>
+  <block id="fbd5b9e649c3698241d4b6800ae0fe60" category="summary">在 Oracle Linux 8.5 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="8b9500eb6c9bc5e4ac9f65df73abd989" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.5</block>
+  <block id="fbcd69d658f296d0bf5ed662800df424" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.5 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="3c2421af95a3bb7493f20f472559aac1" category="paragraph">您可以在 Oracle Linux 8.5 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="741acf4433b7c0ec7f431dd6a4c4e436" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.5 的建議設置</block>
+  <block id="8d1699f53aba828c2280688e53e94624" category="admonition">您可以使用<block ref="43f96c8c9a15f4ce1aed7298a0c6f935" category="inline-link-macro-rx"></block>為 Oracle Linux 8.5 配置 Red Hat 相容核心。</block>
+  <block id="eff9480fa02c45b284d9f5c06d2b75b5" category="admonition">有關 Oracle Linux RHCK 已知問題，請參閱<block ref="b5087b96e856dc400373808e0f627382" category="inline-link-macro-rx"></block>對應 Red Hat Enterprise Linux 版本文件中的一節。</block>
+  <block id="1faa4c9a4e6df3a50c93f963648b0d50" category="summary">在 Oracle Linux 8.6 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="f2bde696f4c7971cb30d43a050f48b4c" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.6</block>
+  <block id="d9688598a5f2bec2d86b0da5b38fa08a" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.6 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="2f444e2f177610181d23bd08556bd757" category="paragraph">您可以在 Oracle Linux 8.6 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="8f32564246bc85e70f3e69d4ff3a9359" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.6 的建議設置</block>
+  <block id="a0fd4ce4db3c3952f004c83659fce9de" category="admonition">您可以使用<block ref="3eda1f30fb1f3351abbe8e250d644d69" category="inline-link-macro-rx"></block>為 Oracle Linux 8.6 配置 Red Hat 相容核心。</block>
+  <block id="664e738de6712fad20d04bcf79163631" category="summary">在 Oracle Linux 8.7 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="2d180b6dc38a31feb28d0ab49f6ce6ee" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.7</block>
+  <block id="9304d74280c78e740caec4f6d8b1b9a7" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.7 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="64ecd5ad8670d83781adfdcb4b80e656" category="paragraph">您可以在 Oracle Linux 8.7 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="2909b1b949392d9235332140bbba66fe" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.7 的建議設置</block>
+  <block id="71617e870174075e2c02ea3cccc6cfc4" category="admonition">您可以使用<block ref="ebb179218a7cbfdfab41605a99aee705" category="inline-link-macro-rx"></block>為 Oracle Linux 8.7 配置 Red Hat 相容核心。</block>
+  <block id="21978a3489c0b5d43302041f17083056" category="summary">在 Oracle Linux 8.8 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="9cbeccbe659564cf8219a777b8f6dfd3" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.8</block>
+  <block id="9f04c93ad496d279c6eac8641d8b8d86" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.8 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="4577b6c859e73f4060b9b953b04d4c65" category="paragraph">您可以在 Oracle Linux 8.8 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="e73a684d695c31e67ef0b8b5a236a0e2" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.8 的建議設置</block>
+  <block id="fd9d56be5ddabf3369dab595b5bb77f1" category="admonition">您可以使用<block ref="f5289092bdacf8e5660354ca5bb62175" category="inline-link-macro-rx"></block>為 Oracle Linux 8.8 配置 Red Hat 相容核心。</block>
+  <block id="f693fe696a7ffc6e4ddf210fc76fb211" category="summary">在 Oracle Linux 8.9 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="7a308264a2a40d2d5c59db748e8b82ae" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 8.9</block>
+  <block id="ac4e8c957289ced36307ad07180d6271" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 8.9 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="c54d216bdb777fbfac640d8cf091f4d6" category="paragraph">您可以在 Oracle Linux 8.9 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="6fb8e696dc9ee7ed46ac08306ba43f80" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 8.9 的建議設置</block>
+  <block id="38bc1f301461bf3be0a04f927b4e1629" category="admonition">您可以使用<block ref="eaa2d700d33bb0123f5f87bdd9ab14c3" category="inline-link-macro-rx"></block>為 Oracle Linux 8.9 配置 Red Hat 相容核心。</block>
+  <block id="875420c4aaecbc5462859e27358abc1f" category="summary">在 Oracle Linux 9.0 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="2bd7ff2cb28220ef5bda887b95c8a45f" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 9.0</block>
+  <block id="f321069dcb919f822b3720a4a21af0f2" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 9.0 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="7c6255fe32a6f849aaf4be7f15f42101" category="paragraph">您可以在 Oracle Linux 9.0 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="0fae22e795e31d13bdcb0ce5dddff2bc" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 9.0 的建議設置</block>
+  <block id="be230ec9ee469a11b5bb2bc90badb7b2" category="admonition">您可以使用<block ref="c11e30c25af3deba44f22d48ef505c5a" category="inline-link-macro-rx"></block>為 Oracle Linux 9.0 配置 Red Hat 相容核心。</block>
+  <block id="8a9a549a5ac4c5ba672f6f33e98bf192" category="paragraph">具有 NetApp ONTAP 儲存版本的 Oracle Linux 9.0 有以下已知問題：</block>
+  <block id="d354ccb72b4befdaa9bded283f6a70d7" category="summary">在 Oracle Linux 9.1 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="42632891659ec1108b91004839ba9b01" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 9.1</block>
+  <block id="c60fe2b0db6f39c490c1bb15f1c8c495" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 9.1 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="607afbb3343d4563954472cda3a9e5ca" category="paragraph">您可以在 Oracle Linux 9.1 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="65abd2be53d3ecb608d65f39457db6da" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 9.1 的建議設置</block>
+  <block id="4c685549dfc0191a5bdc7610293c5588" category="admonition">您可以使用<block ref="58989c0f01862f7e4717a3d2b1366b08" category="inline-link-macro-rx"></block>為 Oracle Linux 9.1 配置 Red Hat 相容核心。</block>
+  <block id="9637ad37da87c8c7e4d5b540ee138e73" category="paragraph">具有 NetApp ONTAP 儲存版本的 Oracle Linux 9.1 有以下已知問題：</block>
+  <block id="476b8a16251f248a688e7924db177862" category="summary">在 Oracle Linux 9.2 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="30ed664de994b71e7525ba6f6c902563" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 9.2</block>
+  <block id="8edfcdb845758f26a2fd2a4cbf9aec00" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 9.2 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="f71fbfb80260e3fab763ce416d0d6d19" category="paragraph">您可以在 Oracle Linux 9.2 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="17771eb5ab663bfed538d65f9f99e0f7" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 9.2 的建議設置</block>
+  <block id="70a54cf7fe733790e0037214778b3459" category="admonition">您可以使用<block ref="f2d21c4ecb47af696707024264eae196" category="inline-link-macro-rx"></block>為 Oracle Linux 9.2 配置 Red Hat 相容核心。</block>
+  <block id="81d78d444b07786f14a47d5a5111c349" category="paragraph">帶有 ONTAP 儲存版本的 Oracle Linux 9.2 有以下已知問題：</block>
+  <block id="3dd87c405d16607cdaa8a3f9f712899a" category="summary">在 Oracle Linux 9.3 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="7c8da9a97d487e3060ac0c47961859bc" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 9.3</block>
+  <block id="b4144bfeaae1a9ce5ec07d19ae2427bb" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 9.3 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="32d641b42127d469c3425ab0b2007107" category="paragraph">您可以在 Oracle Linux 9.3 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="60790ee4071450fad1962ab68985f2fe" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 9.3 的建議設置</block>
+  <block id="897dd847b13f3001343cf4230c9893ff" category="admonition">您可以使用<block ref="347ca057c68a3fb73d8f480257c79c3e" category="inline-link-macro-rx"></block>為 Oracle Linux 9.3 配置 Red Hat 相容核心。</block>
+  <block id="2d266628c7cea26615c2561109e09839" category="paragraph">帶有 ONTAP 儲存版本的 Oracle Linux 9.3 有以下已知問題：</block>
+  <block id="7b232deb8f2c35e2b2f6fd16538dbcc2" category="summary">在 Oracle Linux 9.4 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="094e7831fc26720037e87e60e6196da0" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 9.4</block>
+  <block id="e4a3bcf5c2bc9cf708fa6d9fa7c44e82" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 9.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="694d1c1ba05dbcdc2c9d22f0e29b61c0" category="paragraph">您可以在 Oracle Linux 9.4 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="a5d0a1dbb7e8becb503c30856b792961" category="inline-link-macro">Red Hat Enterprise Linux (RHEL) 9.4 的建議設置</block>
+  <block id="da3fe49f381d8829027708653dbdd505" category="admonition">您可以使用<block ref="4fb05e42f065e4749fd8345707426b42" category="inline-link-macro-rx"></block>為 Oracle Linux 9.4 配置 Red Hat 相容核心。</block>
+  <block id="3e2ae734ca739ef2f098df9b39b981e1" category="summary">在 RHEL 10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="f81b596fa05185bc389b5d37043c9987" category="summary">在 RHEL 7.0 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="616f42b9d1cf230290811cbb3daaf2b2" category="summary">在 RHEL 7.1 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="0100c79208916b122fa3c6a115562118" category="summary">在 RHEL 7.2 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="9b61c034fbfad4ceea9ef6b8fe7c3cd2" category="summary">在 RHEL 7.3 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="aaeb5ffaaea47e55f6373257b1191aaf" category="summary">在 RHEL 7.4 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="cc64fe5ff3373bcd6b454373e2ea7601" category="summary">在 RHEL 7.5 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="5f88db38a580ac6bd80c3a353df0fff7" category="summary">在 RHEL 7.6 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="9874504d4668432b051678d515b18231" category="summary">在 RHEL 7.7 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="6dce2c0b1e66005b92a8131b37bc2ca6" category="summary">在 RHEL 7.8 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="0b088c29cf019a622aef2e06a8707d14" category="summary">在 RHEL 7.9 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="45c71bf7384985f5f5af1802a83e4685" category="summary">在 RHEL 8.0 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="c2d713e00b7e7515ab6fa4c6035403d2" category="summary">在 RHEL 8.1 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="bed0d3eccee475c03bc42b1ee17e1f97" category="summary">在 RHEL 8.10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="d78464055ada1cb03ec0e4b60d8ad602" category="summary">在 RHEL 8.2 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="f5459704c79f1392099694412b65aac8" category="summary">在 RHEL 8.3 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="8e6f7d7844d206667d227497de2891f9" category="summary">在 RHEL 8.4 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="cc425ef1f044032e3a8ed63530a21fdd" category="summary">在 RHEL 8.5 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="4c212408477e7c559f508d6aea056745" category="summary">在 RHEL 8.6 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="1bc24ea3deb61c23fd75b8ff892f79f6" category="summary">在 RHEL 8.7 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="8f7af92f5abef1a7a9c609f0f6ad1ffc" category="summary">在 RHEL 8.8 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="8dc97cd9fe18cd1a66b3b7ca13309ba5" category="summary">在 RHEL 8.9 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="c7210b31d3ea1977f3b29aac307c644f" category="summary">在 RHEL 9.0 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="ca5a493f7dbb4408a3ba652d86bfc61c" category="summary">在 RHEL 9.1 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="d6fc37d1252e76096c0bfd2d82ea104f" category="summary">在 RHEL 9.2 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="94e561f64c69455b466b0872f3c13a83" category="summary">在 RHEL 9.3 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="8aeb3a578ecd62aa83719e552c7878b9" category="summary">在 RHEL 9.4 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="2b0a80ebba707c31bf7f1f481aa82a6c" category="summary">在 RHEL 9.5 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="a5b922e7d189ddfd380722cbad08b7f3" category="summary">在 SUSE Linux Enterprise Server 12 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定作業。</block>
+  <block id="a6714f6a5c15e6b53cac3b72ca626587" category="summary">在 SUSE Linux Enterprise Server 12 SP1 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="4e00c4c72dba50d94956ab89b937145e" category="summary">在 SUSE Linux Enterprise Server 12 SP2 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="94dc6201856e91e2db374fc0be05514a" category="summary">在 SUSE Linux Enterprise Server 12 SP3 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="0f55f1c828d7228be745c9d52c08c612" category="summary">在 SUSE Linux Enterprise Server 12 SP4 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="7524604f05c4cb312f8b4368134ca71b" category="summary">在 SUSE Linux Enterprise Server 12 SP5 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="c491c0fa9e897041d3b9f0df2a0a2764" category="summary">在 SUSE Linux Enterprise Server 15 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定作業。</block>
+  <block id="b3db0e5cfa4855c059a52c62fc4d634b" category="summary">在 SUSE Linux Enterprise Server 15 SP1 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="98b2d843bd6c0f759f7277db27879a37" category="summary">在 SUSE Linux Enterprise Server 15 SP2 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="96149fde5d594cfca173dadf77245d79" category="summary">在 SUSE Linux Enterprise Server 15 SP3 上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="00657f2ca90f779d20eb517b9f9c3769" category="summary">在 SUSE Linux Enterprise Server 15 SP4 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="ca7194f14c6027a9f97c1cdabdf5ca5d" category="summary">在 SUSE Linux Enterprise Server 15 SP5 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="d53d88d1a12ba669b0ee9217bd940b4b" category="summary">在 SUSE Linux Enterprise Server 15 SP6 上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
 </blocks>
