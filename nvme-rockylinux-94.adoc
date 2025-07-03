@@ -163,6 +163,8 @@ NOTE: 如果是 `hostnqn` 字串不相符、請使用 `vserver modify` 命令來
 [role="tabbed-block"]
 ====
 .Broadcom / Emulex
+為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
+
 --
 .步驟
 . 確認您使用的是支援的介面卡機型：
@@ -792,8 +794,7 @@ src_addr=192.168.1.31 *live non-optimized*
 --
 ====
 . 驗證NetApp外掛程式是否顯示每ONTAP 個版本名稱空間裝置的正確值：
-
-
++
 [role="tabbed-block"]
 ====
 .欄位
@@ -847,6 +848,8 @@ nvme netapp ontapdevices -o json
 =====
 --
 ====
+
+
 
 
 == 步驟 7 ：檢閱已知問題

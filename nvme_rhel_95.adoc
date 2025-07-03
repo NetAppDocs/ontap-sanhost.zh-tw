@@ -154,6 +154,8 @@ NOTE: 如果是 `hostnqn` 字串不相符、請使用 `vserver modify` 命令來
 ====
 .Broadcom / Emulex
 --
+為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
+
 .步驟
 . 確認您使用的是支援的介面卡機型：
 +

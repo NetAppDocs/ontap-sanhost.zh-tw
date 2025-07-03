@@ -7,6 +7,8 @@
 [role="tabbed-block"]
 ====
 .Broadcom / Emulex
+為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
+
 --
 .步驟
 . 確認您使用的是支援的介面卡機型：
