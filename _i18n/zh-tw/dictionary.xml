@@ -928,9 +928,6 @@
   <block id="11b4279628bd5bd99185024194584bba" category="sidebar">VMware vSphere 6.5與6.7</block>
   <block id="b1fd823d262032e04291313f72be9452" category="sidebar">HP-UX</block>
   <block id="d5b12213e8526feaa7c520b3b736f9b8" category="sidebar">11i v3</block>
-  <block id="5d6872b10f9cf7c477fcca864540c009" category="sidebar">ol 8.</block>
-  <block id="da4528ec52dd73373d160d41103622f1" category="sidebar">ol 7.</block>
-  <block id="1477da5eaee91f44697613216e70a676" category="sidebar">ol 6.</block>
   <block id="d413bda6687be2c7d50d2c76e62fc60f" category="sidebar">RHEL 8</block>
   <block id="845e85fa64a2d6037055beba19fe0bd8" category="sidebar">8.5</block>
   <block id="acfb4fbe1ed02bf6b4487b4fcd0ef690" category="sidebar">RHEL 7</block>
@@ -1242,7 +1239,6 @@
   <block id="65427f0cfd42249488837342e79863a2" category="paragraph">設定 Qlogic （ qla2xxx ）詳細記錄的程序與設定 lpfc 詳細記錄的程序不同。</block>
   <block id="2401f6c892699dd24f7fa72c9a39b053" category="open-title">lpfc</block>
   <block id="db9afb1f05f1d6930c84839b76060ccc" category="open-title">qla2xxx</block>
-  <block id="7ad56430e8db8d37194a3ee41cf45911" category="sidebar">ol 9.</block>
   <block id="6faca8b2572cd22ef1b619e4be0a8165" category="paragraph">NVMe / TCP 沒有自動連線功能。因此、如果某個路徑發生故障、且在 10 分鐘的預設逾時期間內未恢復、則 NVMe / TCP 無法自動重新連線。若要避免逾時、您應該將容錯移轉事件的重試期間設為至少 30 分鐘。</block>
   <block id="6136261711c49bf0e8e1dcb22a2c524f" category="cell">不適用</block>
   <block id="c49c2dee17bca0bb7b37e30a531ae56e" category="cell">由安裝程式用來設定 HBA 參數。</block>
@@ -2212,7 +2208,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="b9878305790c185df1d9210983c79621" category="paragraph">RHEL 9.2 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="8677aa1aa4fd519ff6f08a97a120426f" category="paragraph">RHEL 9.3 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="35a282ef807a49dea44ebc22c4bd955c" category="paragraph">RHEL 9.4 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新修正。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="ffea0a6bb53a365cb75f285c35bf133f" category="admonition">從 RHEL 9.4 開始、 NVMe / TCP 逾時的預設設定<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block>會關閉。這表示重試次數沒有限制（無限期重試）。因此，使用或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項 -l ）時不需要手動配置特定的<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block>超時持續時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。</block>
   <block id="473733802c02f67f489689f787461e62" category="list-text">SUSE Linux Enterprise Server 15 SP1</block>
   <block id="a1e3e223ffe62b0c4daec6746ea79cc8" category="paragraph">SUSE Linux Enterprise Server 15 SP1 主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。</block>
   <block id="197f121a9eabe5a0325431d875ee33dc" category="list-text">NVMe - CLI套件中包含原生的NVMe / FC自動連線指令碼。您可以在 SUSE Linux Enterprise Server 15 SP1 上使用原生收件匣 lpfc 驅動程式。</block>
@@ -2406,16 +2401,13 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="8d7e003d34318d8e9e26f43a6131a1ff" category="paragraph">NVMe 主機組態提供下列支援和功能，適用於配備 ONTAP 儲存設備的 Oracle Linux 9.4 。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
   <block id="d5eb631f33b53d79f1963a09eca1f9b9" category="list-text">除了 NVMe over Fibre Channel （ NVMe / FC ）之外，還支援 NVMe over TCP （ NVMe / TCP ）。原生 NVMe - CLI 套件中的 NetApp 外掛程式會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。</block>
   <block id="5393f0229b7c28049a490e7e149cce98" category="list-text">在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI mpath 裝置設定 dm-multipath ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。</block>
-  <block id="050ba5fff7d58a33e1430ba566c04d30" category="list-text">從 ONTAP 9.12.1 開始， NVMe 開始支援安全頻內驗證。您可以在 Oracle Linux 9.4 中使用 NVMe 的安全頻內驗證</block>
   <block id="26b5a656c86d4a0ae9755158f46fbf98" category="list-text">預設支援 NVMe 命名空間的核心內建 NVMe 多重路徑，因此不需要明確的設定。</block>
   <block id="0e40927283df7781be68d00b8accefe1" category="paragraph">您可以使用下列程序來驗證支援的最低 Oracle Linux 9.4 軟體版本。</block>
   <block id="affce6661ee4cdaf7f19934910191c46" category="list-text">在伺服器上安裝 Oracle Linux 9.4 GA 。安裝完成後、請確認您正在執行指定的 Oracle Linux 9.4 GA 核心。</block>
   <block id="ea950937531f8e9f677ce1e5332a4829" category="list-text">在 Oracle Linux 9.4 主機上，<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>請檢查<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>以下網址的字串：</block>
   <block id="a23683a8828843e30b307af86bb0df14" category="admonition">如果<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串不相符，您可以使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block>命令來更新<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>對應 ONTAP 陣列子系統上的字串，使其與主機上的字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>相符<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>。</block>
   <block id="df755a9bbd0a658abd55399c7b92971c" category="admonition">Oracle Linux 9.4 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="f02fd4ff3e2dcc8c410dab1df215523f" category="admonition">從 Oracle Linux 9.4 開始， NVMe / TCP 的預設設定<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>會關閉，而且不會限制重試次數（無限期重試）。使用或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令時，無需手動配置特定<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>持續時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>（選項 -l ）。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。</block>
   <block id="29246f167e3a779b1e6f616740b06741" category="list-text">驗證 Oracle Liniux 9.4 主機上的下列 NVMe / FC 設定：</block>
-  <block id="ba9f0e4fedc3b09333b29ffd35d901c2" category="paragraph">從 ONTAP 9.12.1 開始，在 Oracle Linux 9.4 主機和 ONTAP 控制器之間，透過 NVMe / TCP 和 NVMe / FC 支援安全頻內驗證。</block>
   <block id="9a8c8fd6ced80cbe4db0d4c4fef7bf6e" category="list-text">為 OL 9.4 主機產生 dhchap 金鑰。</block>
   <block id="d481825a9f6d37ba25450de94597b251" category="paragraph">ONTAP 版本的 Oracle Linux 9.4 沒有已知問題。</block>
   <block id="5dca4677c0eb60175de3486097fb7e31" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.5 的 NVMe 主機</block>
@@ -2423,13 +2415,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="c396639e860651e2d3cd53ecae736ced" category="list-text">除了 NVMe over Fibre Channel （ NVMe / FC ）之外，還支援 NVMe over TCP （ NVMe / TCP ）。原生套件中的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。</block>
   <block id="b1f115278eb622d0e0153250bf01cf4c" category="list-text">從 ONTAP 9.12.1 開始， NVMe 開始支援安全頻內驗證。您可以使用安全的頻內驗證來搭配 RHEL 9.5 使用 NVMe 。</block>
   <block id="3b0bb03e8ddfc0fdfe70ebd97a424add" category="list-text">根據預設， RHEL 9.5 可為 NVMe 命名空間啟用核心內建 NVMe 多重路徑，無需明確設定。</block>
-  <block id="77b17c4b304e4bc88274ebbde24c1c87" category="list-text">支援使用 NVMe / FC 傳輸協定進行 SAN 開機。</block>
   <block id="923d49c871b0aa57758a6ec2690cf467" category="paragraph">您可以使用下列程序來驗證最低支援的 RHEL 9.5 軟體版本。</block>
   <block id="461e7f95e5f2d1eb8ac5995384e12da4" category="list-text">在伺服器上安裝 RHEL 9.5 。安裝完成後、請確認您執行的是指定的 RHEL 9.5 核心：</block>
   <block id="38f6bc852d1bbe27e299d387064a34e3" category="list-text">在 RHEL 9.5 主機上，請檢查 hostnqn 字串，網址為<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="81f52aae1ae4c5a7cdc70ef7d5def232" category="list-text">驗證的預期輸出是否<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block>設置爲<block ref="eccbc87e4b5ce2fe28308fd9f2a7baf3" prefix=" " category="inline-code"></block>：</block>
   <block id="330271c95537a2e849e0052ab0da4ef1" category="admonition">RHEL 9.5 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新修正。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="532893dee0ae71664f412a786619776e" category="admonition">從 RHEL 9.5 開始、 NVMe / TCP 逾時的預設設定<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block>會關閉。這表示重試次數沒有限制（無限期重試）。因此，使用或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項 -l ）時不需要手動配置特定的<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block>超時持續時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。</block>
   <block id="d8133302f3833708e05d2a65a4efe359" category="paragraph">從 ONTAP 9.12.1 開始，在 RHEL 9.5 主機和 ONTAP 控制器之間，透過 NVMe / TCP 和 NVMe / FC 支援安全頻內驗證。</block>
   <block id="710b53594e3ee110c5fc61ba3387e351" category="list-text">為 RHEL 9.5 主機產生 dhchap 金鑰。</block>
   <block id="9e4ea029a49b7e7586107af115c15f41" category="paragraph">在採用 ONTAP 版本的 RHEL 9.5 上， NVMe 主機組態不存在已知問題。</block>
@@ -3324,7 +3314,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="c0cd0678856b67d02b2dfc3c9646fac2" category="paragraph">您可以在 Red Hat Enterprise Linux （ RHEL ） 10 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
   <block id="bf21bd2f7b624998085c3d69986dbe53" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 10 中使用 NVMe/TCP 的安全帶內驗證。</block>
   <block id="4baea929c29e972312029711f923ecc9" category="list-text">從 RHEL 10 開始，本機 NVMe 多路徑始終處於啟用狀態，且不支援 NVMe-oF 的 DM 多路徑支援。</block>
-  <block id="705049d3ff516ba95d2f556556788c5a" category="list-text">避免發布<block ref="de5ac85ea45047f4dbeea79d7b729b7d" prefix=" " category="inline-code"></block>命令，因為它會斷開根檔案系統和資料檔案系統的連接，並可能導致系統不穩定。</block>
   <block id="9ce1ac3eb326fa20a6e4cc846d38ef38" category="list-text">建立 SAN 啟動命名空間並將其對應到主機。</block>
   <block id="20cd59705d89627333024680d966bb16" category="inline-link">配置NVMe儲存設備</block>
   <block id="2ae5f54ecc4375d7e4bc5d4417d72e85" category="paragraph">請參閱。<block ref="0cb485556fb9e40c82f55474b807ef26" category="inline-link-rx"></block></block>
@@ -3349,7 +3338,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="dfeb27de594c744f1f1bc3f70af7fe62" category="paragraph">以下範例顯示了驅動程式和韌體版本：</block>
   <block id="c0dfb3da16b4c34ba6641ab9c5ced78a" category="section-title">步驟 4：可選，啟用 1MB I/O</block>
   <block id="bb209e859372a1cf79b17e0f3ce4b72d" category="section-title">步驟 5：驗證 NVMe 啟動服務</block>
-  <block id="1e39429c019f1be4225017909bd3e504" category="paragraph">使用 RHEL 10， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用這些軟體包。啟動完成後，請驗證這些服務是否已啟用。</block>
   <block id="3f6eafce29d3de48f970b9d611381841" category="section-title">步驟 6：設定 NVMe/TCP</block>
   <block id="dda9e001bef1d21ede41e855ce95f071" category="section-title">步驟 7：驗證 NVMe-oF</block>
   <block id="7ebd106b9b1cfecd3d6fb0451340153e" category="list-text">顯示子系統：</block>
@@ -3375,7 +3363,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="fdee72360607bede29fc52844f306e62" category="paragraph">您可以在 Red Hat Enterprise Linux （ RHEL ） 9.6 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
   <block id="770bddea589c1a8e5b2541551754b4e4" category="list-text">根據預設， RHEL 9.6 可為 NVMe 命名空間啟用核心內建 NVMe 多重路徑，無需明確設定。</block>
   <block id="e118d7e4742cf0454d407a22991c4f23" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 9.6 中使用 NVMe/TCP 的安全帶內驗證。</block>
-  <block id="027d24fe581a1889d6b5752e3886e380" category="list-text">沒有可用的新功能。</block>
   <block id="3b6f23fb41215bfbde13af4b92268902" category="paragraph">使用以下步驟驗證最低支援的 RHEL 9.6 軟體版本。</block>
   <block id="61e91ca529ce5516397f8af4ff223ab0" category="list-text">在伺服器上安裝 RHEL 9.6 。安裝完成後、請確認您執行的是指定的 RHEL 9.6 核心：</block>
   <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">以下範例顯示了 nvme-cli 軟體包版本：</block>
@@ -3449,8 +3436,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="6ea036c9f961aeb2208dfa3070bd3a2c" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 10 軟體版本。</block>
   <block id="d82ff982ee38964fef1789b7031e01e7" category="list-text">在伺服器上安裝 Rocky Linux 10。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 10 核心：</block>
   <block id="e3fbd13dfb8ea61b75afa9bbdecb654e" category="paragraph">以下範例顯示了 Rocky Linux 核心版本：</block>
-  <block id="6dfe623f7c51a70cb79b53affc5b832a" category="paragraph">借助 Rocky Linux 10， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，這些軟體包會自動啟用。啟動完成後，請驗證這些服務是否已啟用。</block>
-  <block id="db8bb9a360dc769d2ef0b970c683b33a" category="admonition">從 Rocky Linux 9.5 開始，NVMe/TCP 的預設設置<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block>超時已關閉。這表示重試次數沒有限制（無限期重試）。因此，使用或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項 -l ）時不需要手動配置特定的<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block>超時持續時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。</block>
   <block id="594486d9bd4257ab1e26ff0ae5a35fed" category="paragraph">從 ONTAP 9.12.1 開始，Rocky Linux 10 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
   <block id="a9c8004e9d1e07204938f2e404aa5aed" category="list-text">為 Rocky Linux 10 主機產生 dhchap 金鑰。</block>
   <block id="222d00f6dedce44fb4277bf5767839a3" category="summary">如何使用 ONTAP 為 Rocky Linux 8.10 設定 NVMe-oF 主機</block>
@@ -3595,12 +3580,10 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4ddb6dd0b1c0f78cd4fe39e69f93616c" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以使用 Rocky Linux 9.6 對 NVMe/TCP 進行安全帶內身份驗證。</block>
   <block id="2f7acc3e67a351a5288af0031f2b39b0" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.6 軟體版本。</block>
   <block id="befda5dfe1dca92c182f569e3a267615" category="list-text">在伺服器上安裝 Rocky Linux 9.6。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.6 核心：</block>
-  <block id="ae084e30a9a39299099ffeeeeb21278e" category="paragraph">使用 Rocky Linux 9.6， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，這些軟體包會自動啟用。啟動完成後，請驗證這些服務是否已啟用。</block>
   <block id="d4454d1f91fdbee65b5b084bbf2c935c" category="paragraph">從 ONTAP 9.12.1 開始，Rocky Linux 9.6 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
   <block id="e5f095ea13bd0114b461048aa3c82608" category="list-text">為 Rocky Linux 9.6 主機產生 dhchap 金鑰。</block>
   <block id="9b26e38834ec2f2df9641c2b954ff579" category="doc">使用 ONTAP 儲存為 NVMe-oF 設定 RHEL 9.5</block>
   <block id="dc5d05edf7eac3cf1cb6e7a130e6f430" category="doc">使用 ONTAP 儲存為 NVMe-oF 設定 RHEL 9.6</block>
-  <block id="e405d2e36dcf9476a789fd5b1938b283" category="paragraph">使用 RHEL 9.6， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用這些軟體包。啟動完成後，請驗證這些服務是否已啟用。</block>
   <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">ONTAP SAN 主機和雲端用戶端</block>
   <block id="fb09e86e3230567e42bbd530bcb5a946" category="sidebar">Rocky Linux</block>
   <block id="1f27018b2bb672b8cdc3ade88964fcd2" category="sidebar">Rocky Linux 10</block>
@@ -3921,4 +3904,49 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="00657f2ca90f779d20eb517b9f9c3769" category="summary">在 SUSE Linux Enterprise Server 15 SP4 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
   <block id="ca7194f14c6027a9f97c1cdabdf5ca5d" category="summary">在 SUSE Linux Enterprise Server 15 SP5 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
   <block id="d53d88d1a12ba669b0ee9217bd940b4b" category="summary">在 SUSE Linux Enterprise Server 15 SP6 上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="338966e2b23b6122da979eca43ad6e4f" category="list-text">重試次數沒有限制（無限重試）。</block>
+  <block id="d403d0cd9e43abcce3cb23b419142aa4" category="list-text">您不需要手動配置特定的<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>使用時長<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>或者<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項 -l ）。</block>
+  <block id="c11a8d4b4a55c4406dbae65b3938c149" category="list-text">如果發生路徑故障，NVMe/TCP 控制器不會逾時，並且會無限期地保持連線。</block>
+  <block id="05d21b34631751308344068ae06d8729" category="admonition">NetApp <block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> NVMe-oF 不支援主機實用程式。您可以使用本機<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>適用於所有 NVMe-oF 傳輸。</block>
+  <block id="3b2a777782651fbf907cef5f12a4c171" category="summary">在 Oracle Linux 9.5 主機上安裝 Linux Host Utilities 以管理使用 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="b4d35ca4f8b0f921f828b460c1057a43" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 9.5</block>
+  <block id="e92c5cbf89310f1e5a4ac5a1344cbe4b" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Oracle Linux 9.5 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="ed8dd92a6dbf20a53daf08d5bea867e1" category="paragraph">您可以在 Oracle Linux 9.5 中使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="eff004a97a3f649dcaaaf3fc93c51266" category="summary">適用於 ONTAP 的 Oracle Linux 9.5 版 NVMe 型主機組態</block>
+  <block id="379e2b5ae5b7c7e267439eb94baea215" category="doc">使用 NVMe-oF 配置 Oracle Linux 9.5 以用於 ONTAP 存儲</block>
+  <block id="ac17418128183e6567213b4eb19b624e" category="paragraph">NVMe 主機組態提供下列支援和功能，適用於配備 ONTAP 儲存設備的 Oracle Linux 9.5 。</block>
+  <block id="da28215a221e368b851dc3287e53bf0d" category="list-text">Oracle Linux 9.5 預設為 NVMe 命名空間啟用核心內 NVMe 多路徑，無需明確設定。</block>
+  <block id="1daee075c9e11e6f5b20b3967c0df0f7" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以使用 Oracle Linux 9.5 對 NVMe/TCP 進行安全帶內身份驗證</block>
+  <block id="1406ed1061bd413045768fa60a774f96" category="list-text">避免發布<block ref="de5ac85ea45047f4dbeea79d7b729b7d" prefix=" " category="inline-code"></block>命令，因為它會斷開根檔案系統和資料檔案系統的連接，並可能導致系統不穩定。</block>
+  <block id="3d8ffc1ce95181376d3df0b672be1eda" category="paragraph">使用以下流程驗證最低支援的 Oracle Linux 9.5 軟體版本。</block>
+  <block id="db6f9dd7f149e36160f14dc375296df9" category="list-text">在伺服器上安裝Oracle Linux 9.5。安裝完成後，驗證您正在執行指定的 Oracle Linux 9.5 核心。</block>
+  <block id="3d461fcebb59cefcba884f7f4189554c" category="paragraph">以下範例顯示了 Oracle Linux 核心版本：</block>
+  <block id="1c6fe8f9564a2897108b9a362f664a00" category="list-text">在 Oracle Linux 9.5 主機上，<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>請檢查<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>以下網址的字串：</block>
+  <block id="941c3de9b4431dee039cdde689dc10a6" category="paragraph">使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 適配器配置 NVMe/FC。</block>
+  <block id="e18c595831de75294a8d5182a3556728" category="paragraph">以下範例顯示了驅動程式和韌體版本：</block>
+  <block id="414c61d9e5c23d4d8f6cfb11c45d77df" category="paragraph">價值<block ref="c4ca4238a0b923820dcc509a6f75849b" prefix=" " category="inline-code"></block>驗證<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block>已設定。</block>
+  <block id="41ffb2c5337c2e9742d41439a2a47824" category="section-title">步驟 4：（可選）為 NVMe/FC 啟用 1MB I/O</block>
+  <block id="833be5ef7e50baab093ee66a7f140d0c" category="paragraph">藉由 Oracle Linux 9.5， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，這些軟體包會自動啟用。</block>
+  <block id="d5a1f1a62cc8cae53fc94a2e44a91963" category="paragraph">啟動完成後，驗證<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>啟動服務已啟用。</block>
+  <block id="3bac8ca72c0f8c144860e88aac75a1eb" category="paragraph">從 Oracle Linux 9.4 開始，NVMe/TCP 的設置<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>自動設定為“關閉”。因此：</block>
+  <block id="94c31dec48f0a9b6e3994042c63c9cb7" category="list-text">驗證 Oracle Liniux 9.5 主機上的下列 NVMe / FC 設定：</block>
+  <block id="02963844c9defd7335edd075a1f2ac57" category="list-text">驗證是否設定了「多路徑」：</block>
+  <block id="b370402dc8053b973ae927e350bb36c0" category="paragraph">價值<block ref="57cec4137b614c87cb4e24a3d003a3e0" prefix=" " category="inline-code"></block>驗證是否設定了多路徑參數。</block>
+  <block id="4af8c8f4ccd391c2b98bc0de3ef14b82" category="list-text">顯示子系統：</block>
+  <block id="21bbf4b57a95bba01a12c2b3bf2ce488" category="paragraph">從 ONTAP 9.12.1 開始，Oracle Linux 9.5 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
+  <block id="5e6b9d21bf7f0ca26372e62301cfb233" category="list-text">為 Linux 主機產生 dhchap 金鑰。</block>
+  <block id="fb6678ea50cc87decdbcd2c48c0f594f" category="list-text">此版本中沒有新功能。</block>
+  <block id="1838aef895ac5272f6222dbabc057df3" category="list-text">避免發布<block ref="de5ac85ea45047f4dbeea79d7b729b7d" prefix=" " category="inline-code"></block>命令，因為它會斷開根檔案系統和資料檔案系統的連接，並可能導致系統不穩定。</block>
+  <block id="f3e7be572062257b30aaa835617e738d" category="paragraph">使用 RHEL 9.6， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用這些軟體包。</block>
+  <block id="383a7f0b627766628c1401340e5c41da" category="paragraph">從 RHEL 9.4 開始，NVMe/TCP 的設置<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>自動設定為“關閉”。因此：</block>
+  <block id="379a951035f282c9e2ac4ae9a1f597e5" category="paragraph">使用 Rocky Linux 10， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，這些軟體包會自動啟用。</block>
+  <block id="074a67ebd91595adc758b4c88e040371" category="paragraph">從 Rocky Linux 9.4 開始，NVMe/TCP 的設置<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>自動設定為“關閉”。因此：</block>
+  <block id="c8e22b2226cedbe13c19b077e984a280" category="paragraph">使用 Rocky Linux 9.6， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，這些軟體包會自動啟用。</block>
+  <block id="bbe83218e80933d7323a91068298993f" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以使用 Oracle Linux 9.4 對 NVMe/TCP 進行安全帶內身份驗證</block>
+  <block id="f02516212fea2d7fc04b5ea71f9fe66c" category="paragraph">從 ONTAP 9.12.1 開始，Oracle Linux 9.4 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
+  <block id="f488aac6b02d1458f1cf7e7c07747bd5" category="paragraph">使用 RHEL 10， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用這些軟體包。</block>
+  <block id="4588ab094dff9b2456ca757278cf07ed" category="sidebar">Oracle Linux 9</block>
+  <block id="73ab7233c5edabec8f510d9bf8812cd1" category="sidebar">Oracle Linux 8</block>
+  <block id="1b7514bd57f9cc1b09f9148e93151331" category="sidebar">Oracle Linux 7</block>
+  <block id="c60ede747aeb2a1a339beabc79de8ca2" category="sidebar">Oracle Linux 6</block>
 </blocks>

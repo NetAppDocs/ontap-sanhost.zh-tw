@@ -32,7 +32,7 @@ NVMe 主機組態提供下列支援和功能，適用於配備 ONTAP 儲存設�
 
 * 可用功能：
 +
-** 從 ONTAP 9.12.1 開始， NVMe 開始支援安全頻內驗證。您可以在 Oracle Linux 9.4 中使用 NVMe 的安全頻內驗證
+** 從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以使用 Oracle Linux 9.4 對 NVMe/TCP 進行安全帶內身份驗證
 ** 預設支援 NVMe 命名空間的核心內建 NVMe 多重路徑，因此不需要明確的設定。
 
 
@@ -397,9 +397,16 @@ nvme connect-all -t tcp -w 192.168.166.4 -a 192.168.166.56
 nvme connect-all -t tcp -w 192.168.165.3 -a 192.168.165.56
 ----
 +
+[NOTE]
+====
+從 Oracle Linux 9.4 開始，NVMe/TCP 的設置 `ctrl_loss_tmo timeout`自動設定為“關閉”。因此：
 
-NOTE: 從 Oracle Linux 9.4 開始， NVMe / TCP 的預設設定 `ctrl_loss_tmo timeout`會關閉，而且不會限制重試次數（無限期重試）。使用或 `nvme connect-all`命令時，無需手動配置特定 `ctrl_loss_tmo timeout`持續時間 `nvme connect`（選項 -l ）。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。
+** 重試次數沒有限制（無限重試）。
+** 您不需要手動配置特定的 `ctrl_loss_tmo timeout`使用時長 `nvme connect`或者 `nvme connect-all`命令（選項 -l ）。
+** 如果發生路徑故障，NVMe/TCP 控制器不會逾時，並且會無限期地保持連線。
 
+
+====
 
 
 
@@ -594,7 +601,7 @@ nvme netapp ontapdevices -o json
 
 == 設定安全的頻內驗證
 
-從 ONTAP 9.12.1 開始，在 Oracle Linux 9.4 主機和 ONTAP 控制器之間，透過 NVMe / TCP 和 NVMe / FC 支援安全頻內驗證。
+從 ONTAP 9.12.1 開始，Oracle Linux 9.4 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。
 
 若要設定安全驗證、每個主機或控制器都必須與相關聯 `DH-HMAC-CHAP` 金鑰、這是 NVMe 主機或控制器的 NQN 組合、以及管理員設定的驗證密碼。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
 

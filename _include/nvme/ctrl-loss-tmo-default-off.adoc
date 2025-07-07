@@ -1,0 +1,8 @@
+= 
+:allow-uri-read: 
+
+
+* 重試次數沒有限制（無限重試）。
+* 您不需要手動配置特定的 `ctrl_loss_tmo timeout`使用時長 `nvme connect`或者 `nvme connect-all`命令（選項 -l ）。
+* 如果發生路徑故障，NVMe/TCP 控制器不會逾時，並且會無限期地保持連線。
+

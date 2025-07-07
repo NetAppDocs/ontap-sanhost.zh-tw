@@ -604,17 +604,24 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 ====
 [listing, subs="+quotes"]
 ----
-nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.24
-nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.24
-nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.25
-nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
+nvme connect-all -t	tcp	-w 192.168.1.31	-a 192.168.1.24
+nvme connect-all -t	tcp	-w 192.168.2.31	-a 192.168.2.24
+nvme connect-all -t	tcp	-w 192.168.1.31	-a 192.168.1.25
+nvme connect-all -t	tcp	-w 192.168.2.31	-a 192.168.2.25
 ----
 ====
 
 
+[NOTE]
+====
+從 RHEL 9.4 開始，NVMe/TCP 的設置 `ctrl_loss_tmo timeout`自動設定為“關閉”。因此：
 
-NOTE: 從 RHEL 9.5 開始、 NVMe / TCP 逾時的預設設定 `ctrl_loss_tmo`會關閉。這表示重試次數沒有限制（無限期重試）。因此，使用或 `nvme connect-all`命令（選項 -l ）時不需要手動配置特定的 `ctrl_loss_tmo`超時持續時間 `nvme connect`。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。
+* 重試次數沒有限制（無限重試）。
+* 您不需要手動配置特定的 `ctrl_loss_tmo timeout`使用時長 `nvme connect`或者 `nvme connect-all`命令（選項 -l ）。
+* 如果發生路徑故障，NVMe/TCP 控制器不會逾時，並且會無限期地保持連線。
 
+
+====
 
 
 == 驗證NVMe

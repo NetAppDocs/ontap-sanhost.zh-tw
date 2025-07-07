@@ -152,8 +152,10 @@ sidebar:
     - title: Oracle Linux
       pdf-filename: OA-FCP
       entries:
-      - title: ol 9.
+      - title: Oracle Linux 9
         entries:
+        - title: '9.5'
+          url: "/hu-ol-95.html"
         - title: 9.4.
           url: "/hu_ol_94.html"
         - title: 9.3.
@@ -164,7 +166,7 @@ sidebar:
           url: "/hu_ol_91.html"
         - title: '9.0'
           url: "/hu_ol_90.html"
-      - title: ol 8.
+      - title: Oracle Linux 8
         pdf-filename: ol-8-FCP
         entries:
         - title: 8.10.
@@ -189,7 +191,7 @@ sidebar:
           url: "/hu_ol_81.html"
         - title: '8.0'
           url: "/hu_ol_80.html"
-      - title: ol 7.
+      - title: Oracle Linux 7
         pdf-filename: ol-7-FCP
         entries:
         - title: '7.9'
@@ -212,7 +214,7 @@ sidebar:
           url: "/hu_ol_71.html"
         - title: '7.0'
           url: "/hu_ol_70.html"
-      - title: ol 6.
+      - title: Oracle Linux 6
         pdf-filename: ol-6-FCP
         entries:
         - title: 6.10.
@@ -443,9 +445,11 @@ sidebar:
         url: "/nvme_esxi_7.html"
     - title: Oracle Linux
       entries:
-      - title: ol 9.
+      - title: Oracle Linux 9
         pdf-filename: NVMeF OL
         entries:
+        - title: '9.5'
+          url: "/nvme-ol-95.html"
         - title: 9.4.
           url: "/nvme_ol_94.html"
         - title: 9.3.
@@ -456,7 +460,7 @@ sidebar:
           url: "/nvme_ol_91.html"
         - title: '9.0'
           url: "/nvme_ol_90.html"
-      - title: ol 8.
+      - title: Oracle Linux 8
         pdf-filename: NVMeF OL
         entries:
         - title: 8.10.
@@ -479,7 +483,7 @@ sidebar:
           url: "/nvme_ol_82.html"
         - title: '8.1'
           url: "/nvme_ol_81.html"
-      - title: ol 7.
+      - title: Oracle Linux 7
         entries:
         - title: '7.9'
           url: "/nvme_ol_79.html"

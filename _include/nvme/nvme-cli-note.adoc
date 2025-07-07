@@ -1,0 +1,6 @@
+= 
+:allow-uri-read: 
+
+
+
+NOTE: NetApp  `sanlun` NVMe-oF 不支援主機實用程式。您可以使用本機 `nvme-cli`適用於所有 NVMe-oF 傳輸。

@@ -663,6 +663,16 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ====
 
 
+[NOTE]
+====
+從 Rocky Linux 9.4 開始，NVMe/TCP 的設置 `ctrl_loss_tmo timeout`自動設定為“關閉”。因此：
+
+* 重試次數沒有限制（無限重試）。
+* 您不需要手動配置特定的 `ctrl_loss_tmo timeout`使用時長 `nvme connect`或者 `nvme connect-all`命令（選項 -l ）。
+* 如果發生路徑故障，NVMe/TCP 控制器不會逾時，並且會無限期地保持連線。
+
+
+====
 
 
 == 步驟 6：驗證 NVMe-oF

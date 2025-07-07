@@ -27,14 +27,14 @@ NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與�
 ** 在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI mpath 裝置設定 dm-multipath ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
 ** 根據預設， RHEL 9.6 可為 NVMe 命名空間啟用核心內建 NVMe 多重路徑，無需明確設定。
 ** 從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 9.6 中使用 NVMe/TCP 的安全帶內驗證。
+
+
 +
 如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
-
-
 * 可用功能：
 +
-** 沒有可用的新功能。
+** 此版本中沒有新功能。
 
 
 * 已知限制：
@@ -418,7 +418,9 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 == 步驟 5：驗證 NVMe 啟動服務
 
-使用 RHEL 9.6，  `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service` NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時會自動啟用這些軟體包。啟動完成後，請驗證這些服務是否已啟用。
+使用 RHEL 9.6，  `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service` NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時會自動啟用這些軟體包。
+
+啟動完成後，驗證 `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service`啟動服務已啟用。
 
 .步驟
 . 確認 `nvmf-autoconnect.service`已啟用：
@@ -749,6 +751,16 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ====
 
 
+[NOTE]
+====
+從 RHEL 9.4 開始，NVMe/TCP 的設置 `ctrl_loss_tmo timeout`自動設定為“關閉”。因此：
+
+* 重試次數沒有限制（無限重試）。
+* 您不需要手動配置特定的 `ctrl_loss_tmo timeout`使用時長 `nvme connect`或者 `nvme connect-all`命令（選項 -l ）。
+* 如果發生路徑故障，NVMe/TCP 控制器不會逾時，並且會無限期地保持連線。
+
+
+====
 
 
 == 步驟 7：驗證 NVMe-oF
