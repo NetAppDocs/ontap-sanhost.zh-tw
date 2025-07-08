@@ -280,7 +280,7 @@ NVMe 命名空間一律會啟用取消分配支援。取消分配也可讓客體
 .步驟
 . 在 ESXi 主機上，驗證 DSM 的設定是否已取消分配，並支援 TP4040 ：
 +
-`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+`esxcfg-advcfg -g /Scsi/NVmeUseDsmTp4040`
 
 +
 預期值為 0 。
@@ -291,7 +291,7 @@ NVMe 命名空間一律會啟用取消分配支援。取消分配也可讓客體
 
 . 確認已啟用使用 TP4040 支援取消配置 DSM 的設定：
 +
-`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+`esxcfg-advcfg -g /Scsi/NVmeUseDsmTp4040`
 
 +
 預期值為 1 。
