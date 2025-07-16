@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-NVMe / TCP 傳輸協定不支援此 `auto-connect`作業。您可以改為透過手動執行 NVMe / TCP 或 `connect-all`作業來探索 NVMe / TCP 子系統和命名空間 `connect`。

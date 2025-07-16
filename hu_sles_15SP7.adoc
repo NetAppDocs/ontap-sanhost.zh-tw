@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_sles_15.html 
-keywords: host utilities, suse linux enterprise server 15, suse, linux, 15, netapp, ontap 
-summary: 在 SUSE Linux Enterprise Server 15 上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定作業。 
+permalink: hu_sles_15SP7.html 
+keywords: host utilities, suse linux enterprise server 15 sp7, suse, linux, 15 sp7, netapp, ontap, fcp, iscsi 
+summary: 在 SUSE Linux Enterprise Server 15 SP7 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。 
 ---
-= 設定 SUSE Linux Enterprise Server 15 for FCP 和 iSCSI with ONTAP 儲存設備
+= 為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 15 SP7 搭配 ONTAP 儲存設備
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 在 SUSE Linux Enterprise Server 15 上安裝 Linux Host Utilities 以�
 
 
 [role="lead"]
-Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。
+Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 SP7 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。
 
 
 NOTE: 您不需要手動設定基於核心的虛擬機器 (KVM) 設定，因為 ONTAP LUN 會自動對應到虛擬機器管理程式。
@@ -54,7 +54,7 @@ NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機
 
 == 步驟 3 ：確認主機的多重路徑組態
 
-您可以搭配 SUSE Linux Enterprise Server 15 使用多重路徑來管理 ONTAP LUN 。
+您可以搭配 SUSE Linux Enterprise Server 15 SP7 使用多重路徑來管理 ONTAP LUN 。
 
 為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
 
@@ -273,16 +273,8 @@ devices {
 
 == 步驟 6 ：檢閱已知問題
 
-採用 ONTAP 儲存版本的 SUSE Linux Enterprise Server 15 有下列已知問題：
+沒有已知問題。
 
-[cols="3*"]
-|===
-| NetApp錯誤ID | 標題 | 說明 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1154309["1154309"^] | 重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式 | 重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式。維護模式會依照下列訊息變成單一使用者模式：
-`Give root password for maintenance (or press Control-D to continue)` 
-|===
 
 
 == 接下來呢？

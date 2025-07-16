@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。

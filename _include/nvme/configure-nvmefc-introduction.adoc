@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+您可以使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 介面卡來設定 NVMe / FC 。您還需要手動發現 NVMe/TCP 子系統和命名空間。

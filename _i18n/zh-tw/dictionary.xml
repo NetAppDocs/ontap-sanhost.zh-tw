@@ -3385,7 +3385,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e97e46892f962abb9d135b9f4260bb28" category="list-text"><block ref="5fb7de3d2a2b97d13727ed55244c1d34" category="inline-link-rx"></block>。</block>
   <block id="83946a5f9a0c9e6468d1616ca938bdd0" category="list-text">在 RHEL 主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> ：</block>
   <block id="43075b4ae15209d42a33c26736b1a616" category="list-text">在 Rocky Linux 主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> ：</block>
-  <block id="3207068e1112e1d7bf44793a16243167" category="paragraph">NVMe/TCP 協定不支援自動連線操作。您可以透過手動執行 NVMe/TCP connect 或 connect-all 操作來發現 NVMe/TCP 子系統和命名空間。</block>
   <block id="5b65dc582fc3a54b76dad70a8f267f3f" category="paragraph">您可以使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 介面卡來設定 NVMe / FC 。您還需要手動發現 NVMe/TCP 子系統和命名空間。</block>
   <block id="61b5a98a9fc13d3a4a8112007aef142d" category="admonition">Rocky Linux 核心中包含的原生內建 qla2xxx 驅動程式具有最新修復。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="59469b69c75b40a15b84cc48d2d1a5d4" category="paragraph">預期輸出為 1 。</block>
@@ -3949,4 +3948,47 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0f2332cb3d4b010b45d6eb9fbbeab96c" category="list-text">在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 上的 SCSI mpath 裝置設定 dm-multipath，並使用 NVMe multipath 在主機上設定 NVMe-oF 命名空間裝置。</block>
   <block id="c28f1c588b284418e1f1f45095861195" category="list-text">在同一部主機上執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 上的 SCSI mpath 裝置設定 dm-multipath，並使用 NVMe multipath 在主機上設定 NVMe-oF 命名空間裝置。</block>
   <block id="7b041227be300a97269b0c517c4d8a5c" category="paragraph"><block ref="b5c9ec30dafc3cdd07e22705d3fd28f9" prefix="" category="inline-code"></block></block>
+  <block id="654a0efc10421b3fc1ee44ca772778aa" category="summary">在 SUSE Linux Enterprise Server 15 SP7 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
+  <block id="870d83d0bc4a1d675ccc1013c75b6763" category="doc">為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 15 SP7 搭配 ONTAP 儲存設備</block>
+  <block id="2ac4e5f2f892e0f2c4b0350d60bb70b0" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 SP7 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
+  <block id="3fe0f7d7cd9a25242a7b121f3cc4ba8a" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 15 SP7 使用多重路徑來管理 ONTAP LUN 。</block>
+  <block id="26b3769cd035d702f3e2a42ba7be4fa8" category="paragraph">&lt;stdin&gt; 中未解析的指令 - include::_include/nvme/reuse-nvme-introduction.adoc[]</block>
+  <block id="65bf3e1e4bb025883d0086e33a28a554" category="paragraph">&lt;stdin&gt; 中未解析的指令 - include::_include/nvme/reuse_nvme_enabling_broadcom_1mb_size.adoc[]</block>
+  <block id="183857c8fa21c8ded295c470367e6d0c" category="paragraph">&lt;stdin&gt; 中未解析的指令 - include::_include/nvme/reuse-nvme-configure-nvme-tcp.adoc[]</block>
+  <block id="52f6009d5ed77735a270fafae76fba9b" category="paragraph">&lt;stdin&gt; 中未解析的指令 - include::_include/nvme/reuse-nvme-validate-nvme-of.adoc[]</block>
+  <block id="2109e80434ca7c6e1b69cbc2e5974556" category="summary">說明如何為採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP7 設定 NVMe / FC 。</block>
+  <block id="656e0f0943759cd8053f13523268bf98" category="doc">適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP7 的 NVMe 主機組態</block>
+  <block id="a260df2c274288385d82b55968f53b84" category="paragraph">您可以將以下支援和功能與 SUSE Linux Enterprise Server 15 SP7 (SLES15 SP7) 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
+  <block id="5393f0229b7c28049a490e7e149cce98" category="list-text">在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI mpath 裝置設定 dm-multipath ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。</block>
+  <block id="77b17c4b304e4bc88274ebbde24c1c87" category="list-text">支援使用 NVMe / FC 傳輸協定進行 SAN 開機。</block>
+  <block id="aa4dc57afbcb40684a5fdb0dd0c53e49" category="list-text">從ONTAP 9.12.1 開始，引入了對 NVMe/TCP 和 NVMe/FC 的安全帶內身份驗證支援。您可以在 SLES15 SP7 中使用 NVMe/TCP 和 NVMe/FC 的安全帶內身份驗證。</block>
+  <block id="bc16fe46d91584e82782504c4c1c10d9" category="list-text">支援使用唯一發現 NQN 的持久發現控制器 (PDC)。</block>
+  <block id="c7d62b8831e26ca324eef03e565f77fb" category="list-text">NVMe/TCP 的 TLS 1.3 加密支援。</block>
+  <block id="4e301fd9374a22a48fdb4c33b2297fd4" category="list-text">NetApp <block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> SLES15 SP7 主機上不提供 NVMe-oF 的主機實用程式支援。您可以改用原生套件中的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>來執行所有 NVMe 傳輸。</block>
+  <block id="027d24fe581a1889d6b5752e3886e380" category="list-text">沒有可用的新功能。</block>
+  <block id="6084e38c00232a21ee1233c5ca70b927" category="paragraph">使用以下步驟驗證最低支援的 SLES15 SP7 軟體版本。</block>
+  <block id="991655482ba880c83b447bbd0d3a18db" category="list-text">在伺服器上安裝 SLES15 SP7。安裝完成後，請驗證您是否正在執行指定的 SLES15 SP7 核心：</block>
+  <block id="23aa1a5f62f90e6896afa10f805ed9ca" category="paragraph">以下範例顯示了 SLES 核心版本：</block>
+  <block id="3939f5ab0e1b02b11f96cac181c4e774" category="paragraph">下面的例子展示了<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>版本：</block>
+  <block id="c31865eb0d6c686b54a6bc6a1da51ac8" category="paragraph">使用 SLES 15 SP7， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>軟體包將在系統啟動時自動啟用。系統啟動完成後，請驗證啟動服務是否已啟用。</block>
+  <block id="94628a030db9a09f8b90bd4725085b40" category="admonition">從 SLES 15 SP6 開始，NVMe/TCP 的預設設定<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block>超時已關閉。這意味著重試次數沒有限制（無限重試），並且您無需手動配置特定的<block ref="5d036703249af8ebf4d92499bcc10b3c" prefix=" " category="inline-code"></block>使用時的超時時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>或者<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項<block ref="269889131ee4793a82191b78a2eb60e3" prefix=" " category="inline-code"></block> ）。此外、在發生路徑故障時、 NVMe / TCP 控制器不會發生逾時、也不會無限期保持連線。</block>
+  <block id="b9f923eff2af1f090cf2b63082e1eb11" category="section-title">步驟 8：建立持久發現控制器</block>
+  <block id="3b0141777552d60cadbd3ce34dd905d3" category="paragraph">從ONTAP 9.11.1 開始，您可以為 SLES 15 SP7 主機建立持久發現控制器 (PDC)。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除作業，以及探索記錄頁面資料的變更。</block>
+  <block id="e30836f8afa231851eba05f11afb521a" category="section-title">步驟 9：設定安全帶內身份驗證</block>
+  <block id="c273b14698c5a90f8016a97113ae1527" category="section-title">步驟 10：設定傳輸層安全性</block>
+  <block id="7e0ddf13eb92d7061cb3708e71d99050" category="list-text">檢查您是否具有以下內容<block ref="464213eb09b43407b3c3aa2efea57161" prefix=" " category="inline-code"></block> ， <block ref="50955d4b2031271f8fda1764c1a66ac3" prefix=" " category="inline-code"></block> ， 和<block ref="e585c6c1eda4439a86d95239513976b0" prefix=" " category="inline-code"></block>主機上安裝的軟體包：</block>
+  <block id="4d10c02099d2dde19960119e95abc85a" category="list-text">驗證<block ref="464213eb09b43407b3c3aa2efea57161" prefix=" " category="inline-code"></block> ：</block>
+  <block id="b7f420dfb0cf55e5f8e1fbac4a1536b7" category="paragraph">您應該會看到顯示以下輸出：</block>
+  <block id="103f74590d3fbef99a2c2de2fdefd35c" category="list-text">驗證 SSL 套件：</block>
+  <block id="1c7564461e942bf2912c76f37479a14a" category="list-text">驗證主機：</block>
+  <block id="ac91936b8cfef3df92acc4035783916c" category="list-text">驗證金鑰：</block>
+  <block id="9a188a453d6f7a4139c805197ffad6d7" category="list-text">在 ONTAP 控制器上，將 TLS PSK 新增至 ONTAP 子系統：</block>
+  <block id="3a6a93137906aeb888c944ff8cd57c5a" category="list-text">將 TLS PSK 插入主機核心金鑰環：</block>
+  <block id="aa3ad133382acb094d481896dd8db4fd" category="paragraph">您應該會看到以下 TLS 金鑰：</block>
+  <block id="91dbe7459493f6e118afd70f5b15c7a6" category="admonition">PSK 顯示為<block ref="518b572e87a67ae131d1610dd4644d40" prefix=" " category="inline-code"></block>因為它使用<block ref="3ef865691aa59ed6c588dc8f9da336f9" prefix=" " category="inline-code"></block>來自 TLS 握手演算法。Identity v1 是 ONTAP 唯一支援的版本。</block>
+  <block id="17a9f150c8c2ab60092808d0908e820b" category="list-text">使用插入的 TLS PSK 連線至 ONTAP 子系統：</block>
+  <block id="b1b258fb46a71b5fd43928b89183c045" category="list-text">驗證 TLS PSK：</block>
+  <block id="0727acee3b7aa117900f2830b1cb2fd0" category="list-text">驗證列表子系統：</block>
+  <block id="ffc899321bb51e568ff27d8d67516b4a" category="section-title">步驟 11 ：檢閱已知問題</block>
+  <block id="0f0224190f0b6b918a5e9d02a89ece08" category="sidebar">15 SP7.</block>
 </blocks>

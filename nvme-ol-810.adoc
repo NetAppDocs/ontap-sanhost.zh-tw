@@ -433,6 +433,79 @@ NOTE: NetApp 建議將選項設定 `ctrl-loss-tmo`為「 -1 」，以便在路�
 .步驟
 . 確認已啟用核心內建 NVMe 多重路徑：
 +
+[source, cli]
+----
+cat /sys/module/nvme_core/parameters/multipath
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+Y
+----
+. 驗證個別 ONTAP 命名空間的適當 NVMe 設定（例如、模型設定為 NetApp ONTAP 控制器、負載平衡 iopolicing 設定為循環）是否正確反映在主機上：
++
+.. 顯示子系統：
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/model
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+----
+.. 顯示策略：
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+round-robin
+round-robin
+----
+
+
+. 確認已在主機上建立並正確探索命名空間：
++
+[source, cli]
+----
+nvme list
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+Node         SN                   Model
+---------------------------------------------------------
+/dev/nvme4n1 81Ix2BVuekWcAAAAAAAB	NetApp ONTAP Controller
+
+
+Namespace Usage    Format             FW             Rev
+-----------------------------------------------------------
+1                 21.47 GB / 21.47 GB	4 KiB + 0 B   FFFFFFFF
+----
+====
+
+
+.步驟
+. 確認已啟用核心內建 NVMe 多重路徑：
++
 `cat /sys/module/nvme_core/parameters/multipath`
 
 +

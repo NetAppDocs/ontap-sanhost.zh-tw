@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+為 Marvell/QLogic 介面卡設定 NVMe / FC 。

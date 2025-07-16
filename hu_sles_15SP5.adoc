@@ -136,7 +136,7 @@ systemctl start multipathd
 | 優先 | 「NetApp」ONTAP 
 
 
-| 產品 | LUN.* 
+| 產品 | LUN 
 
 
 | Retain附加的硬體處理常式 | 是的 
