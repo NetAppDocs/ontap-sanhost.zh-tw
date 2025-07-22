@@ -3491,7 +3491,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3bc1130ce3e680520898e40ac7959fa2" category="list-text">在 Rocky Linux 8.7 主機上，由於存在一些未解決的問題，NVMe/TCP 仍處於技術預覽階段。請參閱<block ref="d32810211fa0fabac0569c4390e790dc" category="inline-link-macro-rx"></block>了解詳情。</block>
   <block id="7e4a70bbcd93eaa6141e87546c6f1f21" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.7 軟體版本。</block>
   <block id="f5ee36bf3ec3b3e921b0b7e9d925b748" category="list-text">在伺服器上安裝 Rocky Linux 8.7。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.7 核心：</block>
-  <block id="78e181f317983c9fedb366c4a37a16cd" category="paragraph">具有 ONTAP 的 Rocky Linux 8.7 的 NVMe-oF 主機配置有以下已知問題：</block>
   <block id="7a6a40bc5a4685658e1d343ed9b9dd39" category="cell">Rocky Linux 8.7 NVMe-oF 主機建立重複的持久發現控制器</block>
   <block id="6d6607f7b41bf491341b99d0537f3629" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 ONTAP 9.10.1 和 Rocky Linux 8.7，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
   <block id="47ec11f02f0c8839abe0813debc4f014" category="summary">如何使用 ONTAP 為 Rocky Linux 8.8 設定 NVMe-oF 主機</block>
@@ -3503,7 +3502,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d48c8e0613a3d2462bab37e061f9c99a" category="list-text">在 Rocky Linux 8.8 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="c94cc770975ea6cce699ff8f723c184b" category="inline-link-rx"></block> 。</block>
   <block id="e52751aedc7ac7fdc35e859dec9d1a84" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.8 軟體版本。</block>
   <block id="dd66f0672670077d5170dcb95b0cace0" category="list-text">在伺服器上安裝 Rocky Linux 8.8。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.8 核心：</block>
-  <block id="b8c3c07079892e4901770e27f4802ec1" category="paragraph">具有 ONTAP 版本的 Rocky Linux 8.8 的 NVMe-oF 主機配置有以下已知問題：</block>
   <block id="9d0224a2f615424bba089d74a7227ebe" category="cell">Rocky Linux 8.8 NVMe-oF 主機建立重複的持久發現控制器</block>
   <block id="4e8203cb1c6fbcc8f8c247946196d38e" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.8，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
   <block id="918e5346ad0239cf9b9c61db20bf484c" category="summary">如何使用 ONTAP 為 Rocky Linux 8.9 設定 NVMe-oF 主機</block>
@@ -3515,7 +3513,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e035f49458f62168d6a4c971dfb2508d" category="list-text">在 Rocky Linux 8.9 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="940755a456f09b2cfde71703a8e286af" category="inline-link-rx"></block> 。</block>
   <block id="74ba8ad92ae4c2a3b720f451f30601ab" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.9 軟體版本。</block>
   <block id="94bace38b58b938918367d0c3cc6eaa5" category="list-text">在伺服器上安裝 Rocky Linux 8.9。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.9 核心：</block>
-  <block id="9f3a4c0a6d61ae1944d857976073d3fc" category="paragraph">具有 ONTAP 版本的 Rocky Linux 8.9 的 NVMe-oF 主機配置有以下已知問題：</block>
   <block id="4c6f9e46e9e7dc5d30fea3fe515730e0" category="cell">Rocky Linux 8.9 NVMe-oF 主機建立重複的持久發現控制器</block>
   <block id="0dbf100b5d804fe4caf4da2b664b2afa" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.9，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
   <block id="f69e78a8431382f8f2ff25b30ad11ba3" category="summary">如何使用 ONTAP 為 Rocky Linux 9.0 設定 NVMe-oF 主機</block>
@@ -3525,7 +3522,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="607045456dfb12bc04d3522b1f874865" category="list-text">Rocky Linux 9.0 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
   <block id="6cb5085ae04cfea89d334f12d091d300" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.0 軟體版本。</block>
   <block id="57bec5364d8813b80d9ba8cbbe9cb4ed" category="list-text">在伺服器上安裝 Rocky Linux 9.0。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.0 核心：</block>
-  <block id="29a60b312aa9fdd9b477d6b295e0e45c" category="paragraph">具有 ONTAP 的 Rocky Linux 9.0 的 NVMe-oF 主機配置有以下已知問題：</block>
   <block id="d89f68cec4fde8cdd4a14a4ef45a06f6" category="cell">Rocky Linux 9.0 NVMe-oF 主機建立重複的持久發現控制器</block>
   <block id="ff01f1039161c2b6b5ea51efcfc04188" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 ONTAP 9.10.1 和 Rocky Linux 9.0，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
   <block id="29af8d1042b30a5ba249a12d6db4fc61" category="summary">如何使用 ONTAP 為 Rocky Linux 9.1 設定 NVMe-oF 主機</block>
@@ -3535,7 +3531,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="23dd49f82b27ef244f37aee158baf33e" category="list-text">Rocky Linux 9.1 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
   <block id="adfdcaae3a69aa1a3f89a3a550b3e16b" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.1 軟體版本。</block>
   <block id="ae7b811595439cd8cfc0f414a032e104" category="list-text">在伺服器上安裝 Rocky Linux 9.1。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.1 核心：</block>
-  <block id="0c36435076f0978fbc5c56aadf37500b" category="paragraph">具有 ONTAP 儲存的 Rocky Linux 9.1 的 NVMe-oF 主機配置有以下已知問題：</block>
   <block id="97d2b9aba8be20cadd2e121636e33e94" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block>命令傳回給定子系統列出的重複的 NVMe 控制器</block>
   <block id="b68755a212f05b7fd208d599e6c87bde" category="cell">這<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>命令應傳回與給定子系統關聯的 NVMe 控制器的唯一清單。在 Rocky Linux 9.1 中， <block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>此指令會傳回屬於指定子系統的所有命名空間的 NVMe 控制器及其各自的 ANA 狀態。但是，ANA 狀態是每個命名空間的屬性，因此，如果您列出給定命名空間的子系統指令語法，則應該顯示具有路徑狀態的唯一 NVMe 控制器條目。</block>
   <block id="88b5ad79d4202975070e7a14f54943ed" category="summary">如何使用 ONTAP 為 Rocky Linux 9.2 設定 NVMe-oF 主機</block>
@@ -3922,10 +3917,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="833be5ef7e50baab093ee66a7f140d0c" category="paragraph">藉由 Oracle Linux 9.5， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，這些軟體包會自動啟用。</block>
   <block id="d5a1f1a62cc8cae53fc94a2e44a91963" category="paragraph">啟動完成後，驗證<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>啟動服務已啟用。</block>
   <block id="3bac8ca72c0f8c144860e88aac75a1eb" category="paragraph">從 Oracle Linux 9.4 開始，NVMe/TCP 的設置<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>自動設定為“關閉”。因此：</block>
-  <block id="94c31dec48f0a9b6e3994042c63c9cb7" category="list-text">驗證 Oracle Liniux 9.5 主機上的下列 NVMe / FC 設定：</block>
-  <block id="02963844c9defd7335edd075a1f2ac57" category="list-text">驗證是否設定了「多路徑」：</block>
-  <block id="b370402dc8053b973ae927e350bb36c0" category="paragraph">價值<block ref="57cec4137b614c87cb4e24a3d003a3e0" prefix=" " category="inline-code"></block>驗證是否設定了多路徑參數。</block>
-  <block id="4af8c8f4ccd391c2b98bc0de3ef14b82" category="list-text">顯示子系統：</block>
   <block id="21bbf4b57a95bba01a12c2b3bf2ce488" category="paragraph">從 ONTAP 9.12.1 開始，Oracle Linux 9.5 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
   <block id="5e6b9d21bf7f0ca26372e62301cfb233" category="list-text">為 Linux 主機產生 dhchap 金鑰。</block>
   <block id="fb6678ea50cc87decdbcd2c48c0f594f" category="list-text">此版本中沒有新功能。</block>
@@ -3952,10 +3943,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="870d83d0bc4a1d675ccc1013c75b6763" category="doc">為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 15 SP7 搭配 ONTAP 儲存設備</block>
   <block id="2ac4e5f2f892e0f2c4b0350d60bb70b0" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 SUSE Linux Enterprise Server 15 SP7 主機上安裝 Linux 主機公用程式時，您可以使用主機公用程式來協助管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="3fe0f7d7cd9a25242a7b121f3cc4ba8a" category="paragraph">您可以搭配 SUSE Linux Enterprise Server 15 SP7 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="26b3769cd035d702f3e2a42ba7be4fa8" category="paragraph">&lt;stdin&gt; 中未解析的指令 - include::_include/nvme/reuse-nvme-introduction.adoc[]</block>
-  <block id="65bf3e1e4bb025883d0086e33a28a554" category="paragraph">&lt;stdin&gt; 中未解析的指令 - include::_include/nvme/reuse_nvme_enabling_broadcom_1mb_size.adoc[]</block>
-  <block id="183857c8fa21c8ded295c470367e6d0c" category="paragraph">&lt;stdin&gt; 中未解析的指令 - include::_include/nvme/reuse-nvme-configure-nvme-tcp.adoc[]</block>
-  <block id="52f6009d5ed77735a270fafae76fba9b" category="paragraph">&lt;stdin&gt; 中未解析的指令 - include::_include/nvme/reuse-nvme-validate-nvme-of.adoc[]</block>
   <block id="2109e80434ca7c6e1b69cbc2e5974556" category="summary">說明如何為採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP7 設定 NVMe / FC 。</block>
   <block id="656e0f0943759cd8053f13523268bf98" category="doc">適用於 ONTAP 的 SUSE Linux Enterprise Server 15 SP7 的 NVMe 主機組態</block>
   <block id="a260df2c274288385d82b55968f53b84" category="paragraph">您可以將以下支援和功能與 SUSE Linux Enterprise Server 15 SP7 (SLES15 SP7) 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
@@ -3991,4 +3978,10 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0727acee3b7aa117900f2830b1cb2fd0" category="list-text">驗證列表子系統：</block>
   <block id="ffc899321bb51e568ff27d8d67516b4a" category="section-title">步驟 11 ：檢閱已知問題</block>
   <block id="0f0224190f0b6b918a5e9d02a89ece08" category="sidebar">15 SP7.</block>
+  <block id="3207068e1112e1d7bf44793a16243167" category="paragraph">NVMe/TCP 協定不支援自動連線操作。您可以透過手動執行 NVMe/TCP connect 或 connect-all 操作來發現 NVMe/TCP 子系統和命名空間。</block>
+  <block id="f9373bf6fb792b7c646f5bec24ea0daf" category="paragraph">具有ONTAP儲存的 Rocky Linux 8.7 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="de90af9b7865f783dbab0561bc93777d" category="paragraph">帶有ONTAP儲存版本的 Rocky Linux 8.8 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="cd55e97345547906b5919126d046528a" category="paragraph">帶有ONTAP儲存版本的 Rocky Linux 8.9 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="aa941996691732f26e58432a0029389e" category="paragraph">具有ONTAP儲存的 Rocky Linux 9.0 的 NVMe-oF 主機配置有以下已知問題：</block>
+  <block id="12ac068aa4dcbbc35048b05dc3d74e3f" category="paragraph">具有ONTAP儲存的 Rocky Linux 9.1 的 NVMe-oF 主機配置有以下已知問題：</block>
 </blocks>
