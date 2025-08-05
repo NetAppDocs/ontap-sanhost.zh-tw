@@ -4,7 +4,7 @@ permalink: hu_hpux_60_cmd.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: 說明如何搭配 ONTAP 使用 Linux 主機公用程式 7.1 
 ---
-= HP-UX Host Utilities 6.0 命令參照
+= 使用 HP-UX Host Utilities 指令驗證ONTAP儲存配置
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,20 +16,21 @@ summary: 說明如何搭配 ONTAP 使用 Linux 主機公用程式 7.1
 
 
 [role="lead"]
-您可以使用 HP-UX Host Utilities 6.0 範例命令參照，使用主機公用程式工具來進行端點對端點 ONTAP 儲存組態驗證。
+使用 HP-UX Host Utilities 6.0 範例指令參考，透過 Host Utilities 工具對ONTAP儲存設定進行端對端驗證。
 
 
 
 == 列出所有對應至主機的主機啟動器
 
-您可以擷取對應至主機的所有主機啟動器清單。
+檢索映射到主機的所有主機啟動器的清單。
 
 [source, cli]
 ----
-# sanlun fcp show adapter -v
+sanlun fcp show adapter -v
 ----
-* 輸出範例 *
-
+.顯示範例輸出
+[%collapsible]
+====
 [listing]
 ----
 adapter name:      fclp2
@@ -66,18 +67,20 @@ supported speed:   8 GBit/sec
 negotiated speed:  Speed not established
 OS device name:    /dev/fclp3
 ----
+====
 
 
 == 列出所有對應至主機的LUN
 
-您可以擷取對應至主機的所有 LUN 清單。
+檢索對應到主機的所有 LUN 的清單。
 
 [source, cli]
 ----
-# sanlun lun show -p -v all
+sanlun lun show -p -v all
 ----
-* 輸出範例 *
-
+.顯示範例輸出
+[%collapsible]
+====
 [listing]
 ----
 \
@@ -98,20 +101,21 @@ up       primary    /dev/dsk/c37t6d7     fclp0   hpux_7                         
 up       primary    /dev/dsk/c22t6d7     fclp1   hpux_8                                         0
 up       secondary  /dev/dsk/c36t6d7     fclp0   hpux_5                                         1
 up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                                         1
-
 ----
+====
 
 
 == 列出從特定SVM對應至主機的所有LUN
 
-您可以從特定 SVM 擷取對應至主機的所有 LUN 清單。
+檢索從特定 SVM 對應到主機的所有 LUN 的清單。
 
 [source, cli]
 ----
-# sanlun lun show -p -v vs_hp_cluster
+sanlun lun show -p -v vs_hp_cluster
 ----
-* 輸出範例 *
-
+.顯示範例輸出
+[%collapsible]
+====
 [listing]
 ----
                     ONTAP Path: vs_hp_cluster:/vol/chathpux_217_vol_en_1_10/hp_en_217_lun
@@ -131,21 +135,21 @@ up       primary    /dev/dsk/c37t6d7     fclp0   hpux_7                         
 up       primary    /dev/dsk/c22t6d7     fclp1   hpux_8                                         0
 up       secondary  /dev/dsk/c36t6d7     fclp0   hpux_5                                         1
 up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                                         1
-
 ----
+====
 
 
 == 列出對應至主機之特定LUN的所有屬性
 
-您可以擷取對應至主機之指定 LUN 的所有屬性清單。
+檢索對應到主機的指定 LUN 的所有屬性的清單。
 
 [source, cli]
 ----
-
-# sanlun lun show -p -v vs_hp_cluster:/vol/chathpux_217_vol_en_1_5/hp_en_217_lun
+sanlun lun show -p -v vs_hp_cluster:/vol/chathpux_217_vol_en_1_5/hp_en_217_lun
 ----
-* 輸出範例 *
-
+.顯示範例輸出
+[%collapsible]
+====
 [listing]
 ----
 
@@ -166,20 +170,21 @@ up       primary    /dev/dsk/c37t6d1     fclp0   hpux_7                         
 up       primary    /dev/dsk/c22t6d1     fclp1   hpux_8                                         0
 up       secondary  /dev/dsk/c36t6d1     fclp0   hpux_5                                         1
 up       secondary  /dev/dsk/c44t6d1     fclp1   hpux_6                                         1
-
 ----
+====
 
 
 == 依主機裝置檔案名稱列出 ONTAP LUN 屬性
 
-您可以使用指定的主機裝置檔名來擷取 ONTAP LUN 屬性清單。
+透過指定的主機設備檔案名稱擷取ONTAP LUN 屬性清單。
 
 [source, cli]
 ----
-#sanlun lun show -dv /dev/rdisk/disk716
+sanlun lun show -dv /dev/rdisk/disk716
 ----
-* 輸出範例 *
-
+.顯示範例輸出
+[%collapsible]
+====
 [listing]
 ----
                                                                  device             host                  lun
@@ -199,18 +204,20 @@ vs_hp_cluster        /vol/chathpux_217_vol_en_1_14/hp_en_217_lun /dev/rdisk/disk
            Vserver volume name: chathpux_217_vol_en_1_14        MSID::0x00000000000000000000000080915935
          Vserver snapshot name:
 ----
+====
 
 
 == 列出附加至主機的所有SVM目標LIF WWPN
 
-您可以擷取附加至主機的所有 SVM 目標 LIF WWPN 清單。
+檢索連接到主機的所有 SVM 目標 LIF WWPN 的清單。
 
 [source, cli]
 ----
-# sanlun lun show -wwpn
+sanlun lun show -wwpn
 ----
-* 輸出範例 *
-
+.顯示範例輸出
+[%collapsible]
+====
 [listing]
 ----
 
@@ -233,3 +240,4 @@ fclp0           15g         C
 fclp1           30g         C
 fclp0           30g         C
 ----
+====

@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: hu-luhu-sanlun-utility.html 
+keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+summary: 說明如何搭配 ONTAP 使用 Linux 主機公用程式 7.1 
+---
+= 了解ONTAP儲存的“sanlun”實用程序
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Linux Host Utilities 是一款NetApp主機軟體，提供 `sanlun`Linux 主機上的指令。這 `sanlun`當您安裝NetApp Host Utilities 套件時，該實用程式會自動安裝。此實用程式提供 `sanlun`可用於管理ONTAP LUN 和主機匯流排適配器 (HBA) 的指令。這 `sanlun`指令傳回有關對應到主機的ONTAP LUN、多路徑以及建立啟動器群組所需資訊的資訊。
+
+在以下範例中， `sanlun lun show all`指令返回ONTAP LUN 訊息：
+
+[listing]
+----
+controller(7mode/E-Series)/            device     host               lun
+vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
+------------------------------------------------------------------------------------
+data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
+----
+[NOTE]
+====
+* 對於 Linux Host Utilities 7.1，「sanlun」實用程式在 Host Utilities 的所有設定和協定中都是通用的。因此，它的某些內容適用於一種配置，但不適用於另一種配置。未使用的組件不會影響系統效能。
+* 下列虛擬機器管理程式類型不支援「sanlun」實用程式：
++
+[role="tabbed-block"]
+====
+.8.0
+--
+對於 Linux Host Utilities 8.0，「sanlun」實用程式不支援 Citrix XenServer、Oracle VM 和 Red Hat Enterprise Virtualization。
+
+--
+.7.1.
+--
+對於 Linux Host Utilities 7.1，「sanlun」實用程式不支援 Citrix Xenserver、Red hat Enterprise Virtualization 和 Proxmox。
+
+--
+====
+
+
+====
+
+
+== 接下來呢？
+
+link:hu-luhu-command-reference.html["瞭解如何使用 Linux 主機公用程式工具"] 。

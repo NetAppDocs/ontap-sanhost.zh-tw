@@ -13,15 +13,15 @@ indexpage:
     - title: 瞭解 SAN 主機組態
       url: "/overview.html"
     - title: AIX 主機公用程式發行說明
-      url: "/hu_aix_rn.html"
+      url: "/hu-aix-release-notes.html"
     - title: HP-UX Host Utilities 版本資訊
-      url: "/hu_hpux_60_rn.html"
+      url: "/hu-hpux-release-notes.html"
     - title: Linux 主機公用程式發行說明
-      url: "/hu_luhu_71_rn.html"
-    - title: Solaris Host Utilities 版本資訊
-      url: "/hu_solaris_62_rn.html"
-    - title: Windows Host Utilities 版本資訊
-      url: "/hu_wuhu_71_rn.html"
+      url: "/hu-luhu-release-notes.html"
+    - title: Solaris 主機公用程式發行說明
+      url: "/hu-solaris-release-notes.html"
+    - title: Windows 主機公用程式版本資訊
+      url: "/hu-wuhu-release-notes.html"
   - title: 安裝及設定 SAN 主機
     links:
     - title: 安裝 SAN 主機公用程式

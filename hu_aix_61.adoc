@@ -16,94 +16,87 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 
 
 [role="lead"]
-AIX 主機公用程式可協助您管理連接至 AIX 主機的 ONTAP 儲存設備。
+AIX Host Utilities 可協助您管理連接到 AIX 主機的ONTAP儲存。  NetApp強烈建議安裝 AIX Host Utilities 來改善ONTAP儲存管理並協助NetApp支援收集有關您的配置的資訊。
 
-AIX 主機公用程式支援下列通訊協定：
+AIX Host Utilities 6.1 支援以下傳輸協定和 AIX 環境：
 
-* FC
-* FCoE
-* iSCSI
-
-
-AIX 主機公用程式支援下列環境：
-
-* AIX Microsoft 多重路徑 I/O （ MPIO ）（原生作業系統）
+* FC、FCoE 和 iSCSI
+* AIX Microsoft 多路徑 I/O (MPIO)
 * PowerVM
 +
 如需有關 PowerVM 的詳細資訊、請參閱 IBM PowerVM Live Partition Mobility Red Book 。
 
 
 
+.關於這項工作
+* 您需要安裝帶有 AIX MPIO 的 AIX Host Utilities SAN Toolkit 來管理連接到 AIX 主機的ONTAP儲存。
+* 當您安裝 AIX Host Utilities 時，它們不會變更 AIX 主機上的任何設定。
+
+
 .開始之前
-* 若要確保操作可靠、請確認您的整個 iSCSI 、 FC 或 FCoE 組態均受到支援。
-+
-您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]來驗證組態。
+* 使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 AIX OS、協定和ONTAP版本是否支援 SAN 啟動。
+* 透過運行 `chdev -l <fscsi_device> -a dyntrk=ye`AIX 主機上的指令。
 
-* 啟用所有 FC 和 FCoE 啟動器的動態追蹤。
-
-
-
-NOTE: NetApp AIX 主機公用程式軟體套件可在中的中 `tar.gz file`取得link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp 支援網站"^]。在 ONTAP 儲存設備上使用 AIX MPIO 時，您必須安裝 AIX 主機公用程式套件。
 
 .步驟
 . 登入您的主機。
 +
-** 在AIX主機上、以* root*登入。
-** 在 PowerVM 主機上、以 * padmin* 身分登入 `oem_setup_env`、然後輸入命令成為 root 使用者。
+[role="tabbed-block"]
+====
+.AIX
+--
+在AIX主機上、以* root*登入。
+
+--
+.PowerVM
+--
+在 PowerVM 主機上：
+
+.. 以 *padmin* 登入。
+.. 成為 root 用戶：
++
+[source, cli]
+----
+oem_setup_env
+----
 
 
+--
+====
 . 前往 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp 支援網站"^] 並將包含主機公用程式的壓縮檔案下載到主機上的目錄。
 . 前往內含下載內容的目錄。
 . 解壓縮檔案並解壓縮SAN Toolkit軟體套件。
 +
-`# tar -xvf ntap_aix_host_utilities_6.1.tar.gz`
-
+[source, cli]
+----
+tar -xvf ntap_aix_host_utilities_6.1.tar.gz
+----
 +
 解壓縮檔案時會建立下列目錄：「ntap_AIX_host_utilities _6.1」。此目錄將有下列子目錄之一：MPIO、non-MPIO或SAN_Tool_Kit。
 
 . 安裝AIX MPIO：
 +
-`# installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/MPIO NetApp.MPIO_Host_Utilities_Kit`
-
+[source, cli]
+----
+installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/MPIO NetApp.MPIO_Host_Utilities_Kit
+----
 . 安裝SAN工具套件：
 +
-`# installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/SAN_Tool_Kit NetApp.SAN_toolkit`
-
+[source, cli]
+----
+installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/SAN_Tool_Kit NetApp.SAN_toolkit
+----
 . 重新啟動主機。
 . 驗證安裝：
 +
-[listing]
+[source, cli]
 ----
-# sanlun version
-----
-
-
-
-
-== SAN工具套件
-
-AIX 主機公用程式是 NetApp 主機軟體、可在 IBM AIX 主機上提供命令列工具組。此工具組會在您安裝主機公用程式套件時安裝。此套件提供 `sanlun`公用程式，可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。此 `sanlun`命令會傳回有關對應至主機的 LUN ，多重路徑及建立啟動器群組所需的資訊。
-
-* 範例 *
-
-在以下範例中、「左LUN show」命令會傳回LUN資訊。
-
-[listing]
-----
-# sanlun lun show all
-----
-* 輸出範例 *
-
-[listing]
-----
-controller(7mode)/ device host lun
-
-vserver(Cmode) lun-pathname filename adapter protocol size mode
-----------------------------------------------------------------
-data_vserver   /vol/vol1/lun1 hdisk0 fcs0    FCP      60g C
-data_vserver   /vol/vol2/lun2 hdisk0 fcs0    FCP      20g C
-data_vserver   /vol/vol3/lun3 hdisk11 fcs0   FCP      20g C
-data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
+sanlun version
 ----
 
-NOTE: 此工具組適用於所有主機公用程式組態和通訊協定。因此，所有元件並不適用於每個組態。未使用的元件不會影響您的系統效能。SAN 工具套件在 AIX 和 PowerVM/VIOS OS 版本上受支援
+
+
+
+== 接下來呢？
+
+link:hu-aix-san-toolkit.html["了解 AIX SAN 工具包"] 。

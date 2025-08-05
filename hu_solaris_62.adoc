@@ -16,50 +16,63 @@ summary: 說明如何將 Solaris 主機公用程式 6.2 與 ONTAP 搭配使用
 
 
 [role="lead"]
-Solaris 主機公用程式可協助您管理附加至 Solaris 主機的 ONTAP 儲存設備。
+Solaris Host Utilities 可協助您管理連接到 Solaris 主機的ONTAP儲存並協助技術支援收集設定資料。
 
-Solaris Host Utilities 6.2支援多種Solaris環境和多種傳輸協定。主要主機公用程式環境包括：
+Solaris Host Utilities 支援多種 Solaris 環境和多種傳輸協定。以下是主要的 Solaris Host Utilities 環境：
 
-* 原生作業系統搭配MPxIO、搭配使用SPARC處理器或x8/64處理器的系統光纖通道（FC）或iSCSI傳輸協定。
+* 使用 SPARC 處理器或 x86/64 處理器的系統上的具有 MPxIO 和光纖通道 (FC) 或 iSCSI 協定的本機作業系統。
 * Veritas Dynamic Multipathing （ DMP ）搭配使用 SPARC 處理器的系統上的 FC 或 iSCSI 傳輸協定、或是使用 x86_64 處理器的系統上的 iSCSI 傳輸協定。
 
 
-Solaris Host Utilities 6.2 繼續支援下列 Solaris 版本：
+Solaris Host Utilities 6.2 支援以下 Solaris 系列：
 
-* Solaris 11.x系列
-* Solaris 10.x系列
+* Solaris 11.x
+* Solaris 10.x
 
 
 .開始之前
-* 若要確保操作可靠、請確認您的整個 iSCSI 、 FC 或 FCoE 組態均受到支援。
-
-
-您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]來驗證組態。
-
-
-NOTE: NetApp Solaris主機公用程式軟體套件可在上取得 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^] 為處理器提供壓縮檔案格式。您可以從Support網站下載適用於您環境的Host Utilities軟體套件。
+驗證您的 iSCSI、FC 或 FCoE 配置是否受支援。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的配置。
 
 .步驟
-. 以root身分登入主機。
-. 從下載內含主機公用程式的壓縮檔案複本 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^] 到主機上的目錄。
+. 以 root 身分登入您的主機。
+. 從下載包含主機實用程式的壓縮檔案副本link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^]到 Solaris 主機上的目錄：
 +
-在準備本文件時、壓縮檔案稱為：
-
-+
-** SPARC CPU：「NetApp_solaris主機公用程式_6_2_SPARC.tar.gz」
-** x86/x64 CPU：「netapp_solaris主機公用程式_6_2_amd.tar.gz」
-
-
-. 前往內含下載內容的目錄。
+[role="tabbed-block"]
+====
+.SPARC CPU
+--
+[source, cli]
+----
+netapp_solaris_host_utilities_6_2_sparc.tar.gz
+----
+--
+.x86/x64 CPU
+--
+[source, cli]
+----
+netapp_solaris_host_utilities_6_2_amd.tar.gz
+----
+--
+====
+. 前往 Solaris 主機上包含下載內容的目錄。
 . 使用解壓縮檔案 `gunzip` 命令：
 +
-gunzip NetApp_solution_host_utilitutions_6_2_SPARC.tar.gz
-
-. 使用以下命令解壓縮檔案 `tar xvf`：
+[source, cli]
+----
+gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz
+----
+. 使用提取文件 `tar xvf`命令：
 +
-"# tar xvf netapp_solaris主機公用程式_6_2_SPARC.tar
-
-. 使用命令將從 tar 檔案擷取的套件新增至主機 `pkgadd`。
+[source, cli]
+----
+tar xvf netapp_solaris_host_utilities_6_2_sparc.tar
+----
+. 將你從 tar 檔案中提取的軟體包加入你的主機
++
+[source, cli]
+----
+pkgadd
+----
 +
 這些套件會新增至「/opt/NTAP/SANToolkit / bin」目錄。
 
@@ -67,10 +80,25 @@ gunzip NetApp_solution_host_utilitutions_6_2_SPARC.tar.gz
 以下範例使用 `pkgadd`命令來安裝 Solaris 安裝套件：
 
 +
-按#鍵
-
-. 使用「pkginfo」命令或「ls - al」命令、確認工具組已成功安裝。
+[source, cli]
+----
+pkgadd -d ./NTAPSANTool.pkg
+----
+. 使用以下命令之一確認工具包已成功安裝：
 +
+[source, cli]
+----
+pkginfo
+----
++
+[source, cli]
+----
+ls - al
+----
++
+.顯示範例輸出
+[%collapsible]
+====
 [listing]
 ----
 # ls -alR /opt/NTAP/SANToolkit
@@ -94,39 +122,23 @@ drwxr-xr-x   3 root     sys            4 Jul 22  2019 ..
 -r-xr-xr-x   1 root     sys        12266 Sep 13  2017 host_config.1
 -r-xr-xr-x   1 root     sys         9044 Sep 13  2017 sanlun.1
 ----
-. 完成後、請使用設定環境的主機參數 `/opt/NTAP/SANToolkit/bin/host_config` 命令：
+====
+. 為您的 MPxIO 或 Veritas DMP 環境設定主機參數：
 +
-** MPxIO
-** Veritas DMP
-
-
+[source, cli]
+----
+/opt/NTAP/SANToolkit/bin/host_config
+----
 . 驗證安裝：
 +
-《Anlun版本》
-
-
-
-
-
-== 啟用 SAN 工具包
-
-Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供 `sanlun` 可協助您管理 LUN 和主機匯流排介面卡（ HBA ）的公用程式。。 `sanlun` 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。
-
-.範例
-在以下範例中、「左LUN show」命令會傳回LUN資訊。
-
-[listing]
+[source, cli]
 ----
-#sanlun lun show all
-controller(7mode)/ device host lun
-vserver(Cmode)                     lun-pathname       filename                                       adapter protocol size mode
------------------------------------------------------------------------------------------------------------------------------------
-data_vserver                     /vol/vol1/lun1     /dev/rdsk/c0t600A098038304437522B4E694E49792Dd0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol0/lun2     /dev/rdsk/c0t600A098038304437522B4E694E497938d0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol2/lun3     /dev/rdsk/c0t600A098038304437522B4E694E497939d0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A098038304437522B4E694E497941d0s2 qlc3   FCP       10g cDOT
-
-
+sanlun version
 ----
 
-NOTE: 此工具組適用於所有主機公用程式組態和通訊協定。因此，所有元件並不適用於每個組態。未使用的元件不會影響您的系統效能。SAN 工具套件在 AIX 和 PowerVM/VIOS OS 版本上受支援。
+
+
+
+== 接下來呢？
+
+link:hu-solaris-san-toolkit.html["了解 SAN 工具包"] 。

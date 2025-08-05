@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-Windows 主機公用程式是一組軟體程式，其中包含文件，可讓您將主機電腦連接至 NetApp SAN 上的虛擬磁碟（ LUN ）。NetApp 建議您下載並安裝最新的公用程式套件。如需 Windows 主機公用程式組態資訊和指示，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"]並選取 Windows 主機公用程式版本的安裝程序。
+Windows Host Utilities 是一組具有文件的軟體程序，可讓您將主機連接到NetApp SAN 上的虛擬磁碟 (LUN)。 NetApp建議下載並安裝最新的實用程式工具包。有關 Windows Host Utilities 設定資訊和說明，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu-wuhu-release-notes.html["Windows主機公用程式文件"]並選擇適合您的 Windows Host Utilities 版本的安裝程式。

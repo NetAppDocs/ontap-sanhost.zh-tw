@@ -4,7 +4,7 @@ permalink: hu_solaris_113.html
 keywords: host utilities, solaris, 113, netapp, ontap 
 summary: 說明如何安裝 Solaris 主機公用程式 
 ---
-= 將 Solaris 11.3 與 ONTAP 搭配使用
+= 使用ONTAP儲存為 FCP 和 iSCSI 配置 Solaris 11.3
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,139 +16,59 @@ summary: 說明如何安裝 Solaris 主機公用程式
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、將 Solaris 11.3 設定為 ONTAP 作為目標。
+Solaris Host Utilities 軟體為連接到ONTAP儲存的 Solaris 主機提供管理和診斷工具。在 Solaris 11.3 主機上安裝 Solaris Host Utilities 時，您可以使用 Host Utilities 來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。
 
 
 
-== 安裝 Solaris 主機公用程式
+== 步驟 1 ：選擇性啟用 SAN 開機
 
-您可以從下載包含主機公用程式軟體套件的壓縮檔案 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^]。取得檔案後、您必須將其解壓縮、才能取得安裝主機公用程式所需的軟體套件。
+您可以設定主機以使用 SAN 啟動來簡化部署並提高可擴充性。如果您的配置不支援 SAN 啟動，您可以使用本機啟動。
+
+[role="tabbed-block"]
+====
+.SAN開機
+--
+SAN 啟動是將 SAN 連線磁碟 (LUN) 設定為 Solaris 主機的啟動裝置的過程。您可以設定 SAN 啟動 LUN，以在使用 FC 協定並執行 Solaris Host Utilities 的 Solaris MPxIO 環境中運作。設定 SAN 啟動 LUN 的方法取決於您的磁碟區管理器和檔案系統。
 
 .步驟
-. 從下載內含主機公用程式的壓縮檔案複本 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^] 到主機上的目錄。
-. 前往內含下載內容的目錄。
-. 擷取檔案。
+. 使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Solaris 作業系統、協定和ONTAP版本是否支援 SAN 啟動。
+. 請依照 Solaris 供應商文件中有關設定 SAN 啟動的最佳實務進行操作。
+
+
+--
+.本機開機
+--
+透過在本機硬碟上安裝 Solaris OS 執行本機引導，例如，安裝在 SSD、SATA 或 RAID 上。
+
+--
+====
+
+
+== 步驟 2：安裝 Solaris 主機實用程式
+
+NetApp強烈建議安裝 Solaris Host Utilities 來支援ONTAP LUN 管理並協助技術支援收集設定資料。
+
+
+NOTE: 安裝 Solaris Host Utilities 會更改 Solaris 主機上的某些逾時設定。
+
+link:hu_solaris_62.html["安裝 Solaris Host Utilities 6.2"] 。
+
+
+
+== 步驟 3 ：確認主機的多重路徑組態
+
+您可以使用 Solaris 11.3 的多路徑來管理ONTAP LUN。
+
+多路徑可讓您在主機和儲存系統之間配置多條網路路徑。若一條路徑發生故障，流量仍可透過其餘路徑繼續傳輸。
+
+為確保為您的主機正確配置多路徑和建議的逾時參數，請驗證您是否使用了NetApp為ONTAP LUN 所建議的設定。
+
+.步驟
+. Solaris Host Utilities 載入NetApp針對 SPARC 和 x86_64 處理器所建議的參數設定。
 +
-以下範例解壓縮SPARC系統的檔案。對於x86至64平台、請使用x86/x64套件。
-
-+
-「gunzip NetApp_solaris主機公用程式_6_2N20170913_0304_SPARC.Tar.gz」
-
-. 使用「tar xvf」命令將檔案解壓縮。
-+
-「tar xvf netapp_solaris主機公用程式_6_2N20170913_0301_SPARC.tar」
-
-. 將您從tar檔案擷取的套件新增至主機。
-+
-「pkadd -d NTAPSANTool.pkg」
-
-+
-這些套件會新增至「/opt/NTAP/SANToolkit / bin」目錄。
-
-+
-若要完成安裝、您必須使用設定環境的主機參數（本例中為 MPxIO ） `host_config` 命令。
-
-+
-「host_config」命令的格式如下：
-
-+
-/`opt/NTAP/SANToolkit / bin / host_config \<-setup>\<-protocol FCP | iscsi| mixed>\<-multipathmpxio| dmp | non（非）[-mc60 | 90| 120]
-
-+
-「host_config」命令會執行下列動作：
-
-+
-** 變更 x86 和 SPARC 系統的 Fibre Channel 和 SCSI 驅動程式設定
-** 提供兩種MPxIO組態的SCSI逾時設定
-** 設定VID/PID資訊
-** 啟用或停用ALUA
-** 設定MPxIO所使用的ALUA設定、以及x86和SPARC系統的SCSI驅動程式。
-
-
-. 重新啟動主機。
-
-
-
-
-== SAN工具套件
-
-安裝 NetApp 主機公用程式套件會自動安裝工具套件。此套件提供 `sanlun`公用程式，可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。此 `sanlun`命令會傳回有關對應至主機的 LUN ，多重路徑及建立啟動器群組所需的資訊。
-
-.範例
-在以下範例中、「左LUN show」命令會傳回LUN資訊。
-
-[listing]
-----
-#sanlun lun show
-
-controller(7mode)/                 device                                            host             lun
-vserver(Cmode)     lun-pathname    filename                                         adapter protocol  size  mode
-------------------------------------------------------------------------------------------------------
-data_vserver       /vol/vol1/lun1  /dev/rdsk/c0t600A098038314362692451465A2F4F39d0s2  qlc1  FCP       60g   C
-data_vserver       /vol/vol2/lun2  /dev/rdsk/c0t600A098038314362705D51465A626475d0s2  qlc1  FCP       20g   C
-----
-
-
-== SAN開機
-
-.開始之前
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
-
-SAN開機是將SAN附加磁碟（LUN）設定為Solaris主機的開機裝置的程序。
-
-您可以使用FC傳輸協定設定SAN開機LUN、以便在Solaris MPxIO環境中運作、並執行Solaris Host Utilities。您用來設定SAN開機LUN的方法可能會因Volume Manager和檔案系統而異。如需 Solaris Microsoft 多重路徑 I/O （ MPIO ）環境中 SAN 開機 LUN 的詳細資訊，請參閱 https://docs.netapp.com/us-en/ontap-sanhost/hu_solaris_62.html["安裝 Solaris 主機公用程式"^]。
-
-
-
-== 多重路徑
-
-多重路徑可讓您在主機與儲存系統之間設定多個網路路徑。如果其中一條路徑故障、則其餘路徑上的流量會繼續傳輸。
-
-
-
-=== 非 ASA 組態
-
-對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
-
-.範例
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
-
-路徑優先順序會顯示在OS原生的「mpathadm show Lu <LUN>」命令中、每個LUN的「*存取狀態*」區段。
-
-
-
-=== 所有 SAN 陣列組態
-
-所有 SAN 陣列（ ASA ）組態都會最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
-
-.範例
-以下範例顯示 ONTAP LUN 的正確輸出。
-
-「sanlun」命令的輸出與ASA 不適用於ASA組態的輸出相同。
-
-路徑優先順序會顯示在OS原生的「mpathadm show Lu <LUN>」命令中、每個LUN的「*存取狀態*」區段。
-
-[listing]
-----
-#sanlun lun show -pv sparc-s7-16-49:/vol/solaris_vol_1_0/solaris_lun
-
-                    ONTAP Path: sparc-s7-16-49:/vol/solaris_vol_1_0/solaris_lun
-                           LUN: 0
-                      LUN Size: 30g
-                   Host Device: /dev/rdsk/c0t600A098038314362692451465A2F4F39d0s2
-                          Mode: C
-            Multipath Provider: Sun Microsystems
-              Multipath Policy: Native
-----
-
-NOTE: 從適用於Solaris主機的《支援所有SAN陣列ASA （EJUSTE）組態ONTAP 》（英文）的《支援所有SAN陣列（英文）》
-
-
-
-== 建議設定
-
-以下是建議用於具有 ONTAP LUN 的 Solaris 11.3 SPARC 和 x86_64 的一些參數設定。這些參數值由Host Utilities設定。
-
+.顯示參數設定
+[%collapsible]
+====
 [cols="2*"]
 |===
 | 參數 | 價值 
@@ -173,85 +93,335 @@ NOTE: 從適用於Solaris主機的《支援所有SAN陣列ASA （EJUSTE）組態
 
 
 | 實體區塊大小 | 4096 
+
+
+| 磁碟排序 | 錯誤的 
+
+
+| 快取非揮發性 | 真的 
 |===
+====
+. 如果您的儲存配置包括MetroCluster、Oracle Solaris 虛擬化或SnapMirror活動同步，請變更預設值：
++
+[role="tabbed-block"]
+====
+.MetroCluster
+--
+預設情況下，如果到 LUN 的所有路徑都遺失，Solaris OS 將在 *20 秒* 後無法執行 I/O 操作。這是由 `fcp_offline_delay`範圍。預設值為 `fcp_offline_delay`適用於標準ONTAP集群。但是，在MetroCluster配置中，您必須增加 `fcp_offline_delay`至 *120 秒*，以確保 I/O 在操作期間不會過早逾時，包括計劃外的故障轉移。
 
+有關MetroCluster預設設定的其他資訊和建議更改，請參閱知識庫文章 https://kb.netapp.com/onprem/ontap/metrocluster/Solaris_host_support_considerations_in_a_MetroCluster_configuration["Solaris主機支援MetroCluster 考量的功能"^]。
 
-=== 推薦MetroCluster 的設定
+--
+.Oracle Solaris虛擬化
+--
+** Solaris 虛擬化選項包括 Solaris 邏輯域（也稱為 LDOM 或 Oracle VM Server for SPARC）、Solaris 動態域、Solaris 區域和 Solaris 容器。這些技術也被稱為「Oracle虛擬機器」。
+** 您可以一起使用多個選項，例如，特定 Solaris 邏輯域內的 Solaris 容器。
+** NetApp支援使用 Solaris 虛擬化技術，其中整體配置由 Oracle 支持，並且任何可直接存取 LUN 的分區都列在link:https://imt.netapp.com/matrix/#welcome["IMT"]在受支援的配置中。這包括根容器、LDOM I/O 域和使用 NPIV 存取 LUN 的 LDOM。
+** 僅使用虛擬化儲存資源的分區或虛擬機，例如 `vdsk`，不需要特定資格，因為他們無法直接存取ONTAP LUN。您只需驗證對底層 LUN 具有直接存取權限的分割區或虛擬機器（例如 LDOM I/O 網域）是否會列在link:https://imt.netapp.com/matrix/#welcome["IMT"^]。
 
-根據預設、如果通往LUN的所有路徑都遺失、則Solaris作業系統在20秒後將會失敗I/O。這是由所控制 `fcp_offline_delay` 參數。的預設值 `fcp_offline_delay` 適用於標準ONTAP 的叢集。不過MetroCluster 、在不完整的組態中、其價值是 `fcp_offline_delay` 必須增加至* 120 *、以確保I/O在作業期間不會提早逾時、包括非計畫性容錯移轉。如需更多資訊及預設設定的建議變更、請參閱知識庫文章 https://kb.netapp.com/onprem/ontap/metrocluster/Solaris_host_support_considerations_in_a_MetroCluster_configuration["Solaris主機支援MetroCluster 考量的功能"^]。
-
-
-
-== Oracle Solaris虛擬化
-
-* Solaris虛擬化選項包括Solaris邏輯網域（也稱為LDom或Oracle VM Server for SPARC）、Solaris動態網域、Solaris區域及Solaris Container。儘管這些技術是以非常不同的架構為基礎、但這些技術通常被重新標記為「Oracle虛擬機器」。
-* 在某些情況下、可同時使用多個選項、例如特定Solaris邏輯網域內的Solaris Container。
-* NetApp 通常支援使用這些虛擬化技術，其中 Oracle 支援整體組態，而任何可直接存取 LUN 的分割區都會列在支援組態的中 https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。其中包括根容器， LDOM I/O 網域，以及使用 NPIV 存取 LUN 的 LDOM 。
-* 只使用虛擬化儲存資源（例如）的分割區和 / 或虛擬機器 `vdsk`不需要特定的限制條件，因為它們無法直接存取 NetApp LUN 。只有直接存取底層 LUN 的分割區 / 虛擬機器（例如 LDOM IO 網域）才能在中找到 https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。
-
-
-
-
-=== 虛擬化的建議設定
-
-當LUN在LDOM內作為虛擬磁碟裝置使用時、LUN的來源會被虛擬化遮罩、而LDOM將無法正確偵測區塊大小。為避免此問題、必須針對Oracle錯誤15824910修補LDOM作業系統、並建立「VDC-.conf」檔案、將虛擬磁碟的區塊大小設為4096。如需詳細資訊、請參閱Oracle Doc 2157669.1。
-
-若要驗證修補程式、請執行下列步驟：
 
 .步驟
-. 建立zPool。
-. 對zpool執行「zdb -C」、確認* ashift*的值為12。
+當 LUN 用作 LDOM 內的虛擬磁碟設備時，LUN 的來源會被虛擬化屏蔽，且 LDOM 無法正確偵測區塊大小。為了防止此問題：
+
+.. 為 LDOM OS 修補_Oracle Bug 15824910_
+.. 創建一個 `vdc.conf`將虛擬磁碟的區塊大小設定為 `4096`。有關詳細信息，請參閱 Oracle DOC：2157669.1。
+.. 驗證補丁安裝以確保已正確配置建議的設定：
 +
-如果* ashift*的值不是12、請確認已安裝正確的修補程式、然後重新檢查VDC-.conf的內容
+... 建立 zpool：
++
+[source, cli]
+----
+zpool create zpool_name disk_list
+----
+... 執行 `zdb -C` 檢查 zpool 並驗證 *ashift* 的值是否爲 `12`。
++
+如果 *ashift* 的值不是 `12`，重新運行 `zdb -C11`，並驗證是否安裝了正確的補丁並重新檢查 `vdc.conf`。
 
 +
-在* ashift*顯示值12之前、請勿繼續。
+直到 *ashift* 顯示值 `12`。
 
 
 
 
-NOTE: 可在各種版本的Solaris上取得Oracle錯誤15824910的修補程式。如果需要協助來判斷最佳核心修補程式、請聯絡Oracle。
 
 
+NOTE: 針對多個 Solaris 版本上的 Oracle 錯誤 15824910 提供了補丁。如果您需要協助確定最佳核心補丁，請聯絡 Oracle。
 
-== SnapMirror 主動同步的建議設定
-
-為了驗證在 SnapMirror 主動式同步環境中發生非計畫性站台容錯移轉切換時、 Solaris 用戶端應用程式不會中斷運作、您必須在 Solaris 11.3 主機上設定下列設定。此設定會覆寫容錯移轉模組 `f_tpgs` 防止執行偵測到衝突的程式碼路徑。
-
-
-NOTE: 從 9.9.1 開始、 ONTAP 11.3 主機支援 SnapMirror 主動式同步設定組態。
-
-依照指示設定置換參數：
+--
+.SnapMirror主動同步
+--
+從ONTAP 9.9.1 開始，Solaris 主機支援SnapMirror主動同步設定配置。若要驗證在SnapMirror主動同步環境中發生排程外站點故障轉移切換時 Solaris 用戶端應用程式是否不會中斷，必須設定 `scsi-vhci-failover-override`Solaris 主機上的設定。此設定覆蓋故障轉移模組 `f_tpgs`阻止執行偵測到矛盾的程式碼路徑。
 
 .步驟
-. 建立組態檔 `/etc/driver/drv/scsi_vhci.conf` 對於連接至主機的NetApp儲存類型、輸入內容類似下列項目：
+.. 建立設定檔 `/etc/driver/drv/scsi_vhci.conf`對於連接到主機的NetApp儲存類型，其項目類似於以下範例：
 +
 [listing]
 ----
 scsi-vhci-failover-override =
 "NETAPP  LUN","f_tpgs"
 ----
-. 使用 `devprop` 和 `mdb` 用於驗證置換參數是否已成功套用的命令：
+.. 驗證覆蓋參數是否已成功套用：
 +
-「root@host-a:~# devprop -v -n /scsi_vhci-vhci-容 錯移轉-置換scsi-vhci-容 錯移轉= NetApp LUN + f_tpgs root@host-a:~#回應「* scsi_vhc_structip:print -x WWNDE_info dev_child |:mdb_print siv_print siv_print siv_devi資訊列印siv_dev_mdb_devi
-
+[source, cli]
+----
+devprop
+----
 +
+[source, cli]
+----
+mdb
+----
++
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+root@host-A:~# devprop -v -n /scsi_vhci scsi-vhci-failover-override      scsi-vhci-failover-override=NETAPP  LUN + f_tpgs
+root@host-A:~# echo "*scsi_vhci_dip::print -x struct dev_info devi_child | ::list struct dev_info devi_sibling| ::print struct dev_info devi_mdi_client| ::print mdi_client_t ct_vprivate| ::print struct scsi_vhci_lun svl_lun_wwn svl_fops_name"| mdb -k
+----
 [listing]
 ----
 svl_lun_wwn = 0xa002a1c8960 "600a098038313477543f524539787938"
 svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 ----
+=====
 
 
 
-NOTE: 之後 `scsi-vhci-failover-override` 已套用、 `conf` 已新增至 `svl_fops_name`。
-如需其他資訊及預設設定的建議變更、請參閱NetApp知識庫文章 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris 主機支援 SnapMirror 主動式同步組態中的建議設定"^]。
+NOTE: 之後 `scsi-vhci-failover-override` 已套用、 `conf` 已新增至 `svl_fops_name`。如需更多資訊及預設設定的建議變更、請參閱 NetApp 知識庫文件 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris 主機支援 SnapMirror 主動式同步組態中的建議設定"^]。
+
+--
+====
+. 驗證使用ONTAP LUN 的 zpools 是否支援 4 KB 對齊的 I/O：
++
+.. 驗證您的 Solaris 主機是否安裝了最新的支援儲存庫更新 (SRU)：
++
+[source, cli]
+----
+pkg info entire`
+----
+.. 驗證ONTAP LUN 是否具有 `ostype`作為“Solaris”，與 LUN 大小無關：
++
+[source, cli]
+----
+lun show -vserver` <vsersver_name>
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+chat-a800-31-33-35-37::*> lun show -vserver solaris_fcp -path /vol/sol_195_zpool_vol_9/lun -fields ostype
+vserver     path                         ostype
+----------- ---------------------------- -------
+solaris_fcp /vol/sol_195_zpool_vol_9/lun solaris
+----
+====
+
+
+. 驗證ONTAP LUN 的輸出：
++
+[source, cli]
+----
+sanlun lun show
+----
++
+對於ASA、 AFF或FAS配置，您應該會看到與下列範例類似的輸出：
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+root@sparc-s7-55-148:~# sanlun lun show -pv
+
+                    ONTAP Path: Solaris_148_siteA:/vol/Triage/lun
+                           LUN: 0
+                      LUN Size: 20g
+                   Host Device: /dev/rdsk/c0t600A098038314B32685D573064776172d0s2
+                          Mode: C
+            Multipath Provider: Sun Microsystems
+              Multipath Policy: Native
+----
+====
+. 驗證ONTAP LUN 的路徑狀態：
++
+[source, cli]
+----
+mpathadm show lu <LUN>`
+----
++
+以下範例輸出顯示ASA、 AFF或FAS配置中ONTAP LUN 的正確路徑狀態。輸出中每個 LUN 的路徑優先權都顯示在「存取狀態」中。
+
++
+[role="tabbed-block"]
+====
+.ASA 組態
+--
+ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
+
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+root@sparc-s7-55-82:~# mpathadm show lu /dev/rdsk/c0t600A098038313953495D58674777794Bd0s2
+Logical Unit:  /dev/rdsk/c0t600A098038313953495D58674777794Bd0s2
+        mpath-support:  libmpscsi_vhci.so
+        Vendor:  NETAPP
+        Product:  LUN C-Mode
+        Revision:  9171
+        Name Type:  unknown type
+        Name:  600a098038313953495d58674777794b
+        Asymmetric:  yes
+        Current Load Balance:  round-robin
+        Logical Unit Group ID:  NA
+        Auto Failback:  on
+        Auto Probing:  NA
+
+        Paths:
+                Initiator Port Name:  100000109bd30070
+                Target Port Name:  20b9d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109bd30070
+                Target Port Name:  20b8d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109bd3006f
+                Target Port Name:  20b3d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109bd3006f
+                Target Port Name:  20b4d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+        Target Port Groups:
+                ID:  1003
+                Explicit Failover:  no
+                Access State:  *active optimized*
+                Target Ports:
+                        Name:  20b9d039ea593393
+                        Relative ID:  8
+
+                        Name:  20b4d039ea593393
+                        Relative ID:  3
+
+                ID:  1002
+                Explicit Failover:  no
+                Access State:  *active optimized*
+                Target Ports:
+                        Name:  20b8d039ea593393
+                        Relative ID:  7
+
+                        Name:  20b3d039ea593393
+                        Relative ID:  2
+----
+=====
+--
+.AFF 或 FAS 組態
+--
+AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。較高優先順序的主動 / 最佳化路徑由集合所在的控制器提供服務。較低優先順序的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
+
+下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：
+
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+root@chatsol-54-195:~# mpathadm show lu /dev/rdsk/c0t600A0980383044376C3F4E694E506E44d0s2
+Logical Unit:  /dev/rdsk/c0t600A0980383044376C3F4E694E506E44d0s2
+        mpath-support:  libmpscsi_vhci.so
+        Vendor:  NETAPP
+        Product:  LUN C-Mode
+        Revision:  9171
+        Name Type:  unknown type
+        Name:  600a0980383044376c3f4e694e506e44
+        Asymmetric:  yes
+        Current Load Balance:  round-robin
+        Logical Unit Group ID:  NA
+        Auto Failback:  on
+        Auto Probing:  NA
+
+        Paths:
+
+                Initiator Port Name:  100000109b56c5fb
+                Target Port Name:  205200a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109b56c5fb
+                Target Port Name:  205000a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Demoted:  yes
+                Disabled:  no
+
+                Initiator Port Name:  100000109b56c5fa
+                Target Port Name:  204f00a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Demoted:  yes
+                Disabled:  no
+
+                Initiator Port Name:  100000109b56c5fa
+                Target Port Name:  205100a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+        Target Port Groups:
+                ID:  1001
+                Explicit Failover:  no
+                Access State:  *active not optimized*
+                Target Ports:
+                        Name:  205200a098ba7afe
+                        Relative ID:  8
+
+                        Name:  205100a098ba7afe
+                        Relative ID:  7
+
+                ID:  1000
+                Explicit Failover:  no
+                Access State:  *active optimized*
+                Target Ports:
+                        Name:  205000a098ba7afe
+                        Relative ID:  6
+
+                        Name:  204f00a098ba7afe
+                        Relative ID:  5
+----
+=====
+--
+====
 
 
 
-== 已知問題
 
-Solaris 11.3 with ONTAP 版本有下列已知問題：
+== 步驟 4：查看已知問題
+
+適用於具有ONTAP儲存的 FCP 和 iSCSI 的 Solaris 11.3 版本有下列已知問題：
 
 [cols="4*"]
 |===
@@ -263,3 +433,8 @@ Solaris 11.3 with ONTAP 版本有下列已知問題：
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1368957["1368957"^] | Solaris 11.x 'cfgadm -c configuration' 會導致端點對端 Emulex 組態發生 I/O 錯誤 | 執行中 `cfgadm -c configure` 在 Emulex 端點對端組態上、會導致 I/O 錯誤。ONTAP 9.5P17 、 9.6P14 、 9.7P13 和 9.8P2 中已修正此問題 | 不適用 
 |===
+
+
+== 接下來呢？
+
+link:hu-solaris-62-cmd.html["了解如何使用 Solaris Host Utilities 6.2 工具"] 。

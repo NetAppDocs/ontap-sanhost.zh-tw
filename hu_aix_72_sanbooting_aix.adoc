@@ -19,14 +19,16 @@ summary: 說明如何使用AIX探索及設定LUN
 當您使用不含 PowerVM 的 AIX 時，可以執行 `cfgmgr`命令，讓主機能夠探索 LUN 。您不需要重新啟動主機即可探索 LUN 。若要確認主機已探索到LUN、您可以使用sanlun公用程式。
 
 
-NOTE: 後續步驟不適用於執行PowerVM環境的主機。
+NOTE: 以下步驟不適用於執行 PowerVM 環境的主機。
 
 .步驟
 . 以root身分登入主機。
-. 在AIX主機上、輸入下列命令以探索新建立的LUN：
+. 在 AIX 主機上，發現新建立的 LUN：
 +
-《cfgmgr'》
-
+[source, cli]
+----
+cfgmgr
+----
 +
 「cfgmgr'命令有助於：
 
@@ -38,8 +40,10 @@ NOTE: 後續步驟不適用於執行PowerVM環境的主機。
 
 . 顯示所有 AIX 磁碟，包括 NetApp LUN ：
 +
-「lsdev-Cc disk」
-
+[source, cli]
+----
+lsdev -Cc disk
+----
 +
 LUN在主機上顯示為磁碟。您可以使用這些磁碟、就像使用主機上的本機磁碟一樣。主機設定安裝為主機公用程式一部分的ODM檔案會使LUN顯示為NetApp FCP磁碟。
 
@@ -66,8 +70,10 @@ hdisk5 Available 04-08-02  MPIO NetApp FCP Default PCM Disk
 ====
 . 擷取設定的相關資訊：
 +
-《lsattr -EL hdisk_name》
-
+[source, cli]
+----
+lsattr -El hdisk_name
+----
 +
 .顯示範例輸出
 [%collapsible]
@@ -104,25 +110,33 @@ ww_name         0x500a0984994ae0e0               FC World Wide Name             
 ====
 . 如果您的組態支援ALUA、您可以使用它來設定路徑優先順序。確認ALUA已啟用：
 +
-「LUN igroup show -instance igroup_name」
-
+[source, cli]
+----
+lun igroup show -instance igroup_name
+----
 +
 .. 如果未啟用ALUA、請啟用它：
 +
-「igroup set igroup_name alua yes」
-
+[source, cli]
+----
+igroup set igroup_name alua yes
+----
 
 
 . 如果您的組態不支援 ALUA ，您需要使用 dotPaths 公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用 ALUA ，請勿使用 dotPaths 公用程式。
 +
 .. 設定所有 ONTAP LUN 的優先順序：
 +
-"DotPaths（路徑）"
-
+[source, cli]
+----
+dotpaths
+----
 .. 設定特定磁碟集的優先順序：
 +
-「DotPaths（-HQV）[hdiskN ...（hdiskN ...）」
-
+[source, cli]
+----
+dotpaths [-hqv] [hdiskN ...]
+----
 +
 使用 `-v`選項來啟用詳細模式，並顯示所有優先順序。使用 `-q`選項查詢所有或個別磁碟優先順序。
 
@@ -130,8 +144,10 @@ ww_name         0x500a0984994ae0e0               FC World Wide Name             
 
 . 確認主機已探索到 LUN ：
 +
-《# sanlun LUN show》（# sanlun LUN show）
-
+[source, cli]
+----
+sanlun lun show
+----
 +
 以下範例顯示 Microsoft 多重路徑 I/O （ MPIO ）多重路徑環境中命令的一般輸出 `sanlun lun show`：
 

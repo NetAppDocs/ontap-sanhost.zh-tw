@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+安裝 Host Utilities 軟體時、安裝程式會設定所需的 Windows 登錄和 HBA 參數。
+
+下列程式和檔案會安裝在Windows主機電腦上。預設目錄為「C:\Program Files\NetApp\Windows Host Utilities」。

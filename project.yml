@@ -20,51 +20,75 @@ sidebar:
     - title: AIX主機公用程式
       entries:
       - title: 版本資訊
-        url: "/hu_aix_rn.html"
-      - title: 安裝AIX Hu 7.0
-        url: "/hu-aix-70.html"
-      - title: 安裝AIX Hu 6.1
-        url: "/hu_aix_61.html"
-      - title: 命令參考範例
-        url: "/hu_aix_61_cmd.html"
+        url: "/hu-aix-release-notes.html"
+      - title: 安裝 AIX 主機實用程式
+        entries:
+        - title: 安裝 AIX Host Utilities 8.0
+          url: "/hu-aix-80.html"
+        - title: 安裝 AIX 主機公用程式 7.0
+          url: "/hu-aix-70.html"
+        - title: 安裝 AIX Host Utilities 6.1
+          url: "/hu_aix_61.html"
+      - title: 了解 AIX SAN Tollkit
+        url: "/hu-aix-san-toolkit.html"
+      - title: AIX Host Utilities 指令參考
+        url: "/hu-aix-command-reference.html"
     - title: HP-UX主機公用程式
       entries:
       - title: 版本資訊
-        url: "/hu_hpux_60_rn.html"
-      - title: 安裝HP-UX HU 6.0
+        url: "/hu-hpux-release-notes.html"
+      - title: 安裝 HP-UX Host Utilities 6.0
         url: "/hu_hpux_60.html"
-      - title: 命令參考範例
+      - title: 了解 SAN 工具包
+        url: "/hu-hpux-sanlun-toolkit.html"
+      - title: 了解 HP-UX 指令參考
         url: "/hu_hpux_60_cmd.html"
     - title: Linux主機公用程式
       entries:
       - title: 版本資訊
-        url: "/hu_luhu_71_rn.html"
-      - title: 安裝 Linux 主機公用程式 7.1
-        url: "/hu_luhu_71.html"
-      - title: 命令參考範例
-        url: "/hu_luhu_71_cmd.html"
+        url: "/hu-luhu-release-notes.html"
+      - title: 安裝Linux主機實用程式
+        entries:
+        - title: 安裝 Linux Host Utilities 8.0
+          url: "/hu-luhu-80.html"
+        - title: 安裝 Linux 主機公用程式 7.1
+          url: "/hu_luhu_71.html"
+      - title: 了解三侖實用程序
+        url: "/hu-luhu-sanlun-utility.html"
+      - title: Linux 主機實用程式指令參考
+        url: "/hu-luhu-command-reference.html"
     - title: Solaris主機公用程式
       entries:
       - title: 版本資訊
-        url: "/hu_solaris_62_rn.html"
-      - title: 安裝Solaris Hu 6.2
-        url: "/hu_solaris_62.html"
-      - title: 命令參考範例
-        url: "/hu_solaris_62_cmd.html"
+        url: "/hu-solaris-release-notes.html"
+      - title: 安裝 Solaris 主機公用程式
+        entries:
+        - title: 安裝 Solaris Host Utilities 8.0
+          url: "/hu-solaris-80.html"
+        - title: 安裝 Solaris Host Utilities 6.2
+          url: "/hu_solaris_62.html"
+      - title: 了解 SAN 工具包
+        url: "/hu-solaris-san-toolkit.html"
+      - title: 了解 Solaris 指令參考
+        url: "/hu-solaris-command-reference.html"
     - title: Windows 主機公用程式
       entries:
       - title: 版本資訊
-        url: "/hu_wuhu_71_rn.html"
-      - title: 安裝 Windows 主機公用程式 7.2
-        url: "/hu_wuhu_72.html"
-      - title: 安裝 Windows 主機公用程式 7.1
-        url: "/hu_wuhu_71.html"
+        url: "/hu-wuhu-release-notes.html"
+      - title: 安裝 Windows 主機實用程式
+        entries:
+        - title: 安裝 Windows Host Utilities 8.0
+          url: "/hu-wuhu-80.html"
+        - title: 安裝 Windows 主機公用程式 7.2
+          url: "/hu_wuhu_72.html"
+        - title: 安裝 Windows 主機公用程式 7.1
+          url: "/hu_wuhu_71.html"
+      - title: 配置 Windows 主機實用程式的設定
+        url: "/hu_wuhu_hba_settings.html"
       - title: 升級 Windows 主機公用程式
         url: "/hu_wuhu_upgrade.html"
       - title: 修復和移除 Windows 主機公用程式
         url: "/hu_wuhu_repair_remove.html"
-      - title: 設定登錄設定
-        url: "/hu_wuhu_hba_settings.html"
       - title: 疑難排解
         url: "/hu_wuhu_troubleshoot.html"
   - title: 使用 FCP 和 iSCSI 設定主機
@@ -73,6 +97,8 @@ sidebar:
       url: "/hu_fcp_scsi_index.html"
     - title: AIX與PowerVM/VIOS
       entries:
+      - title: 7.3/4.x
+        url: "/hu-aix-73.html"
       - title: 7.2/3.1
         url: "/hu_aix_72.html"
       - title: 7.1.
@@ -364,7 +390,7 @@ sidebar:
     - title: Solaris
       entries:
       - title: '11.4'
-        url: "/hu_solaris_114.html"
+        url: "/hu-solaris-114.html"
       - title: '11.3'
         url: "/hu_solaris_113.html"
     - title: SUSE Linux Enterprise Server

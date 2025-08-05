@@ -1,0 +1,93 @@
+---
+sidebar: sidebar 
+permalink: hu-luhu-release-notes.html 
+keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
+summary: Linux 主機實用程式發行說明 
+---
+= Linux 主機實用程式發行說明
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+發行說明介紹了使用ONTAP儲存系統來配置和管理特定主機的新功能、增強功能、已修復的問題、已知問題、限制和重要注意事項。
+
+有關主機公用程式支援的作業系統版本和更新的特定資訊，請參閱link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。
+
+
+
+== Linux Host Utilities 8.0 中的新功能
+
+Linux Host Utilities 8.0 版本包含以下新功能和增強功能
+
+Linux Host Utilities 8.0 包括對 64 位元速度 QLogic 和 Emulex FC 主機匯流排適配器 (HBA) 的支援。
+
+支援以下作業系統：
+
+* Red Hat Enterprise Linux (RHEL) 9 與 8 系列
+* SUSE Linux Enterprise Server
+* Oracle Linux 9 和 8 系列
+* Ubuntu
+
+
+
+
+== Linux Host Utilities 7.1 的新功能
+
+Linux 主機公用程式 7.1 版本包含下列新功能與增強功能：
+
+* Linux 主機公用程式現在稱為 Linux 統一主機公用程式、因為它支援執行 SANtricity 的 NetApp E 系列儲存系統、以及執行 ONTAP 的 AFF 、 FAS 和 ASA 系統。
+* 支援以下作業系統：
++
+** Citrix XenServer
+** KVM 和 XEN、RHEV 6.5 和 6.4
+** Oracle VM 3.2系列
+** Oracle Linux 7 和 6 系列
+** RHEL 7 和 6 系列
+** SUSE Linux Enterprise Server 15系列
+** SUSE Linux Enterprise Server 11 SP4
+
+
+* 在 RHEL 6 和 7 主機上，現在支援用於設定伺服器設定檔的調整包。您可以使用 `tuned-adm`命令根據環境設定不同的設定檔。例如，當使用企業儲存陣列的 LUN 時，您可以使用虛擬來賓設定檔作為來賓虛擬機，並使用企業儲存設定檔進行設定。使用這些經過調整的軟體包可以提高ONTAP的吞吐量和延遲。
+* Linux Host Utilities 7.1 增加了對 Broadcom Emulex 和 Marvell Qlogic 的 32GB FC 適配器的支援。
+
+
+
+NOTE: NetApp繼續與 Linux Host Utilities 合作，以增加對初始版本之後的功能的支援。有關支援的功能和新增功能的最新信息，請參閱link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。
+
+
+
+== 已修復的問題
+
+Linux Host Utilities 中已修復以下問題。
+
+[cols="20, 80"]
+|===
+| 已修復版本 | 說明 
+
+
+| 7.1. | 運作時發生的間歇性主機作業系統故障問題 `sanlun lun show -p`SUSE Linux Enterprise Server 12 SP1、Oracle Linux 7.2、RHEL 7.2 和 RHEL 6.8 中的指令。 
+|===
+
+
+== 已知問題和限制
+
+您應該注意以下可能影響特定主機效能的已知問題和限制：
+
+[cols="15, 15, 30, 40"]
+|===
+| NetApp錯誤ID | 影響版本 | 標題 | 說明 
+
+
+| 1457017 | 7.1. | 「anlun」安裝會發出與「libdevmapper.so」和「libnl.so」程式庫相關的警告訊息。這些警告不會影響到「暫停」套件的功能。 | 在 SAN 主機上執行 Linux Host Utilities CLI 命令「sanlun fcp show adapter -v」時，該命令會失敗並顯示錯誤訊息，顯示無法找到主機匯流排適配器 HBA 發現所需的庫相依性：
+`[root@hostname ~]# sanlun fcp show adapter -v
+Unable to locate /usr/lib64/libHBAAPI.so library
+Make sure the package installing the library is installed & loaded`請參閱NetApp線上錯誤 -link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] 。 
+|===
+link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。

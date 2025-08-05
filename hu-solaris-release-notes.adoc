@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: hu-solaris-release-notes.html 
+keywords: Host Utilities, solaris, 6.2, 8.0, netapp, ontap 
+summary: Solaris Host Utilities 的發行說明。 
+---
+= Solaris 主機公用程式發行說明
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Solaris Host Utilities 發行說明介紹了與使用ONTAP儲存系統配置和管理特定 Solaris 主機相關的新功能、增強功能、已知問題、限制和重要注意事項。
+
+有關主機公用程式支援的作業系統版本和更新的特定資訊，請參閱link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。
+
+
+
+== Solaris Host Utilities 8.0 的新增功能
+
+* Solaris Host Utilities 8.0 引進了 `disksort:false`和 `cache-nonvolatile:true`參數設定。這些參數抑制來自主機的持續同步呼叫。同步呼叫會影響效能，由於ONTAP沒有易失性緩存，因此不需要同步呼叫。有關更多信息，請參閱link:https://docs.oracle.com/en/operating-systems/solaris/oracle-solaris/11.4/tuning/ensuring-proper-cache-flush-behavior-flash-and-nvram-storage-devices.html["快閃記憶體和NVRAM儲存裝置的快取刷新行為"^] 。
+* Solaris Host Utilities 8.0 支援 FC 驅動程式的自動更新。綁定 Solaris 11.4 參數的 FC 驅動程式使用 SCSI 磁碟。有關更多信息，請參閱link:https://support.oracle.com/knowledge/Sun%20Microsystems/2595926_1.html["Oracle 支援文件 ID 2595926.1"^] 。
+
+
+
+
+== 已知問題和限制
+
+您應該注意以下已知問題和限制，它們可能會影響特定主機的效能。
+
+[cols="15,15,15,55"]
+|===
+| 錯誤ID | 影響版本 | 標題 | 說明 
+
+
+|  | Solaris 主機實用程式 8.0 |  | Solaris Host Utilities 8.0 版本僅支援具有 SPARC 和 x86 平台的 Solaris 11.4。對於 Solaris 11.3 及更早版本，您需要使用 Solaris Host Utilities 6.2。 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1385189["1385189."^] | Solaris 11.4 | 在Huk 6.2中需要進行Solaris 11.4 FC驅動程式連結變更 | Solaris 11.4 與 Huk 建議：
+FC 驅動程式繫結已從變更 `ssd(4D)` 至 `sd(4D)`。移動您在中的組態 `ssd.conf` 至 `sd.conf` 如 Oracle 所述（文件編號 2595926.1 ）。新安裝的 Solaris 11.4 系統和從 11.3 或更低版本升級的系統的行為會有所不同。 
+|===
++link:https://mysupport.netapp.com/site/["NetApp線上錯誤"^]提供大多數已知問題的完整信息，包括可能的建議解決方法。您可能想要使用的一些關鍵字組合和錯誤類型包括：
+
+* FCP 一般：顯示與特定主機無關的 FC 和主機匯流排介面卡（ HBA ）錯誤。
+* FCP - Solaris
+

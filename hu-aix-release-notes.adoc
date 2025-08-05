@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: hu-aix-release-notes.html 
+keywords: host utilities, aix, 6.1 netapp, 7.0, ontap, powervm 
+summary: AIX主機公用程式6.1版本資訊 
+---
+= AIX 主機公用程式發行說明
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+發行說明介紹了新功能和增強功能、目前版本中修復的問題、已知問題和限制，以及與使用ONTAP儲存系統配置和管理特定 AIX 主機相關的重要注意事項。
+
+有關主機公用程式支援的作業系統版本和更新的特定資訊，請參閱link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。
+
+AIX Host Utilities 版本包含以下新功能和增強功能。
+
+
+
+== AIX Host Utilities 8.0 中的新功能
+
+IBM 臨時修復程序 (ifix) 適用於 AIX Host Utilities 8.0，可確保 `sanlun fcp show adapter –v`指令顯示正確的 HBA 速度訊息，例如適配器支援和協商的速度。您可以在以下 AIX 和 VIOS 版本上安裝 ifix：
+
+* AIX：7.3 TL3 SP0、7.3 TL2 SP2、7.3 TL1 SP4、7.2 TL5 SP9、7.2 TL5 SP8
+* VIOS：4.1.1.0、4.1.0.21、3.1.4.50、3.1.4.41
+
+
+
+
+== AIX Host Utilities 7.0 中的新功能
+
+AIX 主機公用程式 7.0 支援 AIX 主機作業系統上的 SCSI 取消對應。藉助 AIX 主機實用程序 7.0 ， SCSI 精簡配置功能可與 AIX 和 FC 設備的 NetApp LUN 無縫配合使用。
+
+
+
+== AIX Host Utilities 6.1 中的新功能
+
+AIX 主機公用程式 6.1 支援舊版 AIX 主機作業系統中發生的記憶體故障問題。有了AIX Host Utilities 6.1、只有sanlun二進位檔已變更。Microsoft 多重路徑 I/O （ MPIO ）和相關的 ODM 維持不變。
+
+
+
+== 已知問題與限制
+
+您應該注意以下已知問題和限制，它們可能會影響特定主機的效能：
+
+[cols="4"]
+|===
+| 錯誤ID | 影響版本 | 標題 | 說明 
+
+
+| 不適用 | 7.0 | ONTAP iSCSI LUN 的 SCSI 取消對應支援 | AIX 主機公用程式 7.0 僅支援 FC 裝置的 SCSI 取消對應功能。此版本不支援 iSCSI 裝置的 SCSI 取消對應。 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1069147["1069147"^] |  | AIX Hu Sanlun報告HBA速度不正確 | 執行「sanlun FCP show介面卡–v」命令時、會報告sanlun顯示錯誤HBA速度的執行個體。「ianlun FCP show介面卡–v」命令會顯示HBA卡資訊、例如介面卡的支援和協調速度。這似乎只是報告問題。若要識別實際速度、請使用「fcstat fcsx」命令。 
+|===
+link:https://mysupport.netapp.com/site/["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。您可能想要使用的一些關鍵字組合和錯誤類型包括：
+
+* FCP一般：顯示與特定主機無關的FC和HBA錯誤。
+* FCP - AIX
+

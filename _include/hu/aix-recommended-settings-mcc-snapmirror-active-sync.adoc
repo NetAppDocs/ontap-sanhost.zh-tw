@@ -1,0 +1,24 @@
+= 
+:allow-uri-read: 
+
+
+. 如果您的儲存配置包括MetroCluster或SnapMirror活動同步，請變更預設設定：
++
+[role="tabbed-block"]
+====
+.MetroCluster
+--
+預設情況下，當沒有可用的 LUN 路徑時，AIX OS 會強制執行較短的 I/O 逾時。這可能發生在包含單一交換器 SAN 結構的配置中以及經歷計劃外故障轉移的MetroCluster配置中。有關其他資訊和建議對預設設定進行更改，請參閱知識庫文章link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/What_are_AIX_Host_support_considerations_in_a_MetroCluster_configuration["MetroCluster配置中的 AIX 主機支援注意事項有哪些？"^]。
+
+--
+.SnapMirror主動同步
+--
+從ONTAP 9.11.1 開始，AIX 主機支援SnapMirror主動同步。  AIX 配置中的主集群是「活動」集群。
+
+在 AIX 配置中，故障轉移會造成破壞。每次故障轉移時，您都需要在主機上執行重新掃描以還原 I/O 操作。
+
+請參閱知識庫文章link:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/How_to_configure_AIX_Host_for_SnapMirror_active_sync_in_ONTAP["如何設定用於 SnapMirror 主動同步的 AIX 主機"^]。
+
+--
+====
+

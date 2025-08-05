@@ -1,0 +1,29 @@
+= 步驟 2：設定 FC HBA 和交換機
+:allow-uri-read: 
+
+
+. 啟動目標服務。
+. 驗證您的纜線。
++
+請參閱 https://docs.netapp.com/us-en/ontap/san-config/index.html["SAN組態參考"^]了解詳細的佈線和配置資訊。
+
+
+
+
+
+== 步驟 2：設定 FC HBA 和交換機
+
+安裝及設定一或多個支援的 FC 主機匯流排介面卡（ HBA ）、以便 FC 連線至儲存系統。
+
+Windows 主機公用程式安裝程式會設定所需的 FC HBA 設定。
+
+
+CAUTION: 您應該只允許 Windows Host Utilities 安裝程式設定 HBA 參數。這可確保 Windows 主機能夠正確處理ONTAP平台的儲存系統行為。
+
+.步驟
+. 根據 HBA 廠商提供的指示、安裝一或多個支援的 FC HBA 。
+. 取得支援的HBA驅動程式和管理公用程式、並依照HBA廠商提供的指示進行安裝。
+. https://docs.netapp.com/us-en/ontap/san-management/index.html["將 HBA 連接到 FC 交換器或直接連接到儲存系統"^] 。
+. https://docs.netapp.com/us-en/ontap/san-config/fibre-channel-fcoe-zoning-concept.html["根據 FC 交換器文件在 FC 交換器上建立區域"^] 。
+. 對於ONTAP，按 WWPN 對交換器進行區域劃分。請務必使用邏輯介面 (LIF) 的 WWPN，而不是儲存控制器上的實體連接埠的 WWPN。請參閱 https://docs.netapp.com/us-en/ontap/san-config/index.html["SAN組態參考"^]了解更多。
+

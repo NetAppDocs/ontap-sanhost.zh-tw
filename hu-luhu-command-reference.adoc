@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_luhu_71_cmd.html 
-keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+permalink: hu-luhu-command-reference.html 
+keywords: host utilities, unified, oracle, linux, 7.1, 8.0, netapp, ontap 
 summary: 說明如何搭配 ONTAP 使用 Linux 主機公用程式 7.1 
 ---
-= Linux 主機公用程式 7.1 命令參考
+= 使用 Linux Host Utilities 指令驗證ONTAP儲存配置
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 說明如何搭配 ONTAP 使用 Linux 主機公用程式 7.1
 
 
 [role="lead"]
-您可以使用 Linux 主機公用程式 7.1 命令範例參考，使用主機公用程式工具來進行端點對端點驗證 NetApp 儲存組態。
+您可以使用 Linux Host Utilities 範例指令參考，透過 Host Utilities 工具對NetApp儲存設定進行端對端驗證。
 
 
 
@@ -26,10 +26,11 @@ summary: 說明如何搭配 ONTAP 使用 Linux 主機公用程式 7.1
 
 [source, cli]
 ----
-# sanlun fcp show adapter -v
+sanlun fcp show adapter -v
 ----
-* 輸出範例 *
-
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 adapter name:      host15
@@ -66,6 +67,7 @@ supported speed:   4 GBit/sec, 8 GBit/sec, 16 GBit/sec
 negotiated speed:  16 GBit/sec
 OS device name:    /sys/class/scsi_host/host16
 ----
+====
 
 
 == 列出所有對應至主機的LUN
@@ -74,10 +76,11 @@ OS device name:    /sys/class/scsi_host/host16
 
 [source, cli]
 ----
-# sanlun lun show -p -v all
+sanlun lun show -p -v all
 ----
-* 輸出範例 *
-
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 
@@ -104,6 +107,7 @@ active      up        secondary  sdr    15:0:6:0     lif_19      65:16
 active      up        secondary  sdad   16:0:4:0     lif_27      66:96
 active      up        secondary  sdan   16:0:6:0     lif_28      66:112
 ----
+====
 
 
 == 列出從特定SVM對應至主機的所有LUN
@@ -112,10 +116,11 @@ active      up        secondary  sdan   16:0:6:0     lif_28      66:112
 
 [source, cli]
 ----
-# sanlun lun show -p -v vs_sanboot
+sanlun lun show -p -v vs_sanboot
 ----
-* 輸出範例 *
-
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 
@@ -142,6 +147,7 @@ active      up        secondary  sdcf    15:0:6:0     lif_16g_2       69:48
 active      up        secondary  sdfj    16:0:4:0     lif_16g_3       130:80
 active      up        secondary  sdfl    16:0:6:0     lif_16g_4       130:112
 ----
+====
 
 
 == 列出對應至主機之特定LUN的所有屬性
@@ -150,10 +156,11 @@ active      up        secondary  sdfl    16:0:6:0     lif_16g_4       130:112
 
 [source, cli]
 ----
-# sanlun lun show -p -v vs_sanboot:/vol/sanboot_169/lun
+sanlun lun show -p -v vs_sanboot:/vol/sanboot_169/lun
 ----
-* 輸出範例 *
-
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 
@@ -180,6 +187,7 @@ active      up        secondary  sdcf    15:0:6:0     lif_16g_2         69:48
 active      up        secondary  sdfj    16:0:4:0     lif_16g_3         130:80
 active      up        secondary  sdfl    16:0:6:0     lif_16g_4         130:112
 ----
+====
 
 
 == 列出ONTAP 將特定LUN對應至主機的SVM身分識別
@@ -188,10 +196,11 @@ active      up        secondary  sdfl    16:0:6:0     lif_16g_4         130:112
 
 [source, cli]
 ----
-# sanlun lun show -m -v vs_sanboot:/vol/sanboot_169/lun
+sanlun lun show -m -v vs_sanboot:/vol/sanboot_169/lun
 ----
-* 輸出範例 *
-
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
                                                              device          host                  lun
@@ -209,6 +218,7 @@ vs_sanboot                    /vol/sanboot_169/lun           /dev/sdfm       hos
            Vserver volume name: sanboot_169     MSID::0x000000000000000000000000809E7CC3
          Vserver snapshot name:
 ----
+====
 
 
 == 依主機裝置檔案名稱列出 ONTAP LUN 屬性
@@ -217,10 +227,11 @@ vs_sanboot                    /vol/sanboot_169/lun           /dev/sdfm       hos
 
 [source, cli]
 ----
-# sanlun lun show -d /dev/sdce
+sanlun lun show -d /dev/sdce
 ----
-* 輸出範例 *
-
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 controller(7mode/E-Series)/                          device        host                lun
@@ -229,6 +240,7 @@ vserver(cDOT/FlashRay)      lun-pathname           filename      adapter    prot
 vs_sanboot                 /vol/sanboot_169/lun    /dev/sdce     host15     FCP        160g    cDOT
 [root@sr630-13-169 ~]#
 ----
+====
 
 
 == 列出附加至主機的所有SVM目標LIF WWPN
@@ -237,10 +249,11 @@ vs_sanboot                 /vol/sanboot_169/lun    /dev/sdce     host15     FCP 
 
 [source, cli]
 ----
-# sanlun lun show -wwpn
+sanlun lun show -wwpn
 ----
-* 輸出範例 *
-
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 controller(7mode/E-Series)/   target                                            device          host       lun
@@ -251,6 +264,7 @@ vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_9/lun        
 vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_7/lun        /dev/sdln       host18     10g     cDOT
 vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_5/lun        /dev/sdll       host18     10g     cDOT
 ----
+====
 
 
 == 列出ONTAP 特定SVM目標LIF WWPN在主機上看到的LUN
@@ -259,10 +273,11 @@ vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_5/lun        
 
 [source, cli]
 ----
-# sanlun lun show -wwpn 2010d039ea1308e5
+sanlun lun show -wwpn 2010d039ea1308e5
 ----
-* 輸出範例 *
-
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 controller(7mode/E-Series)/   target                                     device         host       lun
@@ -270,3 +285,4 @@ vserver(cDOT/FlashRay)        wwpn               lun-pathname            filenam
 ---------------------------------------------------------------------------------------------------------------
 vs_sanboot                    2010d039ea1308e5   /vol/sanboot_169/lun    /dev/sdfm      host16     160g    cDOT
 ----
+====

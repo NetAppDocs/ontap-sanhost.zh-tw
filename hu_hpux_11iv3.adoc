@@ -4,7 +4,7 @@ permalink: hu_hpux_11iv3.html
 keywords: host utilities, hp_ux, 11iv3, netapp, ontap 
 summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用 
 ---
-= 使用適用於 ONTAP 的 HP-UX 11i v3
+= 使用ONTAP儲存為 FCP 和 iSCSI 設定 HP-UX 11i v3
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,129 +18,45 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 [role="lead"]
 您可以使用 ONTAP SAN 主機組態設定、將具有 ONTAP 的 HP-UX 11i v3 設定為目標。
 
+HP-UX Host Utilities 軟體為連接到ONTAP儲存的 HP-UX 主機提供管理和診斷工具。在 HP-UX 11i v3 主機上安裝 HP-UX Host Utilities 時，您可以使用 Host Utilities 來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。
 
 
-== 安裝 HP-UX 主機公用程式
 
-您可以從下載包含主機公用程式軟體套件的壓縮檔案 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["NetApp 支援網站"^]。取得檔案後、您必須解壓縮檔案、才能取得安裝Host Utilities所需的軟體套件。
+== 步驟 1 ：選擇性啟用 SAN 開機
+
+配置您的主機以使用 SAN 啟動來簡化部署並提高可擴充性。  SAN 啟動是將 SAN 連線磁碟 (LUN) 設定為 HP-UX 主機的啟動裝置的過程。  Host Utilities 支援在 HP-UX 環境中使用 FC 和 FCoE 協定進行 SAN 引導。
 
 .步驟
-. 從下載內含主機公用程式的壓縮檔案複本 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["NetApp 支援網站"^] 到主機上的目錄。
-. 前往內含下載內容的目錄。
-. 解壓縮檔案。
-+
-"gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`
-
-. 輸入下列命令以安裝軟體：
-+
-「winstall -s /netapp_hpux_host_utilities_6.0_ia_pa.depot netapp_santoolkit'
-
-. 重新啟動主機。
+. 使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Linux 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
+. 請依照 HP-UX 供應商文件中有關設定 SAN 啟動的最佳實務進行操作。
 
 
 
 
-== SAN工具套件
+== 步驟 2：安裝 HP-UX 主機實用程式
 
-安裝 NetApp 主機公用程式套件會自動安裝工具套件。此套件提供 `sanlun`公用程式，可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。此 `sanlun`命令會傳回有關對應至主機的 LUN ，多重路徑及建立啟動器群組所需的資訊。
+NetApp強烈建議安裝 HP-UX Host Utilities 來支援ONTAP LUN 管理並協助技術支援收集設定資料。
 
-.範例
-在以下範例中、「左LUN show」命令會傳回LUN資訊。
-
-[listing]
-----
-#sanlun lun show
-
-controller(7mode)/                            device                         host     lun
-vserver(Cmode)    lun-pathname               filename                       adapter protocol  size  mode
---------------------------------------------------------------------------------
-sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c11t0d0 fcd0   FCP      150g   C
-sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c24t0d0 fcd1   FCP      150g   C
-sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c21t0d0 fcd1   FCP      150g   C
-sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c12t0d0 fcd0   FCP      150g   C
-----
-
-
-== SAN開機
-
-.開始之前
-如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。
-
-SAN開機是將SAN附加磁碟（LUN）設定為HP-UX主機的開機裝置的程序。主機公用程式支援在HP-UX環境中使用FC和FCoE傳輸協定進行SAN開機。
+link:hu_hpux_60.html["安裝 HP-UX Host Utilities 6.0"]
 
 
 
-== 多重路徑
+== 步驟 3 ：確認主機的多重路徑組態
 
-多重路徑可讓您在主機與儲存系統之間設定多個網路路徑。如果其中一條路徑故障、則其餘路徑上的流量會繼續傳輸。若要讓主機擁有多個LUN路徑、必須啟用多重路徑。HP-UX主機公用程式會根據您的組態、支援不同的多重路徑解決方案。以下是原生多路徑解決方案。
+使用 HP-UX 11i v3 的多路徑來管理ONTAP LUN。多路徑可讓您在主機和儲存系統之間配置多條網路路徑。若一條路徑發生故障，流量仍可透過其餘路徑繼續傳輸。
 
+安裝 HP-UX Host Utilities 後，請確認您是否已為ONTAP LUN 設定了NetApp所建議的設定。
 
+.關於這項工作
+HP-UX Host Utilities 支援本機 Microsoft 多路徑 I/O (MPIO) 和 Veritas 動態多路徑。以下步驟適用於 Native MPIO 解決方案。
 
-=== 非 ASA 組態
-
-對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
-
-.範例
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
-
-[listing]
-----
-# sanlun lun show -p vs39:/vol/vol24_3_0/lun24_0
-                    ONTAP Path: vs39:/vol/vol24_3_0/lun24_0
-                           LUN: 37
-                      LUN Size: 15g
-                   Host Device: /dev/rdisk/disk942
-                          Mode: C
-              Multipath Policy: A/A
-            Multipath Provider: Native
-------- ---------- ------ ------- ---------- ---------- --------------
-host    vserver     /dev/dsk                            HP A/A
-path    path        filename          host    vserver   path failover
-state   type        or hardware path adapter    LIF     priority
-------- ---------- ------ ------- ---------- ---------- --------------
-up       primary    /dev/dsk/c39t4d5   fcd0    hpux_3     0
-up       primary    /dev/dsk/c41t4d5   fcd1    hpux_4     0
-up       secondary  /dev/dsk/c40t4d5   fcd0    hpux_3     1
-up       secondary  /dev/dsk/c42t4d5   fcd1    hpux_4     1
-----
+.步驟
+. 安裝 HP-UX Host Utilities 時，會自動為ONTAP LUN 載入以下建議的預設設定。
 
 
-=== 所有 SAN 陣列組態
-
-所有 SAN 陣列（ ASA ）組態都會最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
-
-.範例
-以下範例顯示 ONTAP LUN 的正確輸出。
-
-
-NOTE: 從適用於HP-UX 11iv3的32：8開始、支援所有SAN Array ASA （支援）組態ONTAP
-
-[listing]
-----
-# sanlun lun show -p vs39:/vol/hpux_vol_1_1/hpux_lun
-
-                    ONTAP Path: vs39:/vol/hpux_vol_1_1/hpux_lun
-                           LUN: 2
-                      LUN Size: 30g
-                   Host Device: /dev/rdisk/disk25
-                          Mode: C
-            Multipath Provider: None
--------- ---------- -------------------- ------- --------------
-host     vserver    /dev/dsk
-path     path       filename             host    vserver
-state    type       or hardware path     adapter LIF
--------- ---------- -------------------- ------- --------------
-up       primary    /dev/dsk/c4t0d2      fcd0    248_1c_hp
-up       primary    /dev/dsk/c6t0d2      fcd0    246_1c_hp
-up       primary    /dev/dsk/c10t0d2     fcd1    246_1d_hp
-up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
-----
-
-
-== 建議設定
-
-以下是建議的HPUX 11i v3和NetApp ONTAP 還原LUN參數設定。NetApp使用HP-UX的預設設定。
-
+.顯示參數設定
+[%collapsible]
+====
 [cols="2*"]
 |===
 | 參數 | 使用預設值 
@@ -166,11 +82,79 @@ up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
 
 | ESD_SECS | 30 
 |===
+====
+. 驗證 ONTAP LUN 的參數設定和路徑狀態：
++
+[source, cli]
+----
+sanlun lun show
+----
++
+預設多路徑參數支援ASA、 AFF和FAS配置。以下範例輸出顯示了ASA、 AFF或FAS配置中ONTAP LUN 的正確參數設定和路徑狀態。
+
++
+[role="tabbed-block"]
+====
+.ASA 組態
+--
+ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
+
+[listing]
+----
+# sanlun lun show -p vs39:/vol/hpux_vol_1_1/hpux_lun
+
+                    ONTAP Path: vs39:/vol/hpux_vol_1_1/hpux_lun
+                           LUN: 2
+                      LUN Size: 30g
+                   Host Device: /dev/rdisk/disk25
+                          Mode: C
+            Multipath Provider: None
+-------- ---------- -------------------- ------- --------------
+host     vserver    /dev/dsk
+path     path       filename             host    vserver
+state    type       or hardware path     adapter LIF
+-------- ---------- -------------------- ------- --------------
+up       primary    /dev/dsk/c4t0d2      fcd0    248_1c_hp
+up       primary    /dev/dsk/c6t0d2      fcd0    246_1c_hp
+up       primary    /dev/dsk/c10t0d2     fcd1    246_1d_hp
+up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
+----
+--
+.AFF 或 FAS 組態
+--
+AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。較高優先順序的主動 / 最佳化路徑由集合所在的控制器提供服務。較低優先順序的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
+
+以下範例顯示 ONTAP LUN 的輸出，其中包含兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑：
+
+[listing]
+----
+# sanlun lun show -p vs39:/vol/vol24_3_0/lun24_0
+                    ONTAP Path: vs39:/vol/vol24_3_0/lun24_0
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: /dev/rdisk/disk942
+                          Mode: C
+              Multipath Policy: A/A
+            Multipath Provider: Native
+------- ---------- ------ ------- ---------- ---------- --------------
+host    vserver     /dev/dsk                            HP A/A
+path    path        filename          host    vserver   path failover
+state   type        or hardware path adapter    LIF     priority
+------- ---------- ------ ------- ---------- ---------- --------------
+up       primary    /dev/dsk/c39t4d5   fcd0    hpux_3     0
+up       primary    /dev/dsk/c41t4d5   fcd1    hpux_4     0
+up       secondary  /dev/dsk/c40t4d5   fcd0    hpux_3     1
+up       secondary  /dev/dsk/c42t4d5   fcd1    hpux_4     1
+----
+--
+====
 
 
-== 已知問題
 
-採用 ONTAP 版本的 HP-UX 11i v3 有下列已知問題：
+
+== 步驟 4：查看已知問題
+
+帶有ONTAP儲存版本的 HP-UX 11i v3 有以下已知問題：
 
 [cols="4*"]
 |===
@@ -185,3 +169,8 @@ up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
 
 | 1306354 | 建立HP-UX LVM會傳送超過1MB區塊大小的I/O | 在Sing All SAN Array中、SCSI傳輸長度上限為1 MB。ONTAP若要限制連接ONTAP 到Sing All SAN Array時、從HP-UX主機傳輸的最大傳輸長度、必須將HP-UX SCSI子系統允許的最大I/O大小設為1 MB。如需詳細資訊、請參閱HP-UX廠商文件。 | 不適用 
 |===
+
+
+== 下一步
+
+link:hu_hpux_60_cmd.html["了解如何使用 HP-UX Host Utilities 工具"] 。

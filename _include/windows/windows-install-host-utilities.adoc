@@ -1,0 +1,29 @@
+= 步驟 3：安裝 Windows 主機實用程式
+:allow-uri-read: 
+
+
+
+
+== 步驟 3：安裝 Windows 主機實用程式
+
+安裝程式安裝 Windows Host Utilities 套件並設定 Windows 註冊表和 HBA 設定。
+
+.關於這項工作
+您可以選擇在安裝 Windows Host Utilities 軟體包時包含多路徑支援。安裝程式會提示您選擇以下選項：
+
+* 選擇 `MPIO` 如果從 Windows 主機或虛擬機器到儲存系統有多條路徑、
+* 選擇 `no MPIO`僅當您使用儲存系統的單一路徑時。
+
+
+您也可以使用 Windows 命令列提示符號選擇多路徑支援。
+
+對於 Hyper-V 用戶機，如果您選擇多路徑支持，則原始（直通）磁碟不會出現在客戶機作業系統中。您可以使用原始磁碟或 MPIO，但不能在來賓作業系統中同時使用它們。
+
+
+CAUTION: 如果您不安裝 MPIO 軟體， Windows 作業系統可能會將每個路徑視為獨立的磁碟。這可能導致資料毀損。
+
+
+NOTE: 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO 。
+
+.步驟
+您可以互動方式或使用 Windows 命令列安裝主機實用程式。新的 Host Utilities 安裝套件必須位於 Windows 主機可存取的路徑中。

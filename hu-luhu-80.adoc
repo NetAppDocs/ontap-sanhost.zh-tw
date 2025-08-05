@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: hu-luhu-80.html 
+keywords: host utilities, unified, oracle, linux, 8.0, netapp, ontap 
+summary: 介紹如何將 Linux Host Utilities 8.0 與ONTAP結合使用 
+---
+= 為ONTAP儲存安裝 Linux Host Utilities 8.0
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Linux Host Utilities 可協助您管理連接到 Linux 主機的ONTAP儲存。 NetApp強烈建議安裝 Linux Host Utilities，但這不是強制性的。這些實用程式可改善管理並協助NetApp客戶支援收集有關您的配置的資訊。
+
+Linux Host Utilities 8.0 支援以下分發類型：
+
+* Red Hat Enterprise Linux
+* SUSE Linux Enterprise Server
+* Oracle Linux
+* Oracle VM
+
+
+
+NOTE: Linux 主機公用程式軟體不支援 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ）主機傳輸協定。
+
+.關於這項工作
+當您安裝 Linux 主機實用程式時，它不會變更 Linux 主機上的任何設定。
+
+.開始之前
+* 為了可靠運行，使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 iSCSI、FC 或 FCoE 配置是否受支援。
+* 安裝供應商支援網站上提供的主機匯流排適配器 (HBA) 管理套件。管理軟體可實現 `sanlun`命令來收集有關 FC HBA 的信息，例如其 WWPN。
++
+請參閱供應商文件以驗證以下軟體包是否已正確安裝。這些軟體包需要支援 `sanlun fcp show adapter`命令：
+
++
+** Marvell QLogic HBA – QConverteConsole CLI
+** Broadcom Emulex HBA - OneCommand Manager 核心應用程式 CLI
+
+
+
+
+.步驟
+. 如果您目前安裝了某個版本的 Linux Host Utilities，請將其刪除：
++
+[source, cli]
+----
+rpm -e netapp_linux_unified_host_utilities-8-0
+----
++
+如需舊版 Linux 主機公用程式，請移至安裝主機公用程式軟體的目錄，然後輸入 uninstall 命令以移除已安裝的套件。
+
+. NetApp Linux Host Utilities 軟體包可在NetApp支援網站上以 64 位元 .rpm 檔案的形式取得。從link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]給你的主人。
+. 進入下載軟體包的目錄並安裝：
++
+[source, cli]
+----
+rpm -ivh netapp_linux_unified_host_utilities-8-0.x86_xx.rpm
+----
++
+您應該會看到類似以下範例的輸出：
+
++
+[listing]
+----
+rpm -ivh netapp_linux_unified_host_utilities-8-0.x86_64.rpm
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:netapp_linux_unified_host_utiliti################################# [100%]
+
+----
++
+[NOTE]
+====
+如果您使用的是 Ubuntu 主機作業系統，則需要手動將其連結到 HBA 庫：
+
+[source, cli]
+----
+cp /opt/QLogic_Corporation/QConvergeConsoleCLI/lib64/libHBAAPI.so.2.0.2 /usr/lib64/libHBAAPI.so
+----
+====
+. 驗證安裝：
++
+[source, cli]
+----
+sanlun version
+----
++
+您應該會看到類似以下範例的輸出：
+
++
+[listing]
+----
+sanlun version 8.0.386.1644
+----
+
+
+
+
+== 接下來呢？
+
+* Linux 核心的建議驅動程式設定
++
+當您設定 FC 環境時、若使用與 Linux 核心搭售的原生收件匣驅動程式、則可以使用驅動程式的預設值。
+
+* link:hu-luhu-sanlun-utility.html["了解“三侖”實用程式"] 。
+

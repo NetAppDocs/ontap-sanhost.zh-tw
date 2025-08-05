@@ -4,7 +4,7 @@ permalink: hu_wuhu_upgrade.html
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數，讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。 
 ---
-= 升級 Windows 主機公用程式
+= 升級適用於ONTAP儲存的 Windows Host Utilities
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,13 +19,13 @@ summary: Windows 主機公用程式包含一個安裝程式，可設定所需的
 
 
 [role="lead"]
-新的主機公用程式安裝套件必須位於Windows主機可存取的路徑中。依照互動式安裝 Host Utilities 或從 Windows 命令列安裝 Host Utilities 的指示來升級安裝套件。
+您可以依照安裝說明以互動方式或使用 Windows 命令列來升級ONTAP儲存配置中的 Windows Host Utilities 軟體。您需要將新的 Windows Host Utilities 安裝軟體安裝在 Windows 主機可存取的路徑上。
 
 [role="tabbed-block"]
 ====
 .互動式升級
 --
-若要以互動方式升級主機公用程式軟體套件、您必須執行主機公用程式安裝程式、並遵循提示進行。
+透過執行 Host Utilities 安裝程式並依照指示以互動方式升級 Windows Host Utilities 軟體。
 
 .步驟
 . 變更至您下載執行檔的目錄。
@@ -40,15 +40,17 @@ summary: Windows 主機公用程式包含一個安裝程式，可設定所需的
 
 
 --
-.從命令列升級
+.非互動升級
 --
-您可以在 Windows 命令提示字元中輸入適當的命令、以執行新主機公用程式的無訊息（無人值守）升級。
+使用 Windows 命令列執行非互動式 Windows Host Utilities 軟體升級。
 
 .步驟
 . 在 Windows 命令提示字元中輸入下列命令：
 +
-「Msiexec /i installer.msi /quiet多重路徑=｛0 | 1｝[InstallalDIR=inst_path]」
-
+[source, cli]
+----
+msiexec /i installer.msi /quiet MULTIPATHING= {0 | 1} [INSTALLDIR=inst_path]
+----
 +
 ** `installer` 為的名稱 `.msi` 適用於您 CPU 架構的檔案。
 ** 多重路徑可指定是否安裝 Microsoft 多重路徑 I/O （ MPIO ）支援。允許的值為「 0 」表示「否」、「 1 」表示「是」。

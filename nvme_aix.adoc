@@ -4,7 +4,7 @@ permalink: nvme_aix.html
 keywords: nvme, linux, rhel, red hat, enterprise, aix, ontap 
 summary: 如何使用 ONTAP 設定適用於 AIX 的 NVMe / FC 主機 
 ---
-= 適用於 AIX 與 ONTAP 的 NVMe / FC 主機組態
+= 使用 NVMe-oF 為ONTAP儲存配置 AIX
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,96 +16,103 @@ summary: 如何使用 ONTAP 設定適用於 AIX 的 NVMe / FC 主機
 
 
 [role="lead"]
-您可以在 IBM AIX 和 VIOS/PowerVM 主機上啟用 NVMe over Fibre Channel （ NVMe / FC ），將 ONTAP 儲存設備作為目標。如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
+IBM AIX 和虛擬 I/O 伺服器 (VIOS)/PowerVM 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 協定。  ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑。
 
-下列支援可用於具有 ONTAP 的 AIX 主機的 NVMe / FC 主機組態：
+有關受支援配置的更多詳細信息，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具IMT （不含）"^]。
 
-* 從 ONTAP 9.13.1 開始、已新增適用於 IBM AIX 7.2 TL5 SP6 、 AIX 7.3 TL1 SP2 和 VIOS 3.1.4.21 版本的 NVMe / FC 支援、同時支援實體和虛擬堆疊的 SAN 開機。如需設定 SAN 開機支援的詳細資訊、請參閱 IBM 文件。
-* Power9 和 Power10 IBM 伺服器支援 NVMe / FC 。
-* NVMe 裝置不需要個別的 PCM （路徑控制模組）、例如 Host Utilities for AIX SCSI Multipath I/O （ MPIO ）支援。
-* VIOS 3.1.4.21 引進 NetApp （ VIOS/PowerVM ）的虛擬化支援。使用 Power10 IBM 伺服器透過 NPIV （ N_portID 虛擬化）儲存虛擬化模式支援這項功能（僅限 _ ）。
+.關於這項工作
+您可以將下列支援和功能與 AIX 主機的 NVMe-oF 主機配置一起使用。在開始配置過程之前，您還應該查看已知的限制。
+
+* 可用支援：
++
+** 從ONTAP 9.13.1 開始，IBM AIX 7.2 TL5 SP6、AIX 7.3 TL1 SP2 和 VIOS 3.1.4.21 新增了 NVMe/FC 支持，並為實體和虛擬堆疊提供了 SAN 啟動支援。有關設定 SAN 啟動支援的更多信息，請參閱 IBM 文件。
+** Power9 和 Power10 IBM 伺服器支援 NVMe / FC 。
+** NVMe 裝置不需要單獨的 PCM（路徑控制模組），例如用於 AIX SCSI 多路徑 I/O（MPIO）支援的主機公用程式。
+** VIOS 3.1.4.21 引進 NetApp （ VIOS/PowerVM ）的虛擬化支援。使用 Power10 IBM 伺服器透過 NPIV （ N_portID 虛擬化）儲存虛擬化模式支援這項功能（僅限 _ ）。
 
 
-.您需要的產品
+* 已知限制：
++
+** AIX 主機上的 Qlogic/Marvel 32G FC HBA 不支援 NVMe/FC。
+** 使用 Power9 IBM 伺服器的 NVMe/FC 設備不支援 SAN 啟動。
+
+
+
+
+.開始之前
 * 確認您擁有 32 GB FC Emulex 介面卡（ EN1A 、 EN1B 、 EN1L 、 EN1M ）或 64 GB FC 介面卡（ EN1N 、 EN1P ）、以及介面卡韌體 12.4.257.30 及更新版本。
 * 如果您有 MetroCluster 組態、 NetApp 建議您變更 AIX NVMe / FC 預設 APD （ All Path Down ）時間、以支援 MetroCluster 非計畫性切換事件、以避免 AIX 作業系統強制縮短 I/O 逾時。如需更多資訊和建議的預設設定變更、請參閱 NetApp 線上錯誤資訊 - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1553249["1553249)"^]。
-* 根據預設、 AIX 主機作業系統的非對稱命名空間存取轉換逾時（ ANATT ）值為 30 秒。IBM 提供一項臨時修復（ iFix ）、可將 ANATT 值上限設為 60 秒；您需要從 IBM 網站安裝 iFix 、以確保所有 ONTAP 工作流程不會中斷營運。
+* 根據您的 AIX 版本，AIX 主機作業系統的非對稱命名空間存取轉換逾時 (ANATT) 預設為 30 秒或 60 秒。如果您的主機的 ANATT 預設值為 30 秒，則需要從 IBM 網站安裝 IBM Interim Fix (ifix)，將 ANATT 設定為 60 秒，以確保所有ONTAP工作流程都不會中斷。
 +
+[NOTE]
+====
+要獲得 NVMe/FC AIX 支持，您必須在 GA 版本的 AIX OS 上安裝 ifix。  VIOS/PowerVM OS 不需要 ifix。
 
-NOTE: 對於 NVMe / FC AIX 支援、您必須在 AIX OS 的 GA 版本上安裝 iFix 。VIOS/PowerVM 作業系統不需要此功能。
+您需要在先前沒有安裝過相關 ifix 的 AIX 版本上安裝 ifix `devices.pciex.pciexclass.010802.rte`在系統上。先前安裝的 iFIX 可能會與新安裝衝突。
 
+====
 +
-iFix 詳細資料如下：
+[role="tabbed-block"]
+====
+.將 ANATT 設定為 60 秒
+--
+AIX 等級 72-TL5-SP6-2320 和 AIX 等級 73-TL1-SP2-2320 版本的預設 ANATT 為 30 秒。 IBM 提供了一個 iFIX，將 ANATT 設定為 60 秒。您可以透過 IBM 案例 ID TS018079082 取得 ifix，並且可以為下列 AIX 版本安裝它：
 
-+
 ** 對於 AIX 72-TL5-SP6-2320 層級、請安裝 `IJ46710s6a.230509.epkg.Z` 套件：
 ** 對於 AIX 73-TL1-SP2-2320 層級、請安裝 `IJ46711s2a.230509.epkg.Z` 套件：
+
+
+--
+.預設 ANATT 為 60 秒
+--
+以下 AIX 版本的預設 ANATT 為 60 秒：
+
+** AIX 等級 73-TL2-SP3-2446
+** AIX 等級 73-TL2-SP2-2420
+** AIX 等級 72-TL5-SP8-2420
+
+
+--
+.（可選）將 ANATT 設定為 120 秒
+--
+IBM 提供了一個 iFIX，將 ANATT 設定為 120 秒。將 ANATT 設定為 120 秒時，它會增強ONTAP儲存故障轉移事件期間的效能。您可以透過 IBM 案例 ID TS012877410 取得 ifix，並且可以為下列 AIX 版本安裝它：
+
+** 對於 AIX 等級 73-TL3-SP0-2446，安裝 `IJ53487s0a.250130.epkg.Z`包裹。
+** 對於 AIX 等級 72-TL5-SP9-2446，安裝 `IJ53445s9a.250130.epkg.Z`包裹。
+
+
+--
+====
++
+[NOTE]
+====
+支援 NVMe/FC 的 Power9 伺服器的最低伺服器韌體版本為 FW 950。
+
+支援 NVMe/FC 的 Power10 伺服器的最低伺服器韌體版本為 FW 1010。
+
+====
 +
 如需管理 iFix 的詳細資訊、請參閱 link:http://www-01.ibm.com/support/docview.wss?uid=isg3T1012104["管理 AIX 上的臨時修復"^]。
 
+
+
+
+
+== 步驟 1：確認主機的多路徑配置
+
+安裝 AIX 作業系統時，預設啟用用於 NVMe 多路徑的 IBM MPIO。
+
+.步驟
+. 驗證 NVMe 多路徑是否已啟用：
 +
-
-NOTE: 您需要在 AIX 版本上安裝 iFix 、但先前未安裝與相關的 iFix `devices.pciex.pciexclass.010802.rte` 在系統上。如果存在這些 iFix 、則會與新安裝發生衝突。
-
-+
-下表說明指派給 AIX LPAR （ AIX 邏輯分割區）或實體堆疊的 HBA ：
-
-+
-[cols="10,10,10,10,10"]
-|===
-| 主機作業系統 | 強大架構 | Power FW 版本 | 模式 | 註解 
-
-
-.2+| AIX 7.2 TL5 SP6. | Power9. | FW 950 或更新版本 | 實體堆疊 | 可透過 TS012877410 取得 iFix 。 
-
-
-| Power10 | FW 1010 或更新版本 | 實體堆疊 | 支援 SAN 開機。可透過 TS012877410 取得 iFix 。 
-
-
-.2+| AIX 7.3 TL1 SP2 | Power9. | FW 950 或更新版本 | 實體堆疊 | 可透過 TS012877410 取得 iFix 。 
-
-
-| Power10 | FW 1010 或更新版本 | 實體與虛擬堆疊 | 可透過 TS012877410 取得 iFix 。 
-|===
-+
-下表示範在虛擬化模式下、指派給 VIOS 且支援 NPIV 的 HBA ：
-
-+
-[cols="10,10,10,10,10"]
-|===
-| 主機作業系統 | 強大架構 | Power FW 版本 | 模式 | 註解 
-
-
-| Vios / PowerVM 3.1.4.21 | Power10 | FW 1010 或更新版本 | 虛擬堆疊 | 支援從適用於 VIOC 的 AIX 7.3 TL1 SP2 開始 
-|===
-
-
-
-
-
-
-== 已知限制
-
-適用於 AIX （含 ONTAP ）的 NVMe / FC 主機組態具有下列已知限制：
-
-* AIX 主機上的 QLogic/Marvel 32G FC HBA 不支援 NVMe / FC 。
-* 使用 Power9 IBM 伺服器的 NVMe / FC 裝置不支援 SAN 開機。
-
-
-
-
-== 多重路徑
-
-當您安裝 AIX OS 時、預設會提供用於 NVMe 多重路徑的 IBM MPIO （多重路徑 I/O ）。
-
-您可以使用驗證是否已為 AIX 主機啟用 NVMe 多重路徑 `lsmpio` 命令：
-
-[listing]
+[source, cli]
 ----
-#[root@aix_server /]: lsmpio -l hdisk1
+lsmpio -l hdisk1
 ----
-* 輸出範例 *
-
++
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 name     path_id  status   path_status  parent  connection
@@ -114,27 +121,27 @@ hdisk1  9         Enabled  Sel,Non       nvme65  fcnvme1, 9
 hdisk1  10        Enabled  Sel,Opt       nvme37  fcnvme1, 9
 hdisk1  11        Enabled  Sel,Non       nvme60  fcnvme0, 9
 ----
+====
 
 
-== 設定NVMe/FC
 
-您可以使用下列程序來設定適用於 Broadcom / Emulex 介面卡的 NVMe / FC 。
+
+== 步驟 2：設定 NVMe/FC
+
+您需要為 VIOS 上的 Broadcom/Emulex 適配器配置 NVMe/FC，因為 VIOS 上的虛擬光纖通道 (vFC) 中禁用了 NVMe/FC 協定支援。實體 FC 中預設啟用 NVMe/FC 協定支援。
 
 .步驟
-. 確認您使用的是支援的介面卡。如需最新的支援介面卡清單、請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^]。
-. 根據預設、實體 FC 會啟用 NVMe / FC 傳輸協定支援；不過、虛擬 I/O 伺服器（ VIOS ）上的虛擬光纖通道（ VFC ）會停用 NVMe / FC 傳輸協定支援。
+. link:https://mysupport.netapp.com/matrix/["驗證您正在使用受支援的適配器"^] 。
+. 擷取虛擬介面卡清單：
 +
-擷取虛擬介面卡清單：
-
-+
-[listing]
+[source, cli]
 ----
-$ lsmap -all -npiv
+lsmap -all -npiv
 ----
 +
-* 輸出範例 *
-
-+
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 Name          Physloc                            ClntID ClntName       ClntOS
@@ -146,30 +153,29 @@ Ports logged in:3
 Flags:0xea<LOGGED_IN,STRIP_MERGE,SCSI_CLIENT,NVME_CLIENT>
 VFC client name:fcs0            VFC client DRC:U9105.22A.785DB61-V4-C2
 ----
+====
 . 在介面卡上執行以啟用對 NVMe / FC 傳輸協定的支援 `ioscli vfcctrl` 在 VIOS 上執行命令：
 +
-[listing]
+[source, cli]
 ----
-$  vfcctrl -enable -protocol nvme -vadapter vfchost0
+vfcctrl -enable -protocol nvme -vadapter vfchost0
 ----
 +
-* 輸出範例 *
-
-+
+.輸出範例
 [listing]
 ----
 The "nvme" protocol for "vfchost0" is enabled.
 ----
 . 確認已在介面卡上啟用支援：
 +
-[listing]
+[source, cli]
 ----
-# lsattr -El vfchost0
+lsattr -El vfchost0
 ----
 +
-* 輸出範例 *
-
-+
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 alt_site_wwpn       WWPN to use - Only set after migration   False
@@ -181,26 +187,25 @@ map_port      fcs4  Physical FC Port                         False
 num_per_nvme  0     Number of NPIV NVME queues per range     True
 num_per_range 0     Number of NPIV SCSI queues per range     True
 ----
-. 為所有目前的介面卡或選取的介面卡啟用 NVMe / FC 傳輸協定：
+====
+. 為所有介面卡啟用 NVMe / FC 傳輸協定：
 +
-.. 為所有介面卡啟用 NVMe / FC 傳輸協定：
+.. 變更 `dflt_enabl_nvme` 的屬性值 `viosnpiv0` 將虛擬裝置傳送至 `yes`。
+.. 設定 `enable_nvme` 屬性值至 `yes` 適用於所有 VFC 主機裝置。
 +
-... 變更 `dflt_enabl_nvme` 的屬性值 `viosnpiv0` 將虛擬裝置傳送至 `yes`。
-... 設定 `enable_nvme` 屬性值至 `yes` 適用於所有 VFC 主機裝置。
-+
-[listing]
+[source, cli]
 ----
-# chdev -l viosnpiv0 -a dflt_enabl_nvme=yes
-----
-+
-[listing]
-----
-# lsattr -El viosnpiv0
+chdev -l viosnpiv0 -a dflt_enabl_nvme=yes
 ----
 +
-* 輸出範例 *
-
+[source, cli]
+----
+lsattr -El viosnpiv0
+----
 +
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 bufs_per_cmd    10  NPIV Number of local bufs per cmd                    True
@@ -210,21 +215,18 @@ num_per_nvme    8   NPIV Number of NVME queues per range                 True
 num_per_range   8   NPIV Number of SCSI queues per range                 True
 secure_va_info  no  NPIV Secure Virtual Adapter Information              True
 ----
+====
 
 
-.. 變更以啟用所選介面卡的 NVMe / FC 傳輸協定 `enable_nvme` VFC 主機裝置屬性的值 `yes`。
-
-
+. 變更以啟用所選介面卡的 NVMe / FC 傳輸協定 `enable_nvme` VFC 主機裝置屬性的值 `yes`。
 . 請確認 `FC-NVMe Protocol Device` 已在伺服器上建立：
 +
-[listing]
+[source, cli]
 ----
-# [root@aix_server /]: lsdev |grep fcnvme
+lsdev |grep fcnvme
 ----
 +
-* 輸出 *
-
-+
+.範例輸出
 [listing]
 ----
 fcnvme0       Available 00-00-02    FC-NVMe Protocol Device
@@ -232,45 +234,45 @@ fcnvme1       Available 00-01-02    FC-NVMe Protocol Device
 ----
 . 從伺服器記錄主機 NQN ：
 +
-[listing]
+[source, cli]
 ----
-# [root@aix_server /]: lsattr -El fcnvme0
-----
-+
-* 輸出範例 *
-
-+
-[listing]
-----
-attach     switch                                                               How this adapter is connected  False
-autoconfig available                                                            Configuration State            True
-host_nqn   nqn.2014-08.org.nvmexpress:uuid:64e039bd-27d2-421c-858d-8a378dec31e8 Host NQN (NVMe Qualified Name) True
+lsattr -El fcnvme0
 ----
 +
-[listing]
-----
-[root@aix_server /]: lsattr -El fcnvme1
-----
-+
-* 輸出範例 *
-
-+
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 attach     switch                                                               How this adapter is connected  False
 autoconfig available                                                            Configuration State            True
 host_nqn   nqn.2014-08.org.nvmexpress:uuid:64e039bd-27d2-421c-858d-8a378dec31e8 Host NQN (NVMe Qualified Name) True
 ----
+====
++
+[source, cli]
+----
+lsattr -El fcnvme1
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+attach     switch                                                               How this adapter is connected  False
+autoconfig available                                                            Configuration State            True
+host_nqn   nqn.2014-08.org.nvmexpress:uuid:64e039bd-27d2-421c-858d-8a378dec31e8 Host NQN (NVMe Qualified Name) True
+----
+====
 . 檢查主機 NQN 、並確認它符合 ONTAP 陣列上對應子系統的主機 NQN 字串：
 +
-[listing]
+[source, cli]
 ----
-::> vserver nvme subsystem host show -vserver vs_s922-55-lpar2
+vserver nvme subsystem host show -vserver vs_s922-55-lpar2
 ----
 +
-* 輸出範例 *
-
-+
+.輸出範例
 [listing]
 ----
 Vserver         Subsystem                Host NQN
@@ -282,28 +284,33 @@ vs_s922-55-lpar2 subsystem_s922-55-lpar2 nqn.2014-08.org.nvmexpress:uuid:64e039b
 
 
 
-== 驗證NVMe/FC
+== 步驟 3：驗證 NVMe/FC
 
-您需要驗證 ONTAP 命名空間是否正確反映在主機上。執行下列命令以執行：
+驗證ONTAP命名空間對於 NVMe/FC 配置是否正確。
 
-[listing]
+.步驟
+. 驗證ONTAP命名空間是否正確反映在主機上：
++
+[source, cli]
 ----
-# [root@aix_server /]: lsdev -Cc disk |grep NVMe
+lsdev -Cc disk |grep NVMe
 ----
-* 輸出範例 *
-
++
+.輸出範例
 [listing]
 ----
 hdisk1  Available 00-00-02 NVMe 4K Disk
 ----
-您可以檢查多重路徑狀態：
-
-[listing]
+. （可選）檢查多路徑狀態：
++
+[source, cli]
 ----
-#[root@aix_server /]: lsmpio -l hdisk1
+lsmpio -l hdisk1
 ----
-* 輸出範例 *
-
++
+.顯示範例
+[%collapsible]
+====
 [listing]
 ----
 name     path_id  status   path_status  parent  connection
@@ -312,11 +319,14 @@ hdisk1  9        Enabled  Sel,Non      nvme65  fcnvme1, 9
 hdisk1  10       Enabled  Sel,Opt      nvme37  fcnvme1, 9
 hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9
 ----
+====
 
 
-== 已知問題
 
-適用於 AIX 與 ONTAP 的 NVMe / FC 主機組態有下列已知問題：
+
+== 步驟 4：查看已知問題
+
+具有ONTAP儲存的 AIX 的 NVMe/FC 主機配置有以下已知問題：
 
 [cols="10,30,30"]
 |===
@@ -336,6 +346,6 @@ hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9
 |===
 
 
-== 疑難排解
+== 步驟5：故障排除
 
-在疑難排解任何 NVMe / FC 故障之前、請確認您執行的組態符合互通性對照表工具（ IMT ）規格。如果您仍面臨問題、請聯絡 link:https://mysupport.netapp.com["NetApp支援"^] 以進一步分類。
+在排除任何 NVMe/FC 故障之前，請先驗證您正在執行的設定是否符合link:https://mysupport.netapp.com/matrix/["IMT"^]規格。如果問題仍然存在，請聯繫link:https://mysupport.netapp.com["NetApp支援"^]。

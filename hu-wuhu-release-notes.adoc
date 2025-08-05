@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: hu-wuhu-release-notes.html 
+keywords: host utilities, linux, 7.1, 7.2, netapp, ontap, release, notes 
+summary: Windows主機公用程式版本資訊 
+---
+= Windows 主機公用程式版本資訊
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+發行說明介紹了使用ONTAP儲存系統來設定和管理特定 Windows 主機的新功能、增強功能、已知問題、限制和重要注意事項。
+
+有關主機公用程式支援的作業系統版本和更新的特定資訊，請參閱link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]。
+
+
+
+== Windows Host Utilities 8.0 中的新功能
+
+Windows Host Utilities 8.0 包含 NVMe/FC 驅動程式的附加參數設定。當您安裝 Windows Host Utilities 8.0 時，這些參數會自動載入。
+
+
+
+== Windows Host Utilities 7.2 中的新功能
+
+Windows 主機公用程式 7.2 支援 NVMe / FC 驅動程式參數設定，以及新廠商卡的錯誤修正。
+
+
+
+== Windows Host Utilities 7.1 中的新功能
+
+Windows Host Utilities 7.1 包括對 E 系列儲存系統、 ONTAP 9 軟體和增強型 iSCSI 逾時的支持，可實現更快的故障轉移。
+
+
+
+== 已知問題和限制
+
+您應該注意以下已知問題和限制，它們可能會影響特定主機的效能。
+
+[cols="30, 15, 30, 30"]
+|===
+| 標題 | 影響版本 | 說明 | 因應措施 
+
+
+| 執行 `linux_gos_timeout-install.sh` 在執行Red Hat Enterprise Linux或SUSE Linux Enterprise Server的Hyper-V客體上、不再需要指令碼 | 7.1. | 您不再需要執行 `linux_gos_timeout-install.sh`指令碼來變更 Red Hat Enterprise Linux 5 ， Red Hat Enterprise Linux 6 或 SUSE Linux Enterprise Server 11 Hyper-V 來賓作業系統的磁碟逾時，因為預設的逾時設定正在使用中。 `linux_gos_timeout-install.sh`舊版主機公用程式所包含的指令碼不再包含在 Windows 主機公用程式 7.1 版本中。Windows 主機公用程式 7.1 會使用預設的磁碟逾時設定。 | 不適用 
+|===
+link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。

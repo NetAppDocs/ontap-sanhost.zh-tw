@@ -1,0 +1,78 @@
+= 
+:allow-uri-read: 
+
+
+. 驗證ONTAP LUN 的路徑狀態：
++
+[source, cli]
+----
+sanlun lun show
+----
++
+以下範例輸出顯示ASA、 AFF或FAS配置中ONTAP LUN 的正確路徑狀態。
+
++
+[role="tabbed-block"]
+====
+.ASA 組態
+--
+ASA配置最佳化了到給定 LUN 的所有路徑，使其保持活動狀態（「主要」）。透過同時透過所有路徑提供 I/O 操作，可以提高效能。
+
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------ ------- ------ ------- --------- ----------
+host   vserver  AIX                      AIX MPIO
+path   path     MPIO   host    vserver     path
+state  type     path   adapter LIF       priority
+------ ------- ------ ------- --------- ----------
+up     primary  path0  fcs0    fc_aix_1     1
+up     primary  path1  fcs0    fc_aix_2     1
+up     primary  path2  fcs1    fc_aix_3     1
+up     primary  path3  fcs1    fc_aix_4     1
+----
+=====
+--
+.AFF 或 FAS 組態
+--
+AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。較高優先順序的主動 / 最佳化路徑由集合所在的控制器提供服務。較低優先順序的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
+
+以下範例顯示具有兩個主動/最佳化（「主」）路徑和兩個主動/非最佳化（「次」）路徑的ONTAP LUN 的正確輸出：
+
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------- ---------- ------ ------- ---------- ----------
+host    vserver    AIX                        AIX MPIO
+path    path       MPIO   host    vserver         path
+state   type       path   adapter LIF         priority
+------- ---------- ------ ------- ---------- ----------
+up      secondary  path0  fcs0    fc_aix_1        1
+up      primary    path1  fcs0    fc_aix_2        1
+up      primary    path2  fcs1    fc_aix_3        1
+up      secondary  path3  fcs1    fc_aix_4        1
+----
+=====
+--
+====
+

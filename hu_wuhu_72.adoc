@@ -4,7 +4,7 @@ permalink: hu_wuhu_72.html
 keywords: windows, 7.2, host utilities, SAN, windows 
 summary: Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數，讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。 
 ---
-= 安裝 Windows 主機公用程式 7.2
+= 為ONTAP儲存安裝 Windows Host Utilities 7.2
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -54,69 +54,78 @@ Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 
 
 
 
-== 驗證您的主機和儲存系統組態
+== 步驟 1：驗證主機和儲存系統配置
 
 在安裝的 Windows 主機公用程式之前，請先確認您的主機和儲存系統組態是否受到支援<<supported-windows-versions-72,支援的 Windows 版本>>。
 
 .步驟
 . 檢查中支援的組態 http://mysupport.netapp.com/matrix["互通性對照表工具"^]。
-. 檢查中個別主機所需的 Hotfix link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機Windows文件"]。
+. 檢查 Windows Server 主機版本所需的修補程序link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN主機Windows文件"]。
++
+例如，link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["為ONTAP儲存配置 Windows Server 2022"]文件提供了 Windows Server 2022 安裝 Windows 修補程式的說明。
+
+. link:https://docs.netapp.com/us-en/ontap/san-admin/verify-license-fc-iscsi-task.html["新增 iSCSI 或 FCP 許可證"^] 。
 +
 
-NOTE: 本link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["搭配 ONTAP 使用 Windows Server 2022"]文件提供 Windows Server 2022 的相關說明link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["安裝Windows修補程式"]。請參閱主機組態類別中的 Windows 文件、以尋找舊版 Windows 伺服器的相關 Hotfix 資訊。
+NOTE: 在使用SANtricity Storage Manager 的E 系列儲存系統上，FC 和 iSCSI 協定不需要授權。
 
-. 新增 iSCSI 、 FCP 或 NVMe 授權、然後啟動目標服務。
-+
-
-NOTE: FC 和 iSCSI 通訊協定不需要在使用 SANtricity Storage Manager 的 E 系列儲存系統上取得授權。
-
+. 啟動目標服務。
 . 驗證您的纜線。
 +
-請參閱 https://docs.netapp.com/us-en/ontap/san-config/index.html["SAN組態參考"^] 您的 ONTAP 或版本說明文件 https://docs.netapp.com/us-en/e-series/install-hw-cabling/index.html["E 系列硬體纜線"^] 以取得詳細的纜線和組態資訊。
+請參閱 https://docs.netapp.com/us-en/ontap/san-config/index.html["SAN組態參考"^]了解詳細的佈線和配置資訊。
 
 
 
 
 
-== 設定FC HBA和交換器
+== 步驟 2：設定 FC HBA 和交換機
 
 安裝及設定一或多個支援的 FC 主機匯流排介面卡（ HBA ）、以便 FC 連線至儲存系統。
 
 Windows 主機公用程式安裝程式會設定所需的 FC HBA 設定。
 
 
-CAUTION: 請勿手動變更 HBA 設定。
+CAUTION: 您應該只允許 Windows Host Utilities 安裝程式設定 HBA 參數。這可確保 Windows 主機能夠正確處理ONTAP平台的儲存系統行為。
 
 .步驟
 . 根據 HBA 廠商提供的指示、安裝一或多個支援的 FC HBA 。
 . 取得支援的HBA驅動程式和管理公用程式、並依照HBA廠商提供的指示進行安裝。
-. 將 HBA 連接至 FC 交換器或直接連接至儲存系統。
-. 根據 FC 交換器文件、在 FC 交換器上建立區域。
-. 對於 ONTAP 、請將交換器分區為 WWPN 。請務必使用邏輯介面（生命體）的 WWPN 、而非儲存控制器上實體連接埠的 WWPN 。請參閱 https://docs.netapp.com/us-en/ontap/san-config/index.html["SAN組態參考"^] 如需詳細資訊、請參閱文件。
+. https://docs.netapp.com/us-en/ontap/san-management/index.html["將 HBA 連接到 FC 交換器或直接連接到儲存系統"^] 。
+. https://docs.netapp.com/us-en/ontap/san-config/fibre-channel-fcoe-zoning-concept.html["根據 FC 交換器文件在 FC 交換器上建立區域"^] 。
+. 對於ONTAP，按 WWPN 對交換器進行區域劃分。請務必使用邏輯介面 (LIF) 的 WWPN，而不是儲存控制器上的實體連接埠的 WWPN。請參閱 https://docs.netapp.com/us-en/ontap/san-config/index.html["SAN組態參考"^]了解更多。
 
 
 
 
-== 安裝主機公用程式
+== 步驟 3：安裝 Windows 主機實用程式
 
-安裝程式會安裝Host Utilities套件、並設定Windows登錄和HBA設定。
+安裝程式安裝 Windows Host Utilities 套件並設定 Windows 註冊表和 HBA 設定。
 
-安裝 Windows 主機公用程式軟體套件時，您必須指定是否包含多重路徑支援。安裝程式會提示您輸入下列選項。您也可以從Windows命令提示字元執行無訊息（無人值守）安裝。
+.關於這項工作
+您可以選擇在安裝 Windows Host Utilities 軟體包時包含多路徑支援。安裝程式會提示您選擇以下選項：
 
-.多重路徑支援
 * 選擇 `MPIO` 如果從 Windows 主機或虛擬機器到儲存系統有多條路徑、
-* 選擇 `no MPIO` 僅當您使用單一路徑通往儲存系統時。
+* 選擇 `no MPIO`僅當您使用儲存系統的單一路徑時。
 
 
-Windows XP 和 Windows Vista 系統無法使用 Microsoft 多重路徑 I/O （ MPIO ）選項；這些客體作業系統不支援多重路徑 I/O 。對於Hyper-V來賓作業系統、如果您選擇多重路徑支援、則原始（傳遞）磁碟不會出現在來賓作業系統中。您可以使用原始磁碟、也可以使用MPIO、但不能在客體作業系統中同時使用這兩種磁碟。
+您也可以使用 Windows 命令列提示符號選擇多路徑支援。
 
-您可以互動式或使用命令列來安裝主機公用程式。新的主機公用程式安裝套件必須位於Windows主機可存取的路徑中。依照互動式或從 Windows 命令列安裝主機公用程式的指示進行。
+對於 Hyper-V 用戶機，如果您選擇多路徑支持，則原始（直通）磁碟不會出現在客戶機作業系統中。您可以使用原始磁碟或 MPIO，但不能在來賓作業系統中同時使用它們。
+
+
+CAUTION: 如果您不安裝 MPIO 軟體， Windows 作業系統可能會將每個路徑視為獨立的磁碟。這可能導致資料毀損。
+
+
+NOTE: 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO 。
+
+.步驟
+您可以互動方式或使用 Windows 命令列安裝主機實用程式。新的 Host Utilities 安裝套件必須位於 Windows 主機可存取的路徑中。
 
 [role="tabbed-block"]
 ====
 .以互動方式安裝
 --
-若要以互動方式安裝主機公用程式軟體套件、您必須執行主機公用程式安裝程式、然後依照提示進行。
+透過執行 Host Utilities 安裝程式並依照指示以互動方式安裝 Host Utilities 軟體包。
 
 .步驟
 . 從下載執行檔 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.2/downloads["NetApp 支援網站"^]。
@@ -126,15 +135,17 @@ Windows XP 和 Windows Vista 系統無法使用 Microsoft 多重路徑 I/O （ M
 
 
 --
-.從命令列安裝
+.非交互安裝
 --
-您可以在 Windows 命令提示字元中輸入適當的命令，以執行 Host Utilities 的無訊息（無人值守）安裝。安裝完成後、系統會自動重新開機。
+使用 Windows 命令列執行 Host Utilities 的非互動式安裝。安裝完成後系統自動重新啟動。
 
 .步驟
 . 在 Windows 命令提示字元中輸入下列命令：
 +
-「Msiexec /i installer.msi /quiet多重路徑=｛0 | 1｝[InstallalDIR=inst_path]」
-
+[source, cli]
+----
+msiexec /i installer.msi /quiet MULTIPATHING= {0 | 1} [INSTALLDIR=inst_path]
+----
 +
 ** `installer` 為的名稱 `.msi` 適用於您 CPU 架構的檔案。
 ** 多重路徑會指定是否安裝MPIO支援。允許的值為「 0 」表示「否」、「 1 」表示「是」。
@@ -148,3 +159,8 @@ NOTE: 若要查看記錄和其他功能的標準 Microsoft Installer （ MSI ）
 
 --
 ====
+
+
+== 接下來呢？
+
+link:hu_wuhu_hba_settings.html["配置 Windows Host Utilities 的註冊表設置"] 。

@@ -7,5 +7,10 @@ MPIO 軟體為所有路徑提供 Windows 作業系統的單一磁碟，而裝置
 
 CAUTION: 如果您不安裝 MPIO 軟體， Windows 作業系統可能會將每個路徑視為獨立的磁碟。這可能導致資料毀損。
 
+[NOTE]
+====
+* 對於 Windows Host Utilities 8.0，當您選擇 MPIO 支援時，MPIO 功能會自動啟用。
+* 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO。
 
-NOTE: 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO 。
+
+====

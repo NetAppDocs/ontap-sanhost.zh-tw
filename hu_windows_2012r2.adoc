@@ -83,7 +83,7 @@ TIP: 許多 Hotfix 都需要重新開機 Windows 主機。您可以選擇等待�
 
 == 安裝 Windows 主機公用程式
 
-Windows 主機公用程式是一組軟體程式，其中包含文件，可讓您將主機電腦連接至 NetApp SAN 上的虛擬磁碟（ LUN ）。NetApp 建議您下載並安裝最新的公用程式套件。如需 Windows 主機公用程式組態資訊和指示，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows主機公用程式文件"]並選取 Windows 主機公用程式版本的安裝程序。
+Windows Host Utilities 是一組具有文件的軟體程序，可讓您將主機連接到NetApp SAN 上的虛擬磁碟 (LUN)。 NetApp建議下載並安裝最新的實用程式工具包。有關 Windows Host Utilities 設定資訊和說明，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu-wuhu-release-notes.html["Windows主機公用程式文件"]並選擇適合您的 Windows Host Utilities 版本的安裝程式。
 
 
 
@@ -96,9 +96,13 @@ MPIO 軟體為所有路徑提供 Windows 作業系統的單一磁碟，而裝置
 
 CAUTION: 如果您不安裝 MPIO 軟體， Windows 作業系統可能會將每個路徑視為獨立的磁碟。這可能導致資料毀損。
 
+[NOTE]
+====
+* 對於 Windows Host Utilities 8.0，當您選擇 MPIO 支援時，MPIO 功能會自動啟用。
+* 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO。
 
-NOTE: 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO 。
 
+====
 
 
 == SAN組態

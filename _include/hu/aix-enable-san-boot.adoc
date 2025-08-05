@@ -1,0 +1,28 @@
+= 步驟 1 ：選擇性啟用 SAN 開機
+:allow-uri-read: 
+
+
+
+
+== 步驟 1 ：選擇性啟用 SAN 開機
+
+您可以設定主機以使用 SAN 啟動來簡化部署並提高可擴充性。如果您的配置不支援 SAN 啟動，您可以使用本機啟動。
+
+[role="tabbed-block"]
+====
+.SAN開機
+--
+SAN 啟動是將 SAN 連線磁碟（LUN）設定為 AIX/PowerVM 主機的啟動設備的過程。您可以設定 SAN 啟動 LUN 以在使用 FC 協定並使用 FC 或 FCoE 協定執行 AIX Host Utilities 的 AIX 多路徑 I/O (MPIO) 環境中運作。在 AIX MPIO 環境中建立 SAN 啟動 LUN 和安裝新 OS 映像的方法取決於您使用的協定。
+
+.步驟
+. 使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 AIX OS、協定和ONTAP版本是否支援 SAN 啟動。
+. 請依照供應商文件中有關設定 SAN 啟動的最佳實務進行操作。
+
+
+--
+.本機開機
+--
+透過在本機硬碟（例如 SSD、SATA 或 RAID）上安裝 AIX OS 來執行本機啟動。
+
+--
+====

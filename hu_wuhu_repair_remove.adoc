@@ -4,7 +4,7 @@ permalink: hu_wuhu_repair_remove.html
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 登錄和 HBA 參數，讓 Windows 主機正確處理 ONTAP 和 E 系列平台的儲存系統行為。 
 ---
-= 修復並移除 Windows 主機公用程式
+= 修復並刪除適用於ONTAP儲存的 Windows Host Utilities
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,7 +19,7 @@ summary: Windows 主機公用程式包含一個安裝程式，可設定所需的
 
 
 [role="lead"]
-您可以使用主機公用程式安裝程式的 * 修復 * 選項來更新主機匯流排介面卡（ HBA ）和 Windows 登錄設定。您也可以透過互動方式或從 Windows 命令列完全移除主機公用程式。
+使用 Host Utilities 安裝程式中的 *Repair* 選項來更新主機匯流排適配器 (HBA) 和 Windows 登錄設定。您也可以透過互動方式或從 Windows 命令列完全刪除主機實用程式。
 
 [role="tabbed-block"]
 ====
@@ -36,15 +36,17 @@ summary: Windows 主機公用程式包含一個安裝程式，可設定所需的
 
 
 --
-.從命令列修復或移除
+.以非互動方式修復或刪除
 --
 「修復」 * 選項會使用所需的設定來更新 Windows 登錄和 FC HBA 。您也可以從Windows命令列中完全移除主機公用程式。
 
 .步驟
 . 修復 Windows 主機公用程式：
 +
-`msiexec /f installer.msi [/quiet]`
-
+[source, cli]
+----
+msiexec /f installer.msi [/quiet]
+----
 +
 ** /f'修復安裝。
 ** 「installer.msi」是系統上Windows主機公用程式安裝程式的名稱。
