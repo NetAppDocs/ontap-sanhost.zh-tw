@@ -129,10 +129,8 @@ NOTE: 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支�
 ====
 .以互動方式安裝
 --
-.步驟
 透過執行 Host Utilities 安裝程式並依照指示以互動方式安裝 Host Utilities 軟體包。
 
-.步驟
 . 從下載執行檔 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]。
 . 切換到您下載執行檔的目錄。
 . 執行「NetApp_windows_host_utilities」7.1_x64檔案、然後依照畫面上的指示操作。
@@ -144,7 +142,6 @@ NOTE: 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支�
 --
 使用 Windows 命令列執行 Host Utilities 的非互動式安裝。安裝完成後系統自動重新啟動。
 
-.步驟
 . 在Windows命令提示字元中輸入下列命令：
 +
 [source, cli]

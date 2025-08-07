@@ -128,18 +128,40 @@ drwxr-xr-x   3 root     sys            4 Mar  7 13:11 ..
 `/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp|iscsi|mixed -multipath mpxio|dmp|non [-noalua] [-mcc 60|90|120]`
 
 +
-[cols="2*"]
+[cols="1a,2a"]
 |===
 | 例如，如果您的設定是... | 使用命令... 
 
 
-| 具有多路徑的 FCP 作為 MPxIO | `#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath mpxio`有關SnapMirror主動同步配置變更的信息，請參閱知識庫文章link:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/Solaris_Host_support_recommended_settings_in_SnapMirror_active_sync_formerly_SM_BC_configuration["Solaris 主機支援SnapMirror主動同步（以前稱為 SM-BC）配置中的建議設定"^]。 
+ a| 
+具有多路徑的 FCP 作為 MPxIO
+ a| 
+[source, cli]
+----
+#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath mpxio
+----
+有關SnapMirror主動同步配置變更的信息，請參閱知識庫文章link:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/Solaris_Host_support_recommended_settings_in_SnapMirror_active_sync_formerly_SM_BC_configuration["Solaris 主機支援SnapMirror主動同步（以前稱為 SM-BC）配置中的建議設定"^]。
 
 
-| 使用多路徑作為 DMP 的 FCP | `#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath dmp` 
+
+ a| 
+使用多路徑作為 DMP 的 FCP
+ a| 
+[source, cli]
+----
+#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath dmp
+----
 
 
-| MetroCluster上的 FCP 採用多路徑作為 MPxIO，並且「所有路徑均關閉」值設定為 120 秒。  （這是MetroCluster配置的建議設定）。 | `#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath mpxio -mcc 120`有關詳細信息，請參閱知識庫文章link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/Solaris_host_support_considerations_in_a_MetroCluster_configuration["Solaris主機支援MetroCluster 考量的功能"^]。 
+ a| 
+MetroCluster上的 FCP 採用多路徑作為 MPxIO，並且「所有路徑均關閉」值設定為 120 秒。  （這是MetroCluster配置的建議設定）。
+ a| 
+[source, cli]
+----
+#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath mpxio -mcc 120
+----
+有關更多信息，請參閱知識庫文章link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/Solaris_host_support_considerations_in_a_MetroCluster_configuration["Solaris主機支援MetroCluster 考量的功能"^] 。
+
 |===
 . 重新啟動主機。
 +

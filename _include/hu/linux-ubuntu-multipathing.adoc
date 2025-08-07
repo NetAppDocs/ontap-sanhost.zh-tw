@@ -1,0 +1,151 @@
+= 
+:allow-uri-read: 
+
+
+為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
+
+.步驟
+. 確認 `/etc/multipath.conf`檔案已結束。如果檔案不存在，請建立空白的零位元組檔案：
++
+[source, cli]
+----
+touch /etc/multipath.conf
+----
+. 第一次 `multipath.conf`建立檔案時，您可能需要啟用並啟動多重路徑服務，才能載入建議的設定：
++
+[source, cli]
+----
+systemctl enable multipathd
+----
++
+[source, cli]
+----
+systemctl start multipathd
+----
+. 每次引導主機時，空的 `/etc/multipath.conf`零位元組檔案會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。您不需要變更 `/etc/multipath.conf`主機的檔案，因為作業系統會使用多重路徑參數進行編譯，以正確辨識及管理 ONTAP LUN 。
++
+下表顯示 ONTAP LUN 的 Linux OS 原生編譯多重路徑參數設定。
+
++
+.顯示參數設定
+[%collapsible]
+====
+[cols="2"]
+|===
+| 參數 | 設定 
+
+
+| DETECT（偵測）_prio | 是的 
+
+
+| 開發損失_tmo | "無限遠" 
+
+
+| 容錯回復 | 立即 
+
+
+| fast_io_f故障_tmo | 5. 
+
+
+| 功能 | "2 pg_init_retries 50" 
+
+
+| Flip_on_last刪除 | "是" 
+
+
+| 硬體處理常式 | 「0」 
+
+
+| no_path_retry | 佇列 
+
+
+| path_checker_ | "周" 
+
+
+| path_grouping_policy | "群組by_prio" 
+
+
+| path_selector | "服務時間0" 
+
+
+| Polling_時間 間隔 | 5. 
+
+
+| 優先 | 「NetApp」ONTAP 
+
+
+| 產品 | LUN 
+
+
+| Retain附加的硬體處理常式 | 是的 
+
+
+| RR_weight | "統一" 
+
+
+| 使用者易記名稱 | 否 
+
+
+| 廠商 | NetApp 
+|===
+====
+. 驗證 ONTAP LUN 的參數設定和路徑狀態：
++
+[source, cli]
+----
+multipath -ll
+----
++
+預設的多重路徑參數支援 ASA ， AFF 和 FAS 組態。在這些組態中，單一 ONTAP LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間導致路徑問題。
+
++
+以下輸出範例顯示 ASA ， AFF 或 FAS 組態中 ONTAP LUN 的正確參數設定和路徑狀態。
+
++
+[role="tabbed-block"]
+====
+.ASA 組態
+--
+ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
+
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+# multipath -ll
+3600a098038314559533f524d6c652f62 dm-24 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:1:13 sdm  8:192  active ready running
+  |- 11:0:3:13 sdah 66:16  active ready running
+  |- 12:0:1:13 sdbc 67:96  active ready running
+  `- 12:0:3:13 sdbx 68:176 active ready running
+----
+=====
+--
+.AFF 或 FAS 組態
+--
+AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。較高優先順序的主動 / 最佳化路徑由集合所在的控制器提供服務。較低優先順序的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
+
+以下範例顯示 ONTAP LUN 的輸出，其中包含兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑：
+
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+# multipath -ll
+3600a098038314837352453694b542f4a dm-0 NETAPP,LUN C-Mode
+size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 14:0:3:0 sdbk 67:224 active ready running
+| `- 15:0:2:0 sdbl 67:240 active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 14:0:0:0 sda  8:0    active ready running
+  `- 15:0:1:0 sdv  65:80  active ready running
+----
+=====
+--
+====
+

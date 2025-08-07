@@ -65,3 +65,9 @@ link:https://mysupport.netapp.com/site/["NetApp線上錯誤"^] 提供大多數�
 * FCP一般：顯示與特定主機無關的FC和HBA錯誤。
 * FCP - AIX
 
+
+
+
+== 接下來呢？
+
+link:hu-aix-80.html["了解如何安裝 AIX Host Utilities"]

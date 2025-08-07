@@ -91,3 +91,9 @@ Unable to locate /usr/lib64/libHBAAPI.so library
 Make sure the package installing the library is installed & loaded`請參閱NetApp線上錯誤 -link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] 。 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。
+
+
+
+== 下一步
+
+link:hu-luhu-80.html["了解如何安裝 Linux 主機實用程式"]

@@ -437,4 +437,4 @@ Logical Unit:  /dev/rdsk/c0t600A0980383044376C3F4E694E506E44d0s2
 
 == 接下來呢？
 
-link:hu-solaris-62-cmd.html["了解如何使用 Solaris Host Utilities 6.2 工具"] 。
+link:hu-solaris-command-reference.html["了解如何使用 Solaris Host Utilities 工具"] 。

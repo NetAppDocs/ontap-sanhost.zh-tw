@@ -50,3 +50,9 @@ FC 驅動程式繫結已從變更 `ssd(4D)` 至 `sd(4D)`。移動您在中的組
 * FCP 一般：顯示與特定主機無關的 FC 和主機匯流排介面卡（ HBA ）錯誤。
 * FCP - Solaris
 
+
+
+
+== 下一步
+
+link:hu-solaris-80.html["了解如何安裝 Solaris Host Utilities"]

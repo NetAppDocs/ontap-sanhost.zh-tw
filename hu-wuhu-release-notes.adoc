@@ -52,3 +52,9 @@ Windows Host Utilities 7.1 包括對 E 系列儲存系統、 ONTAP 9 軟體和�
 | 執行 `linux_gos_timeout-install.sh` 在執行Red Hat Enterprise Linux或SUSE Linux Enterprise Server的Hyper-V客體上、不再需要指令碼 | 7.1. | 您不再需要執行 `linux_gos_timeout-install.sh`指令碼來變更 Red Hat Enterprise Linux 5 ， Red Hat Enterprise Linux 6 或 SUSE Linux Enterprise Server 11 Hyper-V 來賓作業系統的磁碟逾時，因為預設的逾時設定正在使用中。 `linux_gos_timeout-install.sh`舊版主機公用程式所包含的指令碼不再包含在 Windows 主機公用程式 7.1 版本中。Windows 主機公用程式 7.1 會使用預設的磁碟逾時設定。 | 不適用 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。
+
+
+
+== 下一步
+
+link:hu-wuhu-80.html["了解如何安裝 Windows Host Utilities"]
