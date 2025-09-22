@@ -3707,7 +3707,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0ea3e528a268f7a469a48d5d8aae4f82" category="paragraph">請參閱供應商文件以驗證以下軟體包是否已正確安裝。這些軟體包需要支援<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block>命令：</block>
   <block id="291498f8ec1453e277a2e2b46e71ae68" category="list-text">如果您目前安裝了某個版本的 Linux Host Utilities，請將其刪除：</block>
   <block id="a47e489edc31ec3082b9f72fed5a5375" category="list-text">進入下載軟體包的目錄並安裝：</block>
-  <block id="b13f2391541d6900841a6b191f26531d" category="paragraph">如果您使用的是 Ubuntu 主機作業系統，則需要手動將其連結到 HBA 庫：</block>
   <block id="bf2fa1be3b14254d86cd9857c8495543" category="doc">使用 Linux Host Utilities 指令驗證ONTAP儲存配置</block>
   <block id="3a61827896464412c2e42d33f758f4f1" category="paragraph">您可以使用 Linux Host Utilities 範例指令參考，透過 Host Utilities 工具對NetApp儲存設定進行端對端驗證。</block>
   <block id="509349566982f99a656299d84be158b8" category="summary">Linux 主機實用程式發行說明</block>
@@ -4051,4 +4050,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="30fe8c509bd758431e60f7f83e9085f0" category="paragraph">如果偵測到 MS DSM for Windows MPIO，Windows Host Utilities 將設定下列參數的值：</block>
   <block id="d7ffc66640801d3b23e6403b53045607" category="paragraph">驗證 FC 系統上的 Emulex HBA 驅動程式設定。HBA 上的每個連接埠都必須存在這些設定。</block>
   <block id="0aa9ab84e08417b1d87c1a5606b6b1b4" category="paragraph">驗證 FC 系統上的 QLogic HBA 驅動程式設定。HBA 上的每個連接埠都必須存在這些設定。</block>
+  <block id="eb13ea1edb52f2f7cdf4b15544892c06" category="list-text">紅帽企業 Linux（RHEL）</block>
+  <block id="cfe19b0ae08454358fbe515d88fd6095" category="open-title">Linux 主機</block>
+  <block id="fc474797a9f95d446d20392a22b50563" category="paragraph">從 RHEL、SUSE Linux Enterprise Server 或 Oracle Linux 主機中刪除 Linux Host Utilities：</block>
+  <block id="2b65cdb03e4760333180898a7c50951b" category="paragraph">從 Ubuntu 主機中刪除 Linux 主機實用程式：</block>
+  <block id="de3b6129e1e522c8f5cf6e37ce4b9f22" category="paragraph">在 RHEL、SUSE Linux Enterprise Server 或 Oracle Linux 主機上安裝 Linux Host Utilities 8.0：</block>
+  <block id="b9e9a39780b968851bca7471c4bdb04f" category="list-text">在 Ubuntu 主機上安裝 Linux Host Utilities 8.0：</block>
+  <block id="50a27e0ec26dfc22ecff73b4716eee33" category="list-text">手動將 Ubuntu 作業系統連結到 HBA 庫：</block>
 </blocks>
