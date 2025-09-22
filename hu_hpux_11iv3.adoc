@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_hpux_11iv3.html 
 keywords: host utilities, hp_ux, 11iv3, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用 
+summary: 在 HP-UX 11i v3 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。 
 ---
 = 使用ONTAP儲存為 FCP 和 iSCSI 設定 HP-UX 11i v3
 :hardbreaks:
@@ -16,8 +16,6 @@ summary: 說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配�
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定、將具有 ONTAP 的 HP-UX 11i v3 設定為目標。
-
 HP-UX Host Utilities 軟體為連接到ONTAP儲存的 HP-UX 主機提供管理和診斷工具。在 HP-UX 11i v3 主機上安裝 HP-UX Host Utilities 時，您可以使用 Host Utilities 來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。
 
 
@@ -52,8 +50,7 @@ HP-UX Host Utilities 支援本機 Microsoft 多路徑 I/O (MPIO) 和 Veritas 動
 
 .步驟
 . 安裝 HP-UX Host Utilities 時，會自動為ONTAP LUN 載入以下建議的預設設定。
-
-
++
 .顯示參數設定
 [%collapsible]
 ====

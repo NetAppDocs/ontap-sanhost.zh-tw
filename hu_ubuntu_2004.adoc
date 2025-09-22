@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_ubuntu_2004.html 
 keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu 
-summary: 配置 Ubuntu 20.04 以實現多路徑，並使用ONTAP儲存的 FCP 和 iSCSI 操作的特定參數和設定。 
+summary: 配置 Ubuntu 20.04 以實現多路徑，並使用ONTAP儲存的 FCP 和 iSCSI 協定操作的特定參數和設定。 
 ---
 = 使用ONTAP儲存為 FCP 和 iSCSI 配置 Ubuntu 20.04
 :toc: macro
@@ -19,7 +19,7 @@ summary: 配置 Ubuntu 20.04 以實現多路徑，並使用ONTAP儲存的 FCP �
 
 
 [role="lead"]
-配置 Ubuntu 20.04 以實現多路徑，並使用ONTAP儲存的 FCP 和 iSCSI 操作的特定參數和設定。
+配置 Ubuntu 20.04 以實現多路徑，並使用ONTAP儲存的 FCP 和 iSCSI 協定操作的特定參數和設定。
 
 [NOTE]
 ====

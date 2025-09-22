@@ -107,7 +107,6 @@
   <block id="08a7801aadb2d395506d0735d17dcf62" category="cell">LinkDownTimeDOut</block>
   <block id="f9c8e6ceed8ad8db75740e78e48a6236" category="cell">PortDownRetryCount</block>
   <block id="482723983a4f2af954e36ff41e567451" category="section-title">已知限制</block>
-  <block id="fbd83cf0e839e6dec73fa3ff243bb8c5" category="summary">說明如何搭配ONTAP 使用CentOS 7.8搭配使用</block>
   <block id="2d42bb9d7307ce616ea0bcece7fd8556" category="cell">"2 pg_init_retries 50"</block>
   <block id="43b1876560748141954ab34c38e01ac0" category="summary">說明如何使用ONTAP 支援功能為RHEL 8.1設定NVMe/FC</block>
   <block id="3a8ba1ff8824968961222d6b447b4973" category="section-title">支援能力</block>
@@ -217,7 +216,6 @@
   <block id="95a7c4ebc7538126d41cf3497f8e09b4" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 6.4搭配使用功能</block>
   <block id="f0fac0f2b3b710a9568f39594d5f9df3" category="paragraph">對於Red Hat Enterprise Linux（RHEL）6.4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 6.4的所有設定都已經過編譯、可辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="857c2f89db30800ff3058931e331923e" category="paragraph">RHEL 6.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="3bb3263aa16bbeb228b8ecd7584a8064" category="summary">說明如何搭配ONTAP 使用CentOS 7.3搭配使用功能</block>
   <block id="039c572446bfd0a2b1ec8e52fc45283c" category="summary">說明如何搭配ONTAP 使用CentOS 6.9搭配使用功能</block>
   <block id="82449d0fd1c4caa6f1316fc8c60a0965" category="paragraph">對於CentOS 6.9"/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。CentOS 6.9是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。</block>
   <block id="4c8b41567795f35c88d1ebcfb4c0daec" category="paragraph">CentOS 6.9作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。</block>
@@ -231,7 +229,6 @@
   <block id="db8b5cb66e41a6692e5280271b55feb6" category="section-title">列出從特定SVM對應至主機的所有LUN</block>
   <block id="475c20ed4a6682ddf4e29696ef0600f4" category="section-title">列出對應至主機之特定LUN的所有屬性</block>
   <block id="e562a7759abbf518b77dba4c6bf7b87d" category="section-title">列出附加至主機的所有SVM目標LIF WWPN</block>
-  <block id="b0825624074d948cc02dab7178882abe" category="summary">說明如何搭配ONTAP 使用CentOS 8.1搭配使用功能</block>
   <block id="c454d997c91275b70f2f0433fad3fe36" category="list-text">前往內含下載內容的目錄。</block>
   <block id="9edc8f09fd5b1e5afec2430fd6f561df" category="paragraph">這些套件會新增至「/opt/NTAP/SANToolkit / bin」目錄。</block>
   <block id="8d3237fb2b6bc072b413d450b7bcf588" category="paragraph">在以下範例中、「左LUN show」命令會傳回LUN資訊。</block>
@@ -312,13 +309,11 @@
   <block id="b2da1ca8334b29f1d40436a25662d8d6" category="paragraph">對於Red Hat Enterprise Linux（RHEL）6.9、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 6.9是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="481485305bd44028530f59a9a9614451" category="paragraph">RHEL 6.9作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
   <block id="938f1047c15f00fdd0cbfc8e4cfa15e1" category="paragraph">* 範例 *</block>
-  <block id="9128494ba0ee37c628f015b5af093f58" category="summary">說明如何搭配ONTAP 使用CentOS 7.0搭配使用功能</block>
   <block id="1669e5f0b1148e1054b39b7a819b7fdb" category="summary">說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用</block>
   <block id="f22bfff17408247273e66b8771e95a3d" category="list-text">在AIX主機上、以* root*登入。</block>
   <block id="f1893c3e5e775c895395a0a1524f20a9" category="list-text">解壓縮檔案並解壓縮SAN Toolkit軟體套件。</block>
   <block id="ee3c9604966f68c69c5d81299e5c5913" category="paragraph">解壓縮檔案時會建立下列目錄：「ntap_AIX_host_utilities _6.1」。此目錄將有下列子目錄之一：MPIO、non-MPIO或SAN_Tool_Kit。</block>
   <block id="7479ee4eaf5b0a177d10a5a42ff8dc26" category="list-text">安裝AIX MPIO：</block>
-  <block id="41e7560cde89e1cd58f68637cb85187c" category="summary">說明如何搭配ONTAP 使用CentOS 7.6搭配使用</block>
   <block id="063981d5e2e841e661249aba9ca9682a" category="summary">以VMware為例、針對Oracle Linux 8.1設定VME/FC主機組態ONTAP</block>
   <block id="ab5f40e0204a9868aebbaee0226f0547" category="doc">適用於Oracle Linux 8.1的NVMe / FC主機組態（ONTAP 含功能更新）</block>
   <block id="77835a1b9432b93fd521ab9f863d3c08" category="list-text">NVMe - CLI套件中不提供原生NVMe / FC自動連線指令碼。使用HBA廠商提供的外部自動連線指令碼。</block>
@@ -459,7 +454,6 @@
   <block id="30551084db41b5a626c643ea028e9abc" category="paragraph">Oracle Linux 6.7作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
   <block id="8eee884db44f521f0d19cac36bf258cc" category="summary">搭配ONTAP 使用Windows Server 2016搭配使用</block>
   <block id="f5cba97c30a47867e3649fd136cca68c" category="inline-link-macro">Microsoft Update目錄2016</block>
-  <block id="480c1af29fcb3cc17dbe8a841a6a3c06" category="summary">說明如何搭配ONTAP 使用CentOS 8.2搭配使用功能</block>
   <block id="7d182740e5fe1d15ec7f97f69178b4a8" category="list-text">在每個HBA啟動器連接埠上、設定下列HBA驅動程式參數：</block>
   <block id="1d71ea83cceb2b7470e1c54838adb506" category="list-text">啟用NVMe = 1</block>
   <block id="814e9f528f5fa391cd6774e57a5c651c" category="list-text">NVMEMode = 0</block>
@@ -483,8 +477,6 @@
   <block id="c0b03114da162e4c4ce8e3c9e573e1f7" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 6.7搭配使用功能</block>
   <block id="7e6f60bf7bd831ecb9a591f4ed8bd2f2" category="paragraph">對於Red Hat Enterprise Linux（RHEL）6.7、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 6.7採用所有必要設定進行編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="5592861a9331f6fc89845ea236081712" category="paragraph">RHEL 6.7作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不符合ASA的組態、正確設定所有組態參數。</block>
-  <block id="0a4a555ba90159c1b3608a4b2e3295e1" category="summary">說明如何搭配ONTAP 使用CentOS 7.4搭配使用功能</block>
-  <block id="62d54f77039c15fe0a65691e9ff3f4c2" category="summary">說明如何搭配ONTAP 使用CentOS 7.5搭配使用</block>
   <block id="a335fa6e5bef06439b229f8adabc7dfe" category="section-title">列出從特定SVM/中對應至主機的所有LUN、列出對應至主機之特定LUN的所有屬性</block>
   <block id="53cded606153345462c89bc6a568b1dc" category="summary">提供ONTAP Veritas Infoscale 7系列版本的VMware SAN主機組態設定指引</block>
   <block id="31296a34c84ac7a114e2a64e59cc9d34" category="paragraph">在下圖中、「show」命令會傳回LUN資訊。</block>
@@ -510,11 +502,9 @@
   <block id="cd66c6c6398ade1a38a74a4cc0b18ade" category="paragraph">對於Red Hat Enterprise Linux 7和8系列、您必須設定「udevrport」值、以便在儲存容錯移轉案例中支援Veritas Infosale環境。使用下列檔案內容建立檔案「/etc/udev/rules．d/40-rport.rules`」：</block>
   <block id="14b3714b111d1beb9fb5c5c6fa61ec6e" category="admonition">如需Veritas的所有其他特定設定、請參閱標準Veritas Infoscale產品文件。</block>
   <block id="54f2286fb613ffaae5ab0ea0c95d2262" category="section-title">多重路徑共存</block>
-  <block id="0b9f55b9dffba7eae6a1222b3c2e4753" category="summary">說明如何搭配ONTAP 使用CentOS 7.1與功能不全</block>
   <block id="51a4a26e6b1bdae133374d340c097526" category="paragraph">下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。</block>
   <block id="2844e304c2e162332243113572206ac6" category="inline-link-macro">1308744</block>
   <block id="939827454c3bb8453033ba1bd60c555e" category="cell"><block ref="c8bdc7961e7fb79cc7e51cf734b247fb" category="inline-link-macro-rx"></block></block>
-  <block id="35a2873560c7df91eb3565c5ce683568" category="summary">說明如何搭配ONTAP 使用CentOS 7.2與功能不全</block>
   <block id="dd1e6355fcc2ca3c16ece42015663e00" category="cell">1362435</block>
   <block id="393cfee0a3b5d3e706f8a0cdeefa3ed8" category="cell">Huk 6.2和solaris _11.4 FC驅動程式連結變更</block>
   <block id="8e831c271747ab1b149f40a1bfc61175" category="cell">（文件ID 2595926.1）</block>
@@ -593,12 +583,9 @@
   <block id="ccea754e7046e3a8078e83df3db0dd24" category="cell">1344935</block>
   <block id="ae1b434f4d27837b33cfc80ed6814a95" category="cell">路徑報告問題ASA 與不符合需求的組態。</block>
   <block id="1288c56822a6bb56a7acdc5941948855" category="cell">1306354</block>
-  <block id="39e2f887814ee9598f2240638f02ad73" category="summary">說明如何搭配ONTAP 使用CentOS 8.3搭配使用功能</block>
-  <block id="ba9c5cfb8923c683e175b0343242d5b2" category="summary">說明如何搭配ONTAP 使用CentOS 8.0搭配使用功能</block>
   <block id="f75fbeea110530ab4a9306fd42a5e085" category="summary">說明如何搭配ONTAP 使用Oracle Linux 6.8 with介紹</block>
   <block id="f554c70908c90cf2ddb8539029693dc9" category="paragraph">對於Oracle Linux 6.8、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。Oracle Linux 6.8是以辨識及正確管理ONTAP 支援LUN所需的所有設定所編譯。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="6485c78f22d3f3aa24bf7cbcea864cb3" category="paragraph">Oracle Linux 6.8作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動正確設定所有組態參數。</block>
-  <block id="f4bba4cff96aef30f859bc5d933b86d1" category="summary">說明如何搭配ONTAP 使用CentOS 7.7搭配使用功能</block>
   <block id="b5532e466b7ace9d1d9ddb98b57ec0d7" category="summary">說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterprise Server 15 SP3的NVMe/FC</block>
   <block id="59788ae5607a12c1afe34deb1ad155a2" category="doc">適用於SUSE Linux Enterprise Server 15 SP3的NVMe主機組態搭配ONTAP 功能</block>
   <block id="83314818bb7c47b391616d0ff767a7de" category="section-title">NVMe啟動器套件</block>
@@ -731,7 +718,6 @@
   <block id="8c95c9542a975007e5a35ecad47efad2" category="paragraph">較新的lfit驅動程式（包括收件匣和發件匣）預設為3。因此、您不需要在「/etc/modprobe.d/lffc.conf」中明確設定此項目。</block>
   <block id="cd028f2be9225b4251e86c9754599aa3" category="paragraph">在上述範例中、兩個命名空間會對應至Oracle Linux 7.9 ANA主機。這可透過四個目標生命期來查看：兩個本機節點生命期、以及兩個其他合作夥伴/遠端節點生命期。此設定顯示主機上每個命名空間的兩個ANA最佳化路徑和兩個ANA不可存取路徑。</block>
   <block id="bea05db7b205cebd49d85c581b86c97e" category="summary">針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態設定的指引</block>
-  <block id="b277f2029ada9ac25bce475d62557cb4" category="summary">說明如何搭配ONTAP 使用CentOS 7.9與功能</block>
   <block id="9f48bd68eb80a61379f6dd65620bec8c" category="summary">說明如何針對SUSE Linux Enterprise Server 15 SP2 ONTAP 搭配使用介紹功能的NVMe / FC進行設定</block>
   <block id="b7c80370e68c20a6d2b05ca2d022abbe" category="doc">適用於SUSE Linux Enterprise Server 15 SP2 with ONTAP ESS.的NVMe/FC主機組態</block>
   <block id="47a1a789b24d958d3c073bab6e64e3b4" category="list-text">升級原生的NVMe-CLI套件。</block>
@@ -839,8 +825,6 @@
   <block id="2813f127dc58929fb553bc32684c2e46" category="section-title">已知問題與限制</block>
   <block id="8b777dc32f2f743eb513fca0bfd52348" category="cell">1457017</block>
   <block id="0078173d6c66e3e11217e80e4ecc1d1b" category="cell">「anlun」安裝會發出與「libdevmapper.so」和「libnl.so」程式庫相關的警告訊息。這些警告不會影響到「暫停」套件的功能。</block>
-  <block id="3eeb371f92f74d2b6501646282092ca7" category="summary">說明如何搭配ONTAP 使用CentOS 8.4搭配使用</block>
-  <block id="c33b879e8a189cf4ded38992165273b7" category="summary">說明如何搭配ONTAP 使用CentOS 8.5搭配使用</block>
   <block id="ce081634ead33780d73e0e1f6b9ea0ca" category="paragraph">有了Veritas動態多重路徑（VxDMP）、您必須執行組態工作、將NetApp LUN宣告為Veritas多重路徑裝置。您必須安裝由Veritas為NetApp儲存系統提供的Array Support程式庫（ASB）和Array Policy Module（APM）套件。雖然Veritas軟體安裝會隨產品一起載入預設的ASLM套件、但建議您使用Veritas支援入口網站上列出的最新支援套件。</block>
   <block id="697675a4c21edc6fc07599249d9fe748" category="paragraph">在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</block>
   <block id="4e0b2b4c829cef3166a5190a135bb26f" category="sidebar">Infoscale 8.</block>
@@ -1117,19 +1101,14 @@
   <block id="0ca827b324b67329c1c236782d79cacc" category="list-text">開啟 Windows * 程式與功能 * （ Windows Server 2012 R2 、 Windows Server 2016 、 Windows Server 2019 和 Windows 2022 ）。</block>
   <block id="b3d12894d56e85cc742cb855ce388cdf" category="list-text">選取 * 變更 * 。</block>
   <block id="26f9e6294b1a61ed4692d275ee8885e0" category="list-text">視需要選取 * 修復 * 或 * 移除 * 。</block>
-  <block id="555c94ad53e123ccc406674df5fbc0ba" category="paragraph">Windows 主機公用程式會設定影響 Windows 主機回應延遲或資料遺失的參數。已選取特定值來驗證 Windows 主機是否能正確處理事件、例如將儲存系統中的一個控制器容錯移轉至其合作夥伴控制器。</block>
-  <block id="5db0ac001d15414764c966da33036c9d" category="paragraph">FC 、 NVMe / FC 和 iSCSI HBA 也有必須設定的參數、以確保最佳效能並成功處理儲存系統事件。</block>
-  <block id="fb08e9e706df430eb21a77dc77a7e2cf" category="paragraph">您必須手動設定 iSCSI HBA 參數。</block>
   <block id="c372bc249b31090fc161de15de7b7603" category="admonition">HKLM 是的縮寫<block ref="86565cb5d05fc56046ceb32627a70264" prefix=" " category="inline-code"></block>。</block>
   <block id="6393c224d437438785810287f79cf4dc" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\msdssm\Parameters \DsmimumStateTransitionTime</block>
   <block id="507442ae6083cce9fd165274005cd952" category="cell">HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\DsmSupportedDeviceList</block>
-  <block id="4032e28156cfb67550271f983690ac63" category="cell">「 NetApp LUN 」、「 NetApp LUN C 模式」、「 NVMe NetApp ONTAO Con 」</block>
   <block id="2a10dce2db92496db6490d59d8a30023" category="cell">HKLM\SYSTEM\CurrentControlSet\Control \Class\ ｛ iscsis_driver_GUID ｝ \ instance_ID \Parameters \IPSecConfigTimeout</block>
   <block id="547dcf1ccffce27bb75b008ae19d2cad" category="cell">HKLM\SYSTEM\CurrentControlSet\Control \Class\ ｛ iscsim_driver_GUID ｝ \ instance_ID \Parameters \LinkDownloadTime</block>
   <block id="1f1ffa8ff21ddd6861b7c27dc7135597" category="cell">HKLM\SYSTEM\CurrentControlSet\Services \ClusDisk \Parameters\ManageDisksOnSystemBuses</block>
   <block id="3f2bc56be3f6b729d16e1597fa8b4941" category="cell">HKLM\SYSTEM\CurrentControlSet\Control \Class\ ｛ iscsis_driver_GUID ｝ \ instance_ID \Parameters \MaxRequestHoldTime</block>
   <block id="86d63918f540a0e97186b88a4bd8db36" category="cell">HKLM\SYSTEM\CurrentControlSet\Control \MPDEV\MPIOSupportedDeviceList</block>
-  <block id="da30944c1d57c7273e8b0e5b8e7de029" category="cell">「 NetApp LUN 」、「 NetApp LUN C 模式」、「 NVMe NetApp ONTAO Con 」</block>
   <block id="011d6126050fa9b098fd5f8b3202e725" category="cell">HKLM\SYSTEM\CurrentControlSet\Services \vnetapp\Parameters\PathVerifyEnabled</block>
   <block id="0cb41c0c0339d303dbc72093df6e7bc2" category="cell">HKLM\SYSTEM\CurrentControlSet\Services \MPIO \Parameters\PDORemovePeriod</block>
   <block id="d157c38b633d15d34a4e43ef4ea3b75e" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\PDORemovePeriod</block>
@@ -1138,8 +1117,6 @@
   <block id="dd0c0b55cec9c97153981c22e267be6d" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\msdsm \Parameters\RetryInterval</block>
   <block id="2faabf4d68e773f3251eae7f2305fe39" category="cell">HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\RetryInterval</block>
   <block id="c5a575f6523964e8855617a1937db583" category="section-title">NVMe 參數</block>
-  <block id="ed248deb33450195d58919cecd0cf8cd" category="paragraph">對於 Emulex FC HBA 、安裝程式會設定下列參數：</block>
-  <block id="9e4350dab47d06fcefddc77af0b6f8d1" category="open-title">選取 MPIO 時</block>
   <block id="f1ce082f6baf3c653cdd07d94a942859" category="list-text">如果您無法解決問題、請聯絡 NetApp 技術支援以取得協助。</block>
   <block id="4a99bdb63932aafd9744169779509cbd" category="list-text">如果您使用的是 MPIO 軟體、請確認您擁有下列驅動程式設定：</block>
   <block id="51cf8280ca9efd5addc2361e7896683a" category="paragraph">此時將出現 * 連接到主機 * 對話框。</block>
@@ -1438,12 +1415,10 @@
 FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" prefix=" " category="inline-code"></block> 至<block ref="200efcf5dbc2c08d7c76deba0c7ecda8" prefix=" " category="inline-code"></block>。移動您在中的組態<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> 至<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> 如 Oracle 所述（文件編號 2595926.1 ）。新安裝的 Solaris 11.4 系統和從 11.3 或更低版本升級的系統的行為會有所不同。</block>
   <block id="eb5d1a08cb5aa5e6c62dcec6f972d7ef" category="list-text">FCP 一般：顯示與特定主機無關的 FC 和主機匯流排介面卡（ HBA ）錯誤。</block>
   <block id="b2996e4a9c3c0535f864240f52e9bcdc" category="list-text">Veritas Dynamic Multipathing （ DMP ）搭配使用 SPARC 處理器的系統上的 FC 或 iSCSI 傳輸協定、或是使用 x86_64 處理器的系統上的 iSCSI 傳輸協定。</block>
-  <block id="43202c148f53a3c518890e18ae6998e4" category="list-text">從下載內含主機公用程式的壓縮檔案複本 <block ref="71858c0235496b8ba65e5e8097fdda2a" category="inline-link-macro-rx"></block> 到主機上的目錄。</block>
   <block id="f01e00e50e3260a96149df0279bca6c7" category="list-text">使用解壓縮檔案<block ref="28c378002cbdc25e8dbf07ffe605f6ac" prefix=" " category="inline-code"></block> 命令：</block>
   <block id="16337c2b0ad3e64aaeb3714d78256deb" category="paragraph">Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 可協助您管理 LUN 和主機匯流排介面卡（ HBA ）的公用程式。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
   <block id="5cbce7f0ea158500dcff175373e3cbcf" category="paragraph">版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 AIX 主機相關的重要注意事項。</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="section-title">新增功能</block>
-  <block id="e4e1c13bb0b14f6cb7608cbecea948ef" category="list-text">iSCSI</block>
   <block id="c791b15d48a2be7d8c6a9c0b2badc362" category="list-text">PowerVM</block>
   <block id="f46d29974d2e1fa7b1fb4f55e009f7c2" category="paragraph">如需有關 PowerVM 的詳細資訊、請參閱 IBM PowerVM Live Partition Mobility Red Book 。</block>
   <block id="7cfc2a0609811d433edc27220510bde6" category="list-text">前往<block ref="4885f2a79813769d8236c375fd40eeb7" category="inline-link-rx"></block> 並將包含主機公用程式的壓縮檔案下載到主機上的目錄。</block>
@@ -1556,7 +1531,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="b16452e3905ac336b68babc6fa562702" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 6.9 。</block>
   <block id="a69f90991b7861bf298029c85947f926" category="paragraph">Oracle Linux 6.9 with ONTAP 版本有下列已知問題：</block>
   <block id="95ee459b709d0e4cae7ea12ed33763f9" category="paragraph">SUSE Linux Enterprise Server 15 SP4 with ONTAP 版本並無已知問題。</block>
-  <block id="0d3d494fc08d768af320e003868e2ebc" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將具有 ONTAP 的 HP-UX 11i v3 設定為目標。</block>
   <block id="1bc24cef68b137efe0e69c2b269dd7da" category="paragraph">Veritas Infoscale 8 for Linux with ONTAP 版本並無已知問題。</block>
   <block id="7145b773c01d1ea2262969c3644747a0" category="paragraph">使用 ONTAP 版本的 Windows Server 2022 沒有已知問題。</block>
   <block id="3d8d5b2f05311b66754ca058971f7e2e" category="paragraph">使用 ONTAP 版本的 SUSE Linux Enterprise Server 15 SP5 沒有已知問題。</block>
@@ -1675,10 +1649,8 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="39a8fcfc2fec9eb3c35083b0b8a2cae4" category="list-text">搜尋<block ref="04daf00c3b5bc166fd02128d9bfd3254" category="inline-link-rx"></block> 針對最近發現的問題。</block>
   <block id="9273ec471c4dd705bc01abe70b167469" category="list-text">在「進階搜尋」下的「錯誤類型」欄位中、選取 *iSCSI - Windows* 、然後選取 *Go* 。您應該重複搜尋錯誤類型 *FCP -Windows* 。</block>
   <block id="1a959178e792ae0c668c4f3a0bd45c65" category="list-text">收集有關您系統的資訊。</block>
-  <block id="ef127e2524262f219434d09112047ee0" category="paragraph">主機公用程式需要特定的登錄和參數設定、以驗證 Windows 主機是否正確處理儲存系統行為。</block>
   <block id="40bb1ea4c1bbc484f41a531e80ddb519" category="admonition"><block ref="c6d731b2e6e90d0e19df48cb3d9d7498" prefix="" category="inline-code"></block> 為的縮寫<block ref="86565cb5d05fc56046ceb32627a70264" prefix=" " category="inline-code"></block>。</block>
   <block id="a624f3024f6945790c5f3a01e38649bf" category="paragraph">請參閱<block ref="cc2304a59b5feaeebd0c5646fd22caf0" category="inline-link-rx"></block> 以取得登錄參數詳細資料。</block>
-  <block id="d7b45eaf5a2c22cb7c622ea9675a6f32" category="paragraph">在使用 FC 的系統上、 Host Utilities 安裝程式會設定 Emulex 和 QLogic FC HBA 所需的逾時值。</block>
   <block id="b182eae32a0022889eab1f98a5ba3a49" category="admonition">參數名稱可能會因程式而稍有不同。
 例如、在 QLogic QConverteConsole 程式中、參數會顯示為<block ref="b554d47c6702123b3a28a3e04ed39621" prefix=" " category="inline-code"></block>。
 主機公用程式<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " category="inline-code"></block> 檔案會將此參數顯示為兩者之一<block ref="08a7801aadb2d395506d0735d17dcf62" prefix=" " category="inline-code"></block> 或<block ref="e29ad18354768c222941f5de52fd92c9" prefix=" " category="inline-code"></block>，視是否指定 MPIO 而定。但是、所有這些名稱都是指相同的HBA參數。請參閱<block ref="6d63c8366c015331075fa86de38975e8" category="inline-link-rx"></block> 或<block ref="4399df604c07a452cc084d95811dafae" category="inline-link-rx"></block> 以深入瞭解逾時參數。</block>
@@ -2436,11 +2408,8 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="1078de040a8679207e1783a9da9e836c" category="cell">您不再需要執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block>指令碼來變更 Red Hat Enterprise Linux 5 ， Red Hat Enterprise Linux 6 或 SUSE Linux Enterprise Server 11 Hyper-V 來賓作業系統的磁碟逾時，因為預設的逾時設定正在使用中。<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block>舊版主機公用程式所包含的指令碼不再包含在 Windows 主機公用程式 7.1 版本中。Windows 主機公用程式 7.1 會使用預設的磁碟逾時設定。</block>
   <block id="2c1c2305f2baefceb44e8e1b31927d88" category="doc">安裝 Windows 主機公用程式 7.2</block>
   <block id="b31a86b1dca7dfa1a67b27d591387cdb" category="paragraph">主機公用程式支援不同的 Windows 主機組態、通訊協定和多重路徑選項。如需詳細資訊，請參閱<block ref="e29293ebfe5b9174e3113da62e6426ca" category="inline-link-rx"></block>。</block>
-  <block id="a1b5fc21b8f72dca8d1203383f6fcf00" category="paragraph">Windows 主機公用程式隨附的安裝程式會將 Windows ， FC 和 NVMe / FC HBA 參數設定為支援的值。</block>
-  <block id="c6aa64a3d9475fd563f6e8ab36eafc09" category="paragraph">安裝程式會根據您在執行安裝程式時是否指定 Microsoft 多重路徑 I/O （ MPIO ）支援來設定不同的值。</block>
   <block id="3160be9723d9dc9c210d8c8b48bd0bcf" category="section-title">Windows 主機公用程式 7.2 設定的登錄值</block>
   <block id="4da5f705a95e0ed235573a4eb64fce01" category="section-title">Windows Host Utilities 7.1 設定的登錄值</block>
-  <block id="cc28ccfb40f63eafdf4c15d20d5ee4bc" category="paragraph">Windows 主機公用程式安裝程式會根據您在安裝期間所做的選擇，自動設定登錄值。您應該注意這些登錄值、作業系統版本。</block>
   <block id="125e0f5615cef4db790518b2fd3b4491" category="paragraph">Windows 主機公用程式安裝程式會設定下列值。除非另有說明、否則所有值都是十進位的。</block>
   <block id="10ce28246e5d07ff8493b9244d2b2aca" category="list-text">選取 * NetApp Windows 主機公用程式 * 。</block>
   <block id="044af269e446bb1cbed59c4821cfa418" category="list-text">修復 Windows 主機公用程式：</block>
@@ -2629,7 +2598,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="fa5c369c0560373ede3332d2508c4819" category="paragraph">安裝 Windows 主機公用程式 7.2 時， LimTransferSize 參數會自動設為「 1 」。安裝後，您需要手動將 LimTransferSize 值變更為「 0 」，然後重新啟動伺服器。</block>
   <block id="70cefc9a608dc188dd16deb1397a1529" category="cell">指定 MPIO 支援，且您的伺服器為 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 ，但偵測到 Data ONTAP DSM 除外</block>
   <block id="28c4a2aff9dab89964d88a9594119baa" category="cell">當您的伺服器是 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 時</block>
-  <block id="88db364807adcc50e3c03e4e7c2eb386" category="paragraph">對於 QLogic FC HBA 、安裝程式會設定下列參數：</block>
   <block id="b76b67fa1e708efcaa2d6a257e3dc3a5" category="summary">適用於Windows Server 2052的NVMe / FC主機組態、ONTAP 含功能更新</block>
   <block id="e240b4a9acf4df1925780394d9f14be9" category="doc">使用適用於 ONTAP 的 NVMe / FC 來設定 Windows Server 2025</block>
   <block id="1332a2397f4fcbb21e78a6e3c713af4b" category="paragraph">您可以在執行 Windows Server 2025 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。</block>
@@ -2944,14 +2912,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="c76dae5432bc09fa983706505086692e" category="list-text">為 RHEL 9.6 主機產生 dhchap 金鑰。</block>
   <block id="eaf2f97729e8d5e4d205672da8afc9a5" category="sidebar">9.6</block>
   <block id="c90e2c8eff8de67c2e01d748085394db" category="list-text">驗證<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>文件存在。如果檔案不存在，請建立空白的零位元組檔案：</block>
-  <block id="9143f7bbdb93a1e9aa2dc28f3c922fcc" category="summary">介紹如何將 Citrix Hypervisor 8.2 與 ONTAP 結合使用</block>
   <block id="0825e58b251b6f1e1956c9f982c69b3d" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Citrix Hypervisor 8.2</block>
-  <block id="efb6a029c96ca3e81423fa8765c5e1f2" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Citrix Hypervisor 8.2 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="3e2e1ae5727d07e3ee9163e73df8e73f" category="paragraph">您可以使用 Citrix Hypervisor 8.2 的多路徑來管理 ONTAP LUN。</block>
-  <block id="b335d4f62ea30021bc1fd547fa7ca552" category="summary">介紹如何將 Citrix XenServer 8.4 與 ONTAP 結合使用</block>
   <block id="6d9eef6a4c2617ee0a8dfdc9ae7a468a" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Citrix Xenserver 8.4</block>
-  <block id="a2e2d0fcc9350f73f4294c53a7b2fa53" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Citrix Xenserver 8.4 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
-  <block id="405ee507e1b0e20ba609f39dc449664e" category="paragraph">您可以使用 Citrix Xenserver 8.4 的多路徑來管理 ONTAP LUN。</block>
   <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8.4</block>
   <block id="c4bb680e83ce918749e1d4853b0073d1" category="sidebar">虛擬機器管理程序 8.2 (LTSR)</block>
   <block id="73dbe2792e643c8d49d1c396963179b8" category="inline-link-macro">建立 SAN 啟動 LUN 並將其對應到主機</block>
@@ -3666,7 +3629,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="08c083ab3d2dc85cc17c16aa87be865d" category="list-text">以 *padmin* 登入。</block>
   <block id="5a5324c7cd51d134dd7b4074df426843" category="list-text">成為 root 用戶：</block>
   <block id="930931415b499a122be49a153545f591" category="list-text">驗證 SCSI UNMAP<block ref="ce7e54a230e7d7f6125c862b6201f954" prefix=" " category="inline-code"></block>參數加入ODM：</block>
-  <block id="1902e1a7238623f94367d983e59c5a3b" category="summary">描述如何將 IBM AIX 7.3 和/或 PowerVM VIOS 4.x 與ONTAP結合使用</block>
   <block id="4743f8e0bf68713a9a85d0855c2d28cc" category="doc">使用ONTAP儲存為 FCP 和 iSCSI 設定 AIX 7.3/VIOS 4.x</block>
   <block id="e3bdc2d79b7f752397bd2b07e719c94d" category="paragraph">AIX Host Utilities 軟體為連接到ONTAP儲存的 AIX 主機提供管理和診斷工具。在 AIX 7.3/VIOS 4.x 主機上安裝 AIX Host Utilities 時，您可以使用 Host Utilities 來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="ea07c36b18e97a60b8e39185af2e70d2" category="inline-link-macro">安裝 AIX Host Utilities 8.0</block>
@@ -3675,8 +3637,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="808f509e0f9c43c998453cb36e32d6b9" category="list-text">驗證「MPIO NetApp」是否可用。  「MPIO NetApp」在 AIX Host Utilities 安裝期間加載，並在您重新啟動主機後可用。</block>
   <block id="f3a66c03dd24364f67a928342777d333" category="paragraph"><block ref="e5220707910060523bb96d6b9caa48a3" prefix="" category="inline-code"></block></block>
   <block id="bc6a13eaaadb92e952fe0780a8c05fa5" category="list-text">AIX Host Utilities 為ONTAP LUN 載入以下參數設定。</block>
-  <block id="b85351e18a5da33e0eb75ecc1fbda104" category="list-text">配置以下設定以最佳化 FC 和 iSCSI 的 I/O 操作。</block>
-  <block id="a7c815fafe60ae637d38216fa6300395" category="open-title">FCP</block>
   <block id="92d3d1084eb6c8f1ef216786e227ba4d" category="cell">AIX 版本</block>
   <block id="f8b9e823d50ed3e99fd77acc2363ca70" category="cell">AIX OS 預設值</block>
   <block id="024c7088f8cb994f40e5d60b87c10cbb" category="cell">NetApp建議值</block>
@@ -3746,7 +3706,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="54d2be6229d60cd6144f8a215e8e77e9" category="list-text">安裝供應商支援網站上提供的主機匯流排適配器 (HBA) 管理套件。管理軟體可實現<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>命令來收集有關 FC HBA 的信息，例如其 WWPN。</block>
   <block id="0ea3e528a268f7a469a48d5d8aae4f82" category="paragraph">請參閱供應商文件以驗證以下軟體包是否已正確安裝。這些軟體包需要支援<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block>命令：</block>
   <block id="291498f8ec1453e277a2e2b46e71ae68" category="list-text">如果您目前安裝了某個版本的 Linux Host Utilities，請將其刪除：</block>
-  <block id="637c8507f72183e29c96c146c86d7988" category="list-text">NetApp Linux Host Utilities 軟體包可在NetApp支援網站上以 64 位元 .rpm 檔案的形式取得。從<block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block>給你的主人。</block>
   <block id="a47e489edc31ec3082b9f72fed5a5375" category="list-text">進入下載軟體包的目錄並安裝：</block>
   <block id="b13f2391541d6900841a6b191f26531d" category="paragraph">如果您使用的是 Ubuntu 主機作業系統，則需要手動將其連結到 HBA 庫：</block>
   <block id="bf2fa1be3b14254d86cd9857c8495543" category="doc">使用 Linux Host Utilities 指令驗證ONTAP儲存配置</block>
@@ -3934,32 +3893,23 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="50b0de549390e9fd0aff72d2cc76922d" category="paragraph">透過執行 Host Utilities 安裝程式並依照指示以互動方式安裝 Host Utilities 軟體包。</block>
   <block id="d539640f2a8ad84ff2b6b210b3c82a8b" category="doc">為ONTAP儲存安裝 Windows Host Utilities 7.2</block>
   <block id="62113ee23a34404b1f086b7ed1df786b" category="doc">使用ONTAP儲存配置 Windows Host Utilities 的註冊表設置</block>
-  <block id="4d1f74f34674eef0c5bdd0068e40ee04" category="paragraph">並非所有值都適用於SANtricity Storage Manager的設備特定模組 (DSM)；但是，Host Utilities 設定的值與SANtricity Storage Manager的 DSM 設定的值之間的任何重疊都不會導致衝突。</block>
   <block id="80fecb40ffb39e22d2139bf9886132bc" category="inline-xref">NVME參數</block>
   <block id="40bd27b40d44b862091d49e4f0538774" category="paragraph">安裝 Windows Host Utilities 7.2 後，您需要變更 LimTransferSize 參數值。看<block ref="f34264ec923664aedfb2a9ccd6257931" category="inline-xref-macro-rx"></block> 。</block>
   <block id="05371652e7984167bbb3f85201a5b89b" category="paragraph">對於 Windows Host Utilities 8.0、7.2 或 7.1 的所有其他參數和登錄項，您無需更改值，除非技術支援建議您這樣做。</block>
   <block id="3552ff32d73200dbe48fb217ccbdfe65" category="section-title">Windows Host Utilities 8.0 設定的登錄值</block>
-  <block id="ec995b0ce5d8e95aabbe85d2749a66ea" category="paragraph">Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值和 NVMe 參數。您應該了解這些值和作業系統版本。</block>
   <block id="a254beadccf36a8b85672cf8419d64d8" category="open-title">HKLM 值</block>
-  <block id="919cb244d228a3f71854b3231f8cff0c" category="paragraph">以下註冊表值由 Windows Host Utilities 安裝程式設定。除非另有說明，所有值均為十進制。</block>
   <block id="071b3c301587fc461b5b5db6056fea64" category="cell">當指定 MPIO 支援且您的伺服器是 Windows Server 2025、2022、2019 或 2016 時</block>
   <block id="213770055804b675ffe14467be7be594" category="cell">當您的伺服器是 Windows Server 2025、2022、2019 或 2016 時</block>
   <block id="ef7643028f04a4cac8da8e05df5237b1" category="cell">當指定 MPIO 支援且您的伺服器是 Windows Server 2025、2022、2019 或 2016 時</block>
-  <block id="4be4845df45475c63e7fef3544b5e46d" category="paragraph">安裝 Windows Host Utilities 8.0 時，以下 NVMe Emulex 驅動程式參數會更新：</block>
   <block id="408cf458ebdd52832b74587ec65fee92" category="paragraph">安裝 Windows Host Utilities 7.2 時，將更新以下 NVMe Emulex 驅動程式參數：</block>
-  <block id="53ece88e8d0752adafe41f998a3f679e" category="open-title">當未選擇 MPIO 時</block>
   <block id="20aac534719ebb4b8d33960d910552ae" category="section-title">了解 Host Utilities 對 FC HBA 驅動程式設定的變更</block>
-  <block id="903900c64c64e66749538a5ee0627e74" category="paragraph">在 FC 系統上安裝所需的 Emulex 或 QLogic HBA 驅動程式期間，Windows Host Utilities 會檢查幾個參數，在某些情況下也會修改這些參數。</block>
-  <block id="00c6b6db42cf4f18229789d1bbfc4392" category="paragraph">如果偵測到 MS DSM for Windows MPIO，Windows Host Utilities 將設定下列參數的值：</block>
   <block id="290855c6daac5448d222f3c661f749fb" category="list-text">*LinkTimeOut*：定義實體連結斷開後主機連接埠恢復 I/O 之前等待的時間長度（以秒為單位）。</block>
   <block id="9e02085844efecca4159003505f0e34a" category="list-text">*NodeTimeOut*：定義主機連接埠辨識到目標裝置的連線中斷之前的時間長度（以秒為單位）。</block>
   <block id="31544e277536e777e9c3f798fd5e0913" category="list-text">是否正在使用 MPIO 軟體。</block>
   <block id="62c6d5921cc25fa2fecef7c94356c189" category="inline-link-macro">運行修復選項</block>
   <block id="7eaaf936e50fb533dab6ae4ba3b589bc" category="paragraph">您可以透過以下方式修正 HBA 設定<block ref="262b15737127f72127997ad6784b0e26" category="inline-link-macro-rx"></block>在 Windows Host Utilities 安裝程式中。</block>
-  <block id="b43c94ea962672d4a5f84fbdbc6b42a8" category="paragraph">如果您有 FC 系統，請驗證 Emulex HBA 驅動程式設定。  HBA 上的每個連接埠都必須存在這些設定。</block>
   <block id="623dcbddc542817cdcdf36e9ce6846ce" category="list-text">從清單中選擇適當的 HBA，然後選擇“*驅動程式參數*”標籤。</block>
   <block id="713471818764991427fe06a02c382d7c" category="list-text">如果您不使用 MPIO 軟體，請確保您具有以下驅動程式設定：</block>
-  <block id="de1f703ddcd801c8b7ae8fb7d88721b9" category="paragraph">在 FC 系統上，驗證 QLogic HBA 驅動程式設定。  HBA 上的每個連接埠都必須存在這些設定。</block>
   <block id="d36746d8149fbda72e2e4e6b5a18add7" category="list-text">開啟 QConvergeConsole，然後在工具列上選擇 *連線*。</block>
   <block id="de65582b3d66343f81547ddec20392d3" category="list-text">如果您沒有使用 MPIO 軟體，請驗證您是否具有以下驅動程式設定：</block>
   <block id="4986650d14b24086d20a38215ecb279e" category="doc">修復並刪除適用於ONTAP儲存的 Windows Host Utilities</block>
@@ -4039,15 +3989,66 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="2a620c94e95b2a7a9b0a5187427a9dc9" category="paragraph"><block ref="2a620c94e95b2a7a9b0a5187427a9dc9" category="inline-link-macro-rx"></block></block>
   <block id="f98d44b09f5d0cc59433485eb0048243" category="inline-link-macro">了解如何安裝 Windows Host Utilities</block>
   <block id="cc30e60c3bfc777355fb5c1a9f21201f" category="paragraph"><block ref="cc30e60c3bfc777355fb5c1a9f21201f" category="inline-link-macro-rx"></block></block>
-  <block id="eb9e9eaeca9a2fe6f091f95c60ceeda4" category="summary">配置 Ubuntu 20.04 以實現多路徑，並使用ONTAP儲存的 FCP 和 iSCSI 操作的特定參數和設定。</block>
   <block id="2eea900ee581f5726b661093cf8ad505" category="doc">使用ONTAP儲存為 FCP 和 iSCSI 配置 Ubuntu 20.04</block>
   <block id="dd8d9457c96c61b509341e8fc9c06a5a" category="section-title">步驟 2：確認主機的多路徑配置</block>
   <block id="86068021aef836dc1f6f1acf0c458729" category="paragraph">您可以使用 Ubuntu 20.04 的多路徑來管理ONTAP LUN。</block>
   <block id="e5c9aae3aa070feffc71ad22ae694781" category="section-title">步驟 5：查看已知問題</block>
-  <block id="00958a9c412688342677cda75697e733" category="summary">配置 Ubuntu 22.04 以實現多路徑，並使用ONTAP儲存的 FCP 和 iSCSI 操作的特定參數和設定。</block>
   <block id="ff819e4a2fe4a976a60235e7548a85fb" category="doc">使用ONTAP儲存為 FCP 和 iSCSI 配置 Ubuntu 22.04</block>
   <block id="0ec9e84225e24bae7e1764e1ec2d5208" category="paragraph">您可以使用 Ubuntu 22.04 的多路徑來管理ONTAP LUN。</block>
   <block id="7ffbdb03ebbe3dde997db38f057eaa6f" category="doc">使用ONTAP儲存為 FCP 和 iSCSI 配置 Ubuntu 24.04</block>
-  <block id="907d5397191da1f1ee4679d077fb0523" category="paragraph">配置 Ubuntu 24.04 以實現多路徑，並使用ONTAP儲存的 FCP 和 iSCSI 操作的特定參數和設定。</block>
   <block id="7346a23f776ee48b909f292127a35cfd" category="paragraph">您可以使用 Ubuntu 24.04 的多路徑來管理ONTAP LUN。</block>
+  <block id="c57ba702358115215fa1859fbd41c62f" category="summary">在 AIX 7.3/VIOS 4.x 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="7f47ce68c3e9712b2e5eeb570615f772" category="list-text">配置以下設定以優化 FC 的 I/O 操作。</block>
+  <block id="38df161a4bef837a9583cd463465319a" category="list-text">配置以下設定以最佳化 iSCSI 的 I/O 操作。</block>
+  <block id="70b16312ca41521a63845d682d638bec" category="list-text">前往<block ref="4d71adee66f8e315be0be498f4a01c67" category="inline-link-rx"></block>並將包含主機實用程式的壓縮檔案下載到主機上的目錄中。</block>
+  <block id="c294ad1e453d7b752c4a7b6ffca30fa7" category="list-text">NetApp Linux Host Utilities 軟體包可在NetApp支援網站上以 64 位元 .rpm 檔案的形式取得。從<block ref="237990affc48ceaf00880be7be2d0c19" category="inline-link-macro-rx"></block>給你的主人。</block>
+  <block id="23ca7e804a2f969375c0a54dad8a855e" category="list-text">從下載包含主機實用程式的壓縮檔案副本<block ref="237990affc48ceaf00880be7be2d0c19" category="inline-link-macro-rx"></block>到主機上的目錄。</block>
+  <block id="8af7a3daa634a1fe75d982742d9c6988" category="list-text">從下載可執行文件<block ref="4d71adee66f8e315be0be498f4a01c67" category="inline-link-rx"></block>。</block>
+  <block id="7b14446bb459cc461b85225eb36e5ddb" category="list-text">運行<block ref="2ae3756e5933ab49d9a7fd370e8bb672" prefix=" " category="inline-code"></block>文件並按照螢幕上的指示進行操作。</block>
+  <block id="33fc47220446607f038d8aa5cbb2f85f" category="summary">在 CentOS 7.0 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="06d16027989212eb9ec30fbbceecc483" category="summary">在 CentOS 7.1 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="d6736620899a1598c3323f146c329a47" category="summary">在 CentOS 7.2 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="c7093ee3b2d76f9f54e1c7967a8757ed" category="summary">在 CentOS 7.3 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="f51784140f9e4c18aaaaabc97ab88175" category="summary">在 CentOS 7.4 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="bdc9a2b049ed8b5764f50150bca8aacd" category="summary">在 CentOS 7.5 主機上安裝 Linux Host Utilities 以管理使用ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="f3a268ccef73be1a6f14d0c5e46779f4" category="summary">在 CentOS 7.6 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="3950d47aea232c7c0f4d9f45a43bda17" category="summary">在 CentOS 7.7 主機上安裝 Linux Host Utilities 以管理使用ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="d539ad578c66b9df653e9cf83bd0c001" category="summary">在 CentOS 7.8 主機上安裝 Linux Host Utilities 以管理使用ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="696f3bd641d1ac208e9dcbc482739bd0" category="summary">在 CentOS 7.9 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="252d89392684bcfcf4005f42db245f9a" category="summary">在 CentOS 8.0 主機上安裝 Linux Host Utilities 以管理使用ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="5c8eef54a7730dec61d5ef002cd898f1" category="summary">在 CentOS 8.1 主機上安裝 Linux Host Utilities 以管理使用ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="b683b84fbd22cd466d30eec590f61226" category="summary">在 CentOS 8.2 主機上安裝 Linux Host Utilities 以管理使用ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="09c8e0bd6acf9d6ae65366b23ef6a356" category="summary">在 CentOS 8.3 主機上安裝 Linux Host Utilities 以管理使用ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="ac161b2d475197d66b93469d29587e22" category="summary">在 CentOS 8.4 主機上安裝 Linux Host Utilities 以管理使用ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="49cc988afc6b092ce6281b15b9a60972" category="summary">在 CentOS 8.5 主機上安裝 Linux Host Utilities 以管理使用ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="3c7efd424a20046d29e4da88c0d5c486" category="summary">配置 Citrix Hypervisor 8.2 以實現多路徑，並使用特定參數和設定來針對ONTAP儲存的 FCP 和 iSCSI 協定操作。</block>
+  <block id="1f5a17864fe735a3a834371ab2c3043e" category="paragraph">Linux Host Utilities 軟體包不支援 Citrix Hypervisor 作業系統。</block>
+  <block id="de920f5dd498ae73930aaae6ead146f6" category="summary">配置 Citrix Hypervisor 8.4 以實現多路徑，並使用特定參數和設定來針對ONTAP儲存的 FCP 和 iSCSI 協定操作。</block>
+  <block id="936b4d22e2607b9ac84f06791fe03923" category="paragraph">您可以使用 Citrix Hypervisor 8.4 的多路徑來管理ONTAP LUN。</block>
+  <block id="56eaee8dcecb52bd60025f4df180e2f4" category="summary">在 HP-UX 11i v3 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="bb53e7efc63e8dc547146d694f3c97c1" category="summary">配置 Ubuntu 20.04 以實現多路徑，並使用ONTAP儲存的 FCP 和 iSCSI 協定操作的特定參數和設定。</block>
+  <block id="3d4de8befb0eddb7be95b9eb899bcd21" category="summary">在 Ubuntu 24.04 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
+  <block id="faed4c9c8188f7390b773fb64e42fc29" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Ubuntu 22.04 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="3b2ad8d11d49615d3cb062774e116630" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Ubuntu 24.04 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="876d8d634dabd3b4faa05168e2953c68" category="paragraph">Windows Host Utilities 需要某些登錄和參數設定來驗證 Windows 主機是否正確處理儲存系統行為。</block>
+  <block id="3187b1de6020504a9ef2201371f4ddfb" category="paragraph">Windows 主機公用程式設定會影響 Windows 主機如何回應資料延遲或遺失的參數值。這些值會驗證 Windows 主機是否正確處理事件，例如儲存系統中的一個控制器到其夥伴控制器的故障轉移。</block>
+  <block id="5761ec5c04ac77cb295ddef5c5adf39f" category="paragraph">某些值不適用於SANtricity Storage Manager的設備特定模組 (DSM)。  Windows Host Utilities 與SANtricity Storage Manager的 DSM 設定的值之間的重疊不會導致衝突。</block>
+  <block id="1c45b11e7112ae3015b6528aac98db47" category="paragraph">您還需要設定 FC、NVMe/FC 和 iSCSI HBA 參數以最佳化效能並成功處理儲存系統事件。</block>
+  <block id="ac299bbbaa386f926bfeffd61f3f329a" category="paragraph">Windows Host Utilities 安裝程式將 Windows、FC 和 NVMe/FC HBA 參數設定為支援的值。您需要手動設定iSCSI HBA參數。</block>
+  <block id="0600911da7c2ed3e4c75b35a8383464b" category="paragraph">當您在安裝過程中指定 Microsoft 多路徑 I/O (MPIO) 支援時，安裝程式會設定不同的值。</block>
+  <block id="1289e36ad9af025f92a68eeb71942e45" category="paragraph">Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值和 NVMe 參數。您需要檢查這些值和作業系統版本。</block>
+  <block id="05ca7c309c201d00d9edda26c29f1814" category="paragraph">Windows Host Utilities 安裝程式設定以下登錄值。除非另有說明，所有值均為十進制。</block>
+  <block id="9315284a762c1471b85be43158649395" category="cell">“NETAPP LUN”、“NETAPP LUN C 模式” “NVMe NetApp ONTAP Con”</block>
+  <block id="f43fc70fd90855c7e4c4c9cba7d7f1fd" category="cell">“NETAPP LUN”、“NETAPP LUN C 模式”、“NVMe NetApp ONTAP Con”</block>
+  <block id="65d5481255e5037a619c921fafb15def" category="paragraph">Windows Host Utilities 8.0 在安裝過程中更新以下 NVMe Emulex 驅動程式參數：</block>
+  <block id="ab51b6ada28fc394eb4698434eaf6668" category="paragraph">Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值。您需要檢查這些註冊表值和作業系統版本。</block>
+  <block id="619778ebb1defb58b2f571d8beed6661" category="paragraph">Windows Host Utilities 安裝程式為使用 FC 的系統上的 Emulex 和 QLogic FC HBA 設定所需的逾時值。</block>
+  <block id="ca146b673983ec595aae317e1a1e764a" category="paragraph">安裝程式為 Emulex FC HBA 設定以下參數：</block>
+  <block id="187c9ec598092d65351eaf4f361d83f7" category="open-title">當您選擇 MPIO 時</block>
+  <block id="17f9a8611eed107aecf0406db4a2b59d" category="open-title">當您不選擇 MPIO</block>
+  <block id="d915a9fedab871eb41a22f16bfb69c64" category="paragraph">安裝程式為 QLogic FC HBA 設定以下參數：</block>
+  <block id="2ff89f8cd6f01614cdfc9aff8ff7a2a4" category="paragraph">在 FC 系統上安裝所需的 Emulex 或 QLogic HBA 驅動程式期間，Windows Host Utilities 會檢查多個參數，在某些情況下也會修改這些參數。</block>
+  <block id="30fe8c509bd758431e60f7f83e9085f0" category="paragraph">如果偵測到 MS DSM for Windows MPIO，Windows Host Utilities 將設定下列參數的值：</block>
+  <block id="d7ffc66640801d3b23e6403b53045607" category="paragraph">驗證 FC 系統上的 Emulex HBA 驅動程式設定。HBA 上的每個連接埠都必須存在這些設定。</block>
+  <block id="0aa9ab84e08417b1d87c1a5606b6b1b4" category="paragraph">驗證 FC 系統上的 QLogic HBA 驅動程式設定。HBA 上的每個連接埠都必須存在這些設定。</block>
 </blocks>

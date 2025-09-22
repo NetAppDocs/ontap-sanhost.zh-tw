@@ -63,7 +63,7 @@ oem_setup_env
 
 --
 ====
-. 移至、 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp 支援網站"^]並將包含主機公用程式的壓縮檔案下載至主機上的目錄。
+. 前往 https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/8.0/downloads["NetApp 支援網站"^]並將包含主機實用程式的壓縮檔案下載到主機上的目錄中。
 . 前往內含下載內容的目錄。
 . 解壓縮檔案並解壓縮 SAN Toolkit 軟體套件：
 +

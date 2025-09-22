@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_centos_78.html 
 keywords: host utilities, centos, linux, 7.8, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用CentOS 7.8搭配使用 
+summary: 在 CentOS 7.8 主機上安裝 Linux Host Utilities 以管理使用ONTAP LUN 的 FCP 和 iSCSI 協定操作。 
 ---
 = 為 ONTAP 儲存配置 CentOS 7.8 的 FCP 和 iSCSI
 :hardbreaks:

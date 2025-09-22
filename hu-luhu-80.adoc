@@ -23,7 +23,7 @@ Linux Host Utilities 8.0 支援以下分發類型：
 * Red Hat Enterprise Linux
 * SUSE Linux Enterprise Server
 * Oracle Linux
-* Oracle VM
+* Ubuntu
 
 
 
@@ -55,7 +55,7 @@ rpm -e netapp_linux_unified_host_utilities-8-0
 +
 如需舊版 Linux 主機公用程式，請移至安裝主機公用程式軟體的目錄，然後輸入 uninstall 命令以移除已安裝的套件。
 
-. NetApp Linux Host Utilities 軟體包可在NetApp支援網站上以 64 位元 .rpm 檔案的形式取得。從link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp 支援網站"^]給你的主人。
+. NetApp Linux Host Utilities 軟體包可在NetApp支援網站上以 64 位元 .rpm 檔案的形式取得。從link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/8.0/downloads["NetApp 支援網站"^]給你的主人。
 . 進入下載軟體包的目錄並安裝：
 +
 [source, cli]

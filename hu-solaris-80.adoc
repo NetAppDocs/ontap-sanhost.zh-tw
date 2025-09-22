@@ -31,7 +31,7 @@ Solaris Host Utilities 8.0 支援 Solaris 11.4 系列。
 
 .步驟
 . 以 root 身分登入您的主機。
-. 從下載內含主機公用程式的壓縮檔案複本 link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp 支援網站"^] 到主機上的目錄。
+. 從下載包含主機實用程式的壓縮檔案副本link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/8.0/downloads["NetApp 支援網站"^]到主機上的目錄。
 +
 [role="tabbed-block"]
 ====

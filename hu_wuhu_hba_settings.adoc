@@ -19,19 +19,17 @@ summary: Windows 主機公用程式包含一個安裝程式，可設定所需的
 
 
 [role="lead"]
-主機公用程式需要特定的登錄和參數設定、以驗證 Windows 主機是否正確處理儲存系統行為。
+Windows Host Utilities 需要某些登錄和參數設定來驗證 Windows 主機是否正確處理儲存系統行為。
 
-Windows 主機公用程式會設定影響 Windows 主機回應延遲或資料遺失的參數。已選取特定值來驗證 Windows 主機是否能正確處理事件、例如將儲存系統中的一個控制器容錯移轉至其合作夥伴控制器。
+Windows 主機公用程式設定會影響 Windows 主機如何回應資料延遲或遺失的參數值。這些值會驗證 Windows 主機是否正確處理事件，例如儲存系統中的一個控制器到其夥伴控制器的故障轉移。
 
-並非所有值都適用於SANtricity Storage Manager的設備特定模組 (DSM)；但是，Host Utilities 設定的值與SANtricity Storage Manager的 DSM 設定的值之間的任何重疊都不會導致衝突。
+某些值不適用於SANtricity Storage Manager的設備特定模組 (DSM)。  Windows Host Utilities 與SANtricity Storage Manager的 DSM 設定的值之間的重疊不會導致衝突。
 
-FC 、 NVMe / FC 和 iSCSI HBA 也有必須設定的參數、以確保最佳效能並成功處理儲存系統事件。
+您還需要設定 FC、NVMe/FC 和 iSCSI HBA 參數以最佳化效能並成功處理儲存系統事件。
 
-Windows 主機公用程式隨附的安裝程式會將 Windows ， FC 和 NVMe / FC HBA 參數設定為支援的值。
+Windows Host Utilities 安裝程式將 Windows、FC 和 NVMe/FC HBA 參數設定為支援的值。您需要手動設定iSCSI HBA參數。
 
-您必須手動設定 iSCSI HBA 參數。
-
-安裝程式會根據您在執行安裝程式時是否指定 Microsoft 多重路徑 I/O （ MPIO ）支援來設定不同的值。
+當您在安裝過程中指定 Microsoft 多路徑 I/O (MPIO) 支援時，安裝程式會設定不同的值。
 
 [NOTE]
 ====
@@ -44,13 +42,13 @@ Windows 主機公用程式隨附的安裝程式會將 Windows ， FC 和 NVMe / 
 
 == Windows Host Utilities 8.0 設定的登錄值
 
-Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值和 NVMe 參數。您應該了解這些值和作業系統版本。
+Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值和 NVMe 參數。您需要檢查這些值和作業系統版本。
 
 [role="tabbed-block"]
 ====
 .HKLM 值
 --
-以下註冊表值由 Windows Host Utilities 安裝程式設定。除非另有說明，所有值均為十進制。
+Windows Host Utilities 安裝程式設定以下登錄值。除非另有說明，所有值均為十進制。
 
 
 NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
@@ -66,7 +64,7 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 | HKLM\SYSTEM\CurrentControlSet\Services\msdssm\Parameters \DsmimumStateTransitionTime | 120 | 當指定 MPIO 支援且您的伺服器是 Windows Server 2025、2022、2019 或 2016 時 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\DsmSupportedDeviceList | 「 NetApp LUN 」、「 NetApp LUN C 模式」、「 NVMe NetApp ONTAO Con 」 | 指定MPIO支援時 
+| HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\DsmSupportedDeviceList | “NETAPP LUN”、“NETAPP LUN C 模式” “NVMe NetApp ONTAP Con” | 指定MPIO支援時 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Control \Class\ ｛ iscsis_driver_GUID ｝ \ instance_ID \Parameters \IPSecConfigTimeout | 60 | 永遠 
@@ -84,7 +82,7 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 | HKLM\SYSTEM\CurrentControlSet\Control \Class\ ｛ iscsis_driver_GUID ｝ \ instance_ID \Parameters \MaxRequestHoldTime | 30 | 永遠 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Control \MPDEV\MPIOSupportedDeviceList | 「 NetApp LUN 」、「 NetApp LUN C 模式」、「 NVMe NetApp ONTAO Con 」 | 指定MPIO支援時 
+| HKLM\SYSTEM\CurrentControlSet\Control \MPDEV\MPIOSupportedDeviceList | “NETAPP LUN”、“NETAPP LUN C 模式”、“NVMe NetApp ONTAP Con” | 指定MPIO支援時 
 
 
 | HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\PathRecoveryInterval | 30 | 當您的伺服器是 Windows Server 2025、2022、2019 或 2016 時 
@@ -134,7 +132,7 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 --
 .NVMe 參數
 --
-安裝 Windows Host Utilities 8.0 時，以下 NVMe Emulex 驅動程式參數會更新：
+Windows Host Utilities 8.0 在安裝過程中更新以下 NVMe Emulex 驅動程式參數：
 
 * 啟用NVMe = 1
 * NVMEMode = 0
@@ -146,13 +144,13 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 
 == Windows 主機公用程式 7.2 設定的登錄值
 
-Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值和 NVMe 參數。您應該了解這些值和作業系統版本。
+Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值和 NVMe 參數。您需要檢查這些值和作業系統版本。
 
 [#nvme_parameter,role="tabbed-block"]
 ====
 .HKLM 值
 --
-以下註冊表值由 Windows Host Utilities 安裝程式設定。除非另有說明，所有值均為十進制。
+Windows Host Utilities 安裝程式設定以下登錄值。除非另有說明，所有值均為十進制。
 
 
 NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
@@ -168,7 +166,7 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 | HKLM\SYSTEM\CurrentControlSet\Services\msdssm\Parameters \DsmimumStateTransitionTime | 120 | 如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\DsmSupportedDeviceList | 「 NetApp LUN 」、「 NetApp LUN C 模式」、「 NVMe NetApp ONTAO Con 」 | 指定MPIO支援時 
+| HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\DsmSupportedDeviceList | “NETAPP LUN”、“NETAPP LUN C 模式” “NVMe NetApp ONTAP Con” | 指定MPIO支援時 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Control \Class\ ｛ iscsis_driver_GUID ｝ \ instance_ID \Parameters \IPSecConfigTimeout | 60 | 永遠 
@@ -186,7 +184,7 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 | HKLM\SYSTEM\CurrentControlSet\Control \Class\ ｛ iscsis_driver_GUID ｝ \ instance_ID \Parameters \MaxRequestHoldTime | 30 | 永遠 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Control \MPDEV\MPIOSupportedDeviceList | 「 NetApp LUN 」、「 NetApp LUN C 模式」、「 NVMe NetApp ONTAO Con 」 | 指定MPIO支援時 
+| HKLM\SYSTEM\CurrentControlSet\Control \MPDEV\MPIOSupportedDeviceList | “NETAPP LUN”、“NETAPP LUN C 模式”、“NVMe NetApp ONTAP Con” | 指定MPIO支援時 
 
 
 | HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\PathRecoveryInterval | 30 | 當您的伺服器是 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 時 
@@ -252,7 +250,7 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 
 == Windows Host Utilities 7.1 設定的登錄值
 
-Windows 主機公用程式安裝程式會根據您在安裝期間所做的選擇，自動設定登錄值。您應該注意這些登錄值、作業系統版本。
+Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值。您需要檢查這些註冊表值和作業系統版本。
 
 Windows 主機公用程式安裝程式會設定下列值。除非另有說明、否則所有值都是十進位的。
 
@@ -362,13 +360,13 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 
 == 由Windows主機公用程式設定的FC HBA值
 
-在使用 FC 的系統上、 Host Utilities 安裝程式會設定 Emulex 和 QLogic FC HBA 所需的逾時值。
+Windows Host Utilities 安裝程式為使用 FC 的系統上的 Emulex 和 QLogic FC HBA 設定所需的逾時值。
 
-對於 Emulex FC HBA 、安裝程式會設定下列參數：
+安裝程式為 Emulex FC HBA 設定以下參數：
 
 [role="tabbed-block"]
 ====
-.選取 MPIO 時
+.當您選擇 MPIO 時
 --
 |===
 | 內容類型 | 屬性值 
@@ -380,7 +378,7 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 | 節點時間輸出 | 10. 
 |===
 --
-.當未選擇 MPIO 時
+.當您不選擇 MPIO
 --
 |===
 | 內容類型 | 屬性值 
@@ -393,11 +391,11 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 |===
 --
 ====
-對於 QLogic FC HBA 、安裝程式會設定下列參數：
+安裝程式為 QLogic FC HBA 設定以下參數：
 
 [role="tabbed-block"]
 ====
-.選取 MPIO 時
+.當您選擇 MPIO 時
 --
 |===
 | 內容類型 | 屬性值 
@@ -409,7 +407,7 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 | PortDownRetryCount | 10. 
 |===
 --
-.當未選擇 MPIO 時
+.當您不選擇 MPIO
 --
 |===
 | 內容類型 | 屬性值 
@@ -431,7 +429,7 @@ NOTE: 參數名稱可能會因程式而稍有不同。
 
 == 了解 Host Utilities 對 FC HBA 驅動程式設定的變更
 
-在 FC 系統上安裝所需的 Emulex 或 QLogic HBA 驅動程式期間，Windows Host Utilities 會檢查幾個參數，在某些情況下也會修改這些參數。
+在 FC 系統上安裝所需的 Emulex 或 QLogic HBA 驅動程式期間，Windows Host Utilities 會檢查多個參數，在某些情況下也會修改這些參數。
 
 如果偵測到 MS DSM for Windows MPIO，Windows Host Utilities 將設定下列參數的值：
 
@@ -451,7 +449,7 @@ NOTE: 參數名稱可能會因程式而稍有不同。
 ====
 .Emulex HBA 驅動程式
 --
-如果您有 FC 系統，請驗證 Emulex HBA 驅動程式設定。  HBA 上的每個連接埠都必須存在這些設定。
+驗證 FC 系統上的 Emulex HBA 驅動程式設定。HBA 上的每個連接埠都必須存在這些設定。
 
 .步驟
 . 開放OnCommand 式軟件開發經理。
@@ -479,7 +477,7 @@ NOTE: 參數名稱可能會因程式而稍有不同。
 --
 .QLogic HBA 驅動程式
 --
-在 FC 系統上，驗證 QLogic HBA 驅動程式設定。  HBA 上的每個連接埠都必須存在這些設定。
+驗證 FC 系統上的 QLogic HBA 驅動程式設定。HBA 上的每個連接埠都必須存在這些設定。
 
 .步驟
 . 開啟 QConvergeConsole，然後在工具列上選擇 *連線*。

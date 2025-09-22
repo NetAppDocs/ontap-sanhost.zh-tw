@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_centos_71.html 
 keywords: host utilities, centos, linux, 7.1, netapp, ontap 
-summary: 說明如何搭配ONTAP 使用CentOS 7.1與功能不全 
+summary: 在 CentOS 7.1 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。 
 ---
 = 為 ONTAP 儲存配置 CentOS 7.1 的 FCP 和 iSCSI
 :hardbreaks:
