@@ -197,7 +197,7 @@ FCP CMPL: xb 00000c89 Err 0000cd87
 
 === 啟用1MB I/O大小
 
-ONTAP 會在識別控制器資料中報告 8 的 MDTS （ MAX Data 傳輸大小）。這表示最大 I/O 要求大小最多可達 1MB 。若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求，您應該將參數值 `lpfc_sg_seg_cnt`從預設值 64 增加 `lpfc`至 256 。
+ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
 
 
 NOTE: 這些步驟不適用於 Qlogic NVMe / FC 主機。

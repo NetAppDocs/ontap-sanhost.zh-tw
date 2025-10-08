@@ -111,8 +111,6 @@
   <block id="43b1876560748141954ab34c38e01ac0" category="summary">說明如何使用ONTAP 支援功能為RHEL 8.1設定NVMe/FC</block>
   <block id="3a8ba1ff8824968961222d6b447b4973" category="section-title">支援能力</block>
   <block id="da160308e3b4b4a80bf1b72b5bdbedb8" category="inline-link-macro">Hardware Universe</block>
-  <block id="1f66f3a5a69d2cce3c5a6e2c4cee2b1a" category="list-text">在伺服器上安裝Red Hat Enterprise Linux 8.1。</block>
-  <block id="701947e628918eea072dd2f4c817f9ac" category="list-text">啟用核心內建NVMe多重路徑。</block>
   <block id="3d8955b26bfbc81a964a71512390e793" category="list-text">將下列字串新增為/lib/udev/racts.d/71-nvme-iopolicy-netapp-ONTAP.rules的獨立udevy規則。這可為NVMe多重路徑啟用循環配置資源負載平衡。</block>
   <block id="6d2964de8c046289cdcfaebf91369e08" category="section-title">設定適用於NVMe / FC的Broadcom FC介面卡</block>
   <block id="f17e2682405234dfca14c2a2181e2cd1" category="list-text">確認lfc_enable _FC4_type已設定為3。</block>
@@ -196,23 +194,18 @@
   <block id="c7f1791a3f59c536386990c900c326c1" category="list-text">升級至建議的NVMe-CLI MU版本。</block>
   <block id="ee2f5b4a1ef164e582aea7f06ef626bc" category="list-text">請確認您使用的是建議的Broadcom lfit韌體和原生收件匣驅動程式版本。</block>
   <block id="911e585c5684ba9f5c2b87af879f4a13" category="summary">如何針對RHEL 8.2設定NVMe/FC主機ONTAP 以使用功能</block>
-  <block id="797aea72ebbc1431192817ec206cafb4" category="list-text">在伺服器上安裝Red Hat Enterprise Linux 8.2 GA。</block>
   <block id="6af8ec9e9e6b66a700434d4b32213979" category="list-text">備份您的「/etc/NVMe / host*」檔案。</block>
   <block id="70645ea09148c685de3985c33c7f1620" category="list-text">如果您有手動編輯的「udev"規則、請將其移除：</block>
   <block id="aa62c82ad70fa52092c6b694ab798a13" category="list-text">執行升級。</block>
   <block id="637c9dab407a19b5ffba6acd84571167" category="list-text">升級完成後、請執行下列命令：</block>
   <block id="29dfe6da86bf07e6603e28dfb347ad93" category="list-text">將主機檔案還原至「/etc/NVMe /」。</block>
   <block id="6583872aab9c396f958f3f06d3512a9d" category="list-text">將原始的「/etc/NVMe / host*」內容從備份複製到實際的主機檔案、網址為：「etc/NVMe /」。</block>
-  <block id="360ef025710e08a61d1403840b1b7d2f" category="list-text">安裝完成後、請確認您執行的是指定的Red Hat Enterprise Linux核心。</block>
-  <block id="dd04c64108aac34c4bea60bf8e6c1a4d" category="list-text">安裝NVMe-CLI套件。</block>
-  <block id="b041c12317a88da69581757a98db42d2" category="list-text">更新「啟用外部」設定（選用）_。</block>
   <block id="4e9e6a353c31b00bcbf2e522fd8093c3" category="list-text">執行「stystemctl重新啟動多路徑d」來重新啟動多路徑精靈。</block>
   <block id="bf2fd4f30d4d99e83aea737d5c100ea0" category="section-title">設定適用於NVMe / FC的Broadcom FC介面卡</block>
   <block id="f89e24c920e9c7f547e3742a47871d9c" category="list-text">確認您使用的是支援的介面卡。</block>
   <block id="8cd46a779e9b68135d1a640170cd6b2e" category="list-text">確認「lffc_enable _FC4_type'」已設定為「* 3*」。</block>
   <block id="41ec6565fe85097ed5372fdce96af64d" category="list-text">驗證啟動器連接埠是否已啟動並正在執行、並且可以看到目標LIF。</block>
   <block id="6218e0ecfb5322fccd6e215e3e9134d7" category="list-text">主機開機後、請確認lfc_sg_seg_cnts已設定為256。</block>
-  <block id="eba3a332cb321562f0fc9dfcc5b1c84c" category="list-text">請確認您使用的是建議的Broadcom lfit韌體和內建驅動程式。</block>
   <block id="95a7c4ebc7538126d41cf3497f8e09b4" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 6.4搭配使用功能</block>
   <block id="f0fac0f2b3b710a9568f39594d5f9df3" category="paragraph">對於Red Hat Enterprise Linux（RHEL）6.4、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 6.4的所有設定都已經過編譯、可辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="857c2f89db30800ff3058931e331923e" category="paragraph">RHEL 6.4作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
@@ -302,13 +295,9 @@
   <block id="38b857ac7145e662f13bf1705fe21a46" category="cell">使用QLE8362卡時、有時會在OL6.9 Hypervisor上觀察到韌體傾印</block>
   <block id="10968bb02641daba6ea997ddf4f9106c" category="cell">在使用QLE8362卡的OL6.9 Hypervisor上執行儲存容錯移轉作業時、偶爾會觀察到韌體傾印。韌體傾印可能會導致主機I/O中斷、可能長達一千秒。介面卡完成韌體傾印後、I/O作業會以正常方式恢復。無需在主機上執行進一步的恢復程序。若要指出韌體傾印、/var/log/message檔案中會顯示下列訊息：qla2xxx [0000:0c:00.3]-d001:3：韌體傾印已儲存至暫存緩衝區（3/ffffc90008901000）、傾印狀態旗標（0x3f）。</block>
   <block id="5116d27ab3c67a2413a9afe024b82a38" category="summary">如何針對RHEL 8.3設定ONTAP NVMe / FC主機以使用功能</block>
-  <block id="20ef4219f8282a156b90a588df2efcd7" category="section-title">在RHEL 8.3上啟用NVMe / FC</block>
-  <block id="23cd3fb20334805933445d4e9e38f375" category="list-text">在伺服器上安裝Red Hat Enterprise Linux 8.3 GA。</block>
-  <block id="2f6bd60386ab0902a709ffef7502ea68" category="list-text">確認已在主機上建立並正確探索命名空間。</block>
   <block id="903b07b1963af0c45e65b6d887a9b059" category="summary">說明如何搭配ONTAP 使用Red Hat Enterprise Linux 6.9搭配使用功能</block>
   <block id="b2da1ca8334b29f1d40436a25662d8d6" category="paragraph">對於Red Hat Enterprise Linux（RHEL）6.9、/etc/multipath.conf檔案必須存在、但您不需要對檔案進行特定變更。RHEL 6.9是以所有必要設定來編譯、以辨識及正確管理ONTAP 各種LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="481485305bd44028530f59a9a9614451" category="paragraph">RHEL 6.9作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不適用的ASA組態、正確設定所有組態參數。</block>
-  <block id="938f1047c15f00fdd0cbfc8e4cfa15e1" category="paragraph">* 範例 *</block>
   <block id="1669e5f0b1148e1054b39b7a819b7fdb" category="summary">說明如何搭配ONTAP 使用IBM AIX 7.2和/或PowerVM VIOS 3.1搭配使用</block>
   <block id="f22bfff17408247273e66b8771e95a3d" category="list-text">在AIX主機上、以* root*登入。</block>
   <block id="f1893c3e5e775c895395a0a1524f20a9" category="list-text">解壓縮檔案並解壓縮SAN Toolkit軟體套件。</block>
@@ -395,25 +384,16 @@
   <block id="f2ff9a4318af2aff0dcf758e87fcd4c8" category="paragraph">對於CentOS 6.6、「/etc/multipath.conf」檔案必須存在、但您不需要對檔案進行特定變更。CentOS 6.6是以所有必要設定來編譯、以辨識及正確管理ONTAP 各個LUN。若要啟用ALUA處理常式、請執行下列步驟：</block>
   <block id="c9266caf4d9776dead8063d2c3d71e40" category="paragraph">CentOS 6.6作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動為ASA 各種版本的支援和非ASA組態設定正確的所有組態參數。</block>
   <block id="e23d1316b6f8fd9d76ebc1a761f0ffa9" category="summary">如何針對RHEL 8.4設定NVMe主機ONTAP 以使用功能</block>
-  <block id="1124bd13d48eff16726e09da76f5e2b3" category="doc">適用於RHEL 8.4 ONTAP 的NVMe主機組態、含功能不全</block>
   <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">功能</block>
-  <block id="dec4201e999d968c719dedcc36a07302" category="inline-link">RHEL 8.4版本資訊</block>
-  <block id="260a3557d08efe46355d18910743ceaa" category="list-text">RHEL 8.4上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱<block ref="bb64a8145ae27872979820bfd89ab97b" category="inline-link-rx"></block> 以取得詳細資料。</block>
   <block id="c8fe594dab6cb1395df34d73b005c900" category="section-title">組態需求</block>
   <block id="da5c98f4248ec7387bdaa6db8341fdef" category="section-title">啟用內核NVMe多重路徑</block>
   <block id="81eeab9506186e2dca8faefa78d54067" category="paragraph">範例：</block>
   <block id="6ba6a18088999d632ca174b9873a3b12" category="list-text">安裝「NVMe-CLI（NVMe - CLI）套件：</block>
   <block id="e71d1275a2744aceb8d59932f2e5fe56" category="list-text">啟用核心內建NVMe多重路徑：</block>
-  <block id="341d2003e57255a58ea7b3a85806bbb8" category="list-text">在主機上、檢查位於「/etc/nape/hostnqn」的主機NQN字串、並驗證其是否符合ONTAP 位於「the」（子系統）上之對應子系統的主機NQN字串。範例：</block>
-  <block id="f3852411c8956408a5a170c1d4d53651" category="admonition">如果主機NQN字串不相符、您應該使用「vserver modify」命令來更新對應ONTAP 的NVMe子系統上的主機NQN字串、以符合主機上的主機NQN字串「/etc/nvm/hostnqn」。</block>
-  <block id="2c4ca691e5adaf801e0bf8d274c9b482" category="list-text">執行「stystemctl restart multipathd」命令重新啟動多路徑精靈、以允許新的設定生效。</block>
   <block id="c98fed57553daff5a2cf2fa022d54254" category="section-title">設定NVMe/FC</block>
   <block id="3ea394f2d9cebf2dfc911ba5e025db7a" category="section-title">Broadcom / Emulex</block>
-  <block id="2defc9958244f438872605820e3ca11a" category="list-text">確認啟動器連接埠已啟動並正在執行、而且您可以看到目標LIF。</block>
   <block id="c0aa648bd7e5700f1ad07528684facf8" category="section-title">啟用1MB I/O大小（選用）</block>
   <block id="2ca464fc1baee04e879e92c84915029a" category="section-title">Marvell / QLogic</block>
-  <block id="01e99a43df9a9e103daa49144d80325a" category="list-text">使用下列命令、確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
-  <block id="996bc8c555f8b2265c43a9a361d7bcd2" category="list-text">確認已設定「ql2xnvmeenable」、以便Marvell介面卡能以NVMe / FC啟動器的形式運作、請使用下列命令：</block>
   <block id="f4091bd53ceacc19d9ac766c9cdb9866" category="section-title">設定NVMe/TCP</block>
   <block id="02ec5a6431274b50044361aad326cbdc" category="paragraph">不像NVMe / FC、NVMe / TCP沒有自動連線功能。這對Linux NVMe/TCP主機有兩大限制：</block>
   <block id="524fa08703d908aeca5cccda70508020" category="list-text">*路徑恢復後不自動重新連線* NVMe/TCP無法自動重新連線至恢復路徑、超過路徑中斷後10分鐘的預設「Ctrl-Loss TMO"定時器。</block>
@@ -838,13 +818,6 @@
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">AIX主機公用程式6.1版本資訊</block>
   <block id="587384a32d909bff27b8405e18d9d7cf" category="summary">如何針對RHEL 9.0設定NVMe主機、ONTAP 並搭配使用功能</block>
   <block id="d79792e27890df0330ac43850943e028" category="list-text">安裝「NVMe - CLI」套件。</block>
-  <block id="f5b9e6db2b2e5a554b55fd280914f516" category="list-text">在主機上、檢查位於「/etc/nape/hostnqn」的主機NQN字串、並驗證其是否符合ONTAP 位於「the」（子系統）上之對應子系統的主機NQN字串。例如、</block>
-  <block id="e842da2108d28a3593f8615a854fc699" category="admonition">如果主機NQN字串不相符、您應該使用「vserver modify」命令來更新對應ONTAP 的NVMe子系統上的主機NQN字串、使其符合主機上的「/etc/nvm/hostnqn」中的主機NQN字串。</block>
-  <block id="f3eaa9e3e89c370c17729852377aed2f" category="list-text">確認「lffc_enable _FC4_type'」設定為「3」。</block>
-  <block id="055436915aa042f3fdf8045e013acbb5" category="list-text">驗證啟動器連接埠是否能夠擷取支援的NVMe / TCP LIF上的探索記錄頁面資料：</block>
-  <block id="351f4726c12d45250df101c8bd9578d6" category="list-text">同樣地、請確認其他的NVMe/TCP啟動器目標LIF組合能夠成功擷取探索記錄頁面資料。例如、</block>
-  <block id="dc53dad0b533fb8bfe7d6c60ef1fa91e" category="list-text">驗證ONTAP 適當的NVMf設定（例如、設定為「NetApp支援控制器」的模型、以及將「iopolicing」設定為「循環配置資源」的負載平衡）ONTAP 、以正確反映在主機上：</block>
-  <block id="cebb9dfdc378481f9e93e7b505fe4f1d" category="paragraph">範例（b）：</block>
   <block id="e3f05e6b08d377aca967243a953ecfb9" category="section-title">常見的NVMe-CLI錯誤和因應措施</block>
   <block id="dfd9db293eabf1724158b5cc08e4dd12" category="cell">HP-UX 11.31 Host會在ASA 進行功能性設定時、間歇性回報路徑狀態不正確。</block>
   <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">建立HP-UX LVM會傳送超過1MB區塊大小的I/O</block>
@@ -861,22 +834,8 @@
   <block id="cf5f238fca8b6e155078aa41c175743a" category="sidebar">9.0</block>
   <block id="38aef0bc7cf230dfcf5476915774aa95" category="sidebar">RHEL 9</block>
   <block id="3f11bd75d4bcc18b35f7eeb9b9966c9c" category="summary">如何針對RHEL 8.6設定NVMe主機以ONTAP 使用功能</block>
-  <block id="d5328c13c170a1ce1607fad34405b646" category="list-text">RHEL 8.6除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。原生NVMe CLI套件中的NetApp外掛程式能夠顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資訊。</block>
-  <block id="8b247e50297ab7aed14b6a8ff2b845c9" category="list-text">對於RHEL 8.6、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="be5312f4fb03f3ebb989659ec7b543ee" category="inline-link">RHEL 8.6版本說明</block>
-  <block id="4e51b6ca34ea06c883ab4b1c963bee49" category="list-text">RHEL 8.6上的NVMe/TCP仍是技術預覽功能、因為仍有開放式問題。請參閱<block ref="e25c0351018067ddae5b70edc45d84fc" category="inline-link-rx"></block> 以取得詳細資料。</block>
   <block id="71dcdd59971df1a5bb4dfbb60ffe2bad" category="list-text">驗證啟動器連接埠是否已啟動並正在執行、以及您是否可以看到目標LIF。</block>
-  <block id="346a874868cfe5950cc070d607e10dda" category="list-text">確認其他NVMe / TCP啟動器目標LIF組合可以成功擷取探索記錄頁面資料。例如：</block>
-  <block id="3bb5487a25f2c91e7d62566cb6026b68" category="list-text">確認ONTAP 支援的名稱空間能正確反映在主機上。例如：</block>
-  <block id="f2af591771f10d63662bd947024ee100" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。例如：</block>
-  <block id="c13733aade7c22e1d6c0fb7be8a8c754" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。例如：</block>
   <block id="dcda2cb33413b9ab0c8373225de75578" category="summary">如何使用ONTAP 支援功能為RHEL 8.5設定NVMe主機</block>
-  <block id="ec81597eac06c85c5ddfa44cc8fcbd52" category="list-text">RHEL 8.5除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。原生NVMe CLI套件中的NetApp外掛程式可顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資訊。</block>
-  <block id="206f20ba4ee9fc54736165b9006258a5" category="list-text">在RHEL 8.5中、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="46e2bc1ba1e17f9c87c8bdd0665dde6a" category="inline-link">RHEL 8.5版本說明</block>
-  <block id="ba53163a27cd9bc34ed5a326c3bcd717" category="list-text">RHEL 8.5上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱<block ref="e17db2abe54f171cfce139c1feeab28f" category="inline-link-rx"></block> 以取得詳細資料。</block>
-  <block id="3010e81137392b43d689728401eb1ea9" category="list-text">確認「lffc_enable _FC4_type]已設定為3</block>
-  <block id="9b2d197e1555229882f18589d7c32cce" category="list-text">驗證ONTAP 適當的NVMe設定值（例如、將「model」設為「NetApp還原控制器」、並將負載平衡「iopolicy」設為「循環」）、以正確ONTAP 反映在主機上：</block>
   <block id="fc42d5b62a406fecb7a634ca014f42c2" category="paragraph">從7.0U3c開始、預設會載入所需的NVMe/TCP模組。如需設定網路和NVMe/TCP介面卡、請參閱VMware vSphere文件。</block>
   <block id="209ae9abdc2efd05e90e3a97a8913a9b" category="section-title">驗證NVMe/TCP</block>
   <block id="e4dbb8bc2f2492f010d3f33dd68f00c8" category="list-text">驗證NVMe / TCP介面卡的狀態。</block>
@@ -884,7 +843,6 @@
   <block id="75d2257ae841105f67aa7e6940b3fccb" category="list-text">若要列出NVMe命名空間的路徑數目、請使用下列命令：</block>
   <block id="cf79be42f6c9a2f2225f202bfec080c2" category="sidebar">15 SP4</block>
   <block id="8da61845fa1ac07e5d54097fe9d2a4cb" category="summary">說明如何使用ONTAP 支援功能來設定適用於SUSE Linux Enterprise Server 15 SP4的NVMe/FC</block>
-  <block id="0882578f9915da36a8ab5c612728ad30" category="paragraph">範例（A）：</block>
   <block id="806707e47ee8fe684a6d5e5b0898539a" category="sidebar">NVMeF OL</block>
   <block id="29b512fbc4379581cd2fd8694ca529c4" category="summary">搭配ONTAP 使用Windows Server 2022搭配使用</block>
   <block id="8d1d5b8defd8dab28a7e51c7b4ff5d33" category="inline-link-macro">Microsoft Update目錄2022</block>
@@ -920,36 +878,16 @@
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">在雲端環境中、主機通常稱為用戶端。此內容中的所有主機專屬資訊也適用於雲端用戶端。</block>
   <block id="b23eda8b5a2eb7f788559c0df550f0fa" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如、</block>
   <block id="ed53d9bb40cf906cb73ab578cb3adb1d" category="paragraph">您應將容錯移轉事件的重試期間設為至少30分鐘、以避免逾時。您可以增加Ctrl-Loss _tmo定時器的值來增加重試期間。以下是詳細資料：</block>
-  <block id="1de6caecfe16b961f2f1c858579203f0" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時重試較長時間。例如：</block>
-  <block id="ad6d243201e40d0f0153f9cf8a6eca49" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請確保設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）在連線期間、以便在路徑遺失時、重試更長時間。例如：</block>
   <block id="30f60d67f457bb040dffde52197a54da" category="paragraph-title">相關資訊</block>
   <block id="98a246e1f1b81f16a2ceb0cc274c4da8" category="summary">如何針對RHEL 8.7設定NVMe主機、ONTAP 並搭配使用功能</block>
-  <block id="a3492942cb4c45f8a31e3e3845c9f04a" category="paragraph">RHEL 8.7除了支援NVMe / FC、還支援NVMe / TCP（技術預覽功能）。原生NVMe CLI套件中的NetApp外掛程式能夠顯示ONTAP NVMe / FC和NVMe / TCP命名空間的詳細資訊。</block>
-  <block id="0e15c36dca614df066cc960ea227ce1c" category="list-text">在RHEL 8.7中、內核NVMe多重路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="22bdfd7e91e72cf608df0b09fc912791" category="inline-link-macro">RHEL 8.7版本說明</block>
-  <block id="8c2b765ab97c39979798e34af69b0f1c" category="list-text">RHEL 8.7上的NVMe/TCP仍是技術預覽功能、因為仍有未解決的問題。請參閱 <block ref="3b0b5f7859cfdb8f0e4748ec41710206" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
   <block id="4c865e0cb70fa33868e69a5e88daad47" category="cell">1479047</block>
   <block id="c7ed23f5281d7f5b606a1019ecd9fd97" category="sidebar">8.7%</block>
-  <block id="58640a39ebacf1c649f790a018923dc7" category="list-text">在伺服器上安裝RHEL 8.7。</block>
-  <block id="579f8656182e55995ca799f60b8b3706" category="list-text">驗證<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 已設定、可讓Marvell介面卡以NVMe / FC啟動器的形式運作、使用下列命令：</block>
   <block id="0dea8ccda08dc1647ed0a458849e5cda" category="doc">適用於Oracle Linux 8.6的NVMe / FC主機組態、ONTAP 含功能</block>
   <block id="309cf24349edc5122d2f31c53280bf27" category="doc">NVMe / FC主機組態、適用於Oracle Linux 8.5 with ONTAP Fisc</block>
-  <block id="362156721e24ceedbadf34c0abc7e007" category="list-text">RHEL 9.1支援預設啟用的NVMe命名空間內核心NVMe多重路徑、不需要明確設定。</block>
-  <block id="79d6a4c19ab1815ebac474c0cb176558" category="section-title">啟用核心內建NVMe多重路徑</block>
-  <block id="2d012da343e217426e95ab334286ee04" category="list-text">驗證<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 已設定、可讓Marvell介面卡以NVMe / FC啟動器的形式運作、使用下列命令：</block>
-  <block id="4b74cb8caf9869d9c39202f5a7c8cd4d" category="list-text">確認其他NVMe / TCP啟動器目標LIF組合可以成功擷取探索記錄頁面資料。例如：</block>
-  <block id="7912d4b61044915bf839431d678f055d" category="list-text">執行<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> 跨節點執行所有支援的NVMe/TCP啟動器目標LIF命令。請務必設定更長的時間<block ref="07e325c4a466379e41eabbb9333963e2" prefix=" " category="inline-code"></block> 定時器重試期間（例如30分鐘、可透過設定<block ref="31d4084d03582af5cedde443232aa924" prefix=" " category="inline-code"></block>）<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 命令、以便在路徑遺失時重試更長時間。例如：</block>
   <block id="0929df0c2d7b307ae019137c488669a8" category="cell">1503468</block>
   <block id="2f8adf6e51ddcf7b0618dad0e63a4144" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block> Command會針對特定子系統傳回重複的NVMe控制器清單</block>
-  <block id="95a3009a54be763a347295539b3b924d" category="cell">。<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> 命令應傳回與特定子系統相關聯的NVMe控制器唯一清單。在RHEL 9.1中<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block> Command會針對屬於特定子系統的所有命名空間、傳回NVMe控制器及其各自的ANA狀態。不過、ANA狀態是每個命名空間的屬性、因此如果您列出指定命名空間的子系統命令語法、則最好顯示具有路徑狀態的獨特NVMe控制器項目。</block>
-  <block id="54bb88571442321a8544c55cb834deb7" category="cell">RHEL 8.7 NVMe主機會建立重複的持續探索控制器</block>
-  <block id="c66549c6038d3ebbf4c13fa9699ba9c4" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您在ONTAP NVMe主機上執行的是Ris-9.10.1和Red Hat Enterprise Linux（RHEL）8.7、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。</block>
   <block id="2fefce185e7d7498c7e3da22bac84294" category="cell">1508554</block>
   <block id="11613812ad376f15dc5ee5a9f425cea1" category="cell">NetApp Linux主機公用程式CLI需要額外的程式庫套件相依性、才能支援Emulex HBA介面卡探索</block>
-  <block id="58cc994c670841fa2f2ecd4302d45e03" category="cell">RHEL 9.0 NVMe主機會建立重複的持續探索控制器</block>
-  <block id="e4c38008038c9c0402e9f00d369b82ea" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是以NVMe型主機執行的Ris-9.10.1和Red Hat Enterprise Linux（RHEL）9.0、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。</block>
-  <block id="de92f8bcc4d493d57927d45de496dfcd" category="cell">RHEL 8.6 NVMe主機會建立重複的持續探索控制器</block>
-  <block id="67eaffbea4f4f435b98dfd9d82b810fe" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。不過、如果您執行ONTAP 的是以NVMe為主機的Ris-9.10.1和Red Hat Enterprise Linux（RHEL）8.6、則每次執行「NVMe探索-p」時、都會建立一個重複的資料中心。這會導致主機和目標上的資源使用不必要。</block>
   <block id="796d3a90e43ce105cbf37298c5065f7e" category="sidebar">9.1</block>
   <block id="19c0ae184ff29a5cb77c04c8bea684af" category="list-text">從ONTAP 支援VMware vSphere 9.7開始、將新增支援NVMe over Fibre Channel（NVMe / FC）的VMware vSphere版本。</block>
   <block id="3a34596144aee2d13108623781ca1789" category="list-text">從7.0U3c開始、支援ESXi Hypervisor的NVMe/TCP功能。</block>
@@ -1249,14 +1187,8 @@
   <block id="18246cd8a2065d6c9969e5b7974134d4" category="cell">1537359</block>
   <block id="6a3ab9709740397036937a3dd3536644" category="cell">使用 Emulex HBA 開機的 Red Hat Linux 9.2 SAN 主機會遇到停滯的工作、導致核心中斷</block>
   <block id="8a6c2cd607c7c6f2122c62101018f706" category="cell">在儲存設備容錯移轉恢復作業期間、使用 Emulex 主機匯流排介面卡（ HBA ）啟動的 Red Hat Linux 9.2 SAN 主機、會遇到導致核心中斷的停滯工作。核心中斷會導致作業系統重新開機、如果發生<block ref="0f4f5143108e314ddd308d075021efb3" prefix=" " category="inline-code"></block> 設定後、它會產生<block ref="fa8dda84ceacd7343d25ccd506ad982a" prefix=" " category="inline-code"></block> 檔案位於<block ref="0e1f3f8d334b46b5beffee9e435a3fcc" prefix=" " category="inline-code"></block> 目錄。此問題正與一起進行分類<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 驅動程式、但無法一致地複製。</block>
-  <block id="34fedef752e7a52649043c91aeccbee2" category="paragraph">含非對稱命名空間存取（ ANA ）的 Red Hat Enterprise Linux （ RHEL ） 9.2 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
-  <block id="04ec169afac6b24f7cf654cbb22077ab" category="paragraph">下列支援適用於 ONTAP 的 RHEL 9.2 NVMe 主機組態：</block>
   <block id="0741c9b5716032a843b4139129bd0a9e" category="list-text">支援 NVMe over TCP （ NVMe / TCP ）、以及 NVMe / FC 。原生 NVMe - CLI 套件中的 NetApp 外掛程式會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。</block>
-  <block id="4d2ae5c4147bd8c995dbe69166bc3a3d" category="list-text">根據預設、 RHEL 9.2 已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。</block>
-  <block id="2c2fae605b7bbec73458d1d17d0a7bc2" category="paragraph">您可以使用下列程序來驗證最低支援的 RHEL 9.2 軟體版本。</block>
-  <block id="5db1c1effe3062cedd30e6f6e6b1b127" category="list-text">在伺服器上安裝 RHEL 9.2 。安裝完成後、請確認您正在執行指定的 RHEL 9.2 核心。</block>
   <block id="174bb021781f59df2db4c30e37782cb2" category="list-text">安裝<block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block> 套件：</block>
-  <block id="cc26637366706aa36b30823e96bdbe3c" category="list-text">在 RHEL 9.2 主機上、檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="6362c7afdb076db9b67492227263935e" category="admonition">如果是<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串不相符、請使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 命令來更新<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 對應 ONTAP 陣列子系統上的字串、以符合<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串來源<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 在主機上。</block>
   <block id="4dab1b4f451ec45a30431478018d4fd5" category="list-text">驗證您使用的是建議的Broadcom<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 韌體與內建驅動程式。</block>
   <block id="b36540ee1aea09e40e2e7cb8bdd31c82" category="list-text">確認啟動器連接埠已啟動並正在執行、而且您可以看到目標生命體：</block>
@@ -1280,24 +1212,8 @@
   <block id="91a845901382406af3acfb27b99025ea" category="cell">Oracle Linux 9.1 NVMe 主機無法建立持續探索控制器</block>
   <block id="da80aa62fc6cf6b66539a5a3933874a8" category="cell"><block ref="da80aa62fc6cf6b66539a5a3933874a8" category="inline-link-rx"></block></block>
   <block id="b8aa99c2e58dbe6b9f5fbd80d2ef3c41" category="summary">如何使用 ONTAP 設定適用於 RHEL 8.8 的 NVMe 主機</block>
-  <block id="627fc5ce0d88e0997ea80bdeecc63bc3" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 8.8 搭配非對稱命名空間存取（ ANA ）支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
-  <block id="ab15b05ddb0c07381067dd0a70972dfd" category="paragraph">下列支援適用於 ONTAP 的 RHEL 8.8 NVMe 主機組態：</block>
-  <block id="ba770fdddd491fed0ed0aa2d9bce30bc" category="list-text">RHEL 8.8 NVMe 主機的核心內建 NVMe 多重路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="c55d87b5714812a0110cd0c2b93d2102" category="list-text">在 RHEL 8.8 主機上、 NVMe / TCP 是一項技術預覽功能、因為存在開放式問題。</block>
-  <block id="b533797bfe32a06fb40a831b72c0e6fc" category="section-title">啟用核心內建多重路徑</block>
-  <block id="682268ee3623608f6aaa4d97948590b9" category="paragraph">您可以使用下列程序來啟用內核心多重路徑。</block>
-  <block id="79f5508560fcdeeb0f8f5e35cfeeb028" category="list-text">在主機伺服器上安裝 RHEL 8.8 。</block>
-  <block id="3f941eb23733b5fc256825fb8360af1e" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 8.8 核心。</block>
   <block id="0b2a1cf2bd4cdd2ea23a2f0ea592a4d6" category="list-text">安裝 NVMe CLI 套件：</block>
-  <block id="22ac38109d566f08520d1c578277fad1" category="list-text">啟用核心內建 NVMe 多重路徑：</block>
-  <block id="1c30079002b0176bf0beeaed68880244" category="list-text">在主機上、檢查主機的 NQN 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
-  <block id="94ba0506900b15b89968be3bc20d71af" category="admonition">如果主機 NQN 字串不相符、您可以使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 用於更新對應 ONTAP NVMe 子系統上主機 NQN 字串的命令、以符合主機 NQN 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 在主機上。</block>
-  <block id="e6e7ba3eb589d8ecc8281c644469c6e5" category="paragraph">如果您打算在同一部主機上同時執行 NVMe 和 SCSI 共存的流量、 NetApp 建議分別針對 ONTAP 命名空間使用核心內建 NVMe 多重路徑、以及針對 ONTAP LUN 使用 dm-multipath 。這表示ONTAP 應從dm-multipaths中排除支援的對象名稱空間、以避免dm-multipaths宣告這些命名空間裝置。您可以新增來完成此作業<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 設定為<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
   <block id="5aae5284420b8ceb0aa0f5d959c566bc" category="list-text">確認其他的 NVMe / TCP 啟動器目標 LIF 組合可以成功擷取探索記錄頁面資料：</block>
-  <block id="9bdba773d50bb88232e3e64ea6e985b9" category="list-text">確認適當的 NVMe 設定（例如、<block ref="20f35e630daf44dbfa4c3f68f5399d8c" prefix=" " category="inline-code"></block> 設定為<block ref="756ad8952bac6a54235a8fd3a5378672" prefix=" " category="inline-code"></block> 和負載平衡<block ref="9dcdd7789010499b5bf49690aa44b8e9" prefix=" " category="inline-code"></block> 設定為<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>）對於相應的 ONTAP 命名空間，正確地反映在主機上：</block>
-  <block id="d7442f3fc53686df869915abb03259d5" category="paragraph">採用 ONTAP 版本的 RHEL 8.8 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="03ae8eb9222d50f723280c24049da8ff" category="cell">RHEL 8.8 NVMe 主機會建立重複的持續探索控制器</block>
-  <block id="1e33904ede6309a554b35640a5cef193" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。  不過、如果您在 NVMe 主機上執行 Red Hat Enterprise Linux （ RHEL ） 8.8 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。</block>
   <block id="317bd3f8323d3750053ef303ee6f5813" category="paragraph">Oracle Linux （ OL ） 9.1 搭配非對稱命名空間存取（ ANA ）支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
   <block id="403f78a784ce2b6ea83a425d2530e736" category="paragraph">OL 9.1 搭配 ONTAP 版本的 NVMe 主機組態有下列已知問題：</block>
   <block id="c43b3026b84082f6f8a8e5dbf4fc8359" category="cell">在 Oracle Linux 9.1 NVMe 主機上、您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 建立持續探索控制器（PD）的命令。使用此命令時、應針對每個啟動器目標組合建立一個 PDC 。不過、如果您在 NVMe 主機上執行 Oracle Linux 9.1 、則在建立時、 PDC 會失敗<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 命令即會執行。</block>
@@ -1320,7 +1236,6 @@
   <block id="cc4117db48a5e96b1494712383b1b668" category="doc">搭配 ONTAP 使用 Oracle Linux 6.4</block>
   <block id="6088639a5afca847eaa9177590532eea" category="doc">搭配 ONTAP 使用 Oracle Linux 6.9</block>
   <block id="d8fbd5ac0666d17248d83c1cba75a567" category="doc">搭配 ONTAP 使用 Red Hat Enterprise Linux 6.7</block>
-  <block id="1f7d8244b764d5a7c149c4cbfad4c873" category="paragraph">您可以針對 NVMe over Fabrics （ NVMe of ）傳輸協定（包括 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ））設定特定 SAN 主機、並以 ONTAP 作為目標。根據您的主機作業系統和 ONTAP 版本、您可以在主機上設定和驗證 NVMe / FC 或 NVMe / TCP 傳輸協定、或兩者。</block>
   <block id="91addf30a04c0c5249fa7d52c99ad1b2" category="doc">搭配 ONTAP 使用 Oracle Linux 6.5</block>
   <block id="1298fa83c27263623f4780e10072ad20" category="doc">將 CentOS 6.9 與 ONTAP 搭配使用</block>
   <block id="379f97722abe4a13e4bed62c347317a6" category="doc">將 CentOS 6.8 搭配 ONTAP 使用</block>
@@ -1367,9 +1282,7 @@
   <block id="47851fc857cb6267d67c526211828e1e" category="paragraph">Linux 主機公用程式 7.1 版本包含下列新功能與增強功能：</block>
   <block id="92d4f2c8b053dc173575e4ac46223415" category="list-text">Linux 主機公用程式現在稱為 Linux 統一主機公用程式、因為它支援執行 SANtricity 的 NetApp E 系列儲存系統、以及執行 ONTAP 的 AFF 、 FAS 和 ASA 系統。</block>
   <block id="7d21aae7a58430ed491d0dcc91fdc835" category="paragraph">OL 8.4 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="9139a77e42fad6b63368eea822f35757" category="paragraph">採用 ONTAP 的 RHEL 8.6 的 NVMe 主機組態有下列已知問題：</block>
   <block id="13dea42e38aa7f2230bd74fcabf6b0e8" category="paragraph">OL 8.6 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="4036ce7f5249110346ac2f0ee1325460" category="paragraph">採用 ONTAP 的 RHEL 9.1 的 NVMe 主機組態有下列已知問題：</block>
   <block id="2007c4c5bd8a037f1d8e640cb7e961c0" category="paragraph">您可以擷取對應至主機的主機啟動器清單。</block>
   <block id="0f72498039f4dd70eff202dff74b269e" category="paragraph">您可以從指定的 SVM 擷取對應至主機的所有 LUN 清單。</block>
   <block id="f7f35aac075a8552952158a8b905355f" category="paragraph">您可以擷取對應至主機之指定 LUN 的所有屬性清單。</block>
@@ -1380,8 +1293,6 @@
   <block id="e1cd7b537be6453e906049c111d7b248" category="paragraph">您可以依主機裝置檔案名稱擷取 ONTAP LUN 屬性清單。</block>
   <block id="364c9974898b89845661be07a4997db2" category="paragraph">您可以擷取指定 SVM 目標 LIF WWPN 在主機上所注意到的 ONTAP LUN 清單。</block>
   <block id="e214de5ea0b1a8eb765598cf4b80a404" category="summary">您可以為 NVMe over Fabrics （ NVMe of ）傳輸協定設定特定 SAN 主機。</block>
-  <block id="b1199565b654a20a5acee144d68ae4cb" category="paragraph">採用 ONTAP 的 RHEL 9.0 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="71451af1b87baede129f9469cc138039" category="paragraph">採用 ONTAP 的 RHEL 8.7 NVMe 主機組態有下列已知問題：</block>
   <block id="5196c04a99b765f6b853ef816161d88a" category="paragraph">您可以使用 ONTAP SAN 主機組態設定來設定 vSphere 6.5.x 和 6.7.x 版本搭配 FC 、 FCoE 和 iSCSI 通訊協定。</block>
   <block id="844ceca32955aae871407702dd7263d9" category="paragraph">適用於 ONTAP 的 Oracle Linux 9.0 的 NVMe 主機組態有下列已知問題：</block>
   <block id="9b55f0ca59df9237a11b8ead77f876a0" category="paragraph">OL 8.5 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
@@ -1428,68 +1339,15 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="411f721c4d437c447636df81f300973a" category="list-text">解壓縮<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> 檔案：</block>
   <block id="685e21144e7e399ef67e8a809cd52a1e" category="list-text">安裝軟體：</block>
   <block id="09244b95824d6e702b6eaab2034bdeec" category="list-text">FCP - AIX</block>
-  <block id="afc3139b9a5ce9140077247baba212a3" category="doc">適用於 ONTAP 的 RHEL 9.1 的 NVMe 主機組態</block>
-  <block id="e802f1c65746460c075fbf1bcaef4d32" category="doc">適用於 ONTAP 的 RHEL 9.2 的 NVMe 主機組態</block>
-  <block id="d3d6235f1d9607f635bdb0b082a11e7a" category="doc">適用於 ONTAP RHEL 8.7 的 NVMe 主機組態</block>
-  <block id="581e000517ad44dff26955230ec9cdad" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 8.7 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。在此程序中、您可以使用 RHEL 8.7 上的 ANA 、 ONTAP 作為目標、來啟用內核 NVMe 多重路徑的 NVMe 。</block>
-  <block id="59fe4f7fa151d75ffc06f1365abf0ec3" category="paragraph">您可以使用下列程序來啟用核心內建 NVMe 多重路徑。</block>
-  <block id="938a487b4d5b2818f0bdb94717d9e8f0" category="paragraph">如果您打算在同一部主機上同時執行 NVMe 和 SCSI 共存的流量、 NetApp 建議分別針對 ONTAP 命名空間使用核心內建 NVMe 多重路徑、以及針對 ONTAP LUN 使用 dm-multipath 。這表示ONTAP 應從dm-multipaths中排除支援的對象名稱空間、以避免dm-multipaths宣告這些命名空間裝置。您可以將啟用外部設定新增至來執行此作業<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
-  <block id="816662a42ba84806449e0d8f94225c18" category="open-title">適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡</block>
-  <block id="1577dd37415be29b61964cccdc0a5bd6" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 8.4 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。您可以使用 RHEL 8.4 上的 ANA 、以及 ONTAP 做為目標、來啟用內建 NVMe 多重路徑的 NVMe 。</block>
   <block id="344b83be976d50cb0bd99eec20c5e8ea" category="paragraph">此版本沒有新功能。</block>
-  <block id="2727e7ffa6856651573ac44628ddc5ac" category="list-text">對於 RHEL 8.4 、預設會停用核心內建 NVMe 多重路徑。因此、您需要手動啟用。</block>
-  <block id="70d87aa78bc7b21f24a7862014534950" category="list-text">在伺服器上安裝RHEL 8.4 GA。</block>
-  <block id="8678ae08dbf54c915ff331ad4afa5ea6" category="doc">適用於 ONTAP 的 RHEL 8.2 的 NVMe / FC 主機組態</block>
-  <block id="772d4b2bb4515441328bfc9a4db16c9c" category="list-text">從原生 RHEL 8.2 開始<block ref="ab775c875d5f89d991a670444dd32ad2" prefix=" " category="inline-code"></block> 規則已在中提供<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 套件、可針對NVMe多重路徑啟用循環資源負載平衡。您不需要再手動建立此規則（如RHEL 8.1所做）。</block>
-  <block id="ea7c3f45f79be017099817dd7addd11e" category="list-text">從 RHEL 8.2 開始、即原生的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 套件能夠顯示 ONTAP 命名空間的 ONTAP 詳細資料。</block>
-  <block id="f109365e2ed260951e1ba369aae9628e" category="list-text">對於 RHEL 8.2 、預設會停用核心內建 NVMe 多重路徑。因此、您需要手動啟用。</block>
-  <block id="4e6c732a6984d7b7d180b129496f3259" category="paragraph">您可以使用下列程序來啟用 NVMe / FC 。</block>
-  <block id="4add81017e5e5098709e11ad21f479e9" category="list-text">如果您使用從 RHEL 8.1 升級至 RHEL 8.2<block ref="4b91f72ab534b1d3dcfb50a2faf0b424" prefix=" " category="inline-code"></block>、您的<block ref="e82750eaf1d7258b5557bfe448245cd4" prefix=" " category="inline-code"></block> 檔案可能會遺失。若要避免檔案遺失、請執行下列步驟：</block>
-  <block id="566e67d92de5fb0c39ecc4487219ec43" category="list-text">在 RHEL 8.2 主機上、檢查主機 NQN 字串位於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 並確認它符合 ONTAP 陣列上對應子系統的主機 NQN 字串。</block>
-  <block id="51a659af535aaed6f0bfdd8c2a65cb13" category="paragraph">如果主機 NQN 字串不相符、請使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 用於更新對應 ONTAP 陣列子系統上主機 NQN 字串的命令、以符合的主機 NQN 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 在主機上。</block>
-  <block id="3b78ba529de35448439cfb08a088feaa" category="paragraph">您可以使用下列程序來設定 Broadcom FC 介面卡。</block>
-  <block id="d58d6a6bc4bcc9e58a624ec09d60806b" category="doc">適用於 ONTAP 的 RHEL 8.3 的 NVMe / FC 主機組態</block>
-  <block id="fd3c57460c26b4e899b44b0d00cb0b98" category="list-text">對於 RHEL 8.3 、預設會停用核心內建 NVMe 多重路徑。您可以手動啟用。</block>
-  <block id="9acecbc6a5b17e38b32fd17df556292c" category="list-text">如果您要使用從 RHEL 8.2 升級至 RHEL 8.3<block ref="4b91f72ab534b1d3dcfb50a2faf0b424" prefix=" " category="inline-code"></block> 命令、您的<block ref="e82750eaf1d7258b5557bfe448245cd4" prefix=" " category="inline-code"></block> 檔案可能會遺失。若要避免檔案遺失、請使用下列程序：</block>
-  <block id="ec9266e4f36c6ee8d067bd721ebb7e27" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 核心：</block>
-  <block id="2ecd99e4847f3d91dc4bf84f6ca6b4be" category="list-text">在 RHEL 8.3 主機上、檢查主機 NQN 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>  驗證它是否與 ONTAP 陣列上對應子系統的主機 NQN 字串相符：</block>
   <block id="10dce9030ad8783afd2b4e831da49b7f" category="paragraph">* 輸出範例 * ：</block>
-  <block id="597f45fa822e41cd0f3a40e1eea32d24" category="list-text">確認<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串符合 ONTAP 陣列上對應子系統的 hostnqn 字串：</block>
   <block id="79d54ad2be013dc1efba6b62f8feb800" category="list-text">您也可以選擇更新<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 設定：</block>
-  <block id="d507dcd392a29e7eb8db71bdce83ffc6" category="list-text">確認下列 NVMe / FC 設定：</block>
-  <block id="a833a80edb42ee1d4aee5a0778562c87" category="list-text">驗證 ONTAP 裝置的 NetApp 外掛程式：</block>
-  <block id="94dc90776247ab0aec4eafa7e523b565" category="list-text">確認您使用的是推薦的 Broadcom lpfc 韌體和內建驅動程式：</block>
-  <block id="40a1c3d00d83be8425c89d856b65a1b7" category="doc">適用於 ONTAP 的 RHEL 9.0 的 NVMe 主機組態</block>
-  <block id="c680569888a011858f16587de401cc7c" category="list-text">在伺服器上安裝RHEL 9.0。</block>
   <block id="72c8898bab867ffe51404357bb7e09df" category="list-text">確認您執行的是支援的介面卡驅動程式和韌體版本：</block>
-  <block id="bc027fb574cf7acf0bf73cdcbb16dadb" category="doc">適用於 ONTAP 的 RHEL 8.8 的 NVMe 主機組態</block>
-  <block id="c25185d4760b30fe4e53a3766a10b495" category="doc">適用於 ONTAP 的 RHEL 8.5 的 NVMe 主機組態</block>
-  <block id="cb0b1786f68534cba2b459c86e0ab3ef" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 8.5 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。在此程序中、您可以使用 RHEL 8.5 上的 ANA 、以及 ONTAP 作為目標、來啟用內核 NVMe 多重路徑的 NVMe 。</block>
-  <block id="64bd48e10d357155efdc0e904f79426a" category="doc">適用於 ONTAP 的 RHEL 8.1 的 NVMe / FC 主機組態</block>
-  <block id="544766d3bbc2685cef7f1a9d235d422f" category="list-text">原生 NVMe / FC 自動連線指令碼在中無法使用<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 套件：您可以使用主機匯流排介面卡（ HBA ）廠商提供的外部自動連線指令碼。</block>
-  <block id="13979b8343c984acf2a2b313ff3e38c6" category="list-text">NVMe 多重路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="cc1a35558875c7c16413307c13c89c86" category="list-text">預設不會啟用循環配置資源負載平衡。您可以撰寫來啟用此功能<block ref="ab775c875d5f89d991a670444dd32ad2" prefix=" " category="inline-code"></block> 規則。</block>
-  <block id="afc97be774c1663ff647ba74281303d3" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 核心：</block>
   <block id="8011cf80f5dd20dfddd3b92b4d5d01ac" category="list-text">安裝<block ref="891ed8cccffd2c63b191f54b44b5ae65" prefix=" " category="inline-code"></block> 套件：</block>
   <block id="4221dbb6ea6b43719aae88d86846d722" category="list-text">將下列字串新增為另一個位於的 udev 規則<block ref="99434fae4c03e5f280aa41106396dfa1" prefix=" " category="inline-code"></block>。這可為 NVMe 多重路徑啟用循環負載平衡：</block>
-  <block id="8246b48c71a51bcce567746b3fed6aa8" category="list-text">在 RHEL 8.1 主機上、檢查主機 NQN 字串位於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 並確認它符合 ONTAP 陣列上對應子系統的主機 NQN 字串：</block>
   <block id="7620805eadd8352b0e3c343da7a49853" category="admonition">如果主機 NQN 字串不相符、請使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 用於更新對應 ONTAP 陣列子系統上主機 NQN 字串的命令、以符合的主機 NQN 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 在主機上。</block>
   <block id="e2ca5e94cb7ab3712e0cf796ebeda62e" category="list-text">複製並安裝 Broadcom lpfc 外盒驅動程式和自動連線指令碼：</block>
   <block id="3bb8b43ed1b1526e68b2b7ee931b531a" category="admonition">與作業系統搭售的原生驅動程式稱為收件匣驅動程式。如果您下載的是外箱驅動程式（作業系統版本未隨附的驅動程式）、則下載中會包含自動連線指令碼、並應作為驅動程式安裝程序的一部分進行安裝。</block>
-  <block id="b5f643243918e34a302b9dfa8dcc1daa" category="list-text">確認您使用的是推薦的 Broadcom lpfc 韌體、外箱驅動程式和自動連線套件版本：</block>
-  <block id="05c7b64f9f23969b05964e7d54e01b58" category="list-text">請確認<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block> 設為 3 ：</block>
-  <block id="513bc51d7e387d0c69185ffdcb343ec9" category="list-text">確認 NVMe / FC 啟動器連接埠已啟用、正在執行、而且您可以看到目標生命：</block>
-  <block id="7012889cc926d9aed72cc4dc0fd4e057" category="doc">適用於 ONTAP 的 RHEL 8.6 的 NVMe 主機組態</block>
-  <block id="6a7cb6a9e050e971cb54222db7ae4540" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 8.6 搭配 ANA （非對稱命名空間存取）支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸）。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。在此程序中、您可以使用 RHEL 8.6 上的 ANA 、 ONTAP 作為目標、來啟用內核 NVMe 多重路徑的 NVMe</block>
-  <block id="7d2f5cc21497b0cde87934fbd84c0694" category="paragraph">如果您打算在同一部主機上同時執行 NVMe 和 SCSI 共存的流量、 NetApp 建議分別針對 ONTAP 命名空間使用核心內建 NVMe 多重路徑、以及針對 ONTAP LUN 使用 dm-multipath 。這表示ONTAP 應從dm-multipaths中排除支援的對象名稱空間、以避免dm-multipaths宣告這些命名空間裝置。您可以將啟用外部設定新增至、以完成此作業<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
-  <block id="6a19313e8113ac2c1e15410e39bf21fb" category="paragraph">下列支援適用於 ONTAP 的 RHEL 9.1 NVMe 主機組態：</block>
-  <block id="05df89d060e2fb1042048336db58af01" category="list-text">在伺服器上安裝 RHEL 9.1 。</block>
-  <block id="6ba8f2fd9b26537c1f509d73b5b3c3e8" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個支援的名稱空間設備的正確值。</block>
-  <block id="55475dcd5bcfa96d71d74b2d692fe800" category="list-text">從 RHEL 9.0 開始、 NVMe / TCP 不再是技術預覽功能（與 RHEL 8 不同）、而是完全支援的企業功能本身。</block>
-  <block id="450353fa421bb4ae9174f35ab8787934" category="list-text">從 RHEL 9.0 開始、預設會啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、而不需要明確設定（與 RHEL 8 不同）。</block>
-  <block id="f881ebad820aa982c82a8b50a1b39070" category="list-text">確認ONTAP 支援的名稱空間能正確反映在主機上。</block>
-  <block id="e35ada62930c3b590684fb1ae4386cac" category="list-text">確認每個路徑的控制器狀態均為有效、且具有適當的ANA狀態。</block>
-  <block id="051ff3071e673676a5e48635fa7f872b" category="list-text">驗證NetApp外掛程式是否顯示每ONTAP 個不支援的名稱空間裝置的正確值。</block>
   <block id="25bf44f4015fc028f21a62c878e44061" category="list-text">執行<block ref="1615297782a0dff59b20451e2ca97ea7" prefix=" " category="inline-code"></block> 檢查 zpool 並驗證 *ashift* 的值是否爲<block ref="c20ad4d76fe97759aa27a0c99bff6710" prefix=" " category="inline-code"></block>。</block>
   <block id="ea97d5c2ead91159f0f6b9bb0c5482a0" category="cell">請參閱 Solaris 11.4 與 Huk 建議。FC 驅動程式繫結已從變更<block ref="4ac64d4c80a809df47ac078b5c56d623" prefix=" " category="inline-code"></block> 至<block ref="0d1e6498671862209810e5029cd1e779" prefix=" " category="inline-code"></block>。從移除現有組態<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> 至<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> 如 Oracle DOC 所述： 2595926.1 ）。新安裝的 Solaris 11.4 系統和從 Solaris 11.3 或更早版本升級的系統的行為會有所不同。</block>
   <block id="65afcaea10e26dc5c66de4f6bf0ade99" category="cell">在 x86 架構上使用 Emulex 32G 主機匯流排介面卡（ HBA ）執行儲存容錯移轉（ SFO ）恢復作業時、發現 Solaris LIF 問題</block>
@@ -1597,31 +1455,10 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5464d39105cc61c77c01f61a6c049eae" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.2 的 NVMe 主機</block>
   <block id="13aa98a5d20992675bbf7111d4bcf7cc" category="cell">NetApp Linux 主機公用程式 CLI 需要額外的程式庫套件相依性、才能支援 Emulex 主機匯流排介面卡（ HBA ）介面卡探索</block>
   <block id="447d82560b23d134af7247622d397daf" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.3 的 NVMe 主機</block>
-  <block id="73e91cc996ce2d039530485f96ea07bb" category="doc">適用於 ONTAP 的 RHEL 9.3 的 NVMe 主機組態</block>
-  <block id="d825b944ff2e130a26d9c4f866191cb5" category="paragraph">含非對稱命名空間存取（ ANA ）的 Red Hat Enterprise Linux （ RHEL ） 9.3 支援 NVMe over Fabrics （ NVMe over Fabrics ）（ NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
-  <block id="17e6fca095916e663e6874f461b7cd2b" category="paragraph">下列支援適用於 ONTAP 的 RHEL 9.3 NVMe 主機組態：</block>
-  <block id="42edbb6b2787a5246d32929c778d04e1" category="list-text">在指定主機匯流排介面卡（ HBA ）上的同一主機上使用 NVMe 和 SCSI 共存流量、而不使用明確的 dm-multipath 設定、以避免使用 NVMe 命名空間。</block>
-  <block id="53b33721fef6f8bedb109eed881ea6a5" category="paragraph">根據預設、 RHEL 9.3 已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。</block>
-  <block id="23ef7f4e50c0c07c0f66e08c60163597" category="paragraph">您可以使用下列程序來驗證最低支援的 RHEL 9.3 軟體版本。</block>
-  <block id="cd78954dacd072b75b2c79c3cecedcd3" category="list-text">在伺服器上安裝 RHEL 9.3 。安裝完成後、請確認您正在執行指定的 RHEL 9.3 核心：</block>
-  <block id="f0df503d34398fb211cacbbacc8824b9" category="list-text">在 RHEL 9.3 主機上、檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="af1363e13388a6153d5ee5e31361b059" category="list-text">確認其他的 NVMe / TCP 啟動器目標 LIF 組合能夠成功擷取探索記錄頁面資料：</block>
-  <block id="4d2ccda8ed0dd9cdf2d1d56f266ef18c" category="paragraph">使用 ONTAP 版本的 RHEL 9.3 的 NVMe 主機組態沒有已知問題。</block>
   <block id="7391a7cd9aaad0e97cd0084d95a4c0fd" category="sidebar">9.3.</block>
   <block id="4407c95e5daa7102b34d0879e4eb12ed" category="sidebar">8.9</block>
   <block id="b434464d1a1076f0912b586e6f0da437" category="summary">如何使用 ONTAP 設定適用於 RHEL 8.9 的 NVMe 主機</block>
-  <block id="77cb6ce6b5771f472e998f91b24df1d8" category="doc">適用於 ONTAP 的 RHEL 8.9 的 NVMe 主機組態</block>
-  <block id="34c678313217e1652ad03feef8847586" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 8.9 搭配非對稱命名空間存取（ ANA ）、可支援 NVMe over Fabrics （ NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
-  <block id="da90c6502b166b990e4597540fab45f1" category="paragraph">下列支援適用於 ONTAP 的 RHEL 8.9 NVMe 主機組態：</block>
-  <block id="9acbcdf236a131602c43133c826c1cf0" category="list-text">根據預設、 RHEL 8.9 NVMe 主機的核心內建 NVMe 多重路徑會停用。因此、您需要手動啟用。</block>
-  <block id="9cc30a8ae74eb53c08ef6662a46c13ff" category="list-text">在 RHEL 8.9 主機上、 NVMe / TCP 是一項技術預覽功能、因為存在開放式問題。</block>
-  <block id="9122912f58fa882044fcab72507c8ee9" category="paragraph">您可以使用下列程序來啟用核心內建多重路徑。</block>
-  <block id="581fd0f922f7530dd86eaa5a01ad9dff" category="list-text">在主機伺服器上安裝 RHEL 8.9 。</block>
-  <block id="8a1c0f590b55b233cc831d3edab5e663" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 8.9 核心：</block>
-  <block id="868c750d60086f65688792e47ff303d5" category="paragraph">如果您打算在同一部主機上同時執行 NVMe 和 SCSI 共存的流量、 NetApp 建議分別針對 ONTAP 命名空間使用核心內建 NVMe 多重路徑、以及針對 ONTAP LUN 使用 dm-multipath 。這應該會從 dm-multipath 中排除 ONTAP 命名空間、並防止 dm-multipath 宣告這些命名空間裝置。您可以新增來執行此作業<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block> 設定為<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案：</block>
-  <block id="fb117390ac885fd422b6653159fac30e" category="paragraph">採用 ONTAP 版本的 RHEL 8.9 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="c6f6aa643de410a6ea50d0b32d115bbb" category="cell">RHEL 8.9 NVMe 主機會建立重複的持續探索控制器</block>
-  <block id="e46afea398abac288711eb6774571ab9" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。  不過、如果您在 NVMe 主機上執行 Red Hat Enterprise Linux （ RHEL ） 8.9 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。</block>
   <block id="3ffd22c07b48a1c76b76f941ad1cad96" category="list-text">Windows 2022</block>
   <block id="0a412bceaa4a8d671231ab04d2e0296e" category="list-text">Windows 2019</block>
   <block id="4083fee85864d55c66d5e0b21a7928b3" category="list-text">Windows 2016</block>
@@ -1684,16 +1521,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4d82a1ec1af02725042c8c785564ee7a" category="inline-link-macro">Amazon FSX for NetApp ONTAP 產品</block>
   <block id="cbd5bf3ac18c40540e157027878d3965" category="paragraph">例如、您可以設定內部部署 ONTAP 儲存設備、以連線至內部部署 SAN 主機或 SAN 雲端用戶端。您也可以設定在雲端環境上執行的儲存服務、例如 <block ref="54a9edfbbcc641d603aea65a27251f05" category="inline-link-macro-rx"></block> 或 <block ref="32496c00ec9be403fcfaf96fbaeed4b1" category="inline-link-macro-rx"></block> 連線至內部部署 SAN 主機或 SAN 雲端用戶端。</block>
   <block id="99fc62da3c4063c517d61da1e5cb3ea3" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.4 的 NVMe 主機</block>
-  <block id="0f57fe9eb655baeaa1793e610b42c2f4" category="doc">適用於 ONTAP 的 RHEL 9.4 的 NVMe 主機組態</block>
-  <block id="d6b5282a090c91c3f085ec6086ba3812" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 9.4 搭配非對稱命名空間存取（ ANA ）、可支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
-  <block id="90cb969c9c4cfedd40361241a5d9c71b" category="paragraph">下列支援適用於 ONTAP 的 RHEL 9.4 NVMe 主機組態：</block>
-  <block id="7e625f4c4c9c1ccd710847cc4037c2c5" category="list-text">根據預設、 RHEL 9.4 已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑、因此不需要明確的設定。</block>
-  <block id="f3dc69e0cba8d4237a37a786c899f4c3" category="list-text">支援使用 NVMe / FC 傳輸協定的 SAN 開機。</block>
-  <block id="1733de5a596dfd8c9179b7f061fe9051" category="paragraph">沒有已知的限制。</block>
-  <block id="ad9672840bc0ef8e354ab95610d4aad0" category="paragraph">您可以使用下列程序來驗證最低支援的 RHEL 9.4 軟體版本。</block>
-  <block id="1fc43ef5bbf00643a63f0cb17e89513c" category="list-text">在伺服器上安裝 RHEL 9.4 。安裝完成後、請確認您執行的是指定的 RHEL 9.4 核心：</block>
-  <block id="a64e6eb6496dd553f89b6df74f0198bd" category="list-text">在 RHEL 9.4 主機上、檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
-  <block id="93955aae7b33676909e1f1724f699b74" category="paragraph">在 ONTAP 版本中、 RHEL 9.4 的 NVMe 主機組態沒有已知問題。</block>
   <block id="b68de8f1f938e0330acdf64c63b08b9a" category="sidebar">9.4.</block>
   <block id="b6758eb9c7ac57209dfad7db602a24d4" category="inline-link-macro">如何設定用於 SnapMirror 主動同步的 AIX 主機</block>
   <block id="a9e760f9ba2dad33870cce967a12f75a" category="cell"><block ref="a9e760f9ba2dad33870cce967a12f75a" category="inline-link-macro-rx"></block></block>
@@ -1701,20 +1528,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0d2b4c4b2840eab7bfae167b812970ef" category="cell"><block ref="0d2b4c4b2840eab7bfae167b812970ef" category="inline-link-macro-rx"></block></block>
   <block id="af3b3cf0d6ceafbe31919aa407157743" category="cell"><block ref="af3b3cf0d6ceafbe31919aa407157743" category="inline-link-macro-rx"></block></block>
   <block id="bc2c3049c0f4d679fb14b74cd64723c8" category="cell"><block ref="bc2c3049c0f4d679fb14b74cd64723c8" category="inline-link-macro-rx"></block></block>
-  <block id="e3fc51a32f8d53fd1edcd8a7ba414fd5" category="list-text">在指定主機匯流排介面卡（ HBA ）上的同一主機上使用 NVMe 和 SCSI 共存流量、而不使用明確的 dm-multipath 設定、以避免使用 NVMe 命名空間。</block>
   <block id="c96b4702a07478185cc851585d0055b6" category="inline-link-macro">NetApp ONTAP 搭配 NetApp SnapMirror 與 VMware vSphere Metro Storage 叢集（ VMSC ）進行主動同步</block>
   <block id="8b3f58063486fce853bcbb473e73c56f" category="list-text"><block ref="8b3f58063486fce853bcbb473e73c56f" category="inline-link-macro-rx"></block></block>
   <block id="7ce2c81c828f2a1b54c1127149fe015e" category="summary">如何使用 ONTAP 設定適用於 RHEL 8.10 的 NVMe 主機</block>
-  <block id="f10d0e37a588d1f07d49d4a8fcea4752" category="doc">適用於 ONTAP 的 RHEL 8.10 NVMe 主機組態</block>
-  <block id="b4c08aaedf475ce47e6623660aaa00df" category="paragraph">Red Hat Enterprise Linux （ RHEL ） 8.10 搭配非對稱命名空間存取（ ANA ）支援 NVMe over Fabrics （ NVMe of ）、包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
-  <block id="5a5bc5602fe9f931767405aaaef0de37" category="paragraph">下列支援適用於 ONTAP 的 RHEL 8.10 NVMe 主機組態：</block>
-  <block id="25faad39893d37d8787d5e2b02fb8ea6" category="list-text">RHEL 8.10 NVMe 主機的核心內建 NVMe 多重路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="d66635253b6aaf6f2db675ed35185ba0" category="list-text">在 RHEL 8.10 主機上、 NVMe / TCP 是一項技術預覽功能、因為存在開放式問題。</block>
-  <block id="f98bcccbb710d0c88303ee4bb4c26d7a" category="list-text">在主機伺服器上安裝 RHEL 8.10 。</block>
-  <block id="559ebd58b1ddd945caa1b9c033782855" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 8.10 核心：</block>
-  <block id="54d5fbe39d4349a06e6a2dc7b7d5b917" category="paragraph">採用 ONTAP 的 RHEL 8.10 NVMe 主機組態有下列已知問題：</block>
-  <block id="18afb8a9c90d10fa4944c5e77101cab1" category="cell">RHEL 8.10 NVMe 主機會建立重複的持續探索控制器</block>
-  <block id="45e7643ebc2b41741a8515e9d1730a76" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。  不過、如果您在 NVMe 主機上執行 Red Hat Enterprise Linux （ RHEL ） 8.10 、則每次執行「 NVMe 探索 -p 」時都會建立重複的 PDC 。這會導致主機和目標上的資源使用不必要。</block>
   <block id="23c3f6b1dc0958b81d21563a91eecfa6" category="cell"><block ref="23c3f6b1dc0958b81d21563a91eecfa6" category="inline-link-macro-rx"></block></block>
   <block id="e59f05c9149caf590d63da27c24797cb" category="inline-link-macro">VMware vSphere 6.x 與 7.x 支援 NetApp ® SnapMirror 主動式同步</block>
   <block id="2a41c03d949869222b758867aff845ff" category="inline-link-macro">VMware vSphere 6.x 與 7.x 支援 NetApp SnapMirror 主動同步</block>
@@ -1819,23 +1635,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d9a48615491837ccb262ccfb1d3ccf8a" category="paragraph">OL 9.1 GA 核心隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="6a3fec5b7c64e18a24f8464b57684819" category="paragraph">OL 9.2 GA 核心隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="b623f955d0640a548a9adf2b167fbb9c" category="paragraph">OL 9.3 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="6eaa3145e4b932d7b17a3215e3aae202" category="paragraph">RHEL 8.10 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="f9c98a8dbf40aaae09217c39a87ce766" category="list-text">從 RHEL 8.2 開始、<block ref="dafde1b5ed9f22cccd76aeeb9844345b" prefix=" " category="inline-code"></block>指令碼會包含在原生<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套件中。您可以使用這些原生自動連線指令碼、而不必安裝外部廠商提供的外箱自動連線指令碼。</block>
-  <block id="f63e79402698cabf72c2e9a22a2b191d" category="paragraph">RHEL 8.4 GA 核心內建的原生收件匣<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block>驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="af6455585abf1b98c62482e31b958d0c" category="paragraph">RHEL 8.5 GA 核心隨附的原生收件匣<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block>驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="218e63c66365babae76a173e55900006" category="paragraph">RHEL 8.6 核心中隨附的原生收件匣<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block>驅動程式具有最新的上游修正。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="9a58838c906156b5ca738af2ebee16c5" category="paragraph">RHEL 8.7 核心內建的原生收件匣<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block>驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="4cd52c2cdf0167ac61d74f70c5e450d3" category="paragraph">RHEL 8.8 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="26b17225b626fb9238849fd60eabdf60" category="paragraph">+</block>
-  <block id="f49d619e58aa6bfb5347ad0f31fc2aa2" category="paragraph">+ * 輸出範例 *</block>
-  <block id="50f804934e3d9d9c5b7332a0865b08cf" category="paragraph">RHEL 8.9 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="688fd390210ca3d20dd19c70ca7a978d" category="paragraph">RHEL 9.0支援NVMe（包括NVMe / FC和NVMe / TCP）、並具備ONTAP 非對稱命名空間存取（ANA）功能、可在不間斷的儲存容錯移轉（SFO）上執行。ANA是與NVM環境中的ALUA等效產品、目前是以內核NVMe多重路徑來實作。使用此程序、您可以使用 RHEL 9.0 上的 ANA 和 ONTAP 作為目標、來啟用內核心 NVMe 多重路徑的 NVMe 。</block>
-  <block id="5c6e49242675c979970284590419948e" category="paragraph">RHEL 9.0 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="d926083aa6b800cd3fabfc9b191e507c" category="paragraph">RHEL 9.1支援NVMe over Fabrics或NVMe（包括NVMe / FC和NVMe / TCP）、並具備非對稱命名空間存取（ANA）、ONTAP 可在不間斷的儲存容錯移轉（SFO）上執行。ANA是NVMe環境中的非對稱邏輯單元存取（ALUA）、目前是以核心內建NVMe多重路徑來實作。使用此程序、您可以使用 RHEL 9.1 上的 ANA 和 ONTAP 作為目標、來啟用內核心 NVMe 多重路徑的 NVMe 。</block>
-  <block id="e81cf5e6fc4f1f5937c8b1e3e2474d2e" category="paragraph">RHEL 9.1 核心中隨附的原生收件匣<block ref="88eda681ac370265f103675d0de61c63" prefix=" " category="inline-code"></block>驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="b9878305790c185df1d9210983c79621" category="paragraph">RHEL 9.2 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="8677aa1aa4fd519ff6f08a97a120426f" category="paragraph">RHEL 9.3 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="35a282ef807a49dea44ebc22c4bd955c" category="paragraph">RHEL 9.4 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新修正。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="473733802c02f67f489689f787461e62" category="list-text">SUSE Linux Enterprise Server 15 SP1</block>
   <block id="a1e3e223ffe62b0c4daec6746ea79cc8" category="paragraph">SUSE Linux Enterprise Server 15 SP1 主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。</block>
   <block id="197f121a9eabe5a0325431d875ee33dc" category="list-text">NVMe - CLI套件中包含原生的NVMe / FC自動連線指令碼。您可以在 SUSE Linux Enterprise Server 15 SP1 上使用原生收件匣 lpfc 驅動程式。</block>
@@ -1880,7 +1680,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7b4c45ceb018e94a23feffc876757fd9" category="paragraph">預期值為 1 。</block>
   <block id="f664c687d53cbadf53c910f16307ad27" category="list-text">不支援NVMe的sanlun。因此、 OL 8.8 主機上不支援 NVMe 型主機公用程式。您可以仰賴原生<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套件中隨附的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
   <block id="5681ca777f3abafe80823417b4bf2991" category="list-text">不支援NVMe的sanlun。因此、 Oracle Linux 8.9 主機上不支援 NVMe 型主機公用程式。您可以仰賴原生<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套件中隨附的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
-  <block id="835146cfecc77bcddbeed80155294c7a" category="paragraph">NVMe / TCP 沒有自動連線功能。您可以改為透過手動執行 NVMe / TCP 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>作業來探索 NVMe / TCP 子系統和命名空間<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block>。</block>
   <block id="d5c963031ebab3b2bca7a1f55d3518de" category="paragraph">支援 NVMe over Fabrics 或 NVMe （包括 NVMe / FC 及其他傳輸），適用於含 ANA （非對稱命名空間存取）的 SUSE Linux Enterprise Server 15 SP3 。ANA 是 NVMe 環境中的 ALUA 等效產品，目前是以核心內建 NVMe 多重路徑來實作。使用此程序、您可以在 SUSE Linux Enterprise Server 15 SP3 和 ONTAP 上使用 ANA 作為目標、以核心內建 NVMe 多重路徑來啟用 NVMe 。</block>
   <block id="300eba3ec960aac99dba9766c398991d" category="list-text">NVMe 不支援 sanlun 。因此、在 SUSE Linux Enterprise Server 15 SP5 主機上、 NVMe 無法使用主機公用程式支援。您可以仰賴原生 NVMe - CLI 套件中的 NetApp 外掛程式來執行所有 NVMe 傳輸。</block>
   <block id="160d4596eb5b2d29630ce187c2b4aa3c" category="list-text">驗證<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>系統開機後及<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>是否正在執行：</block>
@@ -1970,7 +1769,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="ec1fba1237506df59a6228cbfc26fd26" category="admonition">單一 LUN 不應需要四個以上的路徑。在儲存設備故障期間、可能會有八個以上的路徑發生問題。</block>
   <block id="d7eeafe16e993a6db0f390553a4f2af4" category="paragraph">NVMe / TCP 傳輸協定不支援此<block ref="c73910bff7459eb78b9c2d1e7c0e3ed7" prefix=" " category="inline-code"></block>作業。您可以改為透過手動執行 NVMe / TCP 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>作業來探索 NVMe / TCP 子系統和命名空間<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block>。</block>
   <block id="15090de1ea1067de344502d808b5a4bd" category="summary">說明如何搭配 ONTAP 使用 Oracle Linux 8.10</block>
-  <block id="2405d152712524b9eb2f91ba3cd97f49" category="section-title">啟用 SAN 開機</block>
   <block id="db1e7207d8777a9c2c96489e2ef61867" category="summary">適用於 ONTAP 的 Oracle Linux 8.10 版 NVMe 型主機組態</block>
   <block id="95769ef42ae4724a8deb0d386fbf6b88" category="paragraph">您可以在 Oracle Linux 8.10 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
   <block id="7415be93e6df69c72126d277c3b7cc16" category="list-text">可用支援：</block>
@@ -2012,7 +1810,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="125316bd33fa278b6852a16d6a7e9aa5" category="doc">設定 KVM 設定</block>
   <block id="5d896adeb3ef8a2ffa075f87226d15f8" category="paragraph">您不需要直接將任何內容新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案，除非您有不想要多重路徑管理的裝置，或現有的設定會覆寫預設值。若要排除不想要的裝置，請將下列語法新增至<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案，以您要排除的裝置的全球識別碼（ WWID ）字串取代 &lt;DevId&gt; ：</block>
   <block id="fd97e6af5040ad49359412a731cf9a48" category="paragraph">安裝 NetApp 主機公用程式套件會自動安裝工具套件。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>公用程式，可協助您管理 LUN 和主機匯流排介面卡（ HBA ）。此<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>命令會傳回有關對應至主機的 LUN ，多重路徑及建立啟動器群組所需的資訊。</block>
-  <block id="3aeb4eb76668e1a648ac20167d1fd7aa" category="paragraph">NetApp SAN 主機組態支援 NVMe over Fabrics （ NVMe of ）傳輸協定與非對稱命名空間存取（ ANA ）。在 NVMe 環境中， ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取（ ALUA ）多重路徑。ANA 是使用核心內建 NVMe 多重路徑功能來實作。</block>
   <block id="f236c844e8dbdb37680ec9722ff657bb" category="admonition">這些步驟不適用於 Qlogic NVMe / FC 主機。</block>
   <block id="b26e74ed6e2892c7e2bb95e414d460c6" category="cell">LUN</block>
   <block id="a243e92c34f812e7c56005c42a770271" category="summary">適用於 ONTAP 的 Oracle Linux 9.4 版 NVMe 型主機組態</block>
@@ -2028,18 +1825,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9a8c8fd6ced80cbe4db0d4c4fef7bf6e" category="list-text">為 OL 9.4 主機產生 dhchap 金鑰。</block>
   <block id="d481825a9f6d37ba25450de94597b251" category="paragraph">ONTAP 版本的 Oracle Linux 9.4 沒有已知問題。</block>
   <block id="5dca4677c0eb60175de3486097fb7e31" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.5 的 NVMe 主機</block>
-  <block id="a84296aedc6011b8c397f3233477b461" category="paragraph">您可以在 Red Hat Enterprise Linux （ RHEL ） 9.5 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
   <block id="c396639e860651e2d3cd53ecae736ced" category="list-text">除了 NVMe over Fibre Channel （ NVMe / FC ）之外，還支援 NVMe over TCP （ NVMe / TCP ）。原生套件中的 NetApp 外掛程式<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。</block>
-  <block id="b1f115278eb622d0e0153250bf01cf4c" category="list-text">從 ONTAP 9.12.1 開始， NVMe 開始支援安全頻內驗證。您可以使用安全的頻內驗證來搭配 RHEL 9.5 使用 NVMe 。</block>
-  <block id="3b0bb03e8ddfc0fdfe70ebd97a424add" category="list-text">根據預設， RHEL 9.5 可為 NVMe 命名空間啟用核心內建 NVMe 多重路徑，無需明確設定。</block>
-  <block id="923d49c871b0aa57758a6ec2690cf467" category="paragraph">您可以使用下列程序來驗證最低支援的 RHEL 9.5 軟體版本。</block>
-  <block id="461e7f95e5f2d1eb8ac5995384e12da4" category="list-text">在伺服器上安裝 RHEL 9.5 。安裝完成後、請確認您執行的是指定的 RHEL 9.5 核心：</block>
   <block id="38f6bc852d1bbe27e299d387064a34e3" category="list-text">在 RHEL 9.5 主機上，請檢查 hostnqn 字串，網址為<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="81f52aae1ae4c5a7cdc70ef7d5def232" category="list-text">驗證的預期輸出是否<block ref="2daa99bd4c709cddaca678ef2050fb39" prefix=" " category="inline-code"></block>設置爲<block ref="eccbc87e4b5ce2fe28308fd9f2a7baf3" prefix=" " category="inline-code"></block>：</block>
-  <block id="330271c95537a2e849e0052ab0da4ef1" category="admonition">RHEL 9.5 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新修正。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="d8133302f3833708e05d2a65a4efe359" category="paragraph">從 ONTAP 9.12.1 開始，在 RHEL 9.5 主機和 ONTAP 控制器之間，透過 NVMe / TCP 和 NVMe / FC 支援安全頻內驗證。</block>
   <block id="710b53594e3ee110c5fc61ba3387e351" category="list-text">為 RHEL 9.5 主機產生 dhchap 金鑰。</block>
-  <block id="9e4ea029a49b7e7586107af115c15f41" category="paragraph">在採用 ONTAP 版本的 RHEL 9.5 上， NVMe 主機組態不存在已知問題。</block>
   <block id="eab7e959c5707439b9e2c1fe3e86d60c" category="sidebar">9.5</block>
   <block id="a4ac74af7c81edef10a1710e62ceadeb" category="paragraph"><block ref="59b466fd93164953e56bdd1358dc0044" prefix="" category="inline-code"></block>是您要新增至黑名單的本機 SCSI 磁碟。</block>
   <block id="e78866ae0ff845eed770c2b938efee3b" category="paragraph">請務必檢查<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案，尤其是在「預設值」區段中，以瞭解可能會覆寫預設設定的舊版設定。</block>
@@ -2309,7 +2099,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5148a3be25112ef6a9deea3e8d0967b3" category="paragraph">如需支援介面卡的目前清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
   <block id="f24defc0882455995b56894bb6c6c2fd" category="list-text">啟用1 MB I/O大小（選用）_。</block>
   <block id="5de1f1ffc4af04a7ba0c559424a84841" category="paragraph">此<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數必須設為 256 ，以便 lpfc 驅動程式發出高達 1MB 大小的 I/O 要求。</block>
-  <block id="f2869e809227203f20526542f378586c" category="paragraph">ONTAP 會在識別控制器資料中報告 8 的 MDTS （ MAX Data 傳輸大小）。這表示最大 I/O 要求大小最多可達 1MB 。若要針對 Broadcom NVMe / FC 主機發出大小為 1 MB 的 I/O 要求，您應該將參數值<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>從預設值 64 增加<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block>至 256 。</block>
   <block id="01f3b61694e835dc0ccae70425e4829e" category="list-text">確認的值<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>為 256 ：</block>
   <block id="22882a842ed3381cf11f4f74315c331a" category="summary">AIX 主機公用程式可協助您管理連接至 AIX 主機的 ONTAP 儲存設備。</block>
   <block id="d44d09aed881c51268051c872ad6bdc3" category="list-text">解壓縮檔案並解壓縮 SAN Toolkit 軟體套件：</block>
@@ -2459,28 +2248,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f2f6a040ad29f6c345ddd104e24abee1" category="paragraph">如果您打算在同一部 Oracle Linux 8.7 主機上同時執行 NVMe 和 SCSI 流量， NetApp 建議分別針對 ONTAP 命名空間使用核心內建 NVMe 多重路徑，以及針對 ONTAP LUN 使用 dm-multipath 。這也表示ONTAP 應在dm-multipaths中列入清單以防止dm-multipaths宣告這些命名空間裝置。您可以將設定新增至<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案來執行此<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block>作業：</block>
   <block id="35ab699d7bbda2407f40be5ed8a72b3f" category="list-text">NVMe 和 SCSI 流量都可以在同一部主機上執行。因此、對於 SCSI LUN 、您可以為 SCSI mpath 裝置設定 dm-multipath 、而您可以使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。</block>
   <block id="6f82546541bd2351e6feee43aea1d598" category="list-text">NVMe 和 SCSI 流量都可以在同一部主機上執行。因此、您可以為 SCSI LUN 設定 SCSI mpath 裝置的 dm-multipath 、而您可以使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。</block>
-  <block id="8e16a4d869f5b9ee4fa21c6af3e732b0" category="paragraph">從 ONTAP 9.6 開始， Red Hat Enterprise Linux （ RHEL ） 8.1 支援 NVMe / FC 。RHEL 8.1 主機可透過相同的 FC 啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。</block>
-  <block id="4e428101c25b019d4f4946071fd3d01a" category="paragraph">如需支援組態的目前清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="223706c7e9ef0ac1f0ddbfb231bf181c" category="paragraph">如需支援版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="beea3c4e3c5fbfba439b72dcf220fe49" category="list-text">確認您使用的是支援的介面卡。如需支援介面卡的目前清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="03fb735758548b3015135e0ea0a1c14a" category="paragraph">從 ONTAP 9.6 開始， Red Hat Enterprise Linux （ RHEL ） 8.2 支援 NVMe / FC 。RHEL 8.2主機透過相同的光纖通道（FC）啟動器介面卡連接埠、同時執行NVMe和SCSI流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。</block>
-  <block id="1a7e83a4fa525ff05912dfb78de303e1" category="list-text">從 RHEL 8.2 開始， NVMe 和 SCSI 流量都可以在同一部主機上執行。事實上、這是預期部署的主機組態。因此，對於 SCSI ，您可以像往常一樣為導致裝置的 SCSI LUN<block ref="9582f77d18d621414e37c3ce239d4688" prefix=" " category="inline-code"></block> 進行設定<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block>，而 NVMe 多重路徑則可用於在主機上設定 NVMe 多重路徑裝置。</block>
-  <block id="46b466fe232511c5a69707eb1a7926fb" category="paragraph">如果您打算在同一部 RHEL 8.2 主機上同時執行 NVMe 和 SCSI 流量， NetApp 建議分別針對 ONTAP 命名空間使用核心 NVMe 多重路徑，以及針對 ONTAP LUN 使用 dm-multipath 。您也應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將設定新增<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block>至<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>，如下所示。</block>
-  <block id="d33256d5564e8843c558a1de218e3aca" category="paragraph">從 ONTAP 9.6 開始， Red Hat Enterprise Linux （ RHEL ） 8.3 支援 NVMe / FC 。RHEL 8.3 主機透過相同的 FC 啟動器介面卡連接埠、同時執行 NVMe 和 SCSI 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。</block>
-  <block id="799e62743383fd575d7a03ef4defc7dc" category="paragraph">如果您打算在同一部 RHEL 8.3 主機上同時執行 NVMe 和 SCSI 流量， NetApp 建議您分別使用核心內建 NVMe 多重路徑來處理 ONTAP 命名空間，以及將 dm-multipath 用於 ONTAP LUN 。您也應該將ONTAP dm-multipaths中的等化命名空間列入黑名單、以防止dm-multipaths宣告這些命名空間裝置。您可以將設定新增至 /etc/multipath.conf 來執行此<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block>作業，如下所示：</block>
-  <block id="074fa27c64e5562d1b345a1c4cd50474" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 8.4 核心。如需支援版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="2575819b82d12e9109581acdab9442a5" category="paragraph">如果您打算在同一部主機上同時執行NVMe和SCSI共存的流量、建議您分別使用核心內建NVMe多重路徑ONTAP 來執行支援的名稱空間、ONTAP 以及使用dm-multipathon來執行支援的LUN。這表示ONTAP 應從dm-multipaths中排除支援的對象名稱空間、以避免dm-multipaths宣告這些命名空間裝置。您可以將啟用外部設定新增至檔案，以完成<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>此作業：</block>
-  <block id="0291a0822bb5dd2b6179be857b9300ae" category="list-text">請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="194b8efe84a01d8ae91b65d5c9768440" category="paragraph">如需支援組態的詳細資訊，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="0f6e5d4e4cffdc36c3a244971dc1178d" category="list-text">在伺服器上安裝 RHEL 8.5 GA 。安裝完成後、請確認您正在執行指定的 RHEL 8.5 GA 核心。如需支援版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="fba609b317d4914c01b3681145249ba3" category="list-text">在伺服器上安裝 RHEL 8.6 。安裝完成後、請確認您正在執行指定的 RHEL 8.6 核心。如需支援版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="1665fe2dc8c9c9734b202628b157044d" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 8.6 核心。如需支援版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="d3b63547e15e280c314ac1fe39850a0d" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 8.7 核心。如需支援版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="44a8c47b05a07b4fa6a9523abf0130ff" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 9.0 核心。如需支援版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="588f5d6038e63a5eace647418bf068c5" category="list-text">確認您使用的是支援的介面卡。如需支援介面卡的其他詳細資訊，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="ca36a54d51ae398f8edb29138f773280" category="list-text">請確認您使用的是建議的Broadcom lfit韌體和收件匣驅動程式。如需目前支援的介面卡驅動程式和韌體版本清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
   <block id="1ccb5475c6691d8e8fa59ba52bbd23c8" category="paragraph">如需支援組態的詳細資訊、請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
-  <block id="6b6952fce75024fe0de93da5bb0f8a7a" category="list-text">安裝完成後、請確認您正在執行指定的 RHEL 9.1 核心。如需支援版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
   <block id="b958a979fcafd5d5147f6e3445156806" category="paragraph">從 ONTAP 9.6 開始，下列版本的 SUSE Linux Enterprise Server 支援 NVMe / FC ：</block>
   <block id="0165be7cd394cccab7986599e1568438" category="paragraph">如需支援組態和版本的最新清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
   <block id="71482a8fcc1538bc1fdca1e59e767e06" category="list-text">確認您使用的是支援的介面卡。如需支援介面卡的目前清單，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
@@ -2851,19 +2619,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d7c1825e0f2407a4d10d399ac78c1f95" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 設定 RHEL 10</block>
   <block id="d7b201e34bf72ed2024522784d92bd59" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 10 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="0171e05f7a58a96089d554991286cd67" category="paragraph">您可以搭配 RHEL 10 使用多重路徑來管理 ONTAP LUN 。</block>
-  <block id="429ffdde936d5759e07807c3b66f38d2" category="summary">如何使用 ONTAP 設定適用於 RHEL 10 的 NVMe 主機</block>
-  <block id="cd64186b2c2cedea7d5dfd05d86304c6" category="doc">適用於 ONTAP 的 RHEL 10 NVMe 主機組態</block>
-  <block id="c0cd0678856b67d02b2dfc3c9646fac2" category="paragraph">您可以在 Red Hat Enterprise Linux （ RHEL ） 10 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="bf21bd2f7b624998085c3d69986dbe53" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 10 中使用 NVMe/TCP 的安全帶內驗證。</block>
-  <block id="4baea929c29e972312029711f923ecc9" category="list-text">從 RHEL 10 開始，本機 NVMe 多路徑始終處於啟用狀態，且不支援 NVMe-oF 的 DM 多路徑支援。</block>
   <block id="9ce1ac3eb326fa20a6e4cc846d38ef38" category="list-text">建立 SAN 啟動命名空間並將其對應到主機。</block>
   <block id="20cd59705d89627333024680d966bb16" category="inline-link">配置NVMe儲存設備</block>
   <block id="2ae5f54ecc4375d7e4bc5d4417d72e85" category="paragraph">請參閱。<block ref="0cb485556fb9e40c82f55474b807ef26" category="inline-link-rx"></block></block>
   <block id="80eb2a3788bc043e0e117027749a3b7a" category="list-text">在伺服器 BIOS 中為 SAN 啟動命名空間對應到的連接埠啟用 SAN 啟動。</block>
   <block id="8796e28d4a4ab01704a45b84e10299f3" category="section-title">步驟 2：驗證軟體版本</block>
-  <block id="bfa758a2fd039564c81329a71d8a55b8" category="paragraph">使用以下步驟驗證最低支援的 RHEL 10 軟體版本。</block>
-  <block id="8686219d94060c8bb51e3307818e48c4" category="list-text">在伺服器上安裝 RHEL 10 。安裝完成後、請確認您執行的是指定的 RHEL 10 核心：</block>
-  <block id="207b3f28e8aa21d614e81b31699e50bf" category="paragraph">以下範例顯示了 RHEL 核心版本：</block>
   <block id="fb47e45e6131ce8573db817dc34e3ba6" category="paragraph">下面的例子展示了<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>軟體包版本：</block>
   <block id="d14319cd9fe8bb3c15b66611ee50ab63" category="paragraph">下面的例子展示了<block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block>軟體包版本：</block>
   <block id="353615218a31d80048bde6c36a52f6d6" category="list-text">在主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> ：</block>
@@ -2885,10 +2645,8 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7ebd106b9b1cfecd3d6fb0451340153e" category="list-text">顯示子系統：</block>
   <block id="924a2d9478a76ff931a7b33da760a8aa" category="list-text">顯示策略：</block>
   <block id="33f7abd10cff2281a91b19ee32201623" category="section-title">步驟 8：設定安全帶內身份驗證</block>
-  <block id="3f2aed41975c4d98d941e8a7b03bf8e5" category="paragraph">從 ONTAP 9.12.1 開始，RHEL 10 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內驗證。</block>
   <block id="ffc19e5b6958faf88524a792e1c1635d" category="paragraph">每個主機或控制器必須與一個<block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block>金鑰來設定安全身份驗證。 <block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block>金鑰是 NVMe 主機或控制器的 NQN 與管理員配置的身份驗證金鑰的組合。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。</block>
   <block id="e50800c92fe482bd476da8e2b8778963" category="paragraph">使用 CLI 或設定 JSON 檔案設定安全帶內身份驗證。如果您需要為不同的子系統指定不同的 dhchap 金鑰、則必須使用組態 JSON 檔案。</block>
-  <block id="d1864d59ca252f6be1b9b7a1114e5ec4" category="list-text">為 RHEL 10 主機產生 dhchap 金鑰。</block>
   <block id="0d99f1978c6ac8e224f5b9429539befa" category="paragraph">使用<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block>選項來產生 JSON 檔案。如需更多語法選項，請參閱 NVMe Connect All 手冊頁。</block>
   <block id="aeafecb6e5d6ff8d736488ca4255a495" category="list-text">配置 JSON 檔案。</block>
   <block id="abf3e38be1e135b4689023b375f16aed" category="admonition">在以下範例中， <block ref="b4ccff4fcae86dd694df37690970d401" prefix=" " category="inline-code"></block>對應於<block ref="b564e1f3e83c3835c800589da9434401" prefix=" " category="inline-code"></block>和<block ref="7c5692629f37b2fc3b73d10ecb68180e" prefix=" " category="inline-code"></block>對應於<block ref="c74aa421e1eeec8a71897cfdbf55b4c4" prefix=" " category="inline-code"></block> 。</block>
@@ -2902,13 +2660,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5cecbf0e006813819e7ea0d92ccca8df" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。當您在 Red Hat Enterprise Linux （ RHEL ） 9.6 主機上安裝 Linux 主機公用程式時，可以使用主機公用程式來協助您管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="c655b9821bde0a911428a133bb7ef67f" category="paragraph">您可以搭配 RHEL 9.6 使用多重路徑來管理 ONTAP LUN 。</block>
   <block id="6cbcd68038ece1dbafa173add2c90697" category="summary">如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機</block>
-  <block id="fdee72360607bede29fc52844f306e62" category="paragraph">您可以在 Red Hat Enterprise Linux （ RHEL ） 9.6 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="770bddea589c1a8e5b2541551754b4e4" category="list-text">根據預設， RHEL 9.6 可為 NVMe 命名空間啟用核心內建 NVMe 多重路徑，無需明確設定。</block>
-  <block id="e118d7e4742cf0454d407a22991c4f23" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以在 RHEL 9.6 中使用 NVMe/TCP 的安全帶內驗證。</block>
-  <block id="3b6f23fb41215bfbde13af4b92268902" category="paragraph">使用以下步驟驗證最低支援的 RHEL 9.6 軟體版本。</block>
-  <block id="61e91ca529ce5516397f8af4ff223ab0" category="list-text">在伺服器上安裝 RHEL 9.6 。安裝完成後、請確認您執行的是指定的 RHEL 9.6 核心：</block>
   <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">以下範例顯示了 nvme-cli 軟體包版本：</block>
-  <block id="103bbc9741f09ef806d7d9f1ff8e4957" category="paragraph">從 ONTAP 9.12.1 開始，RHEL 9.6 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內驗證。</block>
   <block id="c76dae5432bc09fa983706505086692e" category="list-text">為 RHEL 9.6 主機產生 dhchap 金鑰。</block>
   <block id="eaf2f97729e8d5e4d205672da8afc9a5" category="sidebar">9.6</block>
   <block id="c90e2c8eff8de67c2e01d748085394db" category="list-text">驗證<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>文件存在。如果檔案不存在，請建立空白的零位元組檔案：</block>
@@ -2920,12 +2672,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="73dbe2792e643c8d49d1c396963179b8" category="inline-link-macro">建立 SAN 啟動 LUN 並將其對應到主機</block>
   <block id="23f9932633d90fac9929676a3d96b73c" category="list-text"><block ref="d3b050efbc8875625662ab7a3bc1d82e" category="inline-link-macro-rx"></block>。</block>
   <block id="55e68527d8c164dc338b18da64611305" category="admonition">您不需要設定核心型虛擬機器（ KVM ）設定，因為 ONTAP LUN 會自動對應至 KVM Hypervisor 。</block>
-  <block id="ca1309f891bafcb692fbf3149982c0e9" category="inline-link">建立 SAN 啟動命名空間並將其對應到主機</block>
-  <block id="e97e46892f962abb9d135b9f4260bb28" category="list-text"><block ref="5fb7de3d2a2b97d13727ed55244c1d34" category="inline-link-rx"></block>。</block>
   <block id="83946a5f9a0c9e6468d1616ca938bdd0" category="list-text">在 RHEL 主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> ：</block>
   <block id="43075b4ae15209d42a33c26736b1a616" category="list-text">在 Rocky Linux 主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> ：</block>
   <block id="5b65dc582fc3a54b76dad70a8f267f3f" category="paragraph">您可以使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 介面卡來設定 NVMe / FC 。您還需要手動發現 NVMe/TCP 子系統和命名空間。</block>
-  <block id="61b5a98a9fc13d3a4a8112007aef142d" category="admonition">Rocky Linux 核心中包含的原生內建 qla2xxx 驅動程式具有最新修復。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="59469b69c75b40a15b84cc48d2d1a5d4" category="paragraph">預期輸出為 1 。</block>
   <block id="255f7dd737c93c62e180bd5b0eb68abb" category="paragraph">您可以為配置了 Broadcom 適配器的 NVMe/FC 啟用 1MB 大小的 I/O 請求。 ONTAP在識別控制器資料中報告的最大資料傳輸大小 (MDTS) 為 8。這表示最大 I/O 要求大小最多可達 1MB 。要發出 1MB 大小的 I/O 請求，您需要增加<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數從預設值 64 更改為 256。</block>
   <block id="769454dbe77ed2cae45ab11f15c3cdfe" category="paragraph">從 ONTAP 9.12.1 開始，主機和 ONTAP 控制器之間透過 NVMe/TCP 和 NVMe/FC 支援安全帶內身份驗證。</block>
@@ -2964,152 +2713,33 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="60d78a670282f7a61eae67f19d440c37" category="paragraph">您可以使用 Rocky Linux 9.5 的多路徑來管理 ONTAP LUN。</block>
   <block id="b4d05655be91566f9bc3cf128c212819" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 9.6</block>
   <block id="ecb4bd3c426003f3430e774eac3ce2f6" category="paragraph">您可以使用 Rocky Linux 9.6 的多路徑來管理 ONTAP LUN。</block>
-  <block id="73f17c790fb6e615fc4015f793dd7853" category="summary">如何使用 ONTAP 儲存為 Rocky Linux 10 設定 NVMe-oF 主機</block>
-  <block id="95d56a95c4a46cb4d634d496d6e9b039" category="doc">使用 ONTAP 儲存為 NVMe-oF 設定 Rocky Linux 10</block>
-  <block id="0adc460f96fe4e3f2127561051d8615e" category="paragraph">您可以將以下支援和功能與 Rocky Linux 10 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="6611e2d11dfe627f04440281f705b6e8" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以使用 Rocky Linux 10 對 NVMe/TCP 進行安全帶內身份驗證。</block>
-  <block id="1b17124b24dbc39a0d7becfce134f36c" category="list-text">從 Rocky Linux 10 開始，本機 NVMe 多路徑始終處於啟用狀態，且不支援 NVMe-oF 的 DM 多路徑支援。</block>
-  <block id="6ea036c9f961aeb2208dfa3070bd3a2c" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 10 軟體版本。</block>
-  <block id="d82ff982ee38964fef1789b7031e01e7" category="list-text">在伺服器上安裝 Rocky Linux 10。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 10 核心：</block>
-  <block id="e3fbd13dfb8ea61b75afa9bbdecb654e" category="paragraph">以下範例顯示了 Rocky Linux 核心版本：</block>
-  <block id="594486d9bd4257ab1e26ff0ae5a35fed" category="paragraph">從 ONTAP 9.12.1 開始，Rocky Linux 10 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
-  <block id="a9c8004e9d1e07204938f2e404aa5aed" category="list-text">為 Rocky Linux 10 主機產生 dhchap 金鑰。</block>
   <block id="222d00f6dedce44fb4277bf5767839a3" category="summary">如何使用 ONTAP 為 Rocky Linux 8.10 設定 NVMe-oF 主機</block>
-  <block id="8e628a7900ccbcbe897613470b379397" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.10</block>
-  <block id="85c8cdeb7264230e3576dcdedf0caad5" category="paragraph">Rocky Linux 8.10 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="c264db98e31638c1a8a87666a604a58e" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.10 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="dcccf8a1b4217ccff67e37945ae5e664" category="list-text">對於 Rocky Linux 8.10 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="46fede53b7d1ee83fe8a87bd6ecb6b28" category="inline-link">Rocky Linux 8.10 發行說明</block>
-  <block id="9ddcffe2b5bcdcca37f41378bd6c4381" category="list-text">在 Rocky Linux 8.10 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="47fab428b8102b062e87d7a496d804cc" category="inline-link-rx"></block> 。</block>
-  <block id="d46cc0e0ee3c68f52f6d36c351129d8a" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.10 軟體版本。</block>
-  <block id="7510807cecede571c43031ae720a798c" category="list-text">在伺服器上安裝 Rocky Linux 8.10。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.6 核心：</block>
-  <block id="0819fa6cde25c22d102ee0a7adf88eec" category="section-title">步驟 5：設定 NVMe/TCP</block>
-  <block id="c9fd308128312c542567755665c5daf4" category="section-title">步驟 6：驗證 NVMe-oF</block>
   <block id="7aa8a009723869e0077d1b9c7c2f290b" category="section-title">步驟 7 ：檢閱已知問題</block>
-  <block id="5315051bad3c79e778c3721bb1d84a2c" category="paragraph">具有 ONTAP 的 Rocky Linux 8.10 的 NVMe-oF 主機配置有以下已知問題：</block>
   <block id="a11f845df28a0287efbe676d4569a11b" category="cell">Rocky Linux 8.10 NVMe-oF 主機建立重複的持久發現控制器</block>
-  <block id="79342b66ce0b3b109cfdb66b5a341d0f" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.10，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
   <block id="200f9314bb04c0424d3c67a467844971" category="summary">如何使用 ONTAP 為 Rocky Linux 8.4 設定 NVMe-oF 主機</block>
-  <block id="b98c3ab1117113f8763443775e07dead" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.4</block>
-  <block id="4f12792386d05508f13ace15f7e59b85" category="paragraph">Rocky Linux 8.4 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="2c89af6ab4363b71fc42e24987b4973d" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.4 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="fd8c87b26ab96a99f138d63b24cba7c1" category="list-text">對於 Rocky Linux 8.4 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="57435656bb50b9c00a00430b972d3fdf" category="inline-link">Rocky Linux 8.4 發行說明</block>
-  <block id="4ffa3ebd23b62aecb45b930ba9555c65" category="list-text">在 Rocky Linux 8.4 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="2a17fbed2340943dd5ec68e4ca7512c3" category="inline-link-rx"></block> 。</block>
-  <block id="ea55a5cb337f262d1971ff2eef04508d" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.4 軟體版本。</block>
-  <block id="ec2181acb237ce00035e0613f097d0ca" category="list-text">在伺服器上安裝 Rocky Linux 8.4。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.4 核心：</block>
-  <block id="8339e0de02e908b9d22d68001692825d" category="paragraph">帶有 ONTAP 版本的 Rocky Linux 8.4 上的 NVMe-oF 主機配置沒有已知問題。</block>
   <block id="23a1570197793cedbad374c67a7107c0" category="summary">如何使用 ONTAP 為 Rocky Linux 8.5 設定 NVMe-oF 主機</block>
-  <block id="fe62864e17ae35435cb1bd029a48b198" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.5</block>
-  <block id="cab6b10f41d1fcbd48aee28f43ba11e8" category="paragraph">Rocky Linux 8.5 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="c0d7d1447e97ceac0585e2b01811be28" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.5 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="54f4647cbb6172c0ad1ab3cf12b032cf" category="list-text">對於 Rocky Linux 8.5 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="054e513aa4940f2bd0268fdfceca2842" category="inline-link">Rocky Linux 8.5 發行說明</block>
-  <block id="b7d1751b18b73c8e88858d5d4775f559" category="list-text">在 Rocky Linux 8.5 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="6334192d64a3a2e96b74c4d9684a48e9" category="inline-link-rx"></block> 。</block>
-  <block id="df96769874d4c9dbda21427b70785532" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.5 軟體版本。</block>
-  <block id="83423a9254d95179df87f66a8c191a7b" category="list-text">在伺服器上安裝 Rocky Linux 8.5。安裝完成後，驗證您執行的是指定的 Rocky Linux 8.5 核心：</block>
-  <block id="fc14ce7599aa7cd808d8b453fe4576ac" category="paragraph">帶有 ONTAP 版本的 Rocky Linux 8.5 上的 NVMe-oF 主機配置沒有已知問題。</block>
   <block id="28fa950d7bb5ed27988b7b903d6758bb" category="summary">如何使用 ONTAP 為 Rocky Linux 8.6 設定 NVMe-oF 主機</block>
-  <block id="731e49e4b7f038e10007118817aa3208" category="doc">為 ONTAP 儲存配置帶有 NVMe-oF 的 Rocky Linux 8.6</block>
-  <block id="99386c68c131c2c0226f1d0fbfea8fbd" category="paragraph">Rocky Linux 8.6 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="180356a6fba90baca127157cd761f3fb" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.6 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="09ab4917eb1810647094e83ab60779ca" category="list-text">對於 Rocky Linux 8.6 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="e7e49cf8fccf3c12dc036caaaaf0dada" category="inline-link">Rocky Linux 8.6 發行說明</block>
-  <block id="90faee298dba82f1ebd942e4153d68b7" category="list-text">在 Rocky Linux 8.6 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="5a58ce93441eb12ea0edf37566d2c8be" category="inline-link-rx"></block> 。</block>
-  <block id="d3080448660c547e2fe83a242512ae71" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.6 軟體版本。</block>
-  <block id="18e838a3626451c6faff91c27f20d56b" category="list-text">在伺服器上安裝 Rocky Linux 8.6。安裝完成後，驗證您執行的是指定的 Rocky Linux 8.6 核心：</block>
-  <block id="69b0be8d747936b2b5465fe4b57ddfdf" category="paragraph">具有 ONTAP 的 Rocky Linux 8.6 的 NVMe-oF 主機配置有以下已知問題：</block>
   <block id="10941bbc35cc1d748498953a221e9b38" category="cell">Rocky Linux 8.6 NVMe-oF 主機建立重複的持久發現控制器</block>
-  <block id="a883fd44cbff0b861d15b8136a3952f4" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 ONTAP 9.10.1 和 Rocky Linux 8.6，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
   <block id="7b5fa3004cbc3003a3262683ec6c65cc" category="summary">如何使用 ONTAP 為 Rocky Linux 8.7 設定 NVMe-oF 主機</block>
-  <block id="ed03e9560c294d3ddc83cba29fba4b05" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.7</block>
-  <block id="969737c5049b17a5654a19dd3a43afbc" category="paragraph">Rocky Linux 8.7 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="53d262d878919873c5cb3f4e6985d831" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.7 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="45db8b6cf55c39bce94424f2ddb798e3" category="list-text">對於 Rocky Linux 8.7 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="e5d41b287558420b1da193ecbe60cc50" category="inline-link-macro">Rocky Linux 8.7 發行說明</block>
-  <block id="3bc1130ce3e680520898e40ac7959fa2" category="list-text">在 Rocky Linux 8.7 主機上，由於存在一些未解決的問題，NVMe/TCP 仍處於技術預覽階段。請參閱<block ref="d32810211fa0fabac0569c4390e790dc" category="inline-link-macro-rx"></block>了解詳情。</block>
-  <block id="7e4a70bbcd93eaa6141e87546c6f1f21" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.7 軟體版本。</block>
-  <block id="f5ee36bf3ec3b3e921b0b7e9d925b748" category="list-text">在伺服器上安裝 Rocky Linux 8.7。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.7 核心：</block>
-  <block id="7a6a40bc5a4685658e1d343ed9b9dd39" category="cell">Rocky Linux 8.7 NVMe-oF 主機建立重複的持久發現控制器</block>
-  <block id="6d6607f7b41bf491341b99d0537f3629" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 ONTAP 9.10.1 和 Rocky Linux 8.7，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
   <block id="47ec11f02f0c8839abe0813debc4f014" category="summary">如何使用 ONTAP 為 Rocky Linux 8.8 設定 NVMe-oF 主機</block>
-  <block id="c4b8d1690b30d457411a155632154e0f" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.8</block>
-  <block id="6f343957984f9d2eb78e0f01ea024112" category="paragraph">Rocky Linux 8.8 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="256f058874befacad0f6f9566228e7d6" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.8 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="8a14068da00827a35251d7ba986f9103" category="list-text">對於 Rocky Linux 8.8 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="159be813da4c10f2d5745d1aad3f34dc" category="inline-link">Rocky Linux 8.8 發行說明</block>
-  <block id="d48c8e0613a3d2462bab37e061f9c99a" category="list-text">在 Rocky Linux 8.8 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="c94cc770975ea6cce699ff8f723c184b" category="inline-link-rx"></block> 。</block>
-  <block id="e52751aedc7ac7fdc35e859dec9d1a84" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.8 軟體版本。</block>
-  <block id="dd66f0672670077d5170dcb95b0cace0" category="list-text">在伺服器上安裝 Rocky Linux 8.8。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.8 核心：</block>
   <block id="9d0224a2f615424bba089d74a7227ebe" category="cell">Rocky Linux 8.8 NVMe-oF 主機建立重複的持久發現控制器</block>
-  <block id="4e8203cb1c6fbcc8f8c247946196d38e" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.8，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
   <block id="918e5346ad0239cf9b9c61db20bf484c" category="summary">如何使用 ONTAP 為 Rocky Linux 8.9 設定 NVMe-oF 主機</block>
-  <block id="c4cb2a6f173b95d0c4f67c8f96f7534b" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 8.9</block>
-  <block id="8e81ec9f25b772637f16944133db022c" category="paragraph">Rocky Linux 8.9 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="6e06dba9b7fe75fff25b335a9ecd497e" category="paragraph">您可以將以下支援和功能與 Rocky Linux 8.9 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="f23ce81eebb3426d889da5f6ca6f568b" category="list-text">對於 Rocky Linux 8.9 NVMe-oF 主機，核心 NVMe 多路徑預設為停用。因此、您需要手動啟用。</block>
-  <block id="decc234e2e25bcd439c62a6924b45e43" category="inline-link">Rocky Linux 8.9 發行說明</block>
-  <block id="e035f49458f62168d6a4c971dfb2508d" category="list-text">在 Rocky Linux 8.9 主機上，由於存在未解決的問題，NVMe/TCP 是一項技術預覽功能。如需詳細資訊、請參閱<block ref="940755a456f09b2cfde71703a8e286af" category="inline-link-rx"></block> 。</block>
-  <block id="74ba8ad92ae4c2a3b720f451f30601ab" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 8.9 軟體版本。</block>
-  <block id="94bace38b58b938918367d0c3cc6eaa5" category="list-text">在伺服器上安裝 Rocky Linux 8.9。安裝完成後，請驗證您是否正在執行指定的 Rocky Linux 8.9 核心：</block>
   <block id="4c6f9e46e9e7dc5d30fea3fe515730e0" category="cell">Rocky Linux 8.9 NVMe-oF 主機建立重複的持久發現控制器</block>
-  <block id="0dbf100b5d804fe4caf4da2b664b2afa" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.9，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
   <block id="f69e78a8431382f8f2ff25b30ad11ba3" category="summary">如何使用 ONTAP 為 Rocky Linux 9.0 設定 NVMe-oF 主機</block>
-  <block id="3031a6683c69d81249fa58f63e1d9e07" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.0</block>
-  <block id="e31a3bbcdce6caad6e848512cf31530f" category="paragraph">Rocky Linux 9.0 主機支援 NVMe/FC 和 NVMe/TCP 協議，並支援非對稱命名空間存取 (ANA)。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，是透過核心 NVMe 多路徑功能實現的。</block>
-  <block id="b81970d4f1aac579c43532a6541b65f8" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.0 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="607045456dfb12bc04d3522b1f874865" category="list-text">Rocky Linux 9.0 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
-  <block id="6cb5085ae04cfea89d334f12d091d300" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.0 軟體版本。</block>
-  <block id="57bec5364d8813b80d9ba8cbbe9cb4ed" category="list-text">在伺服器上安裝 Rocky Linux 9.0。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.0 核心：</block>
   <block id="d89f68cec4fde8cdd4a14a4ef45a06f6" category="cell">Rocky Linux 9.0 NVMe-oF 主機建立重複的持久發現控制器</block>
-  <block id="ff01f1039161c2b6b5ea51efcfc04188" category="cell">在NVMe over Fabrics（NVMe）主機上、您可以使用「NVMe Discover-p」命令來建立持續探索控制器（PD）。使用此命令時、每個啟動器目標組合只能建立一個PDC。但是，如果您在 NVMe-oF 主機上執行 ONTAP 9.10.1 和 Rocky Linux 9.0，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上的資源使用不必要。</block>
   <block id="29af8d1042b30a5ba249a12d6db4fc61" category="summary">如何使用 ONTAP 為 Rocky Linux 9.1 設定 NVMe-oF 主機</block>
-  <block id="459e7abdd281255af78f1e72bc455c23" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.1</block>
-  <block id="0dfa9a7d24501e1c4aafaba720bcdd20" category="paragraph">Rocky Linux 9.1 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="71bceb39747a320dfdde9ed4ba485664" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.1 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="23dd49f82b27ef244f37aee158baf33e" category="list-text">Rocky Linux 9.1 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
-  <block id="adfdcaae3a69aa1a3f89a3a550b3e16b" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.1 軟體版本。</block>
-  <block id="ae7b811595439cd8cfc0f414a032e104" category="list-text">在伺服器上安裝 Rocky Linux 9.1。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.1 核心：</block>
   <block id="97d2b9aba8be20cadd2e121636e33e94" category="cell"><block ref="f3d48156832e70ac41335c007fa76798" prefix="" category="inline-code"></block>命令傳回給定子系統列出的重複的 NVMe 控制器</block>
   <block id="b68755a212f05b7fd208d599e6c87bde" category="cell">這<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>命令應傳回與給定子系統關聯的 NVMe 控制器的唯一清單。在 Rocky Linux 9.1 中， <block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>此指令會傳回屬於指定子系統的所有命名空間的 NVMe 控制器及其各自的 ANA 狀態。但是，ANA 狀態是每個命名空間的屬性，因此，如果您列出給定命名空間的子系統指令語法，則應該顯示具有路徑狀態的唯一 NVMe 控制器條目。</block>
   <block id="88b5ad79d4202975070e7a14f54943ed" category="summary">如何使用 ONTAP 為 Rocky Linux 9.2 設定 NVMe-oF 主機</block>
-  <block id="85c64415b5d598f73c6e847a0d77410b" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.2</block>
-  <block id="e3692d133b287428ed899012d278dcda" category="paragraph">Rocky Linux 9.2 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="0709e6e65dd199a6186a638123174eb6" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.2 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="9fe2171ff825eeae99977b246486ab45" category="list-text">Rocky Linux 9.2 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
-  <block id="67d55e75a94efcc45736cc2f3005df0a" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.2 軟體版本。</block>
-  <block id="aafcc0ab42ecf88d7324e3d1846a32f6" category="list-text">在伺服器上安裝 Rocky Linux 9.2。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.2 核心：</block>
   <block id="83fa364538f4cac4c88dd64c121c63f0" category="summary">如何使用 ONTAP 為 Rocky Linux 9.3 設定 NVMe-oF 主機</block>
-  <block id="5d2b9a878794488507acc5f9357b82a0" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.3</block>
-  <block id="ceea4faa2a523b50b23f09456e8f2b21" category="paragraph">Rocky Linux 9.3 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="11c1761f4dde8eab6ffa9e7154617c1a" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.3 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="010c3b777e508a607c8f39ab91ec1128" category="list-text">Rocky Linux 9.3 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
-  <block id="c46e4a14e05a675d4ae1d9f257e2ba34" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.3 軟體版本。</block>
-  <block id="d5bbf51ec330863d1ccc5503b65c3524" category="list-text">在伺服器上安裝 Rocky Linux 9.3。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.3 核心：</block>
   <block id="2441617d277c4f79e18a934101ee4495" category="summary">如何使用 ONTAP 為 Rocky Linux 9.4 設定 NVMe-oF 主機</block>
   <block id="80da56795c34c574eef35bf2da92aadc" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.4</block>
-  <block id="54a0478f5c2c3d3d1764051d125e32d5" category="paragraph">Rocky Linux 9.4 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="93662bdab777129c11baf70f652cdfd2" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.4 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="de4920db6ed57af93eae69e1fbc5ea8e" category="list-text">Rocky Linux 9.4 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
-  <block id="53046fddde2a2d460ce72f8252c37d97" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.4 軟體版本。</block>
   <block id="a0d9f55046993dfcf93d5c6ff3dfb996" category="list-text">在伺服器上安裝 Rocky Linux 9.4。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.4 核心：</block>
   <block id="3e6b663dba2b6902083525e800d7dd95" category="summary">如何使用 ONTAP 為 Rocky Linux 9.5 設定 NVMe-oF 主機</block>
-  <block id="67ece1bbad231b0b59e17bc01e23f7e0" category="doc">使用 NVMe-oF 為 ONTAP 儲存配置 Rocky Linux 9.5</block>
-  <block id="ec299f59585f77b9058a264fa7db5713" category="paragraph">Rocky Linux 9.5 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 和 NVMe/TCP 協定。 ANA相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑，並使用核心 NVMe 多路徑功能實現。</block>
-  <block id="49a87e259c17e1ec85b982e20d8ee89f" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.5 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="e895eafc85f1ab6f7089bac854ff13ef" category="list-text">從 ONTAP 9.12.1 開始，您可以使用 Rocky Linux 9.5 對 NVMe-oF 進行安全帶內身份驗證。</block>
-  <block id="88009a7e4f8c0e41f21ef4110cfa1d17" category="list-text">Rocky Linux 9.5 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
-  <block id="42f338e7a67b898d8724af87a7eafa47" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.5 軟體版本。</block>
-  <block id="e0099a38b3f447f8615155f10805bd03" category="list-text">在伺服器上安裝 Rocky Linux 9.5。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.5 核心：</block>
   <block id="0148f17cc04647b8533a3c01ec3b7393" category="section-title">步驟 7：設定安全帶內身份驗證</block>
   <block id="dd181852761e35c13f645a9f053c77c7" category="section-title">步驟 8 ：檢閱已知問題</block>
   <block id="cf2e09333e9b9de1b169b6c32eeff962" category="summary">如何使用 ONTAP 為 Rocky Linux 9.6 設定 NVMe-oF 主機</block>
   <block id="331d7a0b82cb882efa5b3b430281a9d8" category="doc">使用 ONTAP 儲存為 NVMe-oF 設定 Rocky Linux 9.6</block>
-  <block id="470d036f1186ddd5fa5cd71478e6f05c" category="paragraph">您可以將以下支援和功能與 Rocky Linux 9.6 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。</block>
-  <block id="59188a56ae080a58348d66924900e8da" category="list-text">Rocky Linux 9.6 預設為 NVMe 命名空間啟用核心 NVMe 多路徑，無需明確設定。</block>
-  <block id="4ddb6dd0b1c0f78cd4fe39e69f93616c" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以使用 Rocky Linux 9.6 對 NVMe/TCP 進行安全帶內身份驗證。</block>
-  <block id="2f7acc3e67a351a5288af0031f2b39b0" category="paragraph">使用以下步驟驗證最低支援的 Rocky Linux 9.6 軟體版本。</block>
-  <block id="befda5dfe1dca92c182f569e3a267615" category="list-text">在伺服器上安裝 Rocky Linux 9.6。安裝完成後，驗證您執行的是指定的 Rocky Linux 9.6 核心：</block>
   <block id="d4454d1f91fdbee65b5b084bbf2c935c" category="paragraph">從 ONTAP 9.12.1 開始，Rocky Linux 9.6 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
   <block id="e5f095ea13bd0114b461048aa3c82608" category="list-text">為 Rocky Linux 9.6 主機產生 dhchap 金鑰。</block>
   <block id="9b26e38834ec2f2df9641c2b954ff579" category="doc">使用 ONTAP 儲存為 NVMe-oF 設定 RHEL 9.5</block>
@@ -3458,16 +3088,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3bac8ca72c0f8c144860e88aac75a1eb" category="paragraph">從 Oracle Linux 9.4 開始，NVMe/TCP 的設置<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>自動設定為“關閉”。因此：</block>
   <block id="21bbf4b57a95bba01a12c2b3bf2ce488" category="paragraph">從 ONTAP 9.12.1 開始，Oracle Linux 9.5 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
   <block id="5e6b9d21bf7f0ca26372e62301cfb233" category="list-text">為 Linux 主機產生 dhchap 金鑰。</block>
-  <block id="fb6678ea50cc87decdbcd2c48c0f594f" category="list-text">此版本中沒有新功能。</block>
   <block id="1838aef895ac5272f6222dbabc057df3" category="list-text">避免發布<block ref="de5ac85ea45047f4dbeea79d7b729b7d" prefix=" " category="inline-code"></block>命令，因為它會斷開根檔案系統和資料檔案系統的連接，並可能導致系統不穩定。</block>
-  <block id="f3e7be572062257b30aaa835617e738d" category="paragraph">使用 RHEL 9.6， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用這些軟體包。</block>
   <block id="383a7f0b627766628c1401340e5c41da" category="paragraph">從 RHEL 9.4 開始，NVMe/TCP 的設置<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>自動設定為“關閉”。因此：</block>
-  <block id="379a951035f282c9e2ac4ae9a1f597e5" category="paragraph">使用 Rocky Linux 10， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，這些軟體包會自動啟用。</block>
   <block id="074a67ebd91595adc758b4c88e040371" category="paragraph">從 Rocky Linux 9.4 開始，NVMe/TCP 的設置<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>自動設定為“關閉”。因此：</block>
-  <block id="c8e22b2226cedbe13c19b077e984a280" category="paragraph">使用 Rocky Linux 9.6， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，這些軟體包會自動啟用。</block>
   <block id="bbe83218e80933d7323a91068298993f" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以使用 Oracle Linux 9.4 對 NVMe/TCP 進行安全帶內身份驗證</block>
   <block id="f02516212fea2d7fc04b5ea71f9fe66c" category="paragraph">從 ONTAP 9.12.1 開始，Oracle Linux 9.4 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
-  <block id="f488aac6b02d1458f1cf7e7c07747bd5" category="paragraph">使用 RHEL 10， <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用這些軟體包。</block>
   <block id="4588ab094dff9b2456ca757278cf07ed" category="sidebar">Oracle Linux 9</block>
   <block id="73ab7233c5edabec8f510d9bf8812cd1" category="sidebar">Oracle Linux 8</block>
   <block id="1b7514bd57f9cc1b09f9148e93151331" category="sidebar">Oracle Linux 7</block>
@@ -3476,7 +3101,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="ae032d5b125754c1697aed6e1d8f7432" category="list-text">從 ONTAP 9.12.1 開始，引入了對 NVMe/TCP 的安全帶內身份驗證的支援。您可以將 NVMe/TCP 的安全帶內身份驗證與 Oracle Linux 9.5 結合使用。</block>
   <block id="42cbea0085bea3ec5496d092c502217b" category="paragraph">使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 適配器配置 NVMe/FC。</block>
   <block id="0f2332cb3d4b010b45d6eb9fbbeab96c" category="list-text">在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 上的 SCSI mpath 裝置設定 dm-multipath，並使用 NVMe multipath 在主機上設定 NVMe-oF 命名空間裝置。</block>
-  <block id="c28f1c588b284418e1f1f45095861195" category="list-text">在同一部主機上執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 上的 SCSI mpath 裝置設定 dm-multipath，並使用 NVMe multipath 在主機上設定 NVMe-oF 命名空間裝置。</block>
   <block id="7b041227be300a97269b0c517c4d8a5c" category="paragraph"><block ref="b5c9ec30dafc3cdd07e22705d3fd28f9" prefix="" category="inline-code"></block></block>
   <block id="654a0efc10421b3fc1ee44ca772778aa" category="summary">在 SUSE Linux Enterprise Server 15 SP7 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。</block>
   <block id="870d83d0bc4a1d675ccc1013c75b6763" category="doc">為 FCP 和 iSCSI 設定 SUSE Linux Enterprise Server 15 SP7 搭配 ONTAP 儲存設備</block>
@@ -3518,11 +3142,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="ffc899321bb51e568ff27d8d67516b4a" category="section-title">步驟 11 ：檢閱已知問題</block>
   <block id="0f0224190f0b6b918a5e9d02a89ece08" category="sidebar">15 SP7.</block>
   <block id="3207068e1112e1d7bf44793a16243167" category="paragraph">NVMe/TCP 協定不支援自動連線操作。您可以透過手動執行 NVMe/TCP connect 或 connect-all 操作來發現 NVMe/TCP 子系統和命名空間。</block>
-  <block id="f9373bf6fb792b7c646f5bec24ea0daf" category="paragraph">具有ONTAP儲存的 Rocky Linux 8.7 的 NVMe-oF 主機配置有以下已知問題：</block>
-  <block id="de90af9b7865f783dbab0561bc93777d" category="paragraph">帶有ONTAP儲存版本的 Rocky Linux 8.8 的 NVMe-oF 主機配置有以下已知問題：</block>
-  <block id="cd55e97345547906b5919126d046528a" category="paragraph">帶有ONTAP儲存版本的 Rocky Linux 8.9 的 NVMe-oF 主機配置有以下已知問題：</block>
-  <block id="aa941996691732f26e58432a0029389e" category="paragraph">具有ONTAP儲存的 Rocky Linux 9.0 的 NVMe-oF 主機配置有以下已知問題：</block>
-  <block id="12ac068aa4dcbbc35048b05dc3d74e3f" category="paragraph">具有ONTAP儲存的 Rocky Linux 9.1 的 NVMe-oF 主機配置有以下已知問題：</block>
   <block id="ae57893456ba890d9be313f45c89b49a" category="list-text">驗證ONTAP LUN 的路徑狀態：</block>
   <block id="e74cde91767e734e99cfb172af811316" category="paragraph">以下範例輸出顯示ASA、 AFF或FAS配置中ONTAP LUN 的正確路徑狀態。</block>
   <block id="9376575465ca90697f172c2aeaf3187c" category="paragraph">ASA配置最佳化了到給定 LUN 的所有路徑，使其保持活動狀態（「主要」）。透過同時透過所有路徑提供 I/O 操作，可以提高效能。</block>
@@ -4057,4 +3676,299 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="de3b6129e1e522c8f5cf6e37ce4b9f22" category="paragraph">在 RHEL、SUSE Linux Enterprise Server 或 Oracle Linux 主機上安裝 Linux Host Utilities 8.0：</block>
   <block id="b9e9a39780b968851bca7471c4bdb04f" category="list-text">在 Ubuntu 主機上安裝 Linux Host Utilities 8.0：</block>
   <block id="50a27e0ec26dfc22ecff73b4716eee33" category="list-text">手動將 Ubuntu 作業系統連結到 HBA 庫：</block>
+  <block id="ea6fc538363b79ec9dcde53b8eb6cebd" category="paragraph">您可以設定主機以使用 SAN 啟動來簡化部署並提高可擴充性。使用<block ref="1ed2ba1980a264d01ab3597cde177180" category="inline-link-macro-rx"></block>驗證您的 Linux 作業系統、主機匯流排適配器 (HBA)、HBA 韌體、HBA 啟動 BIOS 和ONTAP版本是否支援 SAN 啟動。</block>
+  <block id="cc1e0ea3a190973972e5f85fe71ffcf1" category="inline-link">建立 NVMe 命名空間並將其對應到主機</block>
+  <block id="9198b47fa48bb022a24bc306806b669b" category="list-text"><block ref="e477ae587472cb821a619d8051eab7f7" category="inline-link-rx"></block> 。</block>
+  <block id="dab46064e9979aa768e2502ebac43ae8" category="list-text">重新啟動主機並驗證作業系統是否已啟動並正在運行。</block>
+  <block id="8cca30c00d7b58ae82ba68619e441b9d" category="paragraph">使用 Broadcom/Emulex 或 Marvell/QLogic 適配器配置 NVMe/FC，或使用手動發現和連接操作來設定 NVMe/TCP。</block>
+  <block id="7f66da3657150fb15d4ce789097de757" category="open-title">FC——Broadcom/Emulex</block>
+  <block id="1851c869c2022530f362076901f3518b" category="paragraph">該命令返回韌體版本：</block>
+  <block id="0c02fc6122d793747240a4748a7b0870" category="open-title">FC——Marvell/QLogic</block>
+  <block id="b136ef5f6a01d816991fe3cf7a6ac763" category="open-title">TCP</block>
+  <block id="55b681d5bd903c1879888f64f2c2071a" category="paragraph">NVMe/TCP 協定不支援自動連線操作。相反，您可以透過執行 NVMe/TCP 來發現 NVMe/TCP 子系統和命名空間<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block>或者<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>手動操作。</block>
+  <block id="0e16c4ea2d6c980325dad5dad20b303f" category="list-text">檢查啟動器連接埠是否可以跨支援的 NVMe/TCP LIF 取得發現日誌頁面資料：</block>
+  <block id="c66e8f141f367b0a5a1d201cc49ccc72" category="paragraph">ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block>的價值<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數從預設值 64 更改為 256。</block>
+  <block id="cfa5b6e557299c1ae7c635f08785f365" category="paragraph">Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。</block>
+  <block id="e8584093909cb01d1e4390beaad82a5f" category="paragraph">這<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，軟體包會自動啟用。</block>
+  <block id="38ebfab3a4661e076a180498de8db502" category="paragraph">檢查您的系統是否符合軟體要求並驗證 NVMe 套件安裝和主機配置。</block>
+  <block id="660bcc8bfdb485b79b7dede726eb2358" category="doc">了解如何使用 NVMe-OF 配置ONTAP SAN 主機</block>
+  <block id="be1e5922c13f8cd92deb77a78a07375f" category="paragraph">您可以設定支援的 SAN 主機以使用 NVMe over Fabrics (NVMe-oF) 協定並以ONTAP作為儲存目標。 NVMe-oF包括光纖通道上的NVMe（NVMe/FC）和TCP上的NVMe（NVMe/TCP）。根據您的主機作業系統和ONTAP版本，您可以在主機上設定和驗證 NVMe/FC 或 NVMe/TCP 協議，或兩者。</block>
+  <block id="b0e0bd8207ba62457f58c3e06f3f7bec" category="section-title">ONTAP支援和功能</block>
+  <block id="c083727c571f8ac1566efd9a6c818983" category="paragraph">下表顯示了ONTAP版本和 SAN 主機作業系統支援的ONTAP功能：</block>
+  <block id="0a0891df749e36f8a1da70eeb7191ff8" category="cell">ONTAP功能</block>
+  <block id="aefa7649e1e29e479910b089b2d642d0" category="cell">支援的 SAN 主機</block>
+  <block id="3b2a75ebc087c7f3c4fa9ac0e2a92ebe" category="cell">ONTAP 版本</block>
+  <block id="b48dd7b275ed5be01568bf3fea421774" category="cell">*NVMe/TCP 的安全帶內身份驗證*</block>
+  <block id="f50ad339a2fcf7aedfe431f3ae3ef107" category="list-text">RHEL 10.0</block>
+  <block id="1080847e44693bff1e1d0a62e357d97c" category="list-text">RHEL 9.6、9.5</block>
+  <block id="aafcc7be030d124544f5c9bee1ca41f2" category="list-text">Rocky Linux 10.0</block>
+  <block id="bae2f5c72217fa9eb5a4c27196e340f0" category="list-text">Rocky Linux 9.6、9.5</block>
+  <block id="84de463f38d2bd8631492023d51c423f" category="cell">從 9.12.1 開始支持</block>
+  <block id="205c456d8edaaf80b1bc352753ffc7fc" category="cell">*除了 NVMe/FC 之外，還有 NVMe/TCP* 使用本機提供 NVMe/FC 和 NVMe/TCP 命名空間的ONTAP詳細信息<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>包裹。</block>
+  <block id="45b0d7be0acab674ffba143dc3e0a918" category="list-text">RHEL 9.6、9.5、9.4、9.3、9.2、9.1</block>
+  <block id="2cb74808d6693532821746fc716c0381" category="list-text">RHEL 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.8、8.2</block>
+  <block id="91b91776d78f74933e5f5858c59366ac" category="list-text">Rocky Linux 9.6、9.5、9.4、9.3、9.2、9.1</block>
+  <block id="396f6ca2135cbfa76729310561aa4ba9" category="list-text">Rocky Linux 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.8、8.2</block>
+  <block id="6eddaf2e77d53e1283b1daab6a61df94" category="cell">從 9.10.1 開始支持</block>
+  <block id="7ac6c334971283da5d076b1534b082f3" category="cell">*NVMe/TCP 是一項完全支援的企業功能*</block>
+  <block id="80178f74d6b9fce071b5b0f0b6274d65" category="list-text">RHEL 9.6、9.5、9.4、9.3、9.2、9.1、9.0</block>
+  <block id="fd40da61045ca76b0b52080a584e5391" category="list-text">Rocky Linux 9.6、9.5、9.4、9.3、9.2、9.1、9.0</block>
+  <block id="f18c7176c7f79f5ffbf2b78c9429be7f" category="cell">*在同一主機上支援 NVMe 和 SCSI 流量* 對 SCSI LUN 使用 dm-multipath，對 NVMe-oF 命名空間使用 NVMe multipath。</block>
+  <block id="8e4e5423889b9c96a5f9389d54c74f97" category="list-text">RHEL 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.3、8.2</block>
+  <block id="60c189e08484a64fff69b7a79b4563f6" category="list-text">Rocky Linux 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.3、8.2</block>
+  <block id="31e59474dea301e167fa6ede6c6a33e1" category="cell">從 9.4 開始支持</block>
+  <block id="eb74a6c58611be9f641b975602744854" category="paragraph">無論您的系統設定上執行的ONTAP版本為何， ONTAP支援以下 SAN 主機功能：</block>
+  <block id="74b948fb40f71fa2ceaff2854cb6a302" category="cell">*本機 NVMe 多路徑始終處於啟用狀態* ONTAP不支援 NVMe-oF 的裝置映射器 (DM) 多路徑。</block>
+  <block id="544512b3b597000544bd5bf828c0a760" category="cell">*使用 NVMe/FC 協定進行 SAN 啟動*</block>
+  <block id="98aa5d7769ae8d6ef5341d2a326a7959" category="list-text">RHEL 9.6、9.5、9.4</block>
+  <block id="66a70875b9c109ad80588f8942c780d8" category="list-text">Rocky Linux 9.6、9.5、9.4</block>
+  <block id="343115f4d9e53080ec64de12f9f6cfd2" category="cell"><block ref="e1667929105bf030b9f367fc21f8d216" prefix="*" category="inline-code"></block>套件包括自動連接腳本*您不需要第三方腳本。</block>
+  <block id="0c3c8d0b4f3ef98adbe43f1114adb219" category="cell">*本機 udev 規則<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>包* 為 NVMe 多路徑提供循環負載平衡。</block>
+  <block id="06b82420e8e8aa665b9eeb4cac33e56c" category="cell">*NVMe 命名空間的核心 NVMe 多路徑* ONTAP預設為啟用此功能；您無需變更任何設定。</block>
+  <block id="d66d64f553dfd862f68036b9e5fcaaa1" category="admonition">有關受支援配置的詳細信息，請參閱<block ref="303ffee46fa5d607063d9b04cfb6d8cb" category="inline-link-macro-rx"></block>。</block>
+  <block id="a711f567596d88e746e95770f343d065" category="inline-link-macro">NetApp知識庫：了解 NVMe-oF</block>
+  <block id="b225a8d62c5126b34eef960debf4a7d2" category="list-text"><block ref="3ca35c6105331fc07b327260aeca73b4" category="inline-link-macro-rx"></block> 。</block>
+  <block id="2bacb82eac763cb42ebecc41069bbc13" category="summary">如何使用ONTAP為 RHEL 10.0 設定 NVMe-oF 主機</block>
+  <block id="129843e0ca03d063512c5d1d66ecade2" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 10.0</block>
+  <block id="42f901a5e0385b74e46671aa6a4bc20c" category="inline-link-macro">NVME-oF 概述</block>
+  <block id="fb4038911955a875023c06ed3eebacad" category="paragraph">了解如何為 RHEL 10.0 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="fe682fb68de933011daacd85b2450671" category="paragraph">*RHEL 10.0 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="018e7e3157a1d237d053e8a05683c5ac" category="list-text">不支援 NVMe-oF 的 DM 多路徑支援。</block>
+  <block id="392c26bef490517500e70c527c7f0958" category="section-title">步驟 2：驗證軟體版本和 NVMe 配置</block>
+  <block id="32a2c569f5025310ae2af3537308f394" category="list-text">在伺服器上安裝 RHEL 10.0。安裝完成後，請驗證您是否正在執行所需的 RHEL 10.0 核心：</block>
+  <block id="7b38cd7357c50824c462a690ab2c7e64" category="paragraph">RHEL 核心版本範例：</block>
+  <block id="7ca0b86a69f6feef87cf7c24a1422e47" category="admonition">如果<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串不匹配，請使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block>命令來更新<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>對應ONTAP儲存系統子系統上的字串以匹配<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串來自<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>在主機上。</block>
+  <block id="0846f796a67ab827e48866ee9d867e7e" category="section-title">步驟 3：設定 NVMe/FC 和 NVMe/TCP</block>
+  <block id="3a3389ef589dfce02feb77c9c8bf0726" category="paragraph">您應該會看到類似以下範例的輸出：</block>
+  <block id="97f9a8bc058f969713afc7e49ff602ef" category="paragraph">您應該會看到類似以下內容的輸出：</block>
+  <block id="b6af11b3c0a8b80fb9689c4535f30828" category="list-text">驗證您使用的適配器驅動程式和韌體版本是否受支援：</block>
+  <block id="ecf2f5d54ee701fadaed20b14f41130d" category="paragraph">以下範例顯示了驅動程式和韌體版本：</block>
+  <block id="d6d1236e99f0a7666fc4dd786441dfb0" category="list-text">驗證其他 NVMe/TCP 啟動器-目標 LIF 組合是否可以成功檢索發現日誌頁面資料：</block>
+  <block id="978a5dbdb2510cf2ab4bbb4f077211e4" category="section-title">步驟 6：驗證多路徑配置</block>
+  <block id="0200302b1ae55f5fee0081a5d1dea5c7" category="paragraph">從ONTAP 9.12.1 開始，RHEL 10.0 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
+  <block id="422ecfe408ef7636ddfdeefdb618082b" category="list-text">為 RHEL 10.0 主機產生 dhchap 金鑰。</block>
+  <block id="c6435210311cdc2f2fd7178e9e2a07bc" category="paragraph">以下輸出描述了<block ref="d7688aca31d2d9a6f7b631fc004ab8a3" prefix=" " category="inline-code"></block>命令參數：</block>
+  <block id="688a7a038e61f63c371af3de097cb6d5" category="paragraph">當ONTAP控制器上有多個 NVMe 子系統可用時，您可以使用<block ref="2be2042afe5d55c4305aa3ff91b1ff5f" prefix=" " category="inline-code"></block>文件與<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令。</block>
+  <block id="cb7a2a49d05cbe42594d333153703124" category="paragraph">使用<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block>選項來產生 JSON 檔案。有關更多語法選項，請參閱 NVMe connect-all 手冊頁。</block>
+  <block id="679a72a5a047d7f34b2f0486462e530c" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.1</block>
+  <block id="163e74418bca100f90bcee8e3163d2bd" category="paragraph">了解如何為 RHEL 8.1 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="3b456e5670e5eb7629779fd9381e04bb" category="paragraph">*RHEL 8.1 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="7fb5b376b57fa8396d7c55b71420580b" category="list-text">目前不支援使用 NVMe-oF 協定的 SAN 啟動。</block>
+  <block id="8acd593a26cf8903ebf9a7efb128a66f" category="list-text">RHEL 8.1 中的 NVMe-oF 主機預設為停用核心 NVMe 多路徑，因此您必須手動啟用它。</block>
+  <block id="dfbbce3148930ead96d3edfdd5fb1ae1" category="list-text">本地人<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>套餐不包含<block ref="dafde1b5ed9f22cccd76aeeb9844345b" prefix=" " category="inline-code"></block>腳本。您可以使用主機匯流排適配器 (HBA) 供應商提供的外部自動連線腳本。</block>
+  <block id="8507484c096ff8eb2c3755f2b5fdc1dc" category="list-text">預設情況下，循環負載平衡未啟用。您可以透過編寫<block ref="ab775c875d5f89d991a670444dd32ad2" prefix=" " category="inline-code"></block>規則。</block>
+  <block id="e6770839657464a1af0c4b9ef7743087" category="list-text">在伺服器上安裝 RHEL 8.1。安裝完成後，請驗證您是否正在執行所需的 RHEL 8.1 核心：</block>
+  <block id="b0a5b26ba23a76668427cf975fcdc6c2" category="list-text">在 RHEL 8.1 主機上，檢查主機 NQN 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="52fcd5d23e1390e3538c49440c99e092" category="paragraph">以下範例顯示了 hostnqn 字串：</block>
+  <block id="bb7a4cc570ffcf7c817e139cb0946b34" category="list-text">驗證主機 NQN 字串是否與ONTAP陣列上對應子系統的主機 NQN 字串相符：</block>
+  <block id="105455d504b605ae4b31eddf81a122d7" category="section-title">步驟 3：為 Broadcom/Emulex 設定 NVMe/FC</block>
+  <block id="e8a367d33a68cdf61c2ce0d9e015e8f0" category="paragraph">您可以為 Broadcom/Emulex 設定 NVMe/FC。</block>
+  <block id="a7e1091a0a42f0e299ec8c514ec2ae0b" category="list-text">驗證您是否正在使用建議的 Broadcom 設定。</block>
+  <block id="0110dc47e1d6dd1d02d8805b0b450406" category="list-text">驗證 lpfc 韌體：</block>
+  <block id="a188b2d0859fc5f2f5ba5941b197856a" category="list-text">驗證發件箱驅動程式：</block>
+  <block id="11c709eb0775467d3b89fd90265ca8e7" category="list-text">驗證自動連線包版本：</block>
+  <block id="16cebc7a38a4dce095838ddef6521e63" category="list-text">驗證啟動器連接埠是否已啟動並正在運行，並且可以看到目標 LIF：</block>
+  <block id="49114cde17f4e681ed58cb826c3e6e82" category="section-title">步驟 5：驗證 NVMe-oF</block>
+  <block id="49d00482095a0415684dd0e66a8130ec" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.10</block>
+  <block id="4302da1c8b29a730731bf7189b62424c" category="paragraph">了解如何為 RHEL 8.10 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="af7fd56fc52ad273fc229faba8d68c43" category="paragraph">*RHEL 8.10 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="cdfc2f9f79d1c6ce8c817dfbec647045" category="list-text">預設情況下，RHEL 8.10 中的 NVMe-oF 主機上會停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="a91509a4d71e2f2d7e848538dc5299e3" category="list-text">由於已知問題，NVMe/TCP 可作為技術預覽。</block>
+  <block id="849693ce4cdceac58e9408b73fc14a3e" category="list-text">在伺服器上安裝 RHEL 8.10。安裝完成後，請驗證您是否正在執行所需的 RHEL 8.10 核心：</block>
+  <block id="f694b9fc6aaf6fd4838bee331f5cb375" category="paragraph">以下範例顯示了 libnvme 軟體包版本：</block>
+  <block id="2ce3b261541cc0a973a66fa7b5f3c7fa" category="list-text">在 RHEL 8.10 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串位於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="340a0bacce719cd899100302d7028ba6" category="list-text">驗證<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串匹配<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>ONTAP儲存系統上對應子系統的字串：</block>
+  <block id="3d8c2f20c69104516adf8f11842395df" category="paragraph">為了在同一台主機上執行 NVMe 和 SCSI 流量， NetApp建議對ONTAP命名空間使用核心 NVMe 多路徑，對ONTAP LUN 使用 dm-multipath。為了防止 dm-multipath 聲明ONTAP命名空間設備，請透過添加<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block>設定為<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>文件：</block>
+  <block id="5728fbd1a5c8ae099d988e87299f3dd9" category="paragraph">這些是已知問題：</block>
+  <block id="35505b505808a2ecc05d9086eb0b98b6" category="cell">RHEL 8.10 NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
+  <block id="3a2717aac0a9a2c23b94e869e7c85523" category="cell">在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立 PDC。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 RHEL 8.10，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。</block>
+  <block id="4f1c176c271e0d7b6534ed125441128a" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.2</block>
+  <block id="553a133f1b2319db8f2c802d3fa24f7b" category="paragraph">了解如何為 RHEL 8.2 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="d72df1a55eec086d10717b81be383fff" category="paragraph">*RHEL 8.2 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="76067c107fea1f7d020796ad9897703a" category="list-text">預設情況下，RHEL 8.2 中的 NVMe-oF 主機上會停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="8f704db9a482d70c3e2400e43b3a628a" category="list-text">在伺服器上安裝 RHEL 8.2。安裝完成後，請驗證您是否正在執行所需的 RHEL 8.2 核心：</block>
+  <block id="3f9d6dd28519f2fc07d89b8937f95007" category="list-text">在 RHEL 8.2 主機上，檢查主機 NQN 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="1d2397b8639aa9a3ba6723be8a5ad9a2" category="list-text">在 RHEL 8.2 主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="957752664da1bd7961121b5738ea8947" category="admonition">如果主機 NQN 字串不匹配，則使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block>指令更新對應ONTAP陣列子系統上的主機 NQN 字串，以符合來自<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>在主機上。</block>
+  <block id="535a1f23163f7188dd4a4f537fb5beb1" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.3</block>
+  <block id="27a21bb7a09ddd52e686193a20a6eaf8" category="paragraph">了解如何為 RHEL 8.3 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="c272a364e6d6e72af5618b3140c979d0" category="paragraph">*RHEL 8.3 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="2a5430c305f8a20db1f3678b58f7bd97" category="list-text">預設情況下，RHEL 8.3 中的 NVMe-oF 主機上會停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="2145e186c33dbe3721d851f085070dc0" category="list-text">在伺服器上安裝 RHEL 8.3。安裝完成後，請驗證您是否正在執行所需的 RHEL 8.3 核心：</block>
+  <block id="7f39c64f880dc155527174bb703d4b46" category="list-text">在 RHEL 8.3 主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="fb705c0cc0153c1e6c7e70a9d7a4f914" category="paragraph">以下範例顯示了 hostnqn 版本：</block>
+  <block id="19be893708a6341a343917b13e708cea" category="section-title">步驟 3：設定 NVMe/FC Broadcom/Emulex 轉接器</block>
+  <block id="d54a71f306074fc0b37b53f097c3adbb" category="paragraph">使用 Broadcom/Emulex 適配器配置 NVMe/FC。</block>
+  <block id="a47de2fa4d4773268bb8c644c6a1a348" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.4</block>
+  <block id="acde332f45cbed39a381159aacc9778c" category="paragraph">了解如何為 RHEL 8.4 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="d17cf3668f22c35bbfa148b6d46e0473" category="paragraph">*RHEL 8.4 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="948e5a31820fec6fe7047764662c5019" category="list-text">預設情況下，RHEL 8.4 中的 NVMe-oF 主機上會停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="573de97378110c30b7c1aeb7fd449da2" category="list-text">在伺服器上安裝 RHEL 8.4。安裝完成後，請驗證您是否正在執行所需的 RHEL 8.4 核心：</block>
+  <block id="19ede0bde4d016f8a078afaf319783e2" category="list-text">在 RHEL 8.4 主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="b5eafa6a4892d9eae2d6d95bb2d12704" category="section-title">步驟 3：設定 NVMe/FC 或 NVMe/TCP</block>
+  <block id="da889eb1d8779b97362fe9b5efe9870a" category="list-text">驗證您使用的適配器型號、驅動程式和韌體版本是否受支援：</block>
+  <block id="6d12cc3db20258699d44680774535034" category="paragraph">預期輸出為 1。</block>
+  <block id="784ca6d159eef3bed8698f2db9dd3fb5" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.5</block>
+  <block id="3d8c75cd5e94f468fbffd3b3072f1a6e" category="paragraph">了解如何為 RHEL 8.5 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="ef65eec45eac729fdd322502ce6274ca" category="paragraph">*RHEL 8.5 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="d44e1c82ef19e30deb2b3b3c856a45e1" category="list-text">預設情況下，RHEL 8.5 中的 NVMe-oF 主機上會停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="8d78cc7e45434e1fc1fb521e34124eb8" category="list-text">在伺服器上安裝 RHEL 8.5。安裝完成後，請驗證您是否正在執行所需的 RHEL 8.5 核心：</block>
+  <block id="bb52c301410cc09e43d848da53a755b6" category="list-text">在 RHEL 8.5 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串位於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="e47437f6f6c7f05a3c94465ea23f765b" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.6</block>
+  <block id="9028906909c2befed38c0746a9a8ef87" category="paragraph">了解如何為 RHEL 8.6 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="67e753553d9adf0e555af10ca07450b2" category="paragraph">*RHEL 8.6 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="5c3d8ad8024558fe89aeeebe311379ad" category="list-text">預設情況下，RHEL 8.6 中的 NVMe-oF 主機上會停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="a8e486f46b1903dacd320dfc3f08a0d6" category="list-text">在伺服器上安裝 RHEL 8.6。安裝完成後，請驗證您是否正在執行所需的 RHEL 8.6 核心：</block>
+  <block id="2065b685428cd419272baf94e03258c5" category="list-text">在 RHEL 8.6 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串位於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="127ef0abf6a5dc2707bcaef613a8711c" category="admonition">如果<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串不匹配，您應該使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block>命令來更新<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>對應ONTAP儲存系統 NVMe 子系統上的字串以匹配<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>細繩<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>在主機上。</block>
+  <block id="5f34a4b67e30c5dbda63616f9d145079" category="cell">RHEL 8.7 NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
+  <block id="6d251e9e06c922ae1a58f52c67f46d31" category="cell">在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立 PDC。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 RHEL 8.8，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。</block>
+  <block id="e7074ac8440ad062f16f1fa861a573c5" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.7</block>
+  <block id="4ced6d177673c6864d02cfb22ea4f00b" category="paragraph">了解如何為 RHEL 8.7 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="64dc60f7d81b618c268d23933a674863" category="paragraph">*RHEL 8.7 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="ffa0239154d3a20c4bc2040b98de8467" category="list-text">預設情況下，RHEL 8.7 中的 NVMe-oF 主機上會停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="de0b330dcc751103e057cea258f2f217" category="list-text">在伺服器上安裝 RHEL 8.7。安裝完成後，請驗證您是否正在執行所需的 RHEL 8.7 核心：</block>
+  <block id="0e9d225010e76c1d7455569a92e82d15" category="list-text">在 RHEL 8.7 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串位於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="47b72b770e3bc6333e83ef4375777dd1" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.8</block>
+  <block id="8548b77c8a4ffd200f994be29915cede" category="paragraph">了解如何為 RHEL 8.8 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="510756716252d2ebe14a80b6f7f8b100" category="paragraph">*RHEL 8.8 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="1d5cc795af560b82ce6d4d8120046a1b" category="list-text">預設情況下，RHEL 8.8 中的 NVMe-oF 主機上會停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="bcf47c4655a31350eae693e8602b40ee" category="list-text">在伺服器上安裝 RHEL 8.8。安裝完成後，請驗證您是否正在執行所需的 RHEL 8.8 核心：</block>
+  <block id="6fdcbf106a92a13a8edd6c7d3f38adbd" category="list-text">在 RHEL 8.8 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串位於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="376b18320d14537f1dbf35f2ddd5e14c" category="cell">RHEL 8.8 NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
+  <block id="33b255e8ba7e4b382ddd049140c265a8" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.9</block>
+  <block id="60840edffab8e6a6e4d686d5e000c32a" category="paragraph">了解如何為 RHEL 8.9 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="cd91f8c38ed75ac597a3eee673f9b1a2" category="paragraph">*RHEL 8.9 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="7184938a3e8987e6582ceb73615149fd" category="list-text">預設情況下，RHEL 8.9 中的 NVMe-oF 主機上會停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="adff4bd3bc2ab86bbd4e6b4daef33f73" category="list-text">在伺服器上安裝 RHEL 8.9。安裝完成後，請驗證您正在執行所需的 RHEL 8.9 核心：</block>
+  <block id="6cf2fb93dbf3c13b40b2d908f64efb3a" category="list-text">在 RHEL 8.9 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串位於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="af42387b4df9ca744c344a717e2da653" category="paragraph">為 Marvell/QLogic 適配器配置 NVMe/FC</block>
+  <block id="2c7e80d3e0edbd175044b5210ee87f03" category="cell">RHEL 8.9 NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
+  <block id="e89e81029b125b1f7d687255c45c5f6e" category="cell">在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立 PDC。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 RHEL 8.9，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。</block>
+  <block id="fc4979c03acab2ac0889a771e3b9d511" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 9.0</block>
+  <block id="ee74c6ac2ce54cb9b38ef34a7f5baaf8" category="paragraph">了解如何為 RHEL 9.0 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="1814316aab7e20cd4ec09035693769e6" category="paragraph">*RHEL 9.0 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="2fecaf41b8d7f353a0701e68e554ed70" category="list-text">在伺服器上安裝 RHEL 9.0。安裝完成後，請驗證您是否正在執行所需的 RHEL 9.0 核心：</block>
+  <block id="063a08597b54946b6cd54d3c191eae26" category="list-text">在 RHEL 9.0 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串位於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="82922a8f8df6b3fbacca2fc1bfc05096" category="list-text">驗證其他 NVMe/TCP 啟動器-目標 LIF 組合是否可以成功檢索發現日誌頁面資料：</block>
+  <block id="ac783620bd79a6f903c67f639a9962f6" category="section-title">步驟 5：驗證多路徑配置</block>
+  <block id="3ac8a887d7c6b1750dee1f66e33d2041" category="cell">RHEL 9.0 NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
+  <block id="da2d45849155dbe5ea43ca29451e3092" category="cell">在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立 PDC。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行ONTAP 9.10.1 和 RHEL 9.0，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。</block>
+  <block id="f1672372b6b592218f4781d65bf636d2" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 9.1</block>
+  <block id="a4b62dafdc2a28790b92f9e3b7483170" category="paragraph">了解如何為 RHEL 9.1 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="a59fe170d9e7adb5f529e168a6df3bde" category="paragraph">*RHEL 9.1 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="17e3be28e4b8005aa8e0ec9ab05fbde4" category="list-text">在伺服器上安裝 RHEL 9.1。安裝完成後，請驗證您是否正在執行所需的 RHEL 9.1 核心：</block>
+  <block id="f897397bef67775310f9103be634b964" category="list-text">在 RHEL 9.1 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串位於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="3ac93f7cf1853dfbc16c8472fc66d07d" category="cell">這<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>指令傳回給定子系統的 NVMe 控制器清單。在 RHEL 9.1 中，此指令顯示子系統中所有命名空間的控制器及其 ANA 狀態。由於 ANA 狀態是每個命名空間的屬性，因此此指令應顯示具有每個命名空間的路徑狀態的唯一控制器條目。</block>
+  <block id="5490957bacbdac38823467759d812104" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 9.2</block>
+  <block id="5c95b17efd4f88d66b9d5395dcae29a2" category="paragraph">了解如何為 RHEL 9.2 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="5ce3189ac3042d6a7e3c4c4720d47457" category="paragraph">*RHEL 9.2 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="bf141f95cfb77b75940b63bb598d2d05" category="list-text">在伺服器上安裝 RHEL 9.2。安裝完成後，請驗證您是否正在執行所需的 RHEL 9.2 核心：</block>
+  <block id="32b76ab29bb1f35c79f18f676034cf0a" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 9.3</block>
+  <block id="60596f77501fff0f4e90db7a26158414" category="paragraph">了解如何為 RHEL 9.3 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="0b6caa2c80f6be5c3289aaa00cedde1f" category="paragraph">*RHEL 9.3 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="b65783cc8c4fe2183259045f24093872" category="list-text">在伺服器上安裝 RHEL 9.3。安裝完成後，請驗證您是否正在執行所需的 RHEL 9.3 核心：</block>
+  <block id="d1137ffaeb3a0ca88e57e0f4130f3134" category="section-title">步驟 6：設定安全帶內身份驗證</block>
+  <block id="bf4fc5b96abe44f1ebb2698601ba500c" category="paragraph">從ONTAP 9.12.1 開始，RHEL 9.3 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
+  <block id="408ff77f4628dc6c0b1dbe0045a80b91" category="list-text">為 RHEL 9.3 主機產生 dhchap 金鑰。</block>
+  <block id="99600619391da824baa4507a38cfebb5" category="doc">使用ONTAP儲存為 NVMe-oF 設定 RHEL 9.4</block>
+  <block id="6376c8ca914cd1f1b91e9e81b347854c" category="paragraph">了解如何為 RHEL 9.4 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="9304770d7124e59d6e7f17917a129922" category="paragraph">RHEL 9.4 的 NVMe-oF 沒有已知的限制。</block>
+  <block id="9c4c99909075dcb8253eb802dd100e36" category="list-text">在伺服器上安裝 RHEL 9.4。安裝完成後，請驗證您是否正在執行所需的 RHEL 9.4 核心：</block>
+  <block id="a02fa3f1e64906beba11b70cceddfd08" category="paragraph">從ONTAP 9.12.1 開始，RHEL 9.4 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
+  <block id="05b6001078009a66d7398f78cec2ee21" category="list-text">為 RHEL 9.4 主機產生 dhchap 金鑰。</block>
+  <block id="ed716a98f38437d5ab93ec6f89f663bb" category="paragraph">了解如何為 Red Hat Enterprise Linux (RHEL) 9.5 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="dbfb199274d1063eab16fa9e3a4eea71" category="paragraph">RHEL 9.5 的 NVMe-oF 沒有已知的限制。</block>
+  <block id="ceb59c3db0b79174ade65f5440374b63" category="list-text">在伺服器上安裝 RHEL 9.5。安裝完成後，請驗證您是否正在執行所需的 RHEL 9.5 核心：</block>
+  <block id="ba7ad92a9a328fc4086bbe645b158443" category="paragraph">了解如何為 Red Hat Enterprise Linux (RHEL) 9.6 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="0e2a6ca17682f87afed8a24fd851c31b" category="paragraph">*RHEL 9.6 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="fbe70a9e4e86428613212ca9bafab36e" category="list-text">在伺服器上安裝 RHEL 9.6。安裝完成後，請驗證您是否正在執行所需的 RHEL 9.6 核心：</block>
+  <block id="abcdfaf745ecf46fa48ee4febc561be5" category="section-title">修改udev規則中的iopolicy</block>
+  <block id="2f09f4b0e6b1ec31753a355af2e93f1a" category="paragraph">RHEL 9.6 將 NVMe-oF 的預設 iopolicy 設定為<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>。如果你想將 iopolicy 更改為<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>，修改udev規則文件如下：</block>
+  <block id="ece25d4c541fbae683416549d3f4ac05" category="list-text">使用 root 權限在文字編輯器中開啟 udev 規則檔：</block>
+  <block id="b9908e7dd449843af949631c92e15e09" category="list-text">找到為NetApp ONTAP控制器設定 iopolicy 的行。</block>
+  <block id="87a7f5650d1515a9aa05f05e2e75e27c" category="paragraph">以下範例顯示了一個範例規則：</block>
+  <block id="1cdf0be14ba09adc81c1095b08aa7aa2" category="list-text">修改規則，以便<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>變成<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>：</block>
+  <block id="d16ef16e8667a481333eb9c4c5b96da2" category="list-text">執行以下命令重新載入 udev 規則並套用變更：</block>
+  <block id="5d33a0e191bd5777ae2be8e33feabe51" category="list-text">驗證子系統的目前 iopolicy。將 &lt;subsystem&gt; 替換為適當的名稱，例如，<block ref="621b1b464ec30e8b168fcad04cefe44c" prefix=" " category="inline-code"></block> 。</block>
+  <block id="84acde248a4e307a6672632785153fc4" category="admonition">新的 iopolicy 自動應用於匹配的NetApp ONTAP控制器設備。無需重新啟動。</block>
+  <block id="8368841b470b6e92a17171fdc50066e4" category="summary">如何使用ONTAP儲存為 Rocky Linux 10.0 設定 NVMe-oF 主機</block>
+  <block id="3bb0dd42b9baf9976e4fd910388b116d" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 10.0</block>
+  <block id="a4948b48f1c713b5c83e88817c8e854d" category="paragraph">了解如何為 Rocky Linux 10.0 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="353c5da630e8437465e2bac779b53241" category="paragraph">*帶有 Rocky Linux 10.0 的 NVMe-oF 具有以下已知限制：*</block>
+  <block id="f80057125870dd8fcdb5724934b94611" category="list-text">在伺服器上安裝 Rocky Linux 10.0。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 10.0 核心：</block>
+  <block id="47b12d977e58e4eab7ccd70d2694af53" category="paragraph">Rocky Linux 核心版本範例：</block>
+  <block id="0fe3920489a515504bc99fd4bc2a0cfa" category="paragraph">下面的例子展示了<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>價值：</block>
+  <block id="49b93db902bfe2e6ebda3a7184947901" category="paragraph">從ONTAP 9.12.1 開始，Rocky Linux 10.0 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。</block>
+  <block id="8425313d42b15365aae1ff69464f1dca" category="list-text">為 Rocky Linux 10.0 主機產生 dhchap 金鑰。</block>
+  <block id="6211a3c33e0f4a48c60de5341c3a2a81" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 8.10</block>
+  <block id="f0a82e15426482ff89d74b86cec00591" category="paragraph">了解如何為 Rocky Linux 8.10 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="bdbd81a0d21d774923ec9b8001556aa9" category="paragraph">*帶有 Rocky Linux 8.10 的 NVMe-oF 具有以下已知限制：*</block>
+  <block id="ce84c293f4533ead89e44c141c39e24d" category="list-text">在 Rocky Linux 8.10 中的 NVMe-oF 主機上，核心 NVMe 多路徑預設為停用；您必須手動啟用它。</block>
+  <block id="2d5fd08f975c42bc4116ef7ba2522228" category="list-text">在伺服器上安裝 Rocky Linux 8.10。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 8.10 核心：</block>
+  <block id="288cbbee1aaa32bace43584affb5e317" category="cell">在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立持久發現控制器 (PDC)。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.10，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。</block>
+  <block id="f2bdba23e5036ab5e18eb00629c59223" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 8.4</block>
+  <block id="6fe0fb638e188ad70110dc8a5005d58b" category="paragraph">了解如何為 Rocky Linux 8.4 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="24f087a5d398659484aeb7222f5ad111" category="paragraph">*搭載 Rocky Linux 8.4 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="f8e44043b30e00f88f1ac3dbee8f4377" category="list-text">在 Rocky Linux 8.4 中的 NVMe-oF 主機上，核心 NVMe 多路徑預設為停用；您必須手動啟用它。</block>
+  <block id="5f47d85aa7566fadf90e5654cc3ca615" category="list-text">在伺服器上安裝 Rocky Linux 8.4。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 8.4 核心：</block>
+  <block id="b0690b13a0da9891dafda2ced1883512" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 8.5</block>
+  <block id="a43b3f792de05e2c8056433a1aa4d55a" category="paragraph">了解如何為 Rocky Linux 8.5 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="c27f85c9b8b42c98a0e8eb9dcd2eef2d" category="paragraph">*帶有 Rocky Linux 8.5 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="eb6dc69b63757073330de2a73a580209" category="list-text">在 Rocky Linux 8.5 中的 NVMe-oF 主機上，核心 NVMe 多路徑預設為停用；您必須手動啟用它。</block>
+  <block id="732d43e40946ef08d0fef5d2a9d5eb5e" category="list-text">在伺服器上安裝 Rocky Linux 8.5。安裝完成後，驗證您正在運行所需的 Rocky Linux 8.5 核心：</block>
+  <block id="a9797c338c90b2ca4b7c1065a078812a" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 8.6</block>
+  <block id="b556747903cbff020f9092fb0d3a737c" category="paragraph">了解如何為 Rocky Linux 8.6 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="9b6a7e5d5e7dbcf0b5fcc4ceb6b82fd4" category="paragraph">*帶有 Rocky Linux 8.6 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="ac376874a384a110cab792d727f955a0" category="list-text">在 Rocky Linux 8.6 中的 NVMe-oF 主機上，核心 NVMe 多路徑預設為停用；您必須手動啟用它。</block>
+  <block id="74bc6972055c10543fe719f9744de269" category="list-text">在伺服器上安裝 Rocky Linux 8.6。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 8.6 核心：</block>
+  <block id="0b1c01bc9bd9968ea6669a8b0eb4e0ee" category="cell">在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立持久發現控制器 (PDC)。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.6，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。</block>
+  <block id="805bbaac088928ad38815c5ab4d63bd9" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 8.7</block>
+  <block id="1dc2213bbe36ae75b8b4bf78f95652c3" category="paragraph">了解如何為 Rocky Linux 8.7 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="f5502fa53fe357f04271558187af263f" category="paragraph">*帶有 Rocky Linux 8.7 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="255064172f7c96f2aa67377f4530dddf" category="list-text">Rocky Linux 8.7 中的 NVMe-oF 主機預設為停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="070fd89fe102d8db6595913c97eb74d8" category="list-text">在伺服器上安裝 Rocky Linux 8.7。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 8.7 核心：</block>
+  <block id="1015a8611097f1b3bdb2ba6ca3a89bea" category="cell">Rocky Linux 8.7 NVMe-oF 主機建立重複的持久發現控制器</block>
+  <block id="ea62aaafb4e214b16cd5e4a1677445f6" category="cell">在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立持久發現控制器 (PDC)。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.7，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。</block>
+  <block id="135ade99cb8fe34986bcf078c5826edb" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 8.8</block>
+  <block id="63b24701ac21bf85677ce66f416ae1a9" category="paragraph">了解如何為 Rocky Linux 8.8 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="1050d38d7182f0d37a6cdd97f306305b" category="paragraph">*帶有 Rocky Linux 8.8 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="4c277658506ee9574c7298c6dc0074ea" category="list-text">Rocky Linux 8.8 中的 NVMe-oF 主機預設為停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="931c64bb24529c7556328fc7ffa80aae" category="list-text">在伺服器上安裝 Rocky Linux 8.8。安裝完成後，驗證您正在運行所需的 Rocky Linux 8.8 核心：</block>
+  <block id="408d44ef10f9b5b901eeae5e10fbd62f" category="cell">在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立持久發現控制器 (PDC)。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.8，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。</block>
+  <block id="61de719e8163a47d7586d02547026101" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 8.9</block>
+  <block id="20d0cfacf8049da727f8b6b2dd340e93" category="paragraph">了解如何為 Rocky Linux 8.9 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="1543368a046f9c834265c82de853cbb0" category="paragraph">*帶有 Rocky Linux 8.9 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="dbfff7853c1db30bdf535f30e8ff82ed" category="list-text">Rocky Linux 8.9 中的 NVMe-oF 主機預設為停用核心 NVMe 多路徑；您必須手動啟用它。</block>
+  <block id="6678b392edcf995e583d47cce2e84d0b" category="list-text">在伺服器上安裝 Rocky Linux 8.9。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 8.9 核心：</block>
+  <block id="9c70948283cbf873b47aee1b77995b01" category="cell">在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立持久發現控制器 (PDC)。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.9，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。</block>
+  <block id="20583acc86439b91edb5803bac8804cd" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 9.0</block>
+  <block id="91a08c1029ff9143f286e8fb8278d4c1" category="paragraph">了解如何為 Rocky Linux 9.0 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="296dcd7996a7108a86e50054cac41d16" category="paragraph">*帶有 Rocky Linux 9.0 的 NVMe-oF 具有以下已知限制：*</block>
+  <block id="fb13800809bac1aebf60326ab33c6885" category="list-text">在伺服器上安裝Rocky Linux 9.0。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 9.0 核心：</block>
+  <block id="dfc278b2eed97e06f727ddb4c0e26912" category="cell">在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立持久發現控制器 (PDC)。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行ONTAP 9.10.1 和 Rocky Linux 9.0，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。</block>
+  <block id="8c3e4189914813b00284263638fb1fd7" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 9.1</block>
+  <block id="e7dcdfc3dde5b3d60a838f92b55e532b" category="paragraph">了解如何為 Rocky Linux 9.1 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="793f00de5e5b3b29aed3ddd5254c5445" category="paragraph">*Rocky Linux 9.1 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="4f222424dd46c1f376ecb4fa33e18a14" category="list-text">在伺服器上安裝 Rocky Linux 9.1。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 9.1 核心：</block>
+  <block id="7864882a6cbe77092cb7a6cac1b75653" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 9.2</block>
+  <block id="0f6ce4c4de1d6fe51551d79e17475662" category="paragraph">了解如何為 Rocky Linux 9.2 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="a49c3a9696717a7cb9cfd1d3c004827f" category="paragraph">*Rocky Linux 9.2 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="b0ebc82cbc862d9c5d0f0080dcd0de32" category="list-text">在伺服器上安裝 Rocky Linux 9.2。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 9.2 核心：</block>
+  <block id="3ff973089721be7dc9372719fcda8427" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 9.3</block>
+  <block id="faaa60b8a063ee72a3fe2c2ba168e71d" category="paragraph">了解如何為 Rocky Linux 9.3 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="0f4cd1f3a12ab9584b817aef6895b1d5" category="paragraph">*帶有 Rocky Linux 9.3 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="7809c44309e984847c2a771474f871f0" category="list-text">在伺服器上安裝 Rocky Linux 9.3。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 9.3 核心：</block>
+  <block id="0dbc54d5c7981f138a4789b8660c4b04" category="paragraph">了解如何為 Rocky Linux 9.4 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="1f3d75c592e176946dc1cf68a250b546" category="paragraph">帶有 Rocky Linux 9.4 的 NVMe-oF 沒有已知的限制。</block>
+  <block id="2d591a45e9330d70b6c75efed3161333" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 9.5</block>
+  <block id="9551e64a9ba96676d7b433847891f913" category="paragraph">了解如何為 Rocky Linux 9.5 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="c09d9e2245886db14a9eef945cfebc84" category="paragraph">帶有 Rocky Linux 9.5 的 NVMe-oF 沒有已知的限制。</block>
+  <block id="ffb0571980efe2c82ed0b7b16cde197d" category="list-text">在伺服器上安裝 Rocky Linux 9.5。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 9.5 核心：</block>
+  <block id="ec19c9da8ee51caa1a9c506e22592869" category="paragraph">了解如何為 Rocky Linux 9.6 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱<block ref="d2bb6f0f580c95c45b3aaa7f84bf937a" category="inline-link-macro-rx"></block>。</block>
+  <block id="d02174711fef247a48b38e51d5db562f" category="paragraph">*帶有 Rocky Linux 9.6 的 NVMe-oF 有以下已知限制：*</block>
+  <block id="812b9a27245a2daec29f5e3d12ebaa1a" category="list-text">在伺服器上安裝 Rocky Linux 9.6。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 9.6 核心：</block>
+  <block id="bdd85bb9fb61697998b63578c3818344" category="paragraph">NVMe/TCP協定不支援自動連線操作。您必須手動執行 NVMe/TCP 連接或連接所有操作才能發現 NVMe/TCP 子系統和命名空間。</block>
+  <block id="3832446aa2ef6619ecfdb886641a60fe" category="list-text">驗證其他 NVMe/TCP 啟動器-目標 LIF 組合是否可以成功取得發現日誌頁面資料：</block>
+  <block id="0adc0ccfa62ac1a4fb645ca5d3f148ff" category="sidebar">了解如何設定 NVMe-oF 主機</block>
 </blocks>

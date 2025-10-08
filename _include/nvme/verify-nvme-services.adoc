@@ -2,6 +2,10 @@
 :allow-uri-read: 
 
 
+這 `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service`NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時，軟體包會自動啟用。
+
+啟動完成後，驗證 `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service`啟動服務已啟用。
+
 .步驟
 . 確認 `nvmf-autoconnect.service`已啟用：
 +

@@ -1,0 +1,127 @@
+---
+sidebar: sidebar 
+permalink: hu-nvme-index.html 
+keywords: nvme, san, host, aix, linux, vsphere, windows 
+summary: 您可以為 NVMe over Fabrics （ NVMe of ）傳輸協定設定特定 SAN 主機。 
+---
+= 了解如何使用 NVMe-OF 配置ONTAP SAN 主機
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以設定支援的 SAN 主機以使用 NVMe over Fabrics (NVMe-oF) 協定並以ONTAP作為儲存目標。 NVMe-oF包括光纖通道上的NVMe（NVMe/FC）和TCP上的NVMe（NVMe/TCP）。根據您的主機作業系統和ONTAP版本，您可以在主機上設定和驗證 NVMe/FC 或 NVMe/TCP 協議，或兩者。
+
+
+
+== ONTAP支援和功能
+
+下表顯示了ONTAP版本和 SAN 主機作業系統支援的ONTAP功能：
+
+[cols="40,30,30"]
+|===
+| ONTAP功能 | 支援的 SAN 主機 | ONTAP 版本 
+
+
+| *NVMe/TCP 的安全帶內身份驗證*  a| 
+* RHEL 10.0
+* RHEL 9.6、9.5
+* Rocky Linux 10.0
+* Rocky Linux 9.6、9.5
+
+| 從 9.12.1 開始支持 
+
+
+| *除了 NVMe/FC 之外，還有 NVMe/TCP* 使用本機提供 NVMe/FC 和 NVMe/TCP 命名空間的ONTAP詳細信息 `nvme-cli`包裹。  a| 
+* RHEL 10.0
+* RHEL 9.6、9.5、9.4、9.3、9.2、9.1
+* RHEL 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.8、8.2
+* Rocky Linux 10.0
+* Rocky Linux 9.6、9.5、9.4、9.3、9.2、9.1
+* Rocky Linux 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.8、8.2
+
+| 從 9.10.1 開始支持 
+
+
+| *NVMe/TCP 是一項完全支援的企業功能*  a| 
+* RHEL 10.0
+* RHEL 9.6、9.5、9.4、9.3、9.2、9.1、9.0
+* Rocky Linux 10.0
+* Rocky Linux 9.6、9.5、9.4、9.3、9.2、9.1、9.0
+
+| 從 9.10.1 開始支持 
+
+
+| *在同一主機上支援 NVMe 和 SCSI 流量* 對 SCSI LUN 使用 dm-multipath，對 NVMe-oF 命名空間使用 NVMe multipath。  a| 
+* RHEL 10.0
+* RHEL 9.6、9.5、9.4、9.3、9.2、9.1、9.0
+* RHEL 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.3、8.2
+* Rocky Linux 10.0
+* Rocky Linux 9.6、9.5、9.4、9.3、9.2、9.1、9.0
+* Rocky Linux 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.3、8.2
+
+| 從 9.4 開始支持 
+|===
+無論您的系統設定上執行的ONTAP版本為何， ONTAP支援以下 SAN 主機功能：
+
+[cols="50,50"]
+|===
+| ONTAP功能 | 支援的 SAN 主機 
+
+
+| *本機 NVMe 多路徑始終處於啟用狀態* ONTAP不支援 NVMe-oF 的裝置映射器 (DM) 多路徑。  a| 
+* RHEL 10.0
+* Rocky Linux 10.0
+
+
+
+
+| *使用 NVMe/FC 協定進行 SAN 啟動*  a| 
+* RHEL 10.0
+* RHEL 9.6、9.5、9.4
+* Rocky Linux 10.0
+* Rocky Linux 9.6、9.5、9.4
+
+
+
+
+| *`nvme-cli`套件包括自動連接腳本*您不需要第三方腳本。  a| 
+* RHEL 10.0
+* RHEL 9.6、9.5、9.4、9.3、9.2、9.1、9.0
+* RHEL 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.3、8.2
+* Rocky Linux 10.0
+* Rocky Linux 9.6、9.5、9.4、9.3、9.2、9.1、9.0
+* Rocky Linux 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.3、8.2
+
+
+
+
+| *本機 udev 規則 `nvme-cli`包* 為 NVMe 多路徑提供循環負載平衡。  a| 
+* RHEL 10.0
+* RHEL 9.6、9.5、9.4、9.3、9.2、9.1、9.0
+* RHEL 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.3、8.2
+* Rocky Linux 10.0
+* Rocky Linux 9.6、9.5、9.4、9.3、9.2、9.1、9.0
+* Rocky Linux 8.10、8.9、8.8、8.7、8.6、8.5、8.4、8.3、8.2
+
+
+
+
+| *NVMe 命名空間的核心 NVMe 多路徑* ONTAP預設為啟用此功能；您無需變更任何設定。  a| 
+* RHEL 9.6、9.5、9.4、9.3、9.2、9.1、9.0
+* Rocky Linux 9.6、9.5、9.4、9.3、9.2、9.1、9.0
+
+
+|===
+
+NOTE: 有關受支援配置的詳細信息，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
+
+.相關資訊
+* link:https://www.netapp.com/pdf.html?item=/media/10681-tr4684pdf.pdf["NetApp知識庫：了解 NVMe-oF"^] 。
+

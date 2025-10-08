@@ -1,0 +1,473 @@
+---
+sidebar: sidebar 
+permalink: nvme-rhel-81.html 
+keywords: nvme, linux, rhel, red hat, enterprise 
+summary: 說明如何使用ONTAP 支援功能為RHEL 8.1設定NVMe/FC 
+---
+= 使用ONTAP儲存為 NVMe-oF 設定 RHEL 8.1
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
+
+了解如何為 RHEL 8.1 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱link:hu-nvme-index.html["NVME-oF 概述"^]。
+
+*RHEL 8.1 的 NVMe-oF 有以下已知限制：*
+
+* 目前不支援使用 NVMe-oF 協定的 SAN 啟動。
+* RHEL 8.1 中的 NVMe-oF 主機預設為停用核心 NVMe 多路徑，因此您必須手動啟用它。
+* 本地人 `nvme-cli`套餐不包含 `nvme-fc auto-connect`腳本。您可以使用主機匯流排適配器 (HBA) 供應商提供的外部自動連線腳本。
+* 預設情況下，循環負載平衡未啟用。您可以透過編寫 `udev`規則。
+
+
+
+
+== 步驟 1 ：選擇性啟用 SAN 開機
+
+您可以設定主機以使用 SAN 啟動來簡化部署並提高可擴充性。使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Linux 作業系統、主機匯流排適配器 (HBA)、HBA 韌體、HBA 啟動 BIOS 和ONTAP版本是否支援 SAN 啟動。
+
+.步驟
+. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["建立 NVMe 命名空間並將其對應到主機"^] 。
+. 在伺服器 BIOS 中為 SAN 啟動命名空間對應到的連接埠啟用 SAN 啟動。
++
+如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
+
+. 重新啟動主機並驗證作業系統是否已啟動並正在運行。
+
+
+
+
+== 步驟 2：驗證軟體版本和 NVMe 配置
+
+檢查您的系統是否符合軟體要求並驗證 NVMe 套件安裝和主機配置。
+
+.步驟
+. 在伺服器上安裝 RHEL 8.1。安裝完成後，請驗證您是否正在執行所需的 RHEL 8.1 核心：
++
+[source, cli]
+----
+uname -r
+----
++
+RHEL 核心版本範例：
+
++
+[listing]
+----
+4.18.0-147.el8.x86_64
+----
+. 安裝 `nvme-cli-1.8.1-3.el8` 套件：
++
+[source, cli]
+----
+rpm -qa|grep nvme-cli
+----
++
+以下範例顯示了 nvme-cli 軟體包版本：
+
++
+[listing]
+----
+nvme-cli-1.8.1-3.el8.x86_64
+----
+. 啟用核心內建NVMe多重路徑：
++
+[source, cli]
+----
+grubby –args=nvme_core.multipath=Y –update-kernel /boot/vmlinuz-4.18.0-147.el8.x86_64
+----
+. 將下列字串新增為另一個位於的 udev 規則 `/lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules`。這可為 NVMe 多重路徑啟用循環負載平衡：
++
+[source, cli]
+----
+Enable round-robin for NetApp ONTAP
+ACTION==”add”, SUBSYSTEM==”nvme-subsystem”, ATTR{model}==”NetApp ONTAP Controller”, ATTR{iopolicy}=”round-robin
+----
+. 在 RHEL 8.1 主機上，檢查主機 NQN 字串 `/etc/nvme/hostnqn`：
++
+[source, cli]
+----
+cat /etc/nvme/hostnqn
+----
++
+以下範例顯示了 hostnqn 字串：
+
++
+[listing]
+----
+nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
+----
+. 驗證主機 NQN 字串是否與ONTAP陣列上對應子系統的主機 NQN 字串相符：
++
+[source, cli]
+----
+vserver nvme subsystem host show -vserver vs_nvme_10
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+*> vserver nvme subsystem host show -vserver vs_nvme_10
+Vserver Subsystem Host NQN
+------- --------- -------------------------------------- -----------
+rhel_141_nvme_ss_10_0
+nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
+----
+====
++
+
+NOTE: 如果主機 NQN 字串不相符、請使用 `vserver modify` 用於更新對應 ONTAP 陣列子系統上主機 NQN 字串的命令、以符合的主機 NQN 字串 `/etc/nvme/hostnqn` 在主機上。
+
+. 重新啟動主機。
+
+
+
+
+== 步驟 3：為 Broadcom/Emulex 設定 NVMe/FC
+
+您可以為 Broadcom/Emulex 設定 NVMe/FC。
+
+.步驟
+. 確認您使用的是支援的介面卡機型：
++
+.. 顯示模型名稱：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modelname
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+LPe32002-M2
+LPe32002-M2
+----
+.. 顯示模型描述：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modeldesc
+----
++
+您應該會看到類似以下內容的輸出：
+
++
+[listing]
+----
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+----
+
+
+. 複製並安裝 Broadcom lpfc 外盒驅動程式和自動連線指令碼：
++
+[source, cli]
+----
+tar -xvzf elx-lpfc-dd-rhel8-12.4.243.20-ds-1.tar.gz
+cd elx-lpfc-dd-rhel8-12.4.2453.20-ds-1
+./elx_lpfc_install-sh -i -n
+----
++
+
+NOTE: 與作業系統搭售的原生驅動程式稱為收件匣驅動程式。如果您下載的是外箱驅動程式（作業系統版本未隨附的驅動程式）、則下載中會包含自動連線指令碼、並應作為驅動程式安裝程序的一部分進行安裝。
+
+. 重新啟動主機。
+. 驗證您是否正在使用建議的 Broadcom 設定。
++
+.. 驗證 lpfc 韌體：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/fwrev
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+12.4.243.20, sil-4.2.c
+12.4.243.20, sil-4.2.c
+----
+.. 驗證發件箱驅動程式：
++
+[source, cli]
+----
+cat /sys/module/lpfc/version
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+0:12.4.243.20
+----
+.. 驗證自動連線包版本：
++
+[source, cli]
+----
+rpm -qa | grep nvmefc
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+nvmefc-connect-12.6.61.0-1.noarch
+----
+
+
+. 驗證的預期輸出是否 `lpfc_enable_fc4_type`設置爲 `3`：
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+----
+. 驗證啟動器連接埠是否已啟動並正在運行，並且可以看到目標 LIF：
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_name
+----
++
+您應該會看到類似以下內容的輸出：
+
++
+[listing]
+----
+0x10000090fae0ec61
+0x10000090fae0ec62
+----
+. 驗證啟動器連接埠是否在線上：
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_state
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+Online
+Online
+----
+. 確認已啟用 NVMe / FC 啟動器連接埠、且目標連接埠可見：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/nvme_info
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+NVME Initiator Enabled
+XRI Dist lpfc0 Total 6144 NVME 2947 SCSI 2977 ELS 250
+NVME LPORT lpfc0 WWPN x10000090fae0ec61 WWNN x20000090fae0ec61 DID x012000 *ONLINE*
+NVME RPORT WWPN x202d00a098c80f09 WWNN x202c00a098c80f09 DID x010201 *TARGET DISCSRVC ONLINE*
+NVME RPORT WWPN x203100a098c80f09 WWNN x202c00a098c80f09 DID x010601 *TARGET DISCSRVC ONLINE*
+NVME Statistics
+----
+====
+
+
+
+
+== 步驟 4：（可選）為 NVMe/FC 啟用 1MB I/O
+
+ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
+
+
+NOTE: 這些步驟不適用於 Qlogic NVMe / FC 主機。
+
+.步驟
+. 將 `lpfc_sg_seg_cnt`參數設定為 256 ：
++
+[source, cli]
+----
+cat /etc/modprobe.d/lpfc.conf
+----
++
+您應該會看到類似以下範例的輸出：
+
++
+[listing]
+----
+options lpfc lpfc_sg_seg_cnt=256
+----
+. 執行 `dracut -f`命令，然後重新啟動主機。
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+----
+
+
+
+
+== 步驟 5：驗證 NVMe-oF
+
+驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
+
+.步驟
+. 確認已啟用核心內建 NVMe 多重路徑：
++
+[source, cli]
+----
+cat /sys/module/nvme_core/parameters/multipath
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+Y
+----
+. 驗證個別 ONTAP 命名空間的適當 NVMe 設定（例如、模型設定為 NetApp ONTAP 控制器、負載平衡 iopolicing 設定為循環）是否正確反映在主機上：
++
+.. 顯示子系統：
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/model
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+----
+.. 顯示策略：
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+round-robin
+round-robin
+----
+
+
+. 確認已在主機上建立並正確探索命名空間：
++
+[source, cli]
+----
+nvme list
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+Node SN Model Namespace Usage Format FW Rev
+---------------- -------------------- -----------------------
+/dev/nvme0n1 80BADBKnB/JvAAAAAAAC NetApp ONTAP Controller 1 53.69 GB / 53.69 GB 4 KiB + 0 B FFFFFFFF
+----
+====
+. 確認每個路徑的控制器狀態均為有效、且具有正確的ANA狀態：
++
+[source, cli]
+----
+nvme list-subsys /dev/nvme0n1
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+Nvme-subsysf0 – NQN=nqn.1992-08.com.netapp:sn.341541339b9511e8a9b500a098c80f09:subsystem.rhel_141_nvme_ss_10_0
+\
++- nvme0 fc traddr=nn-0x202c00a098c80f09:pn-0x202d00a098c80f09 host_traddr=nn-0x20000090fae0ec61:pn-0x10000090fae0ec61 *live optimized*
++- nvme1 fc traddr=nn-0x207300a098dfdd91:pn-0x207600a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 *live inaccessible*
++- nvme2 fc traddr=nn-0x207300a098dfdd91:pn-0x207500a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 *live optimized*
++- nvme3 fc traddr=nn-0x207300a098dfdd91:pn-0x207700a098dfdd91 host traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 *live inaccessible*
+----
+====
+. 驗證NetApp外掛程式是否顯示每ONTAP 個版本名稱空間裝置的正確值：
++
+[role="tabbed-block"]
+====
+.欄位
+--
+[source, cli]
+----
+nvme netapp ontapdevices -o column
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+Device   Vserver  Namespace Path             NSID   UUID   Size
+-------  -------- -------------------------  ------ ----- -----
+/dev/nvme0n1   vs_nvme_10       /vol/rhel_141_vol_10_0/rhel_141_ns_10_0    1        55baf453-f629-4a18-9364-b6aee3f50dad   53.69GB
+----
+=====
+--
+.JSON
+--
+[source, cli]
+----
+nvme netapp ontapdevices -o json
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+{
+   "ONTAPdevices" : [
+   {
+        Device" : "/dev/nvme0n1",
+        "Vserver" : "vs_nvme_10",
+        "Namespace_Path" : "/vol/rhel_141_vol_10_0/rhel_141_ns_10_0",
+         "NSID" : 1,
+         "UUID" : "55baf453-f629-4a18-9364-b6aee3f50dad",
+         "Size" : "53.69GB",
+         "LBA_Data_Size" : 4096,
+         "Namespace_Size" : 13107200
+    }
+]
+----
+=====
+--
+====
+
+
+
+
+== 步驟 6 ：檢閱已知問題
+
+沒有已知問題。
