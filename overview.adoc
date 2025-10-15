@@ -29,7 +29,7 @@ NetApp 建議您使用 SAN 主機公用程式軟體（如果適用於 SAN 主機
 
 NOTE: 在雲端環境中、主機通常稱為用戶端。此內容中的所有主機專屬資訊也適用於雲端用戶端。
 
-例如、您可以設定內部部署 ONTAP 儲存設備、以連線至內部部署 SAN 主機或 SAN 雲端用戶端。您也可以設定在雲端環境上執行的儲存服務、例如 link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] 或 link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/index.html["Amazon FSX for NetApp ONTAP 產品"^] 連線至內部部署 SAN 主機或 SAN 雲端用戶端。
+例如，您可以設定本機ONTAP儲存以連線至本機 SAN 主機或 SAN 雲端客戶端。您也可以設定在雲端環境中執行的儲存服務，例如link:https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]或者link:https://docs.netapp.com/us-en/storage-management-fsx-ontap/index.html["Amazon FSX for NetApp ONTAP 產品"^]連線到本機 SAN 主機或 SAN 雲端客戶端。
 
 .相關資訊
 * link:https://docs.netapp.com/us-en/ontap/san-config/index.html["ONTAP SAN 組態參考"^]

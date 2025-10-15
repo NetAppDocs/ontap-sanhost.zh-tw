@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: hu_citrix_84.html 
-keywords: host utilities, citrix, XenServer, 8 series, netapp, ontap, san, boot 
-summary: 配置 Citrix Hypervisor 8.4 以實現多路徑，並使用特定參數和設定來針對ONTAP儲存的 FCP 和 iSCSI 協定操作。 
+keywords: host utilities, citrix, Xenserver, 8 series, netapp, ontap, san, boot 
+summary: 配置 Citrix Xenserver 8.4 以實現多路徑，並使用特定參數和設定來針對ONTAP儲存的 FCP 和 iSCSI 協定操作。 
 ---
 = 使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Citrix Xenserver 8.4
 :hardbreaks:
@@ -16,11 +16,11 @@ summary: 配置 Citrix Hypervisor 8.4 以實現多路徑，並使用特定參數
 
 
 [role="lead"]
-配置 Citrix Hypervisor 8.4 以實現多路徑，並使用特定參數和設定來針對ONTAP儲存的 FCP 和 iSCSI 協定操作。
+配置 Citrix Xenserver 8.4 以實現多路徑，並使用特定參數和設定來針對ONTAP儲存的 FCP 和 iSCSI 協定操作。
 
 [NOTE]
 ====
-Linux Host Utilities 軟體包不支援 Citrix Hypervisor 作業系統。
+Linux Host Utilities 軟體包不支援 Citrix Xenserver 作業系統。
 
 ====
 
@@ -45,7 +45,7 @@ Linux Host Utilities 軟體包不支援 Citrix Hypervisor 作業系統。
 
 == 步驟 2：確認主機的多路徑配置
 
-您可以使用 Citrix Hypervisor 8.4 的多路徑來管理ONTAP LUN。
+您可以使用 Citrix Xenserver 8.4 的多路徑來管理ONTAP LUN。
 
 為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
 

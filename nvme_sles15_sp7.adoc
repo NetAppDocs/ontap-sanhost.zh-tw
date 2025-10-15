@@ -19,20 +19,20 @@ summary: 說明如何為採用 ONTAP 的 SUSE Linux Enterprise Server 15 SP7 設
 
 
 [role="lead"]
-Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
+SUSE Linux Enterprise Server 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
 .關於這項工作
-您可以將以下支援和功能與 SUSE Linux Enterprise Server 15 SP7 (SLES15 SP7) 的 NVMe-oF 主機配置一起使用。在開始設定程序之前，您也應該先檢閱已知的限制。
+您可以將以下支援和功能與 SUSE Linux Enterprise Server 15 SP7 的 NVMe-oF 主機配置一起使用。在開始配置過程之前，您還應該查看已知的限制。
 
 * 可用支援：
 +
 ** 除了 NVMe over Fibre Channel （ NVMe / FC ）之外，還支援 NVMe over TCP （ NVMe / TCP ）。原生套件中的 NetApp 外掛程式 `nvme-cli`會同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 詳細資料。
 ** 在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI mpath 裝置設定 dm-multipath ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
 ** 支援使用 NVMe / FC 傳輸協定進行 SAN 開機。
-** 從ONTAP 9.12.1 開始，引入了對 NVMe/TCP 和 NVMe/FC 的安全帶內身份驗證支援。您可以在 SLES15 SP7 中使用 NVMe/TCP 和 NVMe/FC 的安全帶內身份驗證。
+** 從ONTAP 9.12.1 開始，引入了對 NVMe/TCP 和 NVMe/FC 安全帶內身份驗證的支援。您可以使用 SUSE Linux Enterprise Server 15 SP7 對 NVMe/TCP 和 NVMe/FC 進行安全帶內驗證。
 ** 支援使用唯一發現 NQN 的持久發現控制器 (PDC)。
 ** NVMe/TCP 的 TLS 1.3 加密支援。
-** NetApp  `sanlun` SLES15 SP7 主機上不提供 NVMe-oF 的主機實用程式支援。您可以改用原生套件中的 NetApp 外掛程式 `nvme-cli`來執行所有 NVMe 傳輸。
+** NetApp `sanlun` SUSE Linux Enterprise Server15 SP7 主機上的 NVMe-oF 不支援主機實用程式。相反，您可以依賴本機中包含的NetApp插件 `nvme-cli`適用於所有 NVMe-oF 傳輸的套件。
 +
 如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
 
@@ -75,17 +75,17 @@ Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (A
 
 == 步驟 2：驗證軟體版本
 
-使用以下步驟驗證最低支援的 SLES15 SP7 軟體版本。
+使用下列步驟驗證最低支援的 SUSE Linux Enterprise Server 15 SP7 軟體版本。
 
 .步驟
-. 在伺服器上安裝 SLES15 SP7。安裝完成後，請驗證您是否正在執行指定的 SLES15 SP7 核心：
+. 在伺服器上安裝SUSE Linux Enterprise Server15 SP7。安裝完成後，請驗證您是否正在執行指定的 SUSE Linux Enterprise Server 15 SP7 核心：
 +
 [source, cli]
 ----
 uname -r
 ----
 +
-以下範例顯示了 SLES 核心版本：
+以下範例顯示了 SUSE Linux Enterprise Server 核心版本：
 
 +
 [listing]
@@ -405,7 +405,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 == 步驟 5：驗證 NVMe 啟動服務
 
-使用 SLES 15 SP7，  `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service` NVMe/FC 中包含的啟動服務 `nvme-cli`軟體包將在系統啟動時自動啟用。系統啟動完成後，請驗證啟動服務是否已啟用。
+使用 SUSE Linux Enterprise Server 15 SP7， `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service`NVMe/FC 中包含的啟動服務 `nvme-cli`軟體包將在系統啟動時自動啟用。系統啟動完成後，驗證啟動服務是否已啟用。
 
 .步驟
 . 確認 `nvmf-autoconnect.service`已啟用：
@@ -607,7 +607,7 @@ nvme	connect-all	-t	tcp	-w	192.168.211.80	-a	192.168.211.67
 
 
 
-NOTE: 從 SLES 15 SP6 開始，NVMe/TCP 的預設設定 `ctrl-loss-tmo`超時已關閉。這意味著重試次數沒有限制（無限重試），並且您無需手動配置特定的 `ctrl-loss-tmo`使用時的超時時間 `nvme connect`或者 `nvme connect-all`命令（選項 `-l` ）。此外、在發生路徑故障時、 NVMe / TCP 控制器不會發生逾時、也不會無限期保持連線。
+NOTE: 從 SUSE Linux Enterprise Server 15 SP6 開始，NVMe/TCP 的預設設定 `ctrl-loss-tmo`超時已關閉。這意味著重試次數沒有限制（無限重試），並且您不需要手動配置特定的 `ctrl-loss-tmo`使用時的超時持續時間 `nvme connect`或者 `nvme connect-all`命令（選項 `-l`）。此外，NVMe/TCP 控制器在發生路徑故障時不會逾時，並會無限期地保持連線。
 
 
 
@@ -786,7 +786,7 @@ nvme netapp ontapdevices -o json
 
 == 步驟 8：建立持久發現控制器
 
-從ONTAP 9.11.1 開始，您可以為 SLES 15 SP7 主機建立持久發現控制器 (PDC)。需要有 PDC 才能自動偵測 NVMe 子系統新增或移除作業，以及探索記錄頁面資料的變更。
+從ONTAP 9.11.1 開始，您可以為 SUSE Linux Enterprise Server 15 SP7 主機建立持久性發現控制器 (PDC)。需要 PDC 來自動偵測 NVMe 子系統的新增或刪除操作以及發現日誌頁面資料的變更。
 
 .步驟
 . 確認探索記錄頁面資料可用、並可透過啟動器連接埠和目標 LIF 組合擷取：
