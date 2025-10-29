@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: nvme-windows-2025.html 
 keywords: nvme, windows, enterprise 
-summary: 適用於Windows Server 2052的NVMe / FC主機組態、ONTAP 含功能更新 
+summary: 適用於 Windows Server 2025 和ONTAP的 NVMe/FC 主機配置。 
 ---
 = 使用適用於 ONTAP 的 NVMe / FC 來設定 Windows Server 2025
 :hardbreaks:

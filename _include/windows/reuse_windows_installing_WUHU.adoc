@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Windows Host Utilities 是一組具有文件的軟體程序，可讓您將主機連接到NetApp SAN 上的虛擬磁碟 (LUN)。 NetApp建議下載並安裝最新的實用程式工具包。有關 Windows Host Utilities 設定資訊和說明，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu-wuhu-release-notes.html["Windows主機公用程式文件"]並選擇適合您的 Windows Host Utilities 版本的安裝程式。

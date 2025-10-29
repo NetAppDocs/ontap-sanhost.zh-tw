@@ -1,0 +1,81 @@
+= 步驟 4：確認主機的多路徑配置
+:allow-uri-read: 
+
+
+
+
+== 步驟 4：確認主機的多路徑配置
+
+如果您的 Windows 主機有多個到儲存系統的路徑，請安裝 Microsoft Multipath I/O (MPIO) 軟體並啟用多路徑。
+
+在 Windows 系統中，MPIO 解決方案的兩個主要元件是裝置專用模組 (DSM) 和 Windows MPIO。  MPIO 提供 Windows 作業系統單一磁碟用於所有路徑，而 DSM 管理路徑故障轉移。
+
+
+CAUTION: 如果您不安裝 MPIO 軟體， Windows 作業系統可能會將每個路徑視為獨立的磁碟。這可能導致資料毀損。
+
+
+NOTE: 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO 。
+
+.步驟
+. 安裝 MPIO 軟體並啟用多路徑功能。
+. 當您在使用 FC 的系統上選取 MPIO 時， Host Utilities 安裝程式會為 Emulex 和 QLogic FC HBA 設定所需的逾時值。
++
+[role="tabbed-block"]
+====
+.Emulex FC
+--
+Emulex FC HBA 的逾時值：
+
+[cols="2*"]
+|===
+| 內容類型 | 屬性值 
+
+
+| LinkTimeDOut | 1. 
+
+
+| 節點時間輸出 | 10. 
+|===
+--
+.QLogic FC
+--
+QLogic FC HBA 的逾時值：
+
+[cols="2*"]
+|===
+| 內容類型 | 屬性值 
+
+
+| LinkDownTimeDOut | 1. 
+
+
+| PortDownRetryCount | 10. 
+|===
+--
+====
+. 驗證ONTAP LUN 的路徑狀態：
++
+根據您的 SAN 配置，主機使用ASA、 AFF或FAS配置來存取ONTAP LUN。這些配置不應該需要超過四條路徑來存取單一ONTAP LUN。儲存故障時，超過四條路徑都可能導致問題。
+
++
+以下範例輸出顯示了ASA、 AFF或FAS配置的ONTAP LUN 的正確設定。
+
++
+[role="tabbed-block"]
+====
+.ASA 組態
+--
+ASA配置應包含一組具有單一優先權的活動/最佳化路徑。控制器負責維護路徑，並在所有活動路徑上發送 I/O。
+
+image::asa.png[具有主動 / 最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
+
+--
+.AFF 或 FAS 組態
+--
+AFF或FAS配置應有兩組優先順序不同的路徑。優先順序較高的路徑是活動/最佳化路徑，由聚合所在的控制器提供服務。優先順序較低的路徑由不同的控制器提供服務。它們處於活動狀態，但未經最佳化，僅在沒有優化路徑時使用。
+
+image::nonasa.png[具有兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
+
+--
+====
+

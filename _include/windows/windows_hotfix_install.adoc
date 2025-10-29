@@ -9,4 +9,4 @@ NOTE: 您需要聯絡 Microsoft 支援部門，以取得無法從 Microsoft Upda
 
 
 
-TIP: 許多 Hotfix 都需要重新開機 Windows 主機。您可以選擇等待重新啟動主機，直到安裝或升級主機公用程式之後。
+TIP: 許多熱修復程式需要重啟Windows主機。您可以等到安裝或升級主機實用程式之後再重新啟動主機。

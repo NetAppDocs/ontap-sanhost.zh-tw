@@ -127,7 +127,7 @@ NOTE: HKLM 是的縮寫 `HKEY_LOCAL_MACHINE`。
 | 60 | 指定MPIO支援時 
 
 
-| 未選取MPIO支援時 | HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval | 1. 
+| HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval | 1. | 當指定 MPIO 支援且您的伺服器是 Windows Server 2025、2022、2019 或 2016 時 
 |===
 --
 .NVMe 參數

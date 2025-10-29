@@ -1,0 +1,11 @@
+= 步驟 3：安裝 Windows 主機實用程式
+:allow-uri-read: 
+
+
+
+
+== 步驟 3：安裝 Windows 主機實用程式
+
+Windows 主機公用程式是一套軟體程式及其文檔，可讓您將主機連接到NetApp SAN 上的虛擬磁碟 (LUN)。  NetApp建議下載並安裝最新的 Windows 主機實用程序，以支援ONTAP LUN 管理並協助技術支援人員收集設定資料。
+
+有關 Windows 主機實用程式配置和安裝信息，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows 主機公用程式"]請查閱文件並選擇適合您 Windows Host Utilities 版本的安裝步驟。

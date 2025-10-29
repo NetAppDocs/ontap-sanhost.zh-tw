@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu_windows_2012r2.html 
-keywords: windows, enterprise 
-summary: 搭配ONTAP 使用Windows Server 2012 R2搭配使用 
+keywords: fcp, iscsi, windows, host, utilities, 2012, ontp, luns, configure 
+summary: 在 Windows Server 2012 R2 主機上安裝 Windows Host Utilities，以協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。 
 ---
-= 搭配 ONTAP 使用 Windows Server 2012 R2
+= 配置 Windows Server 2012 R2 以支援 FCP 和 iSCSI 以及ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,53 +16,42 @@ summary: 搭配ONTAP 使用Windows Server 2012 R2搭配使用
 
 
 [role="lead"]
-您可以使用 ONTAP SAN 主機組態設定來設定 Windows Server 2012 R2 ，以便與 ONTAP 儲存設備搭配運作。
+Windows 主機公用程式可讓您將 Windows 主機連接到NetApp SAN 上的虛擬磁碟 (LUN)。在 Windows Server 2012 R2 主機上安裝 Windows 主機實用程序，以協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。
 
 
 
-== 啟動 Windows 作業系統
+== 步驟 1 ：選擇性啟用 SAN 開機
 
-您可以使用本機開機或 SAN 開機來開機 Windows 作業系統。如果您的組態支援 SAN 開機， NetApp 建議您使用該開機。
+您可以使用本機啟動或 SAN 啟動來啟動 Windows 作業系統。  NetApp建議使用SAN啟動來簡化部署並提高可擴充性。
 
 [role="tabbed-block"]
 ====
-.本機開機
---
-在本機硬碟（ SSD ， SATA ， RAID 等）上安裝 Windows 作業系統，以執行本機開機。
-
---
 .SAN開機
 --
 如果您選擇使用 SAN 開機，則必須由您的組態支援。
-
-
-NOTE: 您可以使用本程序提供的組態設定link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]，來設定連線至和的雲端用戶端link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]。
 
 .開始之前
 使用 https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Windows 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
 
 .步驟
-. 將SAN開機LUN對應至主機。
-+
-請參閱。 link:https://docs.netapp.com/us-en/ontap/san-management/index.html["SAN 儲存管理"^]
-
-. 確認有多個路徑可供使用。
-+
-
-NOTE: 只有在主機作業系統啟動並在路徑上執行之後、才能使用多個路徑。
-
+. link:https://docs.netapp.com/us-en/ontap/san-management/index.html["建立 SAN 啟動 LUN 並將其對應到主機"^]。
 . 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
 +
 如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
 
-. 重新啟動主機，確認開機成功
+. 重新啟動主機並驗證作業系統是否正常運作，以確認組態是否成功。
 
+
+--
+.本機開機
+--
+透過將 Windows 作業系統安裝到本機硬碟（例如 SSD、SATA 或 RAID）上來執行本機啟動。
 
 --
 ====
 
 
-== 安裝 Windows Hotfix
+== 步驟二：安裝Windows熱修復程序
 
 NetApp 建議您在主機伺服器上安裝 Microsoft Update 目錄中提供的 * 最新累計更新 * 。
 
@@ -77,140 +66,34 @@ NOTE: 您需要聯絡 Microsoft 支援部門，以取得無法從 Microsoft Upda
 
 
 
-TIP: 許多 Hotfix 都需要重新開機 Windows 主機。您可以選擇等待重新啟動主機，直到安裝或升級主機公用程式之後。
+TIP: 許多熱修復程式需要重啟Windows主機。您可以等到安裝或升級主機實用程式之後再重新啟動主機。
 
 
 
-== 安裝 Windows 主機公用程式
+== 步驟 3：安裝 Windows 主機實用程式
 
-Windows Host Utilities 是一組具有文件的軟體程序，可讓您將主機連接到NetApp SAN 上的虛擬磁碟 (LUN)。 NetApp建議下載並安裝最新的實用程式工具包。有關 Windows Host Utilities 設定資訊和說明，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu-wuhu-release-notes.html["Windows主機公用程式文件"]並選擇適合您的 Windows Host Utilities 版本的安裝程式。
+Windows 主機公用程式是一套軟體程式及其文檔，可讓您將主機連接到NetApp SAN 上的虛擬磁碟 (LUN)。  NetApp建議下載並安裝最新的 Windows 主機實用程序，以支援ONTAP LUN 管理並協助技術支援人員收集設定資料。
+
+有關 Windows 主機實用程式配置和安裝信息，請參閱link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows 主機公用程式"]請查閱文件並選擇適合您 Windows Host Utilities 版本的安裝步驟。
 
 
 
-== 多重路徑
+== 步驟 4：確認主機的多路徑配置
 
-如果您的 Windows 主機有多個路徑通往儲存系統，則需要安裝 Microsoft 多重路徑 I/O （ MPIO ）軟體，並啟用多重路徑。當您選取 MPIO 支援時， Windows 主機公用程式會啟用 Windows Server 2012 R2 中的 MPIO 功能。如果您未使用 Windows 主機公用程式，則需要手動啟用多重路徑功能。
+如果您的 Windows 主機有多個到儲存系統的路徑，請安裝 Microsoft Multipath I/O (MPIO) 軟體並啟用多路徑。
 
-MPIO 軟體為所有路徑提供 Windows 作業系統的單一磁碟，而裝置專用模組（ DSM ）則管理路徑容錯移轉。在 Windows 系統上，任何 MPIO 解決方案中的兩個主要元件是 DSM 和 Windows MPIO 。
+在 Windows 系統中，MPIO 解決方案的兩個主要元件是裝置專用模組 (DSM) 和 Windows MPIO。  MPIO 提供 Windows 作業系統單一磁碟用於所有路徑，而 DSM 管理路徑故障轉移。
 
 
 CAUTION: 如果您不安裝 MPIO 軟體， Windows 作業系統可能會將每個路徑視為獨立的磁碟。這可能導致資料毀損。
 
-[NOTE]
-====
-* 對於 Windows Host Utilities 8.0，當您選擇 MPIO 支援時，MPIO 功能會自動啟用。
-* 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO。
 
-
-====
-
-
-== SAN組態
-
-根據您的 SAN 組態，主機會使用所有 SAN 陣列（ ASA ）或非 ASA 組態來存取 ONTAP LUN 。在 ASA 和非 ASA 組態中，存取單一 ONTAP LUN 的路徑不應超過四條。如果您有四條以上的路徑，可能會在儲存設備故障期間導致路徑問題。
-
-
-
-=== 所有SAN陣列組態
-
-ASA 組態應該有一組具有單一優先順序的主動 / 最佳化路徑。這表示路徑由控制器提供服務，而 I/O 會在所有作用中路徑上傳送。
-
-下列範例顯示具有主動 / 最佳化路徑的 ONTAP LUN 的正確輸出。
-
-image::asa.png[具有主動 / 最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
-
-
-
-=== 非ASA組態
-
-非 ASA 組態應該有兩個路徑群組，其優先順序不同。優先順序較高的路徑為主動 / 最佳化。這表示「主動 / 最佳化」路徑由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
-
-下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。
-
-image::nonasa.png[具有兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
-
-
-
-== Hyper-V VHD需要對齊才能獲得最佳效能
-
-如果磁碟分割的資料區塊邊界與基礎 LUN 的區塊邊界不一致，則儲存系統通常必須針對每個作業系統區塊讀取或寫入完成兩個區塊讀取或寫入。因對齊錯誤而產生的額外區塊讀取和寫入、可能會造成嚴重的效能問題。
-
-主開機記錄所定義的每個分割區的起始扇區位置會導致未對齊。
-
-
-NOTE: Windows Server 2016建立的分割區依預設應保持一致。
-
-使用 `Get-NaVirtualDiskAlignment` ONTAP PowerShell 工具組中的 Cmdlet 來檢查分割區是否與基礎 LUN 一致。如果分割區未正確對齊，請使用 `Repair-NaVirtualDiskAlignment` Cmdlet 建立正確對齊的新 VHD 檔案。此Cmdlet會將所有分割區複製到新檔案。原始VHD檔案不會修改或刪除。複製資料時、必須關閉虛擬機器。
-
-您可以在ONTAP NetApp社群下載《NetApp PowerShell Toolkit》。您必須將檔案解壓縮 `DataONTAP.zip`至環境變數所指定的位置 `%PSModulePath%`（或使用 `Install.ps1`指令碼為您執行）。完成安裝之後，請使用 `Show-NaHelp` Cmdlet 取得 Cmdlet 的說明。
-
-PowerShell工具套件僅支援含MBR-類型分割區的固定大小VHD檔案。不支援使用 Windows 動態磁碟或 GPT 分割區的 VHD 。此外、PowerShell Toolkit需要4 GB的最小分割區大小。較小的分割區無法正確對齊。
-
-
-NOTE: 對於在VHD上使用Grub開機載入程式的Linux虛擬機器、您必須在執行PowerShell Toolkit之後更新開機組態。
-
-
-
-=== 使用 PowerShell Toolkit 修正 MBR 對齊之後、重新安裝適用於 Linux 來賓作業系統的 GRUB
-
-在磁碟上執行「mbralign」、以使用Grub開機載入程式、在Linux客體作業系統上使用PowerShell Toolkit修正MBR-對齊之後、您必須重新安裝Grub、以確保客體作業系統能正確開機。
-
-.關於這項工作
-PowerShell Toolkit Cmdlet已完成虛擬機器的VHD檔案。此程序僅適用於使用 GRUB 開機 Loader 和的 Linux 來賓作業系統 `SystemRescueCd`。
+NOTE: 在 Hyper-V 虛擬機器中執行的 Windows XP 或 Windows Vista 不支援 MPIO 。
 
 .步驟
-. 掛載安裝CD磁碟1的ISO映像、以取得適用於虛擬機器的正確Linux版本。
-. 在Hyper-V Manager中開啟虛擬機器的主控台。
-. 如果 VM 在 GRUB 畫面上執行並凍結，請在顯示區域中按一下以確定其為作用中狀態，然後選取 *Ctrl-Alt-Delete* 工具列圖示以重新啟動 VM 。如果VM未執行、請啟動它、然後立即按一下顯示區域以確定它處於作用中狀態。
-. 一旦看到VMware BIOS啟動畫面、請按一下* Esc*鍵。隨即顯示開機功能表。
-. 在開機功能表中、選取* CD-rom*。
-. 在Linux開機畫面中、輸入：「Linux救援」
-. 採用Anaconda的預設值（藍色/紅色組態畫面）。網路為選用功能。
-. 輸入"grub（grub）"以啟動Grub
-. 如果此 VM 中只有一個虛擬磁碟，或是有多個磁碟，而第一個是開機磁碟，請執行下列 GRUB 命令：
+. 安裝 MPIO 軟體並啟用多路徑功能。
+. 當您在使用 FC 的系統上選取 MPIO 時， Host Utilities 安裝程式會為 Emulex 和 QLogic FC HBA 設定所需的逾時值。
 +
-[listing]
-----
-root (hd0,0)
-setup (hd0)
-quit
-----
-+
-如果 VM 中有多個虛擬磁碟，而且開機磁碟不是第一個磁碟，或是從未對齊的備份 VHD 開機來修復 GRUB ，請輸入下列命令來識別開機磁碟：
-
-+
-[listing]
-----
-find /boot/grub/stage1
-----
-+
-然後執行下列命令：
-
-+
-[listing]
-----
-root (boot_disk,0)
-setup (boot_disk)
-quit
-----
-+
-
-NOTE: 在中 `setup (boot_disk)`， `boot_disk`是開機磁碟實際磁碟識別碼的預留位置。
-
-
-
-. 按* Ctrl-D*登出。
-+
-Linux救援會關閉、然後重新開機。
-
-
-
-
-
-== 建議設定
-
-當您在使用 FC 的系統上選取 MPIO 時， Host Utilities 安裝程式會為 Emulex 和 QLogic FC HBA 設定所需的逾時值。
-
 [role="tabbed-block"]
 ====
 .Emulex FC
@@ -244,11 +127,41 @@ QLogic FC HBA 的逾時值：
 |===
 --
 ====
+. 驗證ONTAP LUN 的路徑狀態：
++
+根據您的 SAN 配置，主機使用ASA、 AFF或FAS配置來存取ONTAP LUN。這些配置不應該需要超過四條路徑來存取單一ONTAP LUN。儲存故障時，超過四條路徑都可能導致問題。
 
-NOTE: 如需建議設定的詳細資訊，請參閱link:hu_wuhu_hba_settings.html["設定 Windows 主機公用程式的登錄設定"]。
++
+以下範例輸出顯示了ASA、 AFF或FAS配置的ONTAP LUN 的正確設定。
+
++
+[role="tabbed-block"]
+====
+.ASA 組態
+--
+ASA配置應包含一組具有單一優先權的活動/最佳化路徑。控制器負責維護路徑，並在所有活動路徑上發送 I/O。
+
+image::asa.png[具有主動 / 最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
+
+--
+.AFF 或 FAS 組態
+--
+AFF或FAS配置應有兩組優先順序不同的路徑。優先順序較高的路徑是活動/最佳化路徑，由聚合所在的控制器提供服務。優先順序較低的路徑由不同的控制器提供服務。它們處於活動狀態，但未經最佳化，僅在沒有優化路徑時使用。
+
+image::nonasa.png[具有兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
+
+--
+====
 
 
 
-== 已知問題
 
-Windows Server 2012 R2 with ONTAP 版本沒有已知問題。
+== 第五步：回顧已知問題
+
+沒有已知問題。
+
+
+
+== 接下來呢？
+
+link:hu_wuhu_hba_settings.html["了解 Window Host Utilities 的註冊表設置"]。
