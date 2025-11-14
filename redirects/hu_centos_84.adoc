@@ -1,0 +1,8 @@
+---
+permalink: hu_centos_84.html 
+redirect: ontap-sanhost/hu-centos-8x.html 
+---
+= 
+:allow-uri-read: 
+
+

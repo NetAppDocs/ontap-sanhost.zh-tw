@@ -1,0 +1,8 @@
+---
+permalink: hu-rockylinux-88.html 
+redirect: ontap-sanhost/hu-rockylinux-8x.html 
+---
+= 
+:allow-uri-read: 
+
+

@@ -1,0 +1,8 @@
+---
+permalink: hu-rhel-96.html 
+redirect: ontap-sanhost/hu-rhel-9x.html 
+---
+= 
+:allow-uri-read: 
+
+

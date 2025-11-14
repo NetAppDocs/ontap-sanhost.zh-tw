@@ -18,7 +18,7 @@ summary: 如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機
 [role="lead"]
 Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
-了解如何為 Red Hat Enterprise Linux (RHEL) 9.6 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱link:hu-nvme-index.html["NVME-oF 概述"^]。
+了解如何為 RHEL 9.6 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:hu-nvme-index.html["NVME-oF 概述"^]。
 
 *RHEL 9.6 的 NVMe-oF 有以下已知限制：*
 

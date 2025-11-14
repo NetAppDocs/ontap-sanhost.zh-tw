@@ -34,7 +34,7 @@ Windows 主機公用程式可讓您將 Windows 主機連接到NetApp SAN 上的�
 使用 https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Windows 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
 
 .步驟
-. link:https://docs.netapp.com/us-en/ontap/san-management/index.html["建立 SAN 啟動 LUN 並將其對應到主機"^]。
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["建立 SAN 啟動 LUN 並將其對應到主機"^]。
 . 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
 +
 如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。

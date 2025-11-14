@@ -1,0 +1,294 @@
+---
+sidebar: sidebar 
+permalink: hu-ol-9x.html 
+keywords: host utilities, oracle, linux, 9.5, 9.4, 9.3, 9.32, 9.1, 9.0 netapp, ontap 
+summary: 在 Oracle Linux 9.x 主機上安裝 Linux 主機實用程序，以管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。 
+---
+= 配置 Oracle Linux 9.x 以支援 FCP 和 iSCSI 以及ONTAP存儲
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Oracle Linux 9.x 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。
+
+
+NOTE: 您不需要設定核心型虛擬機器（ KVM ）設定，因為 ONTAP LUN 會自動對應至 KVM Hypervisor 。
+
+
+
+== 步驟 1 ：選擇性啟用 SAN 開機
+
+您可以將主機設定為使用 SAN 開機，以簡化部署並改善擴充性。
+
+.開始之前
+使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Linux 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
+
+.步驟
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["建立 SAN 啟動 LUN 並將其對應到主機"^]。
+. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
++
+如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
+
+. 重新啟動主機並驗證作業系統是否正常運作，以確認組態是否成功。
+
+
+
+
+== 步驟 2 ：安裝 Linux 主機公用程式
+
+NetApp 強烈建議您安裝 Linux 主機公用程式，以支援 ONTAP LUN 管理，並協助技術支援收集組態資料。
+
+link:hu-luhu-80.html["安裝 Linux Host Utilities 8.0"] 。
+
+
+NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機逾時設定。
+
+
+
+== 步驟 3 ：確認主機的多重路徑組態
+
+您可以使用 Oracle Linux 9.x 的多路徑功能來管理ONTAP LUN。
+
+為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
+
+.步驟
+. 確認 `/etc/multipath.conf`檔案已結束。如果檔案不存在，請建立空白的零位元組檔案：
++
+[source, cli]
+----
+touch /etc/multipath.conf
+----
+. 第一次 `multipath.conf`建立檔案時，您可能需要啟用並啟動多重路徑服務，才能載入建議的設定：
++
+[source, cli]
+----
+systemctl enable multipathd
+----
++
+[source, cli]
+----
+systemctl start multipathd
+----
+. 每次引導主機時，空的 `/etc/multipath.conf`零位元組檔案會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。您不需要變更 `/etc/multipath.conf`主機的檔案，因為作業系統會使用多重路徑參數進行編譯，以正確辨識及管理 ONTAP LUN 。
++
+下表顯示 ONTAP LUN 的 Linux OS 原生編譯多重路徑參數設定。
+
++
+.顯示參數設定
+[%collapsible]
+====
+[cols="2"]
+|===
+| 參數 | 設定 
+
+
+| DETECT（偵測）_prio | 是的 
+
+
+| 開發損失_tmo | "無限遠" 
+
+
+| 容錯回復 | 立即 
+
+
+| fast_io_f故障_tmo | 5. 
+
+
+| 功能 | "2 pg_init_retries 50" 
+
+
+| Flip_on_last刪除 | "是" 
+
+
+| 硬體處理常式 | 「0」 
+
+
+| no_path_retry | 佇列 
+
+
+| path_checker_ | "周" 
+
+
+| path_grouping_policy | "群組by_prio" 
+
+
+| path_selector | "服務時間0" 
+
+
+| Polling_時間 間隔 | 5. 
+
+
+| 優先 | 「NetApp」ONTAP 
+
+
+| 產品 | LUN 
+
+
+| Retain附加的硬體處理常式 | 是的 
+
+
+| RR_weight | "統一" 
+
+
+| 使用者易記名稱 | 否 
+
+
+| 廠商 | NetApp 
+|===
+====
+. 驗證 ONTAP LUN 的參數設定和路徑狀態：
++
+[source, cli]
+----
+multipath -ll
+----
++
+預設的多重路徑參數支援 ASA ， AFF 和 FAS 組態。在這些組態中，單一 ONTAP LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間導致路徑問題。
+
++
+以下輸出範例顯示 ASA ， AFF 或 FAS 組態中 ONTAP LUN 的正確參數設定和路徑狀態。
+
++
+[role="tabbed-block"]
+====
+.ASA 組態
+--
+ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
+
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
+----
+=====
+--
+.AFF 或 FAS 組態
+--
+AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。較高優先順序的主動 / 最佳化路徑由集合所在的控制器提供服務。較低優先順序的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
+
+以下範例顯示 ONTAP LUN 的輸出，其中包含兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑：
+
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
+----
+=====
+--
+====
+
+
+
+
+== 步驟 4 ：選擇性地將裝置排除在多重路徑之外
+
+如果需要，您可以將不需要的裝置的 WWID 新增至檔案的「黑名單」區段，以排除裝置的多重路徑 `multipath.conf`功能。
+
+.步驟
+. 判斷 WWID ：
++
+[source, cli]
+----
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+「 SDA 」是您要新增至黑名單的本機 SCSI 磁碟。
+
++
+例如 WWID `360030057024d0730239134810c0cb833` 。
+
+. 將 WWID 新增至「黑名單」區：
++
+[source, cli]
+----
+blacklist {
+	     wwid   360030057024d0730239134810c0cb833
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}
+----
+
+
+
+
+== 步驟 5 ：自訂 ONTAP LUN 的多重路徑參數
+
+如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
+
+請檢查您的 `/etc/multipath.conf`檔案，尤其是在預設值區段中，以瞭解可能會覆寫的設定<<multipath-parameter-settings,多重路徑參數的預設設定>>。
+
+
+CAUTION: 您不應覆寫 ONTAP LUN 的建議參數設定。這些設定是主機組態最佳效能所必需的。如需詳細資訊，請聯絡 NetApp 支援，您的作業系統廠商或兩者。
+
+下列範例說明如何修正被覆寫的預設值。在此範例中，檔案會 `multipath.conf`定義與 ONTAP LUN 不相容的值 `path_checker`， `no_path_retry`而且您無法移除這些參數，因為 ONTAP 儲存陣列仍連接至主機。而是修正和 `no_path_retry`的值 `path_checker`，方法是將裝置節新增至 `multipath.conf`特定適用於 ONTAP LUN 的檔案。
+
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+defaults {
+   path_checker      *readsector0*
+   no_path_retry     *fail*
+}
+
+devices {
+   device {
+      vendor          "NETAPP"
+      product         "LUN"
+      no_path_retry   *queue*
+      path_checker    *tur*
+   }
+}
+----
+====
+
+
+== 步驟 6 ：檢閱已知問題
+
+Oracle Linux 9.3、9.2、9.1 和 9.0 與ONTAP儲存有以下已知問題：
+
+[cols="20,40,40"]
+|===
+| NetApp錯誤ID | 標題 | 說明 
+
+
+| https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1508554["1508554"^] | 使用 Emulex HBA 的 SAN LUN 公用程式需要從程式庫套件中取得符號連結 | 在 SAN 主機上執行 Linux 主機實用程式 CLI 指令「sanlun fcp show adapter -v」時，指令執行失敗，並顯示錯誤訊息，指出找不到主機匯流排適配器 (HBA) 發現所需的函式庫相依性：---- [root@hostname ~]# sanlun fcp show adapter - ---- 
+|===
+
+
+== 接下來呢？
+
+* link:hu-luhu-command-reference.html["瞭解如何使用 Linux 主機公用程式工具"] 。
+* 瞭解 ASM 鏡像。
++
+自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。ONTAP 上的大多數 ASM 組態都使用外部備援，這表示資料保護是由外部陣列提供，而 ASM 則不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊，請參閱link:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["ONTAP 上的 Oracle 資料庫"^]。
+
+
