@@ -3697,4 +3697,8 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9871c3e3eef10eb83f1020bf0f40a11c" category="sidebar">RHEL 8.x</block>
   <block id="c4980b39600ff4c0ecb0fa2f23fe5a78" category="sidebar">Rocky Linux 9.x</block>
   <block id="58a2f4956f7990585638b66df29826ba" category="sidebar">Rocky Linux 8.x</block>
+  <block id="3e2ae734ca739ef2f098df9b39b981e1" category="summary">在 RHEL 10 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="d7c1825e0f2407a4d10d399ac78c1f95" category="doc">使用ONTAP儲存為 FCP 和 iSCSI 設定 RHEL 10</block>
+  <block id="d7b201e34bf72ed2024522784d92bd59" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Red Hat Enterprise Linux (RHEL) 10 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
+  <block id="0171e05f7a58a96089d554991286cd67" category="paragraph">您可以使用 RHEL 10 的多路徑功能來管理ONTAP LUN。</block>
 </blocks>

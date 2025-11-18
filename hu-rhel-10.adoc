@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-ol-9x.html 
-keywords: host utilities, oracle, linux, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0 netapp, ontap 
-summary: 在 Oracle Linux 9.x 主機上安裝 Linux 主機實用程序，以管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。 
+permalink: hu-rhel-10.html 
+keywords: host utilities, red hat, rhel, linux, 10, netapp, ontap, rhel 
+summary: 在 RHEL 10 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。 
 ---
-= 配置 Oracle Linux 9.x 以支援 FCP 和 iSCSI 以及ONTAP存儲
+= 使用ONTAP儲存為 FCP 和 iSCSI 設定 RHEL 10
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,10 +16,10 @@ summary: 在 Oracle Linux 9.x 主機上安裝 Linux 主機實用程序，以管�
 
 
 [role="lead"]
-Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Oracle Linux 9.x 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。
+Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Red Hat Enterprise Linux (RHEL) 10 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。
 
 
-NOTE: 您不需要設定核心型虛擬機器（ KVM ）設定，因為 ONTAP LUN 會自動對應至 KVM Hypervisor 。
+NOTE: 您不需要手動設定基於核心的虛擬機器 (KVM) 設定，因為 ONTAP LUN 會自動對應到虛擬機器管理程式。
 
 
 
@@ -54,7 +54,7 @@ NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機
 
 == 步驟 3 ：確認主機的多重路徑組態
 
-您可以使用 Oracle Linux 9.x 的多路徑功能來管理ONTAP LUN。
+您可以使用 RHEL 10 的多路徑功能來管理ONTAP LUN。
 
 為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
 
@@ -162,21 +162,17 @@ multipath -ll
 --
 ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
 
-.顯示範例
-[%collapsible]
-=====
 [listing]
 ----
-multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+# multipath -ll
+3600a098038314e535a24584e4b496252 dm-32 NETAPP,LUN C-Mode
 size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:6   sdbz 68:208  active ready running
-  |- 11:0:11:6  sddn 71:80   active ready running
-  |- 11:0:15:6  sdfb 129:208 active ready running
-  |- 12:0:1:6   sdgp 132:80  active ready running
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:0:41 sdan 66:112  active ready running
+  |- 11:0:1:41 sdcb 68:240  active ready running
+  |- 14:0:2:41 sdfd 129:240 active ready running
+  `- 14:0:0:41 sddp 71:112  active ready running
 ----
-=====
 --
 .AFF 或 FAS 組態
 --
@@ -184,22 +180,18 @@ AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。�
 
 以下範例顯示 ONTAP LUN 的輸出，其中包含兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑：
 
-.顯示範例
-[%collapsible]
-=====
 [listing]
 ----
-multipath -ll
-3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+# multipath -ll
+3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
+size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 16:0:6:35 sdwb  69:624  active ready running
-| |- 16:0:5:35 sdun  66:752  active ready running
+| |- 16:0:3:0  sdcg 69:64  active ready running
+| `- 10:0:0:0  sdb  8:16   active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 15:0:0:35 sdaj  66:48   active ready running
-  |- 15:0:1:35 sdbx  68:176  active ready running
+  |- 10:0:1:0  sdc  8:32   active ready running
+  `- 16:0:2:0  sdcf 69:48  active ready running
 ----
-=====
 --
 ====
 
@@ -273,15 +265,8 @@ devices {
 
 == 步驟 6 ：檢閱已知問題
 
-Oracle Linux 9.3、9.2、9.1 和 9.0 與ONTAP儲存有以下已知問題：
+沒有已知問題。
 
-[cols="20,40,40"]
-|===
-| NetApp錯誤ID | 標題 | 說明 
-
-
-| https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1508554["1508554"^] | 使用 Emulex HBA 的 SAN LUN 公用程式需要從程式庫套件中取得符號連結 | 在 SAN 主機上執行 Linux 主機實用程式 CLI 指令「sanlun fcp show adapter -v」時，指令執行失敗，並顯示錯誤訊息，指出找不到主機匯流排適配器 (HBA) 發現所需的函式庫相依性：---- [root@hostname ~]# sanlun fcp show adapter - ---- 
-|===
 
 
 == 接下來呢？
