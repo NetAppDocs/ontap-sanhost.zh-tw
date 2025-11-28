@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme-rhel-96.html 
+permalink: nvme-rhel-9x.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機 
+summary: 如何為 RHEL 9x 設定 NVMe-oF 主機（使用ONTAP） 
 ---
-= 使用 ONTAP 儲存為 NVMe-oF 設定 RHEL 9.6
+= 配置 RHEL 9x 以使用 NVMe-oF 和ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,11 +18,11 @@ summary: 如何使用 ONTAP 設定適用於 RHEL 9.6 的 NVMe 主機
 [role="lead"]
 Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
-了解如何為 RHEL 9.6 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:hu-nvme-index.html["NVME-oF 概述"^]。
+了解如何為 RHEL 9x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-rhel-supported-features.html["RHEL ONTAP支援與功能"]。
 
-*RHEL 9.6 的 NVMe-oF 有以下已知限制：*
+NVMe-oF 與 RHEL 9x 有以下已知限制：
 
-* 避免發布 `nvme disconnect-all`命令，因為它會斷開根檔案系統和資料檔案系統的連接，並可能導致系統不穩定。
+* 這 `nvme disconnect-all`此命令會斷開根檔案系統和資料檔案系統，可能會導致系統不穩定。請勿在透過 NVMe-TCP 或 NVMe-FC 命名空間從 SAN 啟動的系統上執行此操作。
 
 
 
@@ -42,12 +42,12 @@ Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (A
 
 
 
-== 步驟 2：驗證軟體版本和 NVMe 配置
+== 步驟 2：安裝 RHEL 和 NVMe 軟體並驗證您的配置
 
-檢查您的系統是否符合軟體要求並驗證 NVMe 套件安裝和主機配置。
+若要為 NVMe-oF 設定主機，您應該安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
 
 .步驟
-. 在伺服器上安裝 RHEL 9.6。安裝完成後，請驗證您是否正在執行所需的 RHEL 9.6 核心：
+. 在伺服器上安裝 RHEL 9x。安裝完成後，請確認您執行的是所需的 RHEL 9x 核心：
 +
 [source, cli]
 ----
@@ -103,7 +103,7 @@ cat /etc/nvme/hostnqn
 ----
 nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 ----
-. 確認 `hostnqn` 字串符合 `hostnqn` ONTAP 陣列上對應子系統的字串：
+. 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP儲存系統中對應子系統的字串：
 +
 [source, cli]
 ----
@@ -146,7 +146,6 @@ NOTE: 如果 `hostnqn`字串不匹配，請使用 `vserver modify`命令來更�
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
-.步驟
 . 確認您使用的是支援的介面卡機型：
 +
 .. 顯示模型名稱：
@@ -329,7 +328,6 @@ FCP CMPL: xb 000035cc Err 000fcfc0
 --
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
-.步驟
 . 驗證您使用的適配器驅動程式和韌體版本是否受支援：
 +
 [source, cli]
@@ -361,7 +359,6 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 --
 NVMe/TCP 協定不支援自動連線操作。相反，您可以透過執行 NVMe/TCP 來發現 NVMe/TCP 子系統和命名空間 `connect`或者 `connect-all`手動操作。
 
-.步驟
 . 檢查啟動器連接埠是否可以跨支援的 NVMe/TCP LIF 取得發現日誌頁面資料：
 +
 [source, cli]
@@ -519,9 +516,9 @@ nvme	connect-all	-t	tcp	-w	192.168.21.1	-a	192.168.21.21
 ====
 
 
-=== 修改udev規則中的iopolicy
+== 步驟 4：（可選）修改 udev 規則中的 iopolicy
 
-RHEL 9.6 將 NVMe-oF 的預設 iopolicy 設定為 `round-robin`。如果你想將 iopolicy 更改為 `queue-depth`，修改udev規則文件如下：
+RHEL 9.6 將 NVMe-oF 的預設 iopolicy 設定為 `round-robin`。如果您使用的是 RHEL 9.6 並且想要更改 iopolicy，請執行以下操作： `queue-depth`修改 udev 規則檔如下：
 
 . 使用 root 權限在文字編輯器中開啟 udev 規則檔：
 +
@@ -552,14 +549,14 @@ ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}
 ----
 ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}=="NetApp ONTAP Controller", ATTR{iopolicy}="queue-depth"
 ----
-. 執行以下命令重新載入 udev 規則並套用變更：
+. 重新載入udev規則並套用變更：
 +
 [source, cli]
 ----
 udevadm control --reload
 udevadm trigger --subsystem-match=nvme-subsystem
 ----
-. 驗證子系統的目前 iopolicy。將 <subsystem> 替換為適當的名稱，例如， `nvme-subsys0` 。
+. 請檢查子系統的目前 I/O 策略。例如，替換<子系統> `nvme-subsys0` 。
 +
 [source, cli]
 ----
@@ -580,7 +577,7 @@ NOTE: 新的 iopolicy 自動應用於匹配的NetApp ONTAP控制器設備。無�
 
 
 
-== 步驟 4：（可選）為 NVMe/FC 啟用 1MB I/O
+== 步驟 5：可選，啟用 NVMe/FC 的 1MB I/O。
 
 ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
 
@@ -613,7 +610,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
-== 步驟 5：驗證 NVMe 啟動服務
+== 步驟 6：驗證 NVMe 啟動服務
 
 這 `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service`NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時，軟體包會自動啟用。
 
@@ -668,7 +665,7 @@ Jun 10 01:08:36 localhost systemd[1]: Finished Auto-connect to subsystems on FC-
 
 
 
-== 步驟 6：驗證多路徑配置
+== 步驟 7：驗證多路徑配置
 
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
 
@@ -855,9 +852,9 @@ nvme netapp ontapdevices -o json
 
 
 
-== 步驟 7：設定安全帶內身份驗證
+== 步驟 8：設定安全帶內身份驗證
 
-從ONTAP 9.12.1 開始，RHEL 10.0 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。
+支援透過 NVMe/TCP 在 RHEL 9x 主機和ONTAP控制器之間進行安全的帶內身份驗證。
 
 每個主機或控制器必須與一個 `DH-HMAC-CHAP`金鑰來設定安全身份驗證。  `DH-HMAC-CHAP`金鑰是 NVMe 主機或控制器的 NQN 與管理員配置的身份驗證金鑰的組合。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
 
@@ -876,7 +873,7 @@ nvme netapp ontapdevices -o json
 ----
 cat /etc/nvme/hostnqn
 ----
-. 為 RHEL 9.6 主機產生 dhchap 金鑰。
+. 為 RHEL 9x 主機產生 dhchap 金鑰。
 +
 以下輸出描述了 `gen-dhchap-key`命令參數：
 
@@ -1092,6 +1089,17 @@ DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJ
 ====
 
 
-== 步驟 8 ：檢閱已知問題
+== 步驟 9 ：檢閱已知問題
 
-沒有已知問題。
+這些是已知問題：
+
+[cols="20,40,40"]
+|===
+| NetApp錯誤ID | 標題 | 說明 
+
+
+| 1503468 | 在 RHEL 9.1 中， `nvme list-subsys`該命令傳回給定子系統的重複 NVMe 控制器列表 | 這 `nvme list-subsys`指令傳回給定子系統的 NVMe 控制器清單。在 RHEL 9.1 中，此指令顯示子系統中所有命名空間的控制器及其 ANA 狀態。由於 ANA 狀態是每個命名空間的屬性，因此此指令應顯示具有每個命名空間的路徑狀態的唯一控制器條目。 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 9.0 NVMe-oF 主機建立重複的持久發現控制器 (PDC) | 在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立 PDC。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行ONTAP 9.10.1 和 RHEL 9.0，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。 
+|===

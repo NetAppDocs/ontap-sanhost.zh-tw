@@ -16,9 +16,9 @@ summary: 如何使用 ONTAP 為 Rocky Linux 8.10 設定 NVMe-oF 主機
 
 
 [role="lead"]
-Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
+Rocky Linux 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
-了解如何為 Rocky Linux 8.10 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱link:hu-nvme-index.html["NVME-oF 概述"^]。
+了解如何為 Rocky Linux 8.10 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-rockylinux-overview.html["Rocky Linux ONTAP支援與功能"]。
 
 *帶有 Rocky Linux 8.10 的 NVMe-oF 具有以下已知限制：*
 
@@ -46,7 +46,7 @@ Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (A
 
 == 步驟 2：驗證軟體版本和 NVMe 配置
 
-檢查您的系統是否符合軟體要求並驗證 NVMe 套件安裝和主機配置。
+若要為 NVMe-oF 設定主機，您應該安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
 
 .步驟
 . 在伺服器上安裝 Rocky Linux 8.10。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 8.10 核心：

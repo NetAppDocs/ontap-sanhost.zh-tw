@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme-rhel-10.html 
+permalink: nvme-rhel-10x.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何使用ONTAP為 RHEL 10.0 設定 NVMe-oF 主機 
+summary: 如何為 RHEL 10x 設定 NVMe-oF 主機（使用ONTAP） 
 ---
-= 使用ONTAP儲存為 NVMe-oF 設定 RHEL 10.0
+= 配置 RHEL 10x 以支援 NVMe-oF 和ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,12 +18,12 @@ summary: 如何使用ONTAP為 RHEL 10.0 設定 NVMe-oF 主機
 [role="lead"]
 Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
-了解如何為 RHEL 10.0 設定 NVMe over Fabrics (NVMe-oF) 主機。有關更多支援和功能信息，請參閱link:hu-nvme-index.html["NVME-oF 概述"^]。
+了解如何為 RHEL 10x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-rhel-supported-features.html["RHEL ONTAP支援與功能"]。
 
-*RHEL 10.0 的 NVMe-oF 有以下已知限制：*
+NVMe-oF 與 RHEL 10x 有以下已知限制：
 
 * 不支援 NVMe-oF 的 DM 多路徑支援。
-* 避免發布 `nvme disconnect-all`命令，因為它會斷開根檔案系統和資料檔案系統的連接，並可能導致系統不穩定。
+* 這 `nvme disconnect-all`此命令會斷開根檔案系統和資料檔案系統，可能會導致系統不穩定。請勿在透過 NVMe-TCP 或 NVMe-FC 命名空間從 SAN 啟動的系統上執行此操作。
 
 
 
@@ -43,12 +43,12 @@ Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (A
 
 
 
-== 步驟 2：驗證軟體版本和 NVMe 配置
+== 步驟 2：安裝 RHEL 和 NVMe 軟體並驗證您的配置
 
-檢查您的系統是否符合軟體要求並驗證 NVMe 套件安裝和主機配置。
+若要為 NVMe-oF 設定主機，您應該安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
 
 .步驟
-. 在伺服器上安裝 RHEL 10.0。安裝完成後，請驗證您是否正在執行所需的 RHEL 10.0 核心：
+. 在伺服器上安裝 RHEL 10x。安裝完成後，請確認您執行的是所需的 RHEL 10x 核心：
 +
 [source, cli]
 ----
@@ -104,7 +104,7 @@ cat /etc/nvme/hostnqn
 ----
 nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 ----
-. 確認 `hostnqn` 字串符合 `hostnqn` ONTAP 陣列上對應子系統的字串：
+. 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP儲存系統中對應子系統的字串：
 +
 [source, cli]
 ----
@@ -147,7 +147,6 @@ NOTE: 如果 `hostnqn`字串不匹配，請使用 `vserver modify`命令來更�
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
-.步驟
 . 確認您使用的是支援的介面卡機型：
 +
 .. 顯示模型名稱：
@@ -299,7 +298,6 @@ FCP CMPL: xb 000014a5 Err 0002149a
 --
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
-.步驟
 . 驗證您使用的適配器驅動程式和韌體版本是否受支援：
 +
 [source, cli]
@@ -331,7 +329,6 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 --
 NVMe/TCP 協定不支援自動連線操作。相反，您可以透過執行 NVMe/TCP 來發現 NVMe/TCP 子系統和命名空間 `connect`或者 `connect-all`手動操作。
 
-.步驟
 . 檢查啟動器連接埠是否可以跨支援的 NVMe/TCP LIF 取得發現日誌頁面資料：
 +
 [source, cli]
@@ -760,7 +757,7 @@ nvme netapp ontapdevices -o json
 
 == 步驟 7：設定安全帶內身份驗證
 
-從ONTAP 9.12.1 開始，RHEL 10.0 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全帶內身份驗證。
+支援透過 NVMe/TCP 在 RHEL 10x 主機和ONTAP控制器之間進行安全的帶內身份驗證。
 
 每個主機或控制器必須與一個 `DH-HMAC-CHAP`金鑰來設定安全身份驗證。  `DH-HMAC-CHAP`金鑰是 NVMe 主機或控制器的 NQN 與管理員配置的身份驗證金鑰的組合。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
 
@@ -779,7 +776,7 @@ nvme netapp ontapdevices -o json
 ----
 cat /etc/nvme/hostnqn
 ----
-. 為 RHEL 10.0 主機產生 dhchap 金鑰。
+. 為 RHEL 10x 主機產生 dhchap 金鑰。
 +
 以下輸出描述了 `gen-dhchap-key`命令參數：
 
