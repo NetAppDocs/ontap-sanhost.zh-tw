@@ -156,6 +156,12 @@ image::nonasa.png[具有兩個主動 / 最佳化路徑和兩個主動 / 非最�
 
 
 
-== 已知問題
+== 第五步：回顧已知問題
 
-使用 ONTAP 版本的 Windows Server 2025 沒有已知問題。
+沒有已知問題。
+
+
+
+== 接下來呢？
+
+link:hu_wuhu_hba_settings.html["了解 Window Host Utilities 的註冊表設置"]。

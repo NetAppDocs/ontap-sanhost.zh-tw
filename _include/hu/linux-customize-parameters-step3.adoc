@@ -1,0 +1,37 @@
+= 步驟 3：自訂ONTAP LUN 的多路徑參數
+:allow-uri-read: 
+
+
+
+
+== 步驟 3：自訂ONTAP LUN 的多路徑參數
+
+如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
+
+請檢查您的 `/etc/multipath.conf`檔案，尤其是在預設值區段中，以瞭解可能會覆寫的設定<<multipath-parameter-settings,多重路徑參數的預設設定>>。
+
+
+CAUTION: 您不應覆寫 ONTAP LUN 的建議參數設定。這些設定是主機組態最佳效能所必需的。如需詳細資訊，請聯絡 NetApp 支援，您的作業系統廠商或兩者。
+
+下列範例說明如何修正被覆寫的預設值。在此範例中，檔案會 `multipath.conf`定義與 ONTAP LUN 不相容的值 `path_checker`， `no_path_retry`而且您無法移除這些參數，因為 ONTAP 儲存陣列仍連接至主機。而是修正和 `no_path_retry`的值 `path_checker`，方法是將裝置節新增至 `multipath.conf`特定適用於 ONTAP LUN 的檔案。
+
+.顯示範例
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+defaults {
+   path_checker      *readsector0*
+   no_path_retry     *fail*
+}
+
+devices {
+   device {
+      vendor          "NETAPP"
+      product         "LUN"
+      no_path_retry   *queue*
+      path_checker    *tur*
+   }
+}
+----
+====

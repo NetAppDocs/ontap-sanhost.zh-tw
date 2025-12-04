@@ -2278,7 +2278,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d211c3930b27be56feb1a5044f105d64" category="paragraph">NetApp 建議您在主機伺服器上安裝 Microsoft Update 目錄中提供的 * 最新累計更新 * 。</block>
   <block id="c6e9e839e8304cacb5378299e7f6ca42" category="inline-link-macro">Microsoft Update目錄2025</block>
   <block id="68e5c8d1251c633565ba668446a95b32" category="list-text">從下載 Hotfix <block ref="86167046a85b88d4b396a82107daadba" category="inline-link-macro-rx"></block>。</block>
-  <block id="4be31bb14f28cd1a1a92b994b241b6e3" category="paragraph">使用 ONTAP 版本的 Windows Server 2025 沒有已知問題。</block>
   <block id="769a40f63534a31b2b123052ac1da6ad" category="list-text">驗證<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>命令的輸出以確保設定完成。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="47e930d345db593756a39027df077a51" category="paragraph">對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="d7b8955c7b96bef9985fd48649d70251" category="list-text">從下載 Hotfix <block ref="c91fa8395bb99838be8ab4e7b48666cc" category="inline-link-macro-rx"></block>。</block>
@@ -3475,7 +3474,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="184d73c3e73e940410390b1d3eccaee1" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 SUSE Linux Enterprise Server 15 SPx 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="d8a7e98e6a80f5570d0d9d848e259cd3" category="paragraph">您可以使用 SUSE Linux Enterprise Server 15 SPx 的多路徑功能來管理ONTAP LUN。</block>
   <block id="3d3c3e3b44ea208fbe0adc756eaf2f8d" category="paragraph">SUSE Linux Enterprise Server 15 SPx 與ONTAP儲存有下列已知問題。</block>
-  <block id="bf3d61234a95ca1b30fcf4069234c324" category="paragraph">git pull origin main --- permalink: hu_sles_15SP1.html redirect: ontap-sanhost/hu-sles-15spx.html ---</block>
   <block id="1eaa600ad4870574c79128f26c23dd48" category="sidebar">CentOS 8.x</block>
   <block id="e4fc61fa9a616ca27d481649f48b573a" category="sidebar">Oracle Linux 9.x</block>
   <block id="f2578dcaf6fad5c4f9ecbb1871268441" category="sidebar">Oracle Linux 8.x</block>
@@ -3561,25 +3559,69 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5d0c8eb2133aebd1b84ae7eadb64443d" category="inline-link-macro">了解如何管理 NVMe 協議</block>
   <block id="ea103ce11fa3acd9ff613573f07e83a8" category="paragraph"><block ref="ea103ce11fa3acd9ff613573f07e83a8" category="inline-link-macro-rx"></block></block>
   <block id="46df6d1dcf1bfe1d293e698a53cb025f" category="inline-link-macro">Rocky Linux ONTAP支援與功能</block>
-  <block id="2bcba8bad4fcf760dffcacf8b4a4cc62" category="paragraph">了解如何為 Rocky Linux 10.0 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="ef6b2f6e617a38d7878383a8f2b7d19b" category="paragraph">了解如何為 Rocky Linux 8.10 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="eff346b10e9abaf1f4d714ca9df21bc0" category="paragraph">了解如何為 Rocky Linux 8.4 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="682922c7ea5594fe7bdcd2b7277e9753" category="paragraph">了解如何為 Rocky Linux 8.5 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="120b950f8a485a339e959e9b7a66047d" category="paragraph">了解如何為 Rocky Linux 8.6 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="5d818d94d4d7b336ddf7f5e1c710ed41" category="paragraph">了解如何為 Rocky Linux 8.7 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="4bfb47d472f173a03cd1d2df2af129ff" category="paragraph">了解如何為 Rocky Linux 8.8 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="646d73193bcb07c45f83d548cefb34fa" category="paragraph">了解如何為 Rocky Linux 8.9 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="8bc36568c971e7b3df3a392d30b311c8" category="paragraph">了解如何為 Rocky Linux 9.0 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="05009c1e9d40ab93e9501109fb7ea18d" category="paragraph">了解如何為 Rocky Linux 9.1 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="3d4b393ca8cab92825657c10c9d8c1cf" category="paragraph">了解如何為 Rocky Linux 9.2 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="4a6b31a56b173440740905400c439e09" category="paragraph">了解如何為 Rocky Linux 9.3 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="0e394156b915862ea0b130800ff5e59d" category="paragraph">了解如何為 Rocky Linux 9.4 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="33b5872c4a7a0e71bfc3330b089f9464" category="paragraph">了解如何為 Rocky Linux 9.5 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
-  <block id="67e1bc19eec84fea93766fe5fa8a33df" category="paragraph">了解如何為 Rocky Linux 9.6 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="08d4fe0a6a750912079de4ad634caec3" category="inline-link-macro-rx"></block>。</block>
   <block id="fc35bf5b5ac3f79b1fa6a280a58f05d4" category="summary">了解 Rocky Linux 對ONTAP 的支援與功能</block>
   <block id="d4c250eac77deea13f8e9d9293a5aad2" category="paragraph">使用 NVMe over Fabrics (NVMe-oF) 進行主機配置所支援的功能因ONTAP和 Rocky Linux 的版本而異。</block>
   <block id="3127b50785e82cd676744d9673a7bb86" category="cell">Rocky Linux 主機版本</block>
   <block id="4b91f32a6e7c9347e242c6a3cfe81831" category="sidebar">10x</block>
   <block id="41d60d32d9ec705b3d3409e5c37a47ed" category="sidebar">9x</block>
   <block id="22d3c538ae9a7893a8cca2d17abd46ce" category="sidebar">8x</block>
+  <block id="e01b830a5cda09eafed964519b00a13a" category="doc">步驟 2：（選用）從多路徑中排除設備</block>
+  <block id="904cc9711392ab11f24202a7482e210d" category="doc">步驟 3：自訂ONTAP LUN 的多路徑參數</block>
+  <block id="2589c63c17df176e198728a79c3e5212" category="cell">“總是”</block>
+  <block id="2f7bb230c70819aeb10b45a709bcf48f" category="cell">“1”</block>
+  <block id="e937998e5a3fcf2887fa0312475809ad" category="list-text">（可選）覆蓋預設值<block ref="19b30dc119e514235b739e076be9b3cc" prefix=" " category="inline-code"></block>用於確保 multipathd 正確發現和管理ONTAP LUN 的參數：</block>
+  <block id="b4c2f617736da5488cca3d052f3d5b22" category="list-text">放<block ref="19b30dc119e514235b739e076be9b3cc" prefix=" " category="inline-code"></block>在預設值部分設定為“否”<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> ：</block>
+  <block id="7c7bd4a6ffb911a5e03abd98deb728a2" category="list-text">重新載入多路徑服務：</block>
+  <block id="e357b4342a0f3c9f0335b0a8236f0f56" category="admonition">預設情況下，Proxmox OS 原生多路徑配置集<block ref="19b30dc119e514235b739e076be9b3cc" prefix=" " category="inline-code"></block>設定為“*嚴格*”，並帶有空零字節<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>每次啟動主機時都會執行設定檔。這可以防止主機發現新出現的ONTAP LUN 作為多路徑設備，這意味著它們不會自動出現在多路徑控制之下。每次重啟後，現有的ONTAP LUN 仍保持被發現狀態並處於多路徑控制之下。</block>
+  <block id="d916cdb52453f1297e01a7f2fb93f68b" category="paragraph">以下範例顯示了具有兩條活動/最佳化路徑和兩條活動/非最佳化路徑的ONTAP LUN 的輸出：</block>
+  <block id="a67072e0fcf576d467b0d59c6e975a4f" category="summary">在 Proxmox VE 9.0 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="2108c565af875cfc1e318c7dc8e41e56" category="doc">配置 Proxmox VE 9.0 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
+  <block id="56ea3377f895b5d98eb5cfb4d8112b4e" category="paragraph">配置 Proxmox VE 9.0 以實現多路徑，並為 FCP 和 iSCSI 協定操作與ONTAP儲存進行特定參數和設定。</block>
+  <block id="ee4895e76707b7f8c336bca634b35b63" category="list-text">Linux 主機實用程式不支援 Proxmox VE 9.0 作業系統。</block>
+  <block id="9b75a9b32f86018debc00585d6f260d7" category="list-text">Proxmox VE 9.0 不支援 SAN 啟動配置。</block>
+  <block id="9c3789f3b828a3db86a5becb5c29475e" category="paragraph">您可以使用 Proxmox VE 9.0 的多路徑功能來管理ONTAP LUN。</block>
+  <block id="62f90d2b36f26e75648f8fbc863d2103" category="summary">了解 Proxmox 主機對ONTAP 的支援與功能</block>
+  <block id="2b32731d6a5ce83c7ab86fa39ec46a48" category="paragraph">使用 NVMe over Fabrics (NVMe-oF) 進行主機配置所支援的功能因ONTAP和 Proxmox 的版本而異。</block>
+  <block id="0a0891df749e36f8a1da70eeb7191ff8" category="cell">ONTAP功能</block>
+  <block id="458078e18e047c43a6e6db3e150f66f5" category="cell">Proxmox主機版本</block>
+  <block id="56884779bcdf2531adce3644feb5d5ad" category="cell">使用原生功能提供 NVMe/FC 和 NVMe/TCP 命名空間的ONTAP詳細信息<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>包裹。</block>
+  <block id="3dd207a3086b972d8d447b71f51ad45b" category="inline-link-macro">了解如何設定 Proxmox VE 9.0</block>
+  <block id="8e152c1aa088847e146b4fe57394d80d" category="paragraph"><block ref="8e152c1aa088847e146b4fe57394d80d" category="inline-link-macro-rx"></block></block>
+  <block id="1d871fa88754498eb3c93e5a73370e81" category="paragraph"><block ref="1d871fa88754498eb3c93e5a73370e81" category="inline-link-macro-rx"></block></block>
+  <block id="e2afbb1d7ff46d2d42900177365daf65" category="summary">如何為 Proxmox VE 9.0 配置 NVMe-oF 主機和ONTAP存儲</block>
+  <block id="a905e3804e13e4478f22570d7b1c6daa" category="doc">配置 Proxmox VE 9.0 以支援 NVMe-oF 和ONTAP存儲</block>
+  <block id="db808e8d5fb0a993c938763824fac885" category="paragraph">Proxmox VE 9.0 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。</block>
+  <block id="4ae846af7b3e3b1ee9fce8a61764e7b3" category="paragraph">了解如何為 Proxmox VE 9.0 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="e9c9618cb4ec473c29fc8069ba3262ca" category="inline-link-macro-rx"></block>。</block>
+  <block id="11dc508ee4171316cc84faf1df7da0d1" category="admonition">Proxmox VE 9.0 不支援 NVMe-FC 的 SAN 啟動配置。</block>
+  <block id="a2cfdbabc7f82da552ac8a6f31932690" category="section-title">步驟 1：驗證軟體版本和 NVMe 配置</block>
+  <block id="d87c2970a586e621db74a1d4a13c1b7d" category="list-text">在伺服器上安裝 Proxmox VE 9.0。安裝完成後，請確認您執行的是所需的 Proxmox VE 9.0 核心：</block>
+  <block id="5c6d8604a5ef6f3ebc5e8f9e0a358981" category="paragraph">Proxmox VE 9.0 核心版本範例：</block>
+  <block id="2522863fc857cac71478b47c2b4ce58a" category="section-title">步驟 2：設定 NVMe/FC 和 NVMe/TCP</block>
+  <block id="ffe16d9eb39aa355eb74e268533641c2" category="open-title">NVMe/FC - 博通/Emulex</block>
+  <block id="ac966a87b7f17d061600251cdc258bdf" category="list-text">顯示模型描述：</block>
+  <block id="567bbee303676695a37f51693d9e02b7" category="open-title">NVMe/FC - Marvell/QLogic</block>
+  <block id="83014af3ddd4a5320ebd08e08ff420bc" category="paragraph">NVMe/TCP 的設置<block ref="aa299db15ce3339d945d5120490e62d0" prefix=" " category="inline-code"></block>自動設定為“關閉”。因此：</block>
+  <block id="fdd88a13d7f11baa3b88e7e4bed9deb4" category="section-title">步驟 3：可選，啟用 NVMe/FC 的 1MB I/O。</block>
+  <block id="e1e2b9375828665c220dd1388f6ad3cf" category="section-title">步驟 4：驗證 NVMe 啟動服務</block>
+  <block id="c61f03ab8365ee468d0fbc89f627b83e" category="list-text">驗證主機上是否正確顯示了ONTAP命名空間的相應 NVMe-oF 設定（例如，將型號設定為NetApp ONTAP Controller，並將負載平衡 iopolicy 設定為 round-robin）：</block>
+  <block id="20e3bd3445baddb0173656fe96366a23" category="list-text">顯示子系統：</block>
+  <block id="7946782d09fa1f600cc061a6029875ef" category="paragraph">了解如何為 Rocky Linux 10.0 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="fd81caa2737a7c6c74b17366ebc3b26d" category="paragraph">了解如何為 Rocky Linux 8.10 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="990c806cf38153e0a6e4dbb8598255b2" category="paragraph">了解如何為 Rocky Linux 8.4 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="33c9bf1050a9c9db8e8e61de30256522" category="paragraph">了解如何為 Rocky Linux 8.5 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="e30c06dad54ac3ae27429c41e278c465" category="paragraph">了解如何為 Rocky Linux 8.6 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="260633d077bafcfbd059d54c5fec54a7" category="paragraph">了解如何為 Rocky Linux 8.7 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="01908d182c262ae0b43c00d1bdb3017a" category="paragraph">了解如何為 Rocky Linux 8.8 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="0209fe0414b2aa411c2b874b9b8f01b5" category="paragraph">了解如何為 Rocky Linux 8.9 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="1f0c6f6038f9033e358db54ed0f5316b" category="paragraph">了解如何為 Rocky Linux 9.0 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="c694321770eda6e6c3c3d966f139483c" category="paragraph">了解如何為 Rocky Linux 9.1 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="c85c322c1118a325cd049f1a6411b364" category="paragraph">了解如何為 Rocky Linux 9.2 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="f65dc7c65a753920136d2faf44d0829b" category="paragraph">了解如何為 Rocky Linux 9.3 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="6d4e00db5093c8e417dafca4594cb369" category="paragraph">了解如何為 Rocky Linux 9.4 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="3c4949e90c3e10a54cdb4e6858c43140" category="paragraph">了解如何為 Rocky Linux 9.5 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="62168331fe38405a2f9f80d6cf376342" category="paragraph">了解如何為 Rocky Linux 9.6 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
+  <block id="75e680a777df7d1ca001dab2b59ac1ad" category="sidebar">普羅克斯莫克斯</block>
+  <block id="f66ee9162b6416e5d8581c7b1b3e7b15" category="sidebar">Proxmox 9.0</block>
+  <block id="7c0fddb795e074f6d14458a8975b1aa6" category="sidebar">NVMeoF Proxmox</block>
+  <block id="5fe2096f9921d0fba5e418c83d4ae235" category="sidebar">Proxmox VE 9x</block>
 </blocks>

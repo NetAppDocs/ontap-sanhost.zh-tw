@@ -29,7 +29,7 @@ indexpage:
     - title: 使用 FCP 和 iSCSI 設定主機
       url: "/hu_fcp_scsi_index.html"
     - title: 使用 NVMe 設定主機
-      url: "/hu_nvme_index.html"
+      url: "/hu-nvme-index.html"
   - title: 更多資源
     links:
     - title: Cloud Volumes ONTAP
