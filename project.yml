@@ -212,8 +212,8 @@ sidebar:
           url: "/hu_ol_64.html"
     - title: 普羅克斯莫克斯
       entries:
-      - title: Proxmox 9.0
-        url: "/hu-proxmox-9x.html"
+      - title: Proxmox VE 9.0
+        url: "/hu-proxmox-ve-9x.html"
     - title: RHEL
       entries:
       - title: RHEL 10

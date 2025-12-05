@@ -3578,7 +3578,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="2108c565af875cfc1e318c7dc8e41e56" category="doc">配置 Proxmox VE 9.0 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
   <block id="56ea3377f895b5d98eb5cfb4d8112b4e" category="paragraph">配置 Proxmox VE 9.0 以實現多路徑，並為 FCP 和 iSCSI 協定操作與ONTAP儲存進行特定參數和設定。</block>
   <block id="ee4895e76707b7f8c336bca634b35b63" category="list-text">Linux 主機實用程式不支援 Proxmox VE 9.0 作業系統。</block>
-  <block id="9b75a9b32f86018debc00585d6f260d7" category="list-text">Proxmox VE 9.0 不支援 SAN 啟動配置。</block>
   <block id="9c3789f3b828a3db86a5becb5c29475e" category="paragraph">您可以使用 Proxmox VE 9.0 的多路徑功能來管理ONTAP LUN。</block>
   <block id="62f90d2b36f26e75648f8fbc863d2103" category="summary">了解 Proxmox 主機對ONTAP 的支援與功能</block>
   <block id="2b32731d6a5ce83c7ab86fa39ec46a48" category="paragraph">使用 NVMe over Fabrics (NVMe-oF) 進行主機配置所支援的功能因ONTAP和 Proxmox 的版本而異。</block>
@@ -3592,7 +3591,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="a905e3804e13e4478f22570d7b1c6daa" category="doc">配置 Proxmox VE 9.0 以支援 NVMe-oF 和ONTAP存儲</block>
   <block id="db808e8d5fb0a993c938763824fac885" category="paragraph">Proxmox VE 9.0 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。</block>
   <block id="4ae846af7b3e3b1ee9fce8a61764e7b3" category="paragraph">了解如何為 Proxmox VE 9.0 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="e9c9618cb4ec473c29fc8069ba3262ca" category="inline-link-macro-rx"></block>。</block>
-  <block id="11dc508ee4171316cc84faf1df7da0d1" category="admonition">Proxmox VE 9.0 不支援 NVMe-FC 的 SAN 啟動配置。</block>
   <block id="a2cfdbabc7f82da552ac8a6f31932690" category="section-title">步驟 1：驗證軟體版本和 NVMe 配置</block>
   <block id="d87c2970a586e621db74a1d4a13c1b7d" category="list-text">在伺服器上安裝 Proxmox VE 9.0。安裝完成後，請確認您執行的是所需的 Proxmox VE 9.0 核心：</block>
   <block id="5c6d8604a5ef6f3ebc5e8f9e0a358981" category="paragraph">Proxmox VE 9.0 核心版本範例：</block>
@@ -3621,7 +3619,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3c4949e90c3e10a54cdb4e6858c43140" category="paragraph">了解如何為 Rocky Linux 9.5 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
   <block id="62168331fe38405a2f9f80d6cf376342" category="paragraph">了解如何為 Rocky Linux 9.6 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="1e55fb83287e360fc6aff276b6a4f713" category="inline-link-macro-rx"></block>。</block>
   <block id="75e680a777df7d1ca001dab2b59ac1ad" category="sidebar">普羅克斯莫克斯</block>
-  <block id="f66ee9162b6416e5d8581c7b1b3e7b15" category="sidebar">Proxmox 9.0</block>
   <block id="7c0fddb795e074f6d14458a8975b1aa6" category="sidebar">NVMeoF Proxmox</block>
   <block id="5fe2096f9921d0fba5e418c83d4ae235" category="sidebar">Proxmox VE 9x</block>
+  <block id="ba27a04190d6694c847e3efa59ae4a4d" category="paragraph">FCP 和 iSCSI 與 Proxmox VE 9.0 有以下已知限制：</block>
+  <block id="53445ee8fa865b4519b6dd3c5ae43550" category="list-text">不支援 SAN 啟動配置。</block>
+  <block id="662102a165c2bc048d9868d337b6e7f0" category="paragraph">NVMe-oF 與 Proxmox VE 9.0 有以下已知限制：</block>
+  <block id="e3b2f07b62796920751f31b5a43c631c" category="list-text">不支援 NVMe-FC 的 SAN 啟動配置。</block>
+  <block id="09b2a2061e5881b282d700c9e017e27d" category="sidebar">Proxmox VE 9.0</block>
 </blocks>
