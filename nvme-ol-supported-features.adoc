@@ -1,0 +1,90 @@
+---
+sidebar: sidebar 
+permalink: nvme-ol-supported-features.html 
+keywords: nvme, oracle linux, enterprise 
+summary: 了解ONTAP對 Oracle Linux 主機的支援和功能。 
+---
+= 了解ONTAP對 Oracle Linux 主機的支援和功能。
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+使用 NVMe over Fabrics (NVMe-oF) 進行主機配置所支援的功能因ONTAP和 Oracle Linux 的版本而異。
+
+[cols="50,25,25"]
+|===
+| 特徵 | Oracle Linux 主機版本 | ONTAP 版本 
+
+
+| Oracle Linux 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全的帶內身份驗證。  a| 
+9.4 或更高版本
+| 9.12.1 或更高版本 
+
+
+| NVMe/TCP 使用原生命名空間提供命名空間 `nvme-cli`包裹  a| 
+8.2 或更高版本
+| 9.10.1 或更高版本 
+
+
+| 在同一主機上支援 NVMe 和 SCSI 流量，NVMe-oF 命名空間使用 NVMe 多路徑，SCSI LUN 使用 dm 多路徑。  a| 
+7.7 或更高版本
+| 9.4 或更高版本 
+|===
+
+NOTE: NetApp  `sanlun` NVMe-oF 不支援主機實用程式。您可以使用本機 `nvme-cli`適用於所有 NVMe-oF 傳輸。
+
+無論系統設定中執行的ONTAP版本為何， ONTAP支援以下 SAN 主機功能。
+
+[cols="75,25"]
+|===
+| 特徵 | Oracle Linux 主機版本 
+
+
+| 核心中 NVMe 多路徑功能預設對 NVMe 命名空間啟用。  a| 
+8.3 或更高版本
+
+
+
+| SAN 啟動已透過 NVMe/FC 協定啟用  a| 
+9.5 或更高版本
+
+
+
+| 這 `nvme-cli`軟體包包含自動連接腳本，無需第三方腳本。  a| 
+8.3 或更高版本
+
+
+
+| 原生 udev 規則 `nvme-cli`該軟體包為 NVMe 多路徑提供輪詢負載平衡  a| 
+8.3 或更高版本
+
+|===
+
+NOTE: 有關受支援配置的詳細信息，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
+
+
+
+== 下一步
+
+[cols="50,50"]
+|===
+| 如果您的 Oracle Linux 版本是… | 了解… 
+
+
+| 9系列 | link:nvme-ol-9x.html["為 Oracle Linux 9x 配置 NVMe"] 
+
+
+| 8系列 | link:nvme-ol-8x.html["為 Oracle Linux 8x 配置 NVMe"] 
+
+
+| 7系列 | link:nvme-ol-7x.html["為 Oracle Linux 7x 配置 NVMe"] 
+|===
+.相關資訊
+link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["了解如何管理 NVMe 協議"^]

@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme-ol-810.html 
-keywords: nvme, oracle linux, 8.10, host configuration 
-summary: 適用於 ONTAP 的 Oracle Linux 8.10 版 NVMe 型主機組態 
+permalink: nvme-ol-8x.html 
+keywords: nvme, oracle linux, 8x, host configuration 
+summary: 適用於 Oracle Linux 8x 和ONTAP的 NVMe-oF 主機配置 
 ---
-= 適用於 ONTAP 的 Oracle Linux 8.10 版 NVMe 型主機組態
+= 配置 Oracle Linux 8x 和 NVMe-oF 用於ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,47 +18,32 @@ summary: 適用於 ONTAP 的 Oracle Linux 8.10 版 NVMe 型主機組態
 [role="lead"]
 Oracle Linux 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
-.關於這項工作
-您可以在 Oracle Linux 8.10 的 NVMe 主機組態中使用下列支援和功能。在開始設定程序之前，您也應該先檢閱已知的限制。
+了解如何為 Oracle Linux 8x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-ol-supported-features.html["Oracle Linux ONTAP支援與功能"]。
 
-* 可用支援：
-+
-** 支援 NVMe over TCP （ NVMe / TCP ）和 NVMe over Fibre Channel （ NVMe / FC ）。這讓原生 NVMe - CLI 套件中的 NetApp 外掛程式能夠同時顯示 NVMe / FC 和 NVMe / TCP 命名空間的 ONTAP 資訊。
-+
-視您的主機組態而定，您可以設定 NNMe / FC ， NVMe / TCP 或這兩種通訊協定。
+NVMe-oF 與 Oracle Linux 8x 有以下已知限制：
 
-** 在同一部主機上同時執行 NVMe 和 SCSI 流量。例如，您可以為 SCSI LUN 的 SCSI 裝置設定 dm-multipath `mpath` ，並使用 NVMe 多重路徑在主機上設定 NVMe 命名空間裝置。
-
-
-+
-如需支援組態的其他詳細資訊，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
-
-* 可用功能：
-+
-** 在 Oracle Linux 8.10 中，預設會啟用 NVMe 命名空間的核心內建 NVMe 多重路徑功能。您不需要設定明確的設定。
-
-
-* 已知限制：
-+
-** 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。
-** Linux 8.10 主機上的 NVMe 無法支援 NetApp sanlun 主機公用程式。您可以改用原生套件中的 NetApp 外掛程式 `nvme-cli`來執行所有 NVMe 傳輸。
+* 不支援使用 NVMe-oF 協定進行 SAN 啟動。
+* NetApp sanlun 主機公用程式不支援 Oracle Linux 8x 主機上的 NVMe-oF。相反，您可以依賴本機中包含的NetApp插件 `nvme-cli`適用於所有 NVMe-oF 傳輸的套件。
+* 對於 Oracle Linux 8.2 及更早版本，nvme-cli 軟體套件中不提供原生 NVMe/FC 自動連線腳本。使用 HBA 供應商提供的外部自動連線腳本。
+* 對於 Oracle Linux 8.2 及更早版本，預設不會為 NVMe 多路徑啟用輪詢負載平衡。若要啟用此功能，請前往下列步驟。<<udev-rule,編寫 udev 規則>> 。
 
 
 
 
+== 步驟 1：安裝 Oracle Linux 和 NVMe 軟體並驗證您的配置
 
-
-== 驗證軟體版本
-
-驗證 Oracle Linux 8.10 支援的最低軟體版本。
+使用以下步驟驗證支援的最低 Oracle Linux 8x 軟體版本。
 
 .步驟
-. 在伺服器上安裝 Oracle Linux 8.10 GA 。安裝完成後、請確認您正在執行指定的 Oracle Linux 8.10 GA 核心：
+. 在伺服器上安裝Oracle Linux 8x。安裝完成後，請確認您執行的是指定的 Oracle Linux 8x 核心。
 +
-[listing]
+[source, cli]
 ----
 uname -r
 ----
++
+Oracle Linux 核心版本範例：
+
 +
 [listing]
 ----
@@ -66,29 +51,43 @@ uname -r
 ----
 . 安裝「NVMe-CLI（NVMe - CLI）套件：
 +
-[listing]
+[source, cli]
 ----
 rpm -qa|grep nvme-cli
 ----
++
+下面的例子展示了 `nvme-cli`軟體包版本：
+
 +
 [listing]
 ----
 nvme-cli-1.16-9.el8.x86_64
 ----
-. 在 Oracle Linux 8.10 主機上， `hostnqn`請檢查 `/etc/nvme/hostnqn`以下網址的字串：
+. [[udev-rule]] 對於 Oracle Linux 8.2 及更早版本，請新增下列字串作為單獨的 udev 規則。 `/lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules` 。這樣就實現了 NVMe 多路徑的輪詢負載平衡。
 +
-[listing]
+[source, cli]
+----
+cat /lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules
+Enable round-robin for NetApp ONTAP
+ACTION=="add", SUBSYSTEMS=="nvme-subsystem", ATTRS{model}=="NetApp ONTAP Controller", ATTR{iopolicy}="round-robin"
+----
+. 在 Oracle Linux 8x 主機上，檢查 `hostnqn`字串 `/etc/nvme/hostnqn`：
++
+[source, cli]
 ----
 cat /etc/nvme/hostnqn
 ----
++
+下面的例子展示了 `hostnqn`版本：
+
 +
 [listing]
 ----
 nqn.2014-08.org.nvmexpress:uuid:edd38060-00f7-47aa-a9dc-4d8ae0cd969a
 ----
-. 驗證 Oracle Linux 8.10 主機上與 ONTAP 陣列上對應的子系統是否 `hostnqn`相符 `hostnqn`：
+. 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP儲存系統中對應子系統的字串：
 +
-[listing]
+[source, cli]
 ----
 vserver nvme subsystem host show -vserver vs_coexistence_LPE36002
 ----
@@ -96,7 +95,7 @@ vserver nvme subsystem host show -vserver vs_coexistence_LPE36002
 .顯示範例
 [%collapsible]
 ====
-[listing]
+[listing, subs="+quotes"]
 ----
 Vserver Subsystem Priority  Host NQN
 ------- --------- --------  ------------------------------------------------
@@ -116,48 +115,65 @@ vs_coexistence_LPE36002
 
 NOTE: 如果 `hostnqn`字串不相符，請使用 `vserver modify`命令更新 `hostnqn`對應 ONTAP 陣列子系統上的字串，以符合主機上的字 `/etc/nvme/hostnqn`串 `hostnqn`。
 
-. 如果您打算在同一部主機上同時執行 NVMe 和 SCSI 共存流量， NetApp 建議分別針對 ONTAP 命名空間和 ONTAP LUN 使用核心內建 NVMe 多重路徑 `dm-multipath`。這應該會排除 ONTAP 命名空間，並防止 `dm-multipath`宣告 ONTAP 命名空間 `dm-multipath`裝置：
+. 此外，為了在同一台主機上同時執行 NVMe 和 SCSI 流量， NetApp建議對ONTAP命名空間使用核心 NVMe 多路徑。 `dm-multipath`分別對應ONTAP LUN。這樣應該可以將ONTAP命名空間排除在外。 `dm-multipath`並阻止 `dm-multipath`拒絕聲明ONTAP命名空間設備。
 +
-.. 將設定新增 `enable_foreign`至 `/etc/multipath.conf`檔案：
+.. 添加 `enable_foreign`設定 `/etc/multipath.conf`文件。
 +
-[listing]
+[source, cli]
 ----
-# cat /etc/multipath.conf
+cat /etc/multipath.conf
 defaults {
   enable_foreign     NONE
 }
 ----
-.. 重新啟動 `multipathd`常駐程式以套用新設定：
+.. 重新啟動 `multipathd`守護程式應用新設定。
 +
-`systemctl restart multipathd`
+[source, cli]
+----
+systemctl restart multipathd
+----
 
 
 
 
 
 
+== 步驟 2：設定 NVMe/FC 和 NVMe/TCP
 
-== 設定NVMe/FC
-
-您可以使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 介面卡來設定 NVMe / FC 。對於組態為 Broadcom 介面卡的 NVMe / FC ，您可以啟用大小為 1 MB 的 I/O 要求。
+使用 Broadcom/Emulex 或 Marvell/QLogic 適配器配置 NVMe/FC，或使用手動發現和連接操作來設定 NVMe/TCP。
 
 [role="tabbed-block"]
 ====
-.Broadcom / Emulex
+.FC——Broadcom/Emulex
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
-.步驟
 . 確認您使用的是支援的介面卡機型：
 +
-.. `cat /sys/class/scsi_host/host*/modelname`
+.. 顯示模型名稱：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modelname
+----
++
+您應該會看到下列輸出：
+
 +
 [listing]
 ----
 LPe36002-M64
 LPe36002-M64
 ----
-.. `cat /sys/class/scsi_host/host*/modeldesc`
+.. 顯示模型描述：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modeldesc
+----
++
+您應該會看到類似以下範例的輸出：
+
 +
 [listing]
 ----
@@ -168,14 +184,30 @@ Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 
 . 驗證您使用的是建議的Broadcom `lpfc` 韌體與收件匣驅動程式：
 +
-.. `cat /sys/class/scsi_host/host*/fwrev`
+.. 顯示韌體版本：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/fwrev
+----
++
+以下範例顯示韌體版本：
+
 +
 [listing]
 ----
 14.4.317.10, sli-4:6:d
 14.4.317.10, sli-4:6:d
 ----
-.. `cat /sys/module/lpfc/version`
+.. 顯示收件匣驅動程式版本：
++
+[source, cli]
+----
+cat /sys/module/lpfc/version
+----
++
+以下範例顯示了驅動程式版本：
+
 +
 [listing]
 ----
@@ -188,25 +220,46 @@ Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 
 . 確認已 `lpfc_enable_fc4_type`設定為「 3 」：
 +
-`cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type`
-
-. 確認啟動器連接埠已啟動並正在執行、而且您可以看到目標生命體：
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+----
+. 確認您可以檢視啟動器連接埠：
 +
-.. `cat /sys/class/fc_host/host*/port_name`
+[source, cli]
+----
+cat /sys/class/fc_host/host*/<port_name>
+----
++
+以下範例顯示連接埠標識：
+
 +
 [listing]
 ----
 0x100000109bf0449c
 0x100000109bf0449d
 ----
-.. `cat /sys/class/fc_host/host*/port_state`
+. 驗證啟動器連接埠是否在線上：
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_state
+----
++
+您應該會看到下列輸出：
+
 +
 [listing]
 ----
 Online
 Online
 ----
-.. `cat /sys/class/scsi_host/host*/nvme_info`
+. 確認已啟用 NVMe / FC 啟動器連接埠、且目標連接埠可見：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/nvme_info
+----
 +
 .顯示範例
 [%collapsible]
@@ -239,20 +292,19 @@ FCP CMPL: xb 00000016 Err 00000016
 =====
 
 
-
-
 --
-.Marvell / QLogic
+.FC——Marvell/QLogic
 --
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
-
-NOTE: Oracle Linux 10 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的修正程式。這些修正對於 ONTAP 支援至關重要。
-
-.步驟
 . 確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
-`cat /sys/class/fc_host/host*/symbolic_name`
+[source, cli]
+----
+cat /sys/class/fc_host/host*/symbolic_name
+----
++
+以下範例顯示了驅動程式和韌體版本：
 
 +
 [listing]
@@ -260,67 +312,35 @@ NOTE: Oracle Linux 10 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式�
 QLE2772 FW:v9.15.00 DVR:v10.02.09.100-k
 QLE2772 FW:v9.15.00 DVR:v10.02.09.100-k
 ----
-. 確認已 `ql2xnvmeenable`設定為「 1 」。這可讓 Marvell 介面卡作為 NVMe / FC 啟動器運作：
+. 請確認 `ql2xnvmeenable` 已設定。這可讓 Marvell 介面卡作為 NVMe / FC 啟動器運作：
 +
-`cat /sys/module/qla2xxx/parameters/ql2xnvmeenable`
+[source, cli]
+----
+cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
+----
++
+預期輸出為 1 。
 
 
 
 --
-====
+.TCP
+--
+NVMe/TCP 協定不支援自動連線操作。相反，您可以透過執行 NVMe/TCP 來發現 NVMe/TCP 子系統和命名空間 `connect`或者 `connect-all`手動操作。
 
-
-=== 啟用1MB I/O大小（選用）
-
-ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
-
-
-NOTE: 這些步驟不適用於 Qlogic NVMe / FC 主機。
-
-.步驟
-. 將 `lpfc_sg_seg_cnt`參數設定為 256 ：
-+
-[source, cli]
-----
-cat /etc/modprobe.d/lpfc.conf
-----
-+
-您應該會看到類似以下範例的輸出：
-
-+
-[listing]
-----
-options lpfc lpfc_sg_seg_cnt=256
-----
-. 執行 `dracut -f`命令，然後重新啟動主機。
-. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
-+
-[source, cli]
-----
-cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-----
-
-
-
-
-== 設定NVMe/TCP
-
-NVMe / TCP 傳輸協定不支援此 `auto-connect`作業。您可以改為透過手動執行 NVMe / TCP 或 `connect-all`作業來探索 NVMe / TCP 子系統和命名空間 `connect`。
-
-.步驟
 . 確認啟動器連接埠可在支援的NVMe/TCP LIF中擷取探索記錄頁面資料：
 +
-[listing]
+[source, cli]
 ----
 nvme discover -t tcp -w <host-traddr> -a <traddr>
 ----
 +
 .顯示範例
 [%collapsible]
-====
-[listing]
+=====
+[listing, subs="+quotes"]
 ----
-#	nvme discover -t tcp -w 192.168.6.1 -a 192.168.6.24 Discovery Log Number of Records 20, Generation counter 45
+nvme discover -t tcp -w 192.168.6.1 -a 192.168.6.24 Discovery Log Number of Records 20, Generation counter 45
 =====Discovery Log Entry 0======
 trtype:  tcp
 adrfam:  ipv4
@@ -381,52 +401,88 @@ trsvcid: 4420
 subnqn:  nqn.1992-08.com.netapp:sn.e6c438e66ac211ef9ab8d039eab31e9d:subsystem.nvme_tcp_4
 ..........
 ----
-====
+=====
 . 確認所有其他的 NVMe / TCP 啟動器目標 LIF 組合都能成功擷取探索記錄頁面資料：
 +
-[listing]
+[source, cli]
 ----
 nvme discover -t tcp -w <host-traddr> -a <traddr>
 ----
 +
 .顯示範例
 [%collapsible]
-====
-[listing]
+=====
+[listing, subs="+quotes"]
 ----
-# nvme discover -t tcp -w 192.168.6.1 -a 192.168.6.24
-# nvme discover -t tcp -w 192.168.6.1 -a 192.168.6.25
-# nvme discover -t tcp -w 192.168.5.1 -a 192.168.5.24
-# nvme discover -t tcp -w 192.168.5.1 -a 192.168.5.25
+nvme discover -t tcp -w 192.168.6.1 -a 192.168.6.24
+nvme discover -t tcp -w 192.168.6.1 -a 192.168.6.25
+nvme discover -t tcp -w 192.168.5.1 -a 192.168.5.24
+nvme discover -t tcp -w 192.168.5.1 -a 192.168.5.25
 ----
-====
-. 跨節點跨所有支援的 NVMe / TCP 啟動器目標生命體執行 `nvme connect-all`命令：
+=====
+. 執行 `nvme connect-all` 跨所有節點支援的 NVMe / TCP 啟動器目標生命體執行命令：
 +
-[listing]
+[source, cli]
 ----
-nvme connect-all -t tcp -w <host-traddr> -a <traddr> -l <ctrl_loss_timeout_in_seconds>
+nvme connect-all -t tcp -w host-traddr -a traddr -l <ctrl_loss_timeout_in_seconds>
 ----
 +
 .顯示範例
 [%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme	connect-all	-t	tcp	-w	192.168.5.1	-a	192.168.5.24	-l -1
+nvme	connect-all	-t	tcp	-w	192.168.5.1	-a	192.168.5.25	-l -1
+nvme	connect-all	-t	tcp	-w	192.168.6.1	-a	192.168.6.24	-l -1
+nvme	connect-all	-t	tcp	-w	192.168.6.1	-a	192.168.6.25	-l -1
+----
+=====
+
+
+[NOTE]
 ====
+NetApp建議設定 `ctrl-loss-tmo option`到 `-1`這樣，當路徑遺失時，NVMe/TCP 發起程序會無限期地嘗試重新連線。
+
+====
+--
+====
+
+
+== 步驟 3：可選，啟用 NVMe/FC 的 1MB I/O。
+
+ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
+
+
+NOTE: 這些步驟不適用於 Qlogic NVMe / FC 主機。
+
+.步驟
+. 將 `lpfc_sg_seg_cnt`參數設定為 256 ：
++
+[source, cli]
+----
+cat /etc/modprobe.d/lpfc.conf
+----
++
+您應該會看到類似以下範例的輸出：
+
++
 [listing]
 ----
-#	nvme	connect-all	-t	tcp	-w	192.168.5.1	-a	192.168.5.24	-l -1
-#	nvme	connect-all	-t	tcp	-w	192.168.5.1	-a	192.168.5.25	-l -1
-#	nvme	connect-all	-t	tcp	-w	192.168.6.1	-a	192.168.6.24	-l -1
-#	nvme	connect-all	-t	tcp	-w	192.168.6.1	-a	192.168.6.25	-l -1
+options lpfc lpfc_sg_seg_cnt=256
 ----
-====
+. 執行 `dracut -f`命令，然後重新啟動主機。
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+----
 
-NOTE: NetApp 建議將選項設定 `ctrl-loss-tmo`為「 -1 」，以便在路徑遺失時， NVMe / TCP 啟動器會嘗試無限期重新連線。
 
 
 
-
-
-== 驗證NVMe
+== 步驟 4：驗證多路徑配置
 
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
 
@@ -493,54 +549,6 @@ nvme list
 ----
 Node         SN                   Model
 ---------------------------------------------------------
-/dev/nvme4n1 81Ix2BVuekWcAAAAAAAB	NetApp ONTAP Controller
-
-
-Namespace Usage    Format             FW             Rev
------------------------------------------------------------
-1                 21.47 GB / 21.47 GB	4 KiB + 0 B   FFFFFFFF
-----
-====
-
-
-.步驟
-. 確認已啟用核心內建 NVMe 多重路徑：
-+
-`cat /sys/module/nvme_core/parameters/multipath`
-
-+
-`Y`
-
-. 驗證個別 ONTAP 命名空間的 NVMe 設定（例如設定為「 NetApp ONTAP 控制器」的模型，以及設定為「循環配置資源」的負載平衡）是否正確顯示在主機上：
-+
-.. `cat /sys/class/nvme-subsystem/nvme-subsys*/model`
-+
-[listing]
-----
-NetApp ONTAP Controller
-NetApp ONTAP Controller
-----
-.. `cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy`
-+
-[listing]
-----
-round-robin
-round-robin
-----
-
-
-. 確認已在主機上建立並正確探索命名空間：
-+
-`nvme list`
-
-+
-.顯示範例
-[%collapsible]
-====
-[listing]
-----
-Node         SN                   Model
----------------------------------------------------------
 /dev/nvme0n1 814vWBNRwf9HAAAAAAAB NetApp ONTAP Controller
 /dev/nvme0n2 814vWBNRwf9HAAAAAAAB NetApp ONTAP Controller
 /dev/nvme0n3 814vWBNRwf9HAAAAAAAB NetApp ONTAP Controller
@@ -555,15 +563,14 @@ Namespace Usage   Format               FW            Rev
 ====
 . 確認每個路徑的控制器狀態均為有效、且具有正確的ANA狀態：
 +
-[role="tabbed-block"]
-====
-.NVMe / FC
---
-`nvme list-subsys /dev/nvme0n1`
-
-.顯示範例
+[source, cli]
+----
+nvme list-subsys /dev/nvme0n1
+----
++
+.展示 NVMe/FC 範例
 [%collapsible]
-=====
+====
 [listing, subs="+quotes"]
 ----
 nvme-subsys0 - NQN=nqn.1992- 08.com.netapp: 4b4d82566aab11ef9ab8d039eab31e9d:subsystem.nvme\
@@ -572,15 +579,11 @@ nvme-subsys0 - NQN=nqn.1992- 08.com.netapp: 4b4d82566aab11ef9ab8d039eab31e9d:sub
 +- nvme3 *fc* traddr=nn-0x2038d039eab31e9c:pn-0x203ed039eab31e9c host_traddr=nn-0x200034800d756a89:pn-0x210034800d756a89 *live non-optimized*
 +-  nvme7 *fc* traddr=nn-0x2038d039eab31e9c:pn-0x2039d039eab31e9c host_traddr=nn-0x200034800d756a88:pn-0x210034800d756a88 *live non-optimized*
 ----
-=====
---
-.NVMe / TCP
---
-`nvme list-subsys /dev/nvme0n1`
-
-.顯示範例
+====
++
+.展示 NVMe/TCP 範例
 [%collapsible]
-=====
+====
 [listing, subs="+quotes"]
 ----
 nvme-subsys0 - NQN=nqn.1992- 08.com.netapp: sn.e6c438e66ac211ef9ab8d039eab31e9d:subsystem.nvme_tcp_4
@@ -590,8 +593,6 @@ nvme-subsys0 - NQN=nqn.1992- 08.com.netapp: sn.e6c438e66ac211ef9ab8d039eab31e9d:
 +- nvme2 *tcp* traddr=192.168.5.24 trsvcid=4420 host_traddr=192.168.5.1 src_addr=192.168.5.1 *live non-optimized*
 +- nvme9 *tcp* traddr=192.168.6.25 trsvcid=4420 host_traddr=192.168.6.1 src_addr=192.168.6.1 *live non-optimized*
 ----
-=====
---
 ====
 . 驗證NetApp外掛程式是否顯示每ONTAP 個版本名稱空間裝置的正確值：
 +
@@ -599,12 +600,14 @@ nvme-subsys0 - NQN=nqn.1992- 08.com.netapp: sn.e6c438e66ac211ef9ab8d039eab31e9d:
 ====
 .欄位
 --
-`nvme netapp ontapdevices -o column`
-
+[source, cli]
+----
+nvme netapp ontapdevices -o column
+----
 .顯示範例
 [%collapsible]
 =====
-[listing]
+[listing, subs="+quotes"]
 ----
 Device         Vserver                  Namespace Path                NSID UUID                                  Size
 -------------- ------------------------ ----------------------------- ---- ------------------------------------- ---------
@@ -616,12 +619,14 @@ Device         Vserver                  Namespace Path                NSID UUID 
 --
 .JSON
 --
-`nvme netapp ontapdevices -o json`
-
+[source, cli]
+----
+nvme netapp ontapdevices -o json
+----
 .顯示範例
 [%collapsible]
 =====
-[listing]
+[listing, subs="+quotes"]
 ----
 {
   "ONTAPdevices" : [
@@ -663,20 +668,47 @@ Device         Vserver                  Namespace Path                NSID UUID 
 
 
 
-== 已知問題
+== 步驟 5：可選，啟用 1MB I/O 大小
 
-適用於 ONTAP 版本的 Oracle Linux 8.10 的 NVMe 主機組態有下列已知問題：
+ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
 
-[cols="1a,4a,4a, options="]
+
+NOTE: 這些步驟不適用於 Qlogic NVMe / FC 主機。
+
+.步驟
+. 將 `lpfc_sg_seg_cnt`參數設定為 256 ：
++
+[source, cli]
+----
+cat /etc/modprobe.d/lpfc.conf
+----
++
+您應該會看到類似以下範例的輸出：
+
++
+[listing]
+----
+options lpfc lpfc_sg_seg_cnt=256
+----
+. 執行 `dracut -f`命令，然後重新啟動主機。
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+----
+
+
+
+
+== 步驟 6 ：檢閱已知問題
+
+這些是已知問題：
+
+[cols="20,40,40"]
 |===
 | NetApp錯誤ID | 標題 | 說明 
 
 
- a| 
-CONTAPEXT-1082
- a| 
-Oracle Linux 8.10 NVMe 主機會建立重複的 PDF
- a| 
-在 Oracle Linux 8.10 NVMe 主機上，持續探索控制器（ PDC ）是使用命令選項 `nvme discover`建立的 `-p`。對於給定的 initiator 目標組合、 `nvme discover`命令的每次執行都會建立一個 PDC 。不過，從 Oracle Linux 8.x 開始， NVMe 主機會建立重複的 PDC 。這會浪費主機和目標上的資源。
-
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | Oracle Linux 8x NVMe-oF 主機建立重複的持久發現控制器 (PDC) | On NVMe-oF hosts, you can use the `nvme discover -p` command to create PDCs. 使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在搭載 NVMe-oF 主機的 Oracle Linux 8x 上執行，則每次執行 `nvme discover -p` 時都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。 
 |===
