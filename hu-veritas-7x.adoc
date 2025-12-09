@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_veritas_6x.html 
-keywords: host utilities, veritas, infoscale, 6.x, netapp, ontap, san, lun, multipathing, iscsi 
-summary: 針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態設定的指引 
+permalink: hu-veritas-7x.html 
+keywords: host utilities, veritas, infoscale, 7, netapp, ontap, sanhost, iscsi, red, hat linux, oracle, linux 
+summary: 提供ONTAP Veritas Infoscale 7系列版本的VMware SAN主機組態設定指引 
 ---
-= 配置 Veritas Infoscale 6 以支援 FC、FCoE 和 iSCSI 以及ONTAP存儲
+= 配置 Veritas Infoscale 7 以支援 FC、FCoE 和 iSCSI 以及ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態�
 
 
 [role="lead"]
-Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。使用 Veritas Infoscale 6 for Oracle Linux (基於 Red Hat 相容核心)、Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server 主機上的 Linux 主機實用程序，以支援使用ONTAP LUN 管理 FC、FCoE 和 iSCSI 協定作業。
+Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。使用 Veritas Infoscale 7 的 Linux 主機實用程序，支援 Oracle Linux（基於 Red Hat 相容核心）、Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server 主機，以支援使用ONTAP LUN 管理 FC、FCoE 和 iSCSI 協定作業。
 
 
 
@@ -51,7 +51,7 @@ NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機
 
 == 步驟 3：確認主機上的 Veritas 動態多路徑配置
 
-使用 Veritas 動態多路徑 (VxDMP) 和 Veritas Infoscale 6 來管理ONTAP LUN。
+使用 Veritas 動態多路徑 (VxDMP) 和 Veritas Infoscale 7 來管理ONTAP LUN。
 
 為確保 VxDMP 已正確配置到您的主機上，您需要驗證 VxDMP 配置，並檢查陣列支援庫 (ASL) 和陣列策略模組 (APM) 配置。NetApp儲存系統的 ASL 和 APM 軟體包是在 Veritas 軟體安裝過程中安裝的。
 

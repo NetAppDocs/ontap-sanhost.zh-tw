@@ -104,7 +104,7 @@ systemctl start multipathd
 multipath -ll
 ----
 +
-預設的多重路徑參數支援 ASA ， AFF 和 FAS 組態。在這些組態中，單一 ONTAP LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間導致路徑問題。
+預設多路徑參數支援ASA、 AFF和FAS配置。在這些配置中，單一ONTAP LUN 不應需要超過四條路徑。儲存故障時，路徑超過四條可能會導致問題。
 
 +
 以下輸出範例顯示 ASA ， AFF 或 FAS 組態中 ONTAP LUN 的正確參數設定和路徑狀態。

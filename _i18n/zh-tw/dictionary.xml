@@ -19,10 +19,6 @@
   <block id="b18c060669cade5ce424afe8e8256931" category="list-text">使用「mkitrd」命令重新建立initrd-image。CentOS 6x及更新版本可使用下列命令：「mkitrd -f /boot/ initrd-"uname -r"。imguname -r"或命令：「Dracut -f"</block>
   <block id="8418b94a2a307b3e96b6474bc55e08b7" category="list-text">重新啟動主機。</block>
   <block id="fa75e27f7177881cb444c05d8eae6152" category="list-text">驗證「cat /proc/cmdline」命令的輸出、以確保設定完成。</block>
-  <block id="dba35953d3af1713968cdc2eba05813a" category="section-title">所有SAN陣列組態</block>
-  <block id="0ad7491bc01531fcac211e10a0f8a9a0" category="paragraph">下列範例顯示ONTAP 適用於某個實體LUN的正確輸出：</block>
-  <block id="aa89a86e36a09e87ac1e23a259c8d26c" category="admonition">請勿使用過多的路徑來通往單一LUN。不需要超過4個路徑。在儲存設備故障期間、超過8個路徑可能會導致路徑問題。</block>
-  <block id="56dcd6f4fc148f38b926523ede2073aa" category="section-title">非ASA組態</block>
   <block id="5fedfc5a04eb29a4d6e049f629f9d9b2" category="paragraph">下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出：</block>
   <block id="21a58bdeaf70327c6f6f5fd597b24fa3" category="section-title">建議設定</block>
   <block id="c5b0e8703af1ccb56a53d3ccc87f83ac" category="paragraph">CentOS 6.4作業系統經過編譯、可辨識ONTAP 出各種無法辨識的LUN、並自動針對ASA 各種版本的支援和非ASA組態、正確設定所有組態參數。</block>
@@ -412,29 +408,11 @@
   <block id="5592861a9331f6fc89845ea236081712" category="paragraph">RHEL 6.7作業系統經過編譯、可辨識ONTAP 出各種不完整的LUN、並自動針對ASA 各種不符合ASA的組態、正確設定所有組態參數。</block>
   <block id="a335fa6e5bef06439b229f8adabc7dfe" category="section-title">列出從特定SVM/中對應至主機的所有LUN、列出對應至主機之特定LUN的所有屬性</block>
   <block id="53cded606153345462c89bc6a568b1dc" category="summary">提供ONTAP Veritas Infoscale 7系列版本的VMware SAN主機組態設定指引</block>
-  <block id="31296a34c84ac7a114e2a64e59cc9d34" category="paragraph">在下圖中、「show」命令會傳回LUN資訊。</block>
-  <block id="9bdb0807ef78c7192456335c7ef96e18" category="paragraph">請參閱Veritas支援入口網站（產品對照表、平台查詢、HCL對照表）、確認SAN開機組態是否可支援及已知的注意事項。</block>
-  <block id="e62a424b2738fe2a52111dd60f4aaaf2" category="paragraph">在此範例中、可使用「vxdmpadm」命令來驗證VxDMP多重路徑ONTAP 是否附加了「支援」目標陣列。</block>
-  <block id="dbdaf083b30f34a5e231b0307cf5579a" category="paragraph">有了Veritas動態多重路徑（VxDMP）、您必須執行組態工作、將NetApp LUN宣告為Veritas多重路徑裝置。您必須安裝由Veritas為NetApp儲存系統提供的Array Support程式庫（ASB）和Array Policy Module（APM）套件。雖然Veritas軟體安裝會隨產品一起載入預設的ASLM套件、但建議您使用Veritas支援入口網站上列出的最新支援套件。</block>
-  <block id="04aa70b1e86aed37b8bb5d17254ffe53" category="paragraph">下列範例顯示Veritas Support程式庫（ASB）和Array Policy Module（APM）組態。</block>
-  <block id="6ed6f28773bb7959ef3382f6d7de573e" category="section-title">Veritas多重路徑的設定</block>
   <block id="9b0192429a485fa5f5e51d83b096590e" category="cell">DMP_LUN_Retry逾時</block>
   <block id="072b030ba126b2f4b2374f342be9ed44" category="cell">60</block>
   <block id="cb1bbd675719233c5bfc23916692e065" category="cell">DMP_path_age</block>
   <block id="da4fb5c6e93e74d3df8527599fa62642" category="cell">120</block>
   <block id="7c16fa52cbeaf99ece2729801b43247d" category="cell">DMP_還原 時間間隔</block>
-  <block id="3c98b0f304fad6c757e2a7a698676c31" category="paragraph">DMP可調參數是使用「vxdmpadm」命令線上設定的、如下所示：</block>
-  <block id="4e2b600516ccb690319c7af87fe58291" category="paragraph">vxdmpadm settune dm_tunable=value'</block>
-  <block id="0c83d9e724e53881906c0eb45f4d0851" category="paragraph">這些可調參數的值可以使用#vxdmpadm gettune'動態驗證。</block>
-  <block id="d5e9adf370b310d61aa5d2ec222f5511" category="paragraph">以下範例顯示SAN主機上有效的VxDMP可調參數。</block>
-  <block id="a51812839ba18144ee43ff7a244db311" category="section-title">依傳輸協定設定</block>
-  <block id="97bdb4022a366b3a059398b475667da4" category="list-text">僅限FC/FCoE：使用預設的逾時值。</block>
-  <block id="58442720ed7fc6b1681795dfb0faa518" category="list-text">僅適用於iSCSI：將「放置逾時」參數值設為120。</block>
-  <block id="7cab6ce56f2426636d1ce1fb5f70db26" category="paragraph">iSCSI「放置逾時」參數可控制iSCSI層在發生任何命令失敗之前、等待逾時路徑或工作階段重新建立本身的時間。建議在iSCSI組態檔中將「放置逾時」的值設定為120。</block>
-  <block id="8c3b270d5a8f816d55f977d505eb8e56" category="section-title">依作業系統平台設定</block>
-  <block id="cd66c6c6398ade1a38a74a4cc0b18ade" category="paragraph">對於Red Hat Enterprise Linux 7和8系列、您必須設定「udevrport」值、以便在儲存容錯移轉案例中支援Veritas Infosale環境。使用下列檔案內容建立檔案「/etc/udev/rules．d/40-rport.rules`」：</block>
-  <block id="14b3714b111d1beb9fb5c5c6fa61ec6e" category="admonition">如需Veritas的所有其他特定設定、請參閱標準Veritas Infoscale產品文件。</block>
-  <block id="54f2286fb613ffaae5ab0ea0c95d2262" category="section-title">多重路徑共存</block>
   <block id="51a4a26e6b1bdae133374d340c097526" category="paragraph">下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。</block>
   <block id="2844e304c2e162332243113572206ac6" category="inline-link-macro">1308744</block>
   <block id="939827454c3bb8453033ba1bd60c555e" category="cell"><block ref="c8bdc7961e7fb79cc7e51cf734b247fb" category="inline-link-macro-rx"></block></block>
@@ -735,8 +713,6 @@
   <block id="2813f127dc58929fb553bc32684c2e46" category="section-title">已知問題與限制</block>
   <block id="8b777dc32f2f743eb513fca0bfd52348" category="cell">1457017</block>
   <block id="0078173d6c66e3e11217e80e4ecc1d1b" category="cell">「anlun」安裝會發出與「libdevmapper.so」和「libnl.so」程式庫相關的警告訊息。這些警告不會影響到「暫停」套件的功能。</block>
-  <block id="ce081634ead33780d73e0e1f6b9ea0ca" category="paragraph">有了Veritas動態多重路徑（VxDMP）、您必須執行組態工作、將NetApp LUN宣告為Veritas多重路徑裝置。您必須安裝由Veritas為NetApp儲存系統提供的Array Support程式庫（ASB）和Array Policy Module（APM）套件。雖然Veritas軟體安裝會隨產品一起載入預設的ASLM套件、但建議您使用Veritas支援入口網站上列出的最新支援套件。</block>
-  <block id="697675a4c21edc6fc07599249d9fe748" category="paragraph">在「All SAN Array（ASA 整個SAN陣列）」（ESAN Array）組態中、所有通往特定邏輯單元（LUN）的路徑都會啟用並最佳化。這表示I/O可同時透過所有路徑提供服務、進而提升效能。</block>
   <block id="4e0b2b4c829cef3166a5190a135bb26f" category="sidebar">Infoscale 8.</block>
   <block id="382b0f5185773fa0f67a8ed8056c7759" category="cell">不適用</block>
   <block id="b066ca6122c9857ad1ee3a44f18cc5e7" category="cell">錯誤ID</block>
@@ -1020,7 +996,6 @@
   <block id="5aae5284420b8ceb0aa0f5d959c566bc" category="list-text">確認其他的 NVMe / TCP 啟動器目標 LIF 組合可以成功擷取探索記錄頁面資料：</block>
   <block id="675cd8e52ba395fba110b2ae7c90675b" category="cell">使用 Emulex HBA 的 SAN LUN 公用程式需要從程式庫套件中取得符號連結</block>
   <block id="76da8e16b4b35b8424eb298d2b37d666" category="sidebar">8.8.8</block>
-  <block id="f419fe819afeb109ae85608ed6bd0ca7" category="doc">使用 Veritas Infoscale 7 for Linux with ONTAP</block>
   <block id="30d85838b9488ee908d075559c8978cd" category="doc">搭配 ONTAP 使用 VMware vSphere 8.x</block>
   <block id="92434d9005fca09d1be87854a8eba962" category="doc">搭配 ONTAP 使用 Red Hat Enterprise Linux 6.4</block>
   <block id="7e0b815f73afb730e7ee19f798970799" category="doc">搭配 ONTAP 使用 Oracle Linux 6.10</block>
@@ -1044,7 +1019,6 @@
   <block id="3f774282fcdfb6c27b50967041caabfe" category="doc">將 CentOS 6.4 搭配 ONTAP 使用</block>
   <block id="40db5019ed68654f4eb2cf21ec5021db" category="doc">搭配 ONTAP 使用 VMware vSphere 7.x</block>
   <block id="96c79d6b70b9da95c3236e3cf0b071a3" category="doc">搭配 ONTAP 使用 Oracle Linux 6.7</block>
-  <block id="47d63174f5a8747823754dbe907413b8" category="doc">使用 Veritas Infoscale 8 for Linux with ONTAP</block>
   <block id="bb6a1ceb13d5a6a98f1fab62ea2d512f" category="doc">將 Oracle Linux 6.6 與 ONTAP 搭配使用</block>
   <block id="8a4e695bd23e65bc1993b3356eeb2277" category="sidebar">AIX 主機公用程式發行說明</block>
   <block id="360baa7584a9f61d637775beeeeab041" category="sidebar">HP-UX Host Utilities 版本資訊</block>
@@ -1058,7 +1032,6 @@
   <block id="3f20da7f97c0948dba60855f74d8feb3" category="paragraph">您可以在執行 SUSE Linux Enterprise Server 15 SP1 和 ONTAP 的主機上、設定 NVMe over Fibre Channel （ NVMe / FC ）作為目標。</block>
   <block id="04e8d5a4c40a30787e3a35e62dfd0c1e" category="paragraph">設定適用於 NVMe / FC 的 lpfc 驅動程式。</block>
   <block id="e62de6043f25aae2915aa8c10fbaec9d" category="cell"><block ref="e62de6043f25aae2915aa8c10fbaec9d" category="inline-link-macro-rx"></block></block>
-  <block id="a597507af40f2b893bf64299ba506a89" category="doc">使用 Veritas Storage Foundation 6 for Linux with ONTAP</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="doc">疑難排解</block>
   <block id="4a446daa2697df931fbab571c023baef" category="admonition">疑難排解指示不適用於 AIX 、 Windows 和 ESXi 主機。</block>
   <block id="96050aafb2fca1409b0f952e7597fd11" category="paragraph">NVMe / FC 沒有類似於的特定 qla2xxx 記錄<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 驅動程式：請改為設定一般 qla2xxx 記錄層級。</block>
@@ -1141,7 +1114,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="89803e3bc17feeb475170d3dcd320e4e" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 CentOS 6.10 設定為 ONTAP 作為目標。</block>
   <block id="92ecdf60dd5c6225e905e0a3eea885da" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 6.4 與 ONTAP 設定為目標。</block>
   <block id="0938dfec19dd45c8a6f64aa8b0b1eda4" category="paragraph">Oracle Linux 6.4 with ONTAP 版本有下列已知問題：</block>
-  <block id="3998e195af175a67287a554b2d04b426" category="paragraph">Veritas Infoscale 7 for Linux with ONTAP 版本並無已知問題。</block>
   <block id="001844af86b0a1f099720e6aed9988f7" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Red Hat Enterprise Linux 6.8 設定為 ONTAP 作為目標。</block>
   <block id="c5041d07d38095b8620f889d70dea95d" category="paragraph">ONTAP 版本的 VMware vSphere 7.x 沒有已知問題。</block>
   <block id="6963533acedb1b8942f9674f67500cd3" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 6.8 。</block>
@@ -1154,9 +1126,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="b16452e3905ac336b68babc6fa562702" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 ONTAP 設定為目標的 Oracle Linux 6.9 。</block>
   <block id="a69f90991b7861bf298029c85947f926" category="paragraph">Oracle Linux 6.9 with ONTAP 版本有下列已知問題：</block>
   <block id="95ee459b709d0e4cae7ea12ed33763f9" category="paragraph">SUSE Linux Enterprise Server 15 SP4 with ONTAP 版本並無已知問題。</block>
-  <block id="1bc24cef68b137efe0e69c2b269dd7da" category="paragraph">Veritas Infoscale 8 for Linux with ONTAP 版本並無已知問題。</block>
   <block id="3d8d5b2f05311b66754ca058971f7e2e" category="paragraph">使用 ONTAP 版本的 SUSE Linux Enterprise Server 15 SP5 沒有已知問題。</block>
-  <block id="30b87f3af4543974205ca57666930631" category="paragraph">Veritas Storage Foundation 6 for Linux with ONTAP 版本並無已知問題。</block>
   <block id="ee0e00ac8a597d343ecf7da72dd6effd" category="paragraph">您可以使用 ONTAP SAN 主機組態設定、將 Oracle Linux 6.10 與 ONTAP 設定為目標。</block>
   <block id="c7512b0badc93efcac520b6d3264ca72" category="paragraph">ONTAP 版本的 Oracle Linux 6.10 沒有已知問題。</block>
   <block id="289d4a224c51f2aeb418b081093d4d1e" category="sidebar">Solaris主機公用程式</block>
@@ -1332,7 +1302,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph"><block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block>命令會產生下列類型的輸出。下列範例中的輸出會被截斷。</block>
   <block id="1f9090c13a627840d3e8110654671ecd" category="cell">完成 SUSE Linux Enterprise Server 15S P2 作業系統安裝後、無法使用靜態 IP 組態從 SAN 開機</block>
   <block id="74fe7cde6e68f9607ef6c16f62916dd8" category="paragraph">iSCSI sanbooted. LUN 在使用靜態 IP 組態完成 SUSE Linux Enterprise Server 15 SP2 作業系統安裝後無法開機。每次使用靜態IP組態時都會發生開機失敗。這會導致伺服器拒絕繼續開機程序、並顯示下列錯誤訊息：</block>
-  <block id="7466d39e188f68573c9503fb3aca2a4c" category="paragraph">在下列範例中、<block ref="1dd59c7806bb784d02ed91f3980f5f17" prefix=" " category="inline-code"></block>命令用於驗證 VxDMP 多重路徑是否已附加 ONTAP 目標陣列。</block>
   <block id="26b17225b626fb9238849fd60eabdf60" category="paragraph">+</block>
   <block id="473733802c02f67f489689f787461e62" category="list-text">SUSE Linux Enterprise Server 15 SP1</block>
   <block id="a1e3e223ffe62b0c4daec6746ea79cc8" category="paragraph">SUSE Linux Enterprise Server 15 SP1 主機可透過相同的光纖通道啟動器介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。如需支援的 FC 介面卡和控制器清單、請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 。</block>
@@ -1813,13 +1782,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="b25ec790b4cbb02c184ec7d8479f9e72" category="summary">說明如何將 Solaris 主機公用程式 6.2 與 ONTAP 搭配使用</block>
   <block id="22ee06c1124036b790e8e12bab28c94a" category="doc">安裝適用於 ONTAP 儲存設備的 Solaris 主機公用程式 6.2</block>
   <block id="12ce99988bb774881369b300029d0c1f" category="paragraph">以下範例使用<block ref="5187972b2183e07957bec1dbaf34d29c" prefix=" " category="inline-code"></block>命令來安裝 Solaris 安裝套件：</block>
-  <block id="15d9fd1ff3011117296f7ee36d231ebd" category="paragraph">您可以使用 ONTAP SAN 主機組態設定來設定 Veritas Storage Foundation 6 系列版本，以搭配 FC ， FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ Red Hat 相容核心架構）平台。</block>
-  <block id="fd1139296e6463001441b6b2bcf07035" category="paragraph">您必須驗證組態是否符合系統需求。如需更多資訊，請參閱<block ref="d4eba3849609aea965d9c09098fd43df" category="inline-link-rx"></block>和 Veritas HCL Matrix 。</block>
-  <block id="ebd757716a60a98a115db0a8540bc8d2" category="paragraph">NetApp 建議您使用下列 Veritas VxDMP 可調參數，以在儲存設備容錯移轉作業中達到最佳的系統組態。</block>
-  <block id="8bae20691c6b20fe8250d6d89b6bc8fe" category="paragraph">如果您有異質多重路徑環境，包括 Veritas Infoscale ， Linux Native Device Mapper 和 LVM Volume Manager ，請參閱 Veritas Product Administration 文件以取得組態設定。</block>
-  <block id="0b0b0d2e5ea7b0b9b45a0170f78969c3" category="paragraph">您可以使用 ONTAP SAN 主機組態設定，為採用 FC ， FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ Red Hat 相容核心架構）平台，提供 Veritas Infosale 儲存基礎 7 系列版本。</block>
-  <block id="9622a2b5b9516e16c4c507ca2bd3dcc6" category="paragraph">您必須驗證組態是否符合系統需求。如需更多資訊，請參閱互通性對照表工具和 Veritas HCL 對照表。</block>
-  <block id="75a3ea62d9c20aa7a155d905b745dc1e" category="paragraph">您可以使用 ONTAP SAN 主機組態設定，為採用 FC ， FCoE 和 iSCSI 通訊協定的 Red Hat Enterprise Linux 和 Oracle Linux （ Red Hat 相容核心架構）平台，提供 Veritas Infosale 儲存基礎 8 系列版本。</block>
   <block id="420b11779b601451984e2d84dfe96609" category="paragraph">ESXi 提供一個稱為原生多路徑外掛程式（ NMP ）的可延伸多重路徑模組，可管理子外掛程式，儲存陣列類型外掛程式（ Storage Array Type Plugins ，簡稱 SATP ）和路徑選擇外掛程式（ CSP ）。ESXi預設提供這些SATP規則。</block>
   <block id="32718bd8198d64f7ddb82acdd728b1da" category="paragraph">對於 ONTAP 儲存設備，「 VMW_SATA_ALUA 」外掛程式預設會使用「 VMW_PSP_RR 」做為路徑選擇原則（ PSP ）。您可以執行下列命令來確認 PSP ：</block>
   <block id="25b99d4336de9de5432a67adf4e9a119" category="paragraph">當您使用 vCenter UI 建立 vVols 資料存放區時，它會引導您建立 FlexVols 做為資料存放區的備份儲存區。 ESXi 主機會使用傳輸協定端點（ PE ）來存取 vVols 資料存放區。在 SAN 環境中，會在資料存放區中的每個 FlexVol volume Volume 磁碟區上建立一個 4 MB LUN ，以作為 PE 使用。SAN PE是管理邏輯單元（ALU）；VVols是附屬邏輯單元（SLU）。</block>
@@ -1942,7 +1904,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="c6e9e839e8304cacb5378299e7f6ca42" category="inline-link-macro">Microsoft Update目錄2025</block>
   <block id="68e5c8d1251c633565ba668446a95b32" category="list-text">從下載 Hotfix <block ref="86167046a85b88d4b396a82107daadba" category="inline-link-macro-rx"></block>。</block>
   <block id="769a40f63534a31b2b123052ac1da6ad" category="list-text">驗證<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>命令的輸出以確保設定完成。您可以使用<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block>命令來驗證 ONTAP LUN 的設定。應該有兩種路徑群組具有不同的優先順序。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
-  <block id="47e930d345db593756a39027df077a51" category="paragraph">對於非ASA組態、應該有兩組具有不同優先順序的路徑。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="d7b8955c7b96bef9985fd48649d70251" category="list-text">從下載 Hotfix <block ref="c91fa8395bb99838be8ab4e7b48666cc" category="inline-link-macro-rx"></block>。</block>
   <block id="d933dd46766685abc25b001848a8b8a5" category="list-text">從下載 Hotfix <block ref="6e6b75f4256049ee1dbc008868e8aa3a" category="inline-link-macro-rx"></block>。</block>
   <block id="35fec4b95b75bf64df4556334d921ef8" category="list-text">從下載 Hotfix <block ref="145f31fd192f816eb74b3bac6d3cac60" category="inline-link-macro-rx"></block>。</block>
@@ -2261,7 +2222,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="797d7c769a6ede56bea7336cfa2b35b1" category="list-text">查看<block ref="76b66d5f379b691153dc22425201f6ae" prefix=" " category="inline-code"></block>命令來驗證設定是否完成。</block>
   <block id="4409363a45cfa288ed524d4f0dc52e3e" category="open-title">UEK 4</block>
   <block id="5dd29161b38ded1b0182c73e6e601911" category="paragraph">對於 Oracle Linux UEK 4，驗證<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案已定義，並且已為您的 ONTAP LUN 設定了 NetApp 建議的設定。</block>
-  <block id="3bdb7006bc10348c455a69d6d21f1f08" category="paragraph">預設多路徑參數支援AFF和FAS配置。在這些組態中，單一 ONTAP LUN 不應需要四個以上的路徑。如果路徑超過四條，可能會在儲存設備故障期間導致路徑問題。</block>
   <block id="702585b74cd8e66c02a1414878b2ad93" category="paragraph">以下範例輸出顯示了具有兩個主動/最佳化路徑和兩個主動/非最佳化路徑的 AFF 或 FAS 配置中 ONTAP LUN 的正確參數設定和路徑狀態：</block>
   <block id="1c7d17bc7c1ded98c5fa5864d2adc78b" category="summary">在 Rocky Linux 10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
   <block id="31f66dd0901349520fbfd979a57834c5" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 10 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
@@ -3335,4 +3295,48 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="28b031394cea76c997a81517dfc279f9" category="cell">在 NVMe-oF 主機上，您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 指令來建立 PDC。使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在執行 ONTAP 9.10.1 並搭配 RHEL 9.0 及 NVMe-oF 主機時，每次執行 <block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。</block>
   <block id="38247dd9f4f50ed3b751d728ecd0c52c" category="sidebar">NVMeoF OL</block>
   <block id="8a1b0284de7d7f43f74ff50788b58df6" category="sidebar">7x</block>
+  <block id="8cf639f80087b38e9251e80ba60c10c4" category="paragraph">預設多路徑參數支援ASA、 AFF和FAS配置。在這些配置中，單一ONTAP LUN 不應需要超過四條路徑。儲存故障時，路徑超過四條可能會導致問題。</block>
+  <block id="eaf928b18adce16330b705bb6a23e4f4" category="paragraph">預設的多路徑參數支援AFF和FAS配置。在這些配置中，單一ONTAP LUN 不應需要超過四條路徑。儲存故障時，路徑超過四條可能會導致問題。</block>
+  <block id="97a99753b959b6770bb6efa96e4103e1" category="list-text">請參閱 Veritas 支援入口網站（產品矩陣、平台查找和 HCL 矩陣）以驗證 SAN 啟動配置支援和已知問題。</block>
+  <block id="4e7c573ceae9156d0f116447987fcb67" category="inline-link-macro">安裝 Linux 主機實用程式</block>
+  <block id="365cd0fee231b17435b3bfc6d63500c7" category="paragraph">NetApp強烈推薦 <block ref="62bc9fa3453f6553a0a2bc6b05aa75d4" category="inline-link-macro-rx"></block> 支援ONTAP LUN 管理，並協助技術支援收集配置資料。</block>
+  <block id="3388d4660793d431fa42646bfb400696" category="doc">配置 Veritas Infoscale 7 以支援 FC、FCoE 和 iSCSI 以及ONTAP存儲</block>
+  <block id="6988ba9fe2dc7db74715a084d907b2a7" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。使用 Veritas Infoscale 7 的 Linux 主機實用程序，支援 Oracle Linux（基於 Red Hat 相容核心）、Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server 主機，以支援使用ONTAP LUN 管理 FC、FCoE 和 iSCSI 協定作業。</block>
+  <block id="399ed9d35ad604c482221872e16ebdb5" category="section-title">步驟 3：確認主機上的 Veritas 動態多路徑配置</block>
+  <block id="37013602d4ad82abe5dbbe9d8b9ff596" category="paragraph">使用 Veritas 動態多路徑 (VxDMP) 和 Veritas Infoscale 7 來管理ONTAP LUN。</block>
+  <block id="d454e8c2a143a93f98b28ed84dab7c6d" category="paragraph">為確保 VxDMP 已正確配置到您的主機上，您需要驗證 VxDMP 配置，並檢查陣列支援庫 (ASL) 和陣列策略模組 (APM) 配置。NetApp儲存系統的 ASL 和 APM 軟體包是在 Veritas 軟體安裝過程中安裝的。</block>
+  <block id="9ba5f67b5e4cf10f7d8d10dceae070c5" category="admonition">對於異質多路徑環境，包括 Veritas Infoscale、Linux Native Device Mapper 和 LVM 磁碟區管理器，請參閱 Veritas 產品管理文件以了解設定。</block>
+  <block id="56a86c0104dee8f802482380450c13cc" category="paragraph">請確保您的配置符合系統需求。參見 <block ref="1ed2ba1980a264d01ab3597cde177180" category="inline-link-macro-rx"></block> 以及 Veritas HCL 矩陣。</block>
+  <block id="969992377e36c3d96208e4e72ff285b6" category="list-text">確認ONTAP目標陣列已連接到 VxDMP 多路徑：</block>
+  <block id="37b8c3be9d65cf3c1f214619faf88da0" category="list-text">檢查 ASL 和 APM 軟體包的配置。NetApp建議您使用 Veritas 支援入口網站上列出的最新支援軟體包。</block>
+  <block id="10a05c794bb693baf37296bc7742537e" category="example-title">展示 ASL 和 APM 設定範例</block>
+  <block id="324dba7e543516b17ebc8c6ea5a0d680" category="list-text">為了在儲存故障轉移操作中獲得最佳系統配置，請確認您已設定以下 Veritas VxDMP 可調參數：</block>
+  <block id="f9881710eadb37ca910a4e0909ba6e35" category="list-text">將DMP可調參數設定為線上：</block>
+  <block id="38ddb6c41ccf214f71e9283fe7300f1b" category="list-text">請確認可調參數設定正確：</block>
+  <block id="5622e8954310cf14c8453091c6741ea4" category="paragraph">以下範例顯示了 SAN 主機上有效的 VxDMP 可調參數。</block>
+  <block id="1d2df76115fa1f235d9567ef1d6832fa" category="list-text">配置協定逾時值：</block>
+  <block id="c982f804d02e2d7e937f125d2cac1024" category="open-title">FC/FCoE</block>
+  <block id="f00c27140b23de4ac953219b96c93678" category="paragraph">使用 FC 和 FCoE 的預設逾時值。</block>
+  <block id="e4e1c13bb0b14f6cb7608cbecea948ef" category="open-title">iSCSI</block>
+  <block id="95b94b45b5e3853d9fabb482ef4e576a" category="paragraph">設定<block ref="12cec018fb6c5d12b22cf69774a8c847" prefix=" " category="inline-code"></block> 參數值設為 120。</block>
+  <block id="1a17c5fbd86ebe3672049ac697df2dee" category="paragraph">iSCSI<block ref="12cec018fb6c5d12b22cf69774a8c847" prefix=" " category="inline-code"></block> 此參數控制 iSCSI 層在逾時路徑或會話重新建立之前應等待多長時間，然後再拒絕對其執行任何命令。NetApp建議設定以下值：<block ref="12cec018fb6c5d12b22cf69774a8c847" prefix=" " category="inline-code"></block> 在 iSCSI 設定檔中設定為 120。</block>
+  <block id="305addf959eed4c9307761230b688be9" category="list-text">設定 RHEL 8 和 9 系列主機的主機「udev rport」值，以支援 Veritas Infoscale 環境在儲存故障轉移場景中的運作。</block>
+  <block id="608280eddd77e62e12bfc3616b13b642" category="paragraph">透過建立檔案來配置“udev rport”值<block ref="b4c1379322282dd3f77e61bed2f54473" prefix=" " category="inline-code"></block> 文件內容如下：</block>
+  <block id="46d4faa4dd351f0cd6177bbc0ce5322a" category="admonition">有關 Veritas 的所有其他特定設置，請參閱 Veritas Infoscale 標準產品文件。</block>
+  <block id="78ffa3fbb4dedf1cf519fae8595283d8" category="paragraph">在AFF、 FAS或ASA組態中，單一ONTAP LUN 不應需要超過四條路徑。儲存故障時，超過四條路徑都可能導致問題。</block>
+  <block id="520233932518172a2315c62de8633f75" category="paragraph">以下範例顯示了ASA、 AFF或FAS配置中ONTAP LUN 的正確參數設定和路徑狀態。</block>
+  <block id="420bfa7f2f6d6ff2af47d8f56d3e5176" category="section-title">第四步：已知問題</block>
+  <block id="b7fe3c0d2269de45af50caddbc5679d0" category="summary">使用 Veritas Infoscale 8 for RHEL 和 Oracle Linux 主機的 Linux 主機公用程式來協助您管理ONTAP LUN 的 FC、FCoE 和 iSCSI 協定操作。</block>
+  <block id="68d4606fa842c3bb2260492fea96e256" category="doc">配置 Veritas Infoscale 8 以支援 FC、FCoE 和 iSCSI 以及ONTAP存儲</block>
+  <block id="d0888a9566c916aeb262c66f6c29d0b5" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。使用 Veritas Infoscale 8 for Oracle Linux（基於 Red Hat 相容核心）、Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server 主機上的 Linux 主機實用程序，以支援使用ONTAP LUN 管理 FC、FCoE 和 iSCSI 協定作業。</block>
+  <block id="dfe61e07a24c984baaba21380a7bcb5d" category="paragraph">使用 Veritas 動態多路徑 (VxDMP) 和 Veritas Infoscale 8 來管理ONTAP LUN。</block>
+  <block id="f03cd50d6ef437b45fb5cf89a578b6af" category="summary">使用 Veritas Infoscale 9 for RHEL 和 Oracle Linux 主機的 Linux 主機公用程式來協助您管理ONTAP LUN 的 FC、FCoE 和 iSCSI 協定操作。</block>
+  <block id="a2e04f13832b32d45b6a2728664658f2" category="doc">配置 Veritas Infoscale 9 以支援 FC、FCoE 和 iSCSI 以及ONTAP存儲</block>
+  <block id="307830a2affed8f2293bd6a0bfdc988e" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。使用 Veritas Infoscale 9 的 Linux 主機實用程序，支援 Oracle Linux（基於 Red Hat 相容核心）、Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server 主機，以支援使用ONTAP LUN 管理 FC、FCoE 和 iSCSI 協定作業。</block>
+  <block id="566243492d7a2b58e16e40a9b3031a27" category="paragraph">使用 Veritas 動態多路徑 (VxDMP) 和 Veritas Infoscale 9 來管理ONTAP LUN。</block>
+  <block id="cf9bdce6e3fe72662477108befe0e13f" category="paragraph">請確保您的配置符合系統需求。參見 <block ref="1ed2ba1980a264d01ab3597cde177180" category="inline-link-macro-rx"></block> 以及 Veritas HCL 矩陣。</block>
+  <block id="2e4b49e48e6e1ca1fd31426b7138fd71" category="doc">配置 Veritas Infoscale 6 以支援 FC、FCoE 和 iSCSI 以及ONTAP存儲</block>
+  <block id="9becfc22d40b1be99a7885f3a6881599" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。使用 Veritas Infoscale 6 for Oracle Linux (基於 Red Hat 相容核心)、Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server 主機上的 Linux 主機實用程序，以支援使用ONTAP LUN 管理 FC、FCoE 和 iSCSI 協定作業。</block>
+  <block id="b1c021b70553fcad383b7575c6548a4d" category="paragraph">使用 Veritas 動態多路徑 (VxDMP) 和 Veritas Infoscale 6 來管理ONTAP LUN。</block>
+  <block id="a51c6ee27ac185032fb4471c829132c2" category="sidebar">資訊量表 9</block>
 </blocks>

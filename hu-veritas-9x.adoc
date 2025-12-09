@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_veritas_6x.html 
-keywords: host utilities, veritas, infoscale, 6.x, netapp, ontap, san, lun, multipathing, iscsi 
-summary: 針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態設定的指引 
+permalink: hu-veritas-9x.html 
+keywords: host utilities, veritas, infoscale, 9, netapp, ontap, sanhost, iscsi, red, hat linux, oracle, linux 
+summary: 使用 Veritas Infoscale 9 for RHEL 和 Oracle Linux 主機的 Linux 主機公用程式來協助您管理ONTAP LUN 的 FC、FCoE 和 iSCSI 協定操作。 
 ---
-= 配置 Veritas Infoscale 6 以支援 FC、FCoE 和 iSCSI 以及ONTAP存儲
+= 配置 Veritas Infoscale 9 以支援 FC、FCoE 和 iSCSI 以及ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態�
 
 
 [role="lead"]
-Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。使用 Veritas Infoscale 6 for Oracle Linux (基於 Red Hat 相容核心)、Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server 主機上的 Linux 主機實用程序，以支援使用ONTAP LUN 管理 FC、FCoE 和 iSCSI 協定作業。
+Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。使用 Veritas Infoscale 9 的 Linux 主機實用程序，支援 Oracle Linux（基於 Red Hat 相容核心）、Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server 主機，以支援使用ONTAP LUN 管理 FC、FCoE 和 iSCSI 協定作業。
 
 
 
@@ -51,7 +51,7 @@ NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機
 
 == 步驟 3：確認主機上的 Veritas 動態多路徑配置
 
-使用 Veritas 動態多路徑 (VxDMP) 和 Veritas Infoscale 6 來管理ONTAP LUN。
+使用 Veritas 動態多路徑 (VxDMP) 和 Veritas Infoscale 9 來管理ONTAP LUN。
 
 為確保 VxDMP 已正確配置到您的主機上，您需要驗證 VxDMP 配置，並檢查陣列支援庫 (ASL) 和陣列策略模組 (APM) 配置。NetApp儲存系統的 ASL 和 APM 軟體包是在 Veritas 軟體安裝過程中安裝的。
 
@@ -74,14 +74,15 @@ vxdmpadm
 ====
 [listing]
 ----
-# vxdmpadm listenclosure
-ENCLR_NAME   ENCLR_TYPE  ENCLR_SNO     STATUS      ARRAY_TYPE    LUN_COUNT    FIRMWARE
-=====================================================================================
-sfrac0       SFRAC       804Xw$PqE52h  CONNECTED   ALUA          43           9800
+#vxdmpadm listenclosure
+ENCLR_NAME        ENCLR_TYPE     ENCLR_SNO      STATUS       ARRAY_TYPE     LUN_COUNT    FIRMWARE
+===================================================================================================
+info_asa0         Info_ASA       81KDT+YTg35P         CONNECTED    ALUA       20         9161
+infoscal1         Infoscal       81Ocq?Z7hPzC         CONNECTED    ALUA       23         9181
 # vxdmpadm getdmpnode
 NAME       STATE    ENCLR-TYPE  PATHS  ENBL  DSBL ENCLR-NAME
 ===================================================================
-sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0
+infoscal1_22         ENABLED      Infoscal     4      4     0     infoscal1
 ----
 ====
 . 檢查 ASL 和 APM 軟體包的配置。NetApp建議您使用 Veritas 支援入口網站上列出的最新支援軟體包。
@@ -91,14 +92,15 @@ sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0
 ====
 [listing]
 ----
-# vxdmpadm list dmpnode dmpnodename=sfrac0_47 | grep asl
-asl        = libvxnetapp.so
+#  vxdmpadm list dmpnode dmpnodename=infoscal1_22 | grep asl
+asl             = libvxnetapp.so
+
 # vxddladm listversion |grep libvxnetapp.so
 libvxnetapp.so                  vm-8.0.0-rev-1   8.0
 
 # rpm -qa |grep VRTSaslapm
-VRTSaslapm-x.x.x.0000-RHEL8.X86_64
-vxddladm listsupport libname=libvxnetapp.so
+VRTSaslapm-9.0.3-RHEL9.x86_64
+#vxddladm listsupport libname=libvxnetapp.so
 ATTR_NAME   ATTR_VALUE
 =========================================
 LIBNAME     libvxnetapp.so
@@ -196,20 +198,6 @@ node.session.timeo.replacement_timeout = 120
 ----
 --
 ====
-. 設定 RHEL 8 和 9 系列主機的主機「udev rport」值，以支援 Veritas Infoscale 環境在儲存故障轉移場景中的運作。
-+
-透過建立檔案來配置“udev rport”值 `/etc/udev/rules.d/40-rport.rules` 文件內容如下：
-
-+
-[listing]
-----
-# cat /etc/udev/rules.d/40-rport.rules
-KERNEL=="rport-*", SUBSYSTEM=="fc_remote_ports", ACTION=="add", RUN+=/bin/sh -c 'echo 20 > /sys/class/fc_remote_ports/%k/fast_io_fail_tmo;echo 864000 >/sys/class/fc_remote_ports/%k/dev_loss_tmo'"
-----
-+
-
-NOTE: 有關 Veritas 的所有其他特定設置，請參閱 Veritas Infoscale 標準產品文件。
-
 . 驗證 ONTAP LUN 的參數設定和路徑狀態：
 +
 在AFF、 FAS或ASA組態中，單一ONTAP LUN 不應需要超過四條路徑。儲存故障時，超過四條路徑都可能導致問題。
@@ -229,13 +217,13 @@ ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中�
 =====
 [listing]
 ----
-# vxdmpadm getsubpaths dmpnodename-sfrac0_47
-NAME  STATE[A]   PATH-TYPE[M]   CTLR-NAME   ENCLR-TYPE  ENCLR-NAME  ATTRS  PRIORITY
+# vxdmpadm getsubpaths dmpnodename=infoscal1_21
+NAME   STATE[A]    PATH-TYPE[M] CTLR-NAME  ENCLR-TYPE  ENCLR-NAME   ATTRS  PRIORITY
 ===================================================================================
-sdas  ENABLED (A)    Active/Optimized c13   SFRAC       sfrac0     -      -
-sdb   ENABLED(A) Active/Optimized     c14   SFRAC       sfrac0     -      -
-sdcj  ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
-sdea  ENABLED (A)    Active/Optimized c14   SFRAC       sfrac0     -
+sdby   ENABLED(A)  Active/Optimized  c1    Infoscal    infoscal1    -      -
+sddx   ENABLED(A)  Active/Optimized  c2    Infoscal    infoscal1    -      -
+sdfe   ENABLED(A)  Active/Optimized  c1    Infoscal    infoscal1    -      -
+sdfo   ENABLED(A)  Active/Optimized  c2    Infoscal    infoscal1    -      -
 ----
 =====
 --
