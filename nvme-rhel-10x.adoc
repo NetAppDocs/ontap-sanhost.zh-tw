@@ -143,7 +143,7 @@ NOTE: 如果 `hostnqn`字串不匹配，請使用 `vserver modify`命令來更�
 
 [role="tabbed-block"]
 ====
-.FC——Broadcom/Emulex
+.NVMe/FC - 博通/Emulex
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
@@ -294,7 +294,7 @@ FCP CMPL: xb 000014a5 Err 0002149a
 
 
 --
-.FC——Marvell/QLogic
+.NVMe/FC - Marvell/QLogic
 --
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
@@ -325,7 +325,7 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 
 --
-.TCP
+.NVMe / TCP
 --
 NVMe/TCP 協定不支援自動連線操作。相反，您可以透過執行 NVMe/TCP 來發現 NVMe/TCP 子系統和命名空間 `connect`或者 `connect-all`手動操作。
 

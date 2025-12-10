@@ -2920,10 +2920,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3ac93f7cf1853dfbc16c8472fc66d07d" category="cell">這<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>指令傳回給定子系統的 NVMe 控制器清單。在 RHEL 9.1 中，此指令顯示子系統中所有命名空間的控制器及其 ANA 狀態。由於 ANA 狀態是每個命名空間的屬性，因此此指令應顯示具有每個命名空間的路徑狀態的唯一控制器條目。</block>
   <block id="d1137ffaeb3a0ca88e57e0f4130f3134" category="section-title">步驟 6：設定安全帶內身份驗證</block>
   <block id="ece25d4c541fbae683416549d3f4ac05" category="list-text">使用 root 權限在文字編輯器中開啟 udev 規則檔：</block>
-  <block id="b9908e7dd449843af949631c92e15e09" category="list-text">找到為NetApp ONTAP控制器設定 iopolicy 的行。</block>
-  <block id="87a7f5650d1515a9aa05f05e2e75e27c" category="paragraph">以下範例顯示了一個範例規則：</block>
   <block id="1cdf0be14ba09adc81c1095b08aa7aa2" category="list-text">修改規則，以便<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>變成<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>：</block>
-  <block id="84acde248a4e307a6672632785153fc4" category="admonition">新的 iopolicy 自動應用於匹配的NetApp ONTAP控制器設備。無需重新啟動。</block>
   <block id="8368841b470b6e92a17171fdc50066e4" category="summary">如何使用ONTAP儲存為 Rocky Linux 10.0 設定 NVMe-oF 主機</block>
   <block id="3bb0dd42b9baf9976e4fd910388b116d" category="doc">使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 10.0</block>
   <block id="353c5da630e8437465e2bac779b53241" category="paragraph">*帶有 Rocky Linux 10.0 的 NVMe-oF 具有以下已知限制：*</block>
@@ -3339,4 +3336,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9becfc22d40b1be99a7885f3a6881599" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。使用 Veritas Infoscale 6 for Oracle Linux (基於 Red Hat 相容核心)、Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server 主機上的 Linux 主機實用程序，以支援使用ONTAP LUN 管理 FC、FCoE 和 iSCSI 協定作業。</block>
   <block id="b1c021b70553fcad383b7575c6548a4d" category="paragraph">使用 Veritas 動態多路徑 (VxDMP) 和 Veritas Infoscale 6 來管理ONTAP LUN。</block>
   <block id="a51c6ee27ac185032fb4471c829132c2" category="sidebar">資訊量表 9</block>
+  <block id="160316d24f765380a7e2c247ad512d7a" category="list-text">找到為NetApp ONTAP控制器設定 iopolicy 的行，如下例所示：</block>
+  <block id="97a0ff99a93f7485dcb82a548fcca4a0" category="admonition">新的 iopolicy 會自動套用於相符的NetApp ONTAP控制器設備。您無需重啟。</block>
+  <block id="92520caa5da5fd65237a96731d101aee" category="list-text">驗證主機上是否正確顯示了對應ONTAP命名空間的 NVMe-oF 設定（例如，型號設定為NetApp ONTAP Controller，負載平衡 iopolicy 設定為 round-robin）：</block>
+  <block id="bf4dbd3d81297258bdb9391343d3d393" category="cell">原生 udev 規則<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 該軟體包為 NVMe 多路徑提供隊列深度負載平衡</block>
+  <block id="b62ae28652ddc6a2c9bb15373668f0d0" category="paragraph">9.6 或更高版本</block>
 </blocks>

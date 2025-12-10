@@ -156,7 +156,7 @@ defaults {
 
 [role="tabbed-block"]
 ====
-.FC——Broadcom/Emulex
+.NVMe/FC - 博通/Emulex
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
@@ -308,7 +308,7 @@ FCP CMPL: xb 00000368 Err 00000382
 
 
 --
-.FC——Marvell/QLogic
+.NVMe/FC - Marvell/QLogic
 --
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
@@ -339,7 +339,7 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 
 --
-.TCP
+.NVMe / TCP
 --
 NVMe/TCP 協定不支援自動連線操作。相反，您可以透過執行 NVMe/TCP 來發現 NVMe/TCP 子系統和命名空間 `connect`或者 `connect-all`手動操作。
 
