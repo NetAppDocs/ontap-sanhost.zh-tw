@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme-rockylinux-810.html 
+permalink: nvme-rockylinux-8x.html 
 keywords: nvme, linux, rocky linux, enterprise 
-summary: 如何使用 ONTAP 為 Rocky Linux 8.10 設定 NVMe-oF 主機 
+summary: 如何為 Rocky Linux 8.x 設定 NVMe-oF 主機和ONTAP 
 ---
-= 使用ONTAP儲存為 NVMe-oF 設定 Rocky Linux 8.10
+= 配置 Rocky Linux 8.x 以支援 NVMe-oF 和ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,38 +18,23 @@ summary: 如何使用 ONTAP 為 Rocky Linux 8.10 設定 NVMe-oF 主機
 [role="lead"]
 Rocky Linux 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
-了解如何為 Rocky Linux 8.10 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-rockylinux-supported-features.html["Rocky Linux ONTAP支援與功能"]。
+了解如何為 Rocky Linux 8.x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-rockylinux-supported-features.html["Rocky Linux ONTAP支援與功能"]。
 
-*帶有 Rocky Linux 8.10 的 NVMe-oF 具有以下已知限制：*
+NVMe-oF 與 Rocky Linux 8.x 有以下已知限制：
 
 * 目前不支援使用 NVMe-oF 協定的 SAN 啟動。
-* 在 Rocky Linux 8.10 中的 NVMe-oF 主機上，核心 NVMe 多路徑預設為停用；您必須手動啟用它。
+* 在 Rocky Linux 8.x 中，NVMe-oF 主機上的核心內 NVMe 多路徑預設為停用；您必須手動啟用它。
 * 由於已知問題，NVMe/TCP 可作為技術預覽。
 
 
 
 
-== 步驟 1 ：選擇性啟用 SAN 開機
+== 步驟 1：安裝 Rocky Linux 和 NVMe 軟體並驗證您的配置
 
-您可以設定主機以使用 SAN 啟動來簡化部署並提高可擴充性。使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Linux 作業系統、主機匯流排適配器 (HBA)、HBA 韌體、HBA 啟動 BIOS 和ONTAP版本是否支援 SAN 啟動。
-
-.步驟
-. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["建立 NVMe 命名空間並將其對應到主機"^] 。
-. 在伺服器 BIOS 中為 SAN 啟動命名空間對應到的連接埠啟用 SAN 啟動。
-+
-如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
-
-. 重新啟動主機並驗證作業系統是否已啟動並正在運行。
-
-
-
-
-== 步驟 2：驗證軟體版本和 NVMe 配置
-
-若要為 NVMe-oF 設定主機，您應該安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
+若要為 NVMe-oF 設定主機，您需要安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
 
 .步驟
-. 在伺服器上安裝 Rocky Linux 8.10。安裝完成後，請驗證您是否正在執行所需的 Rocky Linux 8.10 核心：
+. 在伺服器上安裝 Rocky Linux 8.x。安裝完成後，請確認您執行的是所需的 Rocky Linux 8.x 核心：
 +
 [source, cli]
 ----
@@ -105,7 +90,7 @@ cat /etc/nvme/hostnqn
 ----
 nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 ----
-. 確認 `hostnqn` 字串符合 `hostnqn` ONTAP 陣列上對應子系統的字串：
+. 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP陣列中對應子系統的字串：
 +
 [source, cli]
 ----
@@ -139,17 +124,16 @@ NOTE: 如果是 `hostnqn` 字串不相符、請使用 `vserver modify` 命令來
 
 
 
-== 步驟 3：設定 NVMe/FC 和 NVMe/TCP
+== 步驟 2：設定 NVMe/FC 和 NVMe/TCP
 
 使用 Broadcom/Emulex 或 Marvell/QLogic 適配器配置 NVMe/FC，或使用手動發現和連接操作來設定 NVMe/TCP。
 
 [role="tabbed-block"]
 ====
-.FC——Broadcom/Emulex
+.NVMe/FC - 博通/Emulex
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
-.步驟
 . 確認您使用的是支援的介面卡機型：
 +
 .. 顯示模型名稱：
@@ -298,11 +282,10 @@ FCP CMPL: xb 000014a5 Err 0002149a
 
 
 --
-.FC——Marvell/QLogic
+.NVMe/FC - Marvell/QLogic
 --
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
-.步驟
 . 確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [source, cli]
@@ -330,11 +313,10 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 
 --
-.TCP
+.NVMe / TCP
 --
 NVMe/TCP 協定不支援自動連線操作。相反，您可以透過執行 NVMe/TCP 來發現 NVMe/TCP 子系統和命名空間 `connect`或者 `connect-all`手動操作。
 
-.步驟
 . 檢查啟動器連接埠是否可以跨支援的 NVMe/TCP LIF 取得發現日誌頁面資料：
 +
 [listing]
@@ -613,7 +595,7 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ====
 
 
-== 步驟 4：（可選）為 NVMe/FC 啟用 1MB I/O
+== 步驟 3：可選，啟用 NVMe/FC 的 1MB I/O。
 
 您可以為配置了 Broadcom 適配器的 NVMe/FC 啟用 1MB 大小的 I/O 請求。 ONTAP在識別控制器資料中報告的最大資料傳輸大小 (MDTS) 為 8。這表示最大 I/O 要求大小最多可達 1MB 。要發出 1MB 大小的 I/O 請求，您需要增加 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
 
@@ -643,7 +625,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
-== 步驟 5：驗證多路徑配置
+== 步驟 4：驗證多路徑配置
 
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
 
@@ -829,7 +811,7 @@ nvme netapp ontapdevices -o json
 
 
 
-== 步驟 6 ：檢閱已知問題
+== 步驟 5：查看已知問題
 
 這些是已知問題：
 
@@ -838,5 +820,5 @@ nvme netapp ontapdevices -o json
 | NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | Rocky Linux 8.10 NVMe-oF 主機建立重複的持久發現控制器 | 在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立持久發現控制器 (PDC)。使用此命令時，每個啟動器-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.10，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標上資源的不必要使用。 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | Rocky Linux 8.x NVMe-oF 主機建立重複的持久發現控制器 | 在 NVMe-oF 主機上，您可以使用「nvme discover -p」指令建立持久發現控制器 (PDC)。 但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.x，則每次執行「nvme discover -p」時都會建立重複的 PDC。使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 Rocky Linux 8.x，每次執行 "nvme discover -p" 時都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。 
 |===
