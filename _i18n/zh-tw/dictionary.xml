@@ -2109,7 +2109,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="52fa57cb89715461d2004558d3bd3b78" category="list-text">驗證每個子系統的相應控制器是否已啟用 dhchap 機密。</block>
   <block id="9b5f1d99b3cc83e8839e8c1c7044f62f" category="paragraph">以下範例顯示了 dhchap 金鑰：</block>
   <block id="a8037bee31f3b32217fc0d5b84621e5e" category="section-title">步驟 9 ：檢閱已知問題</block>
-  <block id="b4da3417a3bbac7760c5f326458d9927" category="sidebar">RHEL 10</block>
   <block id="63da114c28add40c319de84e3a92a8ed" category="sidebar">RHEL-10-FCP</block>
   <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">以下範例顯示了 nvme-cli 軟體包版本：</block>
   <block id="c90e2c8eff8de67c2e01d748085394db" category="list-text">驗證<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>文件存在。如果檔案不存在，請建立空白的零位元組檔案：</block>
@@ -2126,14 +2125,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="255f7dd737c93c62e180bd5b0eb68abb" category="paragraph">您可以為配置了 Broadcom 適配器的 NVMe/FC 啟用 1MB 大小的 I/O 請求。 ONTAP在識別控制器資料中報告的最大資料傳輸大小 (MDTS) 為 8。這表示最大 I/O 要求大小最多可達 1MB 。要發出 1MB 大小的 I/O 請求，您需要增加<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數從預設值 64 更改為 256。</block>
   <block id="769454dbe77ed2cae45ab11f15c3cdfe" category="paragraph">從 ONTAP 9.12.1 開始，主機和 ONTAP 控制器之間透過 NVMe/TCP 和 NVMe/FC 支援安全帶內身份驗證。</block>
   <block id="23634d6048eb22a5ca8d8ab3d1e781a7" category="list-text">為主機產生 dhchap 金鑰。</block>
-  <block id="4d8e0dfcc8e342905265f68006cfcd68" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Rocky Linux 10</block>
-  <block id="c81edf36dc000954d363cf834dc3e1c0" category="paragraph">您可以使用 Rocky Linux 10 的多路徑來管理 ONTAP LUN。</block>
   <block id="83d23b030ca5295c7d8736002bf1f7d2" category="cell">在 Rocky Linux 9.1 中，NetApp Linux SAN Host Utilities CLI <block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block>失敗，因為找不到支援 HBA 發現的庫包依賴項。</block>
   <block id="0148f17cc04647b8533a3c01ec3b7393" category="section-title">步驟 7：設定安全帶內身份驗證</block>
   <block id="dd181852761e35c13f645a9f053c77c7" category="section-title">步驟 8 ：檢閱已知問題</block>
   <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">ONTAP SAN 主機和雲端用戶端</block>
   <block id="fb09e86e3230567e42bbd530bcb5a946" category="sidebar">Rocky Linux</block>
-  <block id="1f27018b2bb672b8cdc3ade88964fcd2" category="sidebar">Rocky Linux 10</block>
   <block id="9c5a13309f2776c548f1cdaad8fc39ea" category="sidebar">RL-10-FCP</block>
   <block id="e17ceddf1264512daf0c5ceaca0a2a0d" category="sidebar">RL-9-FCP</block>
   <block id="32abbb92208e586e49dce3e4e69b53e5" category="sidebar">RL-8-FCP</block>
@@ -2182,8 +2178,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4409363a45cfa288ed524d4f0dc52e3e" category="open-title">UEK 4</block>
   <block id="5dd29161b38ded1b0182c73e6e601911" category="paragraph">對於 Oracle Linux UEK 4，驗證<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案已定義，並且已為您的 ONTAP LUN 設定了 NetApp 建議的設定。</block>
   <block id="702585b74cd8e66c02a1414878b2ad93" category="paragraph">以下範例輸出顯示了具有兩個主動/最佳化路徑和兩個主動/非最佳化路徑的 AFF 或 FAS 配置中 ONTAP LUN 的正確參數設定和路徑狀態：</block>
-  <block id="1c7d17bc7c1ded98c5fa5864d2adc78b" category="summary">在 Rocky Linux 10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
-  <block id="31f66dd0901349520fbfd979a57834c5" category="paragraph">Linux 主機公用程式軟體可為連接至 ONTAP 儲存設備的 Linux 主機提供管理與診斷工具。在 Rocky Linux 10 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="9de6a58a42e3c57aa7665ee2c2c7a0e5" category="summary">在 Rocky Linux 8.10 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
   <block id="06bee3156fdb14564c410b4498b097cb" category="summary">在 Oracle Linux 7.0 主機上安裝 Linux Host Utilities 以使用 ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
   <block id="b6723505a37d0b64b9b52432313b8852" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Oracle Linux 7.0</block>
@@ -2970,45 +2964,14 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d8a7e98e6a80f5570d0d9d848e259cd3" category="paragraph">您可以使用 SUSE Linux Enterprise Server 15 SPx 的多路徑功能來管理ONTAP LUN。</block>
   <block id="3d3c3e3b44ea208fbe0adc756eaf2f8d" category="paragraph">SUSE Linux Enterprise Server 15 SPx 與ONTAP儲存有下列已知問題。</block>
   <block id="1eaa600ad4870574c79128f26c23dd48" category="sidebar">CentOS 8.x</block>
-  <block id="e4fc61fa9a616ca27d481649f48b573a" category="sidebar">Oracle Linux 9.x</block>
-  <block id="f2578dcaf6fad5c4f9ecbb1871268441" category="sidebar">Oracle Linux 8.x</block>
-  <block id="9f17458dfbe60319fd46bddd814d9474" category="sidebar">RHEL 9.x</block>
-  <block id="9871c3e3eef10eb83f1020bf0f40a11c" category="sidebar">RHEL 8.x</block>
-  <block id="c4980b39600ff4c0ecb0fa2f23fe5a78" category="sidebar">Rocky Linux 9.x</block>
-  <block id="58a2f4956f7990585638b66df29826ba" category="sidebar">Rocky Linux 8.x</block>
-  <block id="3e2ae734ca739ef2f098df9b39b981e1" category="summary">在 RHEL 10 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
-  <block id="d7c1825e0f2407a4d10d399ac78c1f95" category="doc">使用ONTAP儲存為 FCP 和 iSCSI 設定 RHEL 10</block>
-  <block id="d7b201e34bf72ed2024522784d92bd59" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Red Hat Enterprise Linux (RHEL) 10 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
-  <block id="0171e05f7a58a96089d554991286cd67" category="paragraph">您可以使用 RHEL 10 的多路徑功能來管理ONTAP LUN。</block>
   <block id="8df47c4ac3eebc35e0249205060ef2cf" category="paragraph">Oracle Linux 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。</block>
   <block id="0f59f7580246ca7da252d28d24ec8650" category="paragraph">Rocky Linux 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。</block>
-  <block id="30aa2c2a1d649a4e33898f09567805e5" category="summary">如何為 RHEL 10x 設定 NVMe-oF 主機（使用ONTAP）</block>
-  <block id="d7c0be613d6bb12ef8a5ad6bda6ad40c" category="doc">配置 RHEL 10x 以支援 NVMe-oF 和ONTAP存儲</block>
   <block id="1115467d419ca097455f701e2b9e97f1" category="inline-link-macro">RHEL ONTAP支援與功能</block>
-  <block id="40d1a7aa3be3b71ee2cb02e8f19df076" category="paragraph">了解如何為 RHEL 10x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="2b82789a9f75524f0645dc6918740a89" category="inline-link-macro-rx"></block>。</block>
-  <block id="3ad1543a744eff9025384f21980a59b8" category="paragraph">NVMe-oF 與 RHEL 10x 有以下已知限制：</block>
   <block id="b43850ec2a458178ffdaf44efff78baa" category="list-text">這<block ref="de5ac85ea45047f4dbeea79d7b729b7d" prefix=" " category="inline-code"></block>此命令會斷開根檔案系統和資料檔案系統，可能會導致系統不穩定。請勿在透過 NVMe-TCP 或 NVMe-FC 命名空間從 SAN 啟動的系統上執行此操作。</block>
   <block id="5a165f7348146612c8bb4726dfc987e8" category="section-title">步驟 2：安裝 RHEL 和 NVMe 軟體並驗證您的配置</block>
-  <block id="542be28dfe54d1aba7f27376722f7184" category="list-text">在伺服器上安裝 RHEL 10x。安裝完成後，請確認您執行的是所需的 RHEL 10x 核心：</block>
   <block id="7aedebfaf7f5d3acecf62e5e1e6a0a87" category="list-text">在ONTAP系統中，驗證以下資訊：<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串匹配<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>ONTAP儲存系統中對應子系統的字串：</block>
-  <block id="02973176ee0c32946f8a45d229cdcfb8" category="paragraph">支援透過 NVMe/TCP 在 RHEL 10x 主機和ONTAP控制器之間進行安全的帶內身份驗證。</block>
-  <block id="aea5204a2d7b6f662e8bc4cad9d5ea0f" category="list-text">為 RHEL 10x 主機產生 dhchap 金鑰。</block>
-  <block id="c24b380957c32369f896ee360d60ae1f" category="summary">如何為 RHEL 8x 設定 NVMe-oF 主機（使用ONTAP）</block>
-  <block id="51dce611f80cce1007373d6aa3b34714" category="doc">配置 RHEL 8x 以使用 NVMe-oF 和ONTAP存儲</block>
-  <block id="edf3ff083eb06b85b560565f8f317325" category="paragraph">了解如何為 RHEL 8x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="2b82789a9f75524f0645dc6918740a89" category="inline-link-macro-rx"></block>。</block>
-  <block id="780819b4fee564b6f660afea32e2f1b3" category="paragraph">NVMe-oF 與 RHEL 8x 有以下已知限制：</block>
-  <block id="a5a6483f99333ca98c9e119f1af37724" category="list-text">在 RHEL 8x 的 NVMe-oF 主機上，核心內 NVMe 多路徑預設為停用；您必須手動啟用它。</block>
-  <block id="90f4c5b86bf0d934fa290dc46c5315ee" category="list-text">在伺服器上安裝 RHEL 8x。安裝完成後，請確認您執行的是所需的 RHEL 8x 核心：</block>
-  <block id="cb8ff7e20a6299d80a0803ae4a872f27" category="list-text">在 RHEL 8x 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="d286d12da4f4e6576e98c97eb597f043" category="example-title">展示 NVMe/FC 範例</block>
   <block id="7b25b7a93bbe178f0d420e334d6ad6f8" category="example-title">展示 NVMe/TCP 範例</block>
-  <block id="8ebfa9c0eeb69f94ca0f65f475c357d1" category="cell">RHEL 8x NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
-  <block id="b5e84a2ea63a9f1b7ce01fa5d82b1edd" category="cell">在 NVMe-oF 主機上，可以使用「nvme discover -p」指令建立 PDC。使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 RHEL 8x，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。</block>
-  <block id="4e4640fc0c24b35d3cd6c5c91003b24c" category="summary">如何為 RHEL 9x 設定 NVMe-oF 主機（使用ONTAP）</block>
-  <block id="ec6eb54f1b1f7d47a4fea6a5506fe518" category="doc">配置 RHEL 9x 以使用 NVMe-oF 和ONTAP存儲</block>
-  <block id="abbed039ea7b04d2789b4167b6df70bd" category="paragraph">了解如何為 RHEL 9x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="2b82789a9f75524f0645dc6918740a89" category="inline-link-macro-rx"></block>。</block>
-  <block id="2976ab3aa0d36f735d8a12d9bd886a3a" category="paragraph">NVMe-oF 與 RHEL 9x 有以下已知限制：</block>
-  <block id="64d5adda16684ed4bc230cb76388ea82" category="list-text">在伺服器上安裝 RHEL 9x。安裝完成後，請確認您執行的是所需的 RHEL 9x 核心：</block>
   <block id="9b477ce27ea88f4f85280e9cdee7c154" category="section-title">步驟 4：（可選）修改 udev 規則中的 iopolicy</block>
   <block id="b563c88e9abe33f9ebe5ffe91fca2101" category="paragraph">RHEL 9.6 將 NVMe-oF 的預設 iopolicy 設定為<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>。如果您使用的是 RHEL 9.6 並且想要更改 iopolicy，請執行以下操作：<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>修改 udev 規則檔如下：</block>
   <block id="ac81318c5111726b893fa8dcdc177d9f" category="list-text">重新載入udev規則並套用變更：</block>
@@ -3016,8 +2979,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="02e6f562a82adc38b8762b8d4fc3c8c2" category="section-title">步驟 5：可選，啟用 NVMe/FC 的 1MB I/O。</block>
   <block id="e6b3c2c8d823bf042f0e8e9e02dabf14" category="section-title">步驟 6：驗證 NVMe 啟動服務</block>
   <block id="378f49529e98279285d9a2eb0d2b3e5e" category="section-title">步驟 7：驗證多路徑配置</block>
-  <block id="273367a798b160b982190fa4a5689c4e" category="paragraph">支援透過 NVMe/TCP 在 RHEL 9x 主機和ONTAP控制器之間進行安全的帶內身份驗證。</block>
-  <block id="d300a599fce2b340808309cfb3d6bc5a" category="list-text">為 RHEL 9x 主機產生 dhchap 金鑰。</block>
   <block id="817977d49e0479a834f082c774ea3949" category="cell">在 RHEL 9.1 中，<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>該命令傳回給定子系統的重複 NVMe 控制器列表</block>
   <block id="f12463db66bb26df5aae5e1aa393205f" category="summary">了解ONTAP對 RHEL 主機的支援和功能</block>
   <block id="d4063c82026eda59b5c15cca38aa9b92" category="paragraph">使用 NVMe over Fabrics (NVMe-oF) 進行主機配置所支援的功能會因ONTAP和 RHEL 的版本而異。</block>
@@ -3042,23 +3003,14 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="fc247827714f96cf26c9cbb26911cbf8" category="cell">如果您的 RHEL 版本是…</block>
   <block id="a63480986ae76ec294cfdac303f1cc61" category="cell">了解…</block>
   <block id="62287eeee3056dc397ebc956062f6d92" category="cell">10系列</block>
-  <block id="c34a7839b3f231e397d2f177d6d84b48" category="inline-link-macro">為 RHEL 10x 設定 NVMe</block>
-  <block id="e3e0f06db1ae1cf5139e341a6b89c089" category="cell"><block ref="e3e0f06db1ae1cf5139e341a6b89c089" category="inline-link-macro-rx"></block></block>
   <block id="2ee39f4f778b47b40d3a961eef85042c" category="cell">9系列</block>
-  <block id="8b7e7b79da283090e95e5e064f2f0674" category="inline-link-macro">為 RHEL 9x 配置 NVMe</block>
-  <block id="585f59c165dce6553dd5bb88dca5584f" category="cell"><block ref="585f59c165dce6553dd5bb88dca5584f" category="inline-link-macro-rx"></block></block>
   <block id="ee75ab6a598e53989bfa62b7af1bc1c0" category="cell">8系列</block>
-  <block id="851c6dcac272a6b81c4f1bc354e5dd30" category="inline-link-macro">為 RHEL 8x 設定 NVMe</block>
-  <block id="eb843c3a0d88815db0697625e0d53e67" category="cell"><block ref="eb843c3a0d88815db0697625e0d53e67" category="inline-link-macro-rx"></block></block>
   <block id="5d0c8eb2133aebd1b84ae7eadb64443d" category="inline-link-macro">了解如何管理 NVMe 協議</block>
   <block id="ea103ce11fa3acd9ff613573f07e83a8" category="paragraph"><block ref="ea103ce11fa3acd9ff613573f07e83a8" category="inline-link-macro-rx"></block></block>
   <block id="46df6d1dcf1bfe1d293e698a53cb025f" category="inline-link-macro">Rocky Linux ONTAP支援與功能</block>
   <block id="fc35bf5b5ac3f79b1fa6a280a58f05d4" category="summary">了解 Rocky Linux 對ONTAP 的支援與功能</block>
   <block id="d4c250eac77deea13f8e9d9293a5aad2" category="paragraph">使用 NVMe over Fabrics (NVMe-oF) 進行主機配置所支援的功能因ONTAP和 Rocky Linux 的版本而異。</block>
   <block id="3127b50785e82cd676744d9673a7bb86" category="cell">Rocky Linux 主機版本</block>
-  <block id="4b91f32a6e7c9347e242c6a3cfe81831" category="sidebar">10x</block>
-  <block id="41d60d32d9ec705b3d3409e5c37a47ed" category="sidebar">9x</block>
-  <block id="22d3c538ae9a7893a8cca2d17abd46ce" category="sidebar">8x</block>
   <block id="e01b830a5cda09eafed964519b00a13a" category="doc">步驟 2：（選用）從多路徑中排除設備</block>
   <block id="904cc9711392ab11f24202a7482e210d" category="doc">步驟 3：自訂ONTAP LUN 的多路徑參數</block>
   <block id="2589c63c17df176e198728a79c3e5212" category="cell">“總是”</block>
@@ -3068,26 +3020,12 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7c7bd4a6ffb911a5e03abd98deb728a2" category="list-text">重新載入多路徑服務：</block>
   <block id="e357b4342a0f3c9f0335b0a8236f0f56" category="admonition">預設情況下，Proxmox OS 原生多路徑配置集<block ref="19b30dc119e514235b739e076be9b3cc" prefix=" " category="inline-code"></block>設定為“*嚴格*”，並帶有空零字節<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>每次啟動主機時都會執行設定檔。這可以防止主機發現新出現的ONTAP LUN 作為多路徑設備，這意味著它們不會自動出現在多路徑控制之下。每次重啟後，現有的ONTAP LUN 仍保持被發現狀態並處於多路徑控制之下。</block>
   <block id="d916cdb52453f1297e01a7f2fb93f68b" category="paragraph">以下範例顯示了具有兩條活動/最佳化路徑和兩條活動/非最佳化路徑的ONTAP LUN 的輸出：</block>
-  <block id="a67072e0fcf576d467b0d59c6e975a4f" category="summary">在 Proxmox VE 9.0 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
-  <block id="2108c565af875cfc1e318c7dc8e41e56" category="doc">配置 Proxmox VE 9.0 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
-  <block id="56ea3377f895b5d98eb5cfb4d8112b4e" category="paragraph">配置 Proxmox VE 9.0 以實現多路徑，並為 FCP 和 iSCSI 協定操作與ONTAP儲存進行特定參數和設定。</block>
-  <block id="ee4895e76707b7f8c336bca634b35b63" category="list-text">Linux 主機實用程式不支援 Proxmox VE 9.0 作業系統。</block>
-  <block id="9c3789f3b828a3db86a5becb5c29475e" category="paragraph">您可以使用 Proxmox VE 9.0 的多路徑功能來管理ONTAP LUN。</block>
   <block id="62f90d2b36f26e75648f8fbc863d2103" category="summary">了解 Proxmox 主機對ONTAP 的支援與功能</block>
   <block id="2b32731d6a5ce83c7ab86fa39ec46a48" category="paragraph">使用 NVMe over Fabrics (NVMe-oF) 進行主機配置所支援的功能因ONTAP和 Proxmox 的版本而異。</block>
   <block id="0a0891df749e36f8a1da70eeb7191ff8" category="cell">ONTAP功能</block>
   <block id="458078e18e047c43a6e6db3e150f66f5" category="cell">Proxmox主機版本</block>
   <block id="56884779bcdf2531adce3644feb5d5ad" category="cell">使用原生功能提供 NVMe/FC 和 NVMe/TCP 命名空間的ONTAP詳細信息<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>包裹。</block>
-  <block id="3dd207a3086b972d8d447b71f51ad45b" category="inline-link-macro">了解如何設定 Proxmox VE 9.0</block>
-  <block id="8e152c1aa088847e146b4fe57394d80d" category="paragraph"><block ref="8e152c1aa088847e146b4fe57394d80d" category="inline-link-macro-rx"></block></block>
   <block id="1d871fa88754498eb3c93e5a73370e81" category="paragraph"><block ref="1d871fa88754498eb3c93e5a73370e81" category="inline-link-macro-rx"></block></block>
-  <block id="e2afbb1d7ff46d2d42900177365daf65" category="summary">如何為 Proxmox VE 9.0 配置 NVMe-oF 主機和ONTAP存儲</block>
-  <block id="a905e3804e13e4478f22570d7b1c6daa" category="doc">配置 Proxmox VE 9.0 以支援 NVMe-oF 和ONTAP存儲</block>
-  <block id="db808e8d5fb0a993c938763824fac885" category="paragraph">Proxmox VE 9.0 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。</block>
-  <block id="4ae846af7b3e3b1ee9fce8a61764e7b3" category="paragraph">了解如何為 Proxmox VE 9.0 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="e9c9618cb4ec473c29fc8069ba3262ca" category="inline-link-macro-rx"></block>。</block>
-  <block id="a2cfdbabc7f82da552ac8a6f31932690" category="section-title">步驟 1：驗證軟體版本和 NVMe 配置</block>
-  <block id="d87c2970a586e621db74a1d4a13c1b7d" category="list-text">在伺服器上安裝 Proxmox VE 9.0。安裝完成後，請確認您執行的是所需的 Proxmox VE 9.0 核心：</block>
-  <block id="5c6d8604a5ef6f3ebc5e8f9e0a358981" category="paragraph">Proxmox VE 9.0 核心版本範例：</block>
   <block id="2522863fc857cac71478b47c2b4ce58a" category="section-title">步驟 2：設定 NVMe/FC 和 NVMe/TCP</block>
   <block id="ffe16d9eb39aa355eb74e268533641c2" category="open-title">NVMe/FC - 博通/Emulex</block>
   <block id="ac966a87b7f17d061600251cdc258bdf" category="list-text">顯示模型描述：</block>
@@ -3099,59 +3037,29 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="20e3bd3445baddb0173656fe96366a23" category="list-text">顯示子系統：</block>
   <block id="75e680a777df7d1ca001dab2b59ac1ad" category="sidebar">普羅克斯莫克斯</block>
   <block id="7c0fddb795e074f6d14458a8975b1aa6" category="sidebar">NVMeoF Proxmox</block>
-  <block id="5fe2096f9921d0fba5e418c83d4ae235" category="sidebar">Proxmox VE 9x</block>
-  <block id="ba27a04190d6694c847e3efa59ae4a4d" category="paragraph">FCP 和 iSCSI 與 Proxmox VE 9.0 有以下已知限制：</block>
   <block id="53445ee8fa865b4519b6dd3c5ae43550" category="list-text">不支援 SAN 啟動配置。</block>
-  <block id="662102a165c2bc048d9868d337b6e7f0" category="paragraph">NVMe-oF 與 Proxmox VE 9.0 有以下已知限制：</block>
   <block id="e3b2f07b62796920751f31b5a43c631c" category="list-text">不支援 NVMe-FC 的 SAN 啟動配置。</block>
-  <block id="09b2a2061e5881b282d700c9e017e27d" category="sidebar">Proxmox VE 9.0</block>
-  <block id="edcc670430245f9e1935650728be5272" category="summary">為 Oracle Linux 7x 和ONTAP設定 VMe/FC 主機配置，並提供範例</block>
-  <block id="8578f685a8b04cf636452cab45a875b9" category="doc">配置 Oracle Linux 7x 和 NVMe-oF 用於ONTAP存儲</block>
   <block id="abab300fc1c198bf93c596f615ae1333" category="inline-link-macro">Oracle Linux ONTAP支援與功能</block>
-  <block id="e4e0a3d562c87c9ef78ec228061c5e90" category="paragraph">了解如何為 Oracle Linux 7x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
-  <block id="5e9a57672aba0ae5f82e7ea3ea94a437" category="paragraph">NVMe-oF 與 Oracle Linux 7x 有以下已知限制：</block>
   <block id="01353a337af302a19563d412b30243c1" category="list-text">不支援使用 NVMe-oF 協定進行 SAN 啟動。</block>
-  <block id="4e5f37295fd0f718e9dcadc3d96774dd" category="list-text">NetApp sanlun 主機公用程式不支援 Oracle Linux 7x 主機上的 NVMe-oF。相反，您可以依賴本機中包含的NetApp插件<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>適用於所有 NVMe-oF 傳輸的套件。</block>
   <block id="afea2cb9581736abdf8c5e9ebd3ea4a0" category="list-text">NVMe 多路徑預設未啟用輪詢負載平衡。若要啟用此功能，請編寫 udev 規則。</block>
   <block id="32de99d032897a5a26e7bca447d4b974" category="section-title">步驟 1：安裝 Oracle Linux 和 NVMe 軟體並驗證您的配置</block>
-  <block id="219111c4280f07be876e5f974f216e00" category="paragraph">使用以下步驟驗證支援的最低 Oracle Linux 7x 軟體版本。</block>
-  <block id="af0a012f0f824d4b2ce77f5eb3f48f15" category="list-text">在伺服器上安裝Oracle Linux 7x。安裝完成後，請確認您執行的是指定的 Oracle Linux 7x 核心。</block>
   <block id="f9cefe6f0b2800a8a685f3ef9063d43d" category="paragraph">Oracle Linux 核心版本範例：</block>
   <block id="e197120e56a587b373691ee5f8d36977" category="list-text">將以下字串新增為單獨的 udev 規則<block ref="99434fae4c03e5f280aa41106396dfa1" prefix=" " category="inline-code"></block>。這樣就實現了 NVMe 多路徑的輪詢負載平衡。</block>
-  <block id="4706547e4ff6a3bb666a26f94a6eab68" category="list-text">在 Oracle Linux 7x 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="6d7df35d2c807957631601396a27119f" category="list-text">安裝推薦的 lpfc 自動連線腳本：</block>
   <block id="1049c81e0528ce0dd22e883d5b284372" category="list-text">確認自動連線腳本已安裝：</block>
   <block id="70f28871a7ab9997c93d98cc16bb9c1b" category="list-text">顯示連接埠名稱：</block>
   <block id="a29263e4e1c058d96c45f23c3aaa2632" category="section-title">步驟 4：驗證多路徑配置</block>
-  <block id="ea439076a0aa782335d37e22ee12295a" category="summary">適用於 Oracle Linux 8x 和ONTAP的 NVMe-oF 主機配置</block>
-  <block id="4318ea25152f2c0e1d7579c5d52462ce" category="doc">配置 Oracle Linux 8x 和 NVMe-oF 用於ONTAP存儲</block>
-  <block id="9f2a920f745fd54c90abb4ad478faf60" category="paragraph">了解如何為 Oracle Linux 8x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
-  <block id="1d149bc2472bbc23500c946a7f0b9fdb" category="paragraph">NVMe-oF 與 Oracle Linux 8x 有以下已知限制：</block>
-  <block id="cb43e087be922b4a0077ac412d09e55c" category="list-text">NetApp sanlun 主機公用程式不支援 Oracle Linux 8x 主機上的 NVMe-oF。相反，您可以依賴本機中包含的NetApp插件<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>適用於所有 NVMe-oF 傳輸的套件。</block>
   <block id="784b3235c346d4e391961845b14b3f36" category="list-text">對於 Oracle Linux 8.2 及更早版本，nvme-cli 軟體套件中不提供原生 NVMe/FC 自動連線腳本。使用 HBA 供應商提供的外部自動連線腳本。</block>
   <block id="ee703826ae474bedd879d09a50bd6036" category="inline-xref">編寫 udev 規則</block>
   <block id="54214db3467c65f5ae66bed34ddc9a3a" category="list-text">對於 Oracle Linux 8.2 及更早版本，預設不會為 NVMe 多路徑啟用輪詢負載平衡。若要啟用此功能，請前往下列步驟。<block ref="1d5746481f146e25353a9d9b73f7dd69" category="inline-xref-macro-rx"></block> 。</block>
-  <block id="c250ac6f471950dd177462ce130bfcdf" category="paragraph">使用以下步驟驗證支援的最低 Oracle Linux 8x 軟體版本。</block>
-  <block id="bcae3e9b831411c90992488a681c480d" category="list-text">在伺服器上安裝Oracle Linux 8x。安裝完成後，請確認您執行的是指定的 Oracle Linux 8x 核心。</block>
   <block id="083363919c80275b64844d9448198bf1" category="list-text">[[udev-rule]] 對於 Oracle Linux 8.2 及更早版本，請新增下列字串作為單獨的 udev 規則。<block ref="99434fae4c03e5f280aa41106396dfa1" prefix=" " category="inline-code"></block> 。這樣就實現了 NVMe 多路徑的輪詢負載平衡。</block>
-  <block id="6d5d84c14d60f6def61917ebd2d2a033" category="list-text">在 Oracle Linux 8x 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="5ea0b739fb51337013613e6b99c61c8b" category="list-text">此外，為了在同一台主機上同時執行 NVMe 和 SCSI 流量， NetApp建議對ONTAP命名空間使用核心 NVMe 多路徑。<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block>分別對應ONTAP LUN。這樣應該可以將ONTAP命名空間排除在外。<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block>並阻止<block ref="3c66321496e85b9ce8f7b49be0316b0a" prefix=" " category="inline-code"></block>拒絕聲明ONTAP命名空間設備。</block>
   <block id="53aa96b81847ea790a2dd9d34d3e3139" category="list-text">添加<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block>設定<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>文件。</block>
   <block id="8211a1492e16afb0745a732ce20e9678" category="list-text">重新啟動<block ref="8732863da72605a20ed96b4eee87a5fb" prefix=" " category="inline-code"></block>守護程式應用新設定。</block>
   <block id="f97e7db99bb0a1e808378e53a69a896b" category="paragraph">NetApp建議設定<block ref="d830763524c5d39cb33a1bd2b5c447f8" prefix=" " category="inline-code"></block>到<block ref="6bb61e3b7bce0931da574d19d1d82c88" prefix=" " category="inline-code"></block>這樣，當路徑遺失時，NVMe/TCP 發起程序會無限期地嘗試重新連線。</block>
   <block id="24fcd6330b6a9b7be58b3cd8ddc63f4f" category="section-title">步驟 5：可選，啟用 1MB I/O 大小</block>
-  <block id="9571d38db89f367415411c2dfe677b85" category="cell">Oracle Linux 8x NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
-  <block id="c30c1a54e7f0ba52f3b2248c60940d5b" category="cell">On NVMe-oF hosts, you can use the<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> command to create PDCs. 使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在搭載 NVMe-oF 主機的 Oracle Linux 8x 上執行，則每次執行<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 時都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。</block>
-  <block id="6d1df4a3fda9e547df8bfc2fe3b2b88e" category="summary">適用於 Oracle Linux 9x 和ONTAP的 NVMe-oF 主機配置</block>
-  <block id="ae5818b697c021eaa30f3ce403f3edf6" category="doc">配置 Oracle Linux 9x 和 NVMe-oF 以用於ONTAP存儲</block>
-  <block id="c34f82c9de9bc5066764d9c7c86f37e6" category="paragraph">了解如何為 Oracle Linux 9x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
-  <block id="07d064b491f36a139f6c47a5fbc20810" category="paragraph">NVMe-oF 與 Oracle Linux 9x 有以下已知限制：</block>
   <block id="7b132f02e8428aa01abb44962ec07147" category="section-title">步驟 2：安裝 Oracle Linux 和 NVMe 軟體並驗證配置</block>
-  <block id="e28e39a6256e4cb16d5ef17fe2861f03" category="paragraph">使用以下步驟驗證支援的最低 Oracle Linux 9x 軟體版本。</block>
-  <block id="26038506b0559a9b1085de324fc82354" category="list-text">在伺服器上安裝Oracle Linux 9x。安裝完成後，請確認您執行的是指定的 Oracle Linux 9x 核心。</block>
-  <block id="c6cb4fd1e3603bc243f801af72deea8c" category="list-text">在 Oracle Linux 9x 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="be553660868a99ecfcefab234340f585" category="paragraph">從 Oracle Linux 9.5 開始，<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用軟體包。</block>
-  <block id="fcefa304c2491dd88ec22adf73f5ec25" category="paragraph">Oracle Linux 9x 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全的帶內身份驗證。</block>
   <block id="cbce5c9568a686f91b2dfcf39622b287" category="paragraph">每個主機或控制器都必須與一個 DH-HMAC-CHAP 金鑰關聯，才能建立安全性驗證。 DH-HMAC-CHAP 金鑰是 NVMe 主機或控制器的 NQN 與管理員設定的驗證金鑰的組合。為了驗證對等方的身份，NVMe 主機或控制器必須識別與對等方關聯的金鑰。</block>
   <block id="e908710b4eae6cf350cddad694d8c508" category="paragraph">使用 CLI 或設定 JSON 檔案設定安全的帶內身份驗證。如果需要為不同的子系統指定不同的 dhchap 金鑰，請使用 config JSON 檔案。</block>
   <block id="aadd5dd4ef730bc8b1907b50349be5cb" category="summary">了解ONTAP對 Oracle Linux 主機的支援和功能。</block>
@@ -3163,16 +3071,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3e7f8956facd1f9693ee67400bd4dd89" category="paragraph">8.3 或更高版本</block>
   <block id="e52f83ac7ca8ca1b48908231ec897be1" category="paragraph">9.5 或更高版本</block>
   <block id="92893b8c5051dff6e69f93181e523d01" category="cell">如果您的 Oracle Linux 版本是…</block>
-  <block id="e58aa54640c8a048f0220eca0fae0567" category="inline-link-macro">為 Oracle Linux 9x 配置 NVMe</block>
-  <block id="f7026764812baadcd2194aa43b320f8e" category="cell"><block ref="f7026764812baadcd2194aa43b320f8e" category="inline-link-macro-rx"></block></block>
-  <block id="c750ee9012625688ba1d167944aeb37f" category="inline-link-macro">為 Oracle Linux 8x 配置 NVMe</block>
-  <block id="7508a19f010c6669163ec7987968b748" category="cell"><block ref="7508a19f010c6669163ec7987968b748" category="inline-link-macro-rx"></block></block>
   <block id="e6c9ea0372e1bc5ee9ce19cebcf71eaf" category="cell">7系列</block>
-  <block id="10b20d1a268c389edd3a6e001c96ae29" category="inline-link-macro">為 Oracle Linux 7x 配置 NVMe</block>
-  <block id="b7902e318d4b37a689659f1eb239be9a" category="cell"><block ref="b7902e318d4b37a689659f1eb239be9a" category="inline-link-macro-rx"></block></block>
   <block id="28b031394cea76c997a81517dfc279f9" category="cell">在 NVMe-oF 主機上，您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 指令來建立 PDC。使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在執行 ONTAP 9.10.1 並搭配 RHEL 9.0 及 NVMe-oF 主機時，每次執行 <block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。</block>
   <block id="38247dd9f4f50ed3b751d728ecd0c52c" category="sidebar">NVMeoF OL</block>
-  <block id="8a1b0284de7d7f43f74ff50788b58df6" category="sidebar">7x</block>
   <block id="8cf639f80087b38e9251e80ba60c10c4" category="paragraph">預設多路徑參數支援ASA、 AFF和FAS配置。在這些配置中，單一ONTAP LUN 不應需要超過四條路徑。儲存故障時，路徑超過四條可能會導致問題。</block>
   <block id="eaf928b18adce16330b705bb6a23e4f4" category="paragraph">預設的多路徑參數支援AFF和FAS配置。在這些配置中，單一ONTAP LUN 不應需要超過四條路徑。儲存故障時，路徑超過四條可能會導致問題。</block>
   <block id="97a99753b959b6770bb6efa96e4103e1" category="list-text">請參閱 Veritas 支援入口網站（產品矩陣、平台查找和 HCL 矩陣）以驗證 SAN 啟動配置支援和已知問題。</block>
@@ -3259,4 +3160,114 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="6b5b0d6dfb6af2b4c98938bb01cbeea1" category="sidebar">10.x</block>
   <block id="d72995ff1027d450a27d74dcfc841f56" category="sidebar">9.x</block>
   <block id="1d9034f1d65f49ec78c15c7e7364cf91" category="sidebar">8.x</block>
+  <block id="2fe6faf1c2fc5e1eb65bf2f67f6a66ee" category="paragraph">您可以使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 轉接器來設定 NVMe/FC。對於配置了博通適配器的 NVMe/FC，您可以啟用 1MB 大小的 I/O 要求。</block>
+  <block id="3f2aed41975c4d98d941e8a7b03bf8e5" category="paragraph">從ONTAP 9.12.1 開始，支援在 RHEL 10 主機和ONTAP控制器之間透過 NVMe/TCP 進行安全的帶內身份驗證。</block>
+  <block id="d1864d59ca252f6be1b9b7a1114e5ec4" category="list-text">為 RHEL 10 主機產生 dhchap 金鑰。</block>
+  <block id="4dcee9203f73b30ec6688d90cfb68630" category="summary">在 Proxmox VE 8.x 主機上安裝 Linux 主機實用程序，以管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="88071e30312e28fa0b87d254070a724f" category="doc">配置 Proxmox VE 8.x 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
+  <block id="fafd763f3e58cf8cde77989b1fde8085" category="paragraph">配置 Proxmox VE 8.x 以實現多路徑，並為與ONTAP儲存的 FCP 和 iSCSI 協定操作設定特定的參數和設定。</block>
+  <block id="699da2cd78bb017439b6a2ffd91406dc" category="paragraph">FCP 和 iSCSI 與 Proxmox VE 8.x 有以下已知限制：</block>
+  <block id="96164e76cd22e77006902e7955a195a4" category="list-text">Linux 主機實用程式不支援 Proxmox VE 8.x 作業系統。</block>
+  <block id="eb91c50aaa3591dd4042362ad6067f26" category="paragraph">您可以使用 Proxmox VE 8.x 的多路徑功能來管理ONTAP LUN。</block>
+  <block id="59feb93c6ec8904999838cc7ee1de095" category="summary">在 Proxmox VE 9.x 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="7357cf6d2262d388cf908ac6745733be" category="doc">配置 Proxmox VE 9.x 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
+  <block id="90bd62bcb144c310a327cc90a44c5efe" category="paragraph">配置 Proxmox VE 9.x 以實現多路徑，並為與ONTAP儲存的 FCP 和 iSCSI 協定操作設定特定的參數和設定。</block>
+  <block id="68d393c5807c155764e45ddca9c8af56" category="paragraph">FCP 和 iSCSI 與 Proxmox VE 9.x 有以下已知限制：</block>
+  <block id="d71ff2f3ddc3cebc36730e709a3d99c5" category="list-text">Linux 主機實用程式不支援 Proxmox VE 9.x 作業系統。</block>
+  <block id="7ea726d545721fade9931049a697ed27" category="paragraph">您可以使用 Proxmox VE 9.x 的多路徑功能來管理ONTAP LUN。</block>
+  <block id="fd80fc5c4939c31fa3e02e10a79bd3f9" category="summary">在 RHEL 10.x 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="1ef60db819d60e94b86f4a16c24c2679" category="doc">配置 RHEL 10.x 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
+  <block id="f4f3b2fa9ca492f51f67466b3e2c4727" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Red Hat Enterprise Linux (RHEL) 10.x 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
+  <block id="e21ceba2d0517599c7a4306f5ff93e2a" category="paragraph">您可以使用 RHEL 10.x 的多路徑功能來管理ONTAP LUN。</block>
+  <block id="0103419b2a7f9c7d735888775d05951a" category="summary">在 Rocky Linux 10.x 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="feb28dbb875cef4ed11ccf90df94218a" category="doc">配置 Rocky Linux 10.x 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
+  <block id="76166c5048e178a877e3788c1a7aabf9" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Rocky Linux 10.x 主機上安裝 Linux 主機公用程式後，您可以使用主機實用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="b2b81ced4888f42ec73135895cc7f15b" category="paragraph">您可以使用 Rocky Linux 10.x 的多路徑功能來管理ONTAP LUN。</block>
+  <block id="f9e6c87693abb48ae965e3807754b248" category="summary">為 Oracle Linux 7.x 和ONTAP設定 VMe/FC 主機配置，並提供範例</block>
+  <block id="af311e9ff855d263d96464518292c93e" category="doc">配置 Oracle Linux 7.x 和 NVMe-oF 以用於ONTAP存儲</block>
+  <block id="36db06af3bc2cf5ac77cfe7f8dbfd5ae" category="paragraph">了解如何為 Oracle Linux 7.x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
+  <block id="147a8393de4d6f7d913f5241312531ae" category="paragraph">NVMe-oF 與 Oracle Linux 7.x 有以下已知限制：</block>
+  <block id="ffdbe39dc6849e6b1776cc1d58f1b6fb" category="list-text">NetApp sanlun 主機公用程式不支援 Oracle Linux 7.x 主機上的 NVMe-oF。相反，您可以依賴本機中包含的NetApp插件<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>適用於所有 NVMe-oF 傳輸的套件。</block>
+  <block id="4f953bc0e2802e8bfdaf513f5107747c" category="paragraph">使用以下步驟驗證支援的最低 Oracle Linux 7.x 軟體版本。</block>
+  <block id="f6f44f7f933362f8012482cfdc64bcf9" category="list-text">在伺服器上安裝Oracle Linux 7.x。安裝完成後，請確認您執行的是指定的 Oracle Linux 7.x 核心。</block>
+  <block id="b47c41a9513bf1b5dc8f2d2ac73753bc" category="list-text">在 Oracle Linux 7.x 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="0baf404d29c6cb60ec2691b4beabc3b6" category="summary">適用於 Oracle Linux 8.x 和ONTAP的 NVMe-oF 主機配置</block>
+  <block id="58b9f430366e23a2202edc5490300c1c" category="doc">配置 Oracle Linux 8.x 和 NVMe-oF 以用於ONTAP存儲</block>
+  <block id="d1a0b73092f65279936d400914dd8cc0" category="paragraph">了解如何為 Oracle Linux 8.x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
+  <block id="014514e3306f74ab14ad1e8da46be859" category="paragraph">NVMe-oF 與 Oracle Linux 8.x 有以下已知限制：</block>
+  <block id="ab2a6bd5a1677646c38e9b97ea434d6e" category="list-text">NetApp sanlun 主機公用程式不支援 Oracle Linux 8.x 主機上的 NVMe-oF。相反，您可以依賴本機中包含的NetApp插件<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>適用於所有 NVMe-oF 傳輸的套件。</block>
+  <block id="be3b3242a075f620f7c97840a803a2dc" category="paragraph">使用以下步驟驗證支援的最低 Oracle Linux 8.x 軟體版本。</block>
+  <block id="36daa385b1ca113a593f35656fe1cf7f" category="list-text">在伺服器上安裝Oracle Linux 8.x。安裝完成後，請確認您執行的是指定的 Oracle Linux 8.x 核心。</block>
+  <block id="37ece757f8e2e0a6c4eeffa76645eb35" category="list-text">在 Oracle Linux 8.x 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="cafb20e24ff7ffd7051421fe29ffff3a" category="cell">Oracle Linux 8.x NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
+  <block id="17763301a1650193f096e85b7931409e" category="cell">在 NVMe-oF 主機上，您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 指令來建立 PDC。使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在搭載 NVMe-oF 主機的 Oracle Linux 8.x 上執行，則每次執行<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 時都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。</block>
+  <block id="63eb478005d7986c9bac6b45cbcc9449" category="summary">適用於 Oracle Linux 9.x 和ONTAP的 NVMe-oF 主機配置</block>
+  <block id="7879597f78ceca93363e3a27f21ebe00" category="doc">配置 Oracle Linux 9.x 和 NVMe-oF 以用於ONTAP存儲</block>
+  <block id="095844b56178a284b78a75795108d8af" category="paragraph">了解如何為 Oracle Linux 9.x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
+  <block id="5acbb00e494e9fe009ff76a65bf2f1ba" category="paragraph">NVMe-oF 與 Oracle Linux 9.x 有以下已知限制：</block>
+  <block id="4c344c877a57df13c19fd1fd8b66490b" category="paragraph">使用以下步驟驗證支援的最低 Oracle Linux 9.x 軟體版本。</block>
+  <block id="9c912bfe11518dfe915fe7e20a0c6fd8" category="list-text">在伺服器上安裝Oracle Linux 9.x。安裝完成後，請確認您執行的是指定的 Oracle Linux 9.x 核心。</block>
+  <block id="96ee188719f0576170b9005da5ece8a9" category="list-text">在 Oracle Linux 9.x 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="2a70d246d2b9bc12fa2e3bf22330222c" category="paragraph">Oracle Linux 9.x 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全的帶內身份驗證。</block>
+  <block id="30197a849119cb9e4a15fe1e30ff9a02" category="inline-link-macro">為 Oracle Linux 9.x 配置 NVMe</block>
+  <block id="af67017fc552ecc650386605b9bca3f0" category="cell"><block ref="af67017fc552ecc650386605b9bca3f0" category="inline-link-macro-rx"></block></block>
+  <block id="a8725c90a66d2a56a46c5305a41a6d98" category="inline-link-macro">為 Oracle Linux 8.x 配置 NVMe</block>
+  <block id="9ce5da42d9f423f139a68437f2b3297d" category="cell"><block ref="9ce5da42d9f423f139a68437f2b3297d" category="inline-link-macro-rx"></block></block>
+  <block id="c005a369a2a516d76792e48806d2a9b6" category="inline-link-macro">為 Oracle Linux 7.x 配置 NVMe</block>
+  <block id="a92789b273da2245ef9d2678bb5205cd" category="cell"><block ref="a92789b273da2245ef9d2678bb5205cd" category="inline-link-macro-rx"></block></block>
+  <block id="ef6aea14ad8d7dc0372d7ee83e1f21ff" category="cell">如果您的 Proxmox VE 版本是…</block>
+  <block id="1147d5241923f96bcd28cec7256fe125" category="inline-link-macro">為 Proxmox VE 9.x 配置 NVMe</block>
+  <block id="84c66451e71e8b22143744f9bbb19618" category="cell"><block ref="84c66451e71e8b22143744f9bbb19618" category="inline-link-macro-rx"></block></block>
+  <block id="723ea44f8f3cab8c4fef6f7e2bcbdab2" category="inline-link-macro">為 Proxmox VE 8.x 配置 NVMe</block>
+  <block id="7c1a31e28a3e9efbf22586ab4b83f309" category="cell"><block ref="7c1a31e28a3e9efbf22586ab4b83f309" category="inline-link-macro-rx"></block></block>
+  <block id="0a32eb9235d6ee6ab491a28232b360fe" category="summary">如何為 Proxmox VE 8.x 配置 NVMe-oF 主機和ONTAP存儲</block>
+  <block id="abd4c17b358d101acafa7722df5feff7" category="doc">配置 Proxmox VE 8.x 以支援 NVMe-oF 和ONTAP存儲</block>
+  <block id="d57022d74b435611460d09ea31081344" category="paragraph">Proxmox VE 8.x 主機支援光纖通道上的 NVMe (NVMe/FC) 和 TCP 上的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。</block>
+  <block id="d690c65e922bc2e455d5fc5c2e0e9dee" category="paragraph">了解如何為 Proxmox VE 8.x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="e9c9618cb4ec473c29fc8069ba3262ca" category="inline-link-macro-rx"></block>。</block>
+  <block id="6859da059540b5eb179954796cc0311c" category="paragraph">NVMe-oF 與 Proxmox VE 8.x 有以下已知限制：</block>
+  <block id="420b261cde1919bf45abeb660938329c" category="section-title">步驟 1：安裝 Proxmox VE 和 NVMe 軟體並驗證您的配置</block>
+  <block id="05c8564c95a44b87aa8be90103154c76" category="list-text">在伺服器上安裝 Proxmox 8.x。安裝完成後，請確認您執行的是指定的 Proxmox 8.x 核心：</block>
+  <block id="d909f98e30fc7bbc587152ee3e0d16b1" category="paragraph">以下範例顯示了 Proxmox 核心版本：</block>
+  <block id="e627c7e2b3e722b440d48831e769b13a" category="list-text">運行<block ref="bf109f368c659cc32d50530a785b0314" prefix=" " category="inline-code"></block>命令並重新啟動主機。</block>
+  <block id="d58a5ec48658e130b6a2d1304208f060" category="paragraph">使用 Proxmox 8.x，<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用軟體包。</block>
+  <block id="2bf172b74933f223ba57679c36b33d5a" category="summary">如何為 Proxmox VE 9.x 配置 NVMe-oF 主機和ONTAP存儲</block>
+  <block id="601a6f2d4afe3ec4201120c1a50fdc28" category="doc">配置 Proxmox VE 9.x 以支援 NVMe-oF 和ONTAP存儲</block>
+  <block id="e3e9a6fcd82b7af49817bec38c863976" category="paragraph">Proxmox VE 9.x 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。</block>
+  <block id="94db596ca8a1646f37dfb955d04e5b5a" category="paragraph">了解如何為 Proxmox VE 9.x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="e9c9618cb4ec473c29fc8069ba3262ca" category="inline-link-macro-rx"></block>。</block>
+  <block id="4b09bef76796b2db7a80346663951bc3" category="paragraph">NVMe-oF 與 Proxmox VE 9.x 有以下已知限制：</block>
+  <block id="ca8f5ad46687260b340f6f3e077274ff" category="list-text">在伺服器上安裝 Proxmox VE 9.x。安裝完成後，請確認您執行的是所需的 Proxmox VE 9.x 核心：</block>
+  <block id="40df504270c162e34027501a1265190f" category="paragraph">Proxmox VE 9.x 核心版本範例：</block>
+  <block id="479e7fa190782e863481c7f5226483d1" category="summary">如何為 RHEL 10.x 設定 NVMe-oF 主機（使用ONTAP）</block>
+  <block id="d179caa38dfc56926fe888763d5339e2" category="doc">配置 RHEL 10.x 以使用 NVMe-oF 和ONTAP存儲</block>
+  <block id="1b9fbcb32a729255b8ce72f9fff09d28" category="paragraph">了解如何為 RHEL 10.x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="2b82789a9f75524f0645dc6918740a89" category="inline-link-macro-rx"></block>。</block>
+  <block id="12ed73a346e10576ace99fa173c7f8c3" category="paragraph">NVMe-oF 與 RHEL 10.x 有以下已知限制：</block>
+  <block id="19e9debfee8d274449533794fe209bba" category="list-text">在伺服器上安裝 RHEL 10.x。安裝完成後，請確認您執行的是所需的 RHEL 10.x 核心：</block>
+  <block id="1c159a07a5aa6552c30fe898310242aa" category="paragraph">支援透過 NVMe/TCP 在 RHEL 10.x 主機和ONTAP控制器之間進行安全的帶內身份驗證。</block>
+  <block id="7ea68ef0843f5e7330cdb701595d0533" category="list-text">為 RHEL 10.x 主機產生 dhchap 金鑰。</block>
+  <block id="32735039e8946a1f6022fee8a5f788bc" category="summary">如何為 RHEL 8.x 設定 NVMe-oF 主機（使用ONTAP）</block>
+  <block id="5c54e56c19551b07924e2dc25f70cb2e" category="doc">配置 RHEL 8.x 以使用 NVMe-oF 和ONTAP存儲</block>
+  <block id="b4f9bc2d35d1b1e8874ef63217fd8237" category="paragraph">了解如何為 RHEL 8.x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="2b82789a9f75524f0645dc6918740a89" category="inline-link-macro-rx"></block>。</block>
+  <block id="60462c7203790ec2c52ae6d08c26a1a7" category="paragraph">NVMe-oF 與 RHEL 8.x 有以下已知限制：</block>
+  <block id="cc14955bfeec33d59cdbf2f4cbe13874" category="list-text">在 RHEL 8.x 的 NVMe-oF 主機上，核心內 NVMe 多路徑預設為停用；您必須手動啟用它。</block>
+  <block id="b723b8613a988d8ba8ae1c7fbbbc070a" category="list-text">在伺服器上安裝 RHEL 8.x。安裝完成後，請確認您執行的是所需的 RHEL 8.x 核心：</block>
+  <block id="fd1edd07c54382c0bb5d1a0fd4908b9a" category="list-text">在 RHEL 8.x 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="9d8e9542200eda528e80335197e63a98" category="cell">RHEL 8.x NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
+  <block id="7840eb4f360a7dfbd0165407c5a98046" category="cell">在 NVMe-oF 主機上，可以使用「nvme discover -p」指令建立 PDC。使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 RHEL 8.x，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。</block>
+  <block id="87820e30b08bf95559c9d6eb488bcff7" category="summary">如何為 RHEL 9.x 設定 NVMe-oF 主機（使用ONTAP）</block>
+  <block id="9ac637fe44930f5996f26a8bfbeceec2" category="doc">配置 RHEL 9.x 以使用 NVMe-oF 和ONTAP存儲</block>
+  <block id="1e1d962a9524f5d603f113a20478129e" category="paragraph">了解如何為 RHEL 9.x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="2b82789a9f75524f0645dc6918740a89" category="inline-link-macro-rx"></block>。</block>
+  <block id="91db3613ba4aad32e29b30bba5bb541d" category="paragraph">NVMe-oF 與 RHEL 9.x 有以下已知限制：</block>
+  <block id="92decdd26c17c4bb07c2488890a6e0e5" category="list-text">在伺服器上安裝 RHEL 9.x。安裝完成後，請確認您執行的是所需的 RHEL 9.x 核心：</block>
+  <block id="b53ecde617612ae7b971e552002e5537" category="paragraph">支援透過 NVMe/TCP 在 RHEL 9.x 主機和ONTAP控制器之間進行安全的帶內身份驗證。</block>
+  <block id="819ee40304a95d460cddedb09bebf1f6" category="list-text">為 RHEL 9.x 主機產生 dhchap 金鑰。</block>
+  <block id="664654067f223870a980e11792893778" category="inline-link-macro">為 RHEL 10.x 設定 NVMe</block>
+  <block id="3db1fb14cc04cd017dc8e2c909276147" category="cell"><block ref="3db1fb14cc04cd017dc8e2c909276147" category="inline-link-macro-rx"></block></block>
+  <block id="663cd9eac27f6b83206862a7989235f6" category="inline-link-macro">為 RHEL 9.x 設定 NVMe</block>
+  <block id="e32699aee2530a886824102acbc184ef" category="cell"><block ref="e32699aee2530a886824102acbc184ef" category="inline-link-macro-rx"></block></block>
+  <block id="7a07a307cffb48040275c1265a29ef15" category="inline-link-macro">為 RHEL 8.x 設定 NVMe</block>
+  <block id="22cb5c5e0e10037e7d4925ec5d2dbf93" category="cell"><block ref="22cb5c5e0e10037e7d4925ec5d2dbf93" category="inline-link-macro-rx"></block></block>
+  <block id="b6c3e670b2b6b7ef2dc26da47cc59df9" category="paragraph">&lt;stdin&gt; 中存在未解析的指令 - include::_include/nvme/linux-validate-software-version-rockylinux.adoc[]</block>
+  <block id="72c86330f335f27ea520136a0d95b881" category="sidebar">VE 9.x</block>
+  <block id="af795b652b215e481ae2fd213d8bf52e" category="sidebar">VE 8.x</block>
+  <block id="b1db54564fe54a4c74a975b18a791532" category="sidebar">7.x</block>
 </blocks>

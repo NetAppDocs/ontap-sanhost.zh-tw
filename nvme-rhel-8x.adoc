@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: nvme-rhel-8x.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何為 RHEL 8x 設定 NVMe-oF 主機（使用ONTAP） 
+summary: 如何為 RHEL 8.x 設定 NVMe-oF 主機（使用ONTAP） 
 ---
-= 配置 RHEL 8x 以使用 NVMe-oF 和ONTAP存儲
+= 配置 RHEL 8.x 以使用 NVMe-oF 和ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,12 +18,12 @@ summary: 如何為 RHEL 8x 設定 NVMe-oF 主機（使用ONTAP）
 [role="lead"]
 Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
-了解如何為 RHEL 8x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-rhel-supported-features.html["RHEL ONTAP支援與功能"]。
+了解如何為 RHEL 8.x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-rhel-supported-features.html["RHEL ONTAP支援與功能"]。
 
-NVMe-oF 與 RHEL 8x 有以下已知限制：
+NVMe-oF 與 RHEL 8.x 有以下已知限制：
 
 * 目前不支援使用 NVMe-oF 協定的 SAN 啟動。
-* 在 RHEL 8x 的 NVMe-oF 主機上，核心內 NVMe 多路徑預設為停用；您必須手動啟用它。
+* 在 RHEL 8.x 的 NVMe-oF 主機上，核心內 NVMe 多路徑預設為停用；您必須手動啟用它。
 * 由於已知問題，NVMe/TCP 可作為技術預覽。
 
 
@@ -49,7 +49,7 @@ NVMe-oF 與 RHEL 8x 有以下已知限制：
 若要為 NVMe-oF 設定主機，您需要安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
 
 .步驟
-. 在伺服器上安裝 RHEL 8x。安裝完成後，請確認您執行的是所需的 RHEL 8x 核心：
+. 在伺服器上安裝 RHEL 8.x。安裝完成後，請確認您執行的是所需的 RHEL 8.x 核心：
 +
 [source, cli]
 ----
@@ -97,7 +97,7 @@ libnvme-1.4-3.el8.x86_64
 ----
 grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-553.el8_10.x86_64
 ----
-. 在 RHEL 8x 主機上，檢查 `hostnqn`字串 `/etc/nvme/hostnqn`：
+. 在 RHEL 8.x 主機上，檢查 `hostnqn`字串 `/etc/nvme/hostnqn`：
 +
 [source, cli]
 ----
@@ -655,5 +655,5 @@ nvme netapp ontapdevices -o json
 | NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 8x NVMe-oF 主機建立重複的持久發現控制器 (PDC) | 在 NVMe-oF 主機上，可以使用「nvme discover -p」指令建立 PDC。使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 RHEL 8x，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 8.x NVMe-oF 主機建立重複的持久發現控制器 (PDC) | 在 NVMe-oF 主機上，可以使用「nvme discover -p」指令建立 PDC。使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在 NVMe-oF 主機上執行 RHEL 8.x，則每次執行「nvme discover -p」時都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。 
 |===

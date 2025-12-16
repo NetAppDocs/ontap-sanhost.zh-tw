@@ -85,13 +85,13 @@ NOTE: 有關受支援配置的詳細信息，請參閱link:https://mysupport.net
 | 如果您的 RHEL 版本是… | 了解… 
 
 
-| 10系列 | link:nvme-rhel-10x.html["為 RHEL 10x 設定 NVMe"] 
+| 10系列 | link:nvme-rhel-10x.html["為 RHEL 10.x 設定 NVMe"] 
 
 
-| 9系列 | link:nvme-rhel-9x.html["為 RHEL 9x 配置 NVMe"] 
+| 9系列 | link:nvme-rhel-9x.html["為 RHEL 9.x 設定 NVMe"] 
 
 
-| 8系列 | link:nvme-rhel-8x.html["為 RHEL 8x 設定 NVMe"] 
+| 8系列 | link:nvme-rhel-8x.html["為 RHEL 8.x 設定 NVMe"] 
 |===
 .相關資訊
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["了解如何管理 NVMe 協議"^]

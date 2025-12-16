@@ -1,0 +1,774 @@
+---
+sidebar: sidebar 
+permalink: nvme-proxmox-ve-8x.html 
+keywords: nvme, proxmox, linux, red hat, enterprise 
+summary: 如何為 Proxmox VE 8.x 配置 NVMe-oF 主機和ONTAP存儲 
+---
+= 配置 Proxmox VE 8.x 以支援 NVMe-oF 和ONTAP存儲
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Proxmox VE 8.x 主機支援光纖通道上的 NVMe (NVMe/FC) 和 TCP 上的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
+
+了解如何為 Proxmox VE 8.x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-proxmox-supported-features.html["ONTAP支援和功能"^]。
+
+NVMe-oF 與 Proxmox VE 8.x 有以下已知限制：
+
+* 不支援 NVMe-FC 的 SAN 啟動配置。
+
+
+
+
+== 步驟 1：安裝 Proxmox VE 和 NVMe 軟體並驗證您的配置
+
+若要為 NVMe-oF 設定主機，您需要安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
+
+.步驟
+. 在伺服器上安裝 Proxmox 8.x。安裝完成後，請確認您執行的是指定的 Proxmox 8.x 核心：
++
+[source, cli]
+----
+uname -r
+----
++
+以下範例顯示了 Proxmox 核心版本：
+
++
+[listing]
+----
+6.8.12-10-pve
+----
+. 安裝「NVMe-CLI（NVMe - CLI）套件：
++
+[source, cli]
+----
+apt list|grep nvme-cli
+----
++
+下面的例子展示了 `nvme-cli`軟體包版本：
+
++
+[listing]
+----
+nvme-cli/oldstable,now 2.4+really2.3-3 amd64
+----
+. 安裝 `libnvme` 套件：
++
+[source, cli]
+----
+apt list|grep libnvme
+----
++
+下面的例子展示了 `libnvme`軟體包版本：
+
++
+[listing]
+----
+libnvme1/oldstable,now 1.3-1+deb12u1 amd64
+----
+. 在主機上，檢查 hostnqn 字串 `/etc/nvme/hostnqn` ：
++
+[source, cli]
+----
+cat /etc/nvme/hostnqn
+----
++
+下面的例子展示了 `hostnqn`價值：
+
++
+[listing]
+----
+nqn.2014-08.org.nvmexpress:uuid:1536c9a6-f954-11ea-b24d-0a94efb46eaf
+----
+. 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP陣列中對應子系統的字串：
++
+[source, cli]
+----
+::>  vserver nvme subsystem host show -vserver proxmox_120_122
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+Vserver Subsystem Priority  Host NQN
+------- --------- --------  ---------
+proxmox_120_122
+proxmox_120_122
+                  regular   nqn.2014-08.org.nvmexpress:uuid:1536c9a6-f954-11ea-b24d-0a94efb46eaf
+                  regular   nqn.2014-08.org.nvmexpress:uuid:991a7476-f9bf-11ea-8b73-0a94efb46c3b
+proxmox_120_122_tcp
+                  regular   nqn.2014-08.org.nvmexpress:uuid:1536c9a6-f954-11ea-b24d-0a94efb46eaf
+                  regular  nqn.2014-08.org.nvmexpress:uuid:991a7476-f9bf-11ea-8b73-0a94efb46c3b
+2 entries were displayed.
+----
+====
++
+
+NOTE: 如果 `hostnqn`字串不匹配，請使用 `vserver modify`命令來更新 `hostnqn`對應ONTAP儲存系統子系統上的字串以匹配 `hostnqn`字串來自 `/etc/nvme/hostnqn`在主機上。
+
+
+
+
+
+== 步驟 2：設定 NVMe/FC 和 NVMe/TCP
+
+使用 Broadcom/Emulex 或 Marvell/QLogic 適配器配置 NVMe/FC，或使用手動發現和連接操作來設定 NVMe/TCP。
+
+[role="tabbed-block"]
+====
+.NVMe/FC - 博通/Emulex
+--
+為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
+
+. 確認您使用的是支援的介面卡機型：
++
+.. 顯示模型名稱：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modelname
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+LPe35002-M2
+LPe35002-M2
+----
+.. 顯示模型描述：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modeldesc
+----
++
+您應該會看到類似以下範例的輸出：
+
++
+[listing]
+----
+Emulex LPe35002-M2 2-Port 32Gb Fibre Channel Adapter
+Emulex LPe35002-M2 2-Port 32Gb Fibre Channel Adapter
+----
+
+
+. 驗證您使用的是建議的Broadcom `lpfc` 韌體與收件匣驅動程式：
++
+.. 顯示韌體版本：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/fwrev
+----
++
+該命令返回韌體版本：
+
++
+[listing]
+----
+14.0.505.12, sli-4:6:d
+14.0.505.12, sli-4:6:d
+----
+.. 顯示收件匣驅動程式版本：
++
+[source, cli]
+----
+cat /sys/module/lpfc/version
+----
++
+以下範例顯示了驅動程式版本：
+
++
+[listing]
+----
+0:14.2.0.17
+----
+
+
++
+如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
+
+. 請確認 `lpfc_enable_fc4_type` 設為 `3`：
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+----
+. 確認您可以檢視啟動器連接埠：
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_name
+----
++
+您應該會看到類似以下內容的輸出：
+
++
+[listing]
+----
+0x100000109b95467e
+0x100000109b95467f
+----
+. 驗證啟動器連接埠是否在線上：
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_state
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+Online
+Online
+----
+. 確認已啟用 NVMe / FC 啟動器連接埠、且目標連接埠可見：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/nvme_info
+----
++
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+NVME Initiator Enabled
+XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc0 WWPN x10005ced8c531948 WWNN x20005ced8c531948 DID x082400
+*ONLINE*
+NVME RPORT WWPN x200ed039eac79573 WWNN x200dd039eac79573 DID x060902
+*TARGET DISCSRVC ONLINE*
+NVME RPORT WWPN x2001d039eac79573 WWNN x2000d039eac79573 DID x060904
+*TARGET DISCSRVC ONLINE*
+NVME Statistics LS: Xmt 0000000034 Cmpl 0000000034 Abort 00000000 LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000 Total FCP Cmpl 0000000000142cfb Issue 0000000000142cfc OutIO 0000000000000001 abort 00000005 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000 FCP CMPL: xb 00000005 Err 00000005 NVME Initiator Enabled XRI Dist lpfc1 Total 6144 IO 5894 ELS 250 NVME LPORT lpfc1 WWPN x10005ced8c531949 WWNN x20005ced8c531949 DID x082500
+*ONLINE*
+NVME RPORT WWPN x2010d039eac79573 WWNN x200dd039eac79573 DID x062902
+*TARGET DISCSRVC ONLINE*
+NVME RPORT WWPN x2007d039eac79573 WWNN x2000d039eac79573 DID x062904
+*TARGET DISCSRVC ONLINE*
+NVME Statistics LS: Xmt 0000000034 Cmpl 0000000034 Abort 00000000 LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000 Total FCP Cmpl 00000000000d39f1 Issue 00000000000d39f2 OutIO 0000000000000001 abort 00000005 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000 FCP CMPL: xb 00000005 Err 00000005
+----
+=====
+
+
+--
+.NVMe/FC - Marvell/QLogic
+--
+為 Marvell/QLogic 介面卡設定 NVMe / FC 。
+
+. 驗證您使用的適配器驅動程式和韌體版本是否受支援：
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/symbolic_name
+----
++
+以下範例顯示了驅動程式和韌體版本：
+
++
+[listing]
+----
+QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+----
+. 請確認 `ql2xnvmeenable` 已設定。這可讓 Marvell 介面卡作為 NVMe / FC 啟動器運作：
++
+[source, cli]
+----
+cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
+----
++
+預期輸出為 1 。
+
+
+
+--
+.NVMe / TCP
+--
+NVMe/TCP 協定不支援自動連線操作。相反，您可以透過執行 NVMe/TCP 來發現 NVMe/TCP 子系統和命名空間 `connect`或者 `connect-all`手動操作。
+
+. 檢查啟動器連接埠是否可以跨支援的 NVMe/TCP LIF 取得發現日誌頁面資料：
++
+[source, cli]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme discover -t tcp -w 192.168.2.22 -a 192.168.2.30
+
+Discovery Log Number of Records 12, Generation counter 13
+=====Discovery Log Entry 0======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  10
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:discovery
+traddr:  192.168.2.30
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 1======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  9
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:discovery
+traddr:  192.168.1.30
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 2======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  12
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:discovery
+traddr:  192.168.2.25
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 3======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *current discovery subsystem*
+treq:    not specified
+portid:  11
+trsvcid: 8009
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:discovery
+traddr:  192.168.1.25
+eflags:  *explicit discovery connections, duplicate discovery information*
+sectype: none
+=====Discovery Log Entry 4======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  10
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:subsystem.proxmox_120_122
+traddr:  192.168.2.30
+eflags:  none
+sectype: none
+=====Discovery Log Entry 5======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  9
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:subsystem.proxmox_120_122
+traddr:  192.168.1.30
+eflags:  none
+sectype: none
+=====Discovery Log Entry 6======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  12
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:subsystem.proxmox_120_122
+traddr:  192.168.2.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 7======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  11
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:subsystem.proxmox_120_122
+traddr:  192.168.1.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 8======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  10
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:subsystem.proxmox_120_122_tcp
+traddr:  192.168.2.30
+eflags:  none
+sectype: none
+=====Discovery Log Entry 9======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  9
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:subsystem.proxmox_120_122_tcp
+traddr:  192.168.1.30
+eflags:  none
+sectype: none
+=====Discovery Log Entry 10======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  12
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:subsystem.proxmox_120_122_tcp
+traddr:  192.168.2.25
+eflags:  none
+sectype: none
+=====Discovery Log Entry 11======
+trtype:  tcp
+adrfam:  ipv4
+subtype: *nvme subsystem*
+treq:    not specified
+portid:  11
+trsvcid: 4420
+subnqn:  nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:subsystem.proxmox_120_122_tcp
+traddr:  192.168.1.25
+eflags:  none
+sectype: none
+----
+=====
+. 驗證其他 NVMe/TCP 啟動器-目標 LIF 組合是否可以成功檢索發現日誌頁面資料：
++
+[source, cli]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme discover -t tcp -w 192.168.1.22 -a 192.168.1.30
+nvme discover -t tcp -w 192.168.2.22 -a 192.168.2.30
+nvme discover -t tcp -w 192.168.1.22 -a 192.168.1.25
+nvme discover -t tcp -w 192.168.2.22 -a 192.168.2.25
+----
+=====
+. 執行 `nvme connect-all` 跨所有節點支援的 NVMe / TCP 啟動器目標生命體執行命令：
++
+[source, cli]
+----
+nvme connect-all -t tcp -w host-traddr -a traddr
+----
++
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme connect-all -t tcp -w 192.168.1.22 -a 192.168.1.30
+nvme connect-all -t tcp -w 192.168.2.22 -a 192.168.2.30
+nvme connect-all -t tcp -w 192.168.1.22 -a 192.168.1.25
+nvme connect-all -t tcp -w 192.168.2.22 -a 192.168.2.25
+----
+=====
+
+
+[NOTE]
+====
+NVMe/TCP 的設置 `ctrl_loss_tmo timeout`自動設定為“關閉”。因此：
+
+* 重試次數沒有限制（無限重試）。
+* 您不需要手動配置特定的 `ctrl_loss_tmo timeout`使用時長 `nvme connect`或者 `nvme connect-all`命令（選項 -l ）。
+* 如果發生路徑故障，NVMe/TCP 控制器不會逾時，並且會無限期地保持連線。
+
+
+====
+--
+====
+
+
+== 步驟 3：可選，啟用 NVMe/FC 的 1MB I/O。
+
+ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
+
+
+NOTE: 這些步驟不適用於 Qlogic NVMe / FC 主機。
+
+.步驟
+. 將 `lpfc_sg_seg_cnt`參數設定為 256 ：
++
+[source, cli]
+----
+cat /etc/modprobe.d/lpfc.conf
+----
++
+您應該會看到類似以下範例的輸出：
+
++
+[listing]
+----
+options lpfc lpfc_sg_seg_cnt=256
+----
+. 運行 `update-initramfs`命令並重新啟動主機。
+. 確認的值 `lpfc_sg_seg_cnt`為 256 ：
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+----
+
+
+
+
+== 步驟 4：驗證 NVMe 啟動服務
+
+使用 Proxmox 8.x， `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service`NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時會自動啟用軟體包。
+
+啟動完成後，驗證 `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service`啟動服務已啟用。
+
+.步驟
+. 確認 `nvmf-autoconnect.service`已啟用：
++
+[source, cli]
+----
+systemctl status nvmf-autoconnect.service
+----
++
+.顯示範例輸出
+[%collapsible]
+====
+[listing]
+----
+○ nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot
+     Loaded: loaded (/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: enabled)
+     Active: inactive (dead) since Fri 2025-11-21 19:59:10 IST; 8s ago
+    Process: 256613 ExecStartPre=/sbin/modprobe nvme-fabrics (code=exited, status=0/SUCCESS)
+    Process: 256614 ExecStart=/usr/sbin/nvme connect-all (code=exited, status=0/SUCCESS)
+   Main PID: 256614 (code=exited, status=0/SUCCESS)
+        CPU: 18ms
+Nov 21 19:59:07 SR665-14-122.lab.eng.btc.netapp.in systemd[1]: Starting nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot...
+Nov 21 19:59:10 SR665-14-122.lab.eng.btc.netapp.in nvme[256614]: Failed to write to /dev/nvme-fabrics: Invalid argument
+Nov 21 19:59:10 SR665-14-122.lab.eng.btc.netapp.in nvme[256614]: Failed to write to /dev/nvme-fabrics: Invalid argument
+Nov 21 19:59:10 SR665-14-122.lab.eng.btc.netapp.in systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
+Nov 21 19:59:10 SR665-14-122.lab.eng.btc.netapp.in systemd[1]: Finished nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot.
+----
+====
+. 確認 `nvmefc-boot-connections.service`已啟用：
++
+[source, cli]
+----
+systemctl status nvmefc-boot-connections.service
+----
++
+.顯示範例輸出
+[%collapsible]
+====
+[listing]
+----
+○ nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot
+    Loaded: loaded (/lib/systemd/system/nvmefc-boot-connections.service; enabled; preset: enabled)
+     Active: inactive (dead) since Thu 2025-11-20 17:48:29 IST; 1 day 2h ago
+    Process: 1381 ExecStart=/bin/sh -c echo add > /sys/class/fc/fc_udev_device/nvme_discovery (code=exited, status=0/SUCCESS)
+   Main PID: 1381 (code=exited, status=0/SUCCESS)
+        CPU: 3ms
+
+Nov 20 17:48:29 SR665-14-122.lab.eng.btc.netapp.in systemd[1]: Starting nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot..
+Nov 20 17:48:29 SR665-14-122.lab.eng.btc.netapp.in systemd[1]: nvmefc-boot-connections.service: Deactivated successfully.
+Nov 20 17:48:29 SR665-14-122.lab.eng.btc.netapp.in systemd[1]: Finished nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot...
+----
+====
+
+
+
+
+== 步驟 5：驗證多路徑配置
+
+驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
+
+.步驟
+. 確認已啟用核心內建 NVMe 多重路徑：
++
+[source, cli]
+----
+cat /sys/module/nvme_core/parameters/multipath
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+Y
+----
+. 驗證主機上是否正確顯示了ONTAP命名空間的相應 NVMe-oF 設定（例如，將型號設定為NetApp ONTAP Controller，並將負載平衡 iopolicy 設定為 round-robin）：
++
+.. 顯示子系統：
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/model
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+----
+.. 顯示策略：
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+round-robin
+round-robin
+----
+
+
+. 確認已在主機上建立並正確探索命名空間：
++
+[source, cli]
+----
+nvme list
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+Node                  Generic               SN                   Model                                    Namespace  Usage                      Format           FW Rev
+--------------------- --------------------- -------------------- ---------------------------------------- ---------- -------------------------- ---------------- --------
+/dev/nvme2n20         /dev/ng2n20           81K13BUDdygsAAAAAAAG NetApp ONTAP Controller                  10          5.56  GB /  91.27  GB      4 KiB +  0 B   9.18.1
+----
+====
+. 確認每個路徑的控制器狀態均為有效、且具有正確的ANA狀態：
++
+[role="tabbed-block"]
+====
+.NVMe / FC
+--
+[source, cli]
+----
+nvme list-subsys /dev/nvme2n20
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme-subsys2 - NQN= nqn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:subsystem.proxmox_120_122_tcp
+\
++- nvme1 *fc* traddr=nn-0x200dd039eac79573:pn-0x2010d039eac79573,host_traddr=nn-0x20005ced8c531949:pn-0x10005ced8c531949 *live optimized*
++- nvme3 *fc* traddr=nn-0x200dd039eac79573:pn-0x200ed039eac79573,host_traddr=nn-0x20005ced8c531948:pn-0x10005ced8c531948 *live optimized*
++- nvme5 *fc* traddr=nn-0x200dd039eac79573:pn-0x200fd039eac79573,host_traddr=nn-0x20005ced8c531949:pn-0x10005ced8c531949 *live non-optimized*
++- nvme7 fc traddr=nn-0x200dd039eac79573:pn-0x2011d039eac79573,host_traddr=nn-0x20005ced8c531948:pn-0x10005ced8c531948 *live non-optimized*
+----
+=====
+--
+.NVMe / TCP
+--
+[source, cli]
+----
+nvme list-subsys /dev/nvme2n3
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme-subsys2 - NQN= qn.1992-08.com.netapp:sn.ae9f2d55a7ec11ef8751d039ea9e891c:subsystem.proxmox_120_122_tcp
+\
++- nvme2 *tcp* traddr=192.168.1.30,trsvcid=4420,host_traddr=192.168.1.22,src_addr=192.168.1.22 *live optimized*
++- nvme4 *tcp* traddr=192.168.2.30,trsvcid=4420,host_traddr=192.168.2.22,src_addr=192.168.2.22 *live optimized*
++- nvme6 *tcp* traddr=192.168.1.25,trsvcid=4420,host_traddr=192.168.1.22,src_addr=192.168.1.22 *live non-optimized*
++- nvme8 *tcp* traddr=192.168.2.25,trsvcid=4420,host_traddr=192.168.2.22,src_addr=192.168.2.22 *live non-optimized*
+----
+=====
+--
+====
+. 驗證NetApp外掛程式是否顯示每ONTAP 個版本名稱空間裝置的正確值：
++
+[role="tabbed-block"]
+====
+.欄位
+--
+[source, cli]
+----
+nvme netapp ontapdevices -o column
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+
+Device        Vserver               Namespace Path
+------------- --------------------- ------------------------------
+/dev/nvme2n11     proxmox_120_122 / /vol/vm120_tcp1/ns
+
+NSID       UUID                            Size
+---- ------------------------------------  --------
+1          5aefea74-f0cf-4794-a7e9-e113c4659aca   37.58GB
+----
+=====
+--
+.JSON
+--
+[source, cli]
+----
+nvme netapp ontapdevices -o json
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+{
+      "Device":"/dev/nvme2n11",
+      "Vserver":"proxmox_120_122",
+      "Namespace_Path":"/vol/vm120_tcp1/ns",
+      "NSID":1,
+      "UUID":"5aefea74-f0cf-4794-a7e9-e113c4659aca",
+       “Size”:”37.58GB”,
+      "LBA_Data_Size":4096,
+      "Namespace_Size":32212254720
+    }
+  ]
+----
+=====
+--
+====
+
+
+
+
+== 步驟 6 ：檢閱已知問題
+
+沒有已知問題。

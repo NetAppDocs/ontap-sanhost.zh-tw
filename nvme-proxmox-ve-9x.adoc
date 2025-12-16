@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: nvme-proxmox-ve-9x.html 
 keywords: nvme, proxmox, enterprise 
-summary: 如何為 Proxmox VE 9.0 配置 NVMe-oF 主機和ONTAP存儲 
+summary: 如何為 Proxmox VE 9.x 配置 NVMe-oF 主機和ONTAP存儲 
 ---
-= 配置 Proxmox VE 9.0 以支援 NVMe-oF 和ONTAP存儲
+= 配置 Proxmox VE 9.x 以支援 NVMe-oF 和ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,30 +16,30 @@ summary: 如何為 Proxmox VE 9.0 配置 NVMe-oF 主機和ONTAP存儲
 
 
 [role="lead"]
-Proxmox VE 9.0 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
+Proxmox VE 9.x 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
-了解如何為 Proxmox VE 9.0 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-proxmox-supported-features.html["ONTAP支援和功能"^]。
+了解如何為 Proxmox VE 9.x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-proxmox-supported-features.html["ONTAP支援和功能"^]。
 
-NVMe-oF 與 Proxmox VE 9.0 有以下已知限制：
+NVMe-oF 與 Proxmox VE 9.x 有以下已知限制：
 
 * 不支援 NVMe-FC 的 SAN 啟動配置。
 
 
 
 
-== 步驟 1：驗證軟體版本和 NVMe 配置
+== 步驟 1：安裝 Proxmox VE 和 NVMe 軟體並驗證您的配置
 
 若要為 NVMe-oF 設定主機，您需要安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
 
 .步驟
-. 在伺服器上安裝 Proxmox VE 9.0。安裝完成後，請確認您執行的是所需的 Proxmox VE 9.0 核心：
+. 在伺服器上安裝 Proxmox VE 9.x。安裝完成後，請確認您執行的是所需的 Proxmox VE 9.x 核心：
 +
 [source, cli]
 ----
 uname -r
 ----
 +
-Proxmox VE 9.0 核心版本範例：
+Proxmox VE 9.x 核心版本範例：
 
 +
 [listing]
@@ -88,7 +88,7 @@ cat /etc/nvme/hostnqn
 ----
 nqn.2014-08.org.nvmexpress:uuid:39333550-3333-4753-4844-32594d4a524c
 ----
-. 確認 `hostnqn` 字串符合 `hostnqn` ONTAP 陣列上對應子系統的字串：
+. 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP陣列中對應子系統的字串：
 +
 [source, cli]
 ----
@@ -121,7 +121,6 @@ NOTE: 如果 `hostnqn`字串不匹配，請使用 `vserver modify`命令來更�
 
 使用 Broadcom/Emulex 或 Marvell/QLogic 適配器配置 NVMe/FC，或使用手動發現和連接操作來設定 NVMe/TCP。
 
-.步驟
 [role="tabbed-block"]
 ====
 .NVMe/FC - 博通/Emulex
@@ -427,7 +426,7 @@ cat /etc/modprobe.d/lpfc.conf
 ----
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. 執行 `dracut -f`命令，然後重新啟動主機。
+. 運行 `update-initramfs`命令並重新啟動主機。
 . 確認的值 `lpfc_sg_seg_cnt`為 256 ：
 +
 [source, cli]

@@ -1,0 +1,77 @@
+= 
+:allow-uri-read: 
+
+
+. 安裝「NVMe-CLI（NVMe - CLI）套件：
++
+[source, cli]
+----
+rpm -qa|grep nvme-cli
+----
++
+下面的例子展示了 `nvme-cli`軟體包版本：
+
++
+[listing]
+----
+nvme-cli-2.11-5.el10.x86_64
+----
+. 安裝 `libnvme` 套件：
++
+[source, cli]
+----
+rpm -qa|grep libnvme
+----
++
+下面的例子展示了 `libnvme`軟體包版本：
+
++
+[listing]
+----
+libnvme-1.11.1-1.el10.x86_64
+----
+. 在主機上，檢查 hostnqn 字串 `/etc/nvme/hostnqn` ：
++
+[source, cli]
+----
+cat /etc/nvme/hostnqn
+----
++
+下面的例子展示了 `hostnqn`版本：
+
++
+[listing]
+----
+nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+----
+. 確認 `hostnqn` 字串符合 `hostnqn` ONTAP 陣列上對應子系統的字串：
++
+[source, cli]
+----
+::> vserver nvme subsystem host show -vserver vs_nvme_194_proxmox84
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+Vserver Subsystem Priority  Host NQN
+------- --------- --------  ------------------------------------------------
+vs_ nvme_194_proxmox84
+        nvme4
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
+        nvme_1
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
+        nvme_2
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
+        nvme_3
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
+4 entries were displayed.
+----
+====
++
+
+NOTE: 如果 `hostnqn`字串不相符，請使用 `vserver modify`命令更新 `hostnqn`對應 ONTAP 陣列子系統上的字串，以符合主機上的字 `/etc/nvme/hostnqn`串 `hostnqn`。
+
+

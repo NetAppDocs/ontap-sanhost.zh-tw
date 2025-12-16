@@ -78,13 +78,13 @@ NOTE: 有關受支援配置的詳細信息，請參閱link:https://mysupport.net
 | 如果您的 Oracle Linux 版本是… | 了解… 
 
 
-| 9系列 | link:nvme-ol-9x.html["為 Oracle Linux 9x 配置 NVMe"] 
+| 9系列 | link:nvme-ol-9x.html["為 Oracle Linux 9.x 配置 NVMe"] 
 
 
-| 8系列 | link:nvme-ol-8x.html["為 Oracle Linux 8x 配置 NVMe"] 
+| 8系列 | link:nvme-ol-8x.html["為 Oracle Linux 8.x 配置 NVMe"] 
 
 
-| 7系列 | link:nvme-ol-7x.html["為 Oracle Linux 7x 配置 NVMe"] 
+| 7系列 | link:nvme-ol-7x.html["為 Oracle Linux 7.x 配置 NVMe"] 
 |===
 .相關資訊
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["了解如何管理 NVMe 協議"^]

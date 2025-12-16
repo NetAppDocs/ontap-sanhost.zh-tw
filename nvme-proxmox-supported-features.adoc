@@ -24,7 +24,7 @@ summary: 了解 Proxmox 主機對ONTAP 的支援與功能
 
 
 | 使用原生功能提供 NVMe/FC 和 NVMe/TCP 命名空間的ONTAP詳細信息 `nvme-cli`包裹。  a| 
-9.0
+8.0
 | 9.10.1 或更高版本 
 
 
@@ -34,7 +34,7 @@ summary: 了解 Proxmox 主機對ONTAP 的支援與功能
 
 
 | 在同一主機上支援 NVMe 和 SCSI 流量，NVMe-oF 命名空間使用 NVMe 多路徑，SCSI LUN 使用 dm 多路徑。  a| 
-9.0
+8.0
 | 9.4 或更高版本 
 |===
 無論系統設定中執行的ONTAP版本為何， ONTAP支援以下 SAN 主機功能。
@@ -45,7 +45,7 @@ summary: 了解 Proxmox 主機對ONTAP 的支援與功能
 
 
 | 預設啟用原生 NVMe 多路徑。  a| 
-9.0
+8.0
 
 
 
@@ -65,7 +65,15 @@ NOTE: 有關受支援配置的詳細信息，請參閱link:https://mysupport.net
 
 == 下一步
 
-link:nvme-proxmox-ve-9x.html["了解如何設定 Proxmox VE 9.0"]
+[cols="50,50"]
+|===
+| 如果您的 Proxmox VE 版本是… | 了解… 
 
+
+| 9系列 | link:nvme-proxmox-ve-9x.html["為 Proxmox VE 9.x 配置 NVMe"] 
+
+
+| 8系列 | link:nvme-proxmox-ve-8x.html["為 Proxmox VE 8.x 配置 NVMe"] 
+|===
 .相關資訊
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["了解如何管理 NVMe 協議"^]

@@ -1,0 +1,194 @@
+= 
+:allow-uri-read: 
+
+
+您可以使用 Broadcom/Emulex FC 或 Marvell/Qlogic FC 轉接器來設定 NVMe/FC。對於配置了博通適配器的 NVMe/FC，您可以啟用 1MB 大小的 I/O 要求。
+
+[role="tabbed-block"]
+====
+.Broadcom / Emulex
+--
+為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
+
+.步驟
+. 確認您使用的是支援的介面卡機型：
++
+.. 顯示模型名稱：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modelname
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+LPe36002-M64
+LPe36002-M64
+----
+.. 顯示模型描述：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modeldesc
+----
++
+您應該會看到類似以下範例的輸出：
+
++
+[listing]
+----
+Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
+Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
+----
+
+
+. 驗證您使用的是建議的Broadcom `lpfc` 韌體與收件匣驅動程式：
++
+.. 顯示韌體版本：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/fwrev
+----
++
+以下範例顯示韌體版本：
+
++
+[listing]
+----
+14.0.539.16, sli-4:6:d
+14.0.539.16, sli-4:6:d
+----
+.. 顯示收件匣驅動程式版本：
++
+[source, cli]
+----
+cat /sys/module/lpfc/version
+----
++
+以下範例顯示了驅動程式版本：
+
++
+[listing]
+----
+0:14.4.0.6
+----
+
+
++
+如需支援的介面卡驅動程式和韌體版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
+
+. 驗證的預期輸出是否 `lpfc_enable_fc4_type`設置爲 `3`：
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+----
+. 確認您可以檢視啟動器連接埠：
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_name
+----
++
+以下範例顯示連接埠標識：
+
++
+[listing]
+----
+0x2100f4c7aa0cd7c2
+0x2100f4c7aa0cd7c3
+----
+. 驗證啟動器連接埠是否在線上：
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_state
+----
++
+您應該會看到下列輸出：
+
++
+[listing]
+----
+Online
+Online
+----
+. 確認已啟用 NVMe / FC 啟動器連接埠、且目標連接埠可見：
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/nvme_info
+----
++
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+NVME Initiator Enabled
+XRI Dist lpfc2 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc2 WWPN x100000109bf044b1 WWNN x200000109bf044b1 DID x022a00 *ONLINE*
+NVME RPORT       WWPN x202fd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x021310 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x202dd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020b10 *TARGET DISCSRVC ONLINE*
+
+NVME Statistics
+LS: Xmt 0000000810 Cmpl 0000000810 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000007b098f07 Issue 000000007aee27c4 OutIO ffffffffffe498bd
+        abort 000013b4 noxri 00000000 nondlp 00000058 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 000013b4 Err 00021443
+
+NVME Initiator Enabled
+XRI Dist lpfc3 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc3 WWPN x100000109bf044b2 WWNN x200000109bf044b2 DID x021b00 *ONLINE*
+NVME RPORT       WWPN x2033d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020110 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2032d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x022910 *TARGET DISCSRVC ONLINE*
+
+NVME Statistics
+LS: Xmt 0000000840 Cmpl 0000000840 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000007afd4434 Issue 000000007ae31b83 OutIO ffffffffffe5d74f
+        abort 000014a5 noxri 00000000 nondlp 0000006a qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 000014a5 Err 0002149a
+----
+=====
+
+
+--
+.Marvell / QLogic
+--
+為 Marvell/QLogic 介面卡設定 NVMe / FC 。
+
+.步驟
+. 確認您執行的是支援的介面卡驅動程式和韌體版本：
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/symbolic_name
+----
++
+以下範例顯示了驅動程式和韌體版本：
+
++
+[listing]
+----
+QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+----
+. 請確認 `ql2xnvmeenable` 已設定。這可讓 Marvell 介面卡作為 NVMe / FC 啟動器運作：
++
+[source, cli]
+----
+cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
+----
++
+預期的 ouptut 為 1 。
+
+
+
+--
+====

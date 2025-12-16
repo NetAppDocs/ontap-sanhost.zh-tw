@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: nvme-ol-7x.html 
-keywords: nvme, linux, oracle, 7x 
-summary: 為 Oracle Linux 7x 和ONTAP設定 VMe/FC 主機配置，並提供範例 
+keywords: nvme, linux, oracle, 7.x 
+summary: 為 Oracle Linux 7.x 和ONTAP設定 VMe/FC 主機配置，並提供範例 
 ---
-= 配置 Oracle Linux 7x 和 NVMe-oF 用於ONTAP存儲
+= 配置 Oracle Linux 7.x 和 NVMe-oF 以用於ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,12 +18,12 @@ summary: 為 Oracle Linux 7x 和ONTAP設定 VMe/FC 主機配置，並提供範�
 [role="lead"]
 Oracle Linux 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並支援非對稱命名空間存取 (ANA)。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
-了解如何為 Oracle Linux 7x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-ol-supported-features.html["Oracle Linux ONTAP支援與功能"]。
+了解如何為 Oracle Linux 7.x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-ol-supported-features.html["Oracle Linux ONTAP支援與功能"]。
 
-NVMe-oF 與 Oracle Linux 7x 有以下已知限制：
+NVMe-oF 與 Oracle Linux 7.x 有以下已知限制：
 
 * 不支援使用 NVMe-oF 協定進行 SAN 啟動。
-* NetApp sanlun 主機公用程式不支援 Oracle Linux 7x 主機上的 NVMe-oF。相反，您可以依賴本機中包含的NetApp插件 `nvme-cli`適用於所有 NVMe-oF 傳輸的套件。
+* NetApp sanlun 主機公用程式不支援 Oracle Linux 7.x 主機上的 NVMe-oF。相反，您可以依賴本機中包含的NetApp插件 `nvme-cli`適用於所有 NVMe-oF 傳輸的套件。
 * NVMe - CLI套件中不提供原生NVMe / FC自動連線指令碼。使用HBA廠商提供的外部自動連線指令碼。
 * NVMe 多路徑預設未啟用輪詢負載平衡。若要啟用此功能，請編寫 udev 規則。
 
@@ -32,10 +32,10 @@ NVMe-oF 與 Oracle Linux 7x 有以下已知限制：
 
 == 步驟 1：安裝 Oracle Linux 和 NVMe 軟體並驗證您的配置
 
-使用以下步驟驗證支援的最低 Oracle Linux 7x 軟體版本。
+使用以下步驟驗證支援的最低 Oracle Linux 7.x 軟體版本。
 
 .步驟
-. 在伺服器上安裝Oracle Linux 7x。安裝完成後，請確認您執行的是指定的 Oracle Linux 7x 核心。
+. 在伺服器上安裝Oracle Linux 7.x。安裝完成後，請確認您執行的是指定的 Oracle Linux 7.x 核心。
 +
 [source, cli]
 ----
@@ -71,7 +71,7 @@ cat /lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules
 Enable round-robin for NetApp ONTAP
 ACTION=="add", SUBSYSTEMS=="nvme-subsystem", ATTRS{model}=="NetApp ONTAP Controller", ATTR{iopolicy}="round-robin"
 ----
-. 在 Oracle Linux 7x 主機上，檢查 `hostnqn`字串 `/etc/nvme/hostnqn`：
+. 在 Oracle Linux 7.x 主機上，檢查 `hostnqn`字串 `/etc/nvme/hostnqn`：
 +
 [source, cli]
 ----

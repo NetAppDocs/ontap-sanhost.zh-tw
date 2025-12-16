@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: nvme-rhel-9x.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: 如何為 RHEL 9x 設定 NVMe-oF 主機（使用ONTAP） 
+summary: 如何為 RHEL 9.x 設定 NVMe-oF 主機（使用ONTAP） 
 ---
-= 配置 RHEL 9x 以使用 NVMe-oF 和ONTAP存儲
+= 配置 RHEL 9.x 以使用 NVMe-oF 和ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,9 +18,9 @@ summary: 如何為 RHEL 9x 設定 NVMe-oF 主機（使用ONTAP）
 [role="lead"]
 Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。
 
-了解如何為 RHEL 9x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-rhel-supported-features.html["RHEL ONTAP支援與功能"]。
+了解如何為 RHEL 9.x 設定 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 link:nvme-rhel-supported-features.html["RHEL ONTAP支援與功能"]。
 
-NVMe-oF 與 RHEL 9x 有以下已知限制：
+NVMe-oF 與 RHEL 9.x 有以下已知限制：
 
 * 這 `nvme disconnect-all`此命令會斷開根檔案系統和資料檔案系統，可能會導致系統不穩定。請勿在透過 NVMe-TCP 或 NVMe-FC 命名空間從 SAN 啟動的系統上執行此操作。
 
@@ -47,7 +47,7 @@ NVMe-oF 與 RHEL 9x 有以下已知限制：
 若要為 NVMe-oF 設定主機，您需要安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
 
 .步驟
-. 在伺服器上安裝 RHEL 9x。安裝完成後，請確認您執行的是所需的 RHEL 9x 核心：
+. 在伺服器上安裝 RHEL 9.x。安裝完成後，請確認您執行的是所需的 RHEL 9.x 核心：
 +
 [source, cli]
 ----
@@ -847,7 +847,7 @@ nvme netapp ontapdevices -o json
 
 == 步驟 8：設定安全帶內身份驗證
 
-支援透過 NVMe/TCP 在 RHEL 9x 主機和ONTAP控制器之間進行安全的帶內身份驗證。
+支援透過 NVMe/TCP 在 RHEL 9.x 主機和ONTAP控制器之間進行安全的帶內身份驗證。
 
 每個主機或控制器必須與一個 `DH-HMAC-CHAP`金鑰來設定安全身份驗證。  `DH-HMAC-CHAP`金鑰是 NVMe 主機或控制器的 NQN 與管理員配置的身份驗證金鑰的組合。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
 
@@ -865,7 +865,7 @@ nvme netapp ontapdevices -o json
 ----
 cat /etc/nvme/hostnqn
 ----
-. 為 RHEL 9x 主機產生 dhchap 金鑰。
+. 為 RHEL 9.x 主機產生 dhchap 金鑰。
 +
 以下輸出描述了 `gen-dhchap-key`命令參數：
 

@@ -1,0 +1,107 @@
+= 
+:allow-uri-read: 
+
+
+. 確認每個路徑的控制器狀態均為有效、且具有正確的ANA狀態：
++
+[role="tabbed-block"]
+====
+.NVMe / FC
+--
+[source, cli]
+----
+nvme list-subsys /dev/nvme5n1
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme-subsys5 - NQN=nqn.1992-08.com.netapp:sn.f7565b15a66911ef9668d039ea951c46:subsystem.nvme1
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
+\
+ +- nvme126 *fc* traddr=nn-0x2036d039ea951c45:pn-0x2038d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c3:pn-0x2100f4c7aa0cd7c3 *live optimized*
+ +- nvme176 *fc* traddr=nn-0x2036d039ea951c45:pn-0x2037d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c2:pn-0x2100f4c7aa0cd7c2 *live optimized*
+ +- nvme5 *fc* traddr=nn-0x2036d039ea951c45:pn-0x2039d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c2:pn-0x2100f4c7aa0cd7c2 *live non-optimized*
+ +- nvme71 *fc* traddr=nn-0x2036d039ea951c45:pn-0x203ad039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c3:pn-0x2100f4c7aa0cd7c3 *live non-optimized*
+----
+=====
+--
+.NVMe / TCP
+--
+[source, cli]
+----
+nvme list-subsys /dev/nvme4n2
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme-subsys4 - NQN=nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.nvme4
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-c2c04f444d33
+\
++- nvme102 *tcp* traddr=192.168.21.20,trsvcid=4420,host_traddr=192.168.21.1,src_addr=192.168.21.1 *live non-optimized*
++- nvme151 *tcp* traddr=192.168.21.21,trsvcid=4420,host_traddr=192.168.21.1,src_addr=192.168.21.1 *live optimized*
++- nvme4 *tcp* traddr=192.168.20.20,trsvcid=4420,host_traddr=192.168.20.1,src_addr=192.168.20.1 *live non-optimized*
++- nvme53 *tcp* traddr=192.168.20.21,trsvcid=4420,host_traddr=192.168.20.1,src_addr=192.168.20.1 *live optimized*
+----
+=====
+--
+====
+. 驗證NetApp外掛程式是否顯示每ONTAP 個版本名稱空間裝置的正確值：
++
+[role="tabbed-block"]
+====
+.欄位
+--
+[source, cli]
+----
+nvme netapp ontapdevices -o column
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+
+Device            Vserver                   Namespace Path
+----------------------- ------------------------------------
+/dev/nvme10n1     vs_tcp_proxmox84          /vol/vol10/ns10
+
+NSID       UUID                             Size
+----------------------- ------------------------------------
+1    bbf51146-fc64-4197-b8cf-8a24f6f359b3   21.47GB
+----
+=====
+--
+.JSON
+--
+[source, cli]
+----
+nvme netapp ontapdevices -o json
+----
+.顯示範例
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+{
+  "ONTAPdevices":[
+    {
+      "Device":"/dev/nvme10n1",
+      "Vserver":"vs_tcp_proxmox84",
+      "Namespace_Path":"/vol/vol10/ns10",
+      "NSID":1,
+      "UUID":"bbf51146-fc64-4197-b8cf-8a24f6f359b3",
+      "Size":"21.47GB",
+      "LBA_Data_Size":4096,
+      "Namespace_Size":5242880
+}
+]
+    }
+----
+=====
+--
+====
+

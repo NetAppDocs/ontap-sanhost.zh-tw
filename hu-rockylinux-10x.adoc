@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-rhel-10.html 
-keywords: host utilities, red hat, rhel, linux, 10, netapp, ontap, rhel 
-summary: 在 RHEL 10 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。 
+permalink: hu-rockylinux-10x.html 
+keywords: host utilities, rocky, linux, 10.x, netapp, ontap 
+summary: 在 Rocky Linux 10.x 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。 
 ---
-= 使用ONTAP儲存為 FCP 和 iSCSI 設定 RHEL 10
+= 配置 Rocky Linux 10.x 以支援 FCP 和 iSCSI 以及ONTAP存儲
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 在 RHEL 10 主機上安裝 Linux 主機實用程序，以管理與ONTA
 
 
 [role="lead"]
-Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Red Hat Enterprise Linux (RHEL) 10 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。
+Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Rocky Linux 10.x 主機上安裝 Linux 主機公用程式後，您可以使用主機實用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。
 
 
 NOTE: 您不需要手動設定基於核心的虛擬機器 (KVM) 設定，因為 ONTAP LUN 會自動對應到虛擬機器管理程式。
@@ -54,7 +54,7 @@ NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機
 
 == 步驟 3 ：確認主機的多重路徑組態
 
-您可以使用 RHEL 10 的多路徑功能來管理ONTAP LUN。
+您可以使用 Rocky Linux 10.x 的多路徑功能來管理ONTAP LUN。
 
 為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
 
