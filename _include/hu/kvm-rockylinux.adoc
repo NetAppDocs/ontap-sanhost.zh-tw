@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+* 了解 Rocky Linux 虛擬化 (KVM)
++
+Rocky Linux 可以作為 KVM 主機。這樣，您就可以使用基於 Linux 核心的虛擬機器 (KVM) 技術在單一實體伺服器上執行多個虛擬機器。KVM 主機不需要對ONTAP LUN 進行明確主機設定設定。
+
+

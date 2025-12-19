@@ -19,9 +19,6 @@ summary: 在 Oracle Linux 9.x 主機上安裝 Linux 主機實用程序，以管�
 Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Oracle Linux 9.x 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。
 
 
-NOTE: 您不需要設定核心型虛擬機器（ KVM ）設定，因為 ONTAP LUN 會自動對應至 KVM Hypervisor 。
-
-
 
 == 步驟 1 ：選擇性啟用 SAN 開機
 
@@ -287,8 +284,12 @@ Oracle Linux 9.3、9.2、9.1 和 9.0 與ONTAP儲存有以下已知問題：
 == 接下來呢？
 
 * link:hu-luhu-command-reference.html["瞭解如何使用 Linux 主機公用程式工具"] 。
-* 瞭解 ASM 鏡像。
+* 了解 ASM 鏡像
 +
 自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。ONTAP 上的大多數 ASM 組態都使用外部備援，這表示資料保護是由外部陣列提供，而 ASM 則不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊，請參閱link:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["ONTAP 上的 Oracle 資料庫"^]。
+
+* 了解 Oracle Linux KVM 和虛擬化
++
+Oracle Linux 可以作為 KVM 主機。這樣，您就可以使用基於 Linux 核心的虛擬機器 (KVM) 技術在單一實體伺服器上執行多個虛擬機器。您可以使用 Oracle Linux Virtualization Manager 管理和支援多個 Oracle Linux KVM 主機，該管理器基於開源 oVirt 專案建置。KVM 主機不需要對ONTAP LUN 進行明確主機設定設定。
 
 
