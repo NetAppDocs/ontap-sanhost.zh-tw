@@ -1,0 +1,8 @@
+---
+permalink: nvme_windows_2012r2.html 
+redirect: ontap-sanhost/nvme-windows-2012r2.html 
+---
+= 
+:allow-uri-read: 
+
+

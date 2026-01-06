@@ -291,15 +291,15 @@ sidebar:
         url: "/hu-sles-15spx.html"
       - title: SUSE Linux Enterprise Server 12
         entries:
-        - title: 12 SP 5.
+        - title: 12 SP5
           url: "/hu_sles_12SP5.html"
-        - title: 12 SP 4.
+        - title: 12 SP4
           url: "/hu_sles_12SP4.html"
-        - title: 12 SP 3.
+        - title: 12 SP3
           url: "/hu_sles_12SP3.html"
-        - title: 12 SP 2.
+        - title: 12 SP2
           url: "/hu_sles_12SP2.html"
-        - title: 12 SP 1
+        - title: 12 SP1
           url: "/hu_sles_12SP1.html"
         - title: '12.'
           url: "/hu_sles_12.html"
@@ -340,13 +340,13 @@ sidebar:
     - title: 了解如何設定 NVMe-oF 主機
       url: "/hu-nvme-index.html"
     - title: AIX
-      url: "/nvme_aix.html"
+      url: "/nvme-aix.html"
     - title: ESXi
       entries:
       - title: VMware vSphere 8.
-        url: "/nvme_esxi_8.html"
+        url: "/nvme-esxi-8.html"
       - title: VMware vSphere 7
-        url: "/nvme_esxi_7.html"
+        url: "/nvme-esxi-7.html"
     - title: Oracle Linux
       pdf-filename: NVMeoF OL
       entries:
@@ -390,40 +390,28 @@ sidebar:
         url: "/nvme-rockylinux-8x.html"
     - title: SUSE Linux Enterprise Server
       entries:
-      - title: SUSE Linux Enterprise Server 15
-        entries:
-        - title: 15 SP7.
-          url: "/nvme_sles15_sp7.html"
-        - title: 15 SP6.
-          url: "/nvme_sles15_sp6.html"
-        - title: 15 sp5
-          url: "/nvme_sles15_sp5.html"
-        - title: 15 SP4
-          url: "/nvme_sles15_sp4.html"
-        - title: 15 SP3
-          url: "/nvme_sles15_sp3.html"
-        - title: 15 SP2
-          url: "/nvme_sles15_sp2.html"
-        - title: 15 SP1
-          url: "/nvme_sles15_sp1.html"
+      - title: ONTAP支援和功能
+        url: "/nvme-sles-supported-features.html"
+      - title: 15 SPx
+        url: "/nvme-sles15-spx.html"
     - title: Ubuntu
       entries:
       - title: '24.04'
-        url: "/nvme_ubuntu_2404.html"
+        url: "/nvme-ubuntu-2404.html"
       - title: '22.04'
-        url: "/nvme_ubuntu_2204.html"
+        url: "/nvme-ubuntu-2204.html"
     - title: Windows
       entries:
       - title: '2025'
         url: "/nvme-windows-2025.html"
       - title: 2022年
-        url: "/nvme_windows_2022.html"
+        url: "/nvme-windows-2022.html"
       - title: 2019年
-        url: "/nvme_windows_2019.html"
+        url: "/nvme-windows-2019.html"
       - title: 2016年
-        url: "/nvme_windows_2016.html"
+        url: "/nvme-windows-2016.html"
       - title: 2012 R2
-        url: "/nvme_windows_2012r2.html"
+        url: "/nvme-windows-2012r2.html"
     - title: 疑難排解
       url: "/troubleshoot.html"
   - title: 法律聲明

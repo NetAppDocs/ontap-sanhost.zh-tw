@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: nvme_ubuntu_2204.html 
+permalink: nvme-ubuntu-2204.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: 如何使用 ONTAP 設定 Ubuntu 22.04 的 NVMe 主機 
 ---
@@ -120,7 +120,6 @@ NOTE: 如果是 `hostnqn` 字串不相符、請使用 `vserver modify` 命令來
 ====
 .Broadcom / Emulex
 --
-.步驟
 . 確認您使用的是支援的介面卡機型。
 +
 [listing]
@@ -221,7 +220,6 @@ FCP CMPL: xb 00000000 Err 00000000
 --
 Ubuntu 22.04 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。
 
-.步驟
 . 確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]

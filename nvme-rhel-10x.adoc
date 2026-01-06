@@ -644,7 +644,7 @@ Oct 12 19:40:33 localhost systemd[1]: Finished nvmefc-boot-connections.service -
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
 
 .步驟
-. 驗證主機上是否正確顯示了對應ONTAP命名空間的 NVMe-oF 設定（例如，型號設定為NetApp ONTAP Controller，負載平衡 iopolicy 設定為 round-robin）：
+. 驗證主機上是否正確顯示了對應ONTAP命名空間的 NVMe-oF 設定（例如，將型號設定為NetApp ONTAP Controller，並將負載平衡 iopolicy 設定為 queue-depth）：
 +
 .. 顯示子系統：
 +

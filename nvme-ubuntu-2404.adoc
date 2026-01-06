@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: nvme_ubuntu_2404.html 
+permalink: nvme-ubuntu-2404.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: 如何使用 ONTAP 設定 Ubuntu 24.04 的 NVMe 主機 
 ---
@@ -109,7 +109,6 @@ NOTE: 如果 `hostnqn`字串不相符，請使用 `vserver modify`命令更新 `
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
-.步驟
 . 確認您使用的是支援的介面卡機型：
 +
 .. `cat /sys/class/scsi_host/host*/modelname`
@@ -218,7 +217,6 @@ Ubuntu 24.04 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最�
 
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
-.步驟
 . 確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]

@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_windows_2012r2.html 
+permalink: nvme-windows-2019.html 
 keywords: nvme, windows, enterprise 
-summary: 您可以在執行 Windows Server 2012 R2 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。 
+summary: 您可以在執行 Windows Server 2019 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。 
 ---
-= 使用適用於 ONTAP 的 NVMe / FC 設定 Windows Server 2012 R2
+= 適用於Windows Server 2019的NVMe / FC主機組態、ONTAP 含更新功能
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,17 +16,17 @@ summary: 您可以在執行 Windows Server 2012 R2 的主機上設定 NVMe over 
 
 
 [role="lead"]
-您可以在執行 Windows Server 2012 R2 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。
+您可以在執行 Windows Server 2019 的主機上設定 NVMe over Fibre Channel （ NVMe / FC ），以便與 ONTAP LUN 一起運作。
 
 .關於這項工作
-您可以在 Windows 2012 R2 的 NVMe / FC 主機組態中使用下列支援。在開始設定程序之前，您也應該先檢閱已知的限制。
+您可以在 Windows 2019 的 NVMe / FC 主機組態中使用下列支援。在開始設定程序之前，您也應該先檢閱已知的限制。
 
 
 NOTE: 您可以使用本程序提供的組態設定link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX for ONTAP Sf"^]，來設定連線至和的雲端用戶端link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]。
 
 * 可用支援：
 +
-從 ONTAP 9.7 開始， Windows Server 2012 R2 支援 NVMe / FC 。
+從 ONTAP 9.7 開始， Windows Server 2019 支援 NVMe / FC 。
 
 +
 如需支援的 FC 介面卡和控制器清單，請參閱link:https://hwu.netapp.com/Home/Index["Hardware Universe"^]。如需支援組態和版本的最新清單，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。

@@ -522,6 +522,7 @@ nvme	connect-all	-t	tcp	-w	192.168.31.15	-a	192.168.31.49
 
 RHEL 9.6 將 NVMe-oF 的預設 iopolicy 設定為 `round-robin`。如果您使用的是 RHEL 9.6 並且想要更改 iopolicy，請執行以下操作： `queue-depth`修改 udev 規則檔如下：
 
+.步驟
 . 使用 root 權限在文字編輯器中開啟 udev 規則檔：
 +
 [source, cli]

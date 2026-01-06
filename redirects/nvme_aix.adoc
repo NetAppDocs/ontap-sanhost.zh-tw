@@ -1,0 +1,8 @@
+---
+permalink: nvme_aix.html 
+redirect: ontap-sanhost/nvme-aix.html 
+---
+= 
+:allow-uri-read: 
+
+
