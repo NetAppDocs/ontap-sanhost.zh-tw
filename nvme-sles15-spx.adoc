@@ -5,17 +5,14 @@ keywords: nvme, linux, suse, sles, SUSE Linux Enterprise Server, 15, SPx, server
 summary: 說明如何為 SUSE Linux Enterprise Server 15 SPx 和ONTAP設定 NVMe/FC。 
 ---
 = 配置 SUSE Linux Enterprise Server 15 SPx 以支援 NVMe-oF 和ONTAP存儲
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]
