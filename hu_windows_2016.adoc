@@ -164,4 +164,4 @@ image::nonasa.png[具有兩個主動 / 最佳化路徑和兩個主動 / 非最�
 
 == 接下來呢？
 
-link:hu_wuhu_hba_settings.html["了解 Window Host Utilities 的註冊表設置"]。
+link:hu-wuhu-configuration.html["了解ONTAP儲存的 Windows 主機實用程式配置"]

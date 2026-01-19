@@ -83,8 +83,8 @@ sidebar:
           url: "/hu_wuhu_72.html"
         - title: 安裝 Windows 主機公用程式 7.1
           url: "/hu_wuhu_71.html"
-      - title: 配置 Windows 主機實用程式的設定
-        url: "/hu_wuhu_hba_settings.html"
+      - title: 檢查 Windows 主機實用程式配置
+        url: "/hu-wuhu-configuration.html"
       - title: 升級 Windows 主機公用程式
         url: "/hu_wuhu_upgrade.html"
       - title: 修復和移除 Windows 主機公用程式

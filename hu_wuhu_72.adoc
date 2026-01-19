@@ -161,4 +161,4 @@ NOTE: 若要查看記錄和其他功能的標準 Microsoft Installer （ MSI ）
 
 == 接下來呢？
 
-link:hu_wuhu_hba_settings.html["配置 Windows Host Utilities 的註冊表設置"] 。
+link:hu-wuhu-configuration.html["了解ONTAP儲存的 Windows 主機實用程式配置"]

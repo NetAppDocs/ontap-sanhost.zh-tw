@@ -76,20 +76,6 @@
   <block id="880b9ba9933b6e3ce087d9412e66470b" category="inline-link-macro">Microsoft Update目錄2012 R2</block>
   <block id="5a3b43f9090be87b411af7ac82adcb38" category="list-text">依照Microsoft提供的指示安裝修補程式。</block>
   <block id="4f27a34799ad8580f67b93c57e242ad0" category="section-title">SAN組態</block>
-  <block id="7a0a3a29c4e371b5125adb49cae3a738" category="section-title">所有SAN陣列組態</block>
-  <block id="270748dbbd5a9031b10d44f9f16973cf" category="admonition">Windows Server 2016建立的分割區依預設應保持一致。</block>
-  <block id="1104f990ade81e5b4d644288a54cf49a" category="admonition">對於在VHD上使用Grub開機載入程式的Linux虛擬機器、您必須在執行PowerShell Toolkit之後更新開機組態。</block>
-  <block id="b9ef2c298abb1a6d04513bf9fee94dda" category="paragraph">在磁碟上執行「mbralign」、以使用Grub開機載入程式、在Linux客體作業系統上使用PowerShell Toolkit修正MBR-對齊之後、您必須重新安裝Grub、以確保客體作業系統能正確開機。</block>
-  <block id="972f2c4ba9001b48966c37ef2a152dc0" category="list-text">掛載安裝CD磁碟1的ISO映像、以取得適用於虛擬機器的正確Linux版本。</block>
-  <block id="75cb80233f6f80283591654412489249" category="list-text">在Hyper-V Manager中開啟虛擬機器的主控台。</block>
-  <block id="737083ee251b627f57dd05899466dc4b" category="list-text">一旦看到VMware BIOS啟動畫面、請按一下* Esc*鍵。隨即顯示開機功能表。</block>
-  <block id="ccc37fa0e9dd606175ec88322d6be351" category="list-text">在開機功能表中、選取* CD-rom*。</block>
-  <block id="8fc05f93a1e2b7d0f8e575b13b63b37d" category="list-text">在Linux開機畫面中、輸入：「Linux救援」</block>
-  <block id="c1dc6d18649b347b978130011d44a49a" category="list-text">採用Anaconda的預設值（藍色/紅色組態畫面）。網路為選用功能。</block>
-  <block id="241c8b3bd8818322d5fba757a4374a34" category="list-text">輸入"grub（grub）"以啟動Grub</block>
-  <block id="e05674955ac595342c4c496ecfbdc101" category="paragraph">然後執行下列命令：</block>
-  <block id="501d6d7f3776c626c1ec5d95589d5cca" category="list-text">按* Ctrl-D*登出。</block>
-  <block id="ec93937c58f140d445e59c5bbc51be26" category="paragraph">Linux救援會關閉、然後重新開機。</block>
   <block id="2e8526cbe762cb1b8393d935a3b0bf16" category="section-title">建議設定</block>
   <block id="1dd9d61dc0438fbaf47669042c33c32f" category="cell">內容類型</block>
   <block id="4a697eb9fdac91d5651375075c998596" category="cell">屬性值</block>
@@ -485,7 +471,6 @@
   <block id="915015ac4efada43b59e22b377a82ed1" category="list-text">「installer.msi」是系統上Windows主機公用程式安裝程式的名稱。</block>
   <block id="7e0565a4a74302c8f7e2cd160825c07a" category="list-text">「/Quiet」會隱藏所有意見反應、並在命令完成時自動重新啟動系統、而不會出現提示。</block>
   <block id="e5e8913907553117e947ccc75671f941" category="cell">登錄機碼</block>
-  <block id="2f13ada49ba30a3f17abc7ff1c610656" category="cell">設定時</block>
   <block id="353a3cc2e6698fc1eca7603cde3ca48e" category="cell">HKLM\system\System\CurrentControlSet\Services \msdsm\參\Parameters \DsmMaximumRetryTimeDingStateTransition</block>
   <block id="82f92b873b165010afb1e3db606cc578" category="cell">HKLM\system\System\CurrentControlSet\Services \msdsm\Parameters \DsmMaximumStateTransitionTime</block>
   <block id="aa20dc2a80a37d024aeb48f792ce37e7" category="cell">HKLM\system\System\CurrentControlSet\Services\msdsm \Parameters\DsmSupportedDevice清單</block>
@@ -528,14 +513,12 @@
   <block id="a5b83cd29ece8eb608d8f558a14aafd2" category="cell">HKLM\system\CurrentControlSet \Services\disk\TimeOutValue</block>
   <block id="42dde1eb61f6c2638c5d044047417179" category="cell">HKLM \system\System\CurrentControlSet\Services\MPIO \Parameters\UseCustomPathRecoveryInterval</block>
   <block id="c57dcf0db9f722653d2df0250b192c2f" category="inline-link">Microsoft文件</block>
-  <block id="820c80a71d25737a6640c8135c800297" category="section-title">由Windows主機公用程式設定的FC HBA值</block>
   <block id="8f0fd19a2d99e6260c0b4e6513b7638c" category="inline-link">Emulex</block>
   <block id="bf37856a0dcc40508065787e2d49c8c3" category="inline-link">QLogic</block>
   <block id="7ecf9ab560fece14bab7a58f25439b02" category="list-text">記錄顯示在主機或儲存系統主控台上的任何錯誤訊息。</block>
   <block id="68cbf857d8485f03797edab4de291207" category="list-text">收集主機與儲存系統記錄檔。</block>
   <block id="99685cd1c95ee76b57460b7e546cb7eb" category="list-text">請在問題出現之前、記錄問題的症狀、以及對主機或儲存系統所做的任何變更。</block>
   <block id="69893000f4da30e1e42922cbcf8dac0e" category="inline-link">NetApp線上錯誤</block>
-  <block id="ab77ead701285f5c525a4af0d02d7113" category="paragraph">疑難排解HBA問題時、請檢查以確定這些設定的值正確無誤。正確的值取決於兩個因素：</block>
   <block id="7b89c0aff4542bf5f5ea1fc402d480ec" category="list-text">HBA廠商</block>
   <block id="c6e28ac86a9fffeb9329e96a567e805d" category="list-text">開放OnCommand 式軟件開發經理。</block>
   <block id="3773b996b3769cafbcfc5f1ecd7c953c" category="paragraph">隨即顯示驅動程式參數。</block>
@@ -1099,9 +1082,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="1a959178e792ae0c668c4f3a0bd45c65" category="list-text">收集有關您系統的資訊。</block>
   <block id="40bb1ea4c1bbc484f41a531e80ddb519" category="admonition"><block ref="c6d731b2e6e90d0e19df48cb3d9d7498" prefix="" category="inline-code"></block> 為的縮寫<block ref="86565cb5d05fc56046ceb32627a70264" prefix=" " category="inline-code"></block>。</block>
   <block id="a624f3024f6945790c5f3a01e38649bf" category="paragraph">請參閱<block ref="cc2304a59b5feaeebd0c5646fd22caf0" category="inline-link-rx"></block> 以取得登錄參數詳細資料。</block>
-  <block id="b182eae32a0022889eab1f98a5ba3a49" category="admonition">參數名稱可能會因程式而稍有不同。
-例如、在 QLogic QConverteConsole 程式中、參數會顯示為<block ref="b554d47c6702123b3a28a3e04ed39621" prefix=" " category="inline-code"></block>。
-主機公用程式<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " category="inline-code"></block> 檔案會將此參數顯示為兩者之一<block ref="08a7801aadb2d395506d0735d17dcf62" prefix=" " category="inline-code"></block> 或<block ref="e29ad18354768c222941f5de52fd92c9" prefix=" " category="inline-code"></block>，視是否指定 MPIO 而定。但是、所有這些名稱都是指相同的HBA參數。請參閱<block ref="6d63c8366c015331075fa86de38975e8" category="inline-link-rx"></block> 或<block ref="4399df604c07a452cc084d95811dafae" category="inline-link-rx"></block> 以深入瞭解逾時參數。</block>
   <block id="670b555082101cc3b01786f63d7cfe63" category="open-title">Emulex HBA 驅動程式</block>
   <block id="9d7f686c283e7f060d447a80713ba1cc" category="open-title">QLogic HBA 驅動程式</block>
   <block id="d3e220182499e43aeadc8bda16bcb3db" category="paragraph">在下列範例中、會產生一個隨機的 dhchap 金鑰、其中 HMAC 設為 3 （ SHA-512 ）。</block>
@@ -1619,9 +1599,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="1078de040a8679207e1783a9da9e836c" category="cell">您不再需要執行<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block>指令碼來變更 Red Hat Enterprise Linux 5 ， Red Hat Enterprise Linux 6 或 SUSE Linux Enterprise Server 11 Hyper-V 來賓作業系統的磁碟逾時，因為預設的逾時設定正在使用中。<block ref="1582eea6c0c614d1d444d6dfe1f82f4f" prefix=" " category="inline-code"></block>舊版主機公用程式所包含的指令碼不再包含在 Windows 主機公用程式 7.1 版本中。Windows 主機公用程式 7.1 會使用預設的磁碟逾時設定。</block>
   <block id="2c1c2305f2baefceb44e8e1b31927d88" category="doc">安裝 Windows 主機公用程式 7.2</block>
   <block id="b31a86b1dca7dfa1a67b27d591387cdb" category="paragraph">主機公用程式支援不同的 Windows 主機組態、通訊協定和多重路徑選項。如需詳細資訊，請參閱<block ref="e29293ebfe5b9174e3113da62e6426ca" category="inline-link-rx"></block>。</block>
-  <block id="3160be9723d9dc9c210d8c8b48bd0bcf" category="section-title">Windows 主機公用程式 7.2 設定的登錄值</block>
-  <block id="4da5f705a95e0ed235573a4eb64fce01" category="section-title">Windows Host Utilities 7.1 設定的登錄值</block>
-  <block id="125e0f5615cef4db790518b2fd3b4491" category="paragraph">Windows 主機公用程式安裝程式會設定下列值。除非另有說明、否則所有值都是十進位的。</block>
   <block id="10ce28246e5d07ff8493b9244d2b2aca" category="list-text">選取 * NetApp Windows 主機公用程式 * 。</block>
   <block id="044af269e446bb1cbed59c4821cfa418" category="list-text">修復 Windows 主機公用程式：</block>
   <block id="ba03d85ce07f0089b670121f8db9959a" category="list-text">若要識別潛在的互通性問題、請確認主機公用程式支援主機作業系統軟體、主機硬體、 ONTAP 軟體和儲存系統硬體的組合。如需詳細資訊、請參閱<block ref="8202e2d9ff186d084c29140284f981f1" category="inline-link-rx"></block>。</block>
@@ -1679,28 +1656,12 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5c715b8fde529251e535a7b4e48f84c2" category="open-title">SAN開機</block>
   <block id="58d0fc761c647663983ac6b7e586281c" category="paragraph">如果您選擇使用 SAN 開機，則必須由您的組態支援。</block>
   <block id="47d17b750a3f193d9db742ef86494b1e" category="paragraph">使用<block ref="b77f230f2effb14751e6164ceee6da3f" category="inline-link-rx"></block>驗證您的 Windows 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。</block>
-  <block id="ba5e9a5307d838817264d934e6080263" category="paragraph">根據您的 SAN 組態，主機會使用所有 SAN 陣列（ ASA ）或非 ASA 組態來存取 ONTAP LUN 。在 ASA 和非 ASA 組態中，存取單一 ONTAP LUN 的路徑不應超過四條。如果您有四條以上的路徑，可能會在儲存設備故障期間導致路徑問題。</block>
-  <block id="df71bac0ba76ff83dcf7e26b1350fe50" category="paragraph">ASA 組態應該有一組具有單一優先順序的主動 / 最佳化路徑。這表示路徑由控制器提供服務，而 I/O 會在所有作用中路徑上傳送。</block>
-  <block id="6a25c5df0849f9286646dc1c4746bc77" category="paragraph">下列範例顯示具有主動 / 最佳化路徑的 ONTAP LUN 的正確輸出。</block>
   <block id="7e7bd9d92ebb121bcce736b10711ab8c" category="admonition">您需要聯絡 Microsoft 支援部門，以取得無法從 Microsoft Update 目錄下載的 Hotfix 。</block>
-  <block id="9bd687f53bb8eba834ecb54f33ebf261" category="paragraph">如果磁碟分割的資料區塊邊界與基礎 LUN 的區塊邊界不一致，則儲存系統通常必須針對每個作業系統區塊讀取或寫入完成兩個區塊讀取或寫入。因對齊錯誤而產生的額外區塊讀取和寫入、可能會造成嚴重的效能問題。</block>
-  <block id="2ff9b2398c78131af0b1d1523781ef19" category="paragraph">主開機記錄所定義的每個分割區的起始扇區位置會導致未對齊。</block>
-  <block id="6b56b79977ded504f44030c7aacf202c" category="paragraph">使用<block ref="4e1e27349c8a128a19e874bcbd0666b6" prefix=" " category="inline-code"></block> ONTAP PowerShell 工具組中的 Cmdlet 來檢查分割區是否與基礎 LUN 一致。如果分割區未正確對齊，請使用<block ref="1c425220dcb59c3825f2baed3229bb55" prefix=" " category="inline-code"></block> Cmdlet 建立正確對齊的新 VHD 檔案。此Cmdlet會將所有分割區複製到新檔案。原始VHD檔案不會修改或刪除。複製資料時、必須關閉虛擬機器。</block>
-  <block id="67d5317777feed5c5f907721eccb63d1" category="paragraph">您可以在ONTAP NetApp社群下載《NetApp PowerShell Toolkit》。您必須將檔案解壓縮<block ref="f9975b70d855f1fce1e9949953ca0e28" prefix=" " category="inline-code"></block>至環境變數所指定的位置<block ref="105b23cb210b6142f68f0f6f1d8cd1cb" prefix=" " category="inline-code"></block>（或使用<block ref="05555c8b844b7e945be8140460ba564c" prefix=" " category="inline-code"></block>指令碼為您執行）。完成安裝之後，請使用<block ref="0776c469e94bf86e8f54a0596ac6bd51" prefix=" " category="inline-code"></block> Cmdlet 取得 Cmdlet 的說明。</block>
-  <block id="a0b96a6b218fdba91fb2aacb84bdb32c" category="paragraph">PowerShell工具套件僅支援含MBR-類型分割區的固定大小VHD檔案。不支援使用 Windows 動態磁碟或 GPT 分割區的 VHD 。此外、PowerShell Toolkit需要4 GB的最小分割區大小。較小的分割區無法正確對齊。</block>
-  <block id="b8e499b30940e319e34a9def3a8277a9" category="paragraph">非 ASA 組態應該有兩個路徑群組，其優先順序不同。優先順序較高的路徑為主動 / 最佳化。這表示「主動 / 最佳化」路徑由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。</block>
   <block id="f5c21e4e25a06d31a8e38ae7a1270165" category="paragraph">當您在使用 FC 的系統上選取 MPIO 時， Host Utilities 安裝程式會為 Emulex 和 QLogic FC HBA 設定所需的逾時值。</block>
   <block id="3e575d4c266efc0bf10abf8506bf9fc9" category="open-title">Emulex FC</block>
   <block id="61d5be4d95eb9ed2c2aae574d01274d3" category="paragraph">Emulex FC HBA 的逾時值：</block>
   <block id="2704ea6051977d60de74b19a5d26a552" category="open-title">QLogic FC</block>
   <block id="1e2248ff99196b0abd94b919f10e5087" category="paragraph">QLogic FC HBA 的逾時值：</block>
-  <block id="54695ec579cd9f604542649198e293ff" category="inline-link-macro">設定 Windows 主機公用程式的登錄設定</block>
-  <block id="652e337de2c34d4fb20d8d014b085e00" category="admonition">如需建議設定的詳細資訊，請參閱<block ref="b7590f68c328ab26959227c8347d06f0" category="inline-link-macro-rx"></block>。</block>
-  <block id="20b917718e62cc33572b686d2c3ef283" category="paragraph">PowerShell Toolkit Cmdlet已完成虛擬機器的VHD檔案。此程序僅適用於使用 GRUB 開機 Loader 和的 Linux 來賓作業系統<block ref="601f2f600347fee361e3e2ca8b73a177" prefix=" " category="inline-code"></block>。</block>
-  <block id="df2077261c59032c7739522f829cdb8e" category="list-text">如果 VM 在 GRUB 畫面上執行並凍結，請在顯示區域中按一下以確定其為作用中狀態，然後選取 *Ctrl-Alt-Delete* 工具列圖示以重新啟動 VM 。如果VM未執行、請啟動它、然後立即按一下顯示區域以確定它處於作用中狀態。</block>
-  <block id="1efd70950af96e10b879896c7e865e47" category="list-text">如果此 VM 中只有一個虛擬磁碟，或是有多個磁碟，而第一個是開機磁碟，請執行下列 GRUB 命令：</block>
-  <block id="fcc869a543c1e80be3bdacff22793cf7" category="paragraph">如果 VM 中有多個虛擬磁碟，而且開機磁碟不是第一個磁碟，或是從未對齊的備份 VHD 開機來修復 GRUB ，請輸入下列命令來識別開機磁碟：</block>
-  <block id="68bccc9f47a1d689c835812de6c7a435" category="admonition">在中<block ref="7b530ba82b70d4821bf776b3f3fb778a" prefix=" " category="inline-code"></block>，<block ref="cd096f9e86c0ef0d9e34df35a959627c" prefix=" " category="inline-code"></block>是開機磁碟實際磁碟識別碼的預留位置。</block>
   <block id="6b1a062ab30f453c4d8f30042bd36a0d" category="summary">您可以使用 ONTAP SAN 主機組態設定來設定 Windows Server 2025 ，以便與 ONTAP 儲存設備搭配運作。</block>
   <block id="6cbabda8de389ba6ce8a60e0359b51b7" category="doc">為 ONTAP 儲存設備設定 Windows Server 2025</block>
   <block id="d211c3930b27be56feb1a5044f105d64" category="paragraph">NetApp 建議您在主機伺服器上安裝 Microsoft Update 目錄中提供的 * 最新累計更新 * 。</block>
@@ -1716,7 +1677,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e1fb3bc85942df243da9db83c85073bd" category="cell">如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2</block>
   <block id="e391b693ae84de83009e50a6ff0d773d" category="cell">當您的伺服器是 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2 時</block>
   <block id="10e20033accbc339bb5469c868b2b071" category="cell">如果指定 MPIO 支援，且您的伺服器為 Windows Server 2025 ， 2022 ， 2019 ， 2016 或 2012 R2</block>
-  <block id="fa5c369c0560373ede3332d2508c4819" category="paragraph">安裝 Windows 主機公用程式 7.2 時， LimTransferSize 參數會自動設為「 1 」。安裝後，您需要手動將 LimTransferSize 值變更為「 0 」，然後重新啟動伺服器。</block>
   <block id="70cefc9a608dc188dd16deb1397a1529" category="cell">指定 MPIO 支援，且您的伺服器為 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 ，但偵測到 Data ONTAP DSM 除外</block>
   <block id="28c4a2aff9dab89964d88a9594119baa" category="cell">當您的伺服器是 Windows Server 2016 ， 2012 R2 ， 2012 ， 2008 R2 或 2008 時</block>
   <block id="e240b4a9acf4df1925780394d9f14be9" category="doc">使用適用於 ONTAP 的 NVMe / FC 來設定 Windows Server 2025</block>
@@ -2184,8 +2144,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="be397afde57f5c0f38f6ba79ad4ec67a" category="paragraph">您也可以使用 Windows 命令列提示符號選擇多路徑支援。</block>
   <block id="211ca7affd0e961ecfb9dbb6b619c8d1" category="paragraph">對於 Hyper-V 用戶機，如果您選擇多路徑支持，則原始（直通）磁碟不會出現在客戶機作業系統中。您可以使用原始磁碟或 MPIO，但不能在來賓作業系統中同時使用它們。</block>
   <block id="e46c793ec4845d376c829db8a8c8446b" category="paragraph">您可以互動方式或使用 Windows 命令列安裝主機實用程式。新的 Host Utilities 安裝套件必須位於 Windows 主機可存取的路徑中。</block>
-  <block id="c92461f9123dbb33559fcbdc4ccc3632" category="inline-link-macro">配置 Windows Host Utilities 的註冊表設置</block>
-  <block id="b22a7cc5777384ac92a13fdcbf02f6a7" category="paragraph"><block ref="bc9181ff5e05a661f25ceabd5067a9d6" category="inline-link-macro-rx"></block> 。</block>
   <block id="83fcfb65754825523aa792cb7a6b19ef" category="doc">為ONTAP儲存安裝 AIX Host Utilities 7.0</block>
   <block id="9ffc109828255a3247f9f7c7f5d76627" category="paragraph">AIX Host Utilities 7.0 支援以下傳輸協定和 AIX 環境：</block>
   <block id="eabf58c1495b34b83006649a72fe0cea" category="list-text">FC、FCoE 和 iSCSI</block>
@@ -2457,16 +2415,12 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="8e3644c7ee6d75b3275b49e4ac92bcd7" category="admonition">在使用SANtricity Storage Manager 的E 系列儲存系統上，FC 和 iSCSI 協定不需要授權。</block>
   <block id="50b0de549390e9fd0aff72d2cc76922d" category="paragraph">透過執行 Host Utilities 安裝程式並依照指示以互動方式安裝 Host Utilities 軟體包。</block>
   <block id="d539640f2a8ad84ff2b6b210b3c82a8b" category="doc">為ONTAP儲存安裝 Windows Host Utilities 7.2</block>
-  <block id="62113ee23a34404b1f086b7ed1df786b" category="doc">使用ONTAP儲存配置 Windows Host Utilities 的註冊表設置</block>
   <block id="80fecb40ffb39e22d2139bf9886132bc" category="inline-xref">NVME參數</block>
   <block id="40bd27b40d44b862091d49e4f0538774" category="paragraph">安裝 Windows Host Utilities 7.2 後，您需要變更 LimTransferSize 參數值。看<block ref="f34264ec923664aedfb2a9ccd6257931" category="inline-xref-macro-rx"></block> 。</block>
   <block id="05371652e7984167bbb3f85201a5b89b" category="paragraph">對於 Windows Host Utilities 8.0、7.2 或 7.1 的所有其他參數和登錄項，您無需更改值，除非技術支援建議您這樣做。</block>
-  <block id="3552ff32d73200dbe48fb217ccbdfe65" category="section-title">Windows Host Utilities 8.0 設定的登錄值</block>
-  <block id="a254beadccf36a8b85672cf8419d64d8" category="open-title">HKLM 值</block>
   <block id="071b3c301587fc461b5b5db6056fea64" category="cell">當指定 MPIO 支援且您的伺服器是 Windows Server 2025、2022、2019 或 2016 時</block>
   <block id="213770055804b675ffe14467be7be594" category="cell">當您的伺服器是 Windows Server 2025、2022、2019 或 2016 時</block>
   <block id="ef7643028f04a4cac8da8e05df5237b1" category="cell">當指定 MPIO 支援且您的伺服器是 Windows Server 2025、2022、2019 或 2016 時</block>
-  <block id="408cf458ebdd52832b74587ec65fee92" category="paragraph">安裝 Windows Host Utilities 7.2 時，將更新以下 NVMe Emulex 驅動程式參數：</block>
   <block id="20aac534719ebb4b8d33960d910552ae" category="section-title">了解 Host Utilities 對 FC HBA 驅動程式設定的變更</block>
   <block id="290855c6daac5448d222f3c661f749fb" category="list-text">*LinkTimeOut*：定義實體連結斷開後主機連接埠恢復 I/O 之前等待的時間長度（以秒為單位）。</block>
   <block id="9e02085844efecca4159003505f0e34a" category="list-text">*NodeTimeOut*：定義主機連接埠辨識到目標裝置的連線中斷之前的時間長度（以秒為單位）。</block>
@@ -2537,7 +2491,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="64a317b0ef502066fcd3e75bd699674f" category="sidebar">了解 Solaris 指令參考</block>
   <block id="dc5558bf9c4fb0dc5f36d6c135777cf2" category="sidebar">安裝 Windows 主機實用程式</block>
   <block id="d4609abcc5de600b2cd5aa87443c612c" category="sidebar">安裝 Windows Host Utilities 8.0</block>
-  <block id="390e5244f8ae0a5b4cdd721ad6036cb9" category="sidebar">配置 Windows 主機實用程式的設定</block>
   <block id="89a348be490d3be0bdc23d43fb585c56" category="sidebar">7.3/4.x</block>
   <block id="f72cfd397ddcffbe2327665e83f6e4fd" category="doc">步驟 3：（選用）從多路徑中排除設備</block>
   <block id="2767a9a2ad485daf64375577843d3ba2" category="doc">步驟 4：自訂ONTAP LUN 的多路徑參數</block>
@@ -2587,24 +2540,14 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3d4de8befb0eddb7be95b9eb899bcd21" category="summary">在 Ubuntu 24.04 主機上安裝 Linux Host Utilities 以使用ONTAP LUN 管理 FCP 和 iSCSI 協定操作。</block>
   <block id="faed4c9c8188f7390b773fb64e42fc29" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Ubuntu 22.04 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="3b2ad8d11d49615d3cb062774e116630" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Ubuntu 24.04 主機上安裝 Linux Host Utilities 時，您可以使用 Host Utilities 來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
-  <block id="876d8d634dabd3b4faa05168e2953c68" category="paragraph">Windows Host Utilities 需要某些登錄和參數設定來驗證 Windows 主機是否正確處理儲存系統行為。</block>
-  <block id="3187b1de6020504a9ef2201371f4ddfb" category="paragraph">Windows 主機公用程式設定會影響 Windows 主機如何回應資料延遲或遺失的參數值。這些值會驗證 Windows 主機是否正確處理事件，例如儲存系統中的一個控制器到其夥伴控制器的故障轉移。</block>
-  <block id="5761ec5c04ac77cb295ddef5c5adf39f" category="paragraph">某些值不適用於SANtricity Storage Manager的設備特定模組 (DSM)。  Windows Host Utilities 與SANtricity Storage Manager的 DSM 設定的值之間的重疊不會導致衝突。</block>
-  <block id="1c45b11e7112ae3015b6528aac98db47" category="paragraph">您還需要設定 FC、NVMe/FC 和 iSCSI HBA 參數以最佳化效能並成功處理儲存系統事件。</block>
-  <block id="ac299bbbaa386f926bfeffd61f3f329a" category="paragraph">Windows Host Utilities 安裝程式將 Windows、FC 和 NVMe/FC HBA 參數設定為支援的值。您需要手動設定iSCSI HBA參數。</block>
   <block id="0600911da7c2ed3e4c75b35a8383464b" category="paragraph">當您在安裝過程中指定 Microsoft 多路徑 I/O (MPIO) 支援時，安裝程式會設定不同的值。</block>
-  <block id="1289e36ad9af025f92a68eeb71942e45" category="paragraph">Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值和 NVMe 參數。您需要檢查這些值和作業系統版本。</block>
-  <block id="05ca7c309c201d00d9edda26c29f1814" category="paragraph">Windows Host Utilities 安裝程式設定以下登錄值。除非另有說明，所有值均為十進制。</block>
   <block id="9315284a762c1471b85be43158649395" category="cell">“NETAPP LUN”、“NETAPP LUN C 模式” “NVMe NetApp ONTAP Con”</block>
   <block id="f43fc70fd90855c7e4c4c9cba7d7f1fd" category="cell">“NETAPP LUN”、“NETAPP LUN C 模式”、“NVMe NetApp ONTAP Con”</block>
-  <block id="65d5481255e5037a619c921fafb15def" category="paragraph">Windows Host Utilities 8.0 在安裝過程中更新以下 NVMe Emulex 驅動程式參數：</block>
-  <block id="ab51b6ada28fc394eb4698434eaf6668" category="paragraph">Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值。您需要檢查這些註冊表值和作業系統版本。</block>
   <block id="619778ebb1defb58b2f571d8beed6661" category="paragraph">Windows Host Utilities 安裝程式為使用 FC 的系統上的 Emulex 和 QLogic FC HBA 設定所需的逾時值。</block>
   <block id="ca146b673983ec595aae317e1a1e764a" category="paragraph">安裝程式為 Emulex FC HBA 設定以下參數：</block>
   <block id="187c9ec598092d65351eaf4f361d83f7" category="open-title">當您選擇 MPIO 時</block>
   <block id="17f9a8611eed107aecf0406db4a2b59d" category="open-title">當您不選擇 MPIO</block>
   <block id="d915a9fedab871eb41a22f16bfb69c64" category="paragraph">安裝程式為 QLogic FC HBA 設定以下參數：</block>
-  <block id="2ff89f8cd6f01614cdfc9aff8ff7a2a4" category="paragraph">在 FC 系統上安裝所需的 Emulex 或 QLogic HBA 驅動程式期間，Windows Host Utilities 會檢查多個參數，在某些情況下也會修改這些參數。</block>
   <block id="30fe8c509bd758431e60f7f83e9085f0" category="paragraph">如果偵測到 MS DSM for Windows MPIO，Windows Host Utilities 將設定下列參數的值：</block>
   <block id="d7ffc66640801d3b23e6403b53045607" category="paragraph">驗證 FC 系統上的 Emulex HBA 驅動程式設定。HBA 上的每個連接埠都必須存在這些設定。</block>
   <block id="0aa9ab84e08417b1d87c1a5606b6b1b4" category="paragraph">驗證 FC 系統上的 QLogic HBA 驅動程式設定。HBA 上的每個連接埠都必須存在這些設定。</block>
@@ -2679,8 +2622,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="2668d75d00d2b0c89fc0268c581eea9a" category="paragraph">AFF或FAS配置應有兩組優先順序不同的路徑。優先順序較高的路徑是活動/最佳化路徑，由聚合所在的控制器提供服務。優先順序較低的路徑由不同的控制器提供服務。它們處於活動狀態，但未經最佳化，僅在沒有優化路徑時使用。</block>
   <block id="778265cdd82e615c65e819202c4f1a45" category="paragraph">您可以使用本機啟動或 SAN 啟動來啟動 Windows 作業系統。  NetApp建議使用SAN啟動來簡化部署並提高可擴充性。</block>
   <block id="9c3530e2722834048b2844c3d51c3f9d" category="paragraph">透過將 Windows 作業系統安裝到本機硬碟（例如 SSD、SATA 或 RAID）上來執行本機啟動。</block>
-  <block id="732f2da8f62b9da0ea923952084874de" category="inline-link-macro">了解 Window Host Utilities 的註冊表設置</block>
-  <block id="adb6b5051a1f8d77d4d01917e922a3e4" category="paragraph"><block ref="c1331b771adf93ff52db3f4f543e95b0" category="inline-link-macro-rx"></block>。</block>
   <block id="418566369566c44bb7140916a64786a1" category="admonition">許多熱修復程式需要重啟Windows主機。您可以等到安裝或升級主機實用程式之後再重新啟動主機。</block>
   <block id="a280834ebf64082d80348b8606fd1022" category="paragraph">Windows 主機公用程式是一套軟體程式及其文檔，可讓您將主機連接到NetApp SAN 上的虛擬磁碟 (LUN)。  NetApp建議下載並安裝最新的 Windows 主機實用程序，以支援ONTAP LUN 管理並協助技術支援人員收集設定資料。</block>
   <block id="0dbfca139f278e370070260ca86e7bea" category="paragraph">有關 Windows 主機實用程式配置和安裝信息，請參閱<block ref="0030a0ca2c8a5e3c1ffa16a150ed65f9" category="inline-link-macro-rx"></block>請查閱文件並選擇適合您 Windows Host Utilities 版本的安裝步驟。</block>
@@ -3104,4 +3045,31 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="643c7133e701780bd200aa43a7ac19d5" category="sidebar">12 SP2</block>
   <block id="a6cf0ca607a76b62fe0393451560cb3e" category="sidebar">12 SP1</block>
   <block id="5b0baa1d297171d8a0eb3e7b4eab041d" category="sidebar">15 SPx</block>
+  <block id="f6cc17830d6056ab4b78496fa45d86c0" category="inline-link-macro">了解ONTAP儲存的 Windows 主機實用程式配置</block>
+  <block id="a270bf4f8c4b691ce8d28f78e05ad3ce" category="paragraph"><block ref="a270bf4f8c4b691ce8d28f78e05ad3ce" category="inline-link-macro-rx"></block></block>
+  <block id="3ef0124e3a4c499c8d81cf51736e34cf" category="doc">檢查ONTAP儲存的 Windows 主機實用程式配置</block>
+  <block id="d163580e6b36094493c3486aa4bd713d" category="paragraph">Windows 主機實用程式需要某些登錄和參數設置，以便 Windows 主機能夠正確處理ONTAP儲存系統的行為。</block>
+  <block id="a7f9e2f7eae7b45e39495e27e2aa0591" category="paragraph">這些登錄和參數值會影響 Windows 主機對資料延遲或遺失的回應方式，例如，正確處理儲存故障轉移等事件。</block>
+  <block id="4fd88a48c587c319fee5293adbb82370" category="paragraph">某些登錄和參數值不適用於SANtricity Storage Manager的設備特定模組 (DSM)。Windows Host Utilities 和 DSM for SANtricity Storage Manager設定的值之間的重疊不會導致衝突。</block>
+  <block id="27369ead3c900cf549518fa5912f3beb" category="paragraph">Windows 主機也需要某些 FC、NVMe/FC 和 iSCSI HBA 參數才能成功處理儲存系統事件：</block>
+  <block id="3aea2f8ae8a21af7a187a2cbdd12fe62" category="list-text">從 Windows Host Utilities 7.2 開始，安裝程式會將 Windows、iSCSI、FC 和 NVMe/FC 參數設定為支援的值。</block>
+  <block id="bb5e85db541a571d5444af86a48295eb" category="list-text">從 Windows Host Utilities 7.1 開始，安裝程式會將 Windows、FC 和 NVMe/FC HBA 參數設定為支援的值。您需要手動設定 iSCSI HBA 參數。</block>
+  <block id="856b84160c2cd057500cee609f14e2ae" category="section-title">檢查 Windows Host Utilities 8.0 的設定設定</block>
+  <block id="72934b5100d49e143a007d3f9658653b" category="paragraph">Windows 主機公用程式安裝程式會根據您在安裝過程中所做的選擇，自動設定 Windows 登錄值以及 iSCSI 和 NVMe HBA 參數。請核對這些數值和作業系統版本。</block>
+  <block id="cd3da9fa9d3b1672b6e802d678075159" category="open-title">Windows 登錄值</block>
+  <block id="acf633c8ebc059225f934044e1724be4" category="paragraph">除非另有說明，所有 Windows 登錄值均以十進位表示。</block>
+  <block id="918d7d296045834b208049633743dada" category="cell">設定註冊表項...</block>
+  <block id="e51c3c5caf9dc0f70689e54385d6445e" category="open-title">iSCSI HBA 值</block>
+  <block id="c92b7987dc07b9fe00ce0d942ac6584c" category="paragraph">除非另有說明，所有 iSCSI HBA 值均以十進位表示。</block>
+  <block id="32983f61bd86ff1d53c1e73c98853ea6" category="paragraph">Windows Host Utilities 8.0 在安裝過程中會更新以下 NVMe Emulex 驅動程式參數：</block>
+  <block id="fd122937cb75bf13d0d288a91da427c8" category="section-title">檢查 Windows Host Utilities 7.2 的設定設定</block>
+  <block id="b69134c16adc05cd3e2e52ada20808d8" category="paragraph">Windows Host Utilities 7.2 在安裝過程中會更新以下 NVMe Emulex 驅動程式參數：</block>
+  <block id="49552d0a01f8e5c018c36fa7a95672e2" category="paragraph">安裝 Windows Host Utilities 7.2 時，LimTransferSize 參數會自動設定為「1」。安裝完成後，將 LimTransferSize 值變更為「0」並重新啟動伺服器。</block>
+  <block id="7d1b938dfc7652c1013aa6c87acaa295" category="section-title">檢查 Windows Host Utilities 7.1 的設定設定</block>
+  <block id="d3d049b67f764449da9efe56c0f7e37d" category="paragraph">Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值。查看這些註冊表值和作業系統版本。除非另有說明，所有數值均以十進位表示。</block>
+  <block id="c996a795ae55a6395f76354e6b7c8da5" category="section-title">了解 Windows 主機實用程式設定的 FC HBA 值</block>
+  <block id="009df88d79340b8c3b598472557324d8" category="admonition">根據程式的不同，參數名稱可能會略有不同。例如，在 QLogic QConvergeConsole 程式中，該參數顯示為<block ref="b554d47c6702123b3a28a3e04ed39621" prefix=" " category="inline-code"></block>。主機實用程式<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " category="inline-code"></block> 文件將此參數顯示為以下兩種形式之一<block ref="08a7801aadb2d395506d0735d17dcf62" prefix=" " category="inline-code"></block> 或者<block ref="e29ad18354768c222941f5de52fd92c9" prefix=" " category="inline-code"></block>取決於是否指定了 MPIO。然而，所有這些名稱都指的是同一個 HBA 參數。看<block ref="6d63c8366c015331075fa86de38975e8" category="inline-link-rx"></block> 或者<block ref="4399df604c07a452cc084d95811dafae" category="inline-link-rx"></block> 了解更多關於超時參數的資訊。</block>
+  <block id="82ec7e195e913912e4bf387fbe3d1a1a" category="paragraph">在 FC 系統上安裝所需的 Emulex 或 QLogic HBA 驅動程式期間，Windows 主機公用程式會檢查幾個參數，並在某些情況下修改它們。</block>
+  <block id="80359a24fbf8546b71fbe0e9a6a30e27" category="paragraph">在排查 HBA 問題時，請檢查這些設定是否具有正確的值。正確值取決於兩個因素：</block>
+  <block id="dd1dd5ab98ce86b204797f25e5883980" category="sidebar">檢查 Windows 主機實用程式配置</block>
 </blocks>
