@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-您可以使用「multiPath -ll」命令來驗證ONTAP 您的各個LUN的設定。

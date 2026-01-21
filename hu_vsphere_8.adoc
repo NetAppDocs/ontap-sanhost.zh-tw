@@ -136,14 +136,7 @@ fc.20000024ff7f4a50:21000024ff7f4a50-fc.2009d039ea3ab21f:2000d039ea3ab21f-naa.60
    Storage Array Type Path Config: {TPG_id=1000,*TPG_state=ANO*,RTP_id=1,RTP_health=UP}
    Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
 ----
-
-
-=== 所有 SAN 陣列組態
-
-所有 SAN 陣列（ ASA ）組態都會最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
-
-.範例
-以下範例顯示 ONTAP LUN 的正確輸出。
+<stdin> 中存在未解析的指令 - include::_include/hu/reuse_hu_asa_configuration.adoc[]
 
 [listing]
 ----

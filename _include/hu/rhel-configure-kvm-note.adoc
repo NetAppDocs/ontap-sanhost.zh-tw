@@ -1,6 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-
-NOTE: 您不需要設定核心型虛擬機器（ KVM ）設定，因為 ONTAP LUN 會自動對應至 KVM Hypervisor 。

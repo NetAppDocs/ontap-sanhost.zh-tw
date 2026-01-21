@@ -4,7 +4,7 @@ permalink: troubleshoot.html
 keywords: host utilities, veritas, infoscale, 8.x, netapp, ontap, vmware, vspehere 
 summary: 您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 VMware vSphere 8.x 版本設定 ONTAP SAN 主機設定。 
 ---
-= 疑難排解
+= 使用ONTAP儲存對 NVMe-oF 進行故障排除（適用於 Linux 主機公用程式）
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,10 +16,12 @@ summary: 您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 VMware vSphere
 
 
 [role="lead"]
-針對 RHEL 、 OL 和 SUSE Linux Enterprise Server 主機的任何 NVMe 故障進行疑難排解之前、請先確認您執行的組態符合互通性對照表工具（ IMT ）規格、然後繼續後續步驟、以偵錯任何主機端問題。
+對配備ONTAP儲存的 Oracle Linux、RHEL、Rocky Linux 和 SUSE Linux Enterprise Server 主機進行 NVMe-oF 故障排查。
+
+在開始故障排除之前，請確認您執行的配置符合以下要求： https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^] 然後按照說明進行下一步操作，以調試任何主機端問題。
 
 
-NOTE: 疑難排解指示不適用於 AIX 、 Windows 和 ESXi 主機。
+NOTE: 故障排除說明不適用於 AIX、ESXi、Proxmox 和 Windows 主機。
 
 
 
@@ -27,7 +29,8 @@ NOTE: 疑難排解指示不適用於 AIX 、 Windows 和 ESXi 主機。
 
 如果您的組態有問題、詳細記錄可提供疑難排解的必要資訊。
 
-設定 Qlogic （ qla2xxx ）詳細記錄的程序與設定 lpfc 詳細記錄的程序不同。
+.步驟
+為 LPFC 或 Qlogic (Qla2xxx) 設定詳細日誌記錄。
 
 [role="tabbed-block"]
 ====
@@ -35,7 +38,6 @@ NOTE: 疑難排解指示不適用於 AIX 、 Windows 和 ESXi 主機。
 --
 設定適用於 NVMe / FC 的 lpfc 驅動程式。
 
-.步驟
 . 設定 `lpfc_log_verbose` 將驅動程式設定為下列任一值、以記錄NVMe/FC事件。
 +
 [listing]
@@ -46,9 +48,9 @@ NOTE: 疑難排解指示不適用於 AIX 、 Windows 和 ESXi 主機。
 #define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
 ----
 . 設定值之後、請執行 `dracut-f` 命令並重新啟動主機。
-. 驗證設定。
+. 請核對設定：
 +
-[listing]
+[source, cli]
 ----
 # cat /etc/modprobe.d/lpfc.conf options lpfc lpfc_log_verbose=0xf00083
 
@@ -61,17 +63,16 @@ NOTE: 疑難排解指示不適用於 AIX 、 Windows 和 ESXi 主機。
 --
 NVMe / FC 沒有類似於的特定 qla2xxx 記錄 `lpfc` 驅動程式：請改為設定一般 qla2xxx 記錄層級。
 
-.步驟
 . 將「ql2xextend_error_logging=x1e400000」值附加至對應的「modf探測qla2xxx conf」檔案。
 . 執行 `dracut -f` 命令、然後重新啟動主機。
 . 重新開機後、請確認已啟用詳細資訊記錄：
 +
-[listing]
+[source, cli]
 ----
 # cat /etc/modprobe.d/qla2xxx.conf
 ----
 +
-輸出範例：
+您應該會看到類似以下範例的輸出：
 
 +
 [listing]
@@ -86,7 +87,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 ====
 
 
-=== 常見的NVMe-CLI錯誤和因應措施
+== 常見的“nvme-cli”錯誤及解決方法
 
 顯示的錯誤 `nvme-cli` 期間 `nvme discover`、 `nvme connect`或 `nvme connect-all` 作業與因應措施如下表所示：
 
@@ -143,9 +144,9 @@ Cmpl 00000000000000a8 Outstanding 0000000000000001
 
 == 何時聯絡技術支援
 
-如果您仍面臨問題、請收集下列檔案和命令輸出及聯絡人 link:mysupport.netapp.com["NetApp支援"^] 進一步分類：
+如果問題仍然存在，請收集以下文件和命令輸出並聯絡我們。 link:mysupport.netapp.com["NetApp支援"^] 以便進一步分診：
 
-[listing]
+[source, cli]
 ----
 cat /sys/class/scsi_host/host*/nvme_info
 /var/log/messages

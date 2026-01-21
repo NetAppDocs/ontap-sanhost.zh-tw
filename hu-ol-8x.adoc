@@ -69,12 +69,12 @@ touch /etc/multipath.conf
 +
 [source, cli]
 ----
-chkconfig multipathd on
+systemctl enable multipathd
 ----
 +
 [source, cli]
 ----
-/etc/init.d/multipathd start
+systemctl start multipathd
 ----
 . 每次引導主機時，空的 `/etc/multipath.conf`零位元組檔案會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。您不需要變更 `/etc/multipath.conf`主機的檔案，因為作業系統會使用多重路徑參數進行編譯，以正確辨識及管理 ONTAP LUN 。
 +
