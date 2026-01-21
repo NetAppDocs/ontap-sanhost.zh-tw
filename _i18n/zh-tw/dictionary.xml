@@ -274,8 +274,6 @@
   <block id="da4fb5c6e93e74d3df8527599fa62642" category="cell">120</block>
   <block id="7c16fa52cbeaf99ece2729801b43247d" category="cell">DMP_還原 時間間隔</block>
   <block id="51a4a26e6b1bdae133374d340c097526" category="paragraph">下列範例顯示ONTAP 使用兩個主動/最佳化路徑和兩個主動/非最佳化路徑的正確輸出。</block>
-  <block id="2844e304c2e162332243113572206ac6" category="inline-link-macro">1308744</block>
-  <block id="939827454c3bb8453033ba1bd60c555e" category="cell"><block ref="c8bdc7961e7fb79cc7e51cf734b247fb" category="inline-link-macro-rx"></block></block>
   <block id="dd1e6355fcc2ca3c16ece42015663e00" category="cell">1362435</block>
   <block id="393cfee0a3b5d3e706f8a0cdeefa3ed8" category="cell">Huk 6.2和solaris _11.4 FC驅動程式連結變更</block>
   <block id="8e831c271747ab1b149f40a1bfc61175" category="cell">（文件ID 2595926.1）</block>
@@ -471,7 +469,6 @@
   <block id="fdcd362ac5f5f9817e70642dd2a48bfd" category="sidebar">Oracle Linux</block>
   <block id="d6422a625045167156b3c0d85ca23ebf" category="sidebar">8.1</block>
   <block id="8b6f93f33bce541c7f50f8aff637e2e1" category="sidebar">RHEL</block>
-  <block id="1b1e6d45b618db5397c656f0df1d4b85" category="sidebar">15 SP2</block>
   <block id="7ceb3cac51dbf44c807f7e83fabc5016" category="sidebar">15 SP1</block>
   <block id="ea6b2efbdd4255a9f1b3bbc6399b58f4" category="sidebar">2019年</block>
   <block id="95192c98732387165bf8e396c0f2dad2" category="sidebar">2016年</block>
@@ -971,8 +968,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f3478c814fd82f33620059d2d7656ea9" category="list-text">判斷 WWID ：</block>
   <block id="48a57465c9050da3e456de11a1bce0f0" category="list-text">重新啟動主機、確認開機成功。</block>
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph"><block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block>命令會產生下列類型的輸出。下列範例中的輸出會被截斷。</block>
-  <block id="1f9090c13a627840d3e8110654671ecd" category="cell">完成 SUSE Linux Enterprise Server 15S P2 作業系統安裝後、無法使用靜態 IP 組態從 SAN 開機</block>
-  <block id="74fe7cde6e68f9607ef6c16f62916dd8" category="paragraph">iSCSI sanbooted. LUN 在使用靜態 IP 組態完成 SUSE Linux Enterprise Server 15 SP2 作業系統安裝後無法開機。每次使用靜態IP組態時都會發生開機失敗。這會導致伺服器拒絕繼續開機程序、並顯示下列錯誤訊息：</block>
   <block id="adcc6b5e38256f637746539b3d3cb7b3" category="paragraph">Ubuntu 22.04 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="896c6d73b474c57fd4a882830cd2a6de" category="sidebar">SUSE Linux Enterprise Server 15</block>
   <block id="587b796170a9abac4701cd8aa1bb38cb" category="listing-title">輸出範例</block>
@@ -1898,7 +1893,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="c66e8f141f367b0a5a1d201cc49ccc72" category="paragraph">ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block>的價值<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block>參數從預設值 64 更改為 256。</block>
   <block id="cfa5b6e557299c1ae7c635f08785f365" category="paragraph">Red Hat Enterpirse Linux (RHEL) 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe over Fibre Channel (NVMe/FC) 和 NVMe over TCP (NVMe/TCP) 協定。  ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。</block>
   <block id="e8584093909cb01d1e4390beaad82a5f" category="paragraph">這<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時，軟體包會自動啟用。</block>
-  <block id="660bcc8bfdb485b79b7dede726eb2358" category="doc">了解如何使用 NVMe-OF 配置ONTAP SAN 主機</block>
   <block id="be1e5922c13f8cd92deb77a78a07375f" category="paragraph">您可以設定支援的 SAN 主機以使用 NVMe over Fabrics (NVMe-oF) 協定並以ONTAP作為儲存目標。 NVMe-oF包括光纖通道上的NVMe（NVMe/FC）和TCP上的NVMe（NVMe/TCP）。根據您的主機作業系統和ONTAP版本，您可以在主機上設定和驗證 NVMe/FC 或 NVMe/TCP 協議，或兩者。</block>
   <block id="b0e0bd8207ba62457f58c3e06f3f7bec" category="section-title">ONTAP支援和功能</block>
   <block id="3b2a75ebc087c7f3c4fa9ac0e2a92ebe" category="cell">ONTAP 版本</block>
@@ -2404,4 +2398,5 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="79c482cb23c057c0d600ecd3434dbb27" category="section-title">常見的“nvme-cli”錯誤及解決方法</block>
   <block id="c481530fd3180128cebd4b0d3be77c0f" category="paragraph">如果問題仍然存在，請收集以下文件和命令輸出並聯絡我們。 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 以便進一步分診：</block>
   <block id="0669c03dc492faf8d7b9fc2bd8512b73" category="sidebar">早期主機實用程式版本</block>
+  <block id="2444d67396b745a440cfa96bf55da9c6" category="doc">了解如何使用 NVMe-oF 設定 ONTAP SAN 主機</block>
 </blocks>
