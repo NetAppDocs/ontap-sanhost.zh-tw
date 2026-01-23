@@ -160,6 +160,7 @@ defaults {
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
+.步驟
 . 確認您使用的是支援的介面卡機型：
 +
 .. 顯示模型名稱：
@@ -312,6 +313,7 @@ FCP CMPL: xb 00000368 Err 00000382
 --
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
+.步驟
 . 驗證您使用的適配器驅動程式和韌體版本是否受支援：
 +
 [source, cli]
@@ -343,6 +345,7 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 --
 NVMe/TCP 協定不支援自動連線操作。相反，您可以透過執行 NVMe/TCP 來發現 NVMe/TCP 子系統和命名空間 `connect`或者 `connect-all`手動操作。
 
+.步驟
 . 檢查啟動器連接埠是否可以跨支援的 NVMe/TCP LIF 取得發現日誌頁面資料：
 +
 [source, cli]

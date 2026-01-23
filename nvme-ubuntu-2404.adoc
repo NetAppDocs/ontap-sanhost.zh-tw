@@ -217,6 +217,7 @@ Ubuntu 24.04 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最�
 
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
+.步驟
 . 確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [listing]

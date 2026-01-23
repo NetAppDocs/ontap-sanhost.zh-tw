@@ -848,7 +848,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4b251899b86291ee2ea3a4ec31bd27d2" category="list-text">建立探索子系統的 PDC ：</block>
   <block id="cc9b331553f2bcc4120c4d935ac45124" category="list-text">從 ONTAP 控制器、確認已建立 PDC ：</block>
   <block id="73fd59b3c9a3572b90f709cc5c917c78" category="paragraph">若要設定安全驗證、每個主機或控制器都必須與相關聯<block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block> 金鑰、這是 NVMe 主機或控制器的 NQN 組合、以及管理員設定的驗證密碼。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。</block>
-  <block id="563237c884bab6356a13da886807f1d9" category="paragraph">您可以使用 CLI 或組態 JSON 檔案來設定安全的頻內驗證。如果您需要為不同的子系統指定不同的 dhchap 金鑰、則必須使用組態 JSON 檔案。</block>
   <block id="91af5705f16502125e8b2187e64202c0" category="open-title">CLI</block>
   <block id="130ea6273a6f2f8dd4847cd415a8dce1" category="list-text">取得主機 NQN ：</block>
   <block id="be970af96a2d347df16aa0902707d220" category="list-text">在 ONTAP 控制器上、新增主機並指定兩個 dhchap 金鑰：</block>
@@ -969,7 +968,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="48a57465c9050da3e456de11a1bce0f0" category="list-text">重新啟動主機、確認開機成功。</block>
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph"><block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block>命令會產生下列類型的輸出。下列範例中的輸出會被截斷。</block>
   <block id="adcc6b5e38256f637746539b3d3cb7b3" category="paragraph">Ubuntu 22.04 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
-  <block id="896c6d73b474c57fd4a882830cd2a6de" category="sidebar">SUSE Linux Enterprise Server 15</block>
   <block id="587b796170a9abac4701cd8aa1bb38cb" category="listing-title">輸出範例</block>
   <block id="8b6a5845688d81720a1016c10aa9e843" category="list-text">根據預設，所有新建立的 NVMe 命名空間都會啟用從 ONTAP 9 。 16.1 開始的空間分配。</block>
   <block id="0c48e7c4bbc87e64bef6a0afca5676b3" category="paragraph">預期值為 0 。</block>
@@ -2038,7 +2036,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5d2e5ee168e90c0595b3cc1eee2ee6dd" category="cell">SAN 啟動已透過 NVMe/FC 協定啟用</block>
   <block id="9d6d817f456752dac19e4b5c699bd30c" category="cell">這<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>軟體包包含自動連接腳本，無需第三方腳本。</block>
   <block id="1115310dc5d902646a8153a110b7cbc7" category="cell">原生 udev 規則<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>該軟體包為 NVMe 多路徑提供輪詢負載平衡</block>
-  <block id="fc247827714f96cf26c9cbb26911cbf8" category="cell">如果您的 RHEL 版本是…</block>
   <block id="a63480986ae76ec294cfdac303f1cc61" category="cell">了解…</block>
   <block id="62287eeee3056dc397ebc956062f6d92" category="cell">10系列</block>
   <block id="2ee39f4f778b47b40d3a961eef85042c" category="cell">9系列</block>
@@ -2339,7 +2336,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d4ca4de004c509fdca6f6baba9d067b3" category="cell">9.11.1 或更高版本</block>
   <block id="0c64d8618ad6cc4fda4a0184e7b3a66d" category="paragraph">15 SP1 或更高版本</block>
   <block id="64e18fc6adcf06d504f9f2cb84332a1e" category="paragraph">15 SP7 或更高版本</block>
-  <block id="9243641bd6b3c45ba14a34f8161142cb" category="cell">如果您的 SUSE Linux Enterprise Server 版本是…</block>
   <block id="3ebf0499b89f1f3b892d2950e4078398" category="cell">15 SPx 系列</block>
   <block id="9e9b995c5792b061553f6ebe8ec003fb" category="inline-link-macro">為 SUSE Linux Enterprise Server 15 SPx 配置 NVMe</block>
   <block id="5b9de8ac0ff133e1388277c57b436df3" category="cell"><block ref="5b9de8ac0ff133e1388277c57b436df3" category="inline-link-macro-rx"></block></block>
@@ -2399,4 +2395,35 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="c481530fd3180128cebd4b0d3be77c0f" category="paragraph">如果問題仍然存在，請收集以下文件和命令輸出並聯絡我們。 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 以便進一步分診：</block>
   <block id="0669c03dc492faf8d7b9fc2bd8512b73" category="sidebar">早期主機實用程式版本</block>
   <block id="2444d67396b745a440cfa96bf55da9c6" category="doc">了解如何使用 NVMe-oF 設定 ONTAP SAN 主機</block>
+  <block id="55b4f27e868d94d08cb7b820fb7dcaf4" category="summary">在 SUSE Linux Enterprise Server 16 上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
+  <block id="651119b7fad3ebe0625718e781b85dbd" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 配置 SUSE Linux Enterprise Server 16</block>
+  <block id="536673265ab4b1de9fd943164c12494a" category="paragraph">Linux Host Utilities 軟體為連接到 ONTAP 儲存設備的 Linux 主機提供管理和診斷工具。在 SUSE Linux Enterprise Server 16 主機上安裝 Linux Host Utilities 後，您可以使用 Host Utilities 來協助管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
+  <block id="c79c0bda7187ef54ad53cb84f69b4995" category="paragraph">&lt;stdin&gt; 中未解析的指令 - include::_include/hu/install-linux-host-utilities.adoc[]</block>
+  <block id="be0724c20eae9509bfecb55613ead45c" category="paragraph">您可以使用 SUSE Linux Enterprise Server 16 的多路徑功能來管理 ONTAP LUN。</block>
+  <block id="40b573003d21aeb3dbe3d1c46c3c87af" category="cell">如果您的 RHEL 版本是...</block>
+  <block id="8637f659452959aafbb4798db09998d6" category="cell">了解更多…</block>
+  <block id="06314aebedd665e513cf3a7e6c66f84b" category="cell">NVMe/TCP 報告 ASA r2 系統的所有最佳化路徑</block>
+  <block id="c74d97b01eae257e44aa9d5bade97baf" category="paragraph">16</block>
+  <block id="7ffe1b34523b105b2ec68027b4d78799" category="cell">如果您的 SUSE Linux Enterprise Server 版本是...</block>
+  <block id="4563b4da24891c746834232492d8a6e9" category="inline-link-macro">為 SUSE Linux Enterprise Server 16 設定 NVMe</block>
+  <block id="c76bfdc925d748a8cdb6fd0cb4d6001b" category="cell"><block ref="c76bfdc925d748a8cdb6fd0cb4d6001b" category="inline-link-macro-rx"></block></block>
+  <block id="a5b83340c16a9e5f542b8d83b7359698" category="inline-link-macro">了解 ASA r2 系統</block>
+  <block id="6e0022971af6bb297ffb7cf390f69650" category="list-text"><block ref="6e0022971af6bb297ffb7cf390f69650" category="inline-link-macro-rx"></block></block>
+  <block id="72383e72a2e01f82cf39e6b5bef8fa00" category="summary">介紹如何為 SUSE Linux Enterprise Server 16 與 ONTAP 設定 NVMe/FC。</block>
+  <block id="8a9024c9d6e91361d035fbafed58442a" category="doc">使用 ONTAP 儲存設備為 SUSE Linux Enterprise Server 16 設定 NVMe-oF</block>
+  <block id="79e7328d04b11a966a2e4e458cefdac2" category="paragraph">SUSE Linux Enterprise Server 16 主機支援基於光纖通道的 NVMe (NVMe/FC) 和基於 TCP 的 NVMe (NVMe/TCP) 協議，並具備非對稱命名空間存取 (ANA) 功能。ANA 提供與 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 等效的多路徑功能。</block>
+  <block id="08d9a17a8cc7b0cef8aae20105227cc6" category="paragraph">了解如何為 SUSE Linux Enterprise Server 16 設定 NVMe over Fabrics（NVMe-oF）主機。如需更多支援和功能資訊，請參閱 <block ref="b48d42b251389d47f80926d5c2a50eea" category="inline-link-macro-rx"></block>。</block>
+  <block id="560f1dd3df1c8e397519688f9f3cdfc7" category="paragraph">使用 SUSE Linux Enterprise Server 16 的 NVMe-oF 有以下已知限制：</block>
+  <block id="1190e777006c27e896f1d066cdaa4930" category="list-text">在伺服器上安裝 SUSE Linux Enterprise Server 16。安裝完成後，請確認您執行的是指定的 SUSE Linux Enterprise Server 16 核心：</block>
+  <block id="f1980f113e0881826ff693f4b17d5d0a" category="paragraph">SUSE Linux Enterprise Server 核心版本範例：</block>
+  <block id="1533ee126fd8f11e227dc3d689526f3c" category="paragraph">從 SUSE Linux Enterprise Server 16 開始，NVMe-oF 的預設 iopolicy 設定為<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>。如果您想將 iopolicy 更改為<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>，請如下修改 udev rules 檔案：</block>
+  <block id="f40fa917da76ec269347142ecd26f205" category="list-text">修改規則，使 <block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block> 變成 <block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>：</block>
+  <block id="922b0cabd672f72127f63daffda5daa8" category="admonition">從 ONTAP 9.16.1 開始，NVMe/FC 和 NVMe/TCP 會在 ASA r2 系統上報告所有最佳化路徑。</block>
+  <block id="729803330c2c3ddc5602fa6a32ed6680" category="paragraph">以下範例輸出顯示了託管在雙節點 ONTAP 控制器上的命名空間，適用於 AFF、FAS 和 ASA 系統以及具有 NVMe/FC 的 ASA r2 系統。</block>
+  <block id="457f54f6cefd10b25a3bedd3ee0e4fa3" category="example-title">顯示 AFF、FAS 和 ASA 範例輸出</block>
+  <block id="166d9b02aa39fa880a105b2a6f0e64cc" category="example-title">顯示 ASA r2 範例輸出</block>
+  <block id="4cbc3c8523dd8f70db284b7defb44454" category="paragraph">以下範例輸出顯示了託管在雙節點 ONTAP 控制器上的命名空間，適用於 AFF、FAS 和 ASA 系統以及具有 NVMe/TCP 的 ASA r2 系統。</block>
+  <block id="3f52de62927af66bbbcbf9a67e36d63c" category="paragraph">您可以為 SUSE Linux Enterprise Server 16 主機建立持久發現控制器（PDC）。PDC 用於自動偵測 NVMe 子系統的新增或刪除操作以及發現日誌頁面資料的變更。</block>
+  <block id="3c8457e76486b7070b5f16df832bfb55" category="paragraph">支援透過 NVMe/TCP 在 SUSE Linux Enterprise Server 16 主機和 ONTAP 控制器之間進行安全的頻內驗證。</block>
+  <block id="60940bf76e8a6f461e5cdf574e9a3897" category="sidebar">SLES-16-FCP</block>
 </blocks>

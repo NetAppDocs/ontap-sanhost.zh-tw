@@ -168,7 +168,10 @@ sidebar:
         url: "/hu_solaris_113.html"
     - title: SUSE Linux Enterprise Server
       entries:
-      - title: SUSE Linux Enterprise Server 15
+      - title: '16'
+        pdf-filename: SLES-16-FCP
+        url: "/hu-sles-16spx.html"
+      - title: 15 SPx
         pdf-filename: sles-15-FCP
         url: "/hu-sles-15spx.html"
     - title: Ubuntu
@@ -260,6 +263,8 @@ sidebar:
       entries:
       - title: ONTAP支援和功能
         url: "/nvme-sles-supported-features.html"
+      - title: '16'
+        url: "/nvme-sles16-spx.html"
       - title: 15 SPx
         url: "/nvme-sles15-spx.html"
     - title: Ubuntu

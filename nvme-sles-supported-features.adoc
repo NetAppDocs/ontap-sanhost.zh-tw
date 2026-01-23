@@ -23,6 +23,11 @@ summary: 了解 SUSE Linux Enterprise Server 對ONTAP 的支援與功能
 | 特徵 | SUSE Linux Enterprise Server 主機版本 | ONTAP 版本 
 
 
+| NVMe/TCP 報告 ASA r2 系統的所有最佳化路徑  a| 
+16
+| 9.16.1 或更高版本 
+
+
 | NVMe/TCP 支援傳輸層安全協定 (TLS) 1.3 加密。  a| 
 15 SP6 或更高版本
 | 9.16.1 或更高版本 
@@ -77,10 +82,15 @@ NOTE: 有關受支援配置的詳細信息，請參閱link:https://mysupport.net
 
 [cols="50,50"]
 |===
-| 如果您的 SUSE Linux Enterprise Server 版本是… | 了解… 
+| 如果您的 SUSE Linux Enterprise Server 版本是... | 了解更多… 
+
+
+| 16 | link:nvme-sles16-spx.html["為 SUSE Linux Enterprise Server 16 設定 NVMe"] 
 
 
 | 15 SPx 系列 | link:nvme-sles15-spx.html["為 SUSE Linux Enterprise Server 15 SPx 配置 NVMe"] 
 |===
 .相關資訊
-link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["了解如何管理 NVMe 協議"^]
+* link:https://docs.netapp.com/us-en/asa-r2/index.html["了解 ASA r2 系統"^]
+* link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["了解如何管理 NVMe 協議"^]
+

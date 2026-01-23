@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-sles-15spx.html 
-keywords: host utilities, suse linux enterprise server 15 sp7, sp6, sp5, sp4, sp3, sp2, sp1, netapp, ontap, fcp, iscsi 
-summary: 在 SUSE Linux Enterprise Server 15 SP7 上安裝 Linux 主機公用程式，以管理使用 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。 
+permalink: hu-sles-16spx.html 
+keywords: host utilities, suse linux enterprise server 16,netapp, ontap, fcp, iscsi 
+summary: 在 SUSE Linux Enterprise Server 16 上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。 
 ---
-= 配置 SUSE Linux Enterprise Server 15 SPx 以支援 FCP 和 iSCSI 以及ONTAP存儲
+= 使用 ONTAP 儲存設備為 FCP 和 iSCSI 配置 SUSE Linux Enterprise Server 16
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: 在 SUSE Linux Enterprise Server 15 SP7 上安裝 Linux 主機公用程
 
 
 [role="lead"]
-Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 SUSE Linux Enterprise Server 15 SPx 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。
+Linux Host Utilities 軟體為連接到 ONTAP 儲存設備的 Linux 主機提供管理和診斷工具。在 SUSE Linux Enterprise Server 16 主機上安裝 Linux Host Utilities 後，您可以使用 Host Utilities 來協助管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。
 
 
 
@@ -36,22 +36,13 @@ Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理�
 . 重新啟動主機並驗證作業系統是否正常運作，以確認組態是否成功。
 
 
-
-
-== 步驟 2 ：安裝 Linux 主機公用程式
-
-NetApp 強烈建議您安裝 Linux 主機公用程式，以支援 ONTAP LUN 管理，並協助技術支援收集組態資料。
-
-link:hu-luhu-80.html["安裝 Linux Host Utilities 8.0"] 。
-
-
-NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機逾時設定。
+<stdin> 中未解析的指令 - include::_include/hu/install-linux-host-utilities.adoc[]
 
 
 
 == 步驟 3 ：確認主機的多重路徑組態
 
-您可以使用 SUSE Linux Enterprise Server 15 SPx 的多路徑功能來管理ONTAP LUN。
+您可以使用 SUSE Linux Enterprise Server 16 的多路徑功能來管理 ONTAP LUN。
 
 為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
 
@@ -270,32 +261,8 @@ devices {
 
 == 步驟 6 ：檢閱已知問題
 
-SUSE Linux Enterprise Server 15 SPx 與ONTAP儲存有下列已知問題。
+沒有已知問題。
 
-[role="tabbed-block"]
-====
-.15 SP1
---
-[cols="1,2,3"]
-|===
-| NetApp錯誤ID | 標題 | 說明 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246622["12466222"^] | 在儲存容錯移轉作業期間、透過Emulex LPe12002 8GB FC將遠端連接埠傳輸至使用者在SLES15SP1上的封鎖狀態。 | 在執行儲存容錯移轉作業期間、透過Emulex LPe12002 8GB Fibre Channel（FC）將遠端連接埠傳輸至使用者在SLES15SP1上的封鎖狀態。當儲存節點恢復至最佳狀態時、LIF也會啟動、遠端連接埠狀態應顯示為「online（線上）」。 有時遠端連接埠狀態可能會繼續顯示為「封鎖」或「不存在」。 此狀態可能會導致多重路徑層LUN的「故障」路徑、以及這些LUN的I/O中斷。您可以根據下列範例命令來檢查遠端連接埠的詳細資料：--cat/sys/class/fc_host/host*/設備/rport*/ fc_remote_ports/rport*/連接埠名稱cat/sys/class/fc_host/host*/設備/rport*/ fc_remote_ports/rport*/連接埠*/連接埠狀態- 
-|===
---
-.15
---
-[cols="1,2,3"]
-|===
-| NetApp錯誤ID | 標題 | 說明 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1154309["1154309"^] | 重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式 | 重開機後、具有20個以上對應LUN的SLES 15主機可能會進入維護模式。維護模式會依照下列訊息變成單一使用者模式：
-`Give root password for maintenance (or press Control-D to continue)` 
-|===
---
-====
 
 
 == 接下來呢？

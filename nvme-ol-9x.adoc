@@ -143,6 +143,7 @@ NOTE: 如果 `hostnqn`字串不相符，您可以使用 `vserver modify`命令�
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
+.步驟
 . 確認您使用的是支援的介面卡機型：
 +
 .. 顯示模型名稱：
@@ -333,6 +334,7 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 --
 NVMe/TCP 協定不支援自動連線操作。相反，您可以透過執行 NVMe/TCP 來發現 NVMe/TCP 子系統和命名空間 `connect`或者 `connect-all`手動操作。
 
+.步驟
 . 確認啟動器連接埠可在支援的NVMe/TCP LIF中擷取探索記錄頁面資料：
 +
 [source, cli]
@@ -828,6 +830,7 @@ Oracle Linux 9.x 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全的帶
 --
 使用 CLI 設定安全的頻內驗證。
 
+.步驟
 . 取得主機 NQN ：
 +
 [source, cli]
@@ -920,6 +923,7 @@ DHHC-1:03:frpLlTrnOYtcWDxPzq4ccxU1UrH2FjV7hYw5s2XEDB+lo+TjMsOwHR\/NFtM0nBBidx+gd
 
 使用 `-o`選項來產生 JSON 檔案。如需更多語法選項，請參閱 NVMe Connect All 手冊頁。
 
+.步驟
 . 設定Json檔案：
 +
 .顯示範例

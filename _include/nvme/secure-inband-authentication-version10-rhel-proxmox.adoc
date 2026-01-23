@@ -6,6 +6,7 @@
 
 每個主機或控制器必須與一個 `DH-HMAC-CHAP`金鑰來設定安全身份驗證。  `DH-HMAC-CHAP`金鑰是 NVMe 主機或控制器的 NQN 與管理員配置的身份驗證金鑰的組合。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
 
+.步驟
 使用 CLI 或設定 JSON 檔案設定安全帶內身份驗證。如果您需要為不同的子系統指定不同的 dhchap 金鑰、則必須使用組態 JSON 檔案。
 
 [role="tabbed-block"]
@@ -14,7 +15,6 @@
 --
 使用 CLI 設定安全的頻內驗證。
 
-.步驟
 . 取得主機 NQN ：
 +
 [source, cli]
@@ -118,7 +118,6 @@ DHHC- 1:03:7zf8I9gaRcDWH3tCH5vLGaoyjzPIvwNWusBfKdpJa+hia
 
 使用 `-o`選項來產生 JSON 檔案。如需更多語法選項，請參閱 NVMe Connect All 手冊頁。
 
-.步驟
 . 配置 JSON 檔案。
 +
 

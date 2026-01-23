@@ -77,6 +77,7 @@ Rocky Linux 核心版本範例：
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
+.步驟
 . 確認您使用的是支援的介面卡機型：
 +
 .. 顯示模型名稱：
@@ -259,6 +260,7 @@ FCP CMPL: xb 000035cc Err 000fcfc0
 --
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
+.步驟
 . 驗證您使用的適配器驅動程式和韌體版本是否受支援：
 +
 [source, cli]
@@ -290,6 +292,7 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 --
 NVMe/TCP協定不支援自動連線操作。您必須手動執行 NVMe/TCP 連接或連接所有操作才能發現 NVMe/TCP 子系統和命名空間。
 
+.步驟
 . 檢查啟動器連接埠是否可以跨支援的 NVMe/TCP LIF 取得發現日誌頁面資料：
 +
 [source, cli]
@@ -859,6 +862,7 @@ Rocky Linux 9x 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全的帶�
 
 每個主機或控制器必須與一個 `DH-HMAC-CHAP`金鑰來設定安全身份驗證。  `DH-HMAC-CHAP`金鑰是 NVMe 主機或控制器的 NQN 與管理員配置的身份驗證金鑰的組合。若要驗證其對等端點、 NVMe 主機或控制器必須識別與對等端點相關的金鑰。
 
+.步驟
 使用 CLI 或設定 JSON 檔案設定安全帶內身份驗證。如果您需要為不同的子系統指定不同的 dhchap 金鑰、則必須使用組態 JSON 檔案。
 
 [role="tabbed-block"]
@@ -962,7 +966,6 @@ DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJ
 
 使用 `-o`選項來產生 JSON 檔案。有關更多語法選項，請參閱 NVMe connect-all 手冊頁。
 
-.步驟
 . 配置 JSON 檔案。
 +
 

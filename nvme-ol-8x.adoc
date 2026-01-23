@@ -148,6 +148,7 @@ systemctl restart multipathd
 --
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
 
+.步驟
 . 確認您使用的是支援的介面卡機型：
 +
 .. 顯示模型名稱：
@@ -297,6 +298,7 @@ FCP CMPL: xb 00000016 Err 00000016
 --
 為 Marvell/QLogic 介面卡設定 NVMe / FC 。
 
+.步驟
 . 確認您執行的是支援的介面卡驅動程式和韌體版本：
 +
 [source, cli]
