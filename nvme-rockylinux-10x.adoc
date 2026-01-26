@@ -774,7 +774,6 @@ Rocky Linux 10.x 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全的帶
 --
 使用 CLI 設定安全的頻內驗證。
 
-.步驟
 . 取得主機 NQN ：
 +
 [source, cli]

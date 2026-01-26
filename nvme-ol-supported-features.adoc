@@ -52,7 +52,7 @@ NOTE: NetApp  `sanlun` NVMe-oF 不支援主機實用程式。您可以使用本�
 | 特徵 | Oracle Linux 主機版本 
 
 
-| 原生 udev 規則 `nvme-cli` 該軟體包為 NVMe 多路徑提供隊列深度負載平衡  a| 
+|  `nvme-cli` 軟體套件中的原生 udev 規則為 NVMe 多路徑提供佇列深度負載平衡  a| 
 9.6 或更高版本
 
 
@@ -72,7 +72,7 @@ NOTE: NetApp  `sanlun` NVMe-oF 不支援主機實用程式。您可以使用本�
 
 
 
-| 原生 udev 規則 `nvme-cli`該軟體包為 NVMe 多路徑提供輪詢負載平衡  a| 
+|  `nvme-cli` 軟體套件中的原生 udev 規則為 NVMe 多路徑提供輪詢負載平衡  a| 
 8.3 或更高版本
 
 |===

@@ -1029,7 +1029,6 @@ Transport Service Identifier: 8009
 --
 使用 CLI 設定安全的頻內驗證。
 
-.步驟
 . 取得主機 NQN ：
 +
 [source, cli]
@@ -1122,7 +1121,6 @@ DHHC-1:03:ohdxI1yIS8gBLwIOubcwl57rXcozYuRgBsoWaBvxEvpDlQHn/7dQ4JjFGwmhgwdJWmVori
 
 使用 `-o`選項來產生 JSON 檔案。有關更多語法選項，請參閱 NVMe connect-all 手冊頁。
 
-.步驟
 . 設定Json檔案：
 +
 .顯示範例輸出

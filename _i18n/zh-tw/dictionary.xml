@@ -2035,7 +2035,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="c7c50320ea39956b088be548294af1e0" category="paragraph">10.0 或更高版本</block>
   <block id="5d2e5ee168e90c0595b3cc1eee2ee6dd" category="cell">SAN 啟動已透過 NVMe/FC 協定啟用</block>
   <block id="9d6d817f456752dac19e4b5c699bd30c" category="cell">這<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>軟體包包含自動連接腳本，無需第三方腳本。</block>
-  <block id="1115310dc5d902646a8153a110b7cbc7" category="cell">原生 udev 規則<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>該軟體包為 NVMe 多路徑提供輪詢負載平衡</block>
   <block id="a63480986ae76ec294cfdac303f1cc61" category="cell">了解…</block>
   <block id="62287eeee3056dc397ebc956062f6d92" category="cell">10系列</block>
   <block id="2ee39f4f778b47b40d3a961eef85042c" category="cell">9系列</block>
@@ -2155,7 +2154,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="160316d24f765380a7e2c247ad512d7a" category="list-text">找到為NetApp ONTAP控制器設定 iopolicy 的行，如下例所示：</block>
   <block id="97a0ff99a93f7485dcb82a548fcca4a0" category="admonition">新的 iopolicy 會自動套用於相符的NetApp ONTAP控制器設備。您無需重啟。</block>
   <block id="92520caa5da5fd65237a96731d101aee" category="list-text">驗證主機上是否正確顯示了對應ONTAP命名空間的 NVMe-oF 設定（例如，型號設定為NetApp ONTAP Controller，負載平衡 iopolicy 設定為 round-robin）：</block>
-  <block id="bf4dbd3d81297258bdb9391343d3d393" category="cell">原生 udev 規則<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 該軟體包為 NVMe 多路徑提供隊列深度負載平衡</block>
   <block id="b62ae28652ddc6a2c9bb15373668f0d0" category="paragraph">9.6 或更高版本</block>
   <block id="3bf7b9cd443b3cb0c9b741f8a4deb9dc" category="paragraph">RHEL 10.0 將 NVMe-oF 的預設 iopolicy 設定為<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>。如果您使用的是 RHEL 10.0 並且想要更改 iopolicy，請執行以下操作：<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>修改 udev 規則檔如下：</block>
   <block id="13c16c386fd131bec830d461d648a36c" category="list-text">在ONTAP系統中，驗證以下資訊：<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串匹配<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>ONTAP陣列中對應子系統的字串：</block>
@@ -2299,7 +2297,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e32699aee2530a886824102acbc184ef" category="cell"><block ref="e32699aee2530a886824102acbc184ef" category="inline-link-macro-rx"></block></block>
   <block id="7a07a307cffb48040275c1265a29ef15" category="inline-link-macro">為 RHEL 8.x 設定 NVMe</block>
   <block id="22cb5c5e0e10037e7d4925ec5d2dbf93" category="cell"><block ref="22cb5c5e0e10037e7d4925ec5d2dbf93" category="inline-link-macro-rx"></block></block>
-  <block id="b6c3e670b2b6b7ef2dc26da47cc59df9" category="paragraph">&lt;stdin&gt; 中存在未解析的指令 - include::_include/nvme/linux-validate-software-version-rockylinux.adoc[]</block>
   <block id="72c86330f335f27ea520136a0d95b881" category="sidebar">VE 9.x</block>
   <block id="af795b652b215e481ae2fd213d8bf52e" category="sidebar">VE 8.x</block>
   <block id="b1db54564fe54a4c74a975b18a791532" category="sidebar">7.x</block>
@@ -2398,7 +2395,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="55b4f27e868d94d08cb7b820fb7dcaf4" category="summary">在 SUSE Linux Enterprise Server 16 上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
   <block id="651119b7fad3ebe0625718e781b85dbd" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 配置 SUSE Linux Enterprise Server 16</block>
   <block id="536673265ab4b1de9fd943164c12494a" category="paragraph">Linux Host Utilities 軟體為連接到 ONTAP 儲存設備的 Linux 主機提供管理和診斷工具。在 SUSE Linux Enterprise Server 16 主機上安裝 Linux Host Utilities 後，您可以使用 Host Utilities 來協助管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
-  <block id="c79c0bda7187ef54ad53cb84f69b4995" category="paragraph">&lt;stdin&gt; 中未解析的指令 - include::_include/hu/install-linux-host-utilities.adoc[]</block>
   <block id="be0724c20eae9509bfecb55613ead45c" category="paragraph">您可以使用 SUSE Linux Enterprise Server 16 的多路徑功能來管理 ONTAP LUN。</block>
   <block id="40b573003d21aeb3dbe3d1c46c3c87af" category="cell">如果您的 RHEL 版本是...</block>
   <block id="8637f659452959aafbb4798db09998d6" category="cell">了解更多…</block>
@@ -2426,4 +2422,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3f52de62927af66bbbcbf9a67e36d63c" category="paragraph">您可以為 SUSE Linux Enterprise Server 16 主機建立持久發現控制器（PDC）。PDC 用於自動偵測 NVMe 子系統的新增或刪除操作以及發現日誌頁面資料的變更。</block>
   <block id="3c8457e76486b7070b5f16df832bfb55" category="paragraph">支援透過 NVMe/TCP 在 SUSE Linux Enterprise Server 16 主機和 ONTAP 控制器之間進行安全的頻內驗證。</block>
   <block id="60940bf76e8a6f461e5cdf574e9a3897" category="sidebar">SLES-16-FCP</block>
+  <block id="2f2f70e91ff2172f6a78bf052b441f39" category="paragraph"><block ref="806369b10c4f480029bde19415f580b3" category="inline-link-macro-rx"></block>。</block>
+  <block id="ae3361bffdcc882805368ae077d6fcaf" category="cell"><block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 軟體套件中的原生 udev 規則為 NVMe 多路徑提供佇列深度負載平衡</block>
+  <block id="a30e163e966b967193e35b02c3ab5b4b" category="cell"><block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 軟體套件中的原生 udev 規則為 NVMe 多路徑提供輪詢負載平衡</block>
 </blocks>

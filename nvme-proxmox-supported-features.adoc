@@ -49,7 +49,7 @@ summary: 了解 Proxmox 主機對ONTAP 的支援與功能
 
 
 
-| 原生 udev 規則 `nvme-cli`該軟體包為 NVMe 多路徑提供輪詢負載平衡  a| 
+|  `nvme-cli` 軟體套件中的原生 udev 規則為 NVMe 多路徑提供輪詢負載平衡  a| 
 9.0
 
 

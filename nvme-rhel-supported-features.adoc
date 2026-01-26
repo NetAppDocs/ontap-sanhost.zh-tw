@@ -54,7 +54,7 @@ summary: 了解ONTAP對 RHEL 主機的支援和功能
 
 
 
-| 原生 udev 規則 `nvme-cli` 該軟體包為 NVMe 多路徑提供隊列深度負載平衡  a| 
+|  `nvme-cli` 軟體套件中的原生 udev 規則為 NVMe 多路徑提供佇列深度負載平衡  a| 
 9.6 或更高版本
 
 
@@ -69,7 +69,7 @@ summary: 了解ONTAP對 RHEL 主機的支援和功能
 
 
 
-| 原生 udev 規則 `nvme-cli`該軟體包為 NVMe 多路徑提供輪詢負載平衡  a| 
+|  `nvme-cli` 軟體套件中的原生 udev 規則為 NVMe 多路徑提供輪詢負載平衡  a| 
 8.2 或更高版本
 
 |===

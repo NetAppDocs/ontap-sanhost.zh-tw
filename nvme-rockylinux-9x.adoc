@@ -61,9 +61,79 @@ Rocky Linux 核心版本範例：
 ----
 5.14.0-570.12.1.el9_6.x86_64
 ----
+. 安裝「NVMe-CLI（NVMe - CLI）套件：
++
+[source, cli]
+----
+rpm -qa|grep nvme-cli
+----
++
+以下範例顯示了 nvme-cli 軟體包版本：
+
++
+[listing]
+----
+nvme-cli-2.11-5.el9.x86_64
+----
+. 安裝 `libnvme` 套件：
++
+[source, cli]
+----
+rpm -qa|grep libnvme
+----
++
+下面的例子展示了 `libnvme`軟體包版本：
+
++
+[listing]
+----
+libnvme-1.11.1-1.el9.x86_64
+----
+. 在 Rocky Linux 主機上，檢查 hostnqn 字串 `/etc/nvme/hostnqn` ：
++
+[source, cli]
+----
+cat /etc/nvme/hostnqn
+----
++
+下面的例子展示了 `hostnqn`版本：
+
++
+[listing]
+----
+nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+----
+. 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP陣列中對應子系統的字串：
++
+[source, cli]
+----
+::> vserver nvme subsystem host show -vserver vs_coexistence_LPE36002
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+Vserver Subsystem Priority  Host NQN
+------- --------- --------  ------------------------------------------------
+vs_coexistence_LPE36002
+        nvme
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+        nvme_1
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+        nvme_2
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+        nvme_3
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
+4 entries were displayed.
+----
+====
++
+
+NOTE: 如果是 `hostnqn` 字串不相符、請使用 `vserver modify` 命令來更新 `hostnqn` 對應 ONTAP 陣列子系統上的字串、以符合 `hostnqn` 字串來源 `/etc/nvme/hostnqn` 在主機上。
 
 
-<stdin> 中存在未解析的指令 - include::_include/nvme/linux-validate-software-version-rockylinux.adoc[]
 
 
 
@@ -871,7 +941,6 @@ Rocky Linux 9x 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全的帶�
 --
 使用 CLI 設定安全的頻內驗證。
 
-.步驟
 . 取得主機 NQN ：
 +
 [source, cli]
