@@ -61,8 +61,6 @@ link:hu-solaris-80.html["安裝 Solaris Host Utilities 8.0"] 。
 
 多路徑可讓您在主機和儲存系統之間配置多條網路路徑。若一條路徑發生故障，流量仍可透過其餘路徑繼續傳輸。對於 Solaris 11.4 和 SPARC 系統，Oracle Solaris I/O 多路徑 (MPxIO) 預設為啟用。
 
-為確保為您的主機正確配置多路徑和建議的逾時參數，請驗證您是否使用了NetApp為ONTAP LUN 所建議的設定。
-
 .步驟
 . 如果您的主機配置了 FC，請驗證 `/kernel/drv/fp.conf`設定為 `mpxio-disable="no"`。
 . Solaris Host Utilities 載入NetApp針對 SPARC 和 x86_64 處理器所建議的參數設定。
@@ -199,7 +197,7 @@ NOTE: 之後 `scsi-vhci-failover-override` 已套用、 `conf` 已新增至 `svl
 ====
 . 驗證使用ONTAP LUN 的 zpools 是否支援 4 KB 對齊的 I/O：
 +
-.. 驗證您的 Solaris 主機是否安裝了最新的支援儲存庫更新 (SRU)：
+.. 請確認您的 Solaris 主機已安裝最新的支援儲存庫更新（SRU）：
 +
 [source, cli]
 ----

@@ -203,7 +203,141 @@ size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
 
 
 
-== 步驟 4 ：選擇性地將裝置排除在多重路徑之外
+== 步驟 4：確認主機的 iSCSI 組態
+
+為確保主機上的多路徑配置正確，請在主機上設定  `timeout` 參數，並確認 iSCSI 服務正在運作並連線至 iSCSI 目標。
+
+.步驟
+. 確認已安裝 iSCSI 啟動器套件（iscsi-initiator-utils）：
++
+[source, cli]
+----
+$apt list |grep open-iscsi
+----
++
+您應該會看到類似以下範例的輸出：
+
++
+[listing]
+----
+open-iscsi/noble-updates,noble-updates,now 2.1.9-3ubuntu5.4 amd64
+----
+. 驗證 iSCSI 發起程式節點名稱，該名稱位於  `/etc/iscsi/initiatorname.iscsi` 檔案中：
++
+[source, cli]
+----
+InitiatorName=iqn.YYYY-MM.com.<vendor>:<host_name>
+----
+. 配置位於  `/etc/iscsi/iscsid.conf` 檔案中的 iSCSI 會話逾時參數：
++
+[source, cli]
+----
+node.session.timeo.replacement_timeout = 5
+----
++
+iSCSI `replacement_timeout` 參數控制 iSCSI 層在逾時路徑或工作階段重新建立連線之前應等待多長時間，超過此時間後，對其執行的任何命令都會失敗。您應該在 iSCSI 組態檔中將  `replacement_timeout` 的值設為 5。
+
+. 啟用 iSCSI 服務：
++
+[source, cli]
+----
+$systemctl enable iscsid
+----
+. 啟動 iSCSI 服務：
++
+[source, cli]
+----
+$systemctl start iscsid
+----
+. 確認 iSCSI 服務正在執行：
++
+[source, cli]
+----
+$systemctl status iscsid
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+●iscsid.service - iSCSI initiator daemon (iscsid)
+     Loaded: loaded (/usr/lib/systemd/system/iscsid.service; enabled; preset: disabled)
+     Active: active (running) since Mon 2026-01-12 12:53:18 IST; 2 days ago
+TriggeredBy: ● iscsid.socket
+       Docs: man:iscsid(8)
+   Main PID: 1127419 (iscsid)
+      Tasks: 2 (limit: 76557)
+     Memory: 4.3M (peak: 8.8M)
+        CPU: 1.657s
+     CGroup: /system.slice/iscsid.service
+             ├─1127418 /usr/sbin/iscsid
+             └─1127419 /usr/sbin/iscsid
+----
+====
+. 探索 iSCSI 目標：
++
+[source, cli]
+----
+$iscsiadm --mode discovery --op update --type sendtargets --portal <target_IP>
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+iscsiadm --mode discovery --op update --type sendtargets --portal  192.168.100.197
+192.168.100.197:3260,1046 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+192.168.200.199:3260,1049 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+192.168.100.199:3260,1048 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+192.168.200.197:3260,1047 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+----
+====
+. 登入目標：
++
+[source, cli]
+----
+$iscsiadm --mode node -l all
+----
+. 設定 iSCSI 在主機開機時自動登入：
++
+[source, cli]
+----
+$iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v automatic
+----
++
+您應該會看到類似以下範例的輸出：
+
++
+[listing]
+----
+iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 -p 192.168.100.197:3260 -o update -n node.startup -v automatic
+----
+. 驗證 iSCSI 工作階段：
++
+[source, cli]
+----
+$iscsiadm --mode session
+----
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+iscsiadm --mode session
+tcp: [1] 192.168.200.197:3260,1047 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+tcp: [2] 192.168.100.197:3260,1046 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+tcp: [3] 192.168.100.199:3260,1048 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+tcp: [4] 192.168.200.199:3260,1049 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+----
+====
+
+
+
+
+== 步驟 5：（選用）將裝置從多重路徑中排除
 
 如果需要，您可以將不需要的裝置的 WWID 新增至檔案的「黑名單」區段，以排除裝置的多重路徑 `multipath.conf`功能。
 
@@ -235,7 +369,7 @@ blacklist {
 
 
 
-== 步驟 5 ：自訂 ONTAP LUN 的多重路徑參數
+== 步驟 6：自訂 ONTAP LUN 的多路徑參數
 
 如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
 
@@ -268,7 +402,7 @@ devices {
 ====
 
 
-== 步驟 6 ：檢閱已知問題
+== 步驟 7：檢閱已知問題
 
 沒有已知問題。
 

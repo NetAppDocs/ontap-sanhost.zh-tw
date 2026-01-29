@@ -1,10 +1,6 @@
-= 步驟 5 ：自訂 ONTAP LUN 的多重路徑參數
+= 
 :allow-uri-read: 
 
-
-
-
-== 步驟 5 ：自訂 ONTAP LUN 的多重路徑參數
 
 如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
 

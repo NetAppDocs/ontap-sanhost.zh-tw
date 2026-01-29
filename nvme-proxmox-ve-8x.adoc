@@ -214,7 +214,7 @@ cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
 cat /sys/class/fc_host/host*/port_name
 ----
 +
-您應該會看到類似以下內容的輸出：
+您應該會看到類似如下的輸出：
 
 +
 [listing]

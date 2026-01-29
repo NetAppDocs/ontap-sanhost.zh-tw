@@ -128,7 +128,7 @@ ARRAY_TYPE  ALUA, A/A
 ----
 # vxdmpadm settune dmp_tunable=value
 ----
-. 請確認可調參數設定正確：
+. 確認可調參數設定是否正確：
 +
 [source, cli]
 ----
@@ -188,8 +188,7 @@ dmp_native_support                 off               off
 
 iSCSI `replacement_timeout` 此參數控制 iSCSI 層在逾時路徑或會話重新建立之前應等待多長時間，然後再拒絕對其執行任何命令。NetApp建議設定以下值： `replacement_timeout` 在 iSCSI 設定檔中設定為 120。
 
-.範例
-[listing]
+[source, cli]
 ----
 # grep replacement_timeout /etc/iscsi/iscsid.conf
 node.session.timeo.replacement_timeout = 120
