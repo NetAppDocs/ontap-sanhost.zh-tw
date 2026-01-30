@@ -96,6 +96,9 @@ sanlun lun show
 --
 ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
 
+.顯示範例
+[%collapsible]
+=====
 [listing]
 ----
 # sanlun lun show -p vs39:/vol/hpux_vol_1_1/hpux_lun
@@ -116,6 +119,7 @@ up       primary    /dev/dsk/c6t0d2      fcd0    246_1c_hp
 up       primary    /dev/dsk/c10t0d2     fcd1    246_1d_hp
 up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
 ----
+=====
 --
 .AFF 或 FAS 組態
 --
@@ -123,6 +127,9 @@ AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。�
 
 以下範例顯示 ONTAP LUN 的輸出，其中包含兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑：
 
+.顯示範例
+[%collapsible]
+=====
 [listing]
 ----
 # sanlun lun show -p vs39:/vol/vol24_3_0/lun24_0
@@ -143,6 +150,7 @@ up       primary    /dev/dsk/c41t4d5   fcd1    hpux_4     0
 up       secondary  /dev/dsk/c40t4d5   fcd0    hpux_3     1
 up       secondary  /dev/dsk/c42t4d5   fcd1    hpux_4     1
 ----
+=====
 --
 ====
 

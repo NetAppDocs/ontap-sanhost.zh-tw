@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-rhel-10x.html 
-keywords: host utilities, red hat, rhel, linux, 10.x, netapp, ontap, rhel 
-summary: 在 RHEL 10.x 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。 
+permalink: hu-hpe-vme-80x.html 
+keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu 
+summary: 在 HPE VME 8.0.x 主機上安裝 Linux Host Utilities，以管理與 ONTAP LUN 的 FCP 和 iSCSI 協定操作。 
 ---
-= 配置 RHEL 10.x 以支援 FCP 和 iSCSI 以及ONTAP存儲
+= 使用 ONTAP 儲存設備為 FCP 和 iSCSI 配置 HPE VME 8.0.x
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,29 +16,11 @@ summary: 在 RHEL 10.x 主機上安裝 Linux 主機實用程序，以管理與ON
 
 
 [role="lead"]
-Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Red Hat Enterprise Linux (RHEL) 10.x 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。
+Linux Host Utilities 軟體為連接到 ONTAP 儲存設備的 Linux 主機提供管理和診斷工具。在 HPE VME 8.0.x 主機上安裝 Linux Host Utilities 後，您可以使用 Host Utilities 來協助管理 ONTAP LUN 的 FCP 和 iSCSI 傳輸協定作業。
 
 
 
-== 步驟 1 ：選擇性啟用 SAN 開機
-
-您可以將主機設定為使用 SAN 開機，以簡化部署並改善擴充性。
-
-.開始之前
-使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Linux 作業系統，主機匯流排介面卡（ HBA ）， HBA 韌體， HBA 開機 BIOS 和 ONTAP 版本是否支援 SAN 開機。
-
-.步驟
-. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["建立 SAN 啟動 LUN 並將其對應到主機"^]。
-. 在伺服器BIOS中為SAN開機LUN對應的連接埠啟用SAN開機。
-+
-如需如何啟用HBA BIOS的相關資訊、請參閱廠商專屬的文件。
-
-. 重新啟動主機並驗證作業系統是否正常運作，以確認組態是否成功。
-
-
-
-
-== 步驟 2 ：安裝 Linux 主機公用程式
+== 步驟 1：安裝 Linux Host Utilities
 
 NetApp 強烈建議您安裝 Linux 主機公用程式，以支援 ONTAP LUN 管理，並協助技術支援收集組態資料。
 
@@ -49,9 +31,9 @@ NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機
 
 
 
-== 步驟 3 ：確認主機的多重路徑組態
+== 步驟 2：確認主機的多路徑配置
 
-您可以使用 RHEL 10.x 的多路徑功能來管理ONTAP LUN。
+您可以使用 HPE VME 8.0.x 的多路徑功能來管理 ONTAP LUN。
 
 為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
 
@@ -165,13 +147,12 @@ ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中�
 [listing]
 ----
 # multipath -ll
-3600a098038314e535a24584e4b496252 dm-32 NETAPP,LUN C-Mode
-size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+3600a098038314c4a433f577471797958 dm-2 NETAPP,LUN C-Mode size=180G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:0:41 sdan 66:112  active ready running
-  |- 11:0:1:41 sdcb 68:240  active ready running
-  |- 14:0:2:41 sdfd 129:240 active ready running
-  `- 14:0:0:41 sddp 71:112  active ready running
+  |- 14:0:0:0  sdc  8:32   active ready running
+  |- 17:0:0:0  sdas 66:192 active ready running
+  |- 14:0:3:0  sdar 66:176 active ready running
+  `- 17:0:3:0  sdch 69:80  active ready running
 ----
 =====
 --
@@ -187,8 +168,7 @@ AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。�
 [listing]
 ----
 # multipath -ll
-3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
-size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
 | |- 16:0:3:0  sdcg 69:64  active ready running
 | `- 10:0:0:0  sdb  8:16   active ready running
@@ -203,7 +183,7 @@ size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
 
 
 
-== 步驟 4：確認主機的 iSCSI 組態
+== 步驟 3：確認主機的 iSCSI 組態
 
 請確保已為您的主機正確配置 iSCSI。
 
@@ -211,11 +191,11 @@ size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
 您可以在 iSCSI 主機上執行下列步驟。
 
 .步驟
-. 確認已安裝 iSCSI 啟動器套件（iscsi-initiator-utils）：
+. 確認已安裝 iSCSI 啟動器套件（open-iscsi）：
 +
 [source, cli]
 ----
-rpm -qa | grep iscsi-initiator-utils
+$apt list |grep open-iscsi
 ----
 +
 您應該會看到類似以下範例的輸出：
@@ -223,7 +203,7 @@ rpm -qa | grep iscsi-initiator-utils
 +
 [listing]
 ----
-iscsi-initiator-utils-6.2.1.11-0.git4b3e853.el9.x86_64
+open-iscsi/noble-updates,noble-updates,now 2.1.9-3ubuntu5.4 amd64
 ----
 . 驗證 iSCSI 發起程式節點名稱，該名稱位於  `/etc/iscsi/initiatorname.iscsi` 檔案中：
 +
@@ -264,20 +244,18 @@ $systemctl status iscsid
 ====
 [listing]
 ----
-● iscsid.service - Open-iSCSI
+●iscsid.service - iSCSI initiator daemon (iscsid)
      Loaded: loaded (/usr/lib/systemd/system/iscsid.service; enabled; preset: disabled)
-     Active: active (running) since Tue 2025-12-02 11:36:21 EST; 2 weeks 1 day ago
+     Active: active (running) since Mon 2026-01-12 12:53:18 IST; 2 days ago
 TriggeredBy: ● iscsid.socket
        Docs: man:iscsid(8)
-             man:iscsiuio(8)
-             man:iscsiadm(8)
-   Main PID: 2263 (iscsid)
-     Status: "Ready to process requests"
-      Tasks: 1 (limit: 816061)
-     Memory: 18.5M
-        CPU: 14.480s
+   Main PID: 1127419 (iscsid)
+      Tasks: 2 (limit: 76557)
+     Memory: 4.3M (peak: 8.8M)
+        CPU: 1.657s
      CGroup: /system.slice/iscsid.service
-             └─2263 /usr/sbin/iscsid -f -d2
+             ├─1127418 /usr/sbin/iscsid
+             └─1127419 /usr/sbin/iscsid
 ----
 ====
 . 探索 iSCSI 目標：
@@ -292,11 +270,11 @@ $iscsiadm --mode discovery --op update --type sendtargets --portal <target_IP>
 ====
 [listing]
 ----
-iscsiadm --mode discovery --op update --type sendtargets --portal  192.168.30.87
-192.168.30.87:3260,1139 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
-192.168.31.97:3260,1142 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
-192.168.31.87:3260,1141 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
-192.168.30.97:3260,1140 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
+iscsiadm --mode discovery --op update --type sendtargets --portal  192.168.100.197
+192.168.100.197:3260,1046 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+192.168.200.199:3260,1049 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+192.168.100.199:3260,1048 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+192.168.200.197:3260,1047 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
 ----
 ====
 . 登入目標：
@@ -317,7 +295,7 @@ $iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v
 +
 [listing]
 ----
-iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 -p 192.168.30.87:3260 -o update -n node.startup -v automatic
+iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 -p 192.168.100.197:3260 -o update -n node.startup -v automatic
 ----
 . 驗證 iSCSI 工作階段：
 +
@@ -332,17 +310,17 @@ $iscsiadm --mode session
 [listing]
 ----
 iscsiadm --mode session
-tcp: [1] 192.168.30.87:3260,1139 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
-tcp: [2] 192.168.31.97:3260,1142 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
-tcp: [3] 192.168.31.87:3260,1141 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
-tcp: [4] 192.168.30.97:3260,1140 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
+tcp: [1] 192.168.200.197:3260,1047 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+tcp: [2] 192.168.100.197:3260,1046 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+tcp: [3] 192.168.100.199:3260,1048 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+tcp: [4] 192.168.200.199:3260,1049 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
 ----
 ====
 
 
 
 
-== 步驟 5：（選用）將裝置從多重路徑中排除
+== 步驟 4 ：選擇性地將裝置排除在多重路徑之外
 
 如果需要，您可以將不需要的裝置的 WWID 新增至檔案的「黑名單」區段，以排除裝置的多重路徑 `multipath.conf`功能。
 
@@ -374,7 +352,7 @@ blacklist {
 
 
 
-== 步驟 6：自訂 ONTAP LUN 的多路徑參數
+== 步驟 5 ：自訂 ONTAP LUN 的多重路徑參數
 
 如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
 
@@ -407,7 +385,7 @@ devices {
 ====
 
 
-== 步驟 7：檢閱已知問題
+== 步驟 6 ：檢閱已知問題
 
 沒有已知問題。
 
@@ -416,12 +394,5 @@ devices {
 == 接下來呢？
 
 * link:hu-luhu-command-reference.html["瞭解如何使用 Linux 主機公用程式工具"] 。
-* 了解 ASM 鏡像
-+
-自動儲存管理（ ASM ）鏡射可能需要變更 Linux 多重路徑設定、以允許 ASM 識別問題並切換至替代故障群組。ONTAP 上的大多數 ASM 組態都使用外部備援，這表示資料保護是由外部陣列提供，而 ASM 則不會鏡射資料。某些站台使用具有一般備援的ASM來提供雙向鏡像、通常是跨不同站台。如需詳細資訊，請參閱link:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["ONTAP 上的 Oracle 資料庫"^]。
-
-* 了解紅帽Linux虛擬化（KVM）
-+
-Red Hat Linux 可以作為 KVM 主機。這樣，您就可以使用基於 Linux 核心的虛擬機器 (KVM) 技術在單一實體伺服器上執行多個虛擬機器。KVM 主機不需要對ONTAP LUN 進行明確主機設定設定。
-
+* 在 ONTAP LUN 上設定 HPE VME 資料存放區，然後設定虛擬機器。如需詳細資訊，請參閱廠商 HPE 文件。
 

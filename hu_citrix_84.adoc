@@ -153,6 +153,9 @@ systemctl start multipathd
 --
 ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
 
+.顯示範例
+[%collapsible]
+=====
 [listing]
 ----
 /usr/sbin/mpathutil status
@@ -165,6 +168,7 @@ size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
   |- 16:0:0:0  sdcf 69:48   active ready running
   `- 16:0:1:0  sdcg 69:64   active ready running
 ----
+=====
 --
 .AFF 或 FAS 組態
 --
@@ -172,6 +176,9 @@ AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。�
 
 以下範例顯示 ONTAP LUN 的輸出，其中包含兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑：
 
+.顯示範例
+[%collapsible]
+=====
 [listing]
 ----
 /usr/sbin/mpathutil status
@@ -185,6 +192,7 @@ size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
      |- 16:0:0:0  sdcf 69:48   active ready running
      `- 16:0:1:0  sdcg 69:64   active ready running
 ----
+=====
 --
 ====
 

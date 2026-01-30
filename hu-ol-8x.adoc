@@ -208,7 +208,10 @@ size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
 
 == 步驟 4：確認主機的 iSCSI 組態
 
-為確保主機上的多路徑配置正確，請在主機上設定  `timeout` 參數，並確認 iSCSI 服務正在運作並連線至 iSCSI 目標。
+請確保已為您的主機正確配置 iSCSI。
+
+.關於這項工作
+您可以在 iSCSI 主機上執行下列步驟。
 
 .步驟
 . 確認已安裝 iSCSI 啟動器套件（iscsi-initiator-utils）：
