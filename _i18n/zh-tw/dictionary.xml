@@ -223,11 +223,9 @@
   <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">功能</block>
   <block id="6ba6a18088999d632ca174b9873a3b12" category="list-text">安裝「NVMe-CLI（NVMe - CLI）套件：</block>
   <block id="e71d1275a2744aceb8d59932f2e5fe56" category="list-text">啟用核心內建NVMe多重路徑：</block>
-  <block id="c98fed57553daff5a2cf2fa022d54254" category="section-title">設定NVMe/FC</block>
   <block id="3ea394f2d9cebf2dfc911ba5e025db7a" category="section-title">Broadcom / Emulex</block>
   <block id="2ca464fc1baee04e879e92c84915029a" category="section-title">Marvell / QLogic</block>
   <block id="f4091bd53ceacc19d9ac766c9cdb9866" category="section-title">設定NVMe/TCP</block>
-  <block id="55ab77cd94d55aaa364453f7cf104285" category="section-title">驗證NVMe</block>
   <block id="0199c49af15b1997cf6d2ddd0ea8adf4" category="list-text">將「ql2xextend_error_logging=x1e400000」值附加至對應的「modf探測qla2xxx conf」檔案。</block>
   <block id="e8a5a7214d896558232c2e63f40a05c2" category="cell">可能原因</block>
   <block id="7aebfa1e2291377e040de92d7f7f335f" category="cell">因應措施</block>
@@ -596,15 +594,10 @@
   <block id="c44700394b9a4063439bc92ea42d5e41" category="inline-link-macro">Windows 注意事項</block>
   <block id="9d9a9c7064b8193ac433a5365fe1afdb" category="list-text"><block ref="9d9a9c7064b8193ac433a5365fe1afdb" category="inline-link-macro-rx"></block></block>
   <block id="8637d6c1f3e0436f7f2ec935b829bd22" category="paragraph">輸出範例：</block>
-  <block id="b064015a3282fc489c69be4a7699cc91" category="section-title">驗證軟體版本</block>
-  <block id="52b5830420efb96c3a91beb52bac3b23" category="paragraph">* 輸出範例： *</block>
   <block id="256141e56255da4626b3cd641b2f785a" category="list-text">確認<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串符合<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> ONTAP 陣列上對應子系統的字串：</block>
-  <block id="2f749c740a41c151c1485b84206264ca" category="list-text">確認您使用的是支援的介面卡機型。</block>
-  <block id="fd3cbdb4a32644d25b951ee0b3bc5aae" category="open-title">適用於 NVMe / FC 的 Marvell/QLogic FC 介面卡</block>
   <block id="25f321fe018cf20163dc0c70e2eea888" category="section-title">啟用詳細記錄</block>
   <block id="2401f6c892699dd24f7fa72c9a39b053" category="open-title">lpfc</block>
   <block id="db9afb1f05f1d6930c84839b76060ccc" category="open-title">qla2xxx</block>
-  <block id="6faca8b2572cd22ef1b619e4be0a8165" category="paragraph">NVMe / TCP 沒有自動連線功能。因此、如果某個路徑發生故障、且在 10 分鐘的預設逾時期間內未恢復、則 NVMe / TCP 無法自動重新連線。若要避免逾時、您應該將容錯移轉事件的重試期間設為至少 30 分鐘。</block>
   <block id="6136261711c49bf0e8e1dcb22a2c524f" category="cell">不適用</block>
   <block id="c49c2dee17bca0bb7b37e30a531ae56e" category="cell">由安裝程式用來設定 HBA 參數。</block>
   <block id="f5defee9801990370925a9ccd31788ad" category="cell">由安裝程式用來設定 QLogic FC HBA 參數。</block>
@@ -709,7 +702,6 @@
   <block id="532cbcbb7aad95ce1f00e4e3fb4b03f6" category="list-text">對於 AIX 73-TL1-SP2-2320 層級、請安裝<block ref="9b3ffcc15ca4d75da623901d3832fc42" prefix=" " category="inline-code"></block> 套件：</block>
   <block id="f17bfdf5999401bcdd6897f6d5dd675b" category="inline-link-macro">管理 AIX 上的臨時修復</block>
   <block id="bcdcf815cb913fe205982051fea55f20" category="paragraph">如需管理 iFix 的詳細資訊、請參閱 <block ref="d0c56d52e1733062faaa4c2667974f7c" category="inline-link-macro-rx"></block>。</block>
-  <block id="6ca857f7a44a21cfffda914cf9549710" category="paragraph">* 輸出範例 *</block>
   <block id="955736fca778773f397bfff3fb13554e" category="list-text">在介面卡上執行以啟用對 NVMe / FC 傳輸協定的支援<block ref="298944b0d52065fb6d4009e722898415" prefix=" " category="inline-code"></block> 在 VIOS 上執行命令：</block>
   <block id="6cd5c80cb797f1e2d35f1d580ffe6d20" category="list-text">確認已在介面卡上啟用支援：</block>
   <block id="84b3e0604b5f47c082acaf2ab109e481" category="list-text">為所有介面卡啟用 NVMe / FC 傳輸協定：</block>
@@ -737,11 +729,8 @@
   <block id="9fd88788efc2039d4c86e3d60310b147" category="paragraph">擷取虛擬介面卡清單：</block>
   <block id="e31c4b8d2ef22d8837e50793ada5f2e9" category="cell">根據預設、 AIX 作業系統會針對 NVMe / FC 使用 20 秒的 All path Down （ APD ）逾時值。  然而、 ONTAP MetroCluster 自動非計畫性切換（ AUSO ）和 tiebreaker 啟動的切換工作流程、可能會比 APD 逾時時間長一點、導致 I/O 錯誤。</block>
   <block id="9e10b0a5aea11686043890a4e7f7d67d" category="list-text">確認有多個路徑可供使用。</block>
-  <block id="e92702d12f6aa1afc14988d919e8a06e" category="list-text">在指定主機匯流排介面卡（ HBA ）上的同一主機上使用 NVMe 和 SCSI 共存流量、而不使用明確的 dm-multipath 設定、以避免使用 NVMe 命名空間。</block>
-  <block id="f6f33242227bf5d079f46a94f3780b75" category="paragraph">您可以為 Broadcom / Emulex 或 Marvell/Qlogic 介面卡設定 NVMe / FC 。</block>
   <block id="10ce16d02c992727f1f013108c8de76e" category="list-text">驗證您使用的是建議的Broadcom<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 韌體與收件匣驅動程式：</block>
   <block id="42d18363818951017351b676627b6308" category="list-text">請確認<block ref="a8961a0cb8d5dfd91556db806f0f2cfc" prefix=" " category="inline-code"></block> 已設定。這可讓 Marvell 介面卡作為 NVMe / FC 啟動器運作：</block>
-  <block id="4985227ddc1cd987688d7fe0d8873ec8" category="section-title">啟用 1MB I/O （選用）</block>
   <block id="26bcb9f1cb6f391f4b2c18e676bb458d" category="open-title">NVMe / FC</block>
   <block id="8b7c42123642e2e4ea7dd426aeb2de58" category="open-title">NVMe / TCP</block>
   <block id="1976d7f704de389d9fe064e08ea35b2d" category="open-title">欄位</block>
@@ -753,8 +742,6 @@
   <block id="174bb021781f59df2db4c30e37782cb2" category="list-text">安裝<block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block> 套件：</block>
   <block id="6362c7afdb076db9b67492227263935e" category="admonition">如果是<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串不相符、請使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 命令來更新<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 對應 ONTAP 陣列子系統上的字串、以符合<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串來源<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 在主機上。</block>
   <block id="4dab1b4f451ec45a30431478018d4fd5" category="list-text">驗證您使用的是建議的Broadcom<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 韌體與內建驅動程式。</block>
-  <block id="b36540ee1aea09e40e2e7cb8bdd31c82" category="list-text">確認啟動器連接埠已啟動並正在執行、而且您可以看到目標生命體：</block>
-  <block id="18b65bc41e8c8da147a70b70eb89f63f" category="paragraph">您可以使用下列程序來驗證 NVMe 。</block>
   <block id="8872970684e912db5d3cedce11e8f59c" category="list-text">確認已啟用核心內建 NVMe 多重路徑：</block>
   <block id="f61222023dff7dff4f1f07b6593dfa16" category="list-text">驗證個別 ONTAP 命名空間的適當 NVMe 設定（例如、模型設定為 NetApp ONTAP 控制器、負載平衡 iopolicing 設定為循環）是否正確反映在主機上：</block>
   <block id="43784ec2c1aaa42346ed96f22c8410b6" category="sidebar">9.2.</block>
@@ -804,7 +791,6 @@
   <block id="88e9fff2ac8cc531b067dfa25e8e2e8c" category="section-title">Linux 核心的建議驅動程式設定</block>
   <block id="684209c8b964ee194fb302d1403a0fc3" category="paragraph">當您設定 FC 環境時、若使用與 Linux 核心搭售的原生收件匣驅動程式、則可以使用驅動程式的預設值。</block>
   <block id="b666f8343a2e41c88c8766775c8dec12" category="paragraph">ESXi 8.x 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：</block>
-  <block id="a3d213368ad78179b0d9b7b5d93b6385" category="list-text">目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。</block>
   <block id="e681a3b45989b468533c4b90ee960bf9" category="cell">不適用</block>
   <block id="0a0990c5ca1e9aa6bb4871721a00290c" category="list-text">安裝 <block ref="7e5271dd15da7840bc647fc6451145a6" category="inline-link-macro-rx"></block> 設定FC和NVMe通用的驅動程式參數。</block>
   <block id="50f145df2b9dca1b51d6f136b1d6e045" category="section-title">非 ASA 組態</block>
@@ -902,14 +888,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7cd95c816f8a04ff858a857e3e5a484d" category="sidebar">20.04</block>
   <block id="78550e91fbb2b5810210b43b287b7c4e" category="summary">如何使用 ONTAP 設定 Ubuntu 22.04 的 NVMe 主機</block>
   <block id="c6846e0213409c96ad77f710fa307642" category="paragraph">含非對稱命名空間存取（ ANA ）的 Ubuntu 22.04 支援 NVMe over Fabrics （ NVMe over Fabric 、 NVMe over Fibre Channel 、 NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
-  <block id="71251761db71d74ce129581af51deea0" category="paragraph">下列支援適用於 ONTAP 的 Ubuntu 22.04 NVMe 主機組態：</block>
-  <block id="c7b8b08d4869ac84fdd57c23e53885a4" category="list-text">原生 NVMe - CLI 套件中的 NetApp 外掛程式會顯示 NVMe / FC 命名空間的 ONTAP 詳細資料。</block>
-  <block id="ee255f2b3c440f68a5bcc9252dfbbd03" category="paragraph">根據預設、 Ubuntu 22.04 已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑。因此、不需要明確的設定。</block>
-  <block id="3621191bce4af482b56d942fb4c692d3" category="paragraph">您可以使用下列程序來驗證最低支援的 Ubuntu 22.04 軟體版本。</block>
   <block id="daeaa7aff0b3adc4e01d754047800447" category="list-text">在伺服器上安裝 Ubuntu 22.04 。安裝完成後、請確認您正在執行指定的 Ubuntu 22.04 核心：</block>
   <block id="8f3ce7816b499a01a35c5c583a9b91a5" category="list-text">在 Ubuntu 22.04 主機上、請在中檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="9b581488b49c5ac223f72f44dce46098" category="list-text">在節點上所有支援的 NVMe / TCP 啟動器目標生命週期上執行 NVMe connect -all 命令、並將控制器遺失逾時時間設定至少 30 分鐘或 1800 秒：</block>
-  <block id="2d737bddc26fec4760722ea17aae3833" category="open-title">NVMe / TCP</block>
   <block id="90fc24312f4ab09ff404f0abfb26b105" category="cell">JIRA ID</block>
   <block id="fb99255f11e8a5c23d9e98c28ef9997d" category="cell">1593771</block>
   <block id="970c941050f97a801dd7266734957b39" category="cell">Red Hat Enterprise Linux 9.3 QLogic SAN 主機在儲存移動性作業期間會遺失部分多重路徑</block>
@@ -993,36 +974,17 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4a69ba1535a62f4e118b39597d1edde0" category="section-title">ASA 組態</block>
   <block id="353cc9a5b9b1899de18cfe6696d32fff" category="list-text">執行<block ref="eb2bf21d337d5754274973a21f351bbd" prefix=" " category="inline-code"></block>命令，然後重新啟動主機。</block>
   <block id="7ed1d546734f7bd4b0ef96e269498a07" category="summary">如何使用 ONTAP 設定 Ubuntu 24.04 的 NVMe 主機</block>
-  <block id="60996b6ae2fc149121c64d77e545be4d" category="doc">適用於 ONTAP 的 Ubuntu 24.04 的 NVMe 主機組態</block>
   <block id="36b519db67ced390f37880201669ceb0" category="paragraph">Ubuntu 24.04 和非對稱命名空間存取（ ANA ）支援 NVMe over Fabrics （ NVMe over Fabric ， NVMe of ），包括 NVMe over Fibre Channel （ NVMe / FC ）和其他傳輸。在 NVMe 環境中、 ANA 等同於 iSCSI 和 FC 環境中的 ALUA 多重路徑、並以核心內建 NVMe 多重路徑來實作。</block>
-  <block id="1cebcdc437378665b2b13986cfecf476" category="paragraph">下列支援適用於 ONTAP 的 Ubuntu 24.04 NVMe 主機組態：</block>
-  <block id="cb6a7f1c7c2b0754816bd169cec44fa7" category="paragraph">根據預設、 Ubuntu 24.04 已啟用 NVMe 命名空間的核心內建 NVMe 多重路徑。這表示您不需要明確的設定。</block>
   <block id="8f08cb72c5a7a46b7b7c4226b677247d" category="paragraph">ONTAP 的 Ubuntu 24.04 目前不支援使用 NVMe 型傳輸協定進行 SAN 開機。</block>
-  <block id="14b2bcdde3b94eba7e2f71e3f7f697ee" category="paragraph">您可以使用下列程序來驗證最低支援的 Ubuntu 24.04 軟體版本。</block>
   <block id="c4d9b54b2cbafddba6cb828668bb5dfa" category="list-text">在伺服器上安裝 Ubuntu 24.04 。安裝完成後、請確認您正在執行指定的 Ubuntu 24.04 核心：</block>
   <block id="6af8bb70dc7b638c43ad6228d8556ead" category="list-text">在 Ubuntu 24.04 主機上，請檢查 hostnqn 字符串，網址爲<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
-  <block id="d99695e6a2bc736629304dfb41f083c2" category="list-text">驗證來自的字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>是否<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>符合<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> ONTAP 陣列上對應子系統的字串：</block>
   <block id="945d72653662c95f9c7078a068a95e3a" category="admonition">如果<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串不相符，請使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block>命令更新<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>對應 ONTAP 陣列子系統上的字串，以符合主機上的字<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>串<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>。</block>
   <block id="8d1bdd041ee1a1988425b0c6bdbb8684" category="paragraph">為 Broadcom / Emulex 介面卡設定 NVMe / FC 。</block>
   <block id="a10050dbe2f6bc656e7e7bb8d22502a9" category="list-text">確認您使用的是支援的介面卡機型：</block>
-  <block id="a67280dcc378318a3dc4702ecf63d3ef" category="list-text"><block ref="eed65f7b111c5a679c9ebd52d64f1a7e" prefix="" category="inline-code"></block></block>
-  <block id="b8f6ddd724a8b8e74953ea5f8d0ed17f" category="list-text"><block ref="00f8f6c3e3c596defab169a6543cea71" prefix="" category="inline-code"></block></block>
-  <block id="6829ad73e092b3fd6e0df14f5709e4d1" category="list-text">確認您使用的是推薦的 Broadcom<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 韌體和收件匣驅動程式。</block>
-  <block id="22ace6e1c575032bc0c5446c3e5fae03" category="list-text"><block ref="fbb7658d10be2c4db27511a6ae32756e" prefix="" category="inline-code"></block></block>
-  <block id="c5c93d83ef086318d9656de6331063f0" category="list-text"><block ref="40ef4ddbdd7977b19e5f6fc2f92ccdfd" prefix="" category="inline-code"></block></block>
-  <block id="e907323b98507b54f33720ae8fbfca83" category="paragraph">預期輸出為 3 。</block>
-  <block id="ca1e38ef1021d28d62b444c03b7d2cbd" category="list-text"><block ref="02634c9bfc2b6365f527e5ab8750abd5" prefix="" category="inline-code"></block></block>
-  <block id="293151d7d1e64e8099605ae4f4946ca7" category="list-text"><block ref="4b346cab565b7cd14816652d6ebe2807" prefix="" category="inline-code"></block></block>
-  <block id="8e6aa9b9f216193455a6353f967e119f" category="list-text"><block ref="56f637cd126b99eb02fe1ddc06ff71c5" prefix="" category="inline-code"></block></block>
   <block id="7e80c20fc9456778419a9603d273227b" category="paragraph">Ubuntu 24.04 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="25d69e2db3ca7d51d3e21ac543d47915" category="paragraph">預期的 ouptut 為 1 。</block>
-  <block id="4eb7059500e57471598a526a4ac18f38" category="paragraph">NVMe / TCP 不支援自動連線功能。您可以改用或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>命令手動探索 NVMe / TCP 子系統和命名空間<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block>。</block>
-  <block id="f9ff6d5cef4ac461a39536812496b2a8" category="list-text">確認其他的 NVMe / TCP 啟動器目標 LIF 組合可以擷取探索記錄頁面資料：</block>
   <block id="5922de8746f6bbeb2eeca1b8270454b3" category="admonition">從 Ubuntu 24.04 開始，將關閉適用於 NVMe / TCP 的 Ctrl_LUS_TMOD 逾時預設設定。這表示重試次數沒有限制（無限期重試），而且您不需要在使用或<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block>命令（選項 -l ）時手動設定特定的 Ctrl_loss_tmo 逾時時間<block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block>。在這種預設行為下、當路徑故障時、 NVMe / TCP 控制器不會發生逾時、而且會無限期保持連線。</block>
   <block id="25fe112b2528a69b5409b7266e42b118" category="paragraph">預期輸出為「 Y 」。</block>
-  <block id="d3565492c368dc728f9d13493c793986" category="list-text">確認主機上正確顯示個別 ONTAP 命名空間的適當 NVMe 設定（例如，模型設定為「 NetApp ONTAP 控制器」，負載平衡 iopoliced 設定為「循環配置資源」）：</block>
-  <block id="aca77ba2a0ce331ce07b00bc07442e14" category="list-text"><block ref="d077a463f31db192bc2166bfffcf8de0" prefix="" category="inline-code"></block></block>
-  <block id="b297fab030eb1c0e21f8c1c43eb2cefb" category="list-text"><block ref="8449e535ecd6773d321bf1358b514b8b" prefix="" category="inline-code"></block></block>
   <block id="198ef744f24c6814a980b52a8b628dbd" category="paragraph">在含 ONTAP 版本的 Ubuntu 24.04 中， NVMe 主機組態沒有已知問題。</block>
   <block id="cd5fcfe02b1d4f040fde5ba738d7572a" category="sidebar">24.04</block>
   <block id="d7eeafe16e993a6db0f390553a4f2af4" category="paragraph">NVMe / TCP 傳輸協定不支援此<block ref="c73910bff7459eb78b9c2d1e7c0e3ed7" prefix=" " category="inline-code"></block>作業。您可以改為透過手動執行 NVMe / TCP 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block>作業來探索 NVMe / TCP 子系統和命名空間<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block>。</block>
@@ -1960,7 +1922,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f41f106fe6317bf1fffbc4d33580f3d8" category="doc">配置 CentOS 8.x 以支援 FCP 和 iSCSI 以用於ONTAP存儲</block>
   <block id="cf833d77734e30b1539d8f93f0b110b0" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 CentOS 8.x 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="f29ce90064042fdf54d7f129472e1a29" category="paragraph">您可以使用 CentOS 8.x 的多路徑功能來管理ONTAP LUN。</block>
-  <block id="37818604bc325c12da17d12c5a11b2c6" category="paragraph">有關 CentOS Red Hat 相容核心的已知問題，請參閱 <block ref="38e57a44e96058881795f8bd23b80525" category="inline-link-macro-rx"></block> 適用於 Red Hat Enterprise Linux (RHEL) 8.x 系列。</block>
   <block id="2d0bfc473ee44f864dd566c0718022a0" category="summary">介紹如何將 Oracle Linux 8.x 與ONTAP結合使用</block>
   <block id="ba67fad4eca07067a073d76c746b6f4d" category="doc">配置 Oracle Linux 8.x 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
   <block id="dc041beabf1d67c4a880346af0ab38cb" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Oracle Linux 8.x 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
@@ -2382,7 +2343,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="872d5db3305b32e54793529162eed87f" category="paragraph">為 LPFC 或 Qlogic (Qla2xxx) 設定詳細日誌記錄。</block>
   <block id="fe040552b4fc83efe2ba593498969954" category="list-text">請核對設定：</block>
   <block id="79c482cb23c057c0d600ecd3434dbb27" category="section-title">常見的“nvme-cli”錯誤及解決方法</block>
-  <block id="c481530fd3180128cebd4b0d3be77c0f" category="paragraph">如果問題仍然存在，請收集以下文件和命令輸出並聯絡我們。 <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> 以便進一步分診：</block>
   <block id="0669c03dc492faf8d7b9fc2bd8512b73" category="sidebar">早期主機實用程式版本</block>
   <block id="2444d67396b745a440cfa96bf55da9c6" category="doc">了解如何使用 NVMe-oF 設定 ONTAP SAN 主機</block>
   <block id="55b4f27e868d94d08cb7b820fb7dcaf4" category="summary">在 SUSE Linux Enterprise Server 16 上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
@@ -2450,4 +2410,62 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="32b0b2fb94c023fc633bfa7c0caf801f" category="section-title">步驟 2：確認主機的 iSCSI 組態</block>
   <block id="961c1419cfe8060ce390b232d6e264c5" category="sidebar">HPE VME</block>
   <block id="c956a158e93a32e225bfb772f4b64394" category="sidebar">HPE VME 8.0.x</block>
+  <block id="1cb98d24e975e6c21662789b34e2d3c2" category="paragraph">有關 CentOS Red Hat 相容核心的已知問題，請參閱 Red Hat Enterprise Linux（RHEL）8.x 系列的<block ref="b64a4fb065ec8eadbc881ece1cbf7ba0" category="inline-link-macro-rx"></block>。</block>
+  <block id="fef8ee7b94533bb078469a27722a8bba" category="list-text">確認 <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案是否存在。如果檔案不存在，則建立一個空的零位元組檔案：</block>
+  <block id="2ce48a142c0e80ab8f317a99f9fe6ed3" category="summary">在 Oracle Linux 10 主機上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="ea29a45fe150e616e26859f8c3d6f7e6" category="doc">使用 ONTAP 儲存設備為 Oracle Linux 10 設定 FCP 和 iSCSI</block>
+  <block id="9b146d11e8cfc51a1ac9d01dc405828f" category="paragraph">Linux Host Utilities 軟體為連接到 ONTAP 儲存設備的 Linux 主機提供管理和診斷工具。在 Oracle Linux 10 主機上安裝 Linux Host Utilities 後，您可以使用 Host Utilities 來協助管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
+  <block id="bd18c770f808d8ed650b8826f4be0370" category="paragraph">您可以使用 Oracle Linux 10 的多路徑功能來管理 ONTAP LUN。</block>
+  <block id="53b840df2d08c073f2534327f111dbf9" category="summary">適用於 Oracle Linux 10 與 ONTAP 的 NVMe-oF 主機組態</block>
+  <block id="7230db89ca6861865150be7831e09274" category="doc">使用 NVMe-oF 為 ONTAP 儲存設備設定 Oracle Linux 10.x</block>
+  <block id="d510a8ad0c1bbc5c8d97b199a8f0a853" category="paragraph">了解如何為 Oracle Linux 10.x 設定 NVMe over Fabrics （NVMe-oF） 主機。如需更多支援和功能資訊、請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
+  <block id="9f53c366466752fe327c961a6ac8050d" category="paragraph">NVMe-oF 與 Oracle Linux 10.x 有以下已知限制：</block>
+  <block id="434a4c1992d6e87fcab47a93c7ad1e82" category="paragraph">使用以下程序驗證支援的最低 Oracle Linux 10.x 軟體版本。</block>
+  <block id="0ae5db6158a6e86bee0d9ecd4e04c8ac" category="list-text">在伺服器上安裝 Oracle Linux 10.x。安裝完成後，請確認您執行的是指定的 Oracle Linux 10.x 核心。</block>
+  <block id="9a1fc841d104b96cae7df9dfaadeaf1f" category="list-text">在 Oracle Linux 10.x 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串於<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
+  <block id="026e7910f8597707ea78ced9009402b0" category="paragraph">Oracle Linux 10.x 主機將 NVMe-oF 的預設 iopolicy 設定為<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>。您可以透過修改 udev 規則檔案來將 iopolicy 變更為<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>。</block>
+  <block id="93653ae68b7f62e4baef589277623491" category="paragraph">以下範例輸出顯示了託管在雙節點 ONTAP 控制器上的命名空間，該命名空間適用於具有 NVMe/FC 的 AFF、FAS、ASA 或 ASA r2 系統。</block>
+  <block id="6f412196079d9e58544081f4700ce25f" category="paragraph">以下範例輸出顯示了託管在雙節點 ONTAP 控制器上的命名空間，適用於具有 NVMe/TCP 的 AFF、FAS、ASA 或 ASA r2 系統。</block>
+  <block id="74ef0cdc12fc9f4e8b83d1a035e4f577" category="paragraph">Oracle Linux 10.x 主機和 ONTAP 控制器之間透過 NVMe/TCP 支援安全的頻內驗證。</block>
+  <block id="8ae4d61c82b1c9b58e4acbd1373806b2" category="cell">從 Oracle Linux 9.6 開始，nvme 支援「佇列深度」I/O 策略，並且預設啟用該選項。</block>
+  <block id="d3c49c5822283d264df05a1fd8b0870e" category="inline-link-macro">為 Oracle Linux 10 設定 NVMe</block>
+  <block id="7d3306fa564ca0cc7f3c887e0359e138" category="cell"><block ref="7d3306fa564ca0cc7f3c887e0359e138" category="inline-link-macro-rx"></block></block>
+  <block id="7d3905e0cba501e1167bfeb0ef23716d" category="inline-link-macro">了解 ASA R2</block>
+  <block id="c5aad2fbcc370dd1069cc7b310e5f818" category="paragraph"><block ref="1d871fa88754498eb3c93e5a73370e81" category="inline-link-macro-rx"></block> <block ref="e479a529e06da14c3826316f4b5d486e" category="inline-link-macro-rx"></block></block>
+  <block id="81d8d5962924b66a80a5c3110f594d9c" category="doc">使用 ONTAP 儲存設備為 Ubuntu 22.04 設定 NVMe-oF</block>
+  <block id="7375c26540849f01a84eac6b85362a26" category="inline-link-macro">Ubuntu ONTAP 支援與功能</block>
+  <block id="3c317945c8c1e566a0973c6bfe2e23c8" category="paragraph">了解如何為 Ubuntu 22.04 配置 NVMe over Fabrics（NVMe-oF）主機。有關更多支援和功能資訊，請參閱 <block ref="2596c465ddd6c92fd8b161574a0cd8ba" category="inline-link-macro-rx"></block>。</block>
+  <block id="b5bdaf0b6b0807ef8e3508c017b220b1" category="paragraph">NVMe-oF 與 Ubuntu 22.04 有以下已知限制：</block>
+  <block id="6ddd22a26c1d066bc09e395480afb927" category="list-text">目前 Ubuntu 22.04 與 ONTAP 不支援使用 NVMe-oF 傳輸協定進行 SAN 開機。</block>
+  <block id="5a62653e96ff80952f0f615590c366f3" category="paragraph">如需支援組態的其他詳細資訊，請參閱 <block ref="a7003953f15e88b0eda85022d31017b5" category="inline-link-macro-rx"></block>。</block>
+  <block id="c421752fceed574575540b4537854630" category="section-title">步驟 1：安裝 Ubuntu 和 NVMe 軟體並驗證您的組態</block>
+  <block id="5d98ed6d7426c19599636b584cbd8499" category="paragraph">Ubuntu 核心版本範例：</block>
+  <block id="4febcb438e38d8ea26f146c7eb4cc6b0" category="list-text">在 ONTAP 系統中，驗證<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>是否與 ONTAP 儲存系統中對應子系統的<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串相符：</block>
+  <block id="cdb7d0ce548732d9f1fd2c399d2d64cb" category="paragraph">為 Broadcom/Emulex 或 Marvell/Qlogic 介面卡設定 NVMe/FC，或使用手動探索和連線作業來設定 NVMe/TCP。</block>
+  <block id="3a3389ef589dfce02feb77c9c8bf0726" category="paragraph">您應該會看到類似以下範例的輸出：</block>
+  <block id="97f9a8bc058f969713afc7e49ff602ef" category="paragraph">您應該會看到類似如下的輸出：</block>
+  <block id="b5d49ed10fc06ec57d0952d3ebd54840" category="paragraph">NVMe/TCP 不具備自動連線功能。您可以透過手動執行 NVMe/TCP<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 操作來探索 NVMe/TCP 子系統和命名空間。</block>
+  <block id="555b74e71738f2e402fc0de53b48fc8b" category="paragraph">如果路徑中斷且在預設的 10 分鐘逾時時間內未恢復，NVMe/TCP 將無法自動重新連線。為防止逾時，請將故障轉移事件的重試週期設定為至少 30 分鐘。</block>
+  <block id="bb89e9bace59fd7fd241efa108f91336" category="list-text">檢查啟動器連接埠是否能夠透過支援的 NVMe/TCP LIF 擷取探索記錄頁面資料：</block>
+  <block id="a00a6308352e2747153a9ae26be20fff" category="section-title">步驟 4：驗證多重路徑組態</block>
+  <block id="e3439a3f81a4e69f12df04a21d7a0a84" category="doc">使用 ONTAP 儲存設備為 Ubuntu 24.04 設定 NVMe-oF</block>
+  <block id="5bb69d27124817d4ad8a88830c49b873" category="paragraph">了解如何為 Ubuntu 24.04 配置 NVMe over Fabrics（NVMe-oF）主機。有關更多支援和功能資訊，請參閱 <block ref="2596c465ddd6c92fd8b161574a0cd8ba" category="inline-link-macro-rx"></block>。</block>
+  <block id="acd22788128acb44c428e0f1cf6b4a4c" category="paragraph">NVMe-oF 與 Ubuntu 24.04 有以下已知限制：</block>
+  <block id="d16989a0a7cff1ea32aab2ccb4a37161" category="admonition">如果<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串不相符，請使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 指令來更新對應 ONTAP 儲存系統子系統上的<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串，使其與主機上<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 的<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串相符。</block>
+  <block id="165acd219757dbbec65fbd5a24792898" category="list-text">請確認您使用的是推薦的 Broadcom<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 韌體和內建驅動程式：</block>
+  <block id="06bd4ba69054120ef18345db9c5cccca" category="paragraph">NVMe/TCP 不支援自動連線操作。您可以透過手動執行 NVMe/TCP<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 操作來探索 NVMe/TCP 子系統和命名空間。</block>
+  <block id="fbb8c3634e390cf69c69cd1f449175c7" category="paragraph">== 步驟 5：檢閱已知問題</block>
+  <block id="efaa7a41c95bd26123cf738971f624b5" category="summary">了解 ONTAP 對 Ubuntu 主機的支援和功能</block>
+  <block id="35408fbc8cac4acdf31c0e994b9e617f" category="cell">Ubuntu 主機版本</block>
+  <block id="f079c6de48aef64f8a494cd8ba7dc4b0" category="cell">原生套件中的 NetApp 外掛程式會顯示 NVMe/FC 命名空間的 ONTAP 詳細資訊。</block>
+  <block id="f6a7cbbb80d1a6558737078fc690dbd8" category="paragraph">22.04 或更新版本</block>
+  <block id="3c18533c5f637891d53935135a3f19cd" category="cell">在同一主機上的給定主機匯流排適配器（HBA）上，支援 NVMe 和 SCSI 流量，無需明確設定 dm-multipath 來阻止聲明 NVMe 命名空間</block>
+  <block id="f11fee1c202f6e705b5fd13528d79f9f" category="cell">核心中 NVMe 多路徑功能預設對 NVMe 命名空間啟用。因此，無需顯式配置。</block>
+  <block id="141a30e0e3658704b53664b1d6d92012" category="cell">如果您的 Ubuntu 版本是 ..</block>
+  <block id="79735da1d0f9dfbb1518d18d7249f5c6" category="inline-link-macro">為 Ubuntu 24.04 設定 NVMe</block>
+  <block id="9fef4c15c5a56298164ab156cc0d11a3" category="cell"><block ref="9fef4c15c5a56298164ab156cc0d11a3" category="inline-link-macro-rx"></block></block>
+  <block id="e142a16151c5acc6ebb2be3ff16b7e3c" category="inline-link-macro">為 Ubuntu 22.04 設定 NVMe</block>
+  <block id="549658667f6362886a369bc723e2a20d" category="cell"><block ref="549658667f6362886a369bc723e2a20d" category="inline-link-macro-rx"></block></block>
+  <block id="36efc339e29dbfc55b87bdb738345d78" category="paragraph">如果問題仍然存在，請收集以下文件和命令輸出，並聯絡 <block ref="ea2f4052f3eaf8e0d09bdf7668185025" category="inline-link-macro-rx"></block> 進行進一步排查：</block>
+  <block id="43a1437f7f656cd8be7c996c58719e0a" category="sidebar">10.0</block>
 </blocks>

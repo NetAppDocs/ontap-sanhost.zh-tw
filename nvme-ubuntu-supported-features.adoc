@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: nvme-ubuntu-supported-features.html 
+keywords: nvme, linux, ubuntu, red hat, enterprise 
+summary: 了解 ONTAP 對 Ubuntu 主機的支援和功能 
+---
+= 了解 ONTAP 對 Ubuntu 主機的支援和功能
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+無論系統設定中執行的ONTAP版本為何， ONTAP支援以下 SAN 主機功能。
+
+[cols="75,25"]
+|===
+| 特徵 | Ubuntu 主機版本 
+
+
+| 原生套件中的 NetApp 外掛程式會顯示 NVMe/FC 命名空間的 ONTAP 詳細資訊。  a| 
+22.04 或更新版本
+
+
+
+| 在同一主機上的給定主機匯流排適配器（HBA）上，支援 NVMe 和 SCSI 流量，無需明確設定 dm-multipath 來阻止聲明 NVMe 命名空間  a| 
+22.04 或更新版本
+
+
+
+| 核心中 NVMe 多路徑功能預設對 NVMe 命名空間啟用。因此，無需顯式配置。  a| 
+22.04 或更新版本
+
+|===
+
+NOTE: 有關受支援配置的詳細信息，請參閱link:https://mysupport.netapp.com/matrix/["互通性對照表工具"^]。
+
+
+
+== 下一步
+
+[cols="50,50"]
+|===
+| 如果您的 Ubuntu 版本是 .. | 了解… 
+
+
+| 24.04 | link:nvme-ubuntu-2404.html["為 Ubuntu 24.04 設定 NVMe"] 
+
+
+| 22.04 | link:nvme-ubuntu-2204.html["為 Ubuntu 22.04 設定 NVMe"] 
+|===
+.相關資訊
+link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["了解如何管理 NVMe 協議"^]
