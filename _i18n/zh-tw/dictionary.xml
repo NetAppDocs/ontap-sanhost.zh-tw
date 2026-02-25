@@ -2375,7 +2375,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3f52de62927af66bbbcbf9a67e36d63c" category="paragraph">您可以為 SUSE Linux Enterprise Server 16 主機建立持久發現控制器（PDC）。PDC 用於自動偵測 NVMe 子系統的新增或刪除操作以及發現日誌頁面資料的變更。</block>
   <block id="3c8457e76486b7070b5f16df832bfb55" category="paragraph">支援透過 NVMe/TCP 在 SUSE Linux Enterprise Server 16 主機和 ONTAP 控制器之間進行安全的頻內驗證。</block>
   <block id="60940bf76e8a6f461e5cdf574e9a3897" category="sidebar">SLES-16-FCP</block>
-  <block id="2f2f70e91ff2172f6a78bf052b441f39" category="paragraph"><block ref="806369b10c4f480029bde19415f580b3" category="inline-link-macro-rx"></block>。</block>
   <block id="ae3361bffdcc882805368ae077d6fcaf" category="cell"><block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 軟體套件中的原生 udev 規則為 NVMe 多路徑提供佇列深度負載平衡</block>
   <block id="a30e163e966b967193e35b02c3ab5b4b" category="cell"><block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> 軟體套件中的原生 udev 規則為 NVMe 多路徑提供輪詢負載平衡</block>
   <block id="db69f2e21d32b6494100c9cdb558a83c" category="list-text">確認已安裝 iSCSI 啟動器套件（iscsi-initiator-utils）：</block>
@@ -2412,10 +2411,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="c956a158e93a32e225bfb772f4b64394" category="sidebar">HPE VME 8.0.x</block>
   <block id="1cb98d24e975e6c21662789b34e2d3c2" category="paragraph">有關 CentOS Red Hat 相容核心的已知問題，請參閱 Red Hat Enterprise Linux（RHEL）8.x 系列的<block ref="b64a4fb065ec8eadbc881ece1cbf7ba0" category="inline-link-macro-rx"></block>。</block>
   <block id="fef8ee7b94533bb078469a27722a8bba" category="list-text">確認 <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案是否存在。如果檔案不存在，則建立一個空的零位元組檔案：</block>
-  <block id="2ce48a142c0e80ab8f317a99f9fe6ed3" category="summary">在 Oracle Linux 10 主機上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
-  <block id="ea29a45fe150e616e26859f8c3d6f7e6" category="doc">使用 ONTAP 儲存設備為 Oracle Linux 10 設定 FCP 和 iSCSI</block>
-  <block id="9b146d11e8cfc51a1ac9d01dc405828f" category="paragraph">Linux Host Utilities 軟體為連接到 ONTAP 儲存設備的 Linux 主機提供管理和診斷工具。在 Oracle Linux 10 主機上安裝 Linux Host Utilities 後，您可以使用 Host Utilities 來協助管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
-  <block id="bd18c770f808d8ed650b8826f4be0370" category="paragraph">您可以使用 Oracle Linux 10 的多路徑功能來管理 ONTAP LUN。</block>
   <block id="53b840df2d08c073f2534327f111dbf9" category="summary">適用於 Oracle Linux 10 與 ONTAP 的 NVMe-oF 主機組態</block>
   <block id="7230db89ca6861865150be7831e09274" category="doc">使用 NVMe-oF 為 ONTAP 儲存設備設定 Oracle Linux 10.x</block>
   <block id="d510a8ad0c1bbc5c8d97b199a8f0a853" category="paragraph">了解如何為 Oracle Linux 10.x 設定 NVMe over Fabrics （NVMe-oF） 主機。如需更多支援和功能資訊、請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
@@ -2467,5 +2462,10 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e142a16151c5acc6ebb2be3ff16b7e3c" category="inline-link-macro">為 Ubuntu 22.04 設定 NVMe</block>
   <block id="549658667f6362886a369bc723e2a20d" category="cell"><block ref="549658667f6362886a369bc723e2a20d" category="inline-link-macro-rx"></block></block>
   <block id="36efc339e29dbfc55b87bdb738345d78" category="paragraph">如果問題仍然存在，請收集以下文件和命令輸出，並聯絡 <block ref="ea2f4052f3eaf8e0d09bdf7668185025" category="inline-link-macro-rx"></block> 進行進一步排查：</block>
-  <block id="43a1437f7f656cd8be7c996c58719e0a" category="sidebar">10.0</block>
+  <block id="e44b2b58aad54238aa5355009152242d" category="paragraph"><block ref="7985fef0202f035198f9b90e728f7c0d" category="inline-link-macro-rx"></block>。</block>
+  <block id="43350dfeda24a210866e938e8eecce66" category="paragraph">將<block ref="9a0ef88465d2105ffa310985c6028776" prefix=" " category="inline-code"></block>替換為主機啟動時要自動登入的目標名稱。將<block ref="0bfdde656b1793c584acc5fdacf0a6ac" prefix=" " category="inline-code"></block>替換為目標的 IP 位址和連接埠號碼。例如：</block>
+  <block id="cb81b0ab1d51502be708f945a76e352a" category="summary">在 Oracle Linux 10.x 主機上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="22429905973644b59fef5bc5f1de5cc0" category="doc">使用 ONTAP 儲存設備為 Oracle Linux 10.x 設定 FCP 和 iSCSI</block>
+  <block id="c095933cd33553034e8d119262dd097b" category="paragraph">Linux Host Utilities 軟體為連接到 ONTAP 儲存設備的 Linux 主機提供管理和診斷工具。在 Oracle Linux 10.x 主機上安裝 Linux Host Utilities 後，您可以使用 Host Utilities 來協助管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
+  <block id="53b0cb8dd1f208321bcde1fc420505d1" category="paragraph">您可以使用 Oracle Linux 10.x 的多路徑功能來管理 ONTAP LUN。</block>
 </blocks>

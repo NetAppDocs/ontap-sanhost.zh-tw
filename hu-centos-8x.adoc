@@ -312,10 +312,10 @@ $iscsiadm --mode node -l all
 $iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v automatic
 ----
 +
-您應該會看到類似以下範例的輸出：
+將 `<target_name>`替換為主機啟動時要自動登入的目標名稱。將 `<ip:port>`替換為目標的 IP 位址和連接埠號碼。例如：
 
 +
-[listing]
+[source, cli]
 ----
 iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 -p 192.168.30.87:3260 -o update -n node.startup -v automatic
 ----

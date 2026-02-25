@@ -132,7 +132,7 @@ sidebar:
     - title: Oracle Linux
       pdf-filename: OA-FCP
       entries:
-      - title: '10.0'
+      - title: 10.x
         url: "/hu-ol-10x.html"
       - title: 9.x
         url: "/hu-ol-9x.html"
