@@ -518,7 +518,6 @@
   <block id="c7c7e4d1fc8a47f946a88914900694c3" category="list-text">HP-UX 11iv2</block>
   <block id="4feac8845db3a6b1f4e4ead570b6b3ad" category="list-text">HP-UX 11iv3</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">版本資訊</block>
-  <block id="cf5f238fca8b6e155078aa41c175743a" category="sidebar">9.0</block>
   <block id="fc42d5b62a406fecb7a634ca014f42c2" category="paragraph">從7.0U3c開始、預設會載入所需的NVMe/TCP模組。如需設定網路和NVMe/TCP介面卡、請參閱VMware vSphere文件。</block>
   <block id="209ae9abdc2efd05e90e3a97a8913a9b" category="section-title">驗證NVMe/TCP</block>
   <block id="e4dbb8bc2f2492f010d3f33dd68f00c8" category="list-text">驗證NVMe / TCP介面卡的狀態。</block>
@@ -2468,4 +2467,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="22429905973644b59fef5bc5f1de5cc0" category="doc">使用 ONTAP 儲存設備為 Oracle Linux 10.x 設定 FCP 和 iSCSI</block>
   <block id="c095933cd33553034e8d119262dd097b" category="paragraph">Linux Host Utilities 軟體為連接到 ONTAP 儲存設備的 Linux 主機提供管理和診斷工具。在 Oracle Linux 10.x 主機上安裝 Linux Host Utilities 後，您可以使用 Host Utilities 來協助管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
   <block id="53b0cb8dd1f208321bcde1fc420505d1" category="paragraph">您可以使用 Oracle Linux 10.x 的多路徑功能來管理 ONTAP LUN。</block>
+  <block id="6a2b4410790513f6bead3be5a1c5f033" category="paragraph">8.0 或更新版本</block>
+  <block id="de99ebfc9b67fc827d4b885ffe66df51" category="section-title">步驟 3：（選用）修改 udev 規則中的 iopolicy</block>
+  <block id="6c3cb6f0244406645b054fde3485555c" category="paragraph">從 Proxmox VE 9.0 開始，NVMe-oF 的預設 iopolicy 設定為<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>。如果您想將 iopolicy 變更為<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>（該選項也可配置），請如下修改 udev rules 檔案：</block>
+  <block id="3261e25ecb6c10cb23753dafcc11d3f3" category="list-text">修改規則，使 <block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block> 變更為 <block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>，如下列範例所示：</block>
+  <block id="306924ca750fad388254a44133cf90dd" category="list-text">請驗證子系統的目前 I/O 策略。將&lt;subsystem&gt;替換為您的子系統名稱，例如 nvme-subsys0。</block>
 </blocks>
