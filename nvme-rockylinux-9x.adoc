@@ -101,7 +101,7 @@ cat /etc/nvme/hostnqn
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:4c4cXXXX-0056-XXXX-8048-b9cXXXX25633
+nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0056-xxxx-8048-b9cxxxx25633
 ----
 . 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP陣列中對應子系統的字串：
 +
@@ -119,13 +119,13 @@ Vserver Subsystem Priority  Host NQN
 ------- --------- --------  ------------------------------------------------
 vs_coexistence_LPE36002
         nvme
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4cXXXX-0056-XXXX-8048-b9cXXXX25633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0056-xxxx-8048-b9cxxxx25633
         nvme_1
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4cXXXX-0056-XXXX-8048-b9cXXXX25633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0056-xxxx-8048-b9cxxxx25633
         nvme_2
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4cXXXX-0056-XXXX-8048-b9cXXXX25633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0056-xxxx-8048-b9cxxxx25633
         nvme_3
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4cXXXX-0056-XXXX-8048-b9cXXXX25633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0056-xxxx-8048-b9cxxxx25633
 4 entries were displayed.
 ----
 ====
@@ -831,8 +831,7 @@ nvme list-subsys /dev/nvme4n5
 [listing, subs="+quotes"]
 ----
 nvme-subsys4 - NQN=nqn.1992-08.com.netapp:sn.3a5d31f5502c11ef9f50d039eab6cb6d:subsystem.nvme_1
-               hostnqn=nqn.2014-08.org.nvmexpress:uuid:e6dade64-216d-
-11ec-b7bb-7ed30a5482c3
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:e6daxxxx-216d-xxxx-b7bb-7edxxxx482c3
 iopolicy=round-robin\
 +- nvme1 *fc* traddr=nn-0x2082d039eaa7dfc8:pn-0x2088d039eaa7dfc8,host_traddr=nn-0x20000024ff752e6d:pn-0x21000024ff752e6d *live optimized*
 +- nvme12 *fc* traddr=nn-0x2082d039eaa7dfc8:pn-0x208ad039eaa7dfc8,host_traddr=nn-0x20000024ff752e6d:pn-0x21000024ff752e6d *live non-optimized*
@@ -853,7 +852,7 @@ nvme list-subsys /dev/nvme1n1
 [listing, subs="+quotes"]
 ----
 nvme-subsys5 - NQN=nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
-hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33
+hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0035-xxxx-804b-b5cxxxx44d33
 iopolicy=round-robin
 \
 +- nvme13 *tcp* traddr=192.168.2.25,trsvcid=4420,host_traddr=192.168.2.31,
@@ -968,7 +967,7 @@ nvme gen-dhchap-key -s optional_secret -l key_length {32|48|64} -m HMAC_function
 [listing]
 ----
 nvme gen-dhchap-key -m 3 -n nqn.2014-
-08.org.nvmexpress:uuid:e6daXXXX-216d-XXXX-b7bb-7edXXXX482c3
+08.org.nvmexpress:uuid:e6daxxxx-216d-xxxx-b7bb-7edxxxx482c3
 DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJM6yZsTeEpGkDHMHQ255+g=:
 ----
 . 在 ONTAP 控制器上、新增主機並指定兩個 dhchap 金鑰：
@@ -1049,14 +1048,14 @@ NOTE: 在以下範例中，  `dhchap_key`對應於 `dhchap_secret`和 `dhchap_ct
 cat /etc/nvme/config.json
 [
 {
-  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:9796c1ec-0d34-11eb-
-  b6b2-3a68dd3bab57",
+  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:9796xxxx-0d34-xxxx-
+  b6b2-3a6xxxxbab57",
   "hostid":"b033cd4fd6db4724adb48655bfb55448",
   "dhchap_key":" DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:"
 },
 {
-  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-
-  804b-b5c04f444d33",
+  "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0035-xxxx-
+  804b-b5cxxxx44d33",
   "subsystems":[
         {
           "nqn":"nqn.1992-
@@ -1114,13 +1113,13 @@ nvme connect-all -J /etc/nvme/config.json
 =====
 [listing]
 ----
-already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
+already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0035-xxxx-804b-b5cxxxx44d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
 r_DHCP,transport=tcp,traddr=192.168.1.25,trsvcid=4420
-already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
+already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0035-xxxx-804b-b5cxxxx44d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
 r_DHCP,transport=tcp,traddr=192.168.2.25,trsvcid=4420
-already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
+already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0035-xxxx-804b-b5cxxxx44d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
 r_DHCP,transport=tcp,traddr=192.168.1.24,trsvcid=4420
-already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-b5c04f444d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
+already connected to hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0035-xxxx-804b-b5cxxxx44d33,nqn=nqn.1992-08.com.netapp:sn.8dde3be2cc7c11efb777d039eab6cb6d:subsystem. bidi
 r_DHCP,transport=tcp,traddr=192.168.2.24,trsvcid=4420
 ----
 =====

@@ -83,7 +83,7 @@ cat /etc/nvme/hostnqn
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:497aXXXX-e6d0-XXXX-8dc2-a89XXXX00874
+nqn.2014-08.org.nvmexpress:uuid:497axxxx-e6d0-xxxx-8dc2-a89xxxx00874
 ----
 . 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP儲存系統中對應子系統的字串：
 +
@@ -100,7 +100,7 @@ nqn.2014-08.org.nvmexpress:uuid:497aXXXX-e6d0-XXXX-8dc2-a89XXXX00874
 Vserver Subsystem Host NQN
 ------- --------- -------------------------------------- -----------
 ol_157_nvme_ss_10_0
-nqn.2014-08.org.nvmexpress:uuid:497aXXXX-e6d0-XXXX-8dc2-a89XXXX00874
+nqn.2014-08.org.nvmexpress:uuid:497axxxx-e6d0-xxxx-8dc2-a89xxxx00874
 ----
 ====
 +
