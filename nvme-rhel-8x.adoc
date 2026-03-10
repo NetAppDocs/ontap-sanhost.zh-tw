@@ -109,7 +109,7 @@ cat /etc/nvme/hostnqn
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3410-8035-b8c04f4c5132
+nqn.2014-08.org.nvmexpress:uuid:4c4cXXXX-0032-XXXX-8035-b8cXXXXc5132
 ----
 . 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP儲存系統中對應子系統的字串：
 +

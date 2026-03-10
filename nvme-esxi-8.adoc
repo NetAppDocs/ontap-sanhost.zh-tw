@@ -59,7 +59,7 @@ summary: 您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe 
 
 [listing]
 ----
-Host NQN: nqn.2014-08.org.nvmexpress:uuid:62a19711-ba8c-475d-c954-0000c9f1a436
+Host NQN: nqn.2014-08.org.nvmexpress:uuid:62a1XXXX-ba8c-XXXX-c954-000XXXX1a436
 ----
 [listing]
 ----
@@ -71,7 +71,7 @@ Host NQN: nqn.2014-08.org.nvmexpress:uuid:62a19711-ba8c-475d-c954-0000c9f1a436
 ----
 Vserver Subsystem Host NQN
 ------- --------- ----------------------------------------------------------
-nvme_fc nvme_ss  nqn.2014-08.org.nvmexpress:uuid:62a19711-ba8c-475d-c954-0000c9f1a436
+nvme_fc nvme_ss  nqn.2014-08.org.nvmexpress:uuid:62a1XXXX-ba8c-XXXX-c954-000XXXX1a436
 ----
 如果主機 NQN 字串不相符、您應該使用 `vserver nvme subsystem host add` 用於更新對應 ONTAP NVMe 子系統上正確主機 NQN 字串的命令。
 
