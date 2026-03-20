@@ -1,0 +1,12 @@
+= 
+:allow-uri-read: 
+
+
+NetApp 強烈建議您安裝 Linux 主機公用程式，以支援 ONTAP LUN 管理，並協助技術支援收集組態資料。
+
+Rocky Linux 是一個與 RHEL 相容的發行版，它沒有單獨的 Linux Host Utilities 套件。請使用與 RHEL 版本對應的 Linux Host Utilities 套件。
+
+link:hu-luhu-80.html["安裝 Linux Host Utilities 8.0"] 。
+
+
+NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機逾時設定。
