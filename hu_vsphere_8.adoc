@@ -348,7 +348,7 @@ VMware vSphere 8.x 搭配 ONTAP 版本有下列已知問題：
 | NetApp錯誤ID | 標題 | 說明 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1543660["1543660"^] | 當使用 vNVMe 介面卡的 Linux VM 遇到長時間的 All Paths Down （ APD ）視窗時、就會發生 I/O 錯誤  a| 
+| link:https://jira.ngage.netapp.com/browse/CONTAPEXT-1126["CONTAPEXT-1126"^] | 當使用 vNVMe 介面卡的 Linux VM 遇到長時間的 All Paths Down （ APD ）視窗時、就會發生 I/O 錯誤  a| 
 執行 vSphere 8.x 及更新版本、並使用虛擬 NVMe （ vNVMe ）介面卡的 Linux VM 會發生 I/O 錯誤、因為根據預設、 vNVMe 重試作業會停用。為了避免在所有路徑停機（ APD ）或大量 I/O 負載期間、在執行舊版核心的 Linux VM 上造成中斷、 VMware 推出了可調整的「 VSCSIDisableNvmeRetry 」來停用 vNVMe 重試作業。
 
 |===
