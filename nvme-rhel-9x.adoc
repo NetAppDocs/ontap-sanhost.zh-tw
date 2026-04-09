@@ -523,7 +523,13 @@ nvme	connect-all	-t	tcp	-w	192.168.31.15	-a	192.168.31.49
 
 == 步驟 4：（可選）修改 udev 規則中的 iopolicy
 
-RHEL 9.6 將 NVMe-oF 的預設 iopolicy 設定為 `round-robin`。如果您使用的是 RHEL 9.6 並且想要更改 iopolicy，請執行以下操作： `queue-depth`修改 udev 規則檔如下：
+.RHEL 9.x 版本中 iopolicy 的變更
+* 從 RHEL 9.7 開始，預設的 iopolicy 是 queue-depth。
+* 在 RHEL 9.6 中，round-robin 是預設的 iopolicy，但 queue-depth 可作為可設定的選項。
+* 在 RHEL 9.6 之前，round-robin 是唯一支援的 NVMe-oF iopolicy。
+
+
+如果您使用的是 RHEL 9.6 並且想要將 iopolicy 變更為  `queue-depth`，請依照下列方式修改 udev 規則檔案：
 
 .步驟
 . 使用 root 權限在文字編輯器中開啟 udev 規則檔：
@@ -742,51 +748,79 @@ Namespace Usage    Format             FW             Rev
 ====
 . 確認每個路徑的控制器狀態均為有效、且具有正確的ANA狀態：
 +
+[source, cli]
+----
+nvme list-subsys /dev/<controller_ID>
+----
++
+
+NOTE: 從 ONTAP 9.16.1 開始，NVMe/FC 和 NVMe/TCP 會在 ASA r2 系統上報告所有最佳化路徑。
+
++
 [role="tabbed-block"]
 ====
 .NVMe / FC
 --
-[source, cli]
-----
-nvme list-subsys /dev/nvme100n1
-----
-.顯示範例
+以下範例輸出顯示了託管在雙節點 ONTAP 控制器上的命名空間，適用於 AFF、FAS 和 ASA 系統以及具有 NVMe/FC 的 ASA r2 系統。
+
+.顯示 AFF、FAS 和 ASA 範例輸出
 [%collapsible]
 =====
 [listing, subs="+quotes"]
 ----
-nvme-subsys4 - NQN=nqn.1992-08.com.netapp:sn.3623e199617311f09257d039eaa7dfc9:subsystem.Nvme31
-               hostnqn=nqn.2014-08.org.nvmexpress:uuid: 4c4cxxxx-0056-xxxx-8048-b9cxxxx2563
-               \
-+- nvme199 *fc*   traddr=nn-0x200fd039eaa7dfc8:pn-0x2010d039eaa7dfc8,host_traddr=nn-0x200000109bf044b1:pn-0x100000109bf044b1 *live optimized*
-+- nvme246 *fc*  traddr=nn-0x200fd039eaa7dfc8:pn-0x2011d039eaa7dfc8,host_traddr=nn-0x200000109bf044b1:pn-0x100000109bf044b1  *live non-optimized*
-+- nvme249 *fc*  traddr=nn-0x200fd039eaa7dfc8:pn-0x2013d039eaa7dfc8,host_traddr=nn-0x200000109bf044b2:pn-0x100000109bf044b2 *live optimized*
-+- nvme251 *fc*   traddr=nn-0x200fd039eaa7dfc8:pn-0x2012d039eaa7dfc8,host_traddr=nn-0x200000109bf044b2:pn-0x100000109bf044b2 *live non-optimized*
+nvme-subsys5 - NQN=nqn.1992-08.com.netapp:sn.f7565b15a66911ef9668d039ea951c46:subsystem.nvme1
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
+\
++- nvme126 fc traddr=nn-0x2036d039ea951c45:pn-0x2038d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c3:pn-0x2100f4c7aa0cd7c3 *live optimized*
++- nvme176 fc traddr=nn-0x2036d039ea951c45:pn-0x2037d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c2:pn-0x2100f4c7aa0cd7c2 *live optimized*
++- nvme5 fc traddr=nn-0x2036d039ea951c45:pn-0x2039d039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c2:pn-0x2100f4c7aa0cd7c2 *live non-optimized*
++- nvme71 fc traddr=nn-0x2036d039ea951c45:pn-0x203ad039ea951c45,host_traddr=nn-0x2000f4c7aa0cd7c3:pn-0x2100f4c7aa0cd7c3 *live non-optimized*
+----
+=====
+.顯示 ASA r2 範例輸出
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme-subsys96 - NQN=nqn.1992-08.om.netapp:sn.b351b2b6777b11f0b3c2d039ea5cfc91:subsystem.nvme24
+                hostnqn=nqn.2014-08.org.nvmexpress:uuid:d3b581b4-c975-11e6-8425-0894ef31a074
+\
+ +- nvme203 *fc* traddr=nn-0x2011d039ea5cfc90:pn-0x2015d039ea5cfc90,host_traddr=nn-0x200000109bdacc76:pn-0x100000109bdacc76 *live optimized*
+ +- nvme25 *fc* traddr=nn-0x2011d039ea5cfc90:pn-0x2014d039ea5cfc90,host_traddr=nn-0x200000109bdacc75:pn-0x100000109bdacc75 *live optimized*
+ +- nvme30 *fc* traddr=nn-0x2011d039ea5cfc90:pn-0x2012d039ea5cfc90,host_traddr=nn-0x200000109bdacc75:pn-0x100000109bdacc75 *live optimized*
+ +- nvme32 *fc* traddr=nn-0x2011d039ea5cfc90:pn-0x2013d039ea5cfc90,host_traddr=nn-0x200000109bdacc76:pn-0x100000109bdacc76 *live optimized*
 ----
 =====
 --
 .NVMe / TCP
 --
-[source, cli]
-----
-nvme list-subsys /dev/nvme0n1
-----
-.顯示範例
+以下範例輸出顯示了託管在雙節點 ONTAP 控制器上的命名空間，適用於 AFF、FAS 和 ASA 系統以及具有 NVMe/TCP 的 ASA r2 系統。
+
+.顯示 AFF、FAS 和 ASA 範例輸出
 [%collapsible]
 =====
 [listing, subs="+quotes"]
 ----
-nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.51a3c9846e0c11f08f5dd039eaa7dfc9:subsystem.Nvme1
-hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0035-xxxx-804b-b5cxxxx44d33
+nvme-subsys4 - NQN=nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.nvme4
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0035-5910-804b-c2c04f444d33
 \
-+- nvme0 *tcp* traddr=192.168.30.48,trsvcid=4420,host_traddr=192.168.30.15,
-src_addr=192.168.30.15 *live optimized*
-+- nvme1 *tcp* traddr=192.168.30.49,trsvcid=4420,host_traddr=192.168.30.15,
-src_addr=192.168.30.15 *live non-optimized*
-+- nvme2 *tcp* traddr=192.168.31.48,trsvcid=4420,host_traddr=192.168.31.15,
-src_addr=192.168.31.15 *live optimized*
-+- nvme3 *tcp* traddr=192.168.31.49,trsvcid=4420,host_traddr=192.168.31.15,
-src_addr=192.168.31.15 *live non-optimized*
+ +- nvme102 tcp traddr=192.168.21.20,trsvcid=4420,host_traddr=192.168.21.1,src_addr=192.168.21.1 *live non-optimized*
+ +- nvme151 tcp traddr=192.168.21.21,trsvcid=4420,host_traddr=192.168.21.1,src_addr=192.168.21.1 *live optimized*
+ +- nvme4 tcp traddr=192.168.20.20,trsvcid=4420,host_traddr=192.168.20.1,src_addr=192.168.20.1 *live non-optimized*
+ +- nvme53 tcp traddr=192.168.20.21,trsvcid=4420,host_traddr=192.168.20.1,src_addr=192.168.20.1 *live optimized*
+----
+=====
+.顯示 ASA r2 範例輸出
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+nvme-subsys4 - NQN=nqn.1992-08.com.netapp:sn.17e32b6e8c7f11f09545d039eac03c33:subsystem.Bidirectional_DHCP_1_0
+               hostnqn=nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0054-5110-8039-c3c04f523034
+\                                                                                                                                                                               +- nvme4 *tcp* traddr=192.168.20.28,trsvcid=4420,host_traddr=192.168.20.21,src_addr=192.168.20.21 *live optimized*
++- nvme5 *tcp* traddr=192.168.20.29,trsvcid=4420,host_traddr=192.168.20.21,src_addr=192.168.20.21 *live optimized*
++- nvme6 *tcp* traddr=192.168.21.28,trsvcid=4420,host_traddr=192.168.21.21,src_addr=192.168.21.21 *live optimized*
++- nvme7 *tcp* traddr=192.168.21.29,trsvcid=4420,host_traddr=192.168.21.21,src_addr=192.168.21.21 *live optimized*
 ----
 =====
 --
