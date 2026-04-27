@@ -2490,4 +2490,18 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="46a4bf76409792ef5635ae3fa7be3eca" category="list-text">在 RHEL 9.6 中，round-robin 是預設的 iopolicy，但 queue-depth 可作為可設定的選項。</block>
   <block id="b57931aaf40ed5847b49ce94e37ba2f9" category="list-text">在 RHEL 9.6 之前，round-robin 是唯一支援的 NVMe-oF iopolicy。</block>
   <block id="199f707ebb9eba2ff990f4e6b8a03a49" category="paragraph">如果您使用的是 RHEL 9.6 並且想要將 iopolicy 變更為 <block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>，請依照下列方式修改 udev 規則檔案：</block>
+  <block id="88694bea2b4bb7ab31183cf89c0abc9a" category="open-title">Oracle Linux 主機</block>
+  <block id="d62485a7a064d77caa624ec7d9c16f56" category="paragraph">為確保為您的主機正確配置多路徑，請驗證是否已定義 <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>，並已為您的 ONTAP LUN 設定 NetApp 建議設定。</block>
+  <block id="8f398c60279f151c939d64302e2a552a" category="paragraph">*ASA 組態*</block>
+  <block id="00f6a93cbdaeca9a5c16456b45e56a06" category="paragraph">*AFF 或 FAS 組態*</block>
+  <block id="4a801556fd7b17fe7fc88987832eab59" category="open-title">OLVM - ONTAP HA</block>
+  <block id="7ac9ef2526e3dbe23e271314793c2500" category="paragraph">在 Oracle Linux Virtualization Manager (OLVM) 中，VDSM 常駐程式會控制 Hypervisor 上的預設多重路徑參數。請勿直接編輯<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>。請改用多重路徑 drop-in 檔案來覆寫預設值。</block>
+  <block id="f0b27027e6b67d9f11bb9a63118f7820" category="paragraph">對於 ONTAP 高可用性（HA）配置，NetApp 建議使用以下插入檔案來覆蓋<block ref="f92718f463480c9c4b4291e7fd4ef19e" prefix=" " category="inline-code"></block>和<block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block>。所有其他多路徑參數應與 Oracle Linux 主機參數設定表中的設定相符。</block>
+  <block id="2325a00c850562a31b6e1174103fdf34" category="list-text">建立 drop-in 檔案：</block>
+  <block id="6af920fd32adf77980a7d950b4a43b42" category="list-text">重新載入多路徑常駐程式：</block>
+  <block id="8cd5bca10d68fe455b4aafcd2984b1ec" category="list-text">驗證更新後的多重路徑組態：</block>
+  <block id="c131839a59f1dece3cf8f40a9f418f28" category="open-title">OLVM - ONTAP SnapMirror 主動同步</block>
+  <block id="9ac038eaf430fd52f4f8187e511c2c64" category="paragraph">當 OLVM 主機使用 ONTAP SnapMirror 主動同步時，您應該調整 sanlock 和多路徑逾時參數，以確保在儲存容錯移轉事件期間主機和 VM 行為正常。預設的 OLVM 逾時值可能會導致在計劃外站台容錯移轉期間發生意外的高可用性 VM 容錯移轉，因為租約續約視窗可能會在多路徑恢復完成之前過期。</block>
+  <block id="48456488fd8e1ab35d02545499c661fe" category="inline-link">Oracle Linux Virtualization Manager - ONTAP SnapMirror Active Sync 的 Sanlock 設定</block>
+  <block id="d586abe993be4482cf9a1c2a026a70c7" category="paragraph">依照 NetApp 知識庫文章中的設定步驟<block ref="5895161fcfd751cbe73c1e86aa55f0d8" category="inline-link-rx"></block>更新 sanlock 和 multipath timeout 值，以便租約續約視窗在儲存故障轉移事件期間足以完成多路徑復原。</block>
 </blocks>

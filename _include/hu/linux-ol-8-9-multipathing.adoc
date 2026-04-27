@@ -1,0 +1,208 @@
+= 
+:allow-uri-read: 
+
+
+[role="tabbed-block"]
+====
+.Oracle Linux 主機
+--
+為確保為您的主機正確配置多路徑，請驗證是否已定義  `/etc/multipath.conf`，並已為您的 ONTAP LUN 設定 NetApp 建議設定。
+
+.步驟
+. 確認  `/etc/multipath.conf` 檔案是否存在。如果檔案不存在，則建立一個空的零位元組檔案：
++
+[source, cli]
+----
+touch /etc/multipath.conf
+----
+. 第一次 `multipath.conf`建立檔案時，您可能需要啟用並啟動多重路徑服務，才能載入建議的設定：
++
+[source, cli]
+----
+systemctl enable multipathd
+----
++
+[source, cli]
+----
+systemctl start multipathd
+----
+. 每次引導主機時，空的 `/etc/multipath.conf`零位元組檔案會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。您不需要變更 `/etc/multipath.conf`主機的檔案，因為作業系統會使用多重路徑參數進行編譯，以正確辨識及管理 ONTAP LUN 。
++
+下表顯示 ONTAP LUN 的原生 Linux OS 編譯多重路徑參數設定。
+
++
+.顯示參數設定
+[#multipath-parameter-settings%collapsible]
+=====
+[cols="2"]
+|===
+| 參數 | 設定 
+
+
+| DETECT（偵測）_prio | 是的 
+
+
+| 開發損失_tmo | "無限遠" 
+
+
+| 容錯回復 | 立即 
+
+
+| fast_io_f故障_tmo | 5. 
+
+
+| 功能 | "2 pg_init_retries 50" 
+
+
+| Flip_on_last刪除 | "是" 
+
+
+| 硬體處理常式 | 「0」 
+
+
+| no_path_retry | 佇列 
+
+
+| path_checker_ | "周" 
+
+
+| path_grouping_policy | "群組by_prio" 
+
+
+| path_selector | "服務時間0" 
+
+
+| Polling_時間 間隔 | 5. 
+
+
+| 優先 | 「NetApp」ONTAP 
+
+
+| 產品 | LUN 
+
+
+| Retain附加的硬體處理常式 | 是的 
+
+
+| RR_weight | "統一" 
+
+
+| 使用者易記名稱 | 否 
+
+
+| 廠商 | NetApp 
+|===
+=====
+. 驗證 ONTAP LUN 的參數設定和路徑狀態：
++
+[source, cli]
+----
+multipath -ll
+----
++
+預設多路徑參數支援ASA、 AFF和FAS配置。在這些配置中，單一ONTAP LUN 不應需要超過四條路徑。儲存故障時，路徑超過四條可能會導致問題。
+
++
+以下輸出範例顯示 ASA ， AFF 或 FAS 組態中 ONTAP LUN 的正確參數設定和路徑狀態。
+
++
+*ASA 組態*
+
++
+ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中。如此可同時透過所有路徑提供 I/O 作業、進而提升效能。
+
++
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
+----
+=====
++
+*AFF 或 FAS 組態*
+
++
+AFF 或 FAS 組態應該有兩個路徑群組，優先順序較高或較低。較高優先順序的主動 / 最佳化路徑由集合所在的控制器提供服務。較低優先順序的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
+
++
+以下範例顯示 ONTAP LUN 的輸出，其中包含兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑：
+
++
+.顯示範例
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
+----
+=====
+
+
+--
+.OLVM - ONTAP HA
+--
+在 Oracle Linux Virtualization Manager (OLVM) 中，VDSM 常駐程式會控制 Hypervisor 上的預設多重路徑參數。請勿直接編輯 `/etc/multipath.conf`。請改用多重路徑 drop-in 檔案來覆寫預設值。
+
+對於 ONTAP 高可用性（HA）配置，NetApp 建議使用以下插入檔案來覆蓋 `dev_loss_tmo`和 `no_path_retry`。所有其他多路徑參數應與 Oracle Linux 主機參數設定表中的設定相符。
+
+.步驟
+. 建立 drop-in 檔案：
++
+[source, cli]
+----
+cat <<'EOF' > /etc/multipath/conf.d/ontap-ha-mpath-netapp.conf
+# Finite multipath retry window aligned with sanlock io_timeout
+# default sanlock:io_timeout=10s, polling_interval=5s => no_path_retry = (8*10)/5 = 16
+
+devices {
+  device {
+    vendor "NETAPP"
+    product "LUN"
+    no_path_retry 16
+    dev_loss_tmo "infinity"
+  }
+}
+EOF
+----
+. 重新載入多路徑常駐程式：
++
+[source, cli]
+----
+systemctl reload multipathd
+----
+. 驗證更新後的多重路徑組態：
++
+[source, cli]
+----
+multipathd -k"show config"
+----
+
+
+--
+.OLVM - ONTAP SnapMirror 主動同步
+--
+在 Oracle Linux Virtualization Manager (OLVM) 中，VDSM 常駐程式會控制 Hypervisor 上的預設多重路徑參數。請勿直接編輯 `/etc/multipath.conf`。請改用多重路徑 drop-in 檔案來覆寫預設值。
+
+當 OLVM 主機使用 ONTAP SnapMirror 主動同步時，您應該調整 sanlock 和多路徑逾時參數，以確保在儲存容錯移轉事件期間主機和 VM 行為正常。預設的 OLVM 逾時值可能會導致在計劃外站台容錯移轉期間發生意外的高可用性 VM 容錯移轉，因為租約續約視窗可能會在多路徑恢復完成之前過期。
+
+依照 NetApp 知識庫文章中的設定步驟 https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/Oracle_Linux_Virtualization_Manager_-_Sanlock_Settings_for_ONTAP_SnapMirror_Active_Sync["Oracle Linux Virtualization Manager - ONTAP SnapMirror Active Sync 的 Sanlock 設定"]更新 sanlock 和 multipath timeout 值，以便租約續約視窗在儲存故障轉移事件期間足以完成多路徑復原。
+
+--
+====
