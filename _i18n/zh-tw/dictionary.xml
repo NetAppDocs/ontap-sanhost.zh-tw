@@ -895,7 +895,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="a98f12afd377cfff4657909446bff74a" category="cell">RHEL 17811.</block>
   <block id="e764fe6b8f8825a307a87cedbef45678" category="sidebar">22.04</block>
   <block id="4d82a1ec1af02725042c8c785564ee7a" category="inline-link-macro">Amazon FSX for NetApp ONTAP 產品</block>
-  <block id="b6758eb9c7ac57209dfad7db602a24d4" category="inline-link-macro">如何設定用於 SnapMirror 主動同步的 AIX 主機</block>
   <block id="a9e760f9ba2dad33870cce967a12f75a" category="cell"><block ref="a9e760f9ba2dad33870cce967a12f75a" category="inline-link-macro-rx"></block></block>
   <block id="8a0e59d557c48debea02376efc489435" category="cell"><block ref="8a0e59d557c48debea02376efc489435" category="inline-link-macro-rx"></block></block>
   <block id="0d2b4c4b2840eab7bfae167b812970ef" category="cell"><block ref="0d2b4c4b2840eab7bfae167b812970ef" category="inline-link-macro-rx"></block></block>
@@ -1368,9 +1367,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="054877f3a4e22840052a9d35b9cef0e4" category="inline-link-macro">MetroCluster配置中的 AIX 主機支援注意事項有哪些？</block>
   <block id="fd47c7e90e5d1a165a9f160bc5d6eb8d" category="paragraph">預設情況下，當沒有可用的 LUN 路徑時，AIX OS 會強制執行較短的 I/O 逾時。這可能發生在包含單一交換器 SAN 結構的配置中以及經歷計劃外故障轉移的MetroCluster配置中。有關其他資訊和建議對預設設定進行更改，請參閱知識庫文章<block ref="5a78f40a3907cb552cb02e019660f8d8" category="inline-link-macro-rx"></block>。</block>
   <block id="c0b79db5f258f0c991a383cbdbf001dd" category="open-title">SnapMirror主動同步</block>
-  <block id="946ae0d0e8f27a2482322365b072fe17" category="paragraph">從ONTAP 9.11.1 開始，AIX 主機支援SnapMirror主動同步。  AIX 配置中的主集群是「活動」集群。</block>
-  <block id="60915f06c9c1330f3ed550adf149966e" category="paragraph">在 AIX 配置中，故障轉移會造成破壞。每次故障轉移時，您都需要在主機上執行重新掃描以還原 I/O 操作。</block>
-  <block id="c6f7900c1810cbe72822a3151f7a41d8" category="paragraph">請參閱知識庫文章<block ref="d270a735f5e8b531c1d55de94a45b690" category="inline-link-macro-rx"></block>。</block>
   <block id="efffdf29fb8c22b09edba3371dc2b1b8" category="inline-link-macro">安裝 Linux Host Utilities 8.0</block>
   <block id="5f31956444f1d0bde7a1ffb325106db8" category="paragraph"><block ref="cd52b6bcf27b8c7efa7bb2cae7dba9b4" category="inline-link-macro-rx"></block> 。</block>
   <block id="3358e8b26d19a4499acfc0263dca6ce1" category="paragraph">Linux Host Utilities 可協助您管理連接到 Linux 主機的ONTAP儲存。 NetApp強烈建議安裝 Linux Host Utilities，但這不是強制性的。這些實用程式可改善管理並協助NetApp客戶支援收集有關您的配置的資訊。</block>
@@ -2504,4 +2500,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9ac038eaf430fd52f4f8187e511c2c64" category="paragraph">當 OLVM 主機使用 ONTAP SnapMirror 主動同步時，您應該調整 sanlock 和多路徑逾時參數，以確保在儲存容錯移轉事件期間主機和 VM 行為正常。預設的 OLVM 逾時值可能會導致在計劃外站台容錯移轉期間發生意外的高可用性 VM 容錯移轉，因為租約續約視窗可能會在多路徑恢復完成之前過期。</block>
   <block id="48456488fd8e1ab35d02545499c661fe" category="inline-link">Oracle Linux Virtualization Manager - ONTAP SnapMirror Active Sync 的 Sanlock 設定</block>
   <block id="d586abe993be4482cf9a1c2a026a70c7" category="paragraph">依照 NetApp 知識庫文章中的設定步驟<block ref="5895161fcfd751cbe73c1e86aa55f0d8" category="inline-link-rx"></block>更新 sanlock 和 multipath timeout 值，以便租約續約視窗在儲存故障轉移事件期間足以完成多路徑復原。</block>
+  <block id="94ef234a2ec2f42dc97a266ae7901d7a" category="paragraph">AIX 主機支援 SnapMirror 主動同步。不同 ONTAP 版本的支援行為有所不同：</block>
+  <block id="794db6ce05b1835a99e67a30b5ce986b" category="inline-link-macro">SnapMirror 主動同步對 AIX 的支援：依 ONTAP 版本的行為與遷移指南</block>
+  <block id="510d8f08b1bcd3d37f5f38838ba87607" category="list-text">從 ONTAP 9.19.1 開始，Active/Active 組態支援 SnapMirror 主動式同步，可實現不中斷營運的 SnapMirror 主動式同步作業。請參閱知識庫文章 <block ref="689132335b86d0a731403daf22970080" category="inline-link-macro-rx"></block>。</block>
+  <block id="58d09565b9d76aa8df134a3c88f349ef" category="inline-link-macro">如何在 ONTAP 9.11.1 至 9.18.1 版本中設定 AIX 主機以進行 SnapMirror 活動同步</block>
+  <block id="edef79d6486b82062ad7b8f2b46174e2" category="list-text">對於 ONTAP 9.11.1 至 9.18.1 版本，SnapMirror 主動同步在主動/待命配置中受到支援。請參閱知識庫文章 <block ref="170dab56a652357d4fe24ca37b0b9eea" category="inline-link-macro-rx"></block>。</block>
 </blocks>

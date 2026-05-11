@@ -13,11 +13,11 @@
 --
 .SnapMirror主動同步
 --
-從ONTAP 9.11.1 開始，AIX 主機支援SnapMirror主動同步。  AIX 配置中的主集群是「活動」集群。
+AIX 主機支援 SnapMirror 主動同步。不同 ONTAP 版本的支援行為有所不同：
 
-在 AIX 配置中，故障轉移會造成破壞。每次故障轉移時，您都需要在主機上執行重新掃描以還原 I/O 操作。
+** 從 ONTAP 9.19.1 開始，Active/Active 組態支援 SnapMirror 主動式同步，可實現不中斷營運的 SnapMirror 主動式同步作業。請參閱知識庫文章 link:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/SnapMirror_active_sync_support_for_AIX%3A_behavior_by_ONTAP_release_and_migration_guidance["SnapMirror 主動同步對 AIX 的支援：依 ONTAP 版本的行為與遷移指南"^]。
+** 對於 ONTAP 9.11.1 至 9.18.1 版本，SnapMirror 主動同步在主動/待命配置中受到支援。請參閱知識庫文章 link:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/How_to_configure_AIX_Host_for_SnapMirror_active_sync_in_ONTAP["如何在 ONTAP 9.11.1 至 9.18.1 版本中設定 AIX 主機以進行 SnapMirror 活動同步"^]。
 
-請參閱知識庫文章link:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/How_to_configure_AIX_Host_for_SnapMirror_active_sync_in_ONTAP["如何設定用於 SnapMirror 主動同步的 AIX 主機"^]。
 
 --
 ====
