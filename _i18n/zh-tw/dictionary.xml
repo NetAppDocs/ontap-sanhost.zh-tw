@@ -1199,7 +1199,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="411779633a68ad8ff4bb5f0b84de0e3d" category="doc">步驟 1 ：安裝 HP-UX 主機公用程式</block>
   <block id="7a5a6ee53a3c56e370cff4e4cb600d3a" category="paragraph">NetApp 強烈建議您安裝 Linux 主機公用程式，以支援 ONTAP LUN 管理，並協助技術支援收集組態資料。</block>
   <block id="5d17e83279fd5189b40ec31e6e0efc6c" category="inline-link-macro">安裝 HP-UX Host Utilities 6.0</block>
-  <block id="7b3d6a6184bc8044fb4eaa2361a0c137" category="paragraph"><block ref="a1822c628e463c7a9fa61c1a4713b4ef" category="inline-link-macro-rx"></block>。</block>
   <block id="cd30444b7075100f9dce64caf41ba2b7" category="doc">步驟 2 ：安裝 Linux 主機公用程式</block>
   <block id="a9764a4b476a4ae40670f2b10ab9b4aa" category="admonition">安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機逾時設定。</block>
   <block id="0f8e25d5af08d115d6410aa42fa8c1e8" category="doc">步驟 5 ：自訂 ONTAP LUN 的多重路徑參數</block>
@@ -2505,4 +2504,5 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="510d8f08b1bcd3d37f5f38838ba87607" category="list-text">從 ONTAP 9.19.1 開始，Active/Active 組態支援 SnapMirror 主動式同步，可實現不中斷營運的 SnapMirror 主動式同步作業。請參閱知識庫文章 <block ref="689132335b86d0a731403daf22970080" category="inline-link-macro-rx"></block>。</block>
   <block id="58d09565b9d76aa8df134a3c88f349ef" category="inline-link-macro">如何在 ONTAP 9.11.1 至 9.18.1 版本中設定 AIX 主機以進行 SnapMirror 活動同步</block>
   <block id="edef79d6486b82062ad7b8f2b46174e2" category="list-text">對於 ONTAP 9.11.1 至 9.18.1 版本，SnapMirror 主動同步在主動/待命配置中受到支援。請參閱知識庫文章 <block ref="170dab56a652357d4fe24ca37b0b9eea" category="inline-link-macro-rx"></block>。</block>
+  <block id="d260773137ad0fe3e74f84c49c4bb99c" category="paragraph"><block ref="d91927ac11d01a60b7823e550f2dd7fb" category="inline-link-macro-rx"></block>。</block>
 </blocks>
