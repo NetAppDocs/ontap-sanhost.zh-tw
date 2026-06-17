@@ -14,6 +14,9 @@
 --
 SAN 啟動是將 SAN 連線磁碟（LUN）設定為 AIX/PowerVM 主機的啟動設備的過程。您可以設定 SAN 啟動 LUN 以在使用 FC 協定並使用 FC 或 FCoE 協定執行 AIX Host Utilities 的 AIX 多路徑 I/O (MPIO) 環境中運作。在 AIX MPIO 環境中建立 SAN 啟動 LUN 和安裝新 OS 映像的方法取決於您使用的協定。
 
+
+NOTE: AIX 要求在啟用 MPIO 之前，SAN 啟動磁碟只能存取一條路徑。安裝或遷移 AIX 啟動磁碟通常需要暫時限制主機的 FC 分區，使其只包含一個 FC 啟動器和一個 FC 目標。安裝主機公用程式（包括 PCM 套件）後，您可以重新啟動作業系統以完全啟用 MPIO。此時，將其他 FC 啟動器和 FC 目標新增至分區。然後，執行 `cfgmgr -v` 和  `bosboot -a` 以更新啟動組態，使其包含所有可用路徑。
+
 .步驟
 . 使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 AIX OS、協定和ONTAP版本是否支援 SAN 啟動。
 . 請依照供應商文件中有關設定 SAN 啟動的最佳實務進行操作。
