@@ -551,7 +551,6 @@
   <block id="bb80358d422ec918cde74cab08e90d5c" category="admonition">在雲端環境中、主機通常稱為用戶端。此內容中的所有主機專屬資訊也適用於雲端用戶端。</block>
   <block id="30f60d67f457bb040dffde52197a54da" category="paragraph-title">相關資訊</block>
   <block id="4c865e0cb70fa33868e69a5e88daad47" category="cell">1479047</block>
-  <block id="0929df0c2d7b307ae019137c488669a8" category="cell">1503468</block>
   <block id="2fefce185e7d7498c7e3da22bac84294" category="cell">1508554</block>
   <block id="11613812ad376f15dc5ee5a9f425cea1" category="cell">NetApp Linux主機公用程式CLI需要額外的程式庫套件相依性、才能支援Emulex HBA介面卡探索</block>
   <block id="796d3a90e43ce105cbf37298c5065f7e" category="sidebar">9.1</block>
@@ -1044,7 +1043,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="53aa5d6687de6e1ac7fc2fd3ae4ab539" category="doc">安裝 Linux 主機公用程式 7.1</block>
   <block id="d895168ecaf0f9622aa5a6fc78ac6433" category="admonition">Linux 主機公用程式軟體不支援 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ）主機傳輸協定。</block>
   <block id="17f8692005ca3aae6a8d4543ddd9c587" category="paragraph">如需舊版 Linux 主機公用程式，請移至安裝主機公用程式軟體的目錄，然後輸入 uninstall 命令以移除已安裝的套件。</block>
-  <block id="a8ef8037d8bc65ce5c031566c94c1bdf" category="cell">在 RHEL 9.1 中， NetApp Linux SAN 主機公用程式 CLI<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> 失敗，因為找不到支援 HBA 探索的程式庫套件相依性。</block>
   <block id="97cd8ca681a54160b844883a804a9d15" category="cell">在 RHEL 9.2 中， NetApp Linux SAN 主機公用程式 CLI<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block> 失敗，因為找不到支援 HBA 探索的程式庫套件相依性。</block>
   <block id="202b2328413819343791c425b58e837e" category="cell">在 RHEL 9.x 中， NetApp Linux SAN 主機公用程式 CLI 失敗，因為找不到支援 Emulex 主機<block ref="621925cc88c3305079fc7287b11ebf60" prefix=" " category="inline-code"></block>匯流排介面卡（ HBA ）探索的程式庫套件相依性。</block>
   <block id="61cdaad7945ab6e6f6569fdfe83fa2e4" category="summary">瞭解有關 SAN 主機公用程式版本的最新資訊，並存取主機組態的安裝程序。</block>
@@ -1864,8 +1862,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3d8c2f20c69104516adf8f11842395df" category="paragraph">為了在同一台主機上執行 NVMe 和 SCSI 流量， NetApp建議對ONTAP命名空間使用核心 NVMe 多路徑，對ONTAP LUN 使用 dm-multipath。為了防止 dm-multipath 聲明ONTAP命名空間設備，請透過添加<block ref="cb2f8f6f16be615751b5bbd73928d197" prefix=" " category="inline-code"></block>設定為<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>文件：</block>
   <block id="5728fbd1a5c8ae099d988e87299f3dd9" category="paragraph">這些是已知問題：</block>
   <block id="ac783620bd79a6f903c67f639a9962f6" category="section-title">步驟 5：驗證多路徑配置</block>
-  <block id="3ac8a887d7c6b1750dee1f66e33d2041" category="cell">RHEL 9.0 NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
-  <block id="3ac93f7cf1853dfbc16c8472fc66d07d" category="cell">這<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>指令傳回給定子系統的 NVMe 控制器清單。在 RHEL 9.1 中，此指令顯示子系統中所有命名空間的控制器及其 ANA 狀態。由於 ANA 狀態是每個命名空間的屬性，因此此指令應顯示具有每個命名空間的路徑狀態的唯一控制器條目。</block>
   <block id="ece25d4c541fbae683416549d3f4ac05" category="list-text">使用 root 權限在文字編輯器中開啟 udev 規則檔：</block>
   <block id="1cdf0be14ba09adc81c1095b08aa7aa2" category="list-text">修改規則，以便<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>變成<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>：</block>
   <block id="47b12d977e58e4eab7ccd70d2694af53" category="paragraph">Rocky Linux 核心版本範例：</block>
@@ -1934,7 +1930,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9943f66abf8246a952197a36b6ebae0a" category="doc">配置 RHEL 9.x 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
   <block id="853337aa29013a97f96870e7d2f10f1e" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Red Hat Enterprise Linux (RHEL) 9.x 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
   <block id="7bf7f9c71ffb97fd94ef9cfdd36ff7df" category="paragraph">您可以使用 RHEL 9.x 的多路徑功能來管理ONTAP LUN。</block>
-  <block id="072f2e7d6b820c2e2398ab458c0f3a82" category="paragraph">RHEL 9.x 與ONTAP儲存有以下已知問題。</block>
   <block id="cd243542bc9904c72b230932ea74f5f9" category="doc">配置 Rocky Linux 8.x 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
   <block id="12a24a78e2e6166f7b0523bf7d3e9aa7" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Rocky Linux 8.x 主機上安裝 Linux 主機公用程式後，您可以使用主機實用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="90fd31bfd08c82d921d995f40f9f7d08" category="paragraph">您可以使用 Rocky Linux 8.x 的多路徑功能來管理ONTAP LUN。</block>
@@ -1962,7 +1957,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="02e6f562a82adc38b8762b8d4fc3c8c2" category="section-title">步驟 5：可選，啟用 NVMe/FC 的 1MB I/O。</block>
   <block id="e6b3c2c8d823bf042f0e8e9e02dabf14" category="section-title">步驟 6：驗證 NVMe 啟動服務</block>
   <block id="378f49529e98279285d9a2eb0d2b3e5e" category="section-title">步驟 7：驗證多路徑配置</block>
-  <block id="817977d49e0479a834f082c774ea3949" category="cell">在 RHEL 9.1 中，<block ref="f3d48156832e70ac41335c007fa76798" prefix=" " category="inline-code"></block>該命令傳回給定子系統的重複 NVMe 控制器列表</block>
   <block id="f12463db66bb26df5aae5e1aa393205f" category="summary">了解ONTAP對 RHEL 主機的支援和功能</block>
   <block id="d4063c82026eda59b5c15cca38aa9b92" category="paragraph">使用 NVMe over Fabrics (NVMe-oF) 進行主機配置所支援的功能會因ONTAP和 RHEL 的版本而異。</block>
   <block id="21021ea0e52be8e9c599f4dff41e5be0" category="cell">特徵</block>
@@ -2051,7 +2045,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e52f83ac7ca8ca1b48908231ec897be1" category="paragraph">9.5 或更高版本</block>
   <block id="92893b8c5051dff6e69f93181e523d01" category="cell">如果您的 Oracle Linux 版本是…</block>
   <block id="e6c9ea0372e1bc5ee9ce19cebcf71eaf" category="cell">7系列</block>
-  <block id="28b031394cea76c997a81517dfc279f9" category="cell">在 NVMe-oF 主機上，您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 指令來建立 PDC。使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在執行 ONTAP 9.10.1 並搭配 RHEL 9.0 及 NVMe-oF 主機時，每次執行 <block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。</block>
   <block id="38247dd9f4f50ed3b751d728ecd0c52c" category="sidebar">NVMeoF OL</block>
   <block id="8cf639f80087b38e9251e80ba60c10c4" category="paragraph">預設多路徑參數支援ASA、 AFF和FAS配置。在這些配置中，單一ONTAP LUN 不應需要超過四條路徑。儲存故障時，路徑超過四條可能會導致問題。</block>
   <block id="97a99753b959b6770bb6efa96e4103e1" category="list-text">請參閱 Veritas 支援入口網站（產品矩陣、平台查找和 HCL 矩陣）以驗證 SAN 啟動配置支援和已知問題。</block>
@@ -2505,5 +2498,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="58d09565b9d76aa8df134a3c88f349ef" category="inline-link-macro">如何在 ONTAP 9.11.1 至 9.18.1 版本中設定 AIX 主機以進行 SnapMirror 活動同步</block>
   <block id="edef79d6486b82062ad7b8f2b46174e2" category="list-text">對於 ONTAP 9.11.1 至 9.18.1 版本，SnapMirror 主動同步在主動/待命配置中受到支援。請參閱知識庫文章 <block ref="170dab56a652357d4fe24ca37b0b9eea" category="inline-link-macro-rx"></block>。</block>
   <block id="d260773137ad0fe3e74f84c49c4bb99c" category="paragraph"><block ref="d91927ac11d01a60b7823e550f2dd7fb" category="inline-link-macro-rx"></block>。</block>
-  <block id="bdc9e3765d603a5091aec17191bf38ed" category="admonition">AIX 要求在啟用 MPIO 之前，SAN 啟動磁碟只能存取一條路徑。安裝或遷移 AIX 啟動磁碟通常需要暫時限制主機的 FC 分區，使其只包含一個 FC 啟動器和一個 FC 目標。安裝主機公用程式（包括 PCM 套件）後，您可以重新啟動作業系統以完全啟用 MPIO。此時，將其他 FC 啟動器和 FC 目標新增至分區。然後，執行<block ref="cec798dce2562ead48807f1d57e501c6" prefix=" " category="inline-code"></block> 和 <block ref="a693727332d96028bddba10ff4667b0a" prefix=" " category="inline-code"></block> 以更新啟動組態，使其包含所有可用路徑。</block>
+  <block id="895369022e2ee0b381f97a38ee89b758" category="admonition">AIX 要求在啟用 MPIO 之前，SAN 啟動磁碟只能存取一條路徑。安裝或遷移 AIX 啟動磁碟通常需要暫時限制主機的 FC 分區，使其只包含一個 FC 啟動器和一個 FC 目標。安裝主機公用程式（包括 PCM 套件）後，您可以重新啟動作業系統以完全啟用 MPIO。此時，將其他 FC 啟動器和 FC 目標新增至分區。然後，執行<block ref="cec798dce2562ead48807f1d57e501c6" prefix=" " category="inline-code"></block> 和 <block ref="a693727332d96028bddba10ff4667b0a" prefix=" " category="inline-code"></block> 以更新啟動組態，使其包含所有可用路徑。</block>
+  <block id="d475935aee712cb287d615a6e4a26bc1" category="paragraph">以下範例展示了<block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block>套件版本：</block>
 </blocks>

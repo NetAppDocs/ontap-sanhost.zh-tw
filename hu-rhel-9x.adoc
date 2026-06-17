@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: hu-rhel-9x.html 
-keywords: host utilities, red hat, rhel, linux, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0, netapp, ontap, rhel 
+keywords: host utilities, red hat, rhel, linux, 9.8, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0, netapp, ontap 
 summary: 在 RHEL 9.x 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。 
 ---
 = 配置 RHEL 9.x 以支援 FCP 和 iSCSI 以及ONTAP存儲
@@ -266,18 +266,18 @@ $systemctl status iscsid
 ----
 ● iscsid.service - Open-iSCSI
      Loaded: loaded (/usr/lib/systemd/system/iscsid.service; enabled; preset: disabled)
-     Active: active (running) since Tue 2025-12-02 11:36:21 EST; 2 weeks 1 day ago
+     Active: active (running) Tue 2026-05-12 06:29:55 EDT; 2 weeks 1 day ago
 TriggeredBy: ● iscsid.socket
        Docs: man:iscsid(8)
              man:iscsiuio(8)
              man:iscsiadm(8)
-   Main PID: 2263 (iscsid)
+   Main PID: 2021 (iscsid)
      Status: "Ready to process requests"
       Tasks: 1 (limit: 816061)
      Memory: 18.5M
         CPU: 14.480s
      CGroup: /system.slice/iscsid.service
-             └─2263 /usr/sbin/iscsid -f -d2
+             └─2021 /usr/sbin/iscsid -f -d2
 ----
 ====
 . 探索 iSCSI 目標：
@@ -409,47 +409,8 @@ devices {
 
 == 步驟 7：檢閱已知問題
 
-RHEL 9.x 與ONTAP儲存有以下已知問題。
+沒有已知問題。
 
-[role="tabbed-block"]
-====
-.9.3.
---
-[cols="20, 20, 50,20"]
-|===
-| NetApp錯誤ID | 標題 | 說明 | JIRA ID 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux 主機公用程式 CLI 需要額外的程式庫套件相依性、才能支援 Emulex 主機匯流排介面卡（ HBA ）介面卡探索 | 在 RHEL 9.x 中， NetApp Linux SAN 主機公用程式 CLI 失敗，因為找不到支援 Emulex 主機 `sanlun fcp show adapter -v`匯流排介面卡（ HBA ）探索的程式庫套件相依性。 | 不適用 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1593771["1593771"^] | Red Hat Enterprise Linux 9.3 QLogic SAN 主機在儲存移動性作業期間會遺失部分多重路徑 | 在 ONTAP 儲存控制器接管作業期間、預期有一半的多重路徑會關閉或切換至容錯移轉模式、然後在恢復工作流程期間恢復至完整路徑數。不過、在 Red Hat Enterprise Linux （ RHEL ） 9.3 QLogic 主機上、儲存容錯移轉恢復恢復作業之後、只能恢復部分多重路徑。 | RHEL 17811. 
-|===
---
-.9.2.
---
-[cols="20,40,40"]
-|===
-| NetApp錯誤ID | 標題 | 說明 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux主機公用程式CLI需要額外的程式庫套件相依性、才能支援Emulex HBA介面卡探索 | 在 RHEL 9.2 中， NetApp Linux SAN 主機公用程式 CLI `sanlun fcp show adapter -v` 失敗，因為找不到支援 HBA 探索的程式庫套件相依性。 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1537359["1537359"^] | 使用 Emulex HBA 開機的 Red Hat Linux 9.2 SAN 主機會遇到停滯的工作、導致核心中斷 | 在儲存設備容錯移轉恢復作業期間、使用 Emulex 主機匯流排介面卡（ HBA ）啟動的 Red Hat Linux 9.2 SAN 主機、會遇到導致核心中斷的停滯工作。核心中斷會導致作業系統重新開機、如果發生 `kdump` 設定後、它會產生 `vmcore` 檔案位於 `/var/crash/` 目錄。此問題正與一起進行分類 `lpfc` 驅動程式、但無法一致地複製。 
-|===
---
-.9.1
---
-[cols="20,40,40"]
-|===
-| NetApp錯誤ID | 標題 | 說明 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux主機公用程式CLI需要額外的程式庫套件相依性、才能支援Emulex HBA介面卡探索 | 在 RHEL 9.1 中， NetApp Linux SAN 主機公用程式 CLI `sanlun fcp show adapter -v` 失敗，因為找不到支援 HBA 探索的程式庫套件相依性。 
-|===
---
-====
 
 
 == 接下來呢？
