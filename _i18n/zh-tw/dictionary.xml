@@ -742,9 +742,7 @@
   <block id="f61222023dff7dff4f1f07b6593dfa16" category="list-text">驗證個別 ONTAP 命名空間的適當 NVMe 設定（例如、模型設定為 NetApp ONTAP 控制器、負載平衡 iopolicing 設定為循環）是否正確反映在主機上：</block>
   <block id="43784ec2c1aaa42346ed96f22c8410b6" category="sidebar">9.2.</block>
   <block id="9cdf71978b23a4023a75f102c03f30d0" category="list-text">確認您使用的是支援的介面卡機型：</block>
-  <block id="da80aa62fc6cf6b66539a5a3933874a8" category="cell"><block ref="da80aa62fc6cf6b66539a5a3933874a8" category="inline-link-rx"></block></block>
   <block id="5aae5284420b8ceb0aa0f5d959c566bc" category="list-text">確認其他的 NVMe / TCP 啟動器目標 LIF 組合可以成功擷取探索記錄頁面資料：</block>
-  <block id="675cd8e52ba395fba110b2ae7c90675b" category="cell">使用 Emulex HBA 的 SAN LUN 公用程式需要從程式庫套件中取得符號連結</block>
   <block id="30d85838b9488ee908d075559c8978cd" category="doc">搭配 ONTAP 使用 VMware vSphere 8.x</block>
   <block id="8d19958f3e338523c5e956fbddc3c9af" category="doc">搭配 ONTAP 使用 VMware vSphere 6.5 和 6.7</block>
   <block id="40db5019ed68654f4eb2cf21ec5021db" category="doc">搭配 ONTAP 使用 VMware vSphere 7.x</block>
@@ -1919,8 +1917,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="de4df2bb56a6dd96c5aa8b4ddfb1370c" category="doc">配置 Oracle Linux 9.x 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
   <block id="b72680c8c0c632d8365db7df592ffeb2" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Oracle Linux 9.x 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="6d0d62455ddcc2e2663940d352dfd7ed" category="paragraph">您可以使用 Oracle Linux 9.x 的多路徑功能來管理ONTAP LUN。</block>
-  <block id="d02686596819e33bae1494c476cc4046" category="paragraph">Oracle Linux 9.3、9.2、9.1 和 9.0 與ONTAP儲存有以下已知問題：</block>
-  <block id="e2a4ffda52d4058942376ec8457e5e5f" category="cell">在 SAN 主機上執行 Linux 主機實用程式 CLI 指令「sanlun fcp show adapter -v」時，指令執行失敗，並顯示錯誤訊息，指出找不到主機匯流排適配器 (HBA) 發現所需的函式庫相依性：---- [root@hostname ~]# sanlun fcp show adapter - ----</block>
   <block id="a7a38198eff5258108ff6a5098a49e45" category="summary">在 RHEL 8.x 主機上安裝 Linux 主機實用程序，以管理與ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="e2aef7fa2192be71ab8ffc57f8a8ec55" category="doc">配置 RHEL 8.x 以支援 FCP 和 iSCSI 以及ONTAP存儲</block>
   <block id="000b577dcf01b1bbd6d531af999b0911" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Red Hat Enterprise Linux (RHEL) 8.x 主機上安裝 Linux 主機公用程式後，您可以使用主機公用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
@@ -2032,7 +2028,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f97e7db99bb0a1e808378e53a69a896b" category="paragraph">NetApp建議設定<block ref="d830763524c5d39cb33a1bd2b5c447f8" prefix=" " category="inline-code"></block>到<block ref="6bb61e3b7bce0931da574d19d1d82c88" prefix=" " category="inline-code"></block>這樣，當路徑遺失時，NVMe/TCP 發起程序會無限期地嘗試重新連線。</block>
   <block id="24fcd6330b6a9b7be58b3cd8ddc63f4f" category="section-title">步驟 5：可選，啟用 1MB I/O 大小</block>
   <block id="7b132f02e8428aa01abb44962ec07147" category="section-title">步驟 2：安裝 Oracle Linux 和 NVMe 軟體並驗證配置</block>
-  <block id="be553660868a99ecfcefab234340f585" category="paragraph">從 Oracle Linux 9.5 開始，<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block>和<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block>NVMe/FC 中包含的啟動服務<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>系統啟動時會自動啟用軟體包。</block>
   <block id="cbce5c9568a686f91b2dfcf39622b287" category="paragraph">每個主機或控制器都必須與一個 DH-HMAC-CHAP 金鑰關聯，才能建立安全性驗證。 DH-HMAC-CHAP 金鑰是 NVMe 主機或控制器的 NQN 與管理員設定的驗證金鑰的組合。為了驗證對等方的身份，NVMe 主機或控制器必須識別與對等方關聯的金鑰。</block>
   <block id="e908710b4eae6cf350cddad694d8c508" category="paragraph">使用 CLI 或設定 JSON 檔案設定安全的帶內身份驗證。如果需要為不同的子系統指定不同的 dhchap 金鑰，請使用 config JSON 檔案。</block>
   <block id="aadd5dd4ef730bc8b1907b50349be5cb" category="summary">了解ONTAP對 Oracle Linux 主機的支援和功能。</block>
@@ -2500,4 +2495,5 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d260773137ad0fe3e74f84c49c4bb99c" category="paragraph"><block ref="d91927ac11d01a60b7823e550f2dd7fb" category="inline-link-macro-rx"></block>。</block>
   <block id="895369022e2ee0b381f97a38ee89b758" category="admonition">AIX 要求在啟用 MPIO 之前，SAN 啟動磁碟只能存取一條路徑。安裝或遷移 AIX 啟動磁碟通常需要暫時限制主機的 FC 分區，使其只包含一個 FC 啟動器和一個 FC 目標。安裝主機公用程式（包括 PCM 套件）後，您可以重新啟動作業系統以完全啟用 MPIO。此時，將其他 FC 啟動器和 FC 目標新增至分區。然後，執行<block ref="cec798dce2562ead48807f1d57e501c6" prefix=" " category="inline-code"></block> 和 <block ref="a693727332d96028bddba10ff4667b0a" prefix=" " category="inline-code"></block> 以更新啟動組態，使其包含所有可用路徑。</block>
   <block id="d475935aee712cb287d615a6e4a26bc1" category="paragraph">以下範例展示了<block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block>套件版本：</block>
+  <block id="a31e7639425bf11c737e817792079192" category="admonition">從 ONTAP 9.16.1 開始，NVMe/FV 和 NVMe/TCP 會在 ASA r2 系統上報告所有最佳化路徑。</block>
 </blocks>
