@@ -20,6 +20,7 @@ summary: 您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe 
 
 
 
+[[supportability]]
 == 支援能力
 
 * 根據預設，所有新建立的 NVMe 命名空間都會啟用從 ONTAP 9 。 16.1 開始的空間分配。
@@ -29,6 +30,7 @@ summary: 您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe 
 
 
 
+[[features]]
 == 功能
 
 * ESXi 啟動器主機可透過相同的介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。請參閱 link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] 以取得支援的FC介面卡和控制器清單。請參閱 link:https://mysupport.netapp.com/matrix/["NetApp 互通性對照表工具"^] 以取得最新的支援組態和版本清單。
@@ -37,6 +39,7 @@ summary: 您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe 
 
 
 
+[[known-limitations]]
 == 已知限制
 
 * 不支援 RDM 對應。
@@ -44,6 +47,7 @@ summary: 您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe 
 
 
 
+[[enable-nvmefc]]
 == 啟用NVMe/FC
 
 在 vSphere 版本中、 NVMe / FC 預設為啟用。
@@ -77,6 +81,7 @@ nvme_fc nvme_ss  nqn.2014-08.org.nvmexpress:uuid:62a1xxxx-ba8c-xxxx-c954-000xxxx
 
 
 
+[[configure-broadcomemulex-and-marvellqlogic]]
 == 設定 Broadcom/Emulex 和 Marvell/Qlogic
 
 。 `lpfc` 驅動程式和 `qlnativefc` vSphere 8.x 中的驅動程式預設會啟用 NVMe / FC 功能。
@@ -85,6 +90,7 @@ nvme_fc nvme_ss  nqn.2014-08.org.nvmexpress:uuid:62a1xxxx-ba8c-xxxx-c954-000xxxx
 
 
 
+[[validate-nvmefc]]
 == 驗證NVMe/FC
 
 您可以使用下列程序來驗證 NVMe / FC 。
@@ -175,12 +181,14 @@ fc.20000024ff7f4a50:21000024ff7f4a50-fc.2004d039ea3ab21f:2007d039ea3ab21f-uuid.d
 
 
 
+[[configure-nvmetcp]]
 == 設定NVMe/TCP
 
 在 ESXi 8.x 中、預設會載入所需的 NVMe / TCP 模組。若要設定網路和 NVMe / TCP 介面卡、請參閱 VMware vSphere 文件。
 
 
 
+[[validate-nvmetcp]]
 == 驗證NVMe/TCP
 
 您可以使用下列程序來驗證 NVMe / TCP 。
@@ -271,6 +279,7 @@ tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.167:4420-uuid.f4f14337c3ad4a639edf0
 
 
 
+[[nvme-deallocate]]
 == NVMe 取消分配
 
 在 ONTAP 9.16.1 及更新版本中， ESXi 8.0u2 及更新版本支援 NVMe 取消分配命令。
@@ -302,6 +311,7 @@ NVMe 命名空間一律會啟用取消分配支援。取消分配也可讓客體
 
 
 
+[[known-issues]]
 == 已知問題
 
 ESXi 8.x 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：

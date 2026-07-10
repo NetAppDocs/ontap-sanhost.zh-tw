@@ -20,6 +20,7 @@ Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理�
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == 步驟 1 ：選擇性啟用 SAN 開機
 
 您可以將主機設定為使用 SAN 開機，以簡化部署並改善擴充性。
@@ -40,6 +41,7 @@ Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理�
 
 
 
+[[step-2-install-the-linux-host-utilities]]
 == 步驟 2 ：安裝 Linux 主機公用程式
 
 NetApp強烈推薦 link:hu-luhu-release-notes.html["安裝 Linux 主機實用程式"] 支援ONTAP LUN 管理，並協助技術支援收集配置資料。
@@ -49,6 +51,7 @@ NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機
 
 
 
+[[step-3-confirm-the-veritas-dynamic-multipathing-configuration-for-your-host]]
 == 步驟 3：確認主機上的 Veritas 動態多路徑配置
 
 使用 Veritas 動態多路徑 (VxDMP) 和 Veritas Infoscale 7 來管理ONTAP LUN。
@@ -264,12 +267,14 @@ sdea  ENABLED     Active/Non-Optimized c14   SFRAC       sfrac0     -      -
 
 
 
+[[step-4-known-issues]]
 == 第四步：已知問題
 
 沒有已知問題。
 
 
 
+[[whats-next]]
 == 接下來呢？
 
 * link:hu-luhu-command-reference.html["瞭解如何使用 Linux 主機公用程式工具"] 。

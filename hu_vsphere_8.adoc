@@ -20,6 +20,7 @@ summary: 您可以使用 FC 、 FCoE 和 iSCSI 通訊協定、為 VMware vSphere
 
 
 
+[[hypervisor-san-booting]]
 == Hypervisor SAN 開機
 
 .開始之前
@@ -41,6 +42,7 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 
 
 
+[[multipathing]]
 == 多重路徑
 
 ESXi 提供一個稱為原生多路徑外掛程式（ NMP ）的可延伸多重路徑模組，可管理子外掛程式，儲存陣列類型外掛程式（ Storage Array Type Plugins ，簡稱 SATP ）和路徑選擇外掛程式（ CSP ）。根據預設、 ESXi 提供這些 SATAP 規則。
@@ -67,6 +69,7 @@ tpgs_on        VMW_PSP_RR                   NetApp arrays with ALUA support
 ----
 
 
+[[non-asa-configurations]]
 === 非 ASA 組態
 
 對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
@@ -203,6 +206,7 @@ fc.200034800d756a74:210034800d756a74-fc.2018d039ea936319:2016d039ea936319-naa.60
 ----
 
 
+[[vvol]]
 == VVOL
 
 虛擬磁碟區（ vVols ）是一種 VMware 物件類型、對應於虛擬機器（ VM ）磁碟、其快照和快速複製。
@@ -230,10 +234,12 @@ NetApp目前不建議變更任何vVols設定。
 
 
 
+[[recommended-settings]]
 == 建議設定
 
 
 
+[[ats-locking]]
 === ATS 鎖定
 
 ATS鎖定是VAAI相容儲存設備和升級的VMFS5的*強制性*、因此需要搭配ONTAP 使用支援VMware的LUN、才能達到適當的互通性和最佳的VMFS共享儲存I/O效能。如需啟用ATS鎖定的詳細資訊、請參閱VMware文件。
@@ -256,6 +262,7 @@ NOTE: 啟用 `Space-alloc` 針對對應至 VMware vSphere 的所有 LUN 進行�
 
 
 
+[[guest-os-timeouts]]
 === 客體作業系統逾時
 
 您可以使用建議的客體作業系統調整來手動設定虛擬機器。調整更新之後、您必須重新開機客體、更新才會生效。
@@ -277,6 +284,7 @@ NOTE: 啟用 `Space-alloc` 針對對應至 VMware vSphere 的所有 LUN 進行�
 |===
 
 
+[[validate-the-vsphere-tunable]]
 === 驗證 vSphere 可調整的功能
 
 您可以使用下列命令來驗證 `HardwareAcceleratedLocking` 設定：
@@ -298,6 +306,7 @@ NOTE: 啟用 `Space-alloc` 針對對應至 VMware vSphere 的所有 LUN 進行�
 ----
 
 
+[[validate-the-disk-iops-setting]]
 === 驗證磁碟 IOPs 設定
 
 您可以使用下列命令來驗證 IOPs 設定。
@@ -318,6 +327,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
+[[validate-the-qfullsamplesize]]
 === 驗證 QFullSampleSize
 
 您可以使用下列命令來驗證 QFullSampleSize 。
@@ -339,6 +349,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
+[[known-issues]]
 == 已知問題
 
 VMware vSphere 8.x 搭配 ONTAP 版本有下列已知問題：

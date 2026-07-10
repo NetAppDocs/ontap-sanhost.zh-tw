@@ -16,6 +16,7 @@ summary: Windows 主機公用程式包含一個安裝程式，可設定所需的
 [role="lead"]
 Windows 主機公用程式可讓您將 Windows 主機電腦連接至 NetApp 儲存系統。
 
+[[supported-windows-versions-72]]
 Windows 主機公用程式支援下列 Windows 版本：
 
 * Windows 2025
@@ -54,6 +55,7 @@ Windows 主機公用程式包含一個安裝程式，可設定所需的 Windows 
 
 
 
+[[step-1-verify-your-host-and-storage-system-configuration]]
 == 步驟 1：驗證主機和儲存系統配置
 
 在安裝的 Windows 主機公用程式之前，請先確認您的主機和儲存系統組態是否受到支援<<supported-windows-versions-72,支援的 Windows 版本>>。
@@ -78,6 +80,7 @@ NOTE: 在使用SANtricity Storage Manager 的E 系列儲存系統上，FC 和 iS
 
 
 
+[[step-2-configure-fc-hbas-and-switches]]
 == 步驟 2：設定 FC HBA 和交換機
 
 安裝及設定一或多個支援的 FC 主機匯流排介面卡（ HBA ）、以便 FC 連線至儲存系統。
@@ -97,6 +100,7 @@ CAUTION: 您應該只允許 Windows Host Utilities 安裝程式設定 HBA 參數
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == 步驟 3：安裝 Windows 主機實用程式
 
 安裝程式安裝 Windows Host Utilities 套件並設定 Windows 註冊表和 HBA 設定。
@@ -159,6 +163,7 @@ NOTE: 若要查看記錄和其他功能的標準 Microsoft Installer （ MSI ）
 ====
 
 
+[[whats-next]]
 == 接下來呢？
 
 link:hu-wuhu-configuration.html["了解ONTAP儲存的 Windows 主機實用程式配置"]

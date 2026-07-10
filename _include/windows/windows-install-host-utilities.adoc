@@ -4,6 +4,7 @@
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == 步驟 3：安裝 Windows 主機實用程式
 
 安裝程式安裝 Windows Host Utilities 套件並設定 Windows 註冊表和 HBA 設定。

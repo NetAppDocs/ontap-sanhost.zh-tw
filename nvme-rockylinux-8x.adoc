@@ -29,6 +29,7 @@ NVMe-oF 與 Rocky Linux 8.x 有以下已知限制：
 
 
 
+[[step-1-install-rocky-linux-and-nvme-software-and-verify-your-configuration]]
 == 步驟 1：安裝 Rocky Linux 和 NVMe 軟體並驗證您的配置
 
 若要為 NVMe-oF 設定主機，您需要安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
@@ -124,6 +125,7 @@ NOTE: 如果是 `hostnqn` 字串不相符、請使用 `vserver modify` 命令來
 
 
 
+[[step-2-configure-nvmefc-and-nvmetcp]]
 == 步驟 2：設定 NVMe/FC 和 NVMe/TCP
 
 使用 Broadcom/Emulex 或 Marvell/QLogic 適配器配置 NVMe/FC，或使用手動發現和連接操作來設定 NVMe/TCP。
@@ -598,6 +600,7 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ====
 
 
+[[step-3-optionally-enable-1mb-io-for-nvmefc]]
 == 步驟 3：可選，啟用 NVMe/FC 的 1MB I/O。
 
 您可以為配置了 Broadcom 適配器的 NVMe/FC 啟用 1MB 大小的 I/O 請求。 ONTAP在識別控制器資料中報告的最大資料傳輸大小 (MDTS) 為 8。這表示最大 I/O 要求大小最多可達 1MB 。要發出 1MB 大小的 I/O 請求，您需要增加 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
@@ -628,6 +631,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-4-verify-the-multipathing-configuration]]
 == 步驟 4：驗證多路徑配置
 
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
@@ -813,6 +817,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-5-review-the-known-issues]]
 == 步驟 5：查看已知問題
 
 這些是已知問題：

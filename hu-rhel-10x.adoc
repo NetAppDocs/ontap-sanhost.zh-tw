@@ -20,6 +20,7 @@ Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理�
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == 步驟 1 ：選擇性啟用 SAN 開機
 
 您可以將主機設定為使用 SAN 開機，以簡化部署並改善擴充性。
@@ -38,6 +39,7 @@ Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理�
 
 
 
+[[step-2-install-the-linux-host-utilities]]
 == 步驟 2 ：安裝 Linux 主機公用程式
 
 NetApp 強烈建議您安裝 Linux 主機公用程式，以支援 ONTAP LUN 管理，並協助技術支援收集組態資料。
@@ -49,6 +51,7 @@ NOTE: 安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機
 
 
 
+[[step-3-confirm-the-multipath-configuration-for-your-host]]
 == 步驟 3 ：確認主機的多重路徑組態
 
 您可以使用 RHEL 10.x 的多路徑功能來管理ONTAP LUN。
@@ -81,6 +84,7 @@ systemctl start multipathd
 .顯示參數設定
 [%collapsible]
 ====
+[[multipath-parameter-settings]]
 [cols="2"]
 |===
 | 參數 | 設定 
@@ -203,6 +207,7 @@ size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
 
 
 
+[[step-4-confirm-the-iscsi-configuration-for-your-host]]
 == 步驟 4：確認主機的 iSCSI 組態
 
 請確保已為您的主機正確配置 iSCSI。
@@ -342,6 +347,7 @@ tcp: [4] 192.168.21.29:3260,1059 iqn.1992-08.com.netapp:sn.08818e1f130811f1b8b4d
 
 
 
+[[step-5-optionally-exclude-a-device-from-multipathing]]
 == 步驟 5：（選用）將裝置從多重路徑中排除
 
 如果需要，您可以將不需要的裝置的 WWID 新增至檔案的「黑名單」區段，以排除裝置的多重路徑 `multipath.conf`功能。
@@ -374,6 +380,7 @@ blacklist {
 
 
 
+[[step-6-customize-multipath-parameters-for-ontap-luns]]
 == 步驟 6：自訂 ONTAP LUN 的多路徑參數
 
 如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
@@ -407,12 +414,14 @@ devices {
 ====
 
 
+[[step-7-review-the-known-issues]]
 == 步驟 7：檢閱已知問題
 
 沒有已知問題。
 
 
 
+[[whats-next]]
 == 接下來呢？
 
 * link:hu-luhu-command-reference.html["瞭解如何使用 Linux 主機公用程式工具"] 。

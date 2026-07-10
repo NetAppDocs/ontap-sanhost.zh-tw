@@ -4,6 +4,7 @@
 
 
 
+[[whats-next]]
 == 接下來呢？
 
 link:hu-aix-san-toolkit.html["了解 AIX SAN 工具包"] 。

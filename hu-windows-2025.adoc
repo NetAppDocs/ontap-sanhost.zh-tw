@@ -20,6 +20,7 @@ Windows 主機公用程式是一套軟體程式及其文檔，可讓您將 Windo
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == 步驟 1 ：選擇性啟用 SAN 開機
 
 您可以使用本機啟動或 SAN 啟動來啟動 Windows 作業系統。  NetApp建議使用SAN啟動來簡化部署並提高可擴充性。
@@ -51,6 +52,7 @@ Windows 主機公用程式是一套軟體程式及其文檔，可讓您將 Windo
 ====
 
 
+[[step-2-install-windows-hotfixes]]
 == 步驟二：安裝Windows熱修復程序
 
 NetApp 建議您在主機伺服器上安裝 Microsoft Update 目錄中提供的 * 最新累計更新 * 。
@@ -70,6 +72,7 @@ TIP: 許多熱修復程式需要重啟Windows主機。您可以等到安裝或�
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == 步驟 3：安裝 Windows 主機實用程式
 
 Windows 主機公用程式是一套軟體程式及其文檔，可讓您將主機連接到NetApp SAN 上的虛擬磁碟 (LUN)。  NetApp建議下載並安裝最新的 Windows 主機實用程序，以支援ONTAP LUN 管理並協助技術支援人員收集設定資料。
@@ -78,6 +81,7 @@ Windows 主機公用程式是一套軟體程式及其文檔，可讓您將主機
 
 
 
+[[step-4-confirm-the-multipath-configuration-for-your-host]]
 == 步驟 4：確認主機的多路徑配置
 
 如果您的 Windows 主機有多個到儲存系統的路徑，請安裝 Microsoft Multipath I/O (MPIO) 軟體並啟用多路徑。
@@ -156,12 +160,14 @@ image::nonasa.png[具有兩個主動 / 最佳化路徑和兩個主動 / 非最�
 
 
 
+[[step-5-review-the-known-issues]]
 == 第五步：回顧已知問題
 
 沒有已知問題。
 
 
 
+[[whats-next]]
 == 接下來呢？
 
 link:hu-wuhu-configuration.html["了解ONTAP儲存的 Windows 主機實用程式配置"]

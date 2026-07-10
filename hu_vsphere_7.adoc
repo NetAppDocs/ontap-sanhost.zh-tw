@@ -20,6 +20,7 @@ summary: 說明如何使用Veritas Infoscale 7.3 for Linux搭配ONTAP 使用功�
 
 
 
+[[hypervisor-san-booting]]
 == Hypervisor SAN開機
 
 .開始之前
@@ -41,6 +42,7 @@ NOTE: 在主機作業系統啟動並在路徑上執行後、就會有多個路�
 
 
 
+[[multipathing]]
 == 多重路徑
 
 ESXi 提供一個稱為原生多路徑外掛程式（ NMP ）的可延伸多重路徑模組，可管理子外掛程式，儲存陣列類型外掛程式（ Storage Array Type Plugins ，簡稱 SATP ）和路徑選擇外掛程式（ CSP ）。ESXi預設提供這些SATP規則。
@@ -62,6 +64,7 @@ system      tpgs_on        VMW_PSP_RR                   NetApp arrays with ALUA 
 ----
 
 
+[[non-asa-configurations]]
 === 非 ASA 組態
 
 對於非 ASA 組態、應該有兩個路徑群組、其優先順序不同。優先順序較高的路徑為主動 / 最佳化。這表示它們由集合所在的控制器提供服務。優先順序較低的路徑是作用中的，但未最佳化，因為它們是由不同的控制器提供服務。非最佳化路徑只有在最佳化路徑無法使用時才會使用。
@@ -181,6 +184,7 @@ fc.20000024ff171d37:21000024ff171d37-fc.202300a098ea5e27:201e00a098ea5e27-naa.60
 ----
 
 
+[[vvol]]
 == VVOL
 
 虛擬磁碟區（vVols）是VMware物件類型、對應於虛擬機器（VM）磁碟及其快照和快速複製。
@@ -208,10 +212,12 @@ NetApp目前不建議變更任何vVols設定。
 
 
 
+[[recommended-settings]]
 == 建議設定
 
 
 
+[[ats-locking]]
 === ATS鎖定
 
 ATS鎖定是VAAI相容儲存設備和升級VMFS5的*強制性*、而且需要搭配ONTAP 使用VMware LUN、才能達到適當的互通性和最佳的VMFS共享儲存I/O效能。如需啟用ATS鎖定的詳細資訊、請參閱VMware文件。
@@ -234,6 +240,7 @@ NOTE: 針對所有對應至VMware vSphere的LUN啟用空間分配設定、以便
 
 
 
+[[guest-os-timeouts]]
 === 客體作業系統逾時
 
 您可以使用建議的客體作業系統調整來手動設定虛擬機器。調整更新之後、您必須重新開機客體、更新才會生效。
@@ -255,6 +262,7 @@ NOTE: 針對所有對應至VMware vSphere的LUN啟用空間分配設定、以便
 |===
 
 
+[[validating-the-vsphere-tunable]]
 === 驗證vSphere可調性
 
 使用下列命令來驗證硬體加速器鎖定設定。
@@ -276,6 +284,7 @@ NOTE: 針對所有對應至VMware vSphere的LUN啟用空間分配設定、以便
 ----
 
 
+[[validate-the-disk-iops-setting]]
 === 驗證磁碟 IOPs 設定
 
 使用下列命令來驗證IOPs設定。
@@ -296,6 +305,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
+[[validating-the-qfullsamplesize]]
 === 正在驗證QFullSampleSize
 
 使用下列命令來驗證QFullSampleSize
@@ -317,6 +327,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
+[[known-issues]]
 == 已知問題
 
 ONTAP 版本的 VMware vSphere 7.x 沒有已知問題。

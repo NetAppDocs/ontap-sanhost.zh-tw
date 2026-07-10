@@ -20,6 +20,7 @@ summary: HPUX主機公用程式6.0版本資訊
 
 
 
+[[whats-new-in-hp-ux-host-utilities-6-0]]
 == HP-UX Host Utilities 6.0 中的新增功能
 
 沒有新功能和增強功能。
@@ -32,12 +33,14 @@ HP-UX Host Utilities 6.0 支援以下 HP-UX 作業系統版本：
 
 
 
+[[known-issues-and-limitations]]
 == 已知問題和限制
 
 沒有已知問題或限制。
 
 
 
+[[whats-next]]
 == 接下來呢？
 
 link:hu_hpux_60.html["了解如何安裝 HP-UX Host Utilities"]

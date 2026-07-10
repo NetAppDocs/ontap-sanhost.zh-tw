@@ -22,24 +22,28 @@ summary: Windows主機公用程式版本資訊
 
 
 
+[[whats-new-in-windows-host-utilities-8-0]]
 == Windows Host Utilities 8.0 中的新功能
 
 Windows Host Utilities 8.0 包含 NVMe/FC 驅動程式的附加參數設定。當您安裝 Windows Host Utilities 8.0 時，這些參數會自動載入。
 
 
 
+[[whats-new-in-windows-host-utilities-7-2]]
 == Windows Host Utilities 7.2 中的新功能
 
 Windows 主機公用程式 7.2 支援 NVMe / FC 驅動程式參數設定，以及新廠商卡的錯誤修正。
 
 
 
+[[whats-new-in-windows-host-utilities-7-1]]
 == Windows Host Utilities 7.1 中的新功能
 
 Windows Host Utilities 7.1 包括對 E 系列儲存系統、 ONTAP 9 軟體和增強型 iSCSI 逾時的支持，可實現更快的故障轉移。
 
 
 
+[[known-issues-and-limitations]]
 == 已知問題和限制
 
 您應該注意以下已知問題和限制，它們可能會影響特定主機的效能。
@@ -55,6 +59,7 @@ link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^
 
 
 
+[[whats-next]]
 == 下一步
 
 link:hu-wuhu-80.html["了解如何安裝 Windows Host Utilities"]

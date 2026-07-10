@@ -4,6 +4,7 @@
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == 步驟 1 ：選擇性啟用 SAN 開機
 
 您可以設定主機以使用 SAN 啟動來簡化部署並提高可擴充性。如果您的配置不支援 SAN 啟動，您可以使用本機啟動。

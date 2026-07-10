@@ -20,6 +20,7 @@ summary: 介紹如何將 Linux 主機實用程式與ONTAP儲存搭配使用
 
 
 
+[[list-all-host-initiators-mapped-to-host]]
 == 列出所有對應至主機的主機啟動器
 
 您可以擷取對應至主機的所有主機啟動器清單。
@@ -70,6 +71,7 @@ OS device name:    /sys/class/scsi_host/host16
 ====
 
 
+[[list-all-luns-mapped-to-host]]
 == 列出所有對應至主機的LUN
 
 您可以擷取對應至主機的所有 LUN 清單。
@@ -110,6 +112,7 @@ active      up        secondary  sdan   16:0:6:0     lif_28      66:112
 ====
 
 
+[[list-all-luns-mapped-to-host-from-a-given-svm]]
 == 列出從特定SVM對應至主機的所有LUN
 
 您可以從特定儲存 VM （ SVM ）擷取對應至主機的所有 LUN 清單。
@@ -150,6 +153,7 @@ active      up        secondary  sdfl    16:0:6:0     lif_16g_4       130:112
 ====
 
 
+[[list-all-attributes-of-a-given-lun-mapped-to-host]]
 == 列出對應至主機之特定LUN的所有屬性
 
 您可以擷取對應至主機之指定 LUN 的所有屬性清單。
@@ -190,6 +194,7 @@ active      up        secondary  sdfl    16:0:6:0     lif_16g_4         130:112
 ====
 
 
+[[list-the-ontap-svm-identity-from-which-a-given-lun-is-mapped-to-host]]
 == 列出ONTAP 將特定LUN對應至主機的SVM身分識別
 
 您可以擷取 ONTAP SVM 身分識別清單、將特定 LUN 對應至清單。
@@ -221,6 +226,7 @@ vs_sanboot                    /vol/sanboot_169/lun           /dev/sdfm       hos
 ====
 
 
+[[list-ontap-lun-attributes-by-host-device-filename]]
 == 依主機裝置檔案名稱列出 ONTAP LUN 屬性
 
 您可以依主機裝置檔案名稱擷取 ONTAP LUN 屬性清單。
@@ -243,6 +249,7 @@ vs_sanboot                 /vol/sanboot_169/lun    /dev/sdce     host15     FCP 
 ====
 
 
+[[list-all-svm-target-lif-wwpns-attached-to-host]]
 == 列出附加至主機的所有SVM目標LIF WWPN
 
 您可以擷取附加至主機的所有 SVM 目標 LIF WWPN 清單。
@@ -267,6 +274,7 @@ vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_5/lun        
 ====
 
 
+[[list-ontap-luns-seen-on-host-by-a-given-svm-target-lif-wwpn]]
 == 列出ONTAP 特定SVM目標LIF WWPN在主機上看到的LUN
 
 您可以擷取指定 SVM 目標 LIF WWPN 在主機上所注意到的 ONTAP LUN 清單。

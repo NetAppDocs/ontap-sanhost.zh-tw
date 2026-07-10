@@ -53,6 +53,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 ====
 
 
+[[whats-next]]
 == 接下來呢？
 
 link:hu-luhu-command-reference.html["瞭解如何使用 Linux 主機公用程式工具"] 。

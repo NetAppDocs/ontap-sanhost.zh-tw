@@ -27,6 +27,7 @@ NVMe-oF 與 Proxmox VE 8.x 有以下已知限制：
 
 
 
+[[step-1-install-proxmox-ve-and-nvme-software-and-verify-your-configuration]]
 == 步驟 1：安裝 Proxmox VE 和 NVMe 軟體並驗證您的配置
 
 若要為 NVMe-oF 設定主機，您需要安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
@@ -120,6 +121,7 @@ NOTE: 如果 `hostnqn`字串不匹配，請使用 `vserver modify`命令來更�
 
 
 
+[[step-2-configure-nvmefc-and-nvmetcp]]
 == 步驟 2：設定 NVMe/FC 和 NVMe/TCP
 
 使用 Broadcom/Emulex 或 Marvell/QLogic 適配器配置 NVMe/FC，或使用手動發現和連接操作來設定 NVMe/TCP。
@@ -506,6 +508,7 @@ NVMe/TCP 的設置 `ctrl_loss_tmo timeout`自動設定為“關閉”。因此�
 ====
 
 
+[[step-3-optionally-enable-1mb-io-for-nvmefc]]
 == 步驟 3：可選，啟用 NVMe/FC 的 1MB I/O。
 
 ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
@@ -539,6 +542,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-4-verify-nvme-boot-services]]
 == 步驟 4：驗證 NVMe 啟動服務
 
 使用 Proxmox 8.x， `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service`NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時會自動啟用軟體包。
@@ -600,6 +604,7 @@ Nov 20 17:48:29 SR665-14-122.lab.eng.btc.netapp.in systemd[1]: Finished nvmefc-b
 
 
 
+[[step-5-verify-the-multipathing-configuration]]
 == 步驟 5：驗證多路徑配置
 
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
@@ -771,6 +776,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-6-review-the-known-issues]]
 == 步驟 6 ：檢閱已知問題
 
 沒有已知問題。

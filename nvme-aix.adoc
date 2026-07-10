@@ -98,6 +98,7 @@ IBM 提供了一個 iFIX，將 ANATT 設定為 120 秒。將 ANATT 設定為 120
 
 
 
+[[step-1-confirm-the-multipath-configuration-for-your-host]]
 == 步驟 1：確認主機的多路徑配置
 
 安裝 AIX 作業系統時，預設啟用用於 NVMe 多路徑的 IBM MPIO。
@@ -126,6 +127,7 @@ hdisk1  11        Enabled  Sel,Non       nvme60  fcnvme0, 9
 
 
 
+[[step-2-configure-nvmefc]]
 == 步驟 2：設定 NVMe/FC
 
 您需要為 VIOS 上的 Broadcom/Emulex 適配器配置 NVMe/FC，因為 VIOS 上的虛擬光纖通道 (vFC) 中禁用了 NVMe/FC 協定支援。實體 FC 中預設啟用 NVMe/FC 協定支援。
@@ -284,6 +286,7 @@ vs_s922-55-lpar2 subsystem_s922-55-lpar2 nqn.2014-08.org.nvmexpress:uuid:64e0xxx
 
 
 
+[[step-3-validate-nvmefc]]
 == 步驟 3：驗證 NVMe/FC
 
 驗證ONTAP命名空間對於 NVMe/FC 配置是否正確。
@@ -324,6 +327,7 @@ hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9
 
 
 
+[[step-4-review-the-known-issues]]
 == 步驟 4：查看已知問題
 
 具有ONTAP儲存的 AIX 的 NVMe/FC 主機配置有以下已知問題：
@@ -346,6 +350,7 @@ hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9
 |===
 
 
+[[step-5-troubleshoot]]
 == 步驟5：故障排除
 
 在排除任何 NVMe/FC 故障之前，請先驗證您正在執行的設定是否符合link:https://mysupport.netapp.com/matrix/["IMT"^]規格。如果問題仍然存在，請聯繫link:https://mysupport.netapp.com["NetApp支援"^]。

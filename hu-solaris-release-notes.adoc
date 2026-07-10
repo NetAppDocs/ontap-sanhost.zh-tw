@@ -22,6 +22,7 @@ Solaris Host Utilities 發行說明介紹了與使用ONTAP儲存系統配置和�
 
 
 
+[[whats-new-in-solaris-host-utilities-8-0]]
 == Solaris Host Utilities 8.0 的新增功能
 
 * Solaris Host Utilities 8.0 引進了 `disksort:false`和 `cache-nonvolatile:true`參數設定。這些參數抑制來自主機的持續同步呼叫。同步呼叫會影響效能，由於ONTAP沒有易失性緩存，因此不需要同步呼叫。有關更多信息，請參閱link:https://docs.oracle.com/en/operating-systems/solaris/oracle-solaris/11.4/tuning/ensuring-proper-cache-flush-behavior-flash-and-nvram-storage-devices.html["快閃記憶體和NVRAM儲存裝置的快取刷新行為"^] 。
@@ -30,6 +31,7 @@ Solaris Host Utilities 發行說明介紹了與使用ONTAP儲存系統配置和�
 
 
 
+[[known-issues-and-limitations]]
 == 已知問題和限制
 
 您應該注意以下已知問題和限制，它們可能會影響特定主機的效能。
@@ -53,6 +55,7 @@ FC 驅動程式繫結已從變更 `ssd(4D)` 至 `sd(4D)`。移動您在中的組
 
 
 
+[[whats-next]]
 == 下一步
 
 link:hu-solaris-80.html["了解如何安裝 Solaris Host Utilities"]

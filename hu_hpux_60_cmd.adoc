@@ -20,6 +20,7 @@ summary: 介紹如何將 HP-UX Host Utilities 6.0 與ONTAP搭配使用
 
 
 
+[[list-all-host-initiators-mapped-to-host]]
 == 列出所有對應至主機的主機啟動器
 
 檢索映射到主機的所有主機啟動器的清單。
@@ -70,6 +71,7 @@ OS device name:    /dev/fclp3
 ====
 
 
+[[list-all-luns-mapped-to-host]]
 == 列出所有對應至主機的LUN
 
 檢索對應到主機的所有 LUN 的清單。
@@ -105,6 +107,7 @@ up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                         
 ====
 
 
+[[list-all-luns-mapped-to-host-from-a-given-svm]]
 == 列出從特定SVM對應至主機的所有LUN
 
 檢索從特定 SVM 對應到主機的所有 LUN 的清單。
@@ -139,6 +142,7 @@ up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                         
 ====
 
 
+[[list-all-attributes-of-a-given-lun-mapped-to-host]]
 == 列出對應至主機之特定LUN的所有屬性
 
 檢索對應到主機的指定 LUN 的所有屬性的清單。
@@ -174,6 +178,7 @@ up       secondary  /dev/dsk/c44t6d1     fclp1   hpux_6                         
 ====
 
 
+[[list-ontap-lun-attributes-by-host-device-filename]]
 == 依主機裝置檔案名稱列出 ONTAP LUN 屬性
 
 透過指定的主機設備檔案名稱擷取ONTAP LUN 屬性清單。
@@ -207,6 +212,7 @@ vs_hp_cluster        /vol/chathpux_217_vol_en_1_14/hp_en_217_lun /dev/rdisk/disk
 ====
 
 
+[[list-all-svm-target-lif-wwpns-attached-to-host]]
 == 列出附加至主機的所有SVM目標LIF WWPN
 
 檢索連接到主機的所有 SVM 目標 LIF WWPN 的清單。

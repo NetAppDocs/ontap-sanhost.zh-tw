@@ -22,6 +22,7 @@ summary: Linux 主機實用程式發行說明
 
 
 
+[[whats-new-in-linux-host-utilities-8-0]]
 == Linux Host Utilities 8.0 中的新功能
 
 Linux Host Utilities 8.0 版本包含以下新功能和增強功能
@@ -38,6 +39,7 @@ Linux Host Utilities 8.0 包括對 64 位元速度 QLogic 和 Emulex FC 主機�
 
 
 
+[[whats-new-in-linux-host-utilities-7-1]]
 == Linux Host Utilities 7.1 的新功能
 
 Linux 主機公用程式 7.1 版本包含下列新功能與增強功能：
@@ -63,6 +65,7 @@ NOTE: NetApp繼續與 Linux Host Utilities 合作，以增加對初始版本之�
 
 
 
+[[fixed-issues]]
 == 已修復的問題
 
 Linux Host Utilities 中已修復以下問題。
@@ -76,6 +79,7 @@ Linux Host Utilities 中已修復以下問題。
 |===
 
 
+[[known-issues-and-limitations]]
 == 已知問題和限制
 
 您應該注意以下可能影響特定主機效能的已知問題和限制：
@@ -94,6 +98,7 @@ link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^
 
 
 
+[[whats-next]]
 == 下一步
 
 link:hu-luhu-80.html["了解如何安裝 Linux 主機實用程式"]

@@ -4,6 +4,7 @@
 
 
 
+[[step-2-install-the-linux-host-utilities]]
 == 步驟 2 ：安裝 Linux 主機公用程式
 
 NetApp強烈推薦 link:hu-luhu-release-notes.html["安裝 Linux 主機實用程式"] 支援ONTAP LUN 管理，並協助技術支援收集配置資料。

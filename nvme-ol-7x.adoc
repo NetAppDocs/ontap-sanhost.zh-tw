@@ -30,6 +30,7 @@ NVMe-oF 與 Oracle Linux 7.x 有以下已知限制：
 
 
 
+[[step-1-install-oracle-linux-and-nvme-software-and-verify-your-configuration]]
 == 步驟 1：安裝 Oracle Linux 和 NVMe 軟體並驗證您的配置
 
 使用以下步驟驗證支援的最低 Oracle Linux 7.x 軟體版本。
@@ -112,6 +113,7 @@ NOTE: 如果 `hostnqn`字串不相符，請使用 `vserver modify`命令更新 `
 
 
 
+[[step-2-configure-nvmefc]]
 == 步驟 2：設定 NVMe/FC
 
 為 Broadcom / Emulex 介面卡設定 NVMe / FC 。
@@ -233,6 +235,7 @@ NVME RPORT WWPN x203100a098c80f09 WWNN x202c00a098c80f09 DID x010601 *TARGET DIS
 
 
 
+[[step-3-optionally-enable-1mb-io-for-nvmefc]]
 == 步驟 3：可選，啟用 NVMe/FC 的 1MB I/O。
 
 ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
@@ -266,6 +269,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-4-verify-the-multipathing-configuration]]
 == 步驟 4：驗證多路徑配置
 
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
@@ -409,6 +413,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-5-review-the-known-issues]]
 == 步驟 5：查看已知問題
 
 沒有已知問題。

@@ -40,6 +40,7 @@ NOTE: Broadcom 隨附 Windows NVMe / FC 的外部驅動程式，這是轉譯式 
 
 
 
+[[enable-nvmefc]]
 == 啟用NVMe/FC
 
 在 Windows 啟動器主機上啟用 FC/NVMe 。
@@ -57,6 +58,7 @@ NOTE: Broadcom 隨附 Windows NVMe / FC 的外部驅動程式，這是轉譯式 
 
 
 
+[[configure-the-broadcom-fc-adapter]]
 == 設定 Broadcom FC 介面卡
 
 Broadcom 啟動器可透過相同的 32G FC 介面卡連接埠，同時處理 NVMe / FC 和 FCP 流量。對於 FCP 和 FC/NVMe ，您應該使用 Microsft 裝置專用模組（ DSM ）做為 Microsoft 多重路徑 I/O （ MPIO ）選項。
@@ -69,6 +71,7 @@ nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9766
 ....
 
 
+[[enable-mpio-for-nvme-devices]]
 === 為 NVMe 裝置啟用 MPIO
 
 您需要啟用適用於 NVMe 裝置的 MPIO ，才能在 Windows 主機上完成 NVMe 組態。
@@ -105,6 +108,7 @@ HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\ UseCustomPathRecoveryIn
 
 
 
+[[validate-nvmefc]]
 == 驗證NVMe/FC
 
 確認已探索到 NVMe 子系統，且 ONTAP 命名空間適用於 NVMe 組態。

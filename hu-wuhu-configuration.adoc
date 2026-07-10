@@ -42,6 +42,7 @@ Windows 主機也需要某些 FC、NVMe/FC 和 iSCSI HBA 參數才能成功處�
 ====
 
 
+[[review-the-configuration-settings-for-windows-host-utilities-8-0]]
 == 檢查 Windows Host Utilities 8.0 的設定設定
 
 Windows 主機公用程式安裝程式會根據您在安裝過程中所做的選擇，自動設定 Windows 登錄值以及 iSCSI 和 NVMe HBA 參數。請核對這些數值和作業系統版本。
@@ -156,6 +157,7 @@ Windows Host Utilities 8.0 在安裝過程中會更新以下 NVMe Emulex 驅動�
 ====
 
 
+[[review-the-configuration-settings-for-windows-host-utilities-7-2]]
 == 檢查 Windows Host Utilities 7.2 的設定設定
 
 Windows 主機公用程式安裝程式會根據您在安裝過程中所做的選擇，自動設定 Windows 登錄值以及 iSCSI 和 NVMe HBA 參數。請核對這些數值和作業系統版本。
@@ -274,6 +276,7 @@ Windows Host Utilities 7.2 在安裝過程中會更新以下 NVMe Emulex 驅動�
 ====
 
 
+[[review-the-configuration-settings-for-windows-host-utilities-7-1]]
 == 檢查 Windows Host Utilities 7.1 的設定設定
 
 Windows Host Utilities 安裝程式會根據您在安裝過程中所做的選擇自動設定登錄值。查看這些註冊表值和作業系統版本。除非另有說明，所有數值均以十進位表示。
@@ -382,6 +385,7 @@ NOTE: `HKLM` 為的縮寫 `HKEY_LOCAL_MACHINE`。
 
 
 
+[[learn-about-the-fc-hba-values-set-by-windows-host-utilities]]
 == 了解 Windows 主機實用程式設定的 FC HBA 值
 
 Windows Host Utilities 安裝程式為使用 FC 的系統上的 Emulex 和 QLogic FC HBA 設定所需的逾時值。
@@ -449,6 +453,7 @@ NOTE: 根據程式的不同，參數名稱可能會略有不同。例如，在 Q
 
 
 
+[[learn-about-the-host-utilities-changes-to-fc-hba-driver-settings]]
 == 了解 Host Utilities 對 FC HBA 驅動程式設定的變更
 
 在 FC 系統上安裝所需的 Emulex 或 QLogic HBA 驅動程式期間，Windows 主機公用程式會檢查幾個參數，並在某些情況下修改它們。

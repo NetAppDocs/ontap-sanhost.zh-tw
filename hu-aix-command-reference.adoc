@@ -20,6 +20,7 @@ summary: 您可以使用「主機公用程式」工具，使用 AIX 主機公用
 
 
 
+[[list-all-host-initiators-mapped-to-host]]
 == 列出所有對應至主機的主機啟動器
 
 您可以擷取對應至主機的主機啟動器清單。
@@ -120,6 +121,7 @@ bash-3.2#
 ====
 
 
+[[list-all-luns-mapped-to-host]]
 == 列出所有對應至主機的LUN
 
 您可以擷取對應至主機的所有 LUN 清單。
@@ -184,6 +186,7 @@ up     secondary path3   fcs1    fc_aix_4     1
 ====
 
 
+[[list-all-luns-mapped-to-host-from-a-given-svm]]
 == 列出從特定SVM對應至主機的所有LUN
 
 您可以從指定的 SVM 擷取對應至主機的所有 LUN 清單。
@@ -249,6 +252,7 @@ up      secondary  path3 fcs1    sanboot_4   1
 ====
 
 
+[[list-all-attributes-of-a-given-lun-mapped-to-host]]
 == 列出對應至主機之特定LUN的所有屬性
 
 您可以擷取對應至主機之指定 LUN 的所有屬性清單。
@@ -314,6 +318,7 @@ up       secondary path3 fcs1    fc_aix_4   1
 ====
 
 
+[[list-ontap-lun-attributes-by-host-device-filename]]
 == 依主機裝置檔案名稱列出 ONTAP LUN 屬性
 
 您可以透過指定主機裝置檔案名稱來擷取 ONTAP LUN 屬性清單。
@@ -365,6 +370,7 @@ hdisk1    fcs0    FCP     15g  C
 ====
 
 
+[[list-all-svm-target-lif-wwpns-attached-to-host]]
 == 列出附加至主機的所有SVM目標LIF WWPN
 
 您可以擷取附加至主機的所有 SVM 目標 LIF WWPN 清單。

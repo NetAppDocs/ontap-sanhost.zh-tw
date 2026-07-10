@@ -25,6 +25,7 @@ NOTE: 故障排除說明不適用於 AIX、ESXi、Proxmox 和 Windows 主機。
 
 
 
+[[enable-verbose-logging]]
 == 啟用詳細記錄
 
 如果您的組態有問題、詳細記錄可提供疑難排解的必要資訊。
@@ -87,6 +88,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 ====
 
 
+[[common-nvme-cli-errors-and-workarounds]]
 == 常見的“nvme-cli”錯誤及解決方法
 
 顯示的錯誤 `nvme-cli` 期間 `nvme discover`、 `nvme connect`或 `nvme connect-all` 作業與因應措施如下表所示：
@@ -142,6 +144,7 @@ Cmpl 00000000000000a8 Outstanding 0000000000000001
 |===
 
 
+[[when-to-contact-technical-support]]
 == 何時聯絡技術支援
 
 如果問題仍然存在，請收集以下文件和命令輸出，並聯絡 link:https://mysupport.netapp.com["NetApp支援"^] 進行進一步排查：

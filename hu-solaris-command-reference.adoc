@@ -20,6 +20,7 @@ summary: 介紹如何將 Solaris Host Utilities 8.0 與ONTAP結合使用
 
 
 
+[[list-all-host-initiators-mapped-to-host]]
 == 列出所有對應至主機的主機啟動器
 
 您可以擷取對應至主機的所有主機啟動器清單。
@@ -119,6 +120,7 @@ OS device name:    /dev/cfg/c6
 ====
 
 
+[[list-all-luns-mapped-to-host]]
 == 列出所有對應至主機的LUN
 
 您可以擷取對應至主機的所有 LUN 清單。
@@ -170,6 +172,7 @@ ONTAP Path: sanboot_unix:/vol/test1/lun1
 ====
 
 
+[[list-all-luns-mapped-to-host-from-a-given-svm-list-all-attributes-of-a-given-lun-mapped-to-host]]
 == 列出從特定SVM/中對應至主機的所有LUN、列出對應至主機之特定LUN的所有屬性
 
 您可以從特定 SVM 檢索對應到主機的所有 LUN 的清單。
@@ -214,6 +217,7 @@ ONTAP Path: sanboot_unix:/vol/sol_boot/sanboot_lun
 ====
 
 
+[[list-ontap-lun-attributes-by-host-device-filename]]
 == 依主機裝置檔案名稱列出 ONTAP LUN 屬性
 
 您可以透過指定主機裝置檔案名稱來擷取所有 ONTAP LUN 屬性的清單。

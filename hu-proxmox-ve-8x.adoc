@@ -26,6 +26,7 @@ FCP 和 iSCSI 與 Proxmox VE 8.x 有以下已知限制：
 
 
 
+[[step-1-confirm-the-multipath-configuration-for-your-host]]
 == 步驟 1：確認主機的多路徑配置
 
 您可以使用 Proxmox VE 8.x 的多路徑功能來管理ONTAP LUN。
@@ -58,6 +59,7 @@ systemctl start multipathd
 .顯示參數設定
 [%collapsible]
 ====
+[[multipath-parameter-settings]]
 [cols="2"]
 |===
 | 參數 | 設定 
@@ -204,6 +206,7 @@ multipath -ll
 
 
 
+[[step-2-confirm-the-iscsi-configuration-for-your-host]]
 == 步驟 2：確認主機的 iSCSI 組態
 
 請確保已為您的主機正確配置 iSCSI。
@@ -341,6 +344,7 @@ tcp: [4] 192.168.166.70:3260,1042 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624
 
 
 
+[[step-3-optionally-exclude-a-device-from-multipathing]]
 == 步驟 3：（選用）從多路徑中排除設備
 
 如果需要，您可以將不需要的裝置的 WWID 新增至檔案的「黑名單」區段，以排除裝置的多重路徑 `multipath.conf`功能。
@@ -373,6 +377,7 @@ blacklist {
 
 
 
+[[step-4-customize-multipath-parameters-for-ontap-luns]]
 == 步驟 4：自訂ONTAP LUN 的多路徑參數
 
 如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
@@ -406,6 +411,7 @@ devices {
 ====
 
 
+[[step-5-review-the-known-issues]]
 == 步驟 5：查看已知問題
 
 沒有已知問題。

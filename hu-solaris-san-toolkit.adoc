@@ -41,6 +41,7 @@ NOTE: 該工具包適用於所有主機實用程式配置和協定。因此，�
 
 
 
+[[whats-next]]
 == 接下來呢？
 
 link:hu-solaris-command-reference.html["了解如何使用 Solaris Host Utilities 工具"] 。

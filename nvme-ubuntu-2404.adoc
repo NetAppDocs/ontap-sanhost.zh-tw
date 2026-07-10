@@ -22,6 +22,7 @@ NVMe-oF 與 Ubuntu 24.04 有以下已知限制：
 
 
 
+[[step-1-install-ubuntu-and-nvme-software-and-verify-your-configuration]]
 == 步驟 1：安裝 Ubuntu 和 NVMe 軟體並驗證您的組態
 
 若要為 NVMe-oF 設定主機，您需要安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
@@ -94,6 +95,7 @@ NOTE: 如果 `hostnqn` 字串不相符，請使用 `vserver modify` 指令來更
 
 
 
+[[step-2-configure-nvmefc-and-nvmetcp]]
 == 步驟 2：設定 NVMe/FC 和 NVMe/TCP
 
 為 Broadcom/Emulex 或 Marvell/Qlogic 介面卡設定 NVMe/FC，或使用手動探索和連線作業來設定 NVMe/TCP。
@@ -440,6 +442,7 @@ NOTE: 從 Ubuntu 24.04 開始，將關閉適用於 NVMe / TCP 的 Ctrl_LUS_TMOD 
 ====
 
 
+[[step-3-optionally-enable-1mb-io-for-nvmefc]]
 == 步驟 3：可選，啟用 NVMe/FC 的 1MB I/O。
 
 ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
@@ -473,6 +476,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-4-verify-multipathing-configuration]]
 == 步驟 4：驗證多重路徑組態
 
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。

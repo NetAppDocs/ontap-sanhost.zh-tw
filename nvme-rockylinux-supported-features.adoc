@@ -73,6 +73,7 @@ NOTE: 有關受支援配置的詳細信息，請參閱link:https://mysupport.net
 
 
 
+[[whats-next]]
 == 下一步
 
 [cols="50,50"]

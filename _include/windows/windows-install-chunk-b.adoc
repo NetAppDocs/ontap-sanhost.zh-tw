@@ -11,6 +11,7 @@
 
 
 
+[[step-2-configure-fc-hbas-and-switches]]
 == 步驟 2：設定 FC HBA 和交換機
 
 安裝及設定一或多個支援的 FC 主機匯流排介面卡（ HBA ）、以便 FC 連線至儲存系統。

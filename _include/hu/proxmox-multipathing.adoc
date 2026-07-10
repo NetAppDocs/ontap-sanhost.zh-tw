@@ -30,6 +30,7 @@ systemctl start multipathd
 .顯示參數設定
 [%collapsible]
 ====
+[[multipath-parameter-settings]]
 [cols="2"]
 |===
 | 參數 | 設定 

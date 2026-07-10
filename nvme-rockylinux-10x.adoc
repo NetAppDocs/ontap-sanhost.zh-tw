@@ -27,6 +27,7 @@ NVMe-oF 與 Rocky Linux 10.x 有以下已知限制：
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == 步驟 1 ：選擇性啟用 SAN 開機
 
 您可以設定主機以使用 SAN 啟動來簡化部署並提高可擴充性。使用link:https://mysupport.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 Linux 作業系統、主機匯流排適配器 (HBA)、HBA 韌體、HBA 啟動 BIOS 和ONTAP版本是否支援 SAN 啟動。
@@ -42,6 +43,7 @@ NVMe-oF 與 Rocky Linux 10.x 有以下已知限制：
 
 
 
+[[step-2-install-rocky-linux-and-nvme-software-and-verify-your-configuration]]
 == 步驟 2：安裝 Rocky Linux 和 NVMe 軟體並驗證您的配置
 
 若要為 NVMe-oF 設定主機，您需要安裝主機和 NVMe 軟體包，啟用多路徑，並驗證主機 NQN 設定。
@@ -137,6 +139,7 @@ NOTE: 如果 `hostnqn`字串不匹配，請使用 `vserver modify`命令來更�
 
 
 
+[[step-3-configure-nvmefc-and-nvmetcp]]
 == 步驟 3：設定 NVMe/FC 和 NVMe/TCP
 
 使用 Broadcom/Emulex 或 Marvell/QLogic 適配器配置 NVMe/FC，或使用手動發現和連接操作來設定 NVMe/TCP。
@@ -490,6 +493,7 @@ nvme	connect-all	-t	tcp	-w	192.168.21.1	-a	192.168.21.21
 ====
 
 
+[[step-4-optionally-enable-1mb-io-for-nvmefc]]
 == 步驟 4：（可選）為 NVMe/FC 啟用 1MB I/O
 
 ONTAP在識別控制器資料中報告最大資料傳輸大小 (MDTS) 為 8。這意味著最大 I/O 請求大小可達 1MB。若要向 Broadcom NVMe/FC 主機發出 1MB 大小的 I/O 要求，您應該會增加 `lpfc`的價值 `lpfc_sg_seg_cnt`參數從預設值 64 更改為 256。
@@ -523,6 +527,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-5-verify-nvme-boot-services]]
 == 步驟 5：驗證 NVMe 啟動服務
 
 這 `nvmefc-boot-connections.service`和 `nvmf-autoconnect.service`NVMe/FC 中包含的啟動服務 `nvme-cli`系統啟動時，軟體包會自動啟用。
@@ -578,6 +583,7 @@ Jun 10 01:08:36 localhost systemd[1]: Finished Auto-connect to subsystems on FC-
 
 
 
+[[step-6-verify-the-multipathing-configuration]]
 == 步驟 6：驗證多路徑配置
 
 驗證核心內建 NVMe 多重路徑狀態， ANA 狀態和 ONTAP 命名空間是否適用於 NVMe 組態。
@@ -759,6 +765,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-7-set-up-secure-in-band-authentication]]
 == 步驟 7：設定安全帶內身份驗證
 
 Rocky Linux 10.x 主機和ONTAP控制器之間透過 NVMe/TCP 支援安全的帶內身份驗證。
@@ -995,6 +1002,7 @@ mzEKUbcWu26I33b93bil2WR09XDho/ld3L45J+0FeCsStBEAfhYgkQU=:
 ====
 
 
+[[step-8-review-the-known-issues]]
 == 步驟 8 ：檢閱已知問題
 
 沒有已知問題。

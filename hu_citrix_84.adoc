@@ -25,6 +25,7 @@ Linux Host Utilities 軟體包不支援 Citrix Xenserver 作業系統。
 ====
 
 
+[[step-1-optionally-enable-san-booting]]
 == 步驟 1 ：選擇性啟用 SAN 開機
 
 您可以將主機設定為使用 SAN 開機，以簡化部署並改善擴充性。
@@ -43,6 +44,7 @@ Linux Host Utilities 軟體包不支援 Citrix Xenserver 作業系統。
 
 
 
+[[step-2-confirm-the-multipath-configuration-for-your-host]]
 == 步驟 2：確認主機的多路徑配置
 
 您可以使用 Citrix Xenserver 8.4 的多路徑來管理ONTAP LUN。
@@ -75,6 +77,7 @@ systemctl start multipathd
 .顯示參數設定
 [%collapsible]
 ====
+[[multipath-parameter-settings]]
 [cols="2"]
 |===
 | 參數 | 設定 
@@ -199,6 +202,7 @@ size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
 
 
 
+[[step-3-optionally-exclude-a-device-from-multipathing]]
 == 步驟 3：（選用）從多路徑中排除設備
 
 如果需要，您可以將不需要的裝置的 WWID 新增至檔案的「黑名單」區段，以排除裝置的多重路徑 `multipath.conf`功能。
@@ -231,6 +235,7 @@ blacklist {
 
 
 
+[[step-4-customize-multipath-parameters-for-ontap-luns]]
 == 步驟 4：自訂ONTAP LUN 的多路徑參數
 
 如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
@@ -264,6 +269,7 @@ devices {
 ====
 
 
+[[step-5-review-the-known-issues]]
 == 步驟 5：查看已知問題
 
 沒有已知問題。
