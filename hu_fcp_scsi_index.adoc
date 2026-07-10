@@ -4,7 +4,7 @@ permalink: hu_fcp_scsi_index.html
 keywords:  
 summary:  
 ---
-= 總覽
+= 了解如何使用 FCP 和 iSCSI 設定 ONTAP SAN 主機
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,4 +16,10 @@ summary:
 
 
 [role="lead"]
-您可以將某些 SAN 主機設定為 FCP 或 iSCSI 、並將 ONTAP 設定為目標。首先安裝相關的作業系統主機公用程式套件、其中包括 SAN 工具套件。然後驗證 NetApp ONTAP LUN 的多重路徑設定。
+您可以為某些 SAN 主機作業系統 (OS) 配置 FCP 和 iSCSI，並將 ONTAP 作為目標。如果您的主機作業系統受 SAN Host Utilities 軟體支援，則首先需要安裝對應的作業系統主機公用程式套件，其中包含 SAN 工具套件。然後，針對所有主機作業系統類型，設定 ONTAP LUN 的多路徑設定。
+
+.相關資訊
+* link:https://docs.netapp.com/us-en/ontap/san-admin/configure-svm-fc-task.html["了解如何管理 FC 協議"^]
+* link:https://docs.netapp.com/us-en/ontap/san-admin/configure-network-best-performance-task.html["了解如何管理 iSCSI 協議"^]
+* https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["了解如何配置 SAN 儲存設備"^]
+

@@ -16,8 +16,10 @@ summary: 您可以為 NVMe over Fabrics （ NVMe of ）傳輸協定設定特定 
 
 
 [role="lead"]
-您可以設定支援的 SAN 主機以使用 NVMe over Fabrics (NVMe-oF) 協定並以ONTAP作為儲存目標。 NVMe-oF包括光纖通道上的NVMe（NVMe/FC）和TCP上的NVMe（NVMe/TCP）。根據您的主機作業系統和ONTAP版本，您可以在主機上設定和驗證 NVMe/FC 或 NVMe/TCP 協議，或兩者。
+您可以設定支援的 SAN 主機，使其使用 NVMe over Fabrics （NVMe-oF） 協議，並將 ONTAP 作為儲存目標。NVMe-oF 包括 NVMe over Fibre Channel （NVMe/FC） 和 NVMe over TCP （NVMe/TCP）。根據主機作業系統 （OS） 和 ONTAP 版本，您需要在主機作業系統上設定並驗證 NVMe/FC 或 NVMe/TCP 協議，或同時設定並驗證兩者。
 
 .相關資訊
-* link:https://www.netapp.com/pdf.html?item=/media/10681-tr4684pdf.pdf["NetApp知識庫：了解 NVMe-oF"^] 。
+* https://docs.netapp.com/us-en/ontap/san-admin/manage-nvme-concept.html["了解 NVMe 配置"^]
+* link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["了解如何管理 NVMe 協議"^]
+* link:https://www.netapp.com/pdf.html?item=/media/10681-tr4684.pdf["TR-4684：實施和配置基於 NVMe-oF 的現代 SAN"^]
 
