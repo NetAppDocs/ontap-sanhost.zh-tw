@@ -1362,7 +1362,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="c0b79db5f258f0c991a383cbdbf001dd" category="open-title">SnapMirror主動同步</block>
   <block id="efffdf29fb8c22b09edba3371dc2b1b8" category="inline-link-macro">安裝 Linux Host Utilities 8.0</block>
   <block id="5f31956444f1d0bde7a1ffb325106db8" category="paragraph"><block ref="cd52b6bcf27b8c7efa7bb2cae7dba9b4" category="inline-link-macro-rx"></block> 。</block>
-  <block id="3358e8b26d19a4499acfc0263dca6ce1" category="paragraph">Linux Host Utilities 可協助您管理連接到 Linux 主機的ONTAP儲存。 NetApp強烈建議安裝 Linux Host Utilities，但這不是強制性的。這些實用程式可改善管理並協助NetApp客戶支援收集有關您的配置的資訊。</block>
   <block id="10ca5ea421dcd3f1d3ffc993c36b7352" category="inline-link-macro">了解“三侖”實用程式</block>
   <block id="237320d7446d5cfcc43ede01a894bf16" category="list-text"><block ref="f71314b5052c5e3bba533a90a34a7db3" category="inline-link-macro-rx"></block> 。</block>
   <block id="8d0f1920f47f772db5dc821056891ae2" category="inline-link-macro">了解如何使用 Solaris Host Utilities 工具</block>
@@ -1500,7 +1499,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="b04ac3eadb66597daaa5c909511f8e43" category="summary">介紹如何將 Linux Host Utilities 8.0 與ONTAP結合使用</block>
   <block id="8f7edc1d0af50521632d636624077c1e" category="doc">為ONTAP儲存安裝 Linux Host Utilities 8.0</block>
   <block id="0d0d3c3c60d25468f496fa9728f6a214" category="paragraph">Linux Host Utilities 8.0 支援以下分發類型：</block>
-  <block id="fad99686a271ab31e763cc6e083d2fe1" category="paragraph">當您安裝 Linux 主機實用程式時，它不會變更 Linux 主機上的任何設定。</block>
   <block id="98d9c0b801e9d76fa04103ad022672e4" category="list-text">為了可靠運行，使用<block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block>驗證您的 iSCSI、FC 或 FCoE 配置是否受支援。</block>
   <block id="54d2be6229d60cd6144f8a215e8e77e9" category="list-text">安裝供應商支援網站上提供的主機匯流排適配器 (HBA) 管理套件。管理軟體可實現<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>命令來收集有關 FC HBA 的信息，例如其 WWPN。</block>
   <block id="0ea3e528a268f7a469a48d5d8aae4f82" category="paragraph">請參閱供應商文件以驗證以下軟體包是否已正確安裝。這些軟體包需要支援<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block>命令：</block>
@@ -2416,7 +2414,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="d16989a0a7cff1ea32aab2ccb4a37161" category="admonition">如果<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串不相符，請使用<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> 指令來更新對應 ONTAP 儲存系統子系統上的<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串，使其與主機上<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> 的<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> 字串相符。</block>
   <block id="165acd219757dbbec65fbd5a24792898" category="list-text">請確認您使用的是推薦的 Broadcom<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> 韌體和內建驅動程式：</block>
   <block id="06bd4ba69054120ef18345db9c5cccca" category="paragraph">NVMe/TCP 不支援自動連線操作。您可以透過手動執行 NVMe/TCP<block ref="b640a0ce465fa2a4150c36b305c1c11b" prefix=" " category="inline-code"></block> 或<block ref="d2cdac60ef2245cec13c7ecfb5c3b376" prefix=" " category="inline-code"></block> 操作來探索 NVMe/TCP 子系統和命名空間。</block>
-  <block id="fbb8c3634e390cf69c69cd1f449175c7" category="paragraph">== 步驟 5：檢閱已知問題</block>
   <block id="efaa7a41c95bd26123cf738971f624b5" category="summary">了解 ONTAP 對 Ubuntu 主機的支援和功能</block>
   <block id="35408fbc8cac4acdf31c0e994b9e617f" category="cell">Ubuntu 主機版本</block>
   <block id="f079c6de48aef64f8a494cd8ba7dc4b0" category="cell">原生套件中的 NetApp 外掛程式會顯示 NVMe/FC 命名空間的 ONTAP 詳細資訊。</block>
@@ -2505,4 +2502,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="6b9dd1af850387c3bbb1a8645b455f48" category="list-text"><block ref="6b9dd1af850387c3bbb1a8645b455f48" category="inline-link-rx"></block></block>
   <block id="5ea4a4d083b9b7faa4d73ebd6193eec3" category="sidebar">了解如何使用 FCP 和 iSCSI 設定主機</block>
   <block id="46fa0acef0abce2c8d85781039d9ca0e" category="sidebar">了解如何設定主機以使用 NVMe-oF</block>
+  <block id="9d32a296d3ce5f696e1fdfdc2b0f8b87" category="paragraph">Linux 主機公用程式可協助您管理連接到 Linux 主機的 ONTAP 儲存設備。NetApp 強烈建議安裝 Linux 主機公用程式，但並非強制要求。Linux 主機公用程式可改善管理，並協助 NetApp 客戶支援人員收集有關您組態的資訊。</block>
+  <block id="83e24aa706fccba3ff4d736e0e31bf85" category="paragraph">安裝 Linux Host Utilities 時，不會變更主機上的任何設定或行為。</block>
+  <block id="80fd4adc269a85ce0df8e3b446ebf481" category="admonition">Linux Host Utilities 的安裝相依於 libHBAAPI.so 程式庫。即使主機僅用於 iSCSI 專用組態，也需要安裝上述其中一個套件。或者，您可以使用作業系統層級的工具進行 LUN 和路徑管理。</block>
 </blocks>

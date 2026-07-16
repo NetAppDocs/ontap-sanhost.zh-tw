@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-Linux Host Utilities 可協助您管理連接到 Linux 主機的ONTAP儲存。 NetApp強烈建議安裝 Linux Host Utilities，但這不是強制性的。這些實用程式可改善管理並協助NetApp客戶支援收集有關您的配置的資訊。
+Linux 主機公用程式可協助您管理連接到 Linux 主機的 ONTAP 儲存設備。NetApp 強烈建議安裝 Linux 主機公用程式，但並非強制要求。Linux 主機公用程式可改善管理，並協助 NetApp 客戶支援人員收集有關您組態的資訊。

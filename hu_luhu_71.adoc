@@ -16,7 +16,7 @@ summary: 說明如何搭配 ONTAP 使用 Linux 主機公用程式 7.1
 
 
 [role="lead"]
-Linux Host Utilities 可協助您管理連接到 Linux 主機的ONTAP儲存。 NetApp強烈建議安裝 Linux Host Utilities，但這不是強制性的。這些實用程式可改善管理並協助NetApp客戶支援收集有關您的配置的資訊。
+Linux 主機公用程式可協助您管理連接到 Linux 主機的 ONTAP 儲存設備。NetApp 強烈建議安裝 Linux 主機公用程式，但並非強制要求。Linux 主機公用程式可改善管理，並協助 NetApp 客戶支援人員收集有關您組態的資訊。
 
 Linux Host Utilities 7.1 支援以下分發類型：
 
@@ -31,7 +31,7 @@ Linux Host Utilities 7.1 支援以下分發類型：
 NOTE: Linux 主機公用程式軟體不支援 NVMe over Fibre Channel （ NVMe / FC ）和 NVMe over TCP （ NVMe / TCP ）主機傳輸協定。
 
 .關於這項工作
-當您安裝 Linux 主機實用程式時，它不會變更 Linux 主機上的任何設定。
+安裝 Linux Host Utilities 時，不會變更主機上的任何設定或行為。
 
 .開始之前
 * 為了可靠運行，使用link:https://imt.netapp.com/matrix/#welcome["互通性對照表工具"^]驗證您的 iSCSI、FC 或 FCoE 配置是否受支援。
