@@ -1277,7 +1277,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="a8037bee31f3b32217fc0d5b84621e5e" category="section-title">步驟 9 ：檢閱已知問題</block>
   <block id="63da114c28add40c319de84e3a92a8ed" category="sidebar">RHEL-10-FCP</block>
   <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">以下範例顯示了 nvme-cli 軟體包版本：</block>
-  <block id="c90e2c8eff8de67c2e01d748085394db" category="list-text">驗證<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>文件存在。如果檔案不存在，請建立空白的零位元組檔案：</block>
   <block id="0825e58b251b6f1e1956c9f982c69b3d" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Citrix Hypervisor 8.2</block>
   <block id="3e2e1ae5727d07e3ee9163e73df8e73f" category="paragraph">您可以使用 Citrix Hypervisor 8.2 的多路徑來管理 ONTAP LUN。</block>
   <block id="6d9eef6a4c2617ee0a8dfdc9ae7a468a" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Citrix Xenserver 8.4</block>
@@ -2505,4 +2504,14 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9d32a296d3ce5f696e1fdfdc2b0f8b87" category="paragraph">Linux 主機公用程式可協助您管理連接到 Linux 主機的 ONTAP 儲存設備。NetApp 強烈建議安裝 Linux 主機公用程式，但並非強制要求。Linux 主機公用程式可改善管理，並協助 NetApp 客戶支援人員收集有關您組態的資訊。</block>
   <block id="83e24aa706fccba3ff4d736e0e31bf85" category="paragraph">安裝 Linux Host Utilities 時，不會變更主機上的任何設定或行為。</block>
   <block id="80fd4adc269a85ce0df8e3b446ebf481" category="admonition">Linux Host Utilities 的安裝相依於 libHBAAPI.so 程式庫。即使主機僅用於 iSCSI 專用組態，也需要安裝上述其中一個套件。或者，您可以使用作業系統層級的工具進行 LUN 和路徑管理。</block>
+  <block id="89cc2e448bfab3f72775bf63ba95f6b8" category="list-text">找到該<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案。</block>
+  <block id="513d74565406362adb850ab938385fc9" category="paragraph">如果參考<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案沒有 NetApp 裝置特定的組態參數，請使用下列自訂的<block ref="0b8ece90a839a9e06f383ca447a43d0a" prefix=" " category="inline-code"></block>檔案新增這些參數。您可以在以下位置找到該檔案<block ref="71fe0386f98c519539991005b0431114" prefix=" " category="inline-code"></block>：</block>
+  <block id="80dd859408a5d6f4e1fea887232fcb9c" category="admonition">請勿對<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案進行任何變更，因為系統更新期間檔案內容可能會被覆寫。</block>
+  <block id="c5e54d2baa8f8726a2bbb9cdb54d7b44" category="example-title">顯示檔案內容</block>
+  <block id="f4aa89dafa47fb5f4397eee1e0199259" category="list-text">首次設定多重路徑時，您可能需要啟用並啟動多重路徑服務以載入建議設定：</block>
+  <block id="fe5d74c01808272a8ae4f42e470a8f41" category="list-text">每次開機主機時，該 <block ref="75e4fe3614f22a29e01e641985631179" prefix=" " category="inline-code"></block> 檔案都會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。</block>
+  <block id="4910f42f8999e3188ed5ea407ad26bb1" category="paragraph">如果您的主機連接到其他供應商的 LUN，並且任何多重路徑參數設定被覆蓋，則需要透過修改<block ref="75e4fe3614f22a29e01e641985631179" prefix=" " category="inline-code"></block>檔案中專門針對 ONTAP LUN 的設定段來修正這些設定。向下捲動檔案即可新增這些設定段。如果不修正這些參數，ONTAP LUN 可能無法正常運作。</block>
+  <block id="8757940486b32d54f9db8c7c7fbdf152" category="paragraph">以下範例顯示如何修正被覆寫的預設值。在此範例中，<block ref="5a59351c0331c505f5bdd7a46cf5ccfa" prefix=" " category="inline-code"></block> 檔案定義了與 ONTAP LUN 不相容的 <block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 和 <block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> 值，且由於 ONTAP 儲存設備陣列仍連接至主機，因此您無法移除這些參數。相反地，您可以透過在 <block ref="5a59351c0331c505f5bdd7a46cf5ccfa" prefix=" " category="inline-code"></block> 檔案中新增專門套用至 ONTAP LUN 的裝置區段，來修正 <block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 和 <block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> 的值。</block>
+  <block id="f6f07e5c0717a6396faf7acd7ecc939f" category="paragraph">如果需要，可以透過將不需要的裝置的 WWID 新增到<block ref="75e4fe3614f22a29e01e641985631179" prefix=" " category="inline-code"></block>檔案的「黑名單」節中，將裝置從多重路徑中排除。</block>
+  <block id="1914277d8e1f7ba7385caa315a500eb5" category="paragraph">如果您的主機連接到其他供應商的 LUN，並且任何多重路徑參數設定被覆蓋，則需要透過在<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案中新增專門針對 ONTAP LUN 的設定段來修正這些設定。向下捲動檔案即可新增這些設定段。如果不修正這些參數，ONTAP LUN 可能無法正常運作。</block>
 </blocks>

@@ -52,13 +52,59 @@ Linux Host Utilities 軟體包不支援 Citrix Xenserver 作業系統。
 為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
 
 .步驟
-. 驗證 `/etc/multipath.conf`文件存在。如果檔案不存在，請建立空白的零位元組檔案：
+. 找到該 `/etc/multipath.conf`檔案。
 +
+如果參考 `/etc/multipath.conf`檔案沒有 NetApp 裝置特定的組態參數，請使用下列自訂的 `.conf drop-in`檔案新增這些參數。您可以在以下位置找到該檔案 `/etc/multipath/conf.d/`：
+
++
+
+NOTE: 請勿對 `/etc/multipath.conf`檔案進行任何變更，因為系統更新期間檔案內容可能會被覆寫。
+
++
+.顯示檔案內容
+[%collapsible]
+====
 [source, cli]
 ----
-touch /etc/multipath.conf
+$sudo tee -a /etc/multipath/conf.d/custom.conf >/dev/null <<'EOF'
+
+defaults {
+    polling_interval 5
+}
+
+blacklist {
+    wwid <Insert_LUN_wwid_string>
+    devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+    devnode "^hd[a-z]"
+    devnode "^cciss.*"
+}
+
+devices {
+    device {
+    vendor "NETAPP"
+    product "LUN.*"
+    user_friendly_names no
+    path_checker "tur"
+    prio "ontap"
+    detect_prio yes
+    path_grouping_policy "group_by_prio"
+    path_selector "service-time 0"
+    failback immediate
+    fast_io_fail_tmo 5
+    dev_loss_tmo infinity
+    no_path_retry queue
+    features "3 queue_if_no_path pg_init_retries 50"
+    flush_on_last_del yes
+    hardware_handler "0"
+    retain_attached_hw_handler yes
+    rr_weight uniform
+  }
+}
+
+EOF
 ----
-. 第一次 `multipath.conf`建立檔案時，您可能需要啟用並啟動多重路徑服務，才能載入建議的設定：
+====
+. 首次設定多重路徑時，您可能需要啟用並啟動多重路徑服務以載入建議設定：
 +
 [source, cli]
 ----
@@ -69,7 +115,7 @@ systemctl enable multipathd
 ----
 systemctl start multipathd
 ----
-. 每次引導主機時，空的 `/etc/multipath.conf`零位元組檔案會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。您不需要變更 `/etc/multipath.conf`主機的檔案，因為主機作業系統是使用多重路徑參數編譯，可正確辨識及管理 ONTAP LUN 。
+. 每次開機主機時，該  `/etc/multipath/conf.d/custom.conf` 檔案都會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。
 +
 下表顯示 ONTAP LUN 的原生 Linux OS 編譯多重路徑參數設定。
 
@@ -141,7 +187,7 @@ systemctl start multipathd
 +
 [source, cli]
 ----
-/sbin/mpathutil list
+/sbin/mpathutil status
 ----
 +
 預設多路徑參數支援ASA、 AFF和FAS配置。在這些配置中，單一ONTAP LUN 不應需要超過四條路徑。儲存故障時，路徑超過四條可能會導致問題。
@@ -205,7 +251,7 @@ size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
 [[step-3-optionally-exclude-a-device-from-multipathing]]
 == 步驟 3：（選用）從多路徑中排除設備
 
-如果需要，您可以將不需要的裝置的 WWID 新增至檔案的「黑名單」區段，以排除裝置的多重路徑 `multipath.conf`功能。
+如果需要，可以透過將不需要的裝置的 WWID 新增到 `/etc/multipath/conf.d/custom.conf`檔案的「黑名單」節中，將裝置從多重路徑中排除。
 
 .步驟
 . 判斷 WWID ：
@@ -225,7 +271,7 @@ size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
 [source, cli]
 ----
 blacklist {
-	     wwid   360030057024d0730239134810c0cb833
+        wwid   360030057024d0730239134810c0cb833
         devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
         devnode "^hd[a-z]"
         devnode "^cciss.*"
@@ -238,14 +284,12 @@ blacklist {
 [[step-4-customize-multipath-parameters-for-ontap-luns]]
 == 步驟 4：自訂ONTAP LUN 的多路徑參數
 
-如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
-
-請檢查您的 `/etc/multipath.conf`檔案，尤其是在預設值區段中，以瞭解可能會覆寫的設定<<multipath-parameter-settings,多重路徑參數的預設設定>>。
+如果您的主機連接到其他供應商的 LUN，並且任何多重路徑參數設定被覆蓋，則需要透過修改 `/etc/multipath/conf.d/custom.conf`檔案中專門針對 ONTAP LUN 的設定段來修正這些設定。向下捲動檔案即可新增這些設定段。如果不修正這些參數，ONTAP LUN 可能無法正常運作。
 
 
 CAUTION: 您不應覆寫 ONTAP LUN 的建議參數設定。這些設定是主機組態最佳效能所必需的。如需詳細資訊，請聯絡 NetApp 支援，您的作業系統廠商或兩者。
 
-下列範例說明如何修正被覆寫的預設值。在此範例中，檔案會 `multipath.conf`定義與 ONTAP LUN 不相容的值 `path_checker`， `no_path_retry`而且您無法移除這些參數，因為 ONTAP 儲存陣列仍連接至主機。而是修正和 `no_path_retry`的值 `path_checker`，方法是將裝置節新增至 `multipath.conf`特定適用於 ONTAP LUN 的檔案。
+以下範例顯示如何修正被覆寫的預設值。在此範例中， `custom.conf drop-in` 檔案定義了與 ONTAP LUN 不相容的  `path_checker` 和  `no_path_retry` 值，且由於 ONTAP 儲存設備陣列仍連接至主機，因此您無法移除這些參數。相反地，您可以透過在  `custom.conf drop-in` 檔案中新增專門套用至 ONTAP LUN 的裝置區段，來修正  `path_checker` 和  `no_path_retry` 的值。
 
 .顯示範例
 [%collapsible]
