@@ -62,21 +62,82 @@ QLogic FC HBA 的逾時值：
 以下範例輸出顯示了ASA、 AFF或FAS配置的ONTAP LUN 的正確設定。
 
 +
+
+NOTE: 建議的 MPIO 原則是含子集的循環配置資源。
+
++
 [role="tabbed-block"]
 ====
 .ASA 組態
 --
 ASA配置應包含一組具有單一優先權的活動/最佳化路徑。控制器負責維護路徑，並在所有活動路徑上發送 I/O。
 
+.顯示 CLI 範例
+[%collapsible]
+=====
+[listing]
+----
+MPIO Disk13: 04 Paths, Round Robin with Subset, Symmetric Access
+    Controlling DSM: Microsoft DSM
+    SN: 600A09803831397A545D586E362D2F54
+    Supported Load Balance Policies: FOO RR RRWS LQD WP LB
+
+    Path ID          State              SCSI Address      Weight
+    -------------------------------------------------------------
+    0000000077060001 Active/Optimized   006|000|001|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1001, : 4
+
+    0000000077060000 Active/Optimized   006|000|000|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 2
+
+    0000000077050001 Active/Optimized   005|000|001|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1001, : 3
+
+    0000000077050000 Active/Optimized   005|000|000|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 1
+----
+=====
+.顯示使用者介面範例
+[%collapsible]
+=====
 image::asa.png[具有主動 / 最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
 
+=====
 --
 .AFF 或 FAS 組態
 --
 AFF或FAS配置應有兩組優先順序不同的路徑。優先順序較高的路徑是活動/最佳化路徑，由聚合所在的控制器提供服務。優先順序較低的路徑由不同的控制器提供服務。它們處於活動狀態，但未經最佳化，僅在沒有優化路徑時使用。
 
+.顯示 CLI 範例
+[%collapsible]
+=====
+[listing]
+----
+MPIO Disk0: 04 Paths, Round Robin with Subset, Implicit Only
+    Controlling DSM: Microsoft DSM
+    SN: 600A0980383136724D5D546931437933
+    Supported Load Balance Policies: FOO RRWS LQD WP LB
+    Path ID          State              SCSI Address      Weight
+    -------------------------------------------------------------
+    0000000077010001 Active/Optimized   001|000|001|000   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 2
+
+    0000000077010000 Active/Unoptimized 001|000|000|000   0
+      TPG_State : Active/Unoptimized, TPG_Id: 1001, : 4
+
+    0000000077000001 Active/Unoptimized 000|000|001|000   0
+      TPG_State : Active/Unoptimized, TPG_Id: 1001, : 3
+
+    0000000077000000 Active/Optimized   000|000|000|000   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 1
+----
+=====
+.顯示使用者介面範例
+[%collapsible]
+=====
 image::nonasa.png[具有兩個主動 / 最佳化路徑和兩個主動 / 非最佳化路徑的 ONTAP LUN 螢幕擷取畫面]
 
+=====
 --
 ====
 

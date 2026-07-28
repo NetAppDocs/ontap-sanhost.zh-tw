@@ -1196,7 +1196,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="cd30444b7075100f9dce64caf41ba2b7" category="doc">步驟 2 ：安裝 Linux 主機公用程式</block>
   <block id="a9764a4b476a4ae40670f2b10ab9b4aa" category="admonition">安裝 Linux 主機公用程式不會變更 Linux 主機上的任何主機逾時設定。</block>
   <block id="0f8e25d5af08d115d6410aa42fa8c1e8" category="doc">步驟 5 ：自訂 ONTAP LUN 的多重路徑參數</block>
-  <block id="3fe581ad5b991799c1f61a8549c04d3a" category="paragraph">如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。</block>
   <block id="cd06b268016cd4adbdc3379f2f104161" category="inline-xref">多重路徑參數的預設設定</block>
   <block id="fb2d54d11853b77ae1f714a3ac9623d4" category="paragraph">請檢查您的<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案，尤其是在預設值區段中，以瞭解可能會覆寫的設定<block ref="3e47c09a7bdcd0377df056ba2567e852" category="inline-xref-macro-rx"></block>。</block>
   <block id="950fee65be63d69982c008736e2579a4" category="admonition">您不應覆寫 ONTAP LUN 的建議參數設定。這些設定是主機組態最佳效能所必需的。如需詳細資訊，請聯絡 NetApp 支援，您的作業系統廠商或兩者。</block>
@@ -2508,10 +2507,13 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="513d74565406362adb850ab938385fc9" category="paragraph">如果參考<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案沒有 NetApp 裝置特定的組態參數，請使用下列自訂的<block ref="0b8ece90a839a9e06f383ca447a43d0a" prefix=" " category="inline-code"></block>檔案新增這些參數。您可以在以下位置找到該檔案<block ref="71fe0386f98c519539991005b0431114" prefix=" " category="inline-code"></block>：</block>
   <block id="80dd859408a5d6f4e1fea887232fcb9c" category="admonition">請勿對<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block>檔案進行任何變更，因為系統更新期間檔案內容可能會被覆寫。</block>
   <block id="c5e54d2baa8f8726a2bbb9cdb54d7b44" category="example-title">顯示檔案內容</block>
-  <block id="f4aa89dafa47fb5f4397eee1e0199259" category="list-text">首次設定多重路徑時，您可能需要啟用並啟動多重路徑服務以載入建議設定：</block>
   <block id="fe5d74c01808272a8ae4f42e470a8f41" category="list-text">每次開機主機時，該 <block ref="75e4fe3614f22a29e01e641985631179" prefix=" " category="inline-code"></block> 檔案都會自動載入 NetApp 建議的主機多重路徑參數作為預設設定。</block>
-  <block id="4910f42f8999e3188ed5ea407ad26bb1" category="paragraph">如果您的主機連接到其他供應商的 LUN，並且任何多重路徑參數設定被覆蓋，則需要透過修改<block ref="75e4fe3614f22a29e01e641985631179" prefix=" " category="inline-code"></block>檔案中專門針對 ONTAP LUN 的設定段來修正這些設定。向下捲動檔案即可新增這些設定段。如果不修正這些參數，ONTAP LUN 可能無法正常運作。</block>
   <block id="8757940486b32d54f9db8c7c7fbdf152" category="paragraph">以下範例顯示如何修正被覆寫的預設值。在此範例中，<block ref="5a59351c0331c505f5bdd7a46cf5ccfa" prefix=" " category="inline-code"></block> 檔案定義了與 ONTAP LUN 不相容的 <block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 和 <block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> 值，且由於 ONTAP 儲存設備陣列仍連接至主機，因此您無法移除這些參數。相反地，您可以透過在 <block ref="5a59351c0331c505f5bdd7a46cf5ccfa" prefix=" " category="inline-code"></block> 檔案中新增專門套用至 ONTAP LUN 的裝置區段，來修正 <block ref="3b07c0a70dc66d6564dcdf2f5ab1ed63" prefix=" " category="inline-code"></block> 和 <block ref="9434de34302b4f40887a7277cf35a8fc" prefix=" " category="inline-code"></block> 的值。</block>
   <block id="f6f07e5c0717a6396faf7acd7ecc939f" category="paragraph">如果需要，可以透過將不需要的裝置的 WWID 新增到<block ref="75e4fe3614f22a29e01e641985631179" prefix=" " category="inline-code"></block>檔案的「黑名單」節中，將裝置從多重路徑中排除。</block>
-  <block id="1914277d8e1f7ba7385caa315a500eb5" category="paragraph">如果您的主機連接到其他供應商的 LUN，並且任何多重路徑參數設定被覆蓋，則需要透過在<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案中新增專門針對 ONTAP LUN 的設定段來修正這些設定。向下捲動檔案即可新增這些設定段。如果不修正這些參數，ONTAP LUN 可能無法正常運作。</block>
+  <block id="ea569ff3bb61f79534f9c5695e9f2ba5" category="list-text">首次設定多重路徑時，您可能需要啟用並啟動多重路徑服務以載入建議設定：</block>
+  <block id="56571ab49f1dbbf252bb35616e87d98c" category="paragraph">如果您的主機連接到其他供應商的 LUN，並且任何多重路徑參數設定被覆蓋，則需要透過修改現有設定段或在<block ref="75e4fe3614f22a29e01e641985631179" prefix=" " category="inline-code"></block>檔案中新增專門針對 ONTAP LUN 的新設定段來修正這些設定。您需要在檔案中向下捲動以審查適用於您主機的變更。如果不修正這些參數，ONTAP LUN 可能無法如預期運作。</block>
+  <block id="59b5348a7567441239c202a92900a372" category="paragraph">如果您的主機連接到其他供應商的 LUN，並且任何多重路徑參數設定被覆蓋，則需要透過修改現有設定段或在<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>檔案中新增專門針對 ONTAP LUN 的新設定段來修正這些設定。您需要在檔案中向下捲動以審查適用於您主機的變更。如果不修正這些參數，ONTAP LUN 可能無法如預期運作。</block>
+  <block id="ff77ba7bf94da41f58968cd6238bef1b" category="admonition">建議的 MPIO 原則是含子集的循環配置資源。</block>
+  <block id="93499fb92b162d002d9b600c8e5d0fc9" category="example-title">顯示 CLI 範例</block>
+  <block id="ba15363da34b1cb74efc52c7595d9fcc" category="example-title">顯示使用者介面範例</block>
 </blocks>

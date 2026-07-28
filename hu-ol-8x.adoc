@@ -441,7 +441,7 @@ blacklist {
 [[step-6-customize-multipath-parameters-for-ontap-luns]]
 == 步驟 6：自訂 ONTAP LUN 的多路徑參數
 
-如果您的主機已連接至其他廠商的 LUN ，而且任何多重路徑參數設定都會被覆寫，則您需要在稍後的檔案中新增特定套用至 ONTAP LUN 的節點來修正這些設定 `multipath.conf`。如果您不這麼做， ONTAP LUN 可能無法如預期般運作。
+如果您的主機連接到其他供應商的 LUN，並且任何多重路徑參數設定被覆蓋，則需要透過修改現有設定段或在 `multipath.conf`檔案中新增專門針對 ONTAP LUN 的新設定段來修正這些設定。您需要在檔案中向下捲動以審查適用於您主機的變更。如果不修正這些參數，ONTAP LUN 可能無法如預期運作。
 
 請檢查您的 `/etc/multipath.conf`檔案，尤其是在預設值區段中，以瞭解可能會覆寫的設定<<multipath-parameter-settings,多重路徑參數的預設設定>>。
 
