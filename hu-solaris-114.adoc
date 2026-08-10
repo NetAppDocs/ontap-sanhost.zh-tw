@@ -121,7 +121,7 @@ link:hu-solaris-80.html["安裝 Solaris Host Utilities 8.0"] 。
 --
 ** Solaris 虛擬化選項包括 Solaris 邏輯域（也稱為 LDOM 或 Oracle VM Server for SPARC）、Solaris 動態域、Solaris 區域和 Solaris 容器。這些技術也被稱為「Oracle虛擬機器」。
 ** 您可以一起使用多個選項，例如，特定 Solaris 邏輯域內的 Solaris 容器。
-** NetApp支援使用 Solaris 虛擬化技術，其中整體配置由 Oracle 支持，並且任何可直接存取 LUN 的分區都列在link:https://imt.netapp.com/matrix/#welcome["IMT"]在受支援的配置中。這包括根容器、LDOM I/O 域和使用 NPIV 存取 LUN 的 LDOM。
+** NetApp 支援使用 Solaris 虛擬化技術，其中整體組態由 Oracle 支援，並且任何可直接存取 LUN 的分區都列在link:https://imt.netapp.com/matrix/#welcome["IMT"^]支援的組態中。這包括根目錄容器、LDOM I/O 域以及使用 NPIV 存取 LUN 的 LDOM。
 ** 僅使用虛擬化儲存資源的分區或虛擬機，例如 `vdsk`，不需要特定資格，因為他們無法直接存取ONTAP LUN。您只需驗證對底層 LUN 具有直接存取權限的分割區或虛擬機器（例如 LDOM I/O 網域）是否會列在link:https://imt.netapp.com/matrix/#welcome["IMT"^]。
 
 
@@ -204,7 +204,7 @@ NOTE: 之後 `scsi-vhci-failover-override` 已套用、 `conf` 已新增至 `svl
 +
 [source, cli]
 ----
-pkg info entire`
+pkg info entire
 ----
 .. 驗證ONTAP LUN 是否具有 `ostype`作為“Solaris”，與 LUN 大小無關：
 +
@@ -256,7 +256,7 @@ root@sparc-s7-55-148:~# sanlun lun show -pv
 +
 [source, cli]
 ----
-mpathadm show lu <LUN>`
+mpathadm show lu <LUN>
 ----
 +
 以下範例輸出顯示ASA、 AFF或FAS配置中ONTAP LUN 的正確路徑狀態。輸出中每個 LUN 的路徑優先權都顯示在「存取狀態」中。
@@ -445,9 +445,5 @@ Logical Unit:  /dev/rdsk/c0t600A0980383044376C3F4E694E506E44d0s2
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1345622["13456222"^] | 使用 OS 原生命令、在具有 AASA / pports 的 Solaris 主機上進行異常路徑報告 | 在使用所有 SAN 陣列（ ASA ）的 Solaris 11.4 上、會發現間歇性路徑報告問題。 | 不適用 
 |===
-
-
-[[whats-next]]
-== 接下來呢？
-
+.下一步
 link:hu-solaris-command-reference.html["了解如何使用 Solaris Host Utilities 工具"] 。

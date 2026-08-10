@@ -642,8 +642,6 @@
   <block id="4ace21de4701510a7868bf0b96619e05" category="cell">執行中<block ref="cb4b12dfd645e3fcd47ea6dec988643f" prefix=" " category="inline-code"></block> 在 Emulex 端點對端組態上、會導致 I/O 錯誤。ONTAP 9.5P17 、 9.6P14 、 9.7P13 和 9.8P2 中已修正此問題</block>
   <block id="7ff276d19a76a720d17e3dcf4d050ee3" category="summary">您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe over Fabrics （ NVMe of ）作為目標。</block>
   <block id="c719ab5e5b2a188adebd62c0829a9f96" category="doc">適用於 ESXi 8.x 與 ONTAP 的 NVMe 主機組態</block>
-  <block id="53b4135529508b3c01c35cf73dca64d0" category="list-text">從 ONTAP 9.10.1 開始、 ONTAP 支援 NVMe / TCP 傳輸協定。</block>
-  <block id="7237142305a120be2bd65985f2ef736c" category="list-text">從 ONTAP 9.9.1 P3 開始、 ESXi 8 及更新版本支援 NVMe / FC 傳輸協定。</block>
   <block id="7c1c1c55c2c606a3cf3259643b78a017" category="list-text">ESXi 啟動器主機可透過相同的介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block> 以取得最新的支援組態和版本清單。</block>
   <block id="d202ecba0de538b2ab3f4e53f0191f53" category="list-text">對於 ESXi 8.0 及更新版本、 HPP （高效能外掛程式）是 NVMe 裝置的預設外掛程式。</block>
   <block id="b1d7de4d8d51704fba7a0c0f12c2c299" category="list-text">不支援 RDM 對應。</block>
@@ -784,15 +782,12 @@
   <block id="e681a3b45989b468533c4b90ee960bf9" category="cell">不適用</block>
   <block id="0a0990c5ca1e9aa6bb4871721a00290c" category="list-text">安裝 <block ref="7e5271dd15da7840bc647fc6451145a6" category="inline-link-macro-rx"></block> 設定FC和NVMe通用的驅動程式參數。</block>
   <block id="50f145df2b9dca1b51d6f136b1d6e045" category="section-title">非 ASA 組態</block>
-  <block id="d79264094c58a09021a5a2a80dcf4328" category="paragraph">您應該瞭解下列已知問題和限制、這些問題和限制可能會影響特定主機的效能。</block>
   <block id="7f31ebe6735efb5b2186c87408e0e0f8" category="cell">Solaris 11.4 與 Huk 建議：
 FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" prefix=" " category="inline-code"></block> 至<block ref="200efcf5dbc2c08d7c76deba0c7ecda8" prefix=" " category="inline-code"></block>。移動您在中的組態<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> 至<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> 如 Oracle 所述（文件編號 2595926.1 ）。新安裝的 Solaris 11.4 系統和從 11.3 或更低版本升級的系統的行為會有所不同。</block>
   <block id="eb5d1a08cb5aa5e6c62dcec6f972d7ef" category="list-text">FCP 一般：顯示與特定主機無關的 FC 和主機匯流排介面卡（ HBA ）錯誤。</block>
   <block id="b2996e4a9c3c0535f864240f52e9bcdc" category="list-text">Veritas Dynamic Multipathing （ DMP ）搭配使用 SPARC 處理器的系統上的 FC 或 iSCSI 傳輸協定、或是使用 x86_64 處理器的系統上的 iSCSI 傳輸協定。</block>
   <block id="f01e00e50e3260a96149df0279bca6c7" category="list-text">使用解壓縮檔案<block ref="28c378002cbdc25e8dbf07ffe605f6ac" prefix=" " category="inline-code"></block> 命令：</block>
   <block id="16337c2b0ad3e64aaeb3714d78256deb" category="paragraph">Solaris主機公用程式是NetApp主機軟體、可在Oracle Solaris主機上提供命令列工具套件。此工具套件會在您安裝NetApp主機公用程式套件時安裝。此套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 可協助您管理 LUN 和主機匯流排介面卡（ HBA ）的公用程式。。<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 命令會傳回對應至主機的 LUN 、多重路徑及建立啟動器群組所需的資訊。</block>
-  <block id="5cbce7f0ea158500dcff175373e3cbcf" category="paragraph">版本資訊說明新功能與增強功能、目前版本中修正的問題、已知問題與限制、以及與使用 ONTAP 儲存系統設定及管理特定 AIX 主機相關的重要注意事項。</block>
-  <block id="33871b6190a8d5adbe8b15282054766c" category="section-title">新增功能</block>
   <block id="c791b15d48a2be7d8c6a9c0b2badc362" category="list-text">PowerVM</block>
   <block id="f46d29974d2e1fa7b1fb4f55e009f7c2" category="paragraph">如需有關 PowerVM 的詳細資訊、請參閱 IBM PowerVM Live Partition Mobility Red Book 。</block>
   <block id="7cfc2a0609811d433edc27220510bde6" category="list-text">前往<block ref="4885f2a79813769d8236c375fd40eeb7" category="inline-link-rx"></block> 並將包含主機公用程式的壓縮檔案下載到主機上的目錄。</block>
@@ -937,7 +932,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph"><block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block>命令會產生下列類型的輸出。下列範例中的輸出會被截斷。</block>
   <block id="adcc6b5e38256f637746539b3d3cb7b3" category="paragraph">Ubuntu 22.04 GA 核心中隨附的原生收件匣 qla2xxx 驅動程式具有最新的上游修正程式。這些修正對於 ONTAP 支援至關重要。</block>
   <block id="587b796170a9abac4701cd8aa1bb38cb" category="listing-title">輸出範例</block>
-  <block id="8b6a5845688d81720a1016c10aa9e843" category="list-text">根據預設，所有新建立的 NVMe 命名空間都會啟用從 ONTAP 9 。 16.1 開始的空間分配。</block>
   <block id="0c48e7c4bbc87e64bef6a0afca5676b3" category="paragraph">預期值為 0 。</block>
   <block id="e63e68670f6caa57aae357d60e7ea92c" category="paragraph"><block ref="5fb81999d6f54088d56d3a83b7e45bb2" prefix="" category="inline-code"></block></block>
   <block id="7b4c45ceb018e94a23feffc876757fd9" category="paragraph">預期值為 1 。</block>
@@ -1026,7 +1020,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4ca4b3d2d4df168b4ccd9c3ed42aacb7" category="list-text">如果您的組態不支援 ALUA ，您需要使用 dotPaths 公用程式來設定路徑優先順序。當您安裝主機公用程式時、便會安裝DotPaths公用程式。如果啟用ALUA、請勿使用dotPaths公用程式。</block>
   <block id="536030c2a43ef2d08d5779cf13416e11" category="list-text">若要設定所有 ONTAP LUN 的優先順序，請輸入：</block>
   <block id="8b047d84ff88fe8413922711a8a6b88e" category="paragraph">有關主機公用程式支援的作業系統版本和更新的特定資訊，請參閱<block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block>。</block>
-  <block id="65e17e3635aff4a06545ebdec876d723" category="paragraph">AIX 主機公用程式版本包含下列新功能和增強功能：</block>
   <block id="3a7c6e3d017877edeea93359d3fe1527" category="list-text">AIX 主機公用程式 6.1 支援舊版 AIX 主機作業系統中發生的記憶體故障問題。有了AIX Host Utilities 6.1、只有sanlun二進位檔已變更。Microsoft 多重路徑 I/O （ MPIO ）和相關的 ODM 維持不變。</block>
   <block id="2a372b892113e198dff50fad53f7c8cf" category="cell">ONTAP iSCSI LUN 的 SCSI 取消對應支援</block>
   <block id="ad8a44c5166ba0f4232aef9400e09e61" category="cell">在Sing All SAN Array中、SCSI傳輸長度上限為1 MB。ONTAP若要限制連接ONTAP 到Sing All SAN Array時、從HP-UX主機傳輸的最大傳輸長度、必須將HP-UX SCSI子系統允許的最大I/O大小設為1 MB。如需詳細資訊、請參閱HP-UX廠商文件。</block>
@@ -1223,7 +1216,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5c74c157af6548045320136db7e14e99" category="doc">安裝適用於 ONTAP 儲存設備的 HP-UX 主機公用程式 6.0</block>
   <block id="999228127327d5abbf22fcd7674b2b9e" category="section-title">步驟 3 ：確認主機的多重路徑組態</block>
   <block id="8c17d9c0a4a49ae4d62efebd1ab80463" category="section-title">步驟 6 ：檢閱已知問題</block>
-  <block id="58eaebf972358f1cf03d386a4ade1a0f" category="section-title">接下來呢？</block>
   <block id="d29ad9efbcae6053e82420f1cc871c51" category="paragraph">有關配置和管理 vVols 的詳細信息，請參閱 ONTAP Tools for VMware vSphere 文檔以及<block ref="c45840700e4ab6d55371aa3a3251b306" category="inline-link-rx"></block>和<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>。</block>
   <block id="764c3360f3f7d6cb07c2ff1a79f2cf58" category="paragraph">有關配置和管理 vVols 的詳細信息，請參閱 ONTAP Tools for VMware vSphere 文檔以及<block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>和<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>。</block>
   <block id="d04eb85f6d5ba5f0fcd2c894dea16fe5" category="paragraph">有關配置和管理 vVols 的詳細信息，請參閱 ONTAP Tools for VMware vSphere 文檔，<block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>和<block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>。</block>
@@ -1329,7 +1321,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e74cde91767e734e99cfb172af811316" category="paragraph">以下範例輸出顯示ASA、 AFF或FAS配置中ONTAP LUN 的正確路徑狀態。</block>
   <block id="9376575465ca90697f172c2aeaf3187c" category="paragraph">ASA配置最佳化了到給定 LUN 的所有路徑，使其保持活動狀態（「主要」）。透過同時透過所有路徑提供 I/O 操作，可以提高效能。</block>
   <block id="9dd1e4b7a8e96791578f9515cdfeb564" category="paragraph">以下範例顯示具有兩個主動/最佳化（「主」）路徑和兩個主動/非最佳化（「次」）路徑的ONTAP LUN 的正確輸出：</block>
-  <block id="3f297ef15cde0668e93b35f2752fd4fd" category="doc">下一步是什麼？</block>
   <block id="e299e7fd1c6381a6c7fcac9a828fd25a" category="inline-link-macro">了解如何使用 AIX Host Utilities 工具</block>
   <block id="03ea706883bb6caab71c2b449fed7e79" category="paragraph"><block ref="62e681160c8e8c0a8a6639c5a7efeaf1" category="inline-link-macro-rx"></block> 。</block>
   <block id="807db967063af5a57e4bd6d406117c45" category="paragraph">您可以設定主機以使用 SAN 啟動來簡化部署並提高可擴充性。如果您的配置不支援 SAN 啟動，您可以使用本機啟動。</block>
@@ -1375,7 +1366,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="7a5aeaf8595e6c9f25eba82c59c5ab69" category="list-text">Solaris 虛擬化選項包括 Solaris 邏輯域（也稱為 LDOM 或 Oracle VM Server for SPARC）、Solaris 動態域、Solaris 區域和 Solaris 容器。這些技術也被稱為「Oracle虛擬機器」。</block>
   <block id="5b0999bdd29511cd69bf4dd133ff0c63" category="list-text">您可以一起使用多個選項，例如，特定 Solaris 邏輯域內的 Solaris 容器。</block>
   <block id="c5dcd35af16918a17ee9c3a5c153f0af" category="inline-link-macro">IMT</block>
-  <block id="cc8893c8f0542112ca80fb5db23d7462" category="list-text">NetApp支援使用 Solaris 虛擬化技術，其中整體配置由 Oracle 支持，並且任何可直接存取 LUN 的分區都列在<block ref="f2ace9f0e4933191bdebca35fac63081" category="inline-link-macro-rx"></block>在受支援的配置中。這包括根容器、LDOM I/O 域和使用 NPIV 存取 LUN 的 LDOM。</block>
   <block id="ad9dc8e53a80162116da2029c2d76fef" category="list-text">僅使用虛擬化儲存資源的分區或虛擬機，例如<block ref="dd1b72ccf817859175e584ec8bd92247" prefix=" " category="inline-code"></block>，不需要特定資格，因為他們無法直接存取ONTAP LUN。您只需驗證對底層 LUN 具有直接存取權限的分割區或虛擬機器（例如 LDOM I/O 網域）是否會列在<block ref="60b6cb8e2c630f624cf99dafa0404aa7" category="inline-link-macro-rx"></block>。</block>
   <block id="8ba8e82da6ec8196b50c9e5973ee8374" category="paragraph">當 LUN 用作 LDOM 內的虛擬磁碟設備時，LUN 的來源會被虛擬化屏蔽，且 LDOM 無法正確偵測區塊大小。為了防止此問題：</block>
   <block id="5777b6718f54bda044be003223397377" category="list-text">為 LDOM OS 修補_Oracle Bug 15824910_</block>
@@ -1503,13 +1493,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="509349566982f99a656299d84be158b8" category="summary">Linux 主機實用程式發行說明</block>
   <block id="cfdc7e76ebdc6ad4a2ed2fe7838b63ff" category="doc">Linux 主機實用程式發行說明</block>
   <block id="71fa685aca55c417ddf8783ea80b9e9d" category="paragraph">發行說明介紹了使用ONTAP儲存系統來配置和管理特定主機的新功能、增強功能、已修復的問題、已知問題、限制和重要注意事項。</block>
-  <block id="7d58c905ee6ec02029a4b8f235dfc14d" category="section-title">Linux Host Utilities 8.0 中的新功能</block>
   <block id="475b4872fd854efca8d6a832dd0672ab" category="paragraph">Linux Host Utilities 8.0 版本包含以下新功能和增強功能</block>
   <block id="75ea0ef4107d3eebbf536bd7a414bfbb" category="paragraph">Linux Host Utilities 8.0 包括對 64 位元速度 QLogic 和 Emulex FC 主機匯流排適配器 (HBA) 的支援。</block>
   <block id="7a19e51272fb4c5eacf3c88353d929c1" category="paragraph">支援以下作業系統：</block>
   <block id="b8ab8c3a49fd02a709e35ce73c494665" category="list-text">Red Hat Enterprise Linux (RHEL) 9 與 8 系列</block>
   <block id="234105b5cc619cc0716ea8f0c1d701f4" category="list-text">Oracle Linux 9 和 8 系列</block>
-  <block id="39f38abeb7798b8080630e92279dafce" category="section-title">Linux Host Utilities 7.1 的新功能</block>
   <block id="f317130310d196ffb6cb3c4e596e152e" category="list-text">KVM 和 XEN、RHEV 6.5 和 6.4</block>
   <block id="06070b7982853bae8702983f209f6439" category="list-text">Oracle Linux 7 和 6 系列</block>
   <block id="b4662103d6ad12beba27dd61eada3441" category="list-text">RHEL 7 和 6 系列</block>
@@ -1586,7 +1574,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="232aef9fc6bd219e5e42efc637ae382a" category="cell">Solaris 主機實用程式 8.0</block>
   <block id="2a10cb6c1480dd0c903a6a2f3352e4c2" category="cell">Solaris Host Utilities 8.0 版本僅支援具有 SPARC 和 x86 平台的 Solaris 11.4。對於 Solaris 11.3 及更早版本，您需要使用 Solaris Host Utilities 6.2。</block>
   <block id="0f01862e42b00b0465d7160eca1d2587" category="cell">Solaris 11.4</block>
-  <block id="39e884c2c1f24e34ff9cda59393d0677" category="paragraph">+<block ref="355b22d66d025f6de0a19431aae0f536" category="inline-link-macro-rx"></block>提供大多數已知問題的完整信息，包括可能的建議解決方法。您可能想要使用的一些關鍵字組合和錯誤類型包括：</block>
   <block id="fc61cee2d0e65bb3c86b381005cec4d8" category="admonition">該工具包適用於所有主機實用程式配置和協定。因此，並非所有組件都適用於每種配置。未使用的組件不會影響您的系統效能。</block>
   <block id="2249e72138dc74b7dfcc843db71d1449" category="summary">Windows Host Utilities 包含一個安裝程序，該程序設定所需的 Windows 登錄和 HBA 參數，以便 Windows 主機正確處理ONTAP平台的儲存系統行為。</block>
   <block id="0f888ac55960dcac896f93b8f0037793" category="doc">為ONTAP儲存安裝 Windows Host Utilities 8.0</block>
@@ -1682,7 +1669,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="50b0de549390e9fd0aff72d2cc76922d" category="paragraph">透過執行 Host Utilities 安裝程式並依照指示以互動方式安裝 Host Utilities 軟體包。</block>
   <block id="d539640f2a8ad84ff2b6b210b3c82a8b" category="doc">為ONTAP儲存安裝 Windows Host Utilities 7.2</block>
   <block id="80fecb40ffb39e22d2139bf9886132bc" category="inline-xref">NVME參數</block>
-  <block id="40bd27b40d44b862091d49e4f0538774" category="paragraph">安裝 Windows Host Utilities 7.2 後，您需要變更 LimTransferSize 參數值。看<block ref="f34264ec923664aedfb2a9ccd6257931" category="inline-xref-macro-rx"></block> 。</block>
   <block id="05371652e7984167bbb3f85201a5b89b" category="paragraph">對於 Windows Host Utilities 8.0、7.2 或 7.1 的所有其他參數和登錄項，您無需更改值，除非技術支援建議您這樣做。</block>
   <block id="071b3c301587fc461b5b5db6056fea64" category="cell">當指定 MPIO 支援且您的伺服器是 Windows Server 2025、2022、2019 或 2016 時</block>
   <block id="213770055804b675ffe14467be7be594" category="cell">當您的伺服器是 Windows Server 2025、2022、2019 或 2016 時</block>
@@ -1690,7 +1676,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="20aac534719ebb4b8d33960d910552ae" category="section-title">了解 Host Utilities 對 FC HBA 驅動程式設定的變更</block>
   <block id="290855c6daac5448d222f3c661f749fb" category="list-text">*LinkTimeOut*：定義實體連結斷開後主機連接埠恢復 I/O 之前等待的時間長度（以秒為單位）。</block>
   <block id="9e02085844efecca4159003505f0e34a" category="list-text">*NodeTimeOut*：定義主機連接埠辨識到目標裝置的連線中斷之前的時間長度（以秒為單位）。</block>
-  <block id="31544e277536e777e9c3f798fd5e0913" category="list-text">是否正在使用 MPIO 軟體。</block>
   <block id="62c6d5921cc25fa2fecef7c94356c189" category="inline-link-macro">運行修復選項</block>
   <block id="7eaaf936e50fb533dab6ae4ba3b589bc" category="paragraph">您可以透過以下方式修正 HBA 設定<block ref="262b15737127f72127997ad6784b0e26" category="inline-link-macro-rx"></block>在 Windows Host Utilities 安裝程式中。</block>
   <block id="623dcbddc542817cdcdf36e9ce6846ce" category="list-text">從清單中選擇適當的 HBA，然後選擇“*驅動程式參數*”標籤。</block>
@@ -2533,4 +2518,13 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="b74c1a6422fd773c6a4cf77ef14675ae" category="cell">NVMe-oF 的預設 iopolicy 設定為 queue-depth</block>
   <block id="86c05a1fbdedf558f48b1ce3a99d9fe8" category="inline-link-macro">為 Ubuntu 26.04 設定 NVMe</block>
   <block id="20f16eb182c0a9b085c8193d16ef0fb3" category="cell"><block ref="20f16eb182c0a9b085c8193d16ef0fb3" category="inline-link-macro-rx"></block></block>
+  <block id="ed8e051a49611c288afb480ce73d605d" category="list-text">NetApp 支援使用 Solaris 虛擬化技術，其中整體組態由 Oracle 支援，並且任何可直接存取 LUN 的分區都列在<block ref="60b6cb8e2c630f624cf99dafa0404aa7" category="inline-link-macro-rx"></block>支援的組態中。這包括根目錄容器、LDOM I/O 域以及使用 NPIV 存取 LUN 的 LDOM。</block>
+  <block id="0048a12413609133ed4f3ca29bf0024a" category="section-title">Linux Host Utilities 8.0 的新功能</block>
+  <block id="6c9c1ae20d4741183e62db33bcf45d49" category="section-title">Linux Host Utilities 7.1 的新功能</block>
+  <block id="4af9cfdb8fa2a5afc040af3eb77660bd" category="paragraph">安裝 Windows Host Utilities 7.2 後，您需要變更 LimTransferSize 參數值。請參閱<block ref="dc46e8bfbb9f77d795c66139839b2373" category="inline-xref-macro-rx"></block>。</block>
+  <block id="ec931df4ed265dbeb58635743fb2c8a1" category="list-text">無論您是否使用 MPIO 軟體</block>
+  <block id="ccc5200a41ac281136e85915742ee943" category="summary">在 Ubuntu 22.04 主機上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="9227e9de01a4a3312d8274d2e61e478c" category="list-text">從 ONTAP 9.16.1 開始，預設會為所有新建立的 NVMe 命名空間啟用空間分配。</block>
+  <block id="a75717feaa22af7bffd985baebeb5c22" category="list-text">從 ONTAP 9.9.1 P3 開始，ESXi 8 支援 NVMe/FC 協定。</block>
+  <block id="f6615e8535f35dd305084ea2894bfa16" category="list-text">從 ONTAP 9.10.1 開始，ONTAP 支援 NVMe/TCP 協定。</block>
 </blocks>

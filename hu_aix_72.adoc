@@ -245,9 +245,5 @@ up      secondary  path3  fcs1    fc_aix_4        1
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653."^] | 在 SFO 故障和直接 I/O 期間， VIOS 3.1.1.10 發生 I/O 問題 | 在 VIOS 3.1.1 上，以 16 GB 或 32 GB FC 介面卡作為後盾的 NPIV 用戶端磁碟可能會發生 I/O 故障。此外， `vfchost`驅動程式可能會停止處理來自用戶端的 I/O 要求。套用 IBM APAR IJ22290 IBM APAR IJ23222 可修正此問題。 | 不適用 
 |===
-
-
-[[whats-next]]
-== 接下來呢？
-
+.下一步
 link:hu-aix-command-reference.html["了解如何使用 AIX Host Utilities 工具"] 。

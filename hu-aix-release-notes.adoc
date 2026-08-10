@@ -70,9 +70,5 @@ link:https://mysupport.netapp.com/site/["NetApp線上錯誤"^] 提供大多數�
 * FCP - AIX
 
 
-
-
-[[whats-next]]
-== 接下來呢？
-
+.下一步
 link:hu-aix-80.html["了解如何安裝 AIX Host Utilities"]

@@ -34,9 +34,5 @@ data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
 
 NOTE: SAN Toolkit 適用於所有 AIX 主機配置和傳輸協定。因此，並非所有組件都適用於每種配置。未使用的組件不會影響您的系統效能。  SAN Toolkit 在 AIX 和 PowerVM/VIOS OS 版本上受支援。
 
-
-
-[[whats-next]]
-== 接下來呢？
-
+.下一步
 link:hu-aix-command-reference.html["了解如何使用 AIX Host Utilities 工具"] 。

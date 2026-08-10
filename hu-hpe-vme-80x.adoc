@@ -396,11 +396,7 @@ devices {
 
 沒有已知問題。
 
-
-
-[[whats-next]]
-== 接下來呢？
-
+.下一步
 * link:hu-luhu-command-reference.html["瞭解如何使用 Linux 主機公用程式工具"] 。
 * 在 ONTAP LUN 上設定 HPE VME 資料存放區，然後設定虛擬機器。如需詳細資訊，請參閱廠商 HPE 文件。
 

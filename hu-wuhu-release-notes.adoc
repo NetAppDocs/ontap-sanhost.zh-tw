@@ -57,9 +57,5 @@ Windows Host Utilities 7.1 包括對 E 系列儲存系統、 ONTAP 9 軟體和�
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。
 
-
-
-[[whats-next]]
-== 下一步
-
+.下一步
 link:hu-wuhu-80.html["了解如何安裝 Windows Host Utilities"]

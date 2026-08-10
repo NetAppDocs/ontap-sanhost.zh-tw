@@ -178,9 +178,5 @@ up       secondary  /dev/dsk/c42t4d5   fcd1    hpux_4     1
 
 | 1306354 | 建立HP-UX LVM會傳送超過1MB區塊大小的I/O | 在Sing All SAN Array中、SCSI傳輸長度上限為1 MB。ONTAP若要限制連接ONTAP 到Sing All SAN Array時、從HP-UX主機傳輸的最大傳輸長度、必須將HP-UX SCSI子系統允許的最大I/O大小設為1 MB。如需詳細資訊、請參閱HP-UX廠商文件。 | 不適用 
 |===
-
-
-[[whats-next]]
-== 下一步
-
+.下一步
 link:hu_hpux_60_cmd.html["了解如何使用 HP-UX Host Utilities 工具"] 。

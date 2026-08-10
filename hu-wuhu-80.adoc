@@ -149,9 +149,5 @@ NOTE: 若要查看記錄和其他功能的標準 Microsoft Installer （ MSI ）
 
 --
 ====
-
-
-[[whats-next]]
-== 接下來呢？
-
+.下一步
 link:hu-wuhu-configuration.html["了解ONTAP儲存的 Windows 主機實用程式配置"]

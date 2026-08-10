@@ -417,11 +417,7 @@ devices {
 
 沒有已知問題。
 
-
-
-[[whats-next]]
-== 接下來呢？
-
+.下一步
 * link:hu-luhu-command-reference.html["瞭解如何使用 Linux 主機公用程式工具"] 。
 * 了解 ASM 鏡像
 +

@@ -23,9 +23,9 @@ summary: 您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe 
 [[supportability]]
 == 支援能力
 
-* 根據預設，所有新建立的 NVMe 命名空間都會啟用從 ONTAP 9 。 16.1 開始的空間分配。
-* 從 ONTAP 9.9.1 P3 開始、 ESXi 8 及更新版本支援 NVMe / FC 傳輸協定。
-* 從 ONTAP 9.10.1 開始、 ONTAP 支援 NVMe / TCP 傳輸協定。
+* 從 ONTAP 9.16.1 開始，預設會為所有新建立的 NVMe 命名空間啟用空間分配。
+* 從 ONTAP 9.9.1 P3 開始，ESXi 8 支援 NVMe/FC 協定。
+* 從 ONTAP 9.10.1 開始，ONTAP 支援 NVMe/TCP 協定。
 
 
 

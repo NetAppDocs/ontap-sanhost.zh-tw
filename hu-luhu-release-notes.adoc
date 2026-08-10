@@ -23,7 +23,7 @@ summary: Linux 主機實用程式發行說明
 
 
 [[whats-new-in-linux-host-utilities-8-0]]
-== Linux Host Utilities 8.0 中的新功能
+== Linux Host Utilities 8.0 的新功能
 
 Linux Host Utilities 8.0 版本包含以下新功能和增強功能
 
@@ -96,9 +96,5 @@ Make sure the package installing the library is installed & loaded`請參閱NetA
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp線上錯誤"^] 提供大多數已知問題的完整資訊、包括可能的建議因應措施。
 
-
-
-[[whats-next]]
-== 下一步
-
+.下一步
 link:hu-luhu-80.html["了解如何安裝 Linux 主機實用程式"]

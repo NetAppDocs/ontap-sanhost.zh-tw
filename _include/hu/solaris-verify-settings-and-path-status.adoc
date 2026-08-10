@@ -8,7 +8,7 @@
 +
 [source, cli]
 ----
-pkg info entire`
+pkg info entire
 ----
 .. 驗證ONTAP LUN 是否具有 `ostype`作為“Solaris”，與 LUN 大小無關：
 +
@@ -60,7 +60,7 @@ root@sparc-s7-55-148:~# sanlun lun show -pv
 +
 [source, cli]
 ----
-mpathadm show lu <LUN>`
+mpathadm show lu <LUN>
 ----
 +
 以下範例輸出顯示ASA、 AFF或FAS配置中ONTAP LUN 的正確路徑狀態。輸出中每個 LUN 的路徑優先權都顯示在「存取狀態」中。

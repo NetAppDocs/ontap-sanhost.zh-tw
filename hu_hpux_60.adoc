@@ -59,9 +59,5 @@ sanlun version
 ----
 
 
-
-
-[[whats-next]]
-== 接下來呢？
-
+.下一步
 link:hu-hpux-sanlun-toolkit.html["了解 SAN 工具包"] 。

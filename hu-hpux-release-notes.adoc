@@ -38,9 +38,5 @@ HP-UX Host Utilities 6.0 支援以下 HP-UX 作業系統版本：
 
 沒有已知問題或限制。
 
-
-
-[[whats-next]]
-== 接下來呢？
-
+.下一步
 link:hu_hpux_60.html["了解如何安裝 HP-UX Host Utilities"]

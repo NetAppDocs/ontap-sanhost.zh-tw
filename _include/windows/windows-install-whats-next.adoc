@@ -1,10 +1,6 @@
-= 下一步是什麼？
+= 
 :allow-uri-read: 
 
 
-
-
-[[whats-next]]
-== 接下來呢？
-
+.下一步
 link:hu-wuhu-configuration.html["了解ONTAP儲存的 Windows 主機實用程式配置"]
