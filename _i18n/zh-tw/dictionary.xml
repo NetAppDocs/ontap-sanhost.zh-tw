@@ -2516,4 +2516,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="ff77ba7bf94da41f58968cd6238bef1b" category="admonition">建議的 MPIO 原則是含子集的循環配置資源。</block>
   <block id="93499fb92b162d002d9b600c8e5d0fc9" category="example-title">顯示 CLI 範例</block>
   <block id="ba15363da34b1cb74efc52c7595d9fcc" category="example-title">顯示使用者介面範例</block>
+  <block id="9a10cb01a5cb2622f636682b5ef50282" category="summary">在 Ubuntu 26.04 主機上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="625b4ec3300a714a63eb09a27822f147" category="doc">配置 Ubuntu 26.04 以支援 FCP 和 iSCSI，並使用 ONTAP 儲存設備</block>
+  <block id="488a9fd122ccd8a3550ceee0ebaee2d4" category="paragraph">Linux Host Utilities 軟體為連接到 ONTAP 儲存設備的 Linux 主機提供管理和診斷工具。在 Ubuntu 26.04 主機上安裝 Linux Host Utilities 後，您可以使用 Host Utilities 來協助管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
+  <block id="418d880dfd6db1f0486f40a57a8c26ed" category="paragraph">您可以使用 Ubuntu 26.04 的多路徑功能來管理 ONTAP LUN。</block>
+  <block id="7f61a1ef5c19b945998122fe336af401" category="sidebar">26.04</block>
 </blocks>
