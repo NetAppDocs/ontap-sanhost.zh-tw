@@ -16,7 +16,7 @@ summary: 了解 Rocky Linux 對ONTAP 的支援與功能
 
 
 [role="lead"]
-使用 NVMe over Fabrics (NVMe-oF) 進行主機配置所支援的功能因ONTAP和 Rocky Linux 的版本而異。
+使用 NVMe over Fabrics （NVMe-oF） 進行主機組態所支援的功能因 ONTAP 和 Rocky Linux 的版本而異。
 
 [cols="50,25,25"]
 |===

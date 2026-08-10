@@ -14,9 +14,9 @@ indexpage:
       url: "/overview.html"
     - title: AIX 主機公用程式發行說明
       url: "/hu-aix-release-notes.html"
-    - title: HP-UX Host Utilities 版本資訊
+    - title: HP-UX 主機公用程式發行說明
       url: "/hu-hpux-release-notes.html"
-    - title: Linux 主機公用程式發行說明
+    - title: Linux 主機實用程式發行說明
       url: "/hu-luhu-release-notes.html"
     - title: Solaris 主機公用程式發行說明
       url: "/hu-solaris-release-notes.html"

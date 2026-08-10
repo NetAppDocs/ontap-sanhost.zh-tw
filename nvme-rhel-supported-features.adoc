@@ -16,11 +16,16 @@ summary: 了解ONTAP對 RHEL 主機的支援和功能
 
 
 [role="lead"]
-使用 NVMe over Fabrics (NVMe-oF) 進行主機配置所支援的功能會因ONTAP和 RHEL 的版本而異。
+使用 NVMe over Fabrics （NVMe-oF） 進行主機組態所支援的功能會因 ONTAP 和 RHEL 的版本而異。
 
 [cols="50,25,25"]
 |===
 | 特徵 | RHEL 主機版本 | ONTAP 版本 
+
+
+| NVMe/FC 和 NVMe/TCP 報告 ASA r2 系統上的所有最佳化的路徑  a| 
+9.0 或更高版本
+| 9.16.1 或更高版本 
 
 
 | RHEL 主機與ONTAP控制器之間透過 NVMe/TCP 支援安全的帶內驗證。  a| 

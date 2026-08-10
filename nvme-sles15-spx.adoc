@@ -543,7 +543,7 @@ ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}
 udevadm control --reload
 udevadm trigger --subsystem-match=nvme-subsystem
 ----
-. 請檢查子系統的目前 I/O 策略。例如，替換<子系統> `nvme-subsys0` 。
+. 請確認子系統目前的 iopolicy：
 +
 [source, cli]
 ----

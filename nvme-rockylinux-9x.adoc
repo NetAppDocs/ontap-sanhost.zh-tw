@@ -98,7 +98,7 @@ libnvme-1.11.1-1.el9.x86_64
 cat /etc/nvme/hostnqn
 ----
 +
-下面的例子展示了 `hostnqn`版本：
+下面的例子展示了 `hostnqn`價值：
 
 +
 [listing]

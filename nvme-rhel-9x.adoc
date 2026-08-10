@@ -98,7 +98,7 @@ libnvme-1.16.1-3.el9_8.x86_64
 cat /etc/nvme/hostnqn
 ----
 +
-下面的例子展示了 `hostnqn`版本：
+下面的例子展示了 `hostnqn`價值：
 
 +
 [listing]
@@ -563,7 +563,7 @@ ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}
 udevadm control --reload
 udevadm trigger --subsystem-match=nvme-subsystem
 ----
-. 請檢查子系統的目前 I/O 策略。例如，替換<子系統> `nvme-subsys0` 。
+. 請確認子系統目前的 iopolicy：
 +
 [source, cli]
 ----

@@ -98,12 +98,12 @@ libnvme-1.16.1-3.el10_2.x86_64
 cat /etc/nvme/hostnqn
 ----
 +
-下面的例子展示了 `hostnqn`版本：
+下面的例子展示了 `hostnqn`價值：
 
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
+nqn.2014-08.org.nvmexpress:uuid:4c4cxxxx-0056-xxxx-8048-c7cxxxx25633
 ----
 . 在ONTAP系統中，驗證以下資訊： `hostnqn`字串匹配 `hostnqn`ONTAP儲存系統中對應子系統的字串：
 +
@@ -644,12 +644,9 @@ nvme	connect-all -t	tcp -w	192.168.21.1	-a 192.168.21.27
 [[step-4-optionally-modify-the-iopolicy-in-the-udev-rules]]
 == 步驟 4：（可選）修改 udev 規則中的 iopolicy
 
-.RHEL 10.x 版本中 iopolicy 的變更
-* 從 RHEL 10.1 開始，預設的 iopolicy 是 queue-depth。
-* 在 RHEL 10.0 中，round-robin 是預設的 iopolicy，但 queue-depth 可作為可設定的選項。
+從 RHEL 10.1 開始，預設的 iopolicy 是 queue-depth。
 
-
-如果您使用的是 RHEL 10.0 並且想要將 iopolicy 更改為 queue-depth，請如下修改 udev 規則檔案：
+在 RHEL 10.0 中，預設的 iopolicy 是 round-robin，但 queue-depth 是可設定選項。如果您使用的是 RHEL 10.0，可以透過修改 udev rules 檔案將 iopolicy 變更為 queue-depth。
 
 .步驟
 . 使用 root 權限在文字編輯器中開啟 udev 規則檔：
@@ -685,7 +682,7 @@ ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}
 udevadm control --reload
 udevadm trigger --subsystem-match=nvme-subsystem
 ----
-. 請檢查子系統的目前 I/O 策略。例如，替換<子系統> `nvme-subsys0` 。
+. 請確認子系統目前的 iopolicy：
 +
 [source, cli]
 ----

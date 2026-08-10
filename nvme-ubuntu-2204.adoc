@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: nvme-ubuntu-2204.html 
-keywords: nvme, linux, rhel, red hat, enterprise 
+keywords: nvme, linux, ubuntu, enterprise 
 summary: 如何使用 ONTAP 設定 Ubuntu 22.04 的 NVMe 主機 
 ---
 = 使用 ONTAP 儲存設備為 Ubuntu 22.04 設定 NVMe-oF
@@ -63,7 +63,7 @@ nvme-cli/jammy-updates,now 1.16-3ubuntu0.1 amd64
 # cat /etc/nvme/hostnqn
 ----
 +
-下面的例子展示了 `hostnqn`版本：
+下面的例子展示了 `hostnqn`價值：
 
 +
 [listing]
