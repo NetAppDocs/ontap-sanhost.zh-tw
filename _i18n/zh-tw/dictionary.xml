@@ -2521,10 +2521,11 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="ed8e051a49611c288afb480ce73d605d" category="list-text">NetApp 支援使用 Solaris 虛擬化技術，其中整體組態由 Oracle 支援，並且任何可直接存取 LUN 的分區都列在<block ref="60b6cb8e2c630f624cf99dafa0404aa7" category="inline-link-macro-rx"></block>支援的組態中。這包括根目錄容器、LDOM I/O 域以及使用 NPIV 存取 LUN 的 LDOM。</block>
   <block id="0048a12413609133ed4f3ca29bf0024a" category="section-title">Linux Host Utilities 8.0 的新功能</block>
   <block id="6c9c1ae20d4741183e62db33bcf45d49" category="section-title">Linux Host Utilities 7.1 的新功能</block>
-  <block id="4af9cfdb8fa2a5afc040af3eb77660bd" category="paragraph">安裝 Windows Host Utilities 7.2 後，您需要變更 LimTransferSize 參數值。請參閱<block ref="dc46e8bfbb9f77d795c66139839b2373" category="inline-xref-macro-rx"></block>。</block>
   <block id="ec931df4ed265dbeb58635743fb2c8a1" category="list-text">無論您是否使用 MPIO 軟體</block>
   <block id="ccc5200a41ac281136e85915742ee943" category="summary">在 Ubuntu 22.04 主機上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="9227e9de01a4a3312d8274d2e61e478c" category="list-text">從 ONTAP 9.16.1 開始，預設會為所有新建立的 NVMe 命名空間啟用空間分配。</block>
   <block id="a75717feaa22af7bffd985baebeb5c22" category="list-text">從 ONTAP 9.9.1 P3 開始，ESXi 8 支援 NVMe/FC 協定。</block>
   <block id="f6615e8535f35dd305084ea2894bfa16" category="list-text">從 ONTAP 9.10.1 開始，ONTAP 支援 NVMe/TCP 協定。</block>
+  <block id="06980ca83225c81b8134c0b467016286" category="paragraph">安裝 Windows Host Utilities 7.2 後，您需要變更 LimTransferSize 參數值。請參閱 <block ref="62303d561309e8cf89d2be92987f3150" category="inline-xref-macro-rx"></block>。</block>
+  <block id="6a79af20a523a4fc84d19fee8187b203" category="paragraph">[[parameter-72]]Windows Host Utilities 安裝程式會根據您在安裝期間所做的選擇，自動設定 Windows 登錄值以及 iSCSI 和 NVMe HBA 參數。請檢查這些值和作業系統版本。</block>
 </blocks>
