@@ -227,7 +227,7 @@ $apt list |grep open-iscsi
 +
 [listing]
 ----
-open-iscsi/stable,now 2.1.11-1+deb13u1 amd64
+open-iscsi/stable,now 2.1.11-1+deb13u2 amd64
 ----
 . 驗證 iSCSI 發起程式節點名稱，該名稱位於  `/etc/iscsi/initiatorname.iscsi` 檔案中：
 +
