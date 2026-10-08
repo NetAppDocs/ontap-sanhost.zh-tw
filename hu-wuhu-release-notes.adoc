@@ -4,7 +4,7 @@ permalink: hu-wuhu-release-notes.html
 keywords: host utilities, linux, 7.1, 7.2, netapp, ontap, release, notes 
 summary: Windows主機公用程式版本資訊 
 ---
-= Windows 主機公用程式版本資訊
+= 適用於 ONTAP 儲存設備的 Windows Host Utilities 發行說明
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

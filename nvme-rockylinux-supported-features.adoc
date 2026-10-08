@@ -4,7 +4,7 @@ permalink: nvme-rockylinux-supported-features.html
 keywords: nvme, linux, rocky linux, red hat, enterprise 
 summary: 了解 Rocky Linux 對ONTAP 的支援與功能 
 ---
-= 了解 Rocky Linux 對ONTAP 的支援與功能
+= Rocky Linux 的 ONTAP 支援與功能
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

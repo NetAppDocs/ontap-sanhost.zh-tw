@@ -119,8 +119,6 @@
   <block id="32014634f5e91fea92881a76289729e4" category="paragraph">使用下列命令來驗證QFullSampleSize</block>
   <block id="bcf5b4c5647c7c3861431c638d411876" category="paragraph">*「esxcli系統設定進階清單」-選項/Disk/QFullSampleSize*</block>
   <block id="784c795c066fdf3c4713aae58af639ff" category="paragraph">沒有已知問題。</block>
-  <block id="52f50d0f0ab285059648c7da67b4b07f" category="inline-link-macro">VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）</block>
-  <block id="8a515fe16331b7269862c5871e55c7e4" category="list-text"><block ref="8a515fe16331b7269862c5871e55c7e4" category="inline-link-macro-rx"></block></block>
   <block id="dd0ef0f389a16b505e475797a7b752ac" category="list-text">從下載HP-UX主機公用程式檔案「netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`」 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 到HP-UX主機。</block>
   <block id="999cc5e84fec57fdd157e6fdacc5c96a" category="paragraph">「Depot_path」提供進廠檔案的路徑和名稱。</block>
   <block id="e661cef1335457aaa4b6047327cfb656" category="paragraph">「shwinstall」命令會執行安裝指令碼、以驗證HP-UX設定的狀態。如果您的系統符合要求、此指令碼會在「/opt/NetApp/santools/bin」目錄中安裝「sanlun」公用程式和診斷指令碼。</block>
@@ -436,9 +434,6 @@
   <block id="64e869d9ef872c0eb27623237f739ca1" category="list-text">連結中斷逾時（連結至）- 30</block>
   <block id="c41a9d8b262cc81ee865acdfb4ddd138" category="list-text">連接埠停機重試計數（portnrrc）- 120</block>
   <block id="bea05db7b205cebd49d85c581b86c97e" category="summary">針對ONTAP Veritas Infoscale 6系列版本提供有關SAN主機組態設定的指引</block>
-  <block id="6b41fb8eea99b0d8d062e30f5b71d616" category="summary">適用於Windows Server 2019的NVMe / FC主機組態、ONTAP 含更新功能</block>
-  <block id="1da730d18c28f088385f1eaca3cb2f71" category="summary">說明如何使用ONTAP VMware設定適用於ESXi 7.x的NVMe</block>
-  <block id="38a445b35a68bb2b838316376b083c19" category="doc">適用於ESXi 7.x的NVMe主機組態、ONTAP 含功能不全</block>
   <block id="1149b7a7ae9be623a3a7a3f347ff721f" category="list-text">從VMware支援的版本號為0、99.1、P3開始ONTAP 、ESXi 7.0更新版本3支援NVMe / FC功能。</block>
   <block id="087c6f6069a3f1c08cb62e3d53029f80" category="list-text">對於ESXi 7.0及更新版本、HPP（高效能外掛程式）是NVMe裝置的預設外掛程式。</block>
   <block id="f19c49e2c5af4fdef9d76da8243928b8" category="paragraph">不支援下列組態：</block>
@@ -462,7 +457,6 @@
   <block id="b19cff5a6d037faf5ffa796506cf839f" category="inline-link-macro">指令手冊頁ONTAP</block>
   <block id="9a85ce7daf00cd97d2ba489c461c944f" category="paragraph">請參閱 <block ref="6bc1436da9f0920d54a0f738830d902f" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
   <block id="6a290a5d71dc6c05e5ec68fcd97cbe87" category="list-text">驗證個別NVMe / FC命名空間裝置的個別ANA路徑狀態：</block>
-  <block id="471e82326ed5017bfdb518b5d33377cc" category="inline-link-macro">VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）</block>
   <block id="1aa66ef3a8e34a7a538960a80d2e1e31" category="sidebar">ESXi</block>
   <block id="fdcd362ac5f5f9817e70642dd2a48bfd" category="sidebar">Oracle Linux</block>
   <block id="d6422a625045167156b3c0d85ca23ebf" category="sidebar">8.1</block>
@@ -641,7 +635,6 @@
   <block id="e0ace13bee28a678ec04ad1b076b4b00" category="admonition">您必須部署ONTAP VMware vSphere的支援功能、才能啟用VASA Provider。VASA Provider 將為您管理所有的 igroup 設定、因此無需在 vVols 環境中建立或管理 iGroups 。</block>
   <block id="4ace21de4701510a7868bf0b96619e05" category="cell">執行中<block ref="cb4b12dfd645e3fcd47ea6dec988643f" prefix=" " category="inline-code"></block> 在 Emulex 端點對端組態上、會導致 I/O 錯誤。ONTAP 9.5P17 、 9.6P14 、 9.7P13 和 9.8P2 中已修正此問題</block>
   <block id="7ff276d19a76a720d17e3dcf4d050ee3" category="summary">您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe over Fabrics （ NVMe of ）作為目標。</block>
-  <block id="c719ab5e5b2a188adebd62c0829a9f96" category="doc">適用於 ESXi 8.x 與 ONTAP 的 NVMe 主機組態</block>
   <block id="7c1c1c55c2c606a3cf3259643b78a017" category="list-text">ESXi 啟動器主機可透過相同的介面卡連接埠、同時執行 NVMe / FC 和 FCP 流量。請參閱 <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> 以取得支援的FC介面卡和控制器清單。請參閱 <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block> 以取得最新的支援組態和版本清單。</block>
   <block id="d202ecba0de538b2ab3f4e53f0191f53" category="list-text">對於 ESXi 8.0 及更新版本、 HPP （高效能外掛程式）是 NVMe 裝置的預設外掛程式。</block>
   <block id="b1d7de4d8d51704fba7a0c0f12c2c299" category="list-text">不支援 RDM 對應。</block>
@@ -888,10 +881,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0d2b4c4b2840eab7bfae167b812970ef" category="cell"><block ref="0d2b4c4b2840eab7bfae167b812970ef" category="inline-link-macro-rx"></block></block>
   <block id="af3b3cf0d6ceafbe31919aa407157743" category="cell"><block ref="af3b3cf0d6ceafbe31919aa407157743" category="inline-link-macro-rx"></block></block>
   <block id="bc2c3049c0f4d679fb14b74cd64723c8" category="cell"><block ref="bc2c3049c0f4d679fb14b74cd64723c8" category="inline-link-macro-rx"></block></block>
-  <block id="c96b4702a07478185cc851585d0055b6" category="inline-link-macro">NetApp ONTAP 搭配 NetApp SnapMirror 與 VMware vSphere Metro Storage 叢集（ VMSC ）進行主動同步</block>
-  <block id="8b3f58063486fce853bcbb473e73c56f" category="list-text"><block ref="8b3f58063486fce853bcbb473e73c56f" category="inline-link-macro-rx"></block></block>
-  <block id="e59f05c9149caf590d63da27c24797cb" category="inline-link-macro">VMware vSphere 6.x 與 7.x 支援 NetApp ® SnapMirror 主動式同步</block>
-  <block id="2a41c03d949869222b758867aff845ff" category="inline-link-macro">VMware vSphere 6.x 與 7.x 支援 NetApp SnapMirror 主動同步</block>
   <block id="33bd005b46fadc3ac5ff4dc797b52e07" category="list-text">如果您有 MetroCluster 組態、 NetApp 建議您變更 AIX NVMe / FC 預設 APD （ All Path Down ）時間、以支援 MetroCluster 非計畫性切換事件、以避免 AIX 作業系統強制縮短 I/O 逾時。如需更多資訊和建議的預設設定變更、請參閱 NetApp 線上錯誤資訊 - <block ref="31191f9686b6d08dd8653718c76edbf6" category="inline-link-macro-rx"></block>。</block>
   <block id="4d580b4b5071142b4be038164aad8343" category="cell"><block ref="4d580b4b5071142b4be038164aad8343" category="inline-link-macro-rx"></block></block>
   <block id="0122bdec62d25017bba3ae0743d2526e" category="cell"><block ref="0122bdec62d25017bba3ae0743d2526e" category="inline-link-macro-rx"></block></block>
@@ -1003,7 +992,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f649e10e42e29ffba2e2835946ada018" category="paragraph">如果您決定使用SAN開機、則組態必須支援SAN開機。您可以使用<block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block>驗證是否支援 OS ， HBA ， HBA 韌體和 HBA 開機 BIOS ，以及 ONTAP 版本。</block>
   <block id="0c67f6a4c7f1b6e00bc41e20176e3e4c" category="cell">在 SFO 故障和直接 I/O 期間， VIOS 3.1.1.10 發生 I/O 問題</block>
   <block id="f7a5f353c104253016bca910e58de784" category="cell">在 VIOS 3.1.1 上，以 16 GB 或 32 GB FC 介面卡作為後盾的 NPIV 用戶端磁碟可能會發生 I/O 故障。此外，<block ref="f882ef508f1d971bf42e00837f4d22a8" prefix=" " category="inline-code"></block>驅動程式可能會停止處理來自用戶端的 I/O 要求。套用 IBM APAR IJ22290 IBM APAR IJ23222 可修正此問題。</block>
-  <block id="79c864ac5e64428609df0299cdc74738" category="doc">（不含 PowerVM 的 AIX MPIO ）使用 AIX 探索及設定 LUN</block>
   <block id="cbd11fff7903ad7c3c25ff7d4c0a28a4" category="paragraph">當您使用不含 PowerVM 的 AIX 時，可以執行<block ref="fe54d1c30028417038a4ffe0fc5eb503" prefix=" " category="inline-code"></block>命令，讓主機能夠探索 LUN 。您不需要重新啟動主機即可探索 LUN 。若要確認主機已探索到LUN、您可以使用sanlun公用程式。</block>
   <block id="98e87ad1da2237f2b632525794232c82" category="list-text">顯示所有 AIX 磁碟，包括 NetApp LUN ：</block>
   <block id="cc0280ad1883ba73200ef923c35deec8" category="paragraph">下列範例顯示<block ref="5d5b41f106bc7c056c6a90ee2e311798" prefix=" " category="inline-code"></block> FC 環境中的命令輸出。</block>
@@ -1173,8 +1161,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="a6389705a0010980a83767268763aa53" category="inline-link-macro">使用 ONTAP 工具的虛擬磁碟區（ vVols ） 10.</block>
   <block id="09b616c445ab7efa8240062532e526e4" category="inline-link">VMware vSphere 搭配 ONTAP</block>
   <block id="11b7981a4bc487d4291cc9a0614db625" category="list-text"><block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block></block>
-  <block id="18833e14b5b5c7c59e24b7d84a7675c8" category="paragraph"><block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block> <block ref="3940cdefc46aa67d16ed6a8e41f9c401" category="inline-link-macro-rx"></block> <block ref="d28f7a65afd9b0a0129dadbafa84555d" category="inline-link-macro-rx"></block></block>
-  <block id="75bf2e375bd6a6c261100e60951c4331" category="paragraph"><block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block> <block ref="3940cdefc46aa67d16ed6a8e41f9c401" category="inline-link-macro-rx"></block> <block ref="5f61a87054f37a4d758972ec77cfdf5e" category="inline-link-macro-rx"></block></block>
   <block id="2042f6b0f24c7e66a0696f995c26649f" category="doc">步驟 4 ：選擇性地將裝置排除在多重路徑之外</block>
   <block id="613ab33f622153c715120fe35873e05e" category="paragraph">如果需要，您可以將不需要的裝置的 WWID 新增至檔案的「黑名單」區段，以排除裝置的多重路徑<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>功能。</block>
   <block id="445d6b5f796f2b279f00ab2c9c5e6254" category="paragraph">「 SDA 」是您要新增至黑名單的本機 SCSI 磁碟。</block>
@@ -1447,7 +1433,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9f6770d142cc85850fcf3cb67b3d266f" category="list-text">確認軟體版本為8.0.1f0fc74c：</block>
   <block id="88119cd3cc25df648a7f33d113bc56ab" category="list-text">驗證 SCSI UNMAP<block ref="ce7e54a230e7d7f6125c862b6201f954" prefix=" " category="inline-code"></block>參數已加入ODM：</block>
   <block id="45b1bf92080c40662a70a1ac26aeedf3" category="listing-title">範例輸出</block>
-  <block id="594c5f590ab1fe2dac609f4a36fb7273" category="doc">使用 AIX Host Utilities 指令驗證ONTAP儲存配置</block>
   <block id="06f85e9e47f5b096622f76333fa1edbb" category="example-title">顯示 AIX Host Utilities 8.0 的範例</block>
   <block id="1e4935dd6493c79127a5c9f6121bdfbc" category="open-title">7.0 和 6.1</block>
   <block id="6654350ba6f70f82811d19d9de567655" category="example-title">顯示 AIX Host Utilities 7.0 和 6.1 的範例</block>
@@ -1473,7 +1458,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="83e3a5703b1628b857c08d688ab643b9" category="paragraph">HP-UX Host Utilities 6.0 支援以下 HP-UX 作業系統版本：</block>
   <block id="3a3b7ac2e39541ea05707ccd6eb054d4" category="section-title">已知問題和限制</block>
   <block id="24900e660af76d8e5775799512404385" category="paragraph">沒有已知問題或限制。</block>
-  <block id="059c78294312cf045138bbfcf66eb126" category="doc">了解適用於ONTAP儲存的 SAN 工具包</block>
   <block id="ec14ad28eef0a7bf687defebd1a0dc85" category="paragraph">HP-UX Host Utilities 是一款NetApp主機軟體，可在 HP-UX 主機上提供命令列工具包。安裝NetApp Host Utilities 套件時也會安裝該工具包。該套件提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>實用程序，可協助您管理ONTAP LUN 和主機總線適配器。這<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>命令傳回有關映射到主機的 LUN、多路徑的資訊以及建立啟動器群組所需的資訊。</block>
   <block id="26a6d0a6edac8d1c0e3d94e10df15650" category="paragraph">在以下範例中，<block ref="5927da9399de65ab7428ce807e88771e" prefix=" " category="inline-code"></block>指令返回ONTAP LUN 訊息。</block>
   <block id="905371a83eb0f0229042516d3c7f97b1" category="paragraph">此 SAN 工具包適用於所有 Host Utilities 設定和協定。因此，並非所有組件都適用於每種配置。未使用的組件不會影響您的系統效能。</block>
@@ -1488,7 +1472,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0ea3e528a268f7a469a48d5d8aae4f82" category="paragraph">請參閱供應商文件以驗證以下軟體包是否已正確安裝。這些軟體包需要支援<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block>命令：</block>
   <block id="291498f8ec1453e277a2e2b46e71ae68" category="list-text">如果您目前安裝了某個版本的 Linux Host Utilities，請將其刪除：</block>
   <block id="a47e489edc31ec3082b9f72fed5a5375" category="list-text">進入下載軟體包的目錄並安裝：</block>
-  <block id="bf2fa1be3b14254d86cd9857c8495543" category="doc">使用 Linux Host Utilities 指令驗證ONTAP儲存配置</block>
   <block id="3a61827896464412c2e42d33f758f4f1" category="paragraph">您可以使用 Linux Host Utilities 範例指令參考，透過 Host Utilities 工具對NetApp儲存設定進行端對端驗證。</block>
   <block id="509349566982f99a656299d84be158b8" category="summary">Linux 主機實用程式發行說明</block>
   <block id="cfdc7e76ebdc6ad4a2ed2fe7838b63ff" category="doc">Linux 主機實用程式發行說明</block>
@@ -1510,7 +1493,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="04f7390daef23ea8f8ba426ae782426d" category="cell">運作時發生的間歇性主機作業系統故障問題<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block>SUSE Linux Enterprise Server 12 SP1、Oracle Linux 7.2、RHEL 7.2 和 RHEL 6.8 中的指令。</block>
   <block id="047616cf46cf98f773cfbd0edf18de97" category="paragraph">您應該注意以下可能影響特定主機效能的已知問題和限制：</block>
   <block id="e76aeaaa9fbfeb4cdf98a140a0a10918" category="cell">在 SAN 主機上執行 Linux Host Utilities CLI 命令「sanlun fcp show adapter -v」時，該命令會失敗並顯示錯誤訊息，顯示無法找到主機匯流排適配器 HBA 發現所需的庫相依性：<block ref="41f02e5b1284b1c0d32b0bac02fd615f" prefix=" " category="inline-code"></block>請參閱NetApp線上錯誤 -<block ref="af3b3cf0d6ceafbe31919aa407157743" category="inline-link-macro-rx"></block> 。</block>
-  <block id="55ae6b8aefe00f4e41d5b2de159634cc" category="doc">了解ONTAP儲存的“sanlun”實用程序</block>
   <block id="417c4f9e58c0a853841b3ed0c271837c" category="paragraph">Linux Host Utilities 是一款NetApp主機軟體，提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>Linux 主機上的指令。這<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>當您安裝NetApp Host Utilities 套件時，該實用程式會自動安裝。此實用程式提供<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>可用於管理ONTAP LUN 和主機匯流排適配器 (HBA) 的指令。這<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>指令傳回有關對應到主機的ONTAP LUN、多路徑以及建立啟動器群組所需資訊的資訊。</block>
   <block id="bd678fd25f473f5645990f1c9283c34b" category="paragraph">在以下範例中，<block ref="0576b77e024dfde74ab10f4d14c4138a" prefix=" " category="inline-code"></block>指令返回ONTAP LUN 訊息：</block>
   <block id="9b1f2a19fe68c5002ddcac15a60e5a23" category="list-text">對於 Linux Host Utilities 7.1，「sanlun」實用程式在 Host Utilities 的所有設定和協定中都是通用的。因此，它的某些內容適用於一種配置，但不適用於另一種配置。未使用的組件不會影響系統效能。</block>
@@ -1556,7 +1538,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4e7c844ed51a666f84ad8bcf2e71d65a" category="cell">MetroCluster上的 FCP 採用多路徑作為 MPxIO，並且「所有路徑均關閉」值設定為 120 秒。  （這是MetroCluster配置的建議設定）。</block>
   <block id="3b73fde0526aa5735452da53c395dc38" category="paragraph">主機實用程式為ONTAP LUN 載入以下NetApp所建議的逾時參數設定。</block>
   <block id="64349882c1f787c3b5516b9e9f8ad791" category="list-text">驗證主機實用程式安裝：</block>
-  <block id="19b0b1ffb2094b2504c5f1a5a6ed4383" category="doc">使用 Solaris Host Utilities 指令驗證ONTAP儲存配置</block>
   <block id="36bb22d5ac1d72800fd0f8fabaf19b1b" category="paragraph">您可以使用 Solaris Host Utilities 範例指令參考，透過 Host Utilities 工具對NetApp儲存配置進行端對端驗證。</block>
   <block id="9983965c9aac023693fd65819c24cdbe" category="example-title">顯示 Solaris Host Utilities 8.0 的範例</block>
   <block id="7a22247de8db3271f3bf8573be10e986" category="open-title">6.2</block>
@@ -1631,7 +1612,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="bd7a994d68d51e665a861add9d2d4218" category="paragraph">為了可靠運行，使用<block ref="d4eba3849609aea965d9c09098fd43df" category="inline-link-rx"></block>驗證您的 iSCSI、FC 或 FCoE 配置是否受支援。</block>
   <block id="ff82a2970f098ead3486d4e955d48fcc" category="list-text">登入您的 HP-UX 主機。</block>
   <block id="5d6d0d9147b8bad63c5c15b5073d3324" category="paragraph"><block ref="fcefba3c5929e53740c971ae2a1d3486" category="inline-link-macro-rx"></block> 。</block>
-  <block id="440632d6491f106209d4da2ad7a8c2e2" category="doc">使用 HP-UX Host Utilities 指令驗證ONTAP儲存配置</block>
   <block id="e2dea19fc48c3653105e7975e254f204" category="paragraph">使用 HP-UX Host Utilities 6.0 範例指令參考，透過 Host Utilities 工具對ONTAP儲存設定進行端對端驗證。</block>
   <block id="b5db6a53088556a1ef28d016537cd198" category="paragraph">檢索映射到主機的所有主機啟動器的清單。</block>
   <block id="1f28ee767ddbfe19ffa46d6af311c50c" category="paragraph">檢索對應到主機的所有 LUN 的清單。</block>
@@ -1685,7 +1665,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="4986650d14b24086d20a38215ecb279e" category="doc">修復並刪除適用於ONTAP儲存的 Windows Host Utilities</block>
   <block id="f1d60f4583e01fe231e5b6017aa48e9f" category="paragraph">使用 Host Utilities 安裝程式中的 *Repair* 選項來更新主機匯流排適配器 (HBA) 和 Windows 登錄設定。您也可以透過互動方式或從 Windows 命令列完全刪除主機實用程式。</block>
   <block id="b9ad3634df3fcc698c7d897d3a74b246" category="open-title">以非互動方式修復或刪除</block>
-  <block id="a99e2a95022affd548e64e4b6fe43e4f" category="doc">使用ONTAP儲存配置對 Windows Host Utilities 進行故障排除</block>
   <block id="892be7d8ad8a6b622faf0375618ec841" category="paragraph">使用常規故障排除技術來調查具有ONTAP儲存配置的 Windows Host Utilities 可能出現的問題。您還應該檢查<block ref="96ebd60b95d1f8953ad930d316212d7f" category="inline-link-macro-rx"></block>了解已知問題和解決方案。</block>
   <block id="dc9a78f14a47c8510c8c8bf854739995" category="list-text">回顧<block ref="66038308975089065210b5a933f7b55a" category="inline-link-macro-rx"></block>用於檢查 Windows Host Utilities 的已知問題。發行說明包括已知問題和限制的清單。</block>
   <block id="a948aae8d1e11d139aa5a9124fdac5a0" category="doc">升級適用於ONTAP儲存的 Windows Host Utilities</block>
@@ -1693,7 +1672,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9f5ed06a234ddc571adaa3e7e593ce07" category="paragraph">透過執行 Host Utilities 安裝程式並依照指示以互動方式升級 Windows Host Utilities 軟體。</block>
   <block id="02ea0cca7d8c5b151586f602e54f3e37" category="open-title">非互動升級</block>
   <block id="1224f0358b15e01f589451ca15638bfe" category="paragraph">使用 Windows 命令列執行非互動式 Windows Host Utilities 軟體升級。</block>
-  <block id="bd5ee4dbd60e78049386916d55c5866a" category="doc">使用 NVMe-oF 為ONTAP儲存配置 AIX</block>
   <block id="e5e8a280fc0e9cee09e364b5fb9b3638" category="paragraph">IBM AIX 和虛擬 I/O 伺服器 (VIOS)/PowerVM 主機支援具有非對稱命名空間存取 (ANA) 的 NVMe/FC 協定。  ANA 相當於 iSCSI 和 FCP 環境中的非對稱邏輯單元存取 (ALUA) 多路徑。</block>
   <block id="4025744bbed72acc81304951fc5e8b56" category="paragraph">有關受支援配置的更多詳細信息，請參閱<block ref="5a16fc70d031dee6bd6712d64bea2027" category="inline-link-macro-rx"></block>。</block>
   <block id="441e91babee10e808255eacd7ac96c66" category="paragraph">您可以將下列支援和功能與 AIX 主機的 NVMe-oF 主機配置一起使用。在開始配置過程之前，您還應該查看已知的限制。</block>
@@ -1733,7 +1711,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="40a0df8c01187300dac19f675907c510" category="section-title">步驟5：故障排除</block>
   <block id="3db908c249fffc60d2574232331bdcf3" category="paragraph">在排除任何 NVMe/FC 故障之前，請先驗證您正在執行的設定是否符合<block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>規格。如果問題仍然存在，請聯繫<block ref="ea2f4052f3eaf8e0d09bdf7668185025" category="inline-link-macro-rx"></block>。</block>
   <block id="3377da1c4bfbeb041c695fd90b5b51f8" category="sidebar">安裝 AIX 主機實用程式</block>
-  <block id="ba40410017594d237bded82b08cfed3a" category="sidebar">了解 AIX SAN Tollkit</block>
   <block id="259ad13a22ced337b90660e2a1ec20c1" category="sidebar">AIX Host Utilities 指令參考</block>
   <block id="59f0ceab26c568fa6ab53aee601cb03c" category="sidebar">了解 HP-UX 指令參考</block>
   <block id="c0a7954064ad4f8a8468c33037740aea" category="sidebar">安裝Linux主機實用程式</block>
@@ -2113,7 +2090,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="76166c5048e178a877e3788c1a7aabf9" category="paragraph">Linux Host Utilities 軟體為連接到ONTAP儲存的 Linux 主機提供管理和診斷工具。在 Rocky Linux 10.x 主機上安裝 Linux 主機公用程式後，您可以使用主機實用程式來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定操作。</block>
   <block id="b2b81ced4888f42ec73135895cc7f15b" category="paragraph">您可以使用 Rocky Linux 10.x 的多路徑功能來管理ONTAP LUN。</block>
   <block id="f9e6c87693abb48ae965e3807754b248" category="summary">為 Oracle Linux 7.x 和ONTAP設定 VMe/FC 主機配置，並提供範例</block>
-  <block id="af311e9ff855d263d96464518292c93e" category="doc">配置 Oracle Linux 7.x 和 NVMe-oF 以用於ONTAP存儲</block>
   <block id="36db06af3bc2cf5ac77cfe7f8dbfd5ae" category="paragraph">了解如何為 Oracle Linux 7.x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
   <block id="147a8393de4d6f7d913f5241312531ae" category="paragraph">NVMe-oF 與 Oracle Linux 7.x 有以下已知限制：</block>
   <block id="ffdbe39dc6849e6b1776cc1d58f1b6fb" category="list-text">NetApp sanlun 主機公用程式不支援 Oracle Linux 7.x 主機上的 NVMe-oF。相反，您可以依賴本機中包含的NetApp插件<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>適用於所有 NVMe-oF 傳輸的套件。</block>
@@ -2121,7 +2097,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f6f44f7f933362f8012482cfdc64bcf9" category="list-text">在伺服器上安裝Oracle Linux 7.x。安裝完成後，請確認您執行的是指定的 Oracle Linux 7.x 核心。</block>
   <block id="b47c41a9513bf1b5dc8f2d2ac73753bc" category="list-text">在 Oracle Linux 7.x 主機上，檢查<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>：</block>
   <block id="0baf404d29c6cb60ec2691b4beabc3b6" category="summary">適用於 Oracle Linux 8.x 和ONTAP的 NVMe-oF 主機配置</block>
-  <block id="58b9f430366e23a2202edc5490300c1c" category="doc">配置 Oracle Linux 8.x 和 NVMe-oF 以用於ONTAP存儲</block>
   <block id="d1a0b73092f65279936d400914dd8cc0" category="paragraph">了解如何為 Oracle Linux 8.x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
   <block id="014514e3306f74ab14ad1e8da46be859" category="paragraph">NVMe-oF 與 Oracle Linux 8.x 有以下已知限制：</block>
   <block id="ab2a6bd5a1677646c38e9b97ea434d6e" category="list-text">NetApp sanlun 主機公用程式不支援 Oracle Linux 8.x 主機上的 NVMe-oF。相反，您可以依賴本機中包含的NetApp插件<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block>適用於所有 NVMe-oF 傳輸的套件。</block>
@@ -2131,7 +2106,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="cafb20e24ff7ffd7051421fe29ffff3a" category="cell">Oracle Linux 8.x NVMe-oF 主機建立重複的持久發現控制器 (PDC)</block>
   <block id="17763301a1650193f096e85b7931409e" category="cell">在 NVMe-oF 主機上，您可以使用<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 指令來建立 PDC。使用此指令時，每個發起方-目標組合只能建立一個 PDC。但是，如果您在搭載 NVMe-oF 主機的 Oracle Linux 8.x 上執行，則每次執行<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> 時都會建立重複的 PDC。這會導致主機和目標裝置上的資源被不必要地消耗掉。</block>
   <block id="63eb478005d7986c9bac6b45cbcc9449" category="summary">適用於 Oracle Linux 9.x 和ONTAP的 NVMe-oF 主機配置</block>
-  <block id="7879597f78ceca93363e3a27f21ebe00" category="doc">配置 Oracle Linux 9.x 和 NVMe-oF 以用於ONTAP存儲</block>
   <block id="095844b56178a284b78a75795108d8af" category="paragraph">了解如何為 Oracle Linux 9.x 配置 NVMe over Fabrics (NVMe-oF) 主機。如需更多支援和功能信息，請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
   <block id="4c344c877a57df13c19fd1fd8b66490b" category="paragraph">使用以下步驟驗證支援的最低 Oracle Linux 9.x 軟體版本。</block>
   <block id="9c912bfe11518dfe915fe7e20a0c6fd8" category="list-text">在伺服器上安裝Oracle Linux 9.x。安裝完成後，請確認您執行的是指定的 Oracle Linux 9.x 核心。</block>
@@ -2250,7 +2224,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="5b0baa1d297171d8a0eb3e7b4eab041d" category="sidebar">15 SPx</block>
   <block id="f6cc17830d6056ab4b78496fa45d86c0" category="inline-link-macro">了解ONTAP儲存的 Windows 主機實用程式配置</block>
   <block id="a270bf4f8c4b691ce8d28f78e05ad3ce" category="paragraph"><block ref="a270bf4f8c4b691ce8d28f78e05ad3ce" category="inline-link-macro-rx"></block></block>
-  <block id="3ef0124e3a4c499c8d81cf51736e34cf" category="doc">檢查ONTAP儲存的 Windows 主機實用程式配置</block>
   <block id="d163580e6b36094493c3486aa4bd713d" category="paragraph">Windows 主機實用程式需要某些登錄和參數設置，以便 Windows 主機能夠正確處理ONTAP儲存系統的行為。</block>
   <block id="a7f9e2f7eae7b45e39495e27e2aa0591" category="paragraph">這些登錄和參數值會影響 Windows 主機對資料延遲或遺失的回應方式，例如，正確處理儲存故障轉移等事件。</block>
   <block id="4fd88a48c587c319fee5293adbb82370" category="paragraph">某些登錄和參數值不適用於SANtricity Storage Manager的設備特定模組 (DSM)。Windows Host Utilities 和 DSM for SANtricity Storage Manager設定的值之間的重疊不會導致衝突。</block>
@@ -2278,7 +2251,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="888a570bb866284d7849755568a6be53" category="summary">介紹如何將 Linux 主機實用程式與ONTAP儲存搭配使用</block>
   <block id="8cd31d3850bee4ee09238066a1eadf45" category="summary">介紹如何將 HP-UX Host Utilities 6.0 與ONTAP搭配使用</block>
   <block id="9f62e018dbee2e883e6b28abdebb8492" category="paragraph">&lt;stdin&gt; 中存在未解析的指令 - include::_include/hu/reuse_hu_asa_configuration.adoc[]</block>
-  <block id="72c83d503b24e8f097c9e8181032f70a" category="doc">使用ONTAP儲存對 NVMe-oF 進行故障排除（適用於 Linux 主機公用程式）</block>
   <block id="af2b8056ad5664aa4340ade3fea943c6" category="paragraph">對配備ONTAP儲存的 Oracle Linux、RHEL、Rocky Linux 和 SUSE Linux Enterprise Server 主機進行 NVMe-oF 故障排查。</block>
   <block id="457989a854da9cc379131be91a40a138" category="paragraph">在開始故障排除之前，請確認您執行的配置符合以下要求：<block ref="b77f230f2effb14751e6164ceee6da3f" category="inline-link-rx"></block> 然後按照說明進行下一步操作，以調試任何主機端問題。</block>
   <block id="f8331da05f5bdb83bd91e68dbda73f8d" category="admonition">故障排除說明不適用於 AIX、ESXi、Proxmox 和 Windows 主機。</block>
@@ -2286,7 +2258,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="fe040552b4fc83efe2ba593498969954" category="list-text">請核對設定：</block>
   <block id="79c482cb23c057c0d600ecd3434dbb27" category="section-title">常見的“nvme-cli”錯誤及解決方法</block>
   <block id="0669c03dc492faf8d7b9fc2bd8512b73" category="sidebar">早期主機實用程式版本</block>
-  <block id="2444d67396b745a440cfa96bf55da9c6" category="doc">了解如何使用 NVMe-oF 設定 ONTAP SAN 主機</block>
   <block id="55b4f27e868d94d08cb7b820fb7dcaf4" category="summary">在 SUSE Linux Enterprise Server 16 上安裝 Linux Host Utilities，以管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
   <block id="651119b7fad3ebe0625718e781b85dbd" category="doc">使用 ONTAP 儲存設備為 FCP 和 iSCSI 配置 SUSE Linux Enterprise Server 16</block>
   <block id="536673265ab4b1de9fd943164c12494a" category="paragraph">Linux Host Utilities 軟體為連接到 ONTAP 儲存設備的 Linux 主機提供管理和診斷工具。在 SUSE Linux Enterprise Server 16 主機上安裝 Linux Host Utilities 後，您可以使用 Host Utilities 來協助管理 ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
@@ -2350,7 +2321,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="1cb98d24e975e6c21662789b34e2d3c2" category="paragraph">有關 CentOS Red Hat 相容核心的已知問題，請參閱 Red Hat Enterprise Linux（RHEL）8.x 系列的<block ref="b64a4fb065ec8eadbc881ece1cbf7ba0" category="inline-link-macro-rx"></block>。</block>
   <block id="fef8ee7b94533bb078469a27722a8bba" category="list-text">確認 <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> 檔案是否存在。如果檔案不存在，則建立一個空的零位元組檔案：</block>
   <block id="53b840df2d08c073f2534327f111dbf9" category="summary">適用於 Oracle Linux 10 與 ONTAP 的 NVMe-oF 主機組態</block>
-  <block id="7230db89ca6861865150be7831e09274" category="doc">使用 NVMe-oF 為 ONTAP 儲存設備設定 Oracle Linux 10.x</block>
   <block id="d510a8ad0c1bbc5c8d97b199a8f0a853" category="paragraph">了解如何為 Oracle Linux 10.x 設定 NVMe over Fabrics （NVMe-oF） 主機。如需更多支援和功能資訊、請參閱 <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>。</block>
   <block id="9f53c366466752fe327c961a6ac8050d" category="paragraph">NVMe-oF 與 Oracle Linux 10.x 有以下已知限制：</block>
   <block id="434a4c1992d6e87fcab47a93c7ad1e82" category="paragraph">使用以下程序驗證支援的最低 Oracle Linux 10.x 軟體版本。</block>
@@ -2460,7 +2430,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="e3dfc2e9bc6b78cf280e7b9a8c0a2c82" category="list-text"><block ref="e3dfc2e9bc6b78cf280e7b9a8c0a2c82" category="inline-link-rx"></block></block>
   <block id="67427880ab2eb83e274fe8038d19444b" category="inline-link-macro">TR-4684：實施和配置基於 NVMe-oF 的現代 SAN</block>
   <block id="d719beeb5ec2736d269213fab9543e6d" category="list-text"><block ref="d719beeb5ec2736d269213fab9543e6d" category="inline-link-macro-rx"></block></block>
-  <block id="62346842706e07b5f8a495f9d5a29786" category="doc">了解如何使用 FCP 和 iSCSI 設定 ONTAP SAN 主機</block>
   <block id="652d4e06f41967c8271b197844a17b43" category="paragraph">您可以為某些 SAN 主機作業系統 (OS) 配置 FCP 和 iSCSI，並將 ONTAP 作為目標。如果您的主機作業系統受 SAN Host Utilities 軟體支援，則首先需要安裝對應的作業系統主機公用程式套件，其中包含 SAN 工具套件。然後，針對所有主機作業系統類型，設定 ONTAP LUN 的多路徑設定。</block>
   <block id="e5c3ef473ca597687810ac04980dbc09" category="inline-link-macro">了解如何管理 FC 協議</block>
   <block id="adccc3872d204f20472ffd2b8d48d724" category="list-text"><block ref="adccc3872d204f20472ffd2b8d48d724" category="inline-link-macro-rx"></block></block>
@@ -2468,8 +2437,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="04e625d95c878abcd1f2dbf6d04098c7" category="list-text"><block ref="04e625d95c878abcd1f2dbf6d04098c7" category="inline-link-macro-rx"></block></block>
   <block id="0c9b400a67ecf2fde04784839ca8b593" category="inline-link">了解如何配置 SAN 儲存設備</block>
   <block id="6b9dd1af850387c3bbb1a8645b455f48" category="list-text"><block ref="6b9dd1af850387c3bbb1a8645b455f48" category="inline-link-rx"></block></block>
-  <block id="5ea4a4d083b9b7faa4d73ebd6193eec3" category="sidebar">了解如何使用 FCP 和 iSCSI 設定主機</block>
-  <block id="46fa0acef0abce2c8d85781039d9ca0e" category="sidebar">了解如何設定主機以使用 NVMe-oF</block>
   <block id="9d32a296d3ce5f696e1fdfdc2b0f8b87" category="paragraph">Linux 主機公用程式可協助您管理連接到 Linux 主機的 ONTAP 儲存設備。NetApp 強烈建議安裝 Linux 主機公用程式，但並非強制要求。Linux 主機公用程式可改善管理，並協助 NetApp 客戶支援人員收集有關您組態的資訊。</block>
   <block id="83e24aa706fccba3ff4d736e0e31bf85" category="paragraph">安裝 Linux Host Utilities 時，不會變更主機上的任何設定或行為。</block>
   <block id="80fd4adc269a85ce0df8e3b446ebf481" category="admonition">Linux Host Utilities 的安裝相依於 libHBAAPI.so 程式庫。即使主機僅用於 iSCSI 專用組態，也需要安裝上述其中一個套件。或者，您可以使用作業系統層級的工具進行 LUN 和路徑管理。</block>
@@ -2528,4 +2495,44 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="f6615e8535f35dd305084ea2894bfa16" category="list-text">從 ONTAP 9.10.1 開始，ONTAP 支援 NVMe/TCP 協定。</block>
   <block id="06980ca83225c81b8134c0b467016286" category="paragraph">安裝 Windows Host Utilities 7.2 後，您需要變更 LimTransferSize 參數值。請參閱 <block ref="62303d561309e8cf89d2be92987f3150" category="inline-xref-macro-rx"></block>。</block>
   <block id="6a79af20a523a4fc84d19fee8187b203" category="paragraph">[[parameter-72]]Windows Host Utilities 安裝程式會根據您在安裝期間所做的選擇，自動設定 Windows 登錄值以及 iSCSI 和 NVMe HBA 參數。請檢查這些值和作業系統版本。</block>
+  <block id="0e9921acd171b70dc5d1ac95c8c50399" category="doc">用於 ONTAP 儲存組態的 AIX Host Utilities 命令</block>
+  <block id="9fb343982b97a8dc12d3122c420c5ea7" category="doc">適用於 ONTAP 儲存設備的 AIX Host Utilities 版本說明</block>
+  <block id="2ea08eaaae7c6119cc48921f3796b5c3" category="doc">HP-UX 主機公用程式 ONTAP 儲存設備版本說明</block>
+  <block id="81127402f95ead330df48d387b5a6b8f" category="doc">了解適用於 ONTAP 儲存設備的 HP-UX SAN Toolkit</block>
+  <block id="915e7b086350655a133b439c14e17ffd" category="doc">用於 ONTAP 儲存組態的 Linux Host Utilities 命令</block>
+  <block id="cfe99a6bdad5da964c9a46fb03d6eaf9" category="doc">適用於 ONTAP 儲存設備的 Linux Host Utilities 發行說明</block>
+  <block id="0ced5d65080d7814d860d3f16910a834" category="doc">了解用於 ONTAP 儲存設備的 sanlun 公用程式</block>
+  <block id="c2627bbb6da940de88adecf662e3ae2d" category="doc">了解 ONTAP SAN 主機的 NVMe-oF 組態</block>
+  <block id="d3df7d646d640a0a9fb08d1bf421fe43" category="doc">驗證 ONTAP 儲存組態的 Solaris Host Utilities 指令</block>
+  <block id="edf3f5a378100b81312fd2cd70bf01ef" category="doc">適用於 ONTAP 儲存設備的 Solaris Host Utilities 版本說明</block>
+  <block id="48bf8159ec53e42fb6fdf758b64da1c7" category="doc">了解適用於 ONTAP 儲存設備的 Solaris SAN Toolkit</block>
+  <block id="f2cd92cac2712e5517c7843d8bc92c8b" category="doc">用於 ONTAP 儲存設備的 Windows Host Utilities 組態</block>
+  <block id="8cb3c98dd76153473fa33ed648bd00e1" category="doc">適用於 ONTAP 儲存設備的 Windows Host Utilities 發行說明</block>
+  <block id="4dbc9bb091bb949dd9db1f6063eec8a2" category="doc">使用 AIX MPIO 發現和設定 ONTAP LUN，無需 PowerVM</block>
+  <block id="fb9001732ff79972443ed877f48a175e" category="doc">了解 ONTAP SAN 主機的 FCP 和 iSCSI 組態</block>
+  <block id="b92a970f8ffb71dc4e477b16a35df216" category="doc">用於 ONTAP 儲存組態的 HP-UX Host Utilities 指令</block>
+  <block id="f232957bf4a3b3d50b4dd8620fdbdfdf" category="doc">了解 ONTAP 儲存設備的 SAN Host Utilities</block>
+  <block id="78cfd8a217e25cb50535917f78cb98a3" category="doc">疑難排解 Windows Host Utilities 與 ONTAP 儲存設備的相關問題</block>
+  <block id="45c6b5bdf3c9051e97bc1e9fc67c8ff8" category="doc">ONTAP 儲存設備的 SAN Host Utilities 法律聲明</block>
+  <block id="2bbff1b418f8cc5d0e29f1e35a3f494b" category="doc">設定 AIX 以支援 NVMe-oF 和 ONTAP 儲存設備</block>
+  <block id="5edbc2a2cacdf951a97e53e0565b69eb" category="summary">為配備 ONTAP 儲存設備的 ESXi 7.x 主機設定 NVMe-oF。</block>
+  <block id="5487be6552fec586ef3153479d244467" category="doc">設定 ESXi 7.x 以支援 NVMe-oF 搭配 ONTAP 儲存設備</block>
+  <block id="02c964ba8c36156c24a6e926b8889476" category="summary">在執行 ESXi 8.x 的啟動器主機上設定 NVMe over Fabrics，並以 ONTAP 作為目標。</block>
+  <block id="cb73b3e1d278b268dd6b7560dd170760" category="doc">設定 ESXi 8.x 搭配 ONTAP 儲存設備使用 NVMe-oF</block>
+  <block id="95d90264e09076cc7579e064e2882818" category="doc">設定 Oracle Linux 10.x 以搭配 ONTAP 儲存設備使用 NVMe-oF</block>
+  <block id="68835701d6f4822132c7278ca1953af2" category="doc">設定 Oracle Linux 7.x 以搭配 ONTAP 儲存設備使用 NVMe-oF</block>
+  <block id="41a6630e2abccf3512b112e8c84066d3" category="doc">設定 Oracle Linux 8.x 以搭配 ONTAP 儲存設備使用 NVMe-oF</block>
+  <block id="d252e7a0f4977216ff9b6d891807f845" category="doc">設定 Oracle Linux 9.x 以支援 NVMe-oF 和 ONTAP 儲存設備</block>
+  <block id="84886b1e0638e86db95bf8959a4ec7c9" category="doc">ONTAP 對 Oracle Linux 主機的支援與功能</block>
+  <block id="46f1a8d660b6e70df579c05b8dea507c" category="doc">Proxmox 主機的 ONTAP 支援與功能</block>
+  <block id="d02f983ba169932bb4fb75fc60ed92ca" category="doc">ONTAP 對 RHEL 主機的支援與功能</block>
+  <block id="eaf137573ad07c00c919bf94b65cf0f4" category="doc">Rocky Linux 的 ONTAP 支援與功能</block>
+  <block id="d1102c542cc6506cf817db87221b59ae" category="doc">SUSE Linux Enterprise Server 的 ONTAP 支援與功能</block>
+  <block id="a56a1732edf699559757e8842918d9fa" category="doc">ONTAP 對 Ubuntu 主機的支援與功能</block>
+  <block id="e6b48bcfb6f38c19b1d9f9b46825750b" category="doc">設定 Windows Server 2019 搭配 NVMe/FC 以用於 ONTAP 儲存設備</block>
+  <block id="054bbd1c65edaf2cf2b1789f41c702f0" category="doc">了解 ONTAP 儲存設備的 SAN 主機組態</block>
+  <block id="2b965faf8670edf168c87cc3e4cd7f22" category="doc">對 Linux 主機上使用 ONTAP 儲存設備的 NVMe-oF 進行故障排除</block>
+  <block id="108d95e5dc2ef949553c9a0fafc69b42" category="sidebar">了解 SAN Tollkit</block>
+  <block id="99d9fff5cb102bc1af76475056d30628" category="sidebar">了解 FCP 和 iSCSI 組態</block>
+  <block id="2577436e0a1529b400f7af13bf054dd3" category="sidebar">了解 NVMe-oF 組態</block>
 </blocks>

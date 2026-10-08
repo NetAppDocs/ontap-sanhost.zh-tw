@@ -4,7 +4,7 @@ permalink: hu-aix-command-reference.html
 keywords: host utilities, aix, powervm, vios, 3.1, 7.2, 7.0, netapp, ontap 
 summary: 您可以使用「主機公用程式」工具，使用 AIX 主機公用程式範例命令參考來進行 NetApp 儲存組態的端點對端點驗證。 
 ---
-= 使用 AIX Host Utilities 指令驗證ONTAP儲存配置
+= 用於 ONTAP 儲存組態的 AIX Host Utilities 命令
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

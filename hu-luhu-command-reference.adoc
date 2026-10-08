@@ -4,7 +4,7 @@ permalink: hu-luhu-command-reference.html
 keywords: host utilities, unified, oracle, linux, 8.0, netapp, ontap 
 summary: 介紹如何將 Linux 主機實用程式與ONTAP儲存搭配使用 
 ---
-= 使用 Linux Host Utilities 指令驗證ONTAP儲存配置
+= 用於 ONTAP 儲存組態的 Linux Host Utilities 命令
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

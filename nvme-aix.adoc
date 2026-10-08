@@ -4,7 +4,7 @@ permalink: nvme-aix.html
 keywords: nvme, linux, rhel, red hat, enterprise, aix, ontap 
 summary: 如何使用 ONTAP 設定適用於 AIX 的 NVMe / FC 主機 
 ---
-= 使用 NVMe-oF 為ONTAP儲存配置 AIX
+= 設定 AIX 以支援 NVMe-oF 和 ONTAP 儲存設備
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

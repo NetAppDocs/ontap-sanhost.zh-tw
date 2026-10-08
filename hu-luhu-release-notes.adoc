@@ -4,7 +4,7 @@ permalink: hu-luhu-release-notes.html
 keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
 summary: Linux 主機實用程式發行說明 
 ---
-= Linux 主機實用程式發行說明
+= 適用於 ONTAP 儲存設備的 Linux Host Utilities 發行說明
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

@@ -4,7 +4,7 @@ permalink: nvme-ubuntu-supported-features.html
 keywords: nvme, linux, ubuntu, red hat, enterprise 
 summary: 了解 ONTAP 對 Ubuntu 主機的支援和功能 
 ---
-= 了解 ONTAP 對 Ubuntu 主機的支援和功能
+= ONTAP 對 Ubuntu 主機的支援與功能
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

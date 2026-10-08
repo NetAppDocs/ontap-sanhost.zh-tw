@@ -4,7 +4,7 @@ permalink: hu_hpux_60_cmd.html
 keywords: host utilities, unified, oracle, hp-ux, 6.0, netapp, ontap 
 summary: 介紹如何將 HP-UX Host Utilities 6.0 與ONTAP搭配使用 
 ---
-= 使用 HP-UX Host Utilities 指令驗證ONTAP儲存配置
+= 用於 ONTAP 儲存組態的 HP-UX Host Utilities 指令
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

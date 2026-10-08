@@ -4,7 +4,7 @@ permalink: hu-hpux-sanlun-toolkit.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: 說明如何將 HP-UX 主機公用程式 6.0 與 ONTAP 儲存設備搭配使用 
 ---
-= 了解適用於ONTAP儲存的 SAN 工具包
+= 了解適用於 ONTAP 儲存設備的 HP-UX SAN Toolkit
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

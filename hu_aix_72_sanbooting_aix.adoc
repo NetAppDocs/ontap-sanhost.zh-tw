@@ -4,7 +4,7 @@ permalink: hu_aix_72_sanbooting_aix.html
 keywords: host utilities, aix, netapp, ontap, configure, discover, configuring, discovering 
 summary: 說明如何使用AIX探索及設定LUN 
 ---
-= （不含 PowerVM 的 AIX MPIO ）使用 AIX 探索及設定 LUN
+= 使用 AIX MPIO 發現和設定 ONTAP LUN，無需 PowerVM
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

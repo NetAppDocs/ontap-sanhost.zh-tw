@@ -4,7 +4,7 @@ permalink: hu_sanhost_index.html
 keywords: san, host, utility, software, netapp 
 summary: 瞭解有關 SAN 主機公用程式版本的最新資訊，並存取主機組態的安裝程序。 
 ---
-= 瞭解 SAN 主機公用程式
+= 了解 ONTAP 儲存設備的 SAN Host Utilities
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

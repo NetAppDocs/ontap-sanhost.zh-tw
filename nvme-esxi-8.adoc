@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: nvme-esxi-8.html 
-keywords: nvme, esxi, ontap, nvme/fc, hypervisor 
-summary: 您可以在執行 ESXi 8.x 和 ONTAP 的啟動器主機上設定 NVMe over Fabrics （ NVMe of ）作為目標。 
+keywords: nvme, esxi, ontap, nvme fc, hypervisor 
+summary: 在執行 ESXi 8.x 的啟動器主機上設定 NVMe over Fabrics，並以 ONTAP 作為目標。 
 ---
-= 適用於 ESXi 8.x 與 ONTAP 的 NVMe 主機組態
+= 設定 ESXi 8.x 搭配 ONTAP 儲存設備使用 NVMe-oF
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -329,4 +329,4 @@ ESXi 8.x 搭配 ONTAP 的 NVMe 主機組態有下列已知問題：
 
 |===
 .相關資訊
-link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere 搭配 ONTAP"^] link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^] link:https://kb.vmware.com/s/article/83370["VMware vSphere 6.x 與 7.x 支援 NetApp SnapMirror 主動同步"^]
+link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere 搭配 ONTAP"^]

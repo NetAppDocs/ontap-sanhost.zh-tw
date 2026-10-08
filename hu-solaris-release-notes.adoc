@@ -4,7 +4,7 @@ permalink: hu-solaris-release-notes.html
 keywords: Host Utilities, solaris, 6.2, 8.0, netapp, ontap 
 summary: Solaris Host Utilities 的發行說明。 
 ---
-= Solaris 主機公用程式發行說明
+= 適用於 ONTAP 儲存設備的 Solaris Host Utilities 版本說明
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

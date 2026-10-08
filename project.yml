@@ -29,7 +29,7 @@ sidebar:
           url: "/hu-aix-70.html"
         - title: 安裝 AIX Host Utilities 6.1
           url: "/hu_aix_61.html"
-      - title: 了解 AIX SAN Tollkit
+      - title: 了解 SAN Tollkit
         url: "/hu-aix-san-toolkit.html"
       - title: AIX Host Utilities 指令參考
         url: "/hu-aix-command-reference.html"
@@ -93,7 +93,7 @@ sidebar:
         url: "/hu_wuhu_troubleshoot.html"
   - title: 使用 FCP 和 iSCSI 設定主機
     entries:
-    - title: 了解如何使用 FCP 和 iSCSI 設定主機
+    - title: 了解 FCP 和 iSCSI 組態
       url: "/hu_fcp_scsi_index.html"
     - title: AIX與PowerVM/VIOS
       entries:
@@ -216,7 +216,7 @@ sidebar:
         url: "/hu_windows_2012r2.html"
   - title: 使用 NVMe 設定主機
     entries:
-    - title: 了解如何設定主機以使用 NVMe-oF
+    - title: 了解 NVMe-oF 組態
       url: "/hu-nvme-index.html"
     - title: AIX
       url: "/nvme-aix.html"

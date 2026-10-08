@@ -4,7 +4,7 @@ permalink: nvme-ol-8x.html
 keywords: nvme, oracle linux, 8.x, host configuration 
 summary: 適用於 Oracle Linux 8.x 和ONTAP的 NVMe-oF 主機配置 
 ---
-= 配置 Oracle Linux 8.x 和 NVMe-oF 以用於ONTAP存儲
+= 設定 Oracle Linux 8.x 以搭配 ONTAP 儲存設備使用 NVMe-oF
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

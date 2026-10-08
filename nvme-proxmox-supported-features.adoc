@@ -4,7 +4,7 @@ permalink: nvme-proxmox-supported-features.html
 keywords: nvme, proxmox, enterprise 
 summary: 了解 Proxmox 主機對ONTAP 的支援與功能 
 ---
-= 了解 Proxmox 主機對ONTAP 的支援與功能
+= Proxmox 主機的 ONTAP 支援與功能
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

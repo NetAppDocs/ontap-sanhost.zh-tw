@@ -4,7 +4,7 @@ permalink: hu-solaris-san-toolkit.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: 介紹如何將 Solaris Host Utilities 8.0 與ONTAP結合使用 
 ---
-= 了解適用於ONTAP儲存的 SAN 工具包
+= 了解適用於 ONTAP 儲存設備的 Solaris SAN Toolkit
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

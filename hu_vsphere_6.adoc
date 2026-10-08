@@ -322,6 +322,4 @@ VMware vSphere 6.5 與 6.7 搭配 ONTAP 版本有下列已知問題：
 |===
 .相關資訊
 * link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere 搭配 ONTAP"^]
-* link:https://kb.vmware.com/s/article/2031038["VMware vSphere 5.x、6.x及7.x支援NetApp MetroCluster 功能（2031038）"^]
-* link:https://kb.vmware.com/s/article/83370["NetApp ONTAP 搭配 NetApp SnapMirror 與 VMware vSphere Metro Storage 叢集（ VMSC ）進行主動同步"^]
 
