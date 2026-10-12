@@ -77,6 +77,8 @@ ASA配置應包含一組具有單一優先權的活動/最佳化路徑。控制�
 =====
 [listing]
 ----
+C:\TOOLS>mpclaim -s -d 13
+
 MPIO Disk13: 04 Paths, Round Robin with Subset, Symmetric Access
     Controlling DSM: Microsoft DSM
     SN: 600A09803831397A545D586E362D2F54
@@ -113,6 +115,8 @@ AFF或FAS配置應有兩組優先順序不同的路徑。優先順序較高的�
 =====
 [listing]
 ----
+C:\Windows\system32>mpclaim -s -d 0
+
 MPIO Disk0: 04 Paths, Round Robin with Subset, Implicit Only
     Controlling DSM: Microsoft DSM
     SN: 600A0980383136724D5D546931437933
