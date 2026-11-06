@@ -2537,4 +2537,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="2577436e0a1529b400f7af13bf054dd3" category="sidebar">了解 NVMe-oF 組態</block>
   <block id="e00f09f4cda9392c891c49988b80edc8" category="sidebar">SLES-FCP</block>
   <block id="8becbe3ee64db6f436bf244fb25c7f57" category="sidebar">SLES-NVMe</block>
+  <block id="b69bffb1a1f55594751fbc58f7abb114" category="summary">設定 Citrix Xenserver 9.0 以進行多重路徑，並針對與 ONTAP 儲存設備的 FCP 和 iSCSI 協定作業進行特定參數和設定。</block>
+  <block id="f52d84b92b78c6dad322e059e6943904" category="doc">設定 Citrix Xenserver 9.0 搭配 ONTAP 儲存設備以供 FCP 和 iSCSI 使用</block>
+  <block id="aa6f72aa4dad8dc14f65a49c7b60982a" category="paragraph">您可以使用 Citrix Xenserver 9.0 的多路徑功能來管理 ONTAP LUN。</block>
+  <block id="3f6d8773170dd1c73493c97ee36bb40a" category="paragraph">AFF 或 FAS 組態應包含兩組路徑，分別具有較高和較低的優先權。較高優先權的作用中/最佳化的路徑由彙總所在的控制器提供服務。較低優先權的路徑為作用中但非最佳化的，因為它們由不同的控制器提供服務。非最佳化的路徑僅在最佳化的路徑無法使用時才會使用。</block>
+  <block id="1d5076606adf1177c26a3f206e21498e" category="sidebar">Xenserver 9.0</block>
 </blocks>
