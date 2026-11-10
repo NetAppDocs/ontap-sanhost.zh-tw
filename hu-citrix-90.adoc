@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu-citrix-90.html 
-keywords: host utilities, citrix, Xenserver, 9 series, netapp, ontap, san, boot 
-summary: 設定 Citrix Xenserver 9.0 以進行多重路徑，並針對與 ONTAP 儲存設備的 FCP 和 iSCSI 協定作業進行特定參數和設定。 
+keywords: host utilities, citrix, XenServer, 9 series, netapp, ontap, san, boot 
+summary: 設定 Citrix XenServer 9.0 以提供多重路徑，並為搭配 ONTAP 儲存設備的 FCP 與 iSCSI 協定作業設定特定的參數與設定。 
 ---
-= 設定 Citrix Xenserver 9.0 搭配 ONTAP 儲存設備以供 FCP 和 iSCSI 使用
+= 設定 Citrix XenServer 9.0 搭配 ONTAP 儲存設備以供 FCP 和 iSCSI 使用
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,11 +16,11 @@ summary: 設定 Citrix Xenserver 9.0 以進行多重路徑，並針對與 ONTAP 
 
 
 [role="lead"]
-設定 Citrix Xenserver 9.0 以進行多重路徑，並針對與 ONTAP 儲存設備的 FCP 和 iSCSI 協定作業進行特定參數和設定。
+設定 Citrix XenServer 9.0 以提供多重路徑，並為搭配 ONTAP 儲存設備的 FCP 與 iSCSI 協定作業設定特定的參數與設定。
 
 [NOTE]
 ====
-Linux Host Utilities 軟體包不支援 Citrix Xenserver 作業系統。
+Linux Host Utilities 軟體包不支援 Citrix XenServer 作業系統。
 
 ====
 
@@ -47,7 +47,7 @@ Linux Host Utilities 軟體包不支援 Citrix Xenserver 作業系統。
 [[step-2-confirm-the-multipath-configuration-for-your-host]]
 == 步驟 2：確認主機的多路徑配置
 
-您可以使用 Citrix Xenserver 9.0 的多路徑功能來管理 ONTAP LUN。
+您可以使用 Citrix XenServer 9.0 的多路徑功能來管理 ONTAP LUN。
 
 為確保主機正確設定多重路徑，請確認 `/etc/multipath.conf`檔案已定義，且您已針對 ONTAP LUN 設定 NetApp 建議的設定。
 

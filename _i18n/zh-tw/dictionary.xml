@@ -1252,7 +1252,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">以下範例顯示了 nvme-cli 軟體包版本：</block>
   <block id="0825e58b251b6f1e1956c9f982c69b3d" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Citrix Hypervisor 8.2</block>
   <block id="3e2e1ae5727d07e3ee9163e73df8e73f" category="paragraph">您可以使用 Citrix Hypervisor 8.2 的多路徑來管理 ONTAP LUN。</block>
-  <block id="6d9eef6a4c2617ee0a8dfdc9ae7a468a" category="doc">使用 ONTAP 儲存為 FCP 和 iSCSI 設定 Citrix Xenserver 8.4</block>
   <block id="73dbe2792e643c8d49d1c396963179b8" category="inline-link-macro">建立 SAN 啟動 LUN 並將其對應到主機</block>
   <block id="23f9932633d90fac9929676a3d96b73c" category="list-text"><block ref="d3b050efbc8875625662ab7a3bc1d82e" category="inline-link-macro-rx"></block>。</block>
   <block id="83946a5f9a0c9e6468d1616ca938bdd0" category="list-text">在 RHEL 主機上，檢查 hostnqn 字串<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> ：</block>
@@ -1498,7 +1497,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="9b1f2a19fe68c5002ddcac15a60e5a23" category="list-text">對於 Linux Host Utilities 7.1，「sanlun」實用程式在 Host Utilities 的所有設定和協定中都是通用的。因此，它的某些內容適用於一種配置，但不適用於另一種配置。未使用的組件不會影響系統效能。</block>
   <block id="4e8e3cc9caaec705b678e226588d4da9" category="list-text">下列虛擬機器管理程式類型不支援「sanlun」實用程式：</block>
   <block id="c0d026daf27c431888481ff7a1184613" category="paragraph">對於 Linux Host Utilities 8.0，「sanlun」實用程式不支援 Citrix XenServer、Oracle VM 和 Red Hat Enterprise Virtualization。</block>
-  <block id="11bf6f85ac38e8f32d867da5ca4263c4" category="paragraph">對於 Linux Host Utilities 7.1，「sanlun」實用程式不支援 Citrix Xenserver、Red hat Enterprise Virtualization 和 Proxmox。</block>
   <block id="2b4a0c982d6640e362d3aca661ab4bfa" category="doc">使用ONTAP儲存為 FCP 和 iSCSI 配置 Solaris 11.4</block>
   <block id="6bcc4bcb21d11b9bdf1be5210fad0425" category="paragraph">Solaris Host Utilities 軟體為連接到ONTAP儲存的 Solaris 主機提供管理和診斷工具。在 Solaris 11.4 主機上安裝 Solaris Host Utilities 時，您可以使用 Host Utilities 來協助您管理ONTAP LUN 的 FCP 和 iSCSI 協定作業。</block>
   <block id="be4981292be510d9bb0a8dc7383e77dd" category="inline-link-macro">安裝 Solaris Host Utilities 8.0</block>
@@ -1815,11 +1813,7 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0fe3920489a515504bc99fd4bc2a0cfa" category="paragraph">下面的例子展示了<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block>價值：</block>
   <block id="bdd85bb9fb61697998b63578c3818344" category="paragraph">NVMe/TCP協定不支援自動連線操作。您必須手動執行 NVMe/TCP 連接或連接所有操作才能發現 NVMe/TCP 子系統和命名空間。</block>
   <block id="3832446aa2ef6619ecfdb886641a60fe" category="list-text">驗證其他 NVMe/TCP 啟動器-目標 LIF 組合是否可以成功取得發現日誌頁面資料：</block>
-  <block id="1c79280a42a5cd3a48fa9fefe62fd0a5" category="summary">配置 Citrix Xenserver 8.4 以實現多路徑，並使用特定參數和設定來針對ONTAP儲存的 FCP 和 iSCSI 協定操作。</block>
-  <block id="e3570aecc41d92af1fdf504fc5bd3927" category="paragraph">Linux Host Utilities 軟體包不支援 Citrix Xenserver 作業系統。</block>
-  <block id="405ee507e1b0e20ba609f39dc449664e" category="paragraph">您可以使用 Citrix Xenserver 8.4 的多路徑來管理ONTAP LUN。</block>
   <block id="813cc633e0459359ed043e6d76025c2c" category="paragraph">例如，您可以設定本機ONTAP儲存以連線至本機 SAN 主機或 SAN 雲端客戶端。您也可以設定在雲端環境中執行的儲存服務，例如<block ref="cdfecfe4eb59bc17d075f2da08aa8dad" category="inline-link-macro-rx"></block>或者<block ref="8ad7a6b53b9076e00c14225601db07c4" category="inline-link-macro-rx"></block>連線到本機 SAN 主機或 SAN 雲端客戶端。</block>
-  <block id="9831e45ea03c86b202350b5eb137e309" category="sidebar">Xenserver 8.4</block>
   <block id="df472899f555ad076c9b90f4bd508f91" category="sidebar">虛擬機器管理程序 8.2</block>
   <block id="acf2ddfd48a6a24bda067d6e04e94f29" category="doc">步驟 4：確認主機的多路徑配置</block>
   <block id="7aeddcaacf2b32401e7a3259c54bb6c0" category="paragraph">如果您的 Windows 主機有多個到儲存系統的路徑，請安裝 Microsoft Multipath I/O (MPIO) 軟體並啟用多路徑。</block>
@@ -2537,9 +2531,15 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="2577436e0a1529b400f7af13bf054dd3" category="sidebar">了解 NVMe-oF 組態</block>
   <block id="e00f09f4cda9392c891c49988b80edc8" category="sidebar">SLES-FCP</block>
   <block id="8becbe3ee64db6f436bf244fb25c7f57" category="sidebar">SLES-NVMe</block>
-  <block id="b69bffb1a1f55594751fbc58f7abb114" category="summary">設定 Citrix Xenserver 9.0 以進行多重路徑，並針對與 ONTAP 儲存設備的 FCP 和 iSCSI 協定作業進行特定參數和設定。</block>
-  <block id="f52d84b92b78c6dad322e059e6943904" category="doc">設定 Citrix Xenserver 9.0 搭配 ONTAP 儲存設備以供 FCP 和 iSCSI 使用</block>
-  <block id="aa6f72aa4dad8dc14f65a49c7b60982a" category="paragraph">您可以使用 Citrix Xenserver 9.0 的多路徑功能來管理 ONTAP LUN。</block>
   <block id="3f6d8773170dd1c73493c97ee36bb40a" category="paragraph">AFF 或 FAS 組態應包含兩組路徑，分別具有較高和較低的優先權。較高優先權的作用中/最佳化的路徑由彙總所在的控制器提供服務。較低優先權的路徑為作用中但非最佳化的，因為它們由不同的控制器提供服務。非最佳化的路徑僅在最佳化的路徑無法使用時才會使用。</block>
-  <block id="1d5076606adf1177c26a3f206e21498e" category="sidebar">Xenserver 9.0</block>
+  <block id="37b28a1b8845fd9389675e1bd140fae9" category="summary">設定 Citrix XenServer 9.0 以提供多重路徑，並為搭配 ONTAP 儲存設備的 FCP 與 iSCSI 協定作業設定特定的參數與設定。</block>
+  <block id="7b6b47a474038f42ab5d1310bd108dae" category="doc">設定 Citrix XenServer 9.0 搭配 ONTAP 儲存設備以供 FCP 和 iSCSI 使用</block>
+  <block id="ba51463edd725e02a97cc8adbc431646" category="paragraph">Linux Host Utilities 軟體包不支援 Citrix XenServer 作業系統。</block>
+  <block id="45042c97a0ec778933cec51e743b7fd3" category="paragraph">您可以使用 Citrix XenServer 9.0 的多路徑功能來管理 ONTAP LUN。</block>
+  <block id="63e7f1b1fd598b1fde3e6cd5b2553c3f" category="paragraph">對於 Linux Host Utilities 7.1，「sanlun」公用程式不支援 Citrix XenServer、Red hat Enterprise Virtualization 和 Proxmox。</block>
+  <block id="4f1f23df51594490fd905d80ae2ec08a" category="summary">設定 Citrix XenServer 8.4 以進行多重路徑，並為 ONTAP 儲存設備的 FCP 和 iSCSI 協定作業設定特定的參數與設定。</block>
+  <block id="27ae6acd8c616342cbd51da5588b27a3" category="doc">設定 Citrix XenServer 8.4 以搭配 ONTAP 儲存設備支援 FCP 和 iSCSI</block>
+  <block id="1603592d786a7d0b05ea6d2349cd2c37" category="paragraph">您可以使用 Citrix XenServer 8.4 的多路徑功能來管理 ONTAP LUN。</block>
+  <block id="80d7b416b0e7d5f227ea5b78edcc33cd" category="sidebar">XenServer 9.0</block>
+  <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8.4</block>
 </blocks>

@@ -44,7 +44,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 --
 .7.1.
 --
-對於 Linux Host Utilities 7.1，「sanlun」實用程式不支援 Citrix Xenserver、Red hat Enterprise Virtualization 和 Proxmox。
+對於 Linux Host Utilities 7.1，「sanlun」公用程式不支援 Citrix XenServer、Red hat Enterprise Virtualization 和 Proxmox。
 
 --
 ====
