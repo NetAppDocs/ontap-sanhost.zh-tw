@@ -1446,7 +1446,6 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="595d5e9ea1673c1bbf1510865d48bb38" category="paragraph">您應該注意以下已知問題和限制，它們可能會影響特定主機的效能：</block>
   <block id="eba53669ecd7c10682b71a8831d109a7" category="cell">影響版本</block>
   <block id="b98a52ca87b128134e44e925159f79cf" category="summary">AIX Host Utilities 主機軟體在您的 IBM AIX 主機上提供了命令列工具包。</block>
-  <block id="83946907f1c7677160ab7c94fd546fad" category="doc">了解適用於ONTAP儲存的 AIX SAN 工具包</block>
   <block id="92c36db5a883168f63c7e3148f690d35" category="paragraph">AIX Host Utilities 是一款NetApp主機軟體，可在 IBM AIX 主機上提供命令列工具包。安裝NetApp Host Utilities 套件時也會安裝 SAN 工具包。該工具包提供了<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>實用程序，可協助您管理ONTAP LUN 和主機匯流排適配器 (HBA)。這<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block>指令傳回有關對應到主機的ONTAP LUN、多路徑以及建立啟動器群組所需資訊的資訊。</block>
   <block id="3b6e249caec2d9f733d11ad9f052b8c2" category="paragraph">以下範例輸出顯示了傳回的ONTAP LUN 訊息<block ref="5927da9399de65ab7428ce807e88771e" prefix=" " category="inline-code"></block>命令：</block>
   <block id="a630a3a606f87a126ea7fc8ad21ebfd6" category="admonition">SAN Toolkit 適用於所有 AIX 主機配置和傳輸協定。因此，並非所有組件都適用於每種配置。未使用的組件不會影響您的系統效能。  SAN Toolkit 在 AIX 和 PowerVM/VIOS OS 版本上受支援。</block>
@@ -1710,11 +1709,9 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="3db908c249fffc60d2574232331bdcf3" category="paragraph">在排除任何 NVMe/FC 故障之前，請先驗證您正在執行的設定是否符合<block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>規格。如果問題仍然存在，請聯繫<block ref="ea2f4052f3eaf8e0d09bdf7668185025" category="inline-link-macro-rx"></block>。</block>
   <block id="3377da1c4bfbeb041c695fd90b5b51f8" category="sidebar">安裝 AIX 主機實用程式</block>
   <block id="259ad13a22ced337b90660e2a1ec20c1" category="sidebar">AIX Host Utilities 指令參考</block>
-  <block id="59f0ceab26c568fa6ab53aee601cb03c" category="sidebar">了解 HP-UX 指令參考</block>
   <block id="c0a7954064ad4f8a8468c33037740aea" category="sidebar">安裝Linux主機實用程式</block>
   <block id="dfdadcfee03e307b2e465e42047746e5" category="sidebar">了解三侖實用程序</block>
   <block id="9f5cc88e1386fdae5175d50b4fddb87d" category="sidebar">Linux 主機實用程式指令參考</block>
-  <block id="64a317b0ef502066fcd3e75bd699674f" category="sidebar">了解 Solaris 指令參考</block>
   <block id="dc5558bf9c4fb0dc5f36d6c135777cf2" category="sidebar">安裝 Windows 主機實用程式</block>
   <block id="d4609abcc5de600b2cd5aa87443c612c" category="sidebar">安裝 Windows Host Utilities 8.0</block>
   <block id="89a348be490d3be0bdc23d43fb585c56" category="sidebar">7.3/4.x</block>
@@ -2492,18 +2489,13 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="0e9921acd171b70dc5d1ac95c8c50399" category="doc">用於 ONTAP 儲存組態的 AIX Host Utilities 命令</block>
   <block id="9fb343982b97a8dc12d3122c420c5ea7" category="doc">適用於 ONTAP 儲存設備的 AIX Host Utilities 版本說明</block>
   <block id="2ea08eaaae7c6119cc48921f3796b5c3" category="doc">HP-UX 主機公用程式 ONTAP 儲存設備版本說明</block>
-  <block id="81127402f95ead330df48d387b5a6b8f" category="doc">了解適用於 ONTAP 儲存設備的 HP-UX SAN Toolkit</block>
   <block id="915e7b086350655a133b439c14e17ffd" category="doc">用於 ONTAP 儲存組態的 Linux Host Utilities 命令</block>
   <block id="cfe99a6bdad5da964c9a46fb03d6eaf9" category="doc">適用於 ONTAP 儲存設備的 Linux Host Utilities 發行說明</block>
-  <block id="0ced5d65080d7814d860d3f16910a834" category="doc">了解用於 ONTAP 儲存設備的 sanlun 公用程式</block>
-  <block id="c2627bbb6da940de88adecf662e3ae2d" category="doc">了解 ONTAP SAN 主機的 NVMe-oF 組態</block>
   <block id="d3df7d646d640a0a9fb08d1bf421fe43" category="doc">驗證 ONTAP 儲存組態的 Solaris Host Utilities 指令</block>
   <block id="edf3f5a378100b81312fd2cd70bf01ef" category="doc">適用於 ONTAP 儲存設備的 Solaris Host Utilities 版本說明</block>
-  <block id="48bf8159ec53e42fb6fdf758b64da1c7" category="doc">了解適用於 ONTAP 儲存設備的 Solaris SAN Toolkit</block>
   <block id="f2cd92cac2712e5517c7843d8bc92c8b" category="doc">用於 ONTAP 儲存設備的 Windows Host Utilities 組態</block>
   <block id="8cb3c98dd76153473fa33ed648bd00e1" category="doc">適用於 ONTAP 儲存設備的 Windows Host Utilities 發行說明</block>
   <block id="4dbc9bb091bb949dd9db1f6063eec8a2" category="doc">使用 AIX MPIO 發現和設定 ONTAP LUN，無需 PowerVM</block>
-  <block id="fb9001732ff79972443ed877f48a175e" category="doc">了解 ONTAP SAN 主機的 FCP 和 iSCSI 組態</block>
   <block id="b92a970f8ffb71dc4e477b16a35df216" category="doc">用於 ONTAP 儲存組態的 HP-UX Host Utilities 指令</block>
   <block id="f232957bf4a3b3d50b4dd8620fdbdfdf" category="doc">了解 ONTAP 儲存設備的 SAN Host Utilities</block>
   <block id="78cfd8a217e25cb50535917f78cb98a3" category="doc">疑難排解 Windows Host Utilities 與 ONTAP 儲存設備的相關問題</block>
@@ -2542,4 +2534,12 @@ FC 驅動程式繫結已從變更<block ref="b9ca0a083600812be33f42f91f00492c" p
   <block id="1603592d786a7d0b05ea6d2349cd2c37" category="paragraph">您可以使用 Citrix XenServer 8.4 的多路徑功能來管理 ONTAP LUN。</block>
   <block id="80d7b416b0e7d5f227ea5b78edcc33cd" category="sidebar">XenServer 9.0</block>
   <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8.4</block>
+  <block id="c6c9fc376320aadb3aaef36080456261" category="doc">了解適用於 ONTAP 儲存設備的 AIX 主機公用程式 SAN 工具包</block>
+  <block id="651ea07cef284397cd8a25af96d4ce9b" category="doc">了解適用於 ONTAP 儲存設備的 HP-UX 主機公用程式 SAN 工具包</block>
+  <block id="70dab6cebc40143035040a5fdfe60100" category="doc">了解用於 ONTAP 儲存設備的 Linux Host Utilities「sanlun」公用程式</block>
+  <block id="255c2b3b628d69965b87e520beae1a16" category="doc">了解適用於配備 ONTAP 儲存設備的 SAN 主機的 NVMe-oF 組態</block>
+  <block id="fb8976cebc31d1468640a313016af556" category="doc">了解適用於 ONTAP 儲存設備的 Solaris Host Utilities SAN Toolkit</block>
+  <block id="f6792f7b18dc0dcfa7d8bd38001b3244" category="doc">了解適用於配備 ONTAP 儲存設備的 SAN 主機的 FCP 和 iSCSI 組態</block>
+  <block id="d390486f41839a86a92302ba9db2ca70" category="sidebar">HP-UX 命令參考</block>
+  <block id="2e3c4b115259342652d046e93d34c90b" category="sidebar">Solaris 命令參考</block>
 </blocks>

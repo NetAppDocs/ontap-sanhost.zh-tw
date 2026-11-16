@@ -4,7 +4,7 @@ permalink: hu-nvme-index.html
 keywords: nvme, san, host, aix, linux, vsphere, windows 
 summary: 您可以為 NVMe over Fabrics （ NVMe of ）傳輸協定設定特定 SAN 主機。 
 ---
-= 了解 ONTAP SAN 主機的 NVMe-oF 組態
+= 了解適用於配備 ONTAP 儲存設備的 SAN 主機的 NVMe-oF 組態
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

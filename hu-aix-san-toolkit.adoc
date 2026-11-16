@@ -4,7 +4,7 @@ permalink: hu-aix-san-toolkit.html
 keywords: san, toolkit, command, line, AIX, hot, utilities 
 summary: AIX Host Utilities 主機軟體在您的 IBM AIX 主機上提供了命令列工具包。 
 ---
-= 了解適用於ONTAP儲存的 AIX SAN 工具包
+= 了解適用於 ONTAP 儲存設備的 AIX 主機公用程式 SAN 工具包
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

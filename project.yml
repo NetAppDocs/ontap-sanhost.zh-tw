@@ -41,7 +41,7 @@ sidebar:
         url: "/hu_hpux_60.html"
       - title: 了解 SAN 工具包
         url: "/hu-hpux-sanlun-toolkit.html"
-      - title: 了解 HP-UX 指令參考
+      - title: HP-UX 命令參考
         url: "/hu_hpux_60_cmd.html"
     - title: Linux主機公用程式
       entries:
@@ -69,7 +69,7 @@ sidebar:
           url: "/hu_solaris_62.html"
       - title: 了解 SAN 工具包
         url: "/hu-solaris-san-toolkit.html"
-      - title: 了解 Solaris 指令參考
+      - title: Solaris 命令參考
         url: "/hu-solaris-command-reference.html"
     - title: Windows 主機公用程式
       entries:

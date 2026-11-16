@@ -4,7 +4,7 @@ permalink: hu_fcp_scsi_index.html
 keywords:  
 summary:  
 ---
-= 了解 ONTAP SAN 主機的 FCP 和 iSCSI 組態
+= 了解適用於配備 ONTAP 儲存設備的 SAN 主機的 FCP 和 iSCSI 組態
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
