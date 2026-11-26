@@ -94,7 +94,7 @@ devices {
     dev_loss_tmo infinity
     no_path_retry queue
     features "3 queue_if_no_path pg_init_retries 50"
-    flush_on_last_del yes
+    flush_on_last_del always
     hardware_handler "0"
     retain_attached_hw_handler yes
     rr_weight uniform
@@ -144,7 +144,7 @@ systemctl start multipathd
 | 功能 | "3 queue_if_no_path pg_init_retries 50" 
 
 
-| Flip_on_last刪除 | "是" 
+| Flip_on_last刪除 | “總是” 
 
 
 | 硬體處理常式 | 「0」 
@@ -207,9 +207,8 @@ ASA 組態可最佳化通往指定 LUN 的所有路徑，使其保持作用中�
 =====
 [listing]
 ----
-/usr/sbin/mpathutil status
-show topology
-create: 3600a098038315045572b5930646f4b63 dm-1 NETAPP  ,LUN C-Mode
+multipath -ll
+3600a098038315045572b5930646f4b63 dm-1 NETAPP  ,LUN C-Mode
 size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
   |- 15:0:0:0  sdb  8:16    active ready running
@@ -230,9 +229,8 @@ AFF 或 FAS 組態應包含兩組路徑，分別具有較高和較低的優先�
 =====
 [listing]
 ----
-/usr/sbin/mpathutil status
-show topology
-create: 3600a098038315045572b5930646f4b63 dm-1 NETAPP  ,LUN C-Mode
+multipath -ll
+3600a098038315045572b5930646f4b63 dm-1 NETAPP  ,LUN C-Mode
 size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
   |- 15:0:0:0  sdb  8:16    active ready running
@@ -294,21 +292,25 @@ CAUTION: 您不應覆寫 ONTAP LUN 的建議參數設定。這些設定是主機
 .顯示範例
 [%collapsible]
 ====
-[listing, subs="+quotes"]
+[source, cli]
 ----
+$sudo tee -a /etc/multipath/conf.d/custom.conf >/dev/null <<'EOF'
+
 defaults {
-   path_checker      *readsector0*
-   no_path_retry     *fail*
+   path_checker      readsector0
+   no_path_retry     fail
 }
 
 devices {
    device {
       vendor          "NETAPP"
       product         "LUN"
-      no_path_retry   *queue*
-      path_checker    *tur*
+      no_path_retry   queue
+      path_checker    tur
    }
 }
+
+EOF
 ----
 ====
 
